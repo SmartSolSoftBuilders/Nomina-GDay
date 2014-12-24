@@ -1,0 +1,142 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Cotizador</title>
+	<link rel="stylesheet" href="../../static/css/crediFam.css" type="text/css"/>
+
+</head>
+	<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery-1.9.1.js"></script>
+  	<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery-ui-1.10.2.custom.js"></script>
+  	<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jspdf.js"></script>
+  	<script type="text/javascript" language="javascript" src="../../static/js/libs/js/adler32cs.js"></script>
+  	<script type="text/javascript" language="javascript" src="../../static/js/libs/js/FileSaver.js"></script>
+  	<script type="text/javascript" language="javascript" src="../../static/js/libs/js/blobbuilder.js"></script>
+  	<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jspdf.plugin.table.js"></script>
+  	<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.tabletojson.js"></script>
+  	<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.tabletojson.min.js"></script>
+  	<script type="text/javascript" language="javascript" src="../../static/js/libs/js/deflate.js"></script>
+  	<script type="text/javascript" language="javascript" src="../../static/js/app/credifam/cotizador.js"></script>
+ 
+ 
+<body id="target">
+
+<div  style="margin-left: 100px;margin-top: 0px;">
+	<table >
+		<tr>
+		<td><label style="color:#6E6E6E;font-weight: bold;">COTIZACIÓN CRÉDTIO PERSONAL</label></br><label style="color:#6E6E6E;font-weight: bold;">DESCUENTO POR NÓMINA</label></td>
+		</tr>
+	</table>
+</div>
+</br>
+<div id="table" class="CSS_Table_Example" style="width:750px;height:750px;">
+	<table border="1" align="center">
+		<tr>
+		</tr>		
+		<tr>
+			<td>Solicitante/Empleado<input id="nombreEmpl" name="nombreEmpl" size="30" disabled
+				value="<c:out value="${afiliado.nombreAfiliado}"/>&nbsp;<c:out value="${afiliado.appPaternoAfiliado}"/>&nbsp;<c:out value="${afiliado.appMaternoAfiliado}"/>" /></td>
+			<td>Antiguëdad<input id="antiguedad" name="antiguedad" size="30" type="text" disabled value="<c:out value="${afiliado.antiguedadAfiliado}"/>" /></td>
+		</tr>
+		<tr>
+			<td>Tasa Fija Anual(IVA INCLUIDO)<input id="tasaFijaA" name="tasaFijaA" size="30" type="text"
+				placeholder="27.60%" disabled /></td>
+			<td>CAT*<input id="cat" name="cat" type="text" placeholder="27.1%" size="30" disabled onchange="valorCat()" />Sin IVA</td>
+		</tr>
+		<tr>
+			<td>Tasa de comisión de gestión<input id="tasaComisionG" name="tasaComisionG" size="30" type="text"  placeholder="2.5%" disabled /></td>			
+			<td>Empresa<input id="empresa" name="empresa" size="30" type="text" /></td>
+		</tr>
+			
+		<tr>
+			<td>Sueldo Bruto Quincenal<input id="sueldoB" name="sueldoB" size="30" type="text" placeholder="$" /></td>
+			<td>Sueldo Neto Quincenal<input id="sueldoN" name="sueldoN" size="30" type="text" placeholder="$" /></td>
+		</tr>
+		<tr>
+			<td>Quincenas de Gracia<input id="quincenasGracia" name="quincenasGracia" size="30" type="text" /></td>
+			<td>Miembro FAM<select id="miembroFam" name="miembroFam">
+					<option>Seleccione</option>
+					<option>SI</option>
+					<option>NO</option>
+			</select></td>
+			
+		</tr>	
+		<tr>
+			<td>Credito Solicitado<input id="creditoS" name="creditoS" size="30" type="text" onkeypress="mascara(this,cpf)" placeholder="$"/></td>		
+			<td>Crédito Máximo Alcanzado<input id="creditoAlcanzado" name="creditoAlcanzado" size="30"
+				type="text" onchange="creditoMaximoAlcanzado()"/></td>
+				
+		</tr>
+		<tr>
+			<td>Plazo Pagos (12, 24, 36, 48)&nbsp;<select id="plazoPagos" name="plazoPagos">
+			<option>Plazo</option>
+			<option>12</option>
+			<option>24</option>
+			<option>36</option>
+			<option>48</option>
+			</select> meses</td>
+			<td>Plazo Creditos<input id="plazoCredito" name="plazoCredito" size="30" type="text" onchange="numeroPagos()"/>meses</td>
+		</tr>
+		<tr>
+			<td>Número de Pagos<input id="numeroP" name="numeroP" size="30" type="text" onchange="numeroPagos()"/></td>			
+			<td>Forma de Pago<input id="formaP" name="formaP" size="30" type="text" value="Quincenal" placeholder="Quincenal" disabled /></td>		
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+		<td></td>
+		<td>Gestión FAM<input id="gestionFam" name="gestionFam" size="30" type="text" placeholder="$" onchange="gestionFam()" /></td>
+		
+		</tr>
+		<tr>
+			<td>Descuento<input id="descuentoMensual" name="descuentoMensual" size="30" type="text" placeholder="$" onchange="descuentoMensual()"/></td>		
+			<td>Descuento Gestión(12 o 24 quincenas)<input id="descGestion" name="descGestion" size="30" type="text" placeholder="$" onchange="descuentoGestion()"/></td>		
+		</tr>
+		<tr>
+		</tr>	
+		<tr>
+			<td>Crédito Total<input id="creditoT" name="creditoT" size="30" type="text" placeholder="$" onchange="creditoTotal()"/></td>
+			<td>Pago Total<input id="pagoT" name="pagoT" size="30" type="text" placeholder="$" onchange="pagoTotal()"/></td>
+		</tr>
+		<tr>
+			<td>Fecha de Cotización<input id="fechaCotizacion" type="date" name="fechaCotizacion"/></td>
+			<td>Estatus<input id="estatus" name="estatus" value="Pendiente" disabled size="30" type="text"/></td>
+		</tr>				
+	</table>
+		<input id="botonCotizar" style="margin-left:380px; margin-top:10px" class="btn" name="botonCotizar" size="30" type="button" value="cotizar"  onclick="cotizar()" onclick="validar()"/>
+</div>
+<div>
+	<table id="tbl" border=1 style="margin-left: 100px;margin-top: 60px;">
+		<tr>
+			<td >
+				<div id="resultadoCotizar"  >
+
+				</div>
+			</td >
+			<td  >
+				<div id="resultadoCotizar2">
+		
+				</div>
+			</td>
+		<tr>
+	</table>
+</div>
+<div id="resultadoGuardar"></div>
+<div>
+<table>
+	<tr>
+<!-- 	<td><input id="guardar" class="btn" name="guardar" type="button"  onClick="guardarCotizacion()"  onclick="validar()" value="Guardar" style='display:none;margin-left:390px'/></td>
+ -->
+  	<td><a href="javascript:savePageAsPDF()" title="Save web page to PDF free with www.web2pdfconvert.com">Convertir a PDF</a></td>
+  <td><input id="descargar" src="http://www.web2pdfconvert.com/pdfbutton2.js" class="btn" name="descargar" type="button"  value="Descargar PDF" onclick="generate()" style='display:block;margin-left:390px'/></td>
+	<td><input id="reCotizar"  class="btn" name="reCotizar" type="button"  onClick="volverCotizar()"  value="Volver a Cotizar" style='display:none;'/></td>
+	</tr>
+</table>
+</div>
+</body>
+
+</html>

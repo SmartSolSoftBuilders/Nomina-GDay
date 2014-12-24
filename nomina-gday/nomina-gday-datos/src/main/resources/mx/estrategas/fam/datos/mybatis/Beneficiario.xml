@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.BeneficiarioDao">
+	
+	<resultMap type="Beneficiario" id="beneficiarioResult">	
+		<id property="idBeneficiario" column="ID_BENEFICIARIO"/>
+		<result property="nombreBeneficiario" column="NOMBRE_BENEFICIARIO"/>
+		<result property="appBeneficiario" column="APP_BENEFICIARIO"/>
+		<result property="apmBeneficiario" column="APM_BENEFICIARIO"/>
+		<result property="fechaNacimientoBeneficiario" column="FECHANACIMIENTO_BENEFICIARIO"/>
+		<result property="parentescoBeneficiario" column="PARENTESCO_BENEFICIARIO"/>
+		<result property="porcentajeBeneficiario" column="PORCENTAJE_BENEFICIARIO"/>
+		<result property="porcentajeBeneficiarioDos" column="PORCENTAJE_BENEFICIARIODOS"/>
+		<result property="edadBeneficiario" column="EDAD_BENEFICIARIO"/>
+		<result property="revocableBeneficiario" column="REVOCABLE_BENEFICIARIO"/>
+		<result property="irrevocableBeneficiario" column="IRREVOCABLE_BENEFICIARIO"/>		
+		<association property="certificadoAfiliado" column="ID_CERTIFICADOAFILIADO" javaType="CertificadoAfiliado"
+            select="selectBeneficiarioCertificadoAfiliado"/>        
+	</resultMap>
+	
+	<select id="obtenerBeneficiariosById" resultMap="beneficiarioResult">
+		select * from "BENEFICIARIO" 
+			where "ID_CERTIFICADOAFILIADO" = #{id};
+	</select>
+	
+	<select id="obtenerBeneficiarios" parameterType="int"
+		 resultType="CertificadoAfiliado">
+		select * from "BENEFICIARIO";
+	</select>
+	
+	<select id="obtenerIdCertificadoByIdBeneficiario" parameterType="int"
+		 resultType="int">
+		select "ID_CERTIFICADOAFILIADO" from "BENEFICIARIO"
+			WHERE "ID_BENEFICIARIO"=#{id};
+	</select>
+	
+	<delete id="borrarBeneficiariosByIdCertificado" parameterType="int">
+		DELETE FROM "BENEFICIARIO"
+ 			WHERE "ID_CERTIFICADOAFILIADO"=#{id};
+	</delete>
+	
+	<delete id="borrarBeneficiarioById" parameterType="Beneficiario">
+		DELETE FROM "BENEFICIARIO"
+ 			WHERE "ID_BENEFICIARIO"=#{idBeneficiario};
+	</delete>
+			
+    <select id="selectBeneficiarioCertificadoAfiliado"
+          parameterType="java.lang.Integer"
+          resultType="CertificadoAfiliado">
+        SELECT
+            *
+        FROM
+            "CERTIFICADOAFILIADO"
+        WHERE
+            "ID_CERTIFICADOAFILIADO" = #{idCertificadoAfiliado}
+    </select>
+		
+	
+	<insert id="guardarBeneficiario" parameterType="Beneficiario" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		     SELECT nextVal('sec_beneficiario')
+  		</selectKey> 
+  		INSERT INTO "BENEFICIARIO"(
+            "ID_BENEFICIARIO", "NOMBRE_BENEFICIARIO", "APP_BENEFICIARIO", 
+            "APM_BENEFICIARIO", "REVOCABLE_BENEFICIARIO", "IRREVOCABLE_BENEFICIARIO", 
+            "FECHANACIMIENTO_BENEFICIARIO", "EDAD_BENEFICIARIO", "PARENTESCO_BENEFICIARIO", "PORCENTAJE_BENEFICIARIO",
+            "ID_CERTIFICADOAFILIADO","PORCENTAJE_BENEFICIARIODOS")     
+    		VALUES (#{id}, #{nombreBeneficiario}, #{appBeneficiario}, 
+            #{apmBeneficiario}, #{revocableBeneficiario}, #{irrevocableBeneficiario},
+            date(#{fechaNacimientoBeneficiario}), #{edadBeneficiario}, #{parentescoBeneficiario},#{porcentajeBeneficiario},
+            #{certificadoAfiliado.idCertificadoAfiliado},#{porcentajeBeneficiarioDos})                                    		
+	</insert>
+	
+	<update id="actualizarBeneficiario" parameterType="Beneficiario" >		
+  		UPDATE "BENEFICIARIO"
+	   		SET "NOMBRE_BENEFICIARIO"=#{nombreBeneficiario}, "APP_BENEFICIARIO"=#{appBeneficiario}, 
+      		"APM_BENEFICIARIO"= #{apmBeneficiario}, "REVOCABLE_BENEFICIARIO"= #{revocableBeneficiario}, "IRREVOCABLE_BENEFICIARIO"=#{irrevocableBeneficiario}, 
+        	"FECHANACIMIENTO_BENEFICIARIO"=date(#{fechaNacimientoBeneficiario}), "EDAD_BENEFICIARIO"=#{edadBeneficiario}, "PARENTESCO_BENEFICIARIO"= #{parentescoBeneficiario}, 
+        	"PORCENTAJE_BENEFICIARIO"=#{porcentajeBeneficiario},"PORCENTAJE_BENEFICIARIODOS"=#{porcentajeBeneficiarioDos}
+        	WHERE "ID_BENEFICIARIO" = #{idBeneficiario}    	                                    	
+	</update>
+	
+</mapper>

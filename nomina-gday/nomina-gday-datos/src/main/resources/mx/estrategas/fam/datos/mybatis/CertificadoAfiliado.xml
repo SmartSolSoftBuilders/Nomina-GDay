@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.CertificadoAfiliadoDao">
+	
+	<resultMap type="CertificadoAfiliado" id="certificadoAfiliadoResult">
+		<id property="idCertificadoAfiliado" column="ID_CERTIFICADOAFILIADO"/>
+		<result property="numeroCertificadoAfiliado" column="NUMERO_CERTIFICADO"/>
+		<result property="fechaInicioVigenciaCertificadoAfiliado" column="FECHAINICIOVIGENCIA_CERTIFICADO"/>
+		<result property="estadoCertificadoAfiliado" column="ESTADO_CERTIFICADO"/>
+		<result property="sumaAseguradaCertificadoAfiliado" column="SUMA_ASEGURADA"/>
+		<association property="afiliado" resultMap="afiliadoResult"/>
+                    
+	</resultMap>
+	
+	<select id="obtenerCertificadoAfiliado" resultMap="certificadoAfiliadoResult">
+		select * from "CERTIFICADOAFILIADO";
+	</select>
+	
+	<select id="obtenerCertificadosAfiliados" resultMap="certificadoAfiliadoResult">
+		SELECT "ID_CERTIFICADOAFILIADO", "NUMERO_CERTIFICADO", "FECHAINICIOVIGENCIA_CERTIFICADO", 
+       	"ESTADO_CERTIFICADO", "SUMA_ASEGURADA", "AFILIADO"."ID_AFILIADO"
+		  FROM "CERTIFICADOAFILIADO" INNER JOIN "AFILIADO" ON "CERTIFICADOAFILIADO"."ID_AFILIADO" = "AFILIADO"."ID_AFILIADO" ;
+	</select>
+	
+	<select id="obtenerCertificadoAfiliadoById" parameterType="int"
+          resultMap="certificadoAfiliadoResult">
+		select * from "CERTIFICADOAFILIADO"
+			WHERE
+	            "ID_AFILIADO" = #{id}
+	</select>		
+	
+	<select id="obtenerCertificadoAfiliadoByIdCertificado" parameterType="int"
+          resultMap="certificadoAfiliadoResult">
+		select * from "CERTIFICADOAFILIADO"
+			WHERE
+	            "ID_CERTIFICADOAFILIADO" = #{id}
+	</select>		
+		    
+	<resultMap type="Afiliado" id="afiliadoResult">
+    	<id property="idAfiliado" column="ID_AFILIADO"/>    	    	 
+   	</resultMap>
+   	
+	<insert id="guardarCertificadoAfiliado" parameterType="CertificadoAfiliado" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		     SELECT nextVal('sec_certificadoafiliado')
+  		</selectKey> 
+  		INSERT INTO "CERTIFICADOAFILIADO"("ID_CERTIFICADOAFILIADO", "NUMERO_CERTIFICADO", "FECHAINICIOVIGENCIA_CERTIFICADO", 
+            "ESTADO_CERTIFICADO", "SUMA_ASEGURADA", "ID_AFILIADO")     
+    		VALUES (#{id}, #{numeroCertificadoAfiliado}, date(#{fechaInicioVigenciaCertificadoAfiliado}), 
+            #{estadoCertificadoAfiliado}, #{sumaAseguradaCertificadoAfiliado}, #{afiliado.idAfiliado})                        		
+	</insert>
+	
+	<update id="actualizarCertificadoAfiliado"  parameterType="CertificadoAfiliado">
+		UPDATE "CERTIFICADOAFILIADO"
+   			SET "NUMERO_CERTIFICADO"=#{numeroCertificadoAfiliado}, "FECHAINICIOVIGENCIA_CERTIFICADO"=date(#{fechaInicioVigenciaCertificadoAfiliado}), 
+       		"ESTADO_CERTIFICADO"=#{estadoCertificadoAfiliado}, "SUMA_ASEGURADA"=#{sumaAseguradaCertificadoAfiliado} WHERE "ID_CERTIFICADOAFILIADO"=#{idCertificadoAfiliado}
+    </update>
+	
+</mapper>

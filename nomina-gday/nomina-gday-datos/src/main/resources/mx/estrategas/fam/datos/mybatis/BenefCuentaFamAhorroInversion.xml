@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.BenefCuentaFamAhorroInversionDao">
+
+	<resultMap type="BenefCuentaFamAhorroInversion" id="benefCuentaFamAhorroInversionResult">
+		<id property="idBenefCuentaFamAhorroInversion" column="ID_BENEF_CUENTA_FAM_AHORRO_INVERSION"/>		
+		<result property="operadorBenefCuentaFamAhorro" column="OPERADOR"/>
+		<result property="apellidoPaternoBenefCuentaFamAhorro" column="APP_PATERNO_BENEF"/>
+		<result property="apellidoMaternoBenefCuentaFamAhorro" column="APP_MATERNO_BENEF"/>
+		<result property="nombreBenefCuentaFamAhorro" column="NOMBRE_BENEF"/>
+		<result property="rfcBenefCuentaFamAhorro" column="RFC_BENEF"/>
+		<result property="paisResidenciaBenefCuentaFamAhorro" column="PAIS_RESIDENCIA_BENEF"/>
+		<result property="estadoCivilBenefCuentaFamAhorro" column="ESTADO_CIVIL_BENEF"/>
+		<result property="fechaNacimientoBenefCuentaFamAhorro" column="FECHA_NACIMIENTO_BENEF"/>
+		<result property="parentescoBenefCuentaFamAhorro" column="PARENTESCO_BENEF"/>
+		<result property="nacionalidadBenefCuentaFamAhorro" column="NACIONALIDAD_BENEF"/>		
+	</resultMap>
+	
+	<select id="obtenerBenefCuentaFamAhorroInversion" resultMap="benefCuentaFamAhorroInversionResult">
+		select * from "BENEF_CUENTA_FAM_AHORRO_INVERSION";
+	</select>
+	
+	<select id="obtenerBenefFamAhorroByIdCuentaFamAhorro" parameterType="int" resultMap="benefCuentaFamAhorroInversionResult">
+		select * from "BENEF_CUENTA_FAM_AHORRO_INVERSION" where "ID_BENEF_CUENTA_FAM_AHORRO"=#{id};
+	</select>
+	
+	<insert id="gudarBenefCuentaFamAhorro" parameterType="Archivo" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		     SELECT nextVal('sec_benef_cuenta_fam_ahorro')
+  		</selectKey> 
+  		INSERT INTO "ARCHIVO"("ID_ARCHIVO","RUTA_ARCHIVO","FECHA_MOD"
+            )
+    		VALUES (#{id}, #{rutaArchivo}, date(#{fechaArchivo}))
+	</insert>
+	
+</mapper>

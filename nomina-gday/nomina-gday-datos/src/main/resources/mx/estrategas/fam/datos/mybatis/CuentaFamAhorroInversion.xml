@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.CuentaFamAhorroInversionDao">
+
+	<resultMap type="CuentaFamAhorroInversion" id="cuentaFamAhorroInversionResult">
+		<id property="idCuentaFamAhorroInversion" column="ID_CUENTA_FAM_AHORRO_INVERSION"/>
+		<result property="saldo" column="SALDO"/>
+		<result property="fechaApertura" column="FECHA_APERTURA"/>
+		<result property="asalariado" column="ASALARIADO"/>
+		<result property="actividadEmpresarial" column="ACTIVIDAD_EMPRESARIAL"/>
+		<result property="porcentajeAhorro" column="PORCENTAJE_AHORRO"/>
+		<result property="procedenciaNegocio" column="PROCEDENCIA_NEGOCIO"/>
+		<result property="actividadEconomica" column="ACTIVIDAD_ECONOMICA"/>
+		<result property="estatusLaboral" column="ESTATUS_LABORAL"/>
+		<result property="montoApertura" column="MONTO_APERTURA"/>
+		<result property="frecuenciaDepositos" column="FRECUENCIA_DEPOSITO"/>
+		<result property="frecuenciaRetiros" column="FRECUENCIA_RETIROS"/>				  	
+	</resultMap>
+	
+	<select id="obtenerCuentasFamAhorro" resultMap="cuentaFamAhorroInversionResult">
+		select * from "CUENTA_FAM_AHORRO_INVERSION";
+	</select>
+	<select id="obtenerCuentasFamAhorroInvByIdAfiliado"  parameterType="int" resultMap="cuentaFamAhorroInversionResult">
+		SELECT "ID_CUENTA_FAM_AHORRO_INVERSION" 
+			FROM "AFILIADO_CUENTA_FAM_AHORRO_INVERSION" WHERE "ID_AFILIADO" = #{id};
+	</select>
+		
+	<insert id="guardarCuentaFamAhorroDao" parameterType="CuentaFamAhorroInversion" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_cuenta_fam_ahorro_inversion')
+  		</selectKey>	  		  
+  			INSERT INTO "CUENTA_FAM_AHORRO_INVERSION"(
+            "ID_CUENTA_FAM_AHORRO_INVERSION", "SALDO", "FECHA_APERTURA", 
+            "ASALARIADO", "ACTIVIDAD_EMPRESARIAL", "PORCENTAJE_AHORRO", "PROCEDENCIA_NEGOCIO", 
+            "ACTIVIDAD_ECONOMICA", "ESTATUS_LABORAL", "MONTO_APERTURA", "FRECUENCIA_DEPOSITO", 
+            "FRECUENCIA_RETIROS")    
+	    		VALUES (#{id}, #{saldo},date(#{fechaApertura}), 
+	           	#{asalariado}, #{actividadEmpresarial}, #{porcentajeAhorro}, #{procedenciaNegocio}, 
+	          	#{actividadEconomica}, #{estatusLaboral}, #{montoApertura}, 
+	           	#{frecuenciaDepositos}, #{frecuenciaRetiros});
+	           		           		        	        	  	
+	        INSERT INTO "AFILIADO_CUENTA_FAM_AHORRO_INVERSION"(
+            "ID_CUENTA_FAM_AHORRO_INVERSION", "ID_AFILIADO")
+		    VALUES (#{id}, #{afiliado.idAfiliado});
+	            				 
+	        INSERT INTO "BENEF_CUENTA_FAM_AHORRO_INVERSION"(
+	            "ID_BENEF_CUENTA_FAM_AHORRO_INVERSION", "ID_CUENTA_FAM_AHORRO_INVERSION", "OPERADOR", 
+            	"APP_PATERNO_BENEF", "APP_MATERNO_BENEF", "NOMBRE_BENEF", "RFC_BENEF", 
+            	"PAIS_RESIDENCIA_BENEF", "ESTADO_CIVIL_BENEF", "FECHA_NACIMIENTO_BENEF", 
+            	"PARENTESCO_BENEF", "NACIONALIDAD_BENEF")            	   	            			
+				VALUES (#{id}, #{id}, true ,						
+				#{benefOperadorCuentaFamAhorro.apellidoPaternoBenefCuentaFamAhorro}, #{benefOperadorCuentaFamAhorro.apellidoMaternoBenefCuentaFamAhorro}, 
+       			#{benefOperadorCuentaFamAhorro.nombreBenefCuentaFamAhorro}, #{benefOperadorCuentaFamAhorro.rfcBenefCuentaFamAhorro},
+       			#{benefOperadorCuentaFamAhorro.paisResidenciaBenefCuentaFamAhorro}, #{benefOperadorCuentaFamAhorro.estadoCivilBenefCuentaFamAhorro},
+       			date(#{benefOperadorCuentaFamAhorro.fechaNacimientoBenefCuentaFamAhorro}),
+       			#{benefOperadorCuentaFamAhorro.parentescoBenefCuentaFamAhorro}, #{benefOperadorCuentaFamAhorro.nacionalidadBenefCuentaFamAhorro});	           				           																								
+	</insert>				
+</mapper>

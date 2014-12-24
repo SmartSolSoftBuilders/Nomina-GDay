@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.MovimientoFamAhorroInversionDao">
+
+	<resultMap type="MovimientoFamAhorroInversion" id="movimientoFamAhorroInversionResult">
+		<id property="idMovimientoFamAhorroInversion" column="ID_MOV_CUENTA_FAM_AHORRO_INVERSION"/>
+		<result property="tipoMovimientoFamAhorro" column="TIPO"/>
+		<result property="montoMovimientoFamAhorro" column="MONTO"/>
+		<result property="documentoRefMovimientoFamAhorro" column="DOCUMENTO_REFERENCIA"/>
+		<result property="fechaMovimientoFamAhorro" column="FECHA"/>
+	</resultMap>
+	
+	<select id="obtenerMovFamAhorro" resultMap="movimientoFamAhorroInversionResult">
+		select * from "MOV_CUENTA_FAM_AHORRO_INVERSION";
+	</select>
+	
+	<select id="obtenerMovsFamAhorroByIdAfiliado"  parameterType="int" resultMap="movimientoFamAhorroInversionResult">		
+		select * from "MOV_CUENTA_FAM_AHORRO_INVERSION"
+			WHERE "ID_CUENTA_FAM_AHORRO_INVERSION"=#{id};	
+	</select>
+	
+	<select id="getSaldoCuentaFamAhorroByIdAfiliado"  parameterType="int" resultType="double">		
+		select "SALDO" from "CUENTA_FAM_AHORRO_INVERSION"
+			WHERE "ID_CUENTA_FAM_AHORRO_INVERSION"=#{id};	
+	</select>
+	
+	<insert id="guardarMovimientoCuentaFamAhorro" parameterType="MovimientoFamAhorroInversion" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_mov_fam_ahorro')
+  		</selectKey>		  				  		  		  		   
+			INSERT INTO "MOV_CUENTA_FAM_AHORRO_INVERSION"(
+            "ID_MOV_CUENTA_FAM_AHORRO_INVERSION", "ID_CUENTA_FAM_AHORRO_INVERSION", "TIPO", "MONTO", 
+            "DOCUMENTO_REFERENCIA", "FECHA")
+    		VALUES (#{id},#{idMovimientoFamAhorroInversion},
+    		#{tipoMovimientoFamAhorro},#{montoMovimientoFamAhorro},#{documentoRefMovimientoFamAhorro}, '2013-02-02');
+    		UPDATE "CUENTA_FAM_AHORRO_INVERSION"
+			   SET "SALDO"=
+			   (SELECT "SALDO" FROM "CUENTA_FAM_AHORRO_INVERSION" WHERE "ID_CUENTA_FAM_AHORRO_INVERSION"=#{idMovimientoFamAhorroInversion})
+			  	 +#{montoMovimientoFamAhorro}       
+ 				WHERE "ID_CUENTA_FAM_AHORRO_INVERSION"=#{idMovimientoFamAhorroInversion};																	
+	</insert>
+	<insert id="guardarMovimientoRetiroCuentaFamAhorro" parameterType="MovimientoFamAhorroInversion" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_mov_fam_ahorro')
+  		</selectKey>		  				  		  		  		   
+			INSERT INTO "MOV_CUENTA_FAM_AHORRO_INVERSION"(
+            "ID_MOV_CUENTA_FAM_AHORRO_INVERSION", "ID_CUENTA_FAM_AHORRO_INVERSION", "TIPO", "MONTO", 
+            "DOCUMENTO_REFERENCIA", "FECHA")
+    		VALUES (#{id},#{idMovimientoFamAhorroInversion},
+    		#{tipoMovimientoFamAhorro},#{montoMovimientoFamAhorro},#{documentoRefMovimientoFamAhorro}, '2013-02-02');
+    		UPDATE "CUENTA_FAM_AHORRO_INVERSION"
+			   SET "SALDO"=
+			   (SELECT "SALDO" FROM "CUENTA_FAM_AHORRO_INVERSION" WHERE "ID_CUENTA_FAM_AHORRO_INVERSION"=#{idMovimientoFamAhorroInversion})
+			  	 -#{montoMovimientoFamAhorro}       
+ 				WHERE "ID_CUENTA_FAM_AHORRO_INVERSION"=#{idMovimientoFamAhorroInversion};																	
+	</insert>
+	
+	
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.TipoEscuelaDao">
+
+	<resultMap type="TipoEscuela" id="tipoEscuelaResult">
+		<id property="idTipoEscuela" column="ID_TIPOESCUELA"/>		
+		<result property="descripcionTipoEscuela" column="DESCRIPCION_TIPOESCUELA"/>	
+	</resultMap>
+	
+	<select id="obtenerTipoEscuelas"  resultMap="tipoEscuelaResult">
+		select * from "TIPO_ESCUELA";
+	</select>		
+	
+</mapper>

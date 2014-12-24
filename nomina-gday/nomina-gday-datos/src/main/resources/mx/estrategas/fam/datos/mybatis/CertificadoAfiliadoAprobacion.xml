@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.CertificadoAfiliadoModificacionDao">
+	
+	<resultMap type="CertificadoAfiliado" id="certificadoAfiliadoResult">
+		<id property="idCertificadoAfiliado" column="ID_CERTIFICADOAFILIADO"/>
+		<result property="numeroCertificadoAfiliado" column="NUMERO_CERTIFICADO"/>
+		<result property="fechaInicioVigenciaCertificadoAfiliado" column="FECHAINICIOVIGENCIA_CERTIFICADO"/>
+		<result property="estadoCertificadoAfiliado" column="ESTADO_CERTIFICADO"/>
+		<result property="sumaAseguradaCertificadoAfiliado" column="SUMA_ASEGURADA"/>
+		<association property="afiliado" column="ID_AFILIADO" javaType="Afiliado"
+            select="selectCertificadoAfiliado"/>        
+	</resultMap>
+	
+	<select id="obtenerCertificadosAfiliadosAprobaciones" resultMap="certificadoAfiliadoResult">
+		select * from "CERTIFICADOAFILIADO_MOD";
+	</select>
+	
+	<select id="obtenerCertificadosAfiliados" resultMap="certificadoAfiliadoResult">
+		select * from "CERTIFICADOAFILIADO";
+	</select>
+	
+	<select id="obtenerCertificadoAfiliadoById" parameterType="int"
+          resultMap="certificadoAfiliadoResult">
+		select * from "CERTIFICADOAFILIADO"
+			WHERE
+	            "ID_AFILIADO" = #{id}
+	</select>		
+	
+	<select id="obtenerCertificadoAfiliadoByIdCertificado" parameterType="int"
+          resultMap="certificadoAfiliadoResult">
+		select * from "CERTIFICADOAFILIADO_MOD"
+			WHERE
+	            "ID_CERTIFICADOAFILIADO" = #{id}
+	</select>		
+		
+    <select id="selectCertificadoAfiliado"
+          parameterType="java.lang.Integer"
+          resultType="Afiliado">
+        SELECT * FROM  "AFILIADO"
+        	WHERE "ID_AFILIADO" = #{idAfiliado}
+    </select>
+		
+	<delete id="borrarCertificadoAfiliadoModificacion"  parameterType="CertificadoAfiliado">
+		DELETE FROM "CERTIFICADOAFILIADO_MOD"
+ 			WHERE "ID_CERTIFICADOAFILIADO"=#{idCertificadoAfiliado};
+	</delete>	
+	
+	<insert id="guardarCertificadoAfiliadoModificacion" parameterType="CertificadoAfiliado" keyProperty="id">		
+  		INSERT INTO "CERTIFICADOAFILIADO_MOD"("ID_CERTIFICADOAFILIADO", "NUMERO_CERTIFICADO", "FECHAINICIOVIGENCIA_CERTIFICADO", 
+            "ESTADO_CERTIFICADO", "SUMA_ASEGURADA", "ID_AFILIADO")     
+    		VALUES (#{idCertificadoAfiliado}, #{numeroCertificadoAfiliado},date(#{fechaInicioVigenciaCertificadoAfiliado}), 
+            #{estadoCertificadoAfiliado}, #{sumaAseguradaCertificadoAfiliado}, 
+            (SELECT "ID_AFILIADO" FROM "CERTIFICADOAFILIADO" WHERE "ID_CERTIFICADOAFILIADO" = #{idCertificadoAfiliado})
+            )                        		
+	</insert>
+	
+</mapper>

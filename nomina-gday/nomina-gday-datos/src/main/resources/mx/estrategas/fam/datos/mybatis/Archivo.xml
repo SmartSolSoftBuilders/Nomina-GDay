@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.ArchivoDao">
+
+	<resultMap type="Archivo" id="archivoResult">
+		<id property="idArchivo" column="ID_ARCHIVO"/>		
+		<result property="rutaArchivo" column="RUTA_ARCHIVO"/>
+		<result property="fechaArchivo" column="FECHA_MOD"/>
+	</resultMap>
+	
+	<select id="obtenerArchivos" resultMap="archivoResult">
+		select * from "ARCHIVO";
+	</select>
+	
+	<insert id="guardarArchivo" parameterType="Archivo" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		     SELECT nextVal('sec_archivos')
+  		</selectKey> 
+  		INSERT INTO "ARCHIVO"("ID_ARCHIVO","RUTA_ARCHIVO","FECHA_MOD"
+            )
+    		VALUES (#{id}, #{rutaArchivo}, date(#{fechaArchivo}))
+	</insert>
+	
+</mapper>

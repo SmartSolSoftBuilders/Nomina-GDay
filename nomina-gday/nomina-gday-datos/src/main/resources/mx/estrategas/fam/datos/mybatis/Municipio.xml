@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.MunicipioDao">
+
+	<resultMap type="Municipio" id="municipioResult">
+		<id property="idMunicipio" column="ID_MUNICIPIO"/>
+		<result property="nombreMunicipio" column="NOMBRE_MUNICIPIO"/>			
+	</resultMap>
+
+	<select id="obtenerMunicipios" resultMap="municipioResult">
+		select * from "MUNICIPIO";
+	</select>
+	
+	<insert id="guardarMunicipio" parameterType="Municipio" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_municipio')
+  		</selectKey>
+  		INSERT INTO "MUNICIPIO"("ID_MUNICIPIO", "NOMBRE_MUNICIPIO")
+  			VALUES 
+  				(#{id}, #{nombreMunicipio});  		
+  	</insert>	
+  	
+  	<update id="actualizarMunicipio" parameterType="Municipio">
+  		UPDATE "MUNICIPIO"
+   			SET "NOMBRE_MUNICIPIO"=#{nombreMunicipio}
+ 				WHERE "ID_MUNICIPIO"=#{idMunicipio};
+  	</update>
+  	
+</mapper>

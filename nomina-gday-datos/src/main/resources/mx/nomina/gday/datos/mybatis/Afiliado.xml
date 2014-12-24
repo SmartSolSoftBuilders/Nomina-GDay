@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.AfiliadoDao">
+
+	<resultMap type="Afiliado" id="afiliadoResult">
+		<id property="idAfiliado" column="ID_AFILIADO"/>
+		<result property="nacionalidadAfiliado" column="NACIONALIDAD_AFILIADO"/>
+		<result property="nombreAfiliado" column="NOMBRE_AFILIADO"/>
+		<result property="appPaternoAfiliado" column="APP_PATERNO_AFILIADO"/>
+		<result property="appMaternoAfiliado" column="APP_MATERNO_AFILIADO"/>
+		<result property="fechaNacimientoAfiliado" column="FECHANACIMIENTO_AFILIADO"/>
+		<result property="direccionAfiliado" column="DIRECCION_AFILIADO"/>
+		<result property="cpAfiliado" column="CP_AFILIADO"/>
+		<result property="entidadAfiliado" column="ENTIDAD_AFILIADO"/>
+		<result property="coliniaAfiliado" column="COLONIA_AFILIADO"/>
+		<result property="puestoAfiliado" column="PUESTO_AFILIADO"/>
+		<result property="antiguedadAfiliado" column="ANTIGUEDAD_AFILIADO"/>
+		<result property="telParticularAfiliado" column="TELPART_AFILIADO"/>
+		<result property="telCelularAfiliado" column="TELCELULAR_AFILIADO"/>
+		<result property="companiatelAfiliado" column="COMPANIATEL_AFILIADO"/>
+		<result property="emailAfiliado" column="EMAIL_AFILIADO"/>
+		<result property="estadoCivilAfiliado" column="ESTADOCIVIL_ASOCIADO"/>
+		<result property="rfcAfiliado" column="RFC_AFILIADO"/>
+		<result property="nickAfiliado" column="NICK_AFILIADO"/>
+		<result property="municipioAfiliado" column="MUNICIPIO_AFILIADO"/>
+		<result property="crediFam" column="CREDIFAM"/>
+		<result property="famAhorro" column="FAMAHORRO"/>
+		<result property="inversionista" column="INVERSIONISTA"/>
+		<association property="certificadoAfiliado" column="ID_AFILIADO" javaType="CertificadoAfiliado" select="selectCertificadoAfiliado" /> 
+		<collection property="cuentasFamAhorro" column="ID_AFILIDO" javaType="List" select="selectCuentasFamAhorro"/>
+						 
+	</resultMap>
+	 
+	<resultMap id="certificadoAfiliadoResult" type="CertificadoAfiliado">
+    	<id property="idCertificadoAfiliado" column="ID_CERTIFICADOAFILIADO"/>
+    </resultMap>
+    
+	<resultMap id="cuentasFamAhorroResult" type="CuentaFamAhorro">
+    	<id property="idCuentaFamAhorro" column="ID_CUENTA_FAM_AHORRO"/>
+		<result property="saldo" column="SALDO"/>
+		<result property="fechaApertura" column="FECHA_APERTURA"/> 
+		<result property="asalariado" column="ASALARIADO"/>
+		<result property="actividadEmpresarial" column="ACTIVIDAD_EMPRESARIAL"/>
+		<result property="porcentajeAhorro" column="PORCENTAJE_AHORRO"/>
+		<result property="procedenciaNegocio" column="PROCEDENCIA_NEGOCIO"/>
+		<result property="actividadEconomica" column="ACTIVIDAD_ECONOMICA"/>
+		<result property="estatusLaboral" column="ESTATUS_LABORAL"/>
+		<result property="montoApertura" column="MONTO_APERTURA"/>
+		<result property="frecuenciaDepositos" column="FRECUENCIA_DEPOSITO"/>
+		<result property="frecuenciaRetiros" column="FRECUENCIA_RETIROS"/>				  		
+	</resultMap>
+	
+	<select id="selectCuentasFamAhorro" parameterType="int" resultMap="cuentasFamAhorroResult" resultType="CuentaFamAhorro">		 
+		select * from "CUENTA_FAM_AHORRO" where "ID_AFILIADO"=#{idAfiliado} 	
+	</select> 
+	<select id="selectCertificadoAfiliado" parameterType="int" resultMap="certificadoAfiliadoResult" resultType="CertificadoAfiliado">		 
+		select distinct "ID_CERTIFICADOAFILIADO" from "CERTIFICADOAFILIADO" where "ID_AFILIADO"=#{idAfiliado} 	
+	</select> 
+	
+	<select id="obtenerCuentasFamAhorro" resultMap="cuentasFamAhorroResult" parameterType="Afiliado">
+		SELECT * FROM "CUENTA_FAM_AHORRO" where "ID_AFILIADO"=#{idAfiliado};
+	</select>
+	
+	<select id="obtenerAfiliados" resultMap="afiliadoResult">
+		SELECT "ID_AFILIADO","NOMBRE_AFILIADO","RFC_AFILIADO", "APP_PATERNO_AFILIADO", "APP_MATERNO_AFILIADO", 
+       	"NICK_AFILIADO", "FAMAHORRO", "INVERSIONISTA" 
+  		FROM "AFILIADO";
+	</select>
+	
+	<select id="obtenerAfiliadosDetalle" resultMap="afiliadoResult">
+		SELECT "A"."ID_AFILIADO", "APP_PATERNO_AFILIADO", "APP_MATERNO_AFILIADO", 
+	       	"NOMBRE_AFILIADO", "COLONIA_AFILIADO", "CP_AFILIADO", "ENTIDAD_AFILIADO", 
+       		"ID_ESCUELA", "PUESTO_AFILIADO", "ANTIGUEDAD_AFILIADO", "TELPART_AFILIADO", 
+       		"TELCELULAR_AFILIADO", "COMPANIATEL_AFILIADO", "EMAIL_AFILIADO", 
+       		"DIRECCION_AFILIADO", "FECHANACIMIENTO_AFILIADO", "ESTADOCIVIL_ASOCIADO", 
+       		"NACIONALIDAD_AFILIADO", "RFC_AFILIADO", "MUNICIPIO_AFILIADO","INVERSIONISTA" 
+       		"NICK_AFILIADO",(SELECT "ID_CUENTA_FAM_AHORRO" FROM "CUENTA_FAM_AHORRO" WHERE "ID_AFILIADO"=#{idAfiliado}) AS "cuentaFamAhorrocuentaFamAhorro"
+	  			FROM "AFILIADO" "A" 
+	</select>
+	
+	<select id="obtenerAfiliadoById" parameterType="int"
+          resultMap="afiliadoResult">
+		select * from "AFILIADO"
+			WHERE "ID_AFILIADO"=#{id};
+	</select>
+	
+	<select id="obtenerIdAfiliadoByRfc" parameterType="String"
+          resultType="int">
+		select "ID_AFILIADO" from "AFILIADO"
+			WHERE "RFC_AFILIADO"=#{rfcAfiliado};
+	</select>
+	
+	<select id="obtenerCountIdAfiliadoByRfc" parameterType="String"
+          resultType="int">
+		select count(*) from "AFILIADO"
+			WHERE "RFC_AFILIADO"=#{rfcAfiliado};
+	</select>
+	
+	<update id="actualizarAfiliado" parameterType="Afiliado">
+		UPDATE "AFILIADO"
+   		   SET "APP_PATERNO_AFILIADO"=#{appPaternoAfiliado},
+   		   "APP_MATERNO_AFILIADO"=#{appMaternoAfiliado}, 
+	       "NOMBRE_AFILIADO"=#{nombreAfiliado}, 
+	       "COLONIA_AFILIADO"=#{coliniaAfiliado},
+	       "CP_AFILIADO"=#{cpAfiliado},
+	       "ENTIDAD_AFILIADO"=#{entidadAfiliado}, 
+	       "ESTADOCIVIL_ASOCIADO"=#{estadoCivilAfiliado},
+	       "PUESTO_AFILIADO"=#{puestoAfiliado}, 
+	       "ANTIGUEDAD_AFILIADO"=#{antiguedadAfiliado}, 
+	       "TELPART_AFILIADO"=#{telParticularAfiliado}, "TELCELULAR_AFILIADO"=#{telCelularAfiliado}, "COMPANIATEL_AFILIADO"= #{companiatelAfiliado}, 
+	       "EMAIL_AFILIADO"= #{emailAfiliado}, "DIRECCION_AFILIADO"= #{direccionAfiliado}, "FECHANACIMIENTO_AFILIADO"=date(#{fechaNacimientoAfiliado}), 
+	       "NACIONALIDAD_AFILIADO"= #{nacionalidadAfiliado}, "RFC_AFILIADO"= #{rfcAfiliado}
+	       WHERE "ID_AFILIADO" =  #{idAfiliado} 	       
+	</update>	
+	
+	<insert id="guardarAfiliado" parameterType="Afiliado" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_afiliado')
+  		</selectKey>		
+  		SELECT "ID_AFILIADO" FROM "AFILIADO" WHERE "RFC_AFILIADO" = #{rfcAfiliado};
+  		<if test="idAfiliado == ''">			  		  		  		   	
+  				INSERT INTO "AFILIADO"(
+	            	"ID_AFILIADO", "APP_PATERNO_AFILIADO", "APP_MATERNO_AFILIADO", "RFC_AFILIADO", 
+	            	"NOMBRE_AFILIADO", "COLONIA_AFILIADO", "CP_AFILIADO", "ENTIDAD_AFILIADO", 
+	            	"PUESTO_AFILIADO", "ANTIGUEDAD_AFILIADO", "TELPART_AFILIADO", 
+	            	"TELCELULAR_AFILIADO", "COMPANIATEL_AFILIADO", "EMAIL_AFILIADO", 
+	            	"DIRECCION_AFILIADO", "FECHANACIMIENTO_AFILIADO","NACIONALIDAD_AFILIADO","NICK_AFILIADO","MUNICIPIO_AFILIADO","INVERSIONISTA")
+	    			VALUES (#{id}, #{appPaternoAfiliado}, #{appMaternoAfiliado},#{rfcAfiliado}, 
+	            	#{nombreAfiliado}, #{coliniaAfiliado}, #{cpAfiliado}, #{entidadAfiliado}, 
+	           		#{puestoAfiliado}, #{antiguedadAfiliado}, #{telParticularAfiliado}, 
+	            	#{telCelularAfiliado}, #{companiatelAfiliado}, #{emailAfiliado}, 
+	            	#{direccionAfiliado}, date(#{fechaNacimientoAfiliado}), #{nacionalidadAfiliado}, #{rfcAfiliado}, #{municipioAfiliado},#{inversionista});
+					INSERT INTO "AFILIADOESCUELA"("ID_AFILIADO","ID_ESCUELA","PUESTO","ANTIGUEDAD")
+					VALUES (#{id},1,#{puestoAfiliado}, #{antiguedadAfiliado});															
+		</if>
+	</insert>
+	
+</mapper>

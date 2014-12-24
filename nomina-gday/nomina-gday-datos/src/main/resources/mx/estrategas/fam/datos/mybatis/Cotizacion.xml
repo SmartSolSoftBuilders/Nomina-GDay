@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.CotizacionDao">
+
+<resultMap type="Cotizacion" id="cotizacionResult">
+	<id property="idCotizacion" column="ID_COTIZACION"/>
+	<result property="empresa" column="NOMBRE_EMPRESA"/>
+	<result property="miembrofam" column="MIEMBRO_DE_FAM"/>
+	<result property="sueldoBrutoQuincenal" column="SUELDO_B_QUINCENAL"/>
+	<result property="sueldoNeto" column="SUELDO_N_QUINCENAL"/>
+	<result property="creditoMaximoAlcanzado" column="CREDITO_MAX_ALCANZADO"/>
+	<result property="tasaFijaAnual" column="TASA_FIJA_ANUAL"/>
+	<result property="cat" column="CAT"/>
+	<result property="tasaComisionGestion" column="TASA_COMISION_GESTION"/>
+	<result property="quincenasDeGracia" column="QUINCENAS_DE_GRACIA"/>
+	<result property="creditoSolicitado" column="CREDITO_SOLICITADO"/>
+	<result property="creditoTotal" column="CREDITO_TOTAL"/>
+	<result property="gestionFam" column="GESTION_FAM"/>
+	<result property="plazoPagos" column="PLAZO_PAGOS"/>
+	<result property="plazoCredito" column="PLAZO_CREDITOS"/>
+	<result property="formaPago" column="FORMA_DE_PAGO"/>
+	<result property="numeroPagos" column="NUMERO_DE_PAGO"/>
+	<result property="descuentoMensual" column="DESCUENTO"/>
+	<result property="descuentoGestion" column="DESCUENTO_GESTION"/>
+	<result property="pagototal" column="PAGO_TOTAL"/>
+	<result property="fechaCotizacion" column="FECHA_COTIZACION"/>
+	<result property="estatus" column="ESTATUS"/>
+	<association property="afiliado" column="ID_AFILIADO" javaType="Afiliado" select="obtenerIdAfiliado" /> 	
+</resultMap>
+
+  	<resultMap id="selectAfiliadoR" type="Afiliado">
+    	<id property="idAfiliado" column="ID_AFILIADO"/>
+    	<collection property="escuelas" column="ID_AFILIADO" javaType="List" select="selectNombreEscuela"/>
+    	
+    </resultMap>
+  	
+  <resultMap  id="escuelaResult" type="Escuela">
+		<id property="idEscuela" column="ID_ESCUELA"/>
+		<result property="nombreEscuela" column="NOMBRE_ESCUELA"/>
+		
+</resultMap>
+
+	<select id="selectAfiliado" parameterType="int"
+		 resultType="int">
+		select "ID_AFILIADO" from "AFILIADO"
+			WHERE "ID_AFILIADO"=#{id};
+</select>
+
+  	<select id="selectAfiliadoR" parameterType="int"
+		 resultMap="escuelaResult">
+		select "ID_AFILIADO" from "AFILIADO"
+			WHERE "ID_AFILIADO"=#{id};
+</select>
+
+
+<select id="selectNombreEscuela" resultMap="escuelaResult" resultType="Escuela" parameterType="Afiliado">	
+		select "ESCUELA"."ID_ESCUELA", "NOMBRE_ESCUELA"
+	    from "ESCUELA" INNER JOIN "AFILIADOESCUELA" ON "ESCUELA"."ID_ESCUELA" = "AFILIADOESCUELA"."ID_ESCUELA" 
+	    where "AFILIADOESCUELA"."ID_AFILIADO"= #{idAfiliado};  
+</select>
+
+<select id="obtenerCotizaciones" resultMap="cotizacionResult">
+		SELECT "ID_COTIZACION", "PLAZO_PAGOS", "PLAZO_CREDITOS", "FORMA_DE_PAGO", 
+       "NUMERO_DE_PAGO", "DESCUENTO", "DESCUENTO_GESTION", "PAGO_TOTAL", 
+       "FECHA_COTIZACION", "ESTATUS" FROM "COTIZACION" where "ID_AFILIADO"=#{afiliado.idAfiliado};
+</select>
+
+<select id="obtenerCotizacionById" resultMap="cotizacionResult" parameterType="int">
+	SELECT "ID_COTIZACION", "ESCUELA", "MIEMBRO_DE_FAM",
+	"SUELDO_B_QUINCENAL", "SUELDO_N_QUINCENAL", "CREDITO_MAX_ALCANZADO",
+	"TASA_FIJA_ANUAL", "CAT", "TASA_COMISION_GESTION", 
+	"QUINCENAS_DE_GRACIA", "CREDITO_SOLICITADO", "CREDITO_TOTAL",
+	"GESTION_FAM", "PLAZO_PAGOS", "PLAZO_CREDITOS", "FORMA_DE_PAGO",
+	"NUMERO_DE_PAGO", "DESCUENTO", "DESCUENTO_GESTION", "PAGO_TOTAL",
+	"FECHA_COTIZACION", "ESTATUS" FROM "COTIZACION" where
+	"ID_COTIZACION"=#{id};
+</select>
+
+<select id="obtenerCotizacionesPendientes" resultMap="cotizacionResult">
+		SELECT "ID_COTIZACION", "PLAZO_PAGOS", "PLAZO_CREDITOS", "FORMA_DE_PAGO", 
+       "NUMERO_DE_PAGO", "DESCUENTO", "DESCUENTO_GESTION", "PAGO_TOTAL", 
+       "FECHA_COTIZACION", "ESTATUS" FROM "COTIZACION" where "ESTATUS"='PENDIENTE';
+</select>
+
+    
+<insert id="guardarCotizacion" parameterType="Cotizacion">
+		<selectKey keyProperty="idCotizacion" resultType="Integer" order="BEFORE">
+                select NEXTVAL('sec_cotizacion')
+         </selectKey>	
+		
+  				INSERT INTO "COTIZACION"(
+           			"ID_COTIZACION", "ID_AFILIADO", "ESCUELA", "MIEMBRO_DE_FAM", 
+            		"SUELDO_B_QUINCENAL", "SUELDO_N_QUINCENAL", "CREDITO_MAX_ALCANZADO",
+            		"TASA_FIJA_ANUAL", "CAT", "TASA_COMISION_GESTION", 
+            		"QUINCENAS_DE_GRACIA", "CREDITO_SOLICITADO", "CREDITO_TOTAL", 
+            		"GESTION_FAM", "PLAZO_PAGOS", "PLAZO_CREDITOS", "FORMA_DE_PAGO", 
+            		"NUMERO_DE_PAGO", "DESCUENTO", "DESCUENTO_GESTION", "PAGO_TOTAL", 
+            		"FECHA_COTIZACION", "ESTATUS")	            	
+	    			VALUES (#{idCotizacion}, #{afiliado.idAfiliado}, #{empresa}, #{miembrofam}, 
+	    			#{sueldoBrutoQuincenal}, #{sueldoNeto}, #{creditoMaximoAlcanzado}, 
+	    			#{tasaFijaAnual}, #{cat}, #{tasaComisionGestion},
+	           		#{quincenasDeGracia}, #{creditoSolicitado}, #{creditoTotal},
+	           		#{gestionFam}, #{plazoPagos}, #{plazoCredito}, #{formaPago}, 
+	            	#{numeroPagos}, #{descuentoMensual}, #{descuentoGestion}, #{pagototal},            	  
+	            	date(#{fechaCotizacion}), #{estatus});										
+</insert>
+
+<update id="establecerEstatusCotizacion" parameterType="Cotizacion">
+	UPDATE "COTIZACION"
+   	SET "ESTATUS"=#{estatus}
+ 	WHERE "ID_COTIZACION"=#{idCotizacion};
+</update>
+
+</mapper>
+

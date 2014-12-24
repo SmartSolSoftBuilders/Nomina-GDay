@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.EscuelaDao">
+
+	<resultMap type="Escuela" id="escuelaResult">
+		<id property="idEscuela" column="ID_ESCUELA"/>
+		<result property="nombreEscuela" column="NOMBRE_ESCUELA"/>
+		<result property="nivelEscuela" column="NIVEL_ESCUELA"/>
+		<result property="direccionEscuela" column="DIRECCION_ESCUELA"/>
+		<result property="cpEscuela" column="CP_ESCUELA"/>
+		<result property="coloniaEscuela" column="COLONIA_ESCUELA"/>
+		<result property="entidadEscuela" column="ENTIDAD_ESCUELA"/>
+		<result property="municipioEscuela" column="MUNICIPIO_ESCUELA"/>
+		<result property="ciudadEscuela" column="CIUDAD_ESCUELA"/>
+		<result property="turnoEscuela" column="TURNO_ESCUELA"/>
+		<association property="tipoEscuela" resultMap="tipoEscuelaResult" />
+	</resultMap>
+	
+	<select id="obtenerEscuelas" resultMap="escuelaResult">
+		SELECT "ID_ESCUELA", "NOMBRE_ESCUELA", "NIVEL_ESCUELA", "DIRECCION_ESCUELA", 
+	       "COLONIA_ESCUELA", "CP_ESCUELA", "MUNICIPIO_ESCUELA", "CIUDAD_ESCUELA", 
+       		"ENTIDAD_ESCUELA", "TURNO_ESCUELA", "TP"."ID_TIPOESCUELA","TP"."DESCRIPCION_TIPOESCUELA"
+  				FROM "ESCUELA" "E" inner join "TIPO_ESCUELA" "TP" on "E"."ID_TIPOESCUELA"="TP"."ID_TIPOESCUELA";
+	</select>
+	
+	 <resultMap type="TipoEscuela" id="tipoEscuelaResult">
+    	<id property="idTipoEscuela" column="ID_TIPOESCUELA"/>
+    	<result property="descripcionTipoEscuela" column="DESCRIPCION_TIPOESCUELA"/>    	  
+   	</resultMap>
+   	
+   	<insert id="guardarEscuela" parameterType="Escuela" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_escuela')
+  		</selectKey>
+  		INSERT INTO "ESCUELA"(
+            "ID_ESCUELA", "NOMBRE_ESCUELA","DIRECCION_ESCUELA", 
+            "COLONIA_ESCUELA", "CP_ESCUELA", "MUNICIPIO_ESCUELA", 
+            "CIUDAD_ESCUELA","ENTIDAD_ESCUELA", "TURNO_ESCUELA", "ID_TIPOESCUELA")
+    			VALUES (#{id}, #{nombreEscuela}, #{direccionEscuela},
+    			 			#{coloniaEscuela},#{cpEscuela}, #{municipioEscuela},
+    			  				#{ciudadEscuela}, #{entidadEscuela},#{turnoEscuela},#{tipoEscuela.idTipoEscuela});
+  	</insert>
+   	
+   	<update id="actualizarEscuela" parameterType="Escuela">
+	   	UPDATE "ESCUELA"
+		   	SET "NOMBRE_ESCUELA"=#{nombreEscuela}, "DIRECCION_ESCUELA"=#{direccionEscuela}, 
+       			"COLONIA_ESCUELA"=#{coloniaEscuela}, "CP_ESCUELA"=#{cpEscuela}, "MUNICIPIO_ESCUELA"=#{municipioEscuela}, "CIUDAD_ESCUELA"=#{ciudadEscuela}, 
+       				"ENTIDAD_ESCUELA"=#{entidadEscuela}, "TURNO_ESCUELA"=#{turnoEscuela}, "ID_TIPOESCUELA"=#{tipoEscuela.idTipoEscuela}
+       					WHERE "ID_ESCUELA"=	#{idEscuela}   	
+   	</update>
+	
+</mapper>

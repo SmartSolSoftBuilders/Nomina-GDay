@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+811344258.index
+2100860619.index
+1289954127.index
+1817192305.index
+3378637538.index
+3933172116.index

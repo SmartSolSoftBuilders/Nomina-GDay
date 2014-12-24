@@ -1,0 +1,42 @@
+import java.io.File; 
+import java.io.FileInputStream; 
+import java.io.IOException; 
+import java.sql.Connection; 
+import java.sql.DriverManager; 
+import java.sql.PreparedStatement; 
+import java.sql.ResultSet;
+import java.sql.SQLException; 
+
+public class Test2 { 
+	
+
+public static void main(String[] args) throws Exception, IOException, SQLException { 
+Class.forName("org.postgresql.Driver"); 
+Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/nominas-gday", "postgres", "root"); 
+String INSERT_PICTURE = "insert into  \"Test\"(archivo) values (?)"; 
+
+FileInputStream fis = null; 
+PreparedStatement ps =conn.prepareStatement
+("select archivo from  \"Test\"");
+	try { 
+	conn.setAutoCommit(false); 
+	//File file = new File("c://test//1.docx"); 
+	//fis = new FileInputStream(file); 
+	//System.out.println(file.length());
+	ResultSet rs = ps.executeQuery()
+			if(rs.next()){
+			        rs.getBlob("data")
+			}
+	ps.close(); 
+	fis.close(); 
+
+	} 
+	
+	catch (Exception e) {
+		System.out.println(""+e.getMessage());
+		e.printStackTrace();
+		
+	} 
+}
+
+}

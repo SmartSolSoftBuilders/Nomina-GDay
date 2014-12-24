@@ -1,0 +1,24 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+ 
+#layoutPrincipal {
+    height: 100%;
+}
+#panelMenu {
+    width: 16em;
+}
+
+pre {
+    background-color: #EEEEEE;
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
+    margin-bottom: 10px;
+    max-height: 600px;
+    overflow: auto;
+    padding: 5px;
+    width: 80%;
+	font-size: 14px;
+}

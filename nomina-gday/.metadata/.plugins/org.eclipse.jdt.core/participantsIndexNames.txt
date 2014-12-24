@@ -1,0 +1,25 @@
+INDEX VERSION 1.126
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3881527429.index
+\sep-sajja-web\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2200117536.index
+\estrategas-fam\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\754865799.index
+\estrategas-fam\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1078934008.index
+\estrategas-fam-web\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3045867401.index
+\estrategas-fam\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2397497640.index
+\estrategas-fam\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\494709955.index
+\sep-sajja-web\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\361403855.index
+\sep-sajja-web\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2743166825.index
+\estrategas-fam-web\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1627934066.index
+\estrategas-fam-web\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1722150848.index
+\estrategas-fam-web\src\main\java
+C:\Users\Alf\Documents\smart\estrategasfam\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2191601493.index
+\sep-sajja-web\src\main\java

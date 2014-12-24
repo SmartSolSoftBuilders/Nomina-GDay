@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.BenefCuentaFamAhorroDao">
+
+	<resultMap type="BenefCuentaFamAhorro" id="benefCuentaFamAhorroResult">
+		<id property="idBenefCuentaFamAhorro" column="ID_BENEF_CUENTA_FAM_AHORRO"/>
+		<result property="idCuentaFamAhorro" column="ID_CUENTA_FAM_AHORRO"/>		
+		<result property="operadorBenefCuentaFamAhorro" column="OPERADOR"/>
+		<result property="apellidoPaternoBenefCuentaFamAhorro" column="APP_PATERNO_BENEF"/>
+		<result property="apellidoMaternoBenefCuentaFamAhorro" column="APP_MATERNO_BENEF"/>
+		<result property="nombreBenefCuentaFamAhorro" column="NOMBRE_BENEF"/>
+		<result property="rfcBenefCuentaFamAhorro" column="RFC_BENEF"/>
+		<result property="paisResidenciaBenefCuentaFamAhorro" column="PAIS_RESIDENCIA_BENEF"/>
+		<result property="estadoCivilBenefCuentaFamAhorro" column="ESTADO_CIVIL_BENEF"/>
+		<result property="fechaNacimientoBenefCuentaFamAhorro" column="FECHA_NACIMIENTO_BENEF"/>
+		<result property="parentescoBenefCuentaFamAhorro" column="PARENTESCO_BENEF"/>
+		<result property="nacionalidadBenefCuentaFamAhorro" column="NACIONALIDAD_BENEF"/>		
+		<result property="porcentajeBenefCuentaFamAhorro" column="PORCENTAJE_BENEF_CUENTA_FAM_AHORRO"/>
+	</resultMap>
+	
+	<select id="obtenerBenefCuentaFamAhorro" resultMap="benefCuentaFamAhorroResult">
+		select * from "BENEF_CUENTA_FAM_AHORRO";
+	</select>
+	
+	<select id="obtenerBenefFamAhorroByIdCuentaFamAhorro" parameterType="int" resultMap="benefCuentaFamAhorroResult">
+		select * from "BENEF_CUENTA_FAM_AHORRO" where "ID_BENEF_CUENTA_FAM_AHORRO"=#{id};
+	</select>
+	
+	<insert id="gudarBenefCuentaFamAhorro" parameterType="Archivo" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		     SELECT nextVal('sec_benef_cuenta_fam_ahorro')
+  		</selectKey> 
+  		INSERT INTO "BENEF_CUENTA_FAM_AHORRO"(
+            "ID_BENEF_CUENTA_FAM_AHORRO", "ID_CUENTA_FAM_AHORRO", "OPERADOR", 
+            "APP_PATERNO_BENEF", "APP_MATERNO_BENEF", "NOMBRE_BENEF", "RFC_BENEF", 
+            "PAIS_RESIDENCIA_BENEF", "ESTADO_CIVIL_BENEF", "FECHA_NACIMIENTO_BENEF", 
+            "PARENTESCO_BENEF", "NACIONALIDAD_BENEF", "PORCENTAJE_BENEF_CUENTA_FAM_AHORRO")
+    			VALUES (#{id}, #{idCuentaFamAhorro}, #{operadorBenefCuentaFamAhorro}, 
+            		#{apellidoPaternoBenefCuentaFamAhorro}, #{apellidoMaternoBenefCuentaFamAhorro},
+            		 #{nombreBenefCuentaFamAhorro}, #{rfcBenefCuentaFamAhorro}, 
+            		#{paisResidenciaBenefCuentaFamAhorro}, #{estadoCivilBenefCuentaFamAhorro}, #{fechaNacimientoBenefCuentaFamAhorro}, 
+            		#{parentescoBenefCuentaFamAhorro}, #{nacionalidadBenefCuentaFamAhorro}, #{porcentajeBenefCuentaFamAhorro})
+        </insert>	
+</mapper>

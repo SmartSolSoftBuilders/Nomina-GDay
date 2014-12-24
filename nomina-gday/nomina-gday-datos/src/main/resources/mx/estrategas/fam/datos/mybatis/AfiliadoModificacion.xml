@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.AfiliadoModificacionDao">
+
+	<resultMap type="Afiliado" id="afiliadoResult">
+		<id property="idAfiliado" column="ID_AFILIADO"/>
+		<result property="nacionalidadAfiliado" column="NACIONALIDAD_AFILIADO"/>
+		<result property="nombreAfiliado" column="NOMBRE_AFILIADO"/>
+		<result property="appPaternoAfiliado" column="APP_PATERNO_AFILIADO"/>
+		<result property="appMaternoAfiliado" column="APP_MATERNO_AFILIADO"/>
+		<result property="fechaNacimientoAfiliado" column="FECHANACIMIENTO_AFILIADO"/>
+		<result property="direccionAfiliado" column="DIRECCION_AFILIADO"/>
+		<result property="cpAfiliado" column="CP_AFILIADO"/>
+		<result property="entidadAfiliado" column="ENTIDAD_AFILIADO"/>
+		<result property="coliniaAfiliado" column="COLONIA_AFILIADO"/>
+		<result property="puestoAfiliado" column="PUESTO_AFILIADO"/>
+		<result property="antiguedadAfiliado" column="ANTIGUEDAD_AFILIADO"/>
+		<result property="telParticularAfiliado" column="TELPART_AFILIADO"/>
+		<result property="telCelularAfiliado" column="TELCELULAR_AFILIADO"/>
+		<result property="companiatelAfiliado" column="COMPANIATEL_AFILIADO"/>
+		<result property="emailAfiliado" column="EMAIL_AFILIADO"/>
+		<result property="estadoCivilAfiliado" column="ESTADOCIVIL_ASOCIADO"/>
+		<result property="rfcAfiliado" column="RFC_AFILIADO"/>
+		<result property="municipioAfiliado" column="MUNICIPIO_AFILIADO"/>
+	</resultMap>
+	
+	<select id="obtenerAfiliados" resultMap="afiliadoResult">
+		select * from "AFILIADO_MODIFICACION";
+	</select>	
+	
+	<select id="obtenerAfiliadoById" parameterType="int"
+          resultMap="afiliadoResult">
+		select * from "AFILIADO_MODIFICACION"
+			WHERE "ID_AFILIADO"=#{id};
+	</select>
+	
+	<delete id="borrarAfiliado" parameterType="int">
+		DELETE FROM "AFILIADO_MODIFICACION"
+ 			WHERE "ID_AFILIADO"=#{id};
+	</delete>
+	
+	<insert id="guardarAfiliado" parameterType="Afiliado" keyProperty="id">		
+  		INSERT INTO "AFILIADO_MODIFICACION"(
+            "ID_AFILIADO", "APP_PATERNO_AFILIADO", "APP_MATERNO_AFILIADO", 
+            "NOMBRE_AFILIADO", "COLONIA_AFILIADO", "CP_AFILIADO", "ENTIDAD_AFILIADO", 
+            "PUESTO_AFILIADO", "ANTIGUEDAD_AFILIADO", "TELPART_AFILIADO", 
+            "TELCELULAR_AFILIADO", "COMPANIATEL_AFILIADO", "EMAIL_AFILIADO", 
+            "DIRECCION_AFILIADO", "FECHANACIMIENTO_AFILIADO","NACIONALIDAD_AFILIADO","RFC_AFILIADO","ESTADOCIVIL_ASOCIADO")
+    		VALUES (#{idAfiliado}, #{appPaternoAfiliado}, #{appMaternoAfiliado}, 
+            #{nombreAfiliado}, #{coliniaAfiliado}, #{cpAfiliado}, #{entidadAfiliado}, 
+           	#{puestoAfiliado}, #{antiguedadAfiliado}, #{telParticularAfiliado}, 
+            #{telCelularAfiliado}, #{companiatelAfiliado}, #{emailAfiliado}, 
+            #{direccionAfiliado}, date(#{fechaNacimientoAfiliado}), #{nacionalidadAfiliado},#{rfcAfiliado},#{estadoCivilAfiliado});            
+		<!--  INSERT INTO "AFILIADOESCUELA"("ID_AFILIADO","ID_ESCUELA","PUESTO","ANTIGUEDAD")
+		VALUES (#{id},1,#{puestoAfiliado}, #{antiguedadAfiliado})
+		-->
+	</insert>	
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="nomina-gday-web">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="nomina-gday-servicios-0.0.1-SNAPSHOT-servicios.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/nomina-gday-servicios/nomina-gday-servicios">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="nomina-gday-datos-0.0.1-SNAPSHOT-datos.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/nomina-gday-datos/nomina-gday-datos">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="nomina-gday-modelo-0.0.1-SNAPSHOT-modelo.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/nomina-gday-modelo/nomina-gday-modelo">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="nomina-gday-seguridad-1.0.0-seguridad.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/nomina-gday-seguridad/nomina-gday-seguridad">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/nomina-gday-web/target/classes"/>
+        <property name="context-root" value="nomina-gday-web"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.CuentaFamAhorroDao">
+
+	<resultMap type="CuentaFamAhorro" id="cuentaFamAhorroResult">
+		<id property="idCuentaFamAhorro" column="ID_CUENTA_FAM_AHORRO"/>
+		<result property="saldo" column="SALDO"/>
+		<result property="fechaApertura" column="FECHA_APERTURA"/>
+		<result property="asalariado" column="ASALARIADO"/>
+		<result property="actividadEmpresarial" column="ACTIVIDAD_EMPRESARIAL"/>
+		<result property="porcentajeAhorro" column="PORCENTAJE_AHORRO"/>
+		<result property="procedenciaNegocio" column="PROCEDENCIA_NEGOCIO"/>
+		<result property="actividadEconomica" column="ACTIVIDAD_ECONOMICA"/>
+		<result property="estatusLaboral" column="ESTATUS_LABORAL"/>
+		<result property="montoApertura" column="MONTO_APERTURA"/>
+		<result property="frecuenciaDepositos" column="FRECUENCIA_DEPOSITO"/>
+		<result property="frecuenciaRetiros" column="FRECUENCIA_RETIROS"/>
+		<association property="benefOperadorCuentaFamAhorro" resultMap="benefCuentaFamAhorroResult" />		
+		<collection property="montosDescuentoCuentaFam" column="ID_CUENTA_FAM_AHORRO" javaType="List" select="selectMontosDescuentoFamAhorro"/>		  		
+	</resultMap>
+	
+	<select id="obtenerCuentasFamAhorro" resultMap="cuentaFamAhorroResult">
+		select * from "CUENTA_FAM_AHORRO";
+	</select>
+	
+	<select id="selectMontosDescuentoFamAhorro" resultMap="montosDescuentoCuentaFamAhorroResult">
+		select * from "MONTO_DESCUENTO_CUENTA_FAM" where "ID_CUENTA_FAM_AHORRO"=#{idCuentaFamAhorro} order by "FECHA_REGISTRO" DESC
+	</select>
+	
+	<resultMap type="MontoDescuentoCuentaFam" id="montosDescuentoCuentaFamAhorroResult">
+		<id property="idMontoDescuentoCuentaFam" column="ID_MONTO_DESCUENTO_CUENTA_FAM"/>
+		<result property="monto" column="MONTO"/>
+		<result property="fechaRegistro" column="FECHA_REGISTRO"/>		
+	</resultMap>
+	
+	<resultMap type="BenefCuentaFamAhorro" id="benefCuentaFamAhorroResult">
+		<id property="idBenefCuentaFamAhorro" column="ID_BENEF_CUENTA_FAM_AHORRO"/>		
+		<result property="operadorBenefCuentaFamAhorro" column="OPERADOR"/>
+		<result property="apellidoPaternoBenefCuentaFamAhorro" column="APP_PATERNO_BENEF"/>
+		<result property="apellidoMaternoBenefCuentaFamAhorro" column="APP_MATERNO_BENEF"/>
+		<result property="nombreBenefCuentaFamAhorro" column="NOMBRE_BENEF"/>
+		<result property="rfcBenefCuentaFamAhorro" column="RFC_BENEF"/>
+		<result property="paisResidenciaBenefCuentaFamAhorro" column="PAIS_RESIDENCIA_BENEF"/>
+		<result property="estadoCivilBenefCuentaFamAhorro" column="ESTADO_CIVIL_BENEF"/>
+		<result property="fechaNacimientoBenefCuentaFamAhorro" column="FECHA_NACIMIENTO_BENEF"/>
+		<result property="parentescoBenefCuentaFamAhorro" column="PARENTESCO_BENEF"/>
+		<result property="nacionalidadBenefCuentaFamAhorro" column="NACIONALIDAD_BENEF"/>
+		<result property="porcentajeBenefCuentaFamAhorro" column="PORCENTAJE_BENEF_CUENTA_FAM_AHORRO"/>		
+	</resultMap>
+	
+	<select id="obtenerCuentaFamAhorroByIdAfiliado" parameterType="int" resultMap="cuentaFamAhorroResult">
+		SELECT "CFA"."ID_CUENTA_FAM_AHORRO", "ID_AFILIADO", "SALDO", "FECHA_APERTURA", 
+       		"ASALARIADO", "ACTIVIDAD_EMPRESARIAL", "PORCENTAJE_AHORRO", "PROCEDENCIA_NEGOCIO", 
+       		"ACTIVIDAD_ECONOMICA", "ESTATUS_LABORAL", "MONTO_APERTURA", "FRECUENCIA_DEPOSITO", 
+       		"FRECUENCIA_RETIROS", "ID_BENEF_CUENTA_FAM_AHORRO","BCFA"."ID_CUENTA_FAM_AHORRO", "OPERADOR", 
+       		"APP_PATERNO_BENEF", "APP_MATERNO_BENEF", "NOMBRE_BENEF", "RFC_BENEF", 
+	       	"PAIS_RESIDENCIA_BENEF", "ESTADO_CIVIL_BENEF", "FECHA_NACIMIENTO_BENEF", 
+       		"PARENTESCO_BENEF", "NACIONALIDAD_BENEF"
+		  FROM "CUENTA_FAM_AHORRO" "CFA" INNER JOIN "BENEF_CUENTA_FAM_AHORRO" "BCFA" ON "CFA"."ID_CUENTA_FAM_AHORRO"="BCFA"."ID_CUENTA_FAM_AHORRO" WHERE "CFA"."ID_AFILIADO"=#{id} AND "BCFA"."OPERADOR"=TRUE;
+	</select>
+	<select id="obtenerCuentaFamAhorroByIdAfiliado2" parameterType="CuentaFamAhorro" resultMap="cuentaFamAhorroResult">
+		SELECT "CFA"."ID_CUENTA_FAM_AHORRO", "ID_AFILIADO", "SALDO", "FECHA_APERTURA", 
+       		"ASALARIADO", "ACTIVIDAD_EMPRESARIAL", "PORCENTAJE_AHORRO", "PROCEDENCIA_NEGOCIO", 
+       		"ACTIVIDAD_ECONOMICA", "ESTATUS_LABORAL", "MONTO_APERTURA", "FRECUENCIA_DEPOSITO", 
+       		"FRECUENCIA_RETIROS", "ID_BENEF_CUENTA_FAM_AHORRO","BCFA"."ID_CUENTA_FAM_AHORRO", "OPERADOR", 
+       		"APP_PATERNO_BENEF", "APP_MATERNO_BENEF", "NOMBRE_BENEF", "RFC_BENEF", 
+	       	"PAIS_RESIDENCIA_BENEF", "ESTADO_CIVIL_BENEF", "FECHA_NACIMIENTO_BENEF", 
+       		"PARENTESCO_BENEF", "NACIONALIDAD_BENEF"
+		  FROM "CUENTA_FAM_AHORRO" "CFA" INNER JOIN "BENEF_CUENTA_FAM_AHORRO" "BCFA" ON "CFA"."ID_CUENTA_FAM_AHORRO"="BCFA"."ID_CUENTA_FAM_AHORRO" WHERE "CFA"."ID_AFILIADO"=#{afiliado.idAfiliado} AND "CFA"."ID_CUENTA_FAM_AHORRO"=#{idCuentaFamAhorro} AND "BCFA"."OPERADOR"=TRUE;
+	</select>
+	<select id="obtenerBeneficiariosCuentaFamAhorroByIdAfiliado" parameterType="int" resultMap="benefCuentaFamAhorroResult">
+		SELECT * FROM "BENEF_CUENTA_FAM_AHORRO" WHERE "ID_CUENTA_FAM_AHORRO"=#{id} AND "OPERADOR"=FALSE;
+	</select>
+	
+	<insert id="guardarCuentaFamAhorroDao" parameterType="CuentaFamAhorro" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_cuenta_fam_ahorro')
+  		</selectKey>	  		  
+  			INSERT INTO "CUENTA_FAM_AHORRO"(
+            "ID_CUENTA_FAM_AHORRO", "ID_AFILIADO", "SALDO", "FECHA_APERTURA", 
+            "ASALARIADO", "ACTIVIDAD_EMPRESARIAL", "PORCENTAJE_AHORRO", "PROCEDENCIA_NEGOCIO", 
+            "ACTIVIDAD_ECONOMICA", "ESTATUS_LABORAL", "MONTO_APERTURA", "FRECUENCIA_DEPOSITO", 
+            "FRECUENCIA_RETIROS")    
+	    		VALUES (#{id}, #{afiliado.idAfiliado}, #{saldo},date(#{fechaApertura}), 
+	           	#{asalariado}, #{actividadEmpresarial}, #{porcentajeAhorro}, #{procedenciaNegocio}, 
+	          	#{actividadEconomica}, #{estatusLaboral}, #{montoApertura}, 
+	           	#{frecuenciaDepositos}, #{frecuenciaRetiros});	        	  			 
+	         UPDATE "AFILIADO"
+   				SET "FAMAHORRO"=TRUE WHERE "ID_AFILIADO"=#{afiliado.idAfiliado};
+   			  		  			
+	        INSERT INTO "BENEF_CUENTA_FAM_AHORRO"(
+	            "ID_BENEF_CUENTA_FAM_AHORRO", "ID_CUENTA_FAM_AHORRO", "OPERADOR", 
+            	"APP_PATERNO_BENEF", "APP_MATERNO_BENEF", "NOMBRE_BENEF", "RFC_BENEF", 
+            	"PAIS_RESIDENCIA_BENEF", "ESTADO_CIVIL_BENEF", "FECHA_NACIMIENTO_BENEF", 
+            	"PARENTESCO_BENEF", "NACIONALIDAD_BENEF")            	   	            			
+				VALUES ((SELECT nextVal('sec_benef_cuenta_fam_ahorro')), #{id}, true ,						
+				#{benefOperadorCuentaFamAhorro.apellidoPaternoBenefCuentaFamAhorro}, #{benefOperadorCuentaFamAhorro.apellidoMaternoBenefCuentaFamAhorro}, 
+       			#{benefOperadorCuentaFamAhorro.nombreBenefCuentaFamAhorro}, #{benefOperadorCuentaFamAhorro.rfcBenefCuentaFamAhorro},
+       			#{benefOperadorCuentaFamAhorro.paisResidenciaBenefCuentaFamAhorro}, #{benefOperadorCuentaFamAhorro.estadoCivilBenefCuentaFamAhorro},
+       			date(#{benefOperadorCuentaFamAhorro.fechaNacimientoBenefCuentaFamAhorro}),
+	       		#{benefOperadorCuentaFamAhorro.parentescoBenefCuentaFamAhorro}, #{benefOperadorCuentaFamAhorro.nacionalidadBenefCuentaFamAhorro});
+   	  		<if test="benef1CuentaFamAhorro != null">
+   	  			INSERT INTO "BENEF_CUENTA_FAM_AHORRO"(
+	            "ID_BENEF_CUENTA_FAM_AHORRO", "ID_CUENTA_FAM_AHORRO", "OPERADOR", 
+            	"APP_PATERNO_BENEF", "APP_MATERNO_BENEF", "NOMBRE_BENEF", "RFC_BENEF", 
+            	"PAIS_RESIDENCIA_BENEF", "ESTADO_CIVIL_BENEF", "FECHA_NACIMIENTO_BENEF", 
+            	"PARENTESCO_BENEF", "NACIONALIDAD_BENEF","PORCENTAJE_BENEF_CUENTA_FAM_AHORRO")            	   	            			
+				VALUES ((SELECT nextVal('sec_benef_cuenta_fam_ahorro')), #{id}, false ,						
+				#{benef1CuentaFamAhorro.apellidoPaternoBenefCuentaFamAhorro}, #{benef1CuentaFamAhorro.apellidoMaternoBenefCuentaFamAhorro}, 
+       			#{benef1CuentaFamAhorro.nombreBenefCuentaFamAhorro}, #{benef1CuentaFamAhorro.rfcBenefCuentaFamAhorro},
+       			#{benef1CuentaFamAhorro.paisResidenciaBenefCuentaFamAhorro}, #{benef1CuentaFamAhorro.estadoCivilBenefCuentaFamAhorro},
+       			date(#{benef1CuentaFamAhorro.fechaNacimientoBenefCuentaFamAhorro}),
+	       		#{benef1CuentaFamAhorro.parentescoBenefCuentaFamAhorro}, #{benef1CuentaFamAhorro.nacionalidadBenefCuentaFamAhorro},#{benef1CuentaFamAhorro.porcentajeBenefCuentaFamAhorro});
+   	  		</if>  
+   	  		<if test="benef2CuentaFamAhorro != null">
+   	  			INSERT INTO "BENEF_CUENTA_FAM_AHORRO"(
+	            "ID_BENEF_CUENTA_FAM_AHORRO", "ID_CUENTA_FAM_AHORRO", "OPERADOR", 
+            	"APP_PATERNO_BENEF", "APP_MATERNO_BENEF", "NOMBRE_BENEF", "RFC_BENEF", 
+            	"PAIS_RESIDENCIA_BENEF", "ESTADO_CIVIL_BENEF", "FECHA_NACIMIENTO_BENEF", 
+            	"PARENTESCO_BENEF", "NACIONALIDAD_BENEF","PORCENTAJE_BENEF_CUENTA_FAM_AHORRO")            	   	            			
+				VALUES ((SELECT nextVal('sec_benef_cuenta_fam_ahorro')), #{id}, false ,						
+				#{benef2CuentaFamAhorro.apellidoPaternoBenefCuentaFamAhorro}, #{benef2CuentaFamAhorro.apellidoMaternoBenefCuentaFamAhorro}, 
+       			#{benef2CuentaFamAhorro.nombreBenefCuentaFamAhorro}, #{benef2CuentaFamAhorro.rfcBenefCuentaFamAhorro},
+       			#{benef2CuentaFamAhorro.paisResidenciaBenefCuentaFamAhorro}, #{benef2CuentaFamAhorro.estadoCivilBenefCuentaFamAhorro},
+       			date(#{benef2CuentaFamAhorro.fechaNacimientoBenefCuentaFamAhorro}),
+	       		#{benef2CuentaFamAhorro.parentescoBenefCuentaFamAhorro}, #{benef2CuentaFamAhorro.nacionalidadBenefCuentaFamAhorro},#{benef2CuentaFamAhorro.porcentajeBenefCuentaFamAhorro});
+   	  		</if>			  		  		  		   	
+	       		           				           																								
+	</insert>
+	
+	<update id="actualizarCuentaFamAhorroDao" parameterType="CuentaFamAhorro">			  		 
+  			UPDATE "CUENTA_FAM_AHORRO"
+   				SET "SALDO"=#{saldo}, "FECHA_APERTURA"=date(#{fechaApertura}), 
+       			"ASALARIADO"=#{asalariado}, "ACTIVIDAD_EMPRESARIAL"=#{actividadEmpresarial}, "PORCENTAJE_AHORRO"= #{porcentajeAhorro}, 
+       			"PROCEDENCIA_NEGOCIO"=#{procedenciaNegocio}, "ACTIVIDAD_ECONOMICA"=#{actividadEconomica}, "ESTATUS_LABORAL"=#{estatusLaboral}, 
+       			"MONTO_APERTURA"=#{montoApertura}, "FRECUENCIA_DEPOSITO"=#{frecuenciaDepositos}, "FRECUENCIA_RETIROS"=#{frecuenciaRetiros}        			
+ 					WHERE "ID_CUENTA_FAM_AHORRO"=#{idCuentaFamAhorro};	    		       	  			 
+	            
+	            UPDATE "BENEF_CUENTA_FAM_AHORRO"
+   				SET  
+       				"APP_PATERNO_BENEF"=#{benefOperadorCuentaFamAhorro.apellidoPaternoBenefCuentaFamAhorro}, 
+       				"APP_MATERNO_BENEF"=#{benefOperadorCuentaFamAhorro.apellidoMaternoBenefCuentaFamAhorro}, 
+       				"NOMBRE_BENEF"=#{benefOperadorCuentaFamAhorro.nombreBenefCuentaFamAhorro}, 
+       				"RFC_BENEF"=#{benefOperadorCuentaFamAhorro.rfcBenefCuentaFamAhorro}, 
+       				"PAIS_RESIDENCIA_BENEF"=#{benefOperadorCuentaFamAhorro.paisResidenciaBenefCuentaFamAhorro},
+       				"ESTADO_CIVIL_BENEF"=#{benefOperadorCuentaFamAhorro.estadoCivilBenefCuentaFamAhorro},
+       				"FECHA_NACIMIENTO_BENEF"=date(#{benefOperadorCuentaFamAhorro.fechaNacimientoBenefCuentaFamAhorro}), 
+       				"PARENTESCO_BENEF"=#{benefOperadorCuentaFamAhorro.parentescoBenefCuentaFamAhorro}, 
+       				"NACIONALIDAD_BENEF"=#{benefOperadorCuentaFamAhorro.nacionalidadBenefCuentaFamAhorro}        					
+	 					WHERE "ID_BENEF_CUENTA_FAM_AHORRO" = #{benefOperadorCuentaFamAhorro.idBenefCuentaFamAhorro}; 			  		  				        							       
+   	  		<if test="benef1CuentaFamAhorro != null">
+   	  			UPDATE "BENEF_CUENTA_FAM_AHORRO"
+   					SET  
+       				"APP_PATERNO_BENEF"=#{benef1CuentaFamAhorro.apellidoPaternoBenefCuentaFamAhorro}, 
+       				"APP_MATERNO_BENEF"=#{benef1CuentaFamAhorro.apellidoMaternoBenefCuentaFamAhorro}, 
+       				"NOMBRE_BENEF"=#{benef1CuentaFamAhorro.nombreBenefCuentaFamAhorro}, 
+       				"RFC_BENEF"=#{benef1CuentaFamAhorro.rfcBenefCuentaFamAhorro}, 
+       				"PAIS_RESIDENCIA_BENEF"=#{benef1CuentaFamAhorro.paisResidenciaBenefCuentaFamAhorro},
+       				"ESTADO_CIVIL_BENEF"=#{benef1CuentaFamAhorro.estadoCivilBenefCuentaFamAhorro},
+       				"FECHA_NACIMIENTO_BENEF"=date(#{benef1CuentaFamAhorro.fechaNacimientoBenefCuentaFamAhorro}), 
+       				"PARENTESCO_BENEF"=#{benef1CuentaFamAhorro.parentescoBenefCuentaFamAhorro}, 
+       				"NACIONALIDAD_BENEF"=#{benef1CuentaFamAhorro.nacionalidadBenefCuentaFamAhorro},        					
+       				"PORCENTAJE_BENEF_CUENTA_FAM_AHORRO"=#{benef1CuentaFamAhorro.porcentajeBenefCuentaFamAhorro}
+	 					WHERE "ID_BENEF_CUENTA_FAM_AHORRO" = #{benef1CuentaFamAhorro.idBenefCuentaFamAhorro};
+   	  		</if>  
+   	  		<if test="benef2CuentaFamAhorro != null">
+				UPDATE "BENEF_CUENTA_FAM_AHORRO"
+   					SET  
+       				"APP_PATERNO_BENEF"=#{benef2CuentaFamAhorro.apellidoPaternoBenefCuentaFamAhorro}, 
+       				"APP_MATERNO_BENEF"=#{benef2CuentaFamAhorro.apellidoMaternoBenefCuentaFamAhorro}, 
+       				"NOMBRE_BENEF"=#{benef2CuentaFamAhorro.nombreBenefCuentaFamAhorro}, 
+       				"RFC_BENEF"=#{benef2CuentaFamAhorro.rfcBenefCuentaFamAhorro}, 
+       				"PAIS_RESIDENCIA_BENEF"=#{benef2CuentaFamAhorro.paisResidenciaBenefCuentaFamAhorro},
+       				"ESTADO_CIVIL_BENEF"=#{benef2CuentaFamAhorro.estadoCivilBenefCuentaFamAhorro},
+       				"FECHA_NACIMIENTO_BENEF"=date(#{benef2CuentaFamAhorro.fechaNacimientoBenefCuentaFamAhorro}), 
+       				"PARENTESCO_BENEF"=#{benef2CuentaFamAhorro.parentescoBenefCuentaFamAhorro}, 
+       				"NACIONALIDAD_BENEF"=#{benef2CuentaFamAhorro.nacionalidadBenefCuentaFamAhorro},        					
+       				"PORCENTAJE_BENEF_CUENTA_FAM_AHORRO"=#{benef2CuentaFamAhorro.porcentajeBenefCuentaFamAhorro}
+	 					WHERE "ID_BENEF_CUENTA_FAM_AHORRO" = #{benef2CuentaFamAhorro.idBenefCuentaFamAhorro};
+   	  		</if>			  		  		  		   	
+	       		           				           																								
+	</update>
+	
+	<update id="actualizarSaldoByRfc" parameterType="CuentaFamAhorro">
+		UPDATE "CUENTA_FAM_AHORRO"
+   		   SET "SALDO"=#{saldo}
+	       	WHERE "ID_AFILIADO" = (SELECT "ID_AFILIADO" FROM "AFILIADO" WHERE "RFC_AFILIADO"= #{afiliado.rfcAfiliado}); 	       
+	</update>
+	
+	
+	<insert id="actualizarMontoDescuentoFAM" parameterType="MontoDescuentoCuentaFam" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_mod_monto')
+  		</selectKey>	  		  
+  			INSERT INTO "MONTO_DESCUENTO_CUENTA_FAM"(
+            		"ID_MONTO_DESCUENTO_CUENTA_FAM", "ID_CUENTA_FAM_AHORRO", "FECHA_REGISTRO", 
+            			"MONTO")
+    				 VALUES (#{id}, #{idMontoDescuentoCuentaFam},now(),#{monto})	
+  	</insert>	
+	
+</mapper>

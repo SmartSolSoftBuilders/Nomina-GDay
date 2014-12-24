@@ -1,0 +1,57 @@
+INDEX VERSION 1.127
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3280975022.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3414382241.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1163531979.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1478307207.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3215100482.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3607008260.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1255864799.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\499357332.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\720636465.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3972048082.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2743166825.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1323848969.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2004138879.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3337397128.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3838592733.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\933657795.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3052169373.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2762327052.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2355152990.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\922830531.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1627934066.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1112680825.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2886480738.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3406551286.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2505361042.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2001878523.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4168756043.index
+\estrategas-fam-web\src\main\java
+C:\Users\Doraly Hernández\Documents\estrategasFam\estrategas-fam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3858211168.index
+\estrategas-fam-web\src\main\java

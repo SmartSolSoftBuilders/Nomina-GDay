@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="257" key="DIALOG_WIDTH"/>
+		<item value="361" key="DIALOG_Y_ORIGIN"/>
+		<item value="906" key="DIALOG_X_ORIGIN"/>
+		<item value="380" key="DIALOG_HEIGHT"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="post" key="selection"/>
+		<list key="findhistory">
+			<item value="post"/>
+			<item value="class"/>
+			<item value="ajax_download"/>
+			<item value="ajaxDownload"/>
+			<item value="ajaxownload"/>
+			<item value="ajaxD"/>
+			<item value="ajax"/>
+			<item value="ajaxd"/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+			<item value="escuela"/>
+			<item value="&apos;"/>
+			<item value="Cotizaciones"/>
+			<item value="Cotizacion"/>
+			<item value="seguridad"/>
+		</list>
+	</section>
+</section>

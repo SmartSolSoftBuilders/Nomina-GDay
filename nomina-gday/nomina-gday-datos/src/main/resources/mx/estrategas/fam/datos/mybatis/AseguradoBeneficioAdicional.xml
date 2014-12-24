@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.estrategas.fam.dao.AseguradoBeneficioAdicionalDao">	
+	<resultMap type="AseguradoBeneficioAdicional" id="aseguradoBeneficioAdicionalResult">	
+		<id property="idAseguradoBeneficioAdicional" column="ID_ASEGURADOBENEFICIOADICIONAL"/>
+		<result property="nombreAseguradoBeneficioAdicional" column="NOMBRE_ASEGURADOBENEFICIOADICIONAL"/>
+		<result property="appAseguradoBeneficioAdicional" column="APP_ASEGURADOBENEFICIOADICIONAL"/>
+		<result property="apmAseguradoBeneficioAdicional" column="APM_ASEGURADOBENEFICIOADICIONAL"/>
+		<result property="fechaNacimientoAseguradoBeneficioAdicional" column="FECHANACIMIENTO_ASEGURADOBENEFICIOADICIONAL"/>
+		<result property="parentescoAseguradoBeneficioAdicional" column="PARENTESCO_ASEGURADOBENEFICIOADICIONAL"/>
+		<result property="edadAseguradoBeneficioAdicional" column="EDAD_ASEGURADOBENEFICIOADICIONAL"/>			
+		<association property="certificadoAfiliado" column="ID_CERTIFICADOAFILIADO" javaType="CertificadoAfiliado"
+            select="selectAseguradoBeneficioAdicionalCertificadoAfiliado"/>        
+	</resultMap>
+	
+	<select id="obtenerAseguradoBeneficioAdicional" resultMap="aseguradoBeneficioAdicionalResult">
+		select * from "ASEGURADOBENEFICIOADICIONAL";
+	</select>
+		
+	<select id="obtenerAseguradosBeneficioAdicionalById"
+          resultMap="aseguradoBeneficioAdicionalResult">
+        SELECT * FROM
+        		"ASEGURADOBENEFICIOADICIONAL"
+        			WHERE
+            			"ID_CERTIFICADOAFILIADO" = #{id}
+    </select>
+		
+    <select id="selectAseguradoBeneficioAdicionalCertificadoAfiliado"
+          parameterType="java.lang.Integer"
+          resultType="CertificadoAfiliado">
+        SELECT
+            *
+        FROM
+            "CERTIFICADOAFILIADO"
+        WHERE
+            "ID_CERTIFICADOAFILIADO" = #{idCertificadoAfiliado}
+    </select>
+		
+	
+	<insert id="guardarAseguradoBeneficioAdicional" parameterType="AseguradoBeneficioAdicional" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		     SELECT nextVal('sec_aseguradobeneficioadicional')
+  		</selectKey> 
+			INSERT INTO "ASEGURADOBENEFICIOADICIONAL"(
+            "ID_ASEGURADOBENEFICIOADICIONAL", "NOMBRE_ASEGURADOBENEFICIOADICIONAL", 
+            "APP_ASEGURADOBENEFICIOADICIONAL", "APM_ASEGURADOBENEFICIOADICIONAL", 
+            "FECHANACIMIENTO_ASEGURADOBENEFICIOADICIONAL", "PARENTESCO_ASEGURADOBENEFICIOADICIONAL", 
+            "EDAD_ASEGURADOBENEFICIOADICIONAL", "ID_CERTIFICADOAFILIADO")             
+            VALUES (#{id}, #{nombreAseguradoBeneficioAdicional}, #{appAseguradoBeneficioAdicional}, 
+            #{apmAseguradoBeneficioAdicional},
+            date(#{fechaNacimientoAseguradoBeneficioAdicional}), #{parentescoAseguradoBeneficioAdicional}, #{edadAseguradoBeneficioAdicional},
+            #{certificadoAfiliado.idCertificadoAfiliado})                                    		
+	</insert>
+	
+	<update id="actualizarAseguradoBeneficioAdicional" parameterType="AseguradoBeneficioAdicional" >
+		UPDATE "ASEGURADOBENEFICIOADICIONAL"
+   		SET "NOMBRE_ASEGURADOBENEFICIOADICIONAL"=#{nombreAseguradoBeneficioAdicional}, 
+       		"APP_ASEGURADOBENEFICIOADICIONAL"=#{appAseguradoBeneficioAdicional}, "APM_ASEGURADOBENEFICIOADICIONAL"=#{apmAseguradoBeneficioAdicional}, 
+       		"FECHANACIMIENTO_ASEGURADOBENEFICIOADICIONAL"=date(#{fechaNacimientoAseguradoBeneficioAdicional}), "PARENTESCO_ASEGURADOBENEFICIOADICIONAL"=#{parentescoAseguradoBeneficioAdicional}, 
+       		"EDAD_ASEGURADOBENEFICIOADICIONAL"=#{edadAseguradoBeneficioAdicional} 
+       		 WHERE "ID_ASEGURADOBENEFICIOADICIONAL" = #{idAseguradoBeneficioAdicional}
+	</update>
+	
+	<delete id="eliminarAseguradoBeneficioAdicional" parameterType="AseguradoBeneficioAdicional" >
+		DELETE FROM "ASEGURADOBENEFICIOADICIONAL"
+			WHERE "ID_ASEGURADOBENEFICIOADICIONAL" = #{idAseguradoBeneficioAdicional}
+	</delete>	
+	
+</mapper>
