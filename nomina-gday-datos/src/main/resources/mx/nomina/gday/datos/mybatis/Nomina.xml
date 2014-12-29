@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.nomina.gday.dao.NominaDao">
+	<resultMap type="Nomina" id="nominaResult">
+		<result property="idNomina" column="ID_NOMINA"/>
+		<result property="nombreCorto" column="NOMBRE_CORTO"/>
+		<result property="provisionAguinaldo" column="PROVISION_AGUINALDO"/>
+		<result property="provisionVacaciones" column="PROVISION_VACACIONES"/>
+		<result property="provisionPrimaVacacional" column="PROVISION_PRIMA_VACACIONAL"/>
+		<result property="diasAguinaldo" column="DIAS_AGUINALDO"/>
+		<result property="porcPrimaVacacional" column="PORC_PRIMA_VACACIONAL"/>
+		<result property="fondoAhorro" column="FONDO_AHORRO"/>
+		<result property="facturaSubsidio" column="FACTURA_SUBSIDIO"/>
+		<result property="ivaExento" column="IVA_EXENTO"/>
+		<result property="reconoceAntiguedad" column="RECONOCE_ANTIGUEDAD"/>
+		<result property="comisionCostSocial" column="COMISION_COST_SOCIAL"/>
+		<result property="tipoPago" column="TIPO_PAGO"/>
+		<result property="claseRiesgo" column="CLASE_RIESGO"/>
+		<result property="registroPatronal" column="REGISTRO_PATRONAL"/>
+		<result property="periodicidad" column="PERIODICIDAD"/>
+		<result property="tipoCalendario" column="TIPO_CALENDARIO"/>
+	</resultMap>
+
+</mapper>

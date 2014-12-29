@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mx.nomina.gday.dao.HojaTrabajoDao">
+	<resultMap type="HojaTrabajo" id="hojaTrabajoResult">
+		<id property="idHojaTrabajo" column="ID_HOJA_DE_TRABAJO"/>
+		<result property="nombreArchivo" column="NOMBRE_ARCHIVO"/>
+		<result property="archivoPlantilla" column="ARCHIVO_PLANTILLA"/>			
+	
+	</resultMap>
+
+</mapper>

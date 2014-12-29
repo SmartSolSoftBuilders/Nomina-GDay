@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.nomina.gday.dao.NominaDao">
+	<resultMap type="RazonSocial" id="razonSocialResult">
+		<id property="idRazonSocial" column="ID_RAZON_SOCIAL"/>
+		<result property="nombreRazonSocial" column="NOMBRE_RAZON_SOCIAL"/>
+		<result property="rfc" column="RFC"/>
+		<result property="nombreCortoRazonS" column="NOMBRE_CORTO_RAZON_S"/>
+		<result property="codCliente" column="COD_CLIENTE"/>
+		<result property="comision" column="COMISION"/>
+		<result property="actConstitutiva" column="ACT_CONSTITUTIVA"/>
+		<result property="fechaActConstitutiva" column="FECHA_ACT_CONSTITUTIVA"/>
+		<result property="fechaInicioOperacion" column="FECHA_INICIO_OPERACION"/>
+		<result property="paternoRepresentante" column="PATERNO_REPRESENTANTE"/>
+		<result property="maternoRepresentante" column="MATERNO_REPRESENTANTE"/>
+		<result property="nombresRepresentante" column="NOMBRES_REPRESENTANTE"/>
+		<result property="calleFiscal" column="CALLE_FISCAL"/>
+		<result property="coloniaFiscal" column="COLONIA_FISCAL"/>
+		<result property="numExteriorFiscal" column="NUM_EXTERIOR_FISCAL"/>
+		<result property="numInteriorFiscal" column="NUM_INTERIOR_FISCAL"/>
+		<result property="cpFiscal" column="CP_FISCAL"/>
+		<result property="municipioFiscal" column="MUNICIPIO_FISCAL"/>
+		<result property="estadoFiscal" column="ESTADO_FISCAL"/>
+		<result property="contactoUnoNombre" column="CONTACTO1_NOMBRE"/>
+		<result property="contactoUnoTelefono" column="CONTACTO1_TELEFONO"/>
+		<result property="contactoUnoCorreo" column="CONTACTO1_CORREO"/>
+		<result property="contactoDosNombre" column="CONTACTO2_NOMBRE"/>
+		<result property="contactoDosTelefono" column="CONTACTO2_TELEFONO"/>
+		<result property="contactoDosCorreo" column="CONTACTO2_CORREO"/>
+		<result property="contactoTresNombre" column="CONTACTO3_NOMBRE"/>
+		<result property="contactoTresTelefono" column="CONTACTO3_TELEFONO"/>
+		<result property="contactoTresCorreo" column="CONTACTO3_CORREO"/>		
+	</resultMap>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.nomina.gday.dao.EmpleadoNominaDao">
+	
+	<resultMap type="EmpleadoNomina" id="empleadoNominaResult">
+		<id property="idNomina" column="ID_NOMINA"></id>
+		<result property="fechaIngreso" column="FECHA_INGRESO"/>
+		<result property="estatus" column="ESTATUS"/>
+		<result property="tipoSalario" column="TIPO_SALARIO"/>
+		<result property="fechaBaja" column="FECHA_BAJA"/>
+		<result property="loteMovImssAlta" column="LOTE_MOV_IMSS_ALTA"/>
+		<result property="fechaVencimiento" column="FECHA_VENCIMIENTO"/>
+		<result property="sueldoMensual" column="SUELDO_MENSUAL"/>
+		<result property="salarioDiarioInt" column="SALARIO_DIARIO_INT"/>
+		<result property="plazaTrabajo" column="PLAZA_TRABAJO"/>
+		<result property="numeroTrabajadorCliente" column="NUMERO_TRABAJADOR_CLIENTE"/>
+		<result property="otroPatron" column="OTRO_PATRON"/>
+		<result property="rfcOtroPatron" column="RFC_OTRO_PATRON"/>
+		<result property="nombreOtroPatron" column="NOMBRE_OTRO_PATRON"/>
+		<result property="permanencia" column="PERMANENCIA"/>
+		<result property="calle" column="CALLE"/>
+		<result property="numExterior" column="NUM_EXTERIOR"/>
+		<result property="numInterior" column="NUM_INTERIOR"/>
+		<result property="colonia" column="COLONIA"/>
+		<result property="codigoPostal" column="CODIGO_POSTAL"/>
+		<result property="municipioDel" column="MUNICIPIO_DEL"/>
+		<result property="entFederativa" column="ENT_FEDERATIVA"/>
+		<result property="loteMovImssBaja" column="LOTE_MOV_IMSS_BAJA"/>
+		<result property="aplicaFiniquito" column="APLICA_FINIQUITO"/>
+		<result property="montoFiniquito" column="MONTO_FINIQUITO"/>		
+	</resultMap>
+</mapper>

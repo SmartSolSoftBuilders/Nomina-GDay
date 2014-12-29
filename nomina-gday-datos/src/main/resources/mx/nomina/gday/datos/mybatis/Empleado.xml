@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.nomina.gday.dao.EmpleadoDao">
+
+	<resultMap type="Empleado" id="empleadoResult">
+		<id property="idEmpleado" column="ID_EMPLEADO"></id>
+		<result property="noControl" column="NO_CONTROL"></result>
+		<result property="nss" column="NSS"></result>
+		<result property="curp" column="CURP"></result>
+		<result property="apellidoPaterno" column="APELLIDO_PATERNO"></result>
+		<result property="apellidoMaterno" column="APELLIDO_MATERNO"></result>
+		<result property="nombre" column="NOMBRE"></result>
+		<result property="rfc" column="RFC"></result>
+		<result property="fechaNacimiento" column="FECHA_NACIMIENTO"></result>
+		<result property="edad" column="EDAD"></result>
+		<result property="sexo" column="SEXO"></result>
+		<result property="paisOrigen" column="PAIS_ORIGEN"></result>
+		<result property="nacionalidad" column="NACIONALIDAD"></result>
+		<result property="estadoCivil" column="ESTADO_CIVIL"></result>
+		<result property="correoElectronico" column="CORREO_ELECTRONICO"></result>
+		<result property="fechaIngresoReal" column="FECHA_INGRESO"></result>
+		<result property="listaNegra" column="LISTA_NEGRA"></result>
+		<result property="calle" column="CALLE"></result>
+		<result property="numExterior" column="NUM_EXTERIOR"></result>
+		<result property="numInterior" column="NUM_INTERIOR"></result>
+		<result property="colonia" column="COLONIA"></result>
+		<result property="codigoPostal" column="CODIGO_POSTAL"></result>
+		<result property="municipioDel" column="MUNICIPIO_DEL"></result>
+		<result property="entFederativa" column="ENT_FEDERATIVA"></result>
+		<result property="docIfe" column="DOC_IFE"></result>
+		<result property="docActNan" column="DOC_ACT_NAN"></result>
+		<result property="docCurp" column="DOC_CURP"></result>
+		<result property="docRfc" column="DOC_RFC"></result>
+		<result property="docComprobante" column="DOC_COMPROBANTE"></result>
+		<result property="docCompEst" column="DOC_COMP_EST"></result>
+		<result property="docCorreo" column="DOC_CORREO"></result>
+		<result property="docClabe" column="DOC_CLABE"></result>
+		<result property="docPreafiliacion" column="DOC_PREAFILIACION"></result>
+		<result property="cuenta" column="CUENTA"></result>
+		<result property="banco" column="BANCO"></result>
+		<result property="tipoPago" column="TIPO_PAGO"></result>
+		<result property="noCredInfonavit" column="NO_CRED_INFONAVIT"></result>
+		<result property="descInfonavitVsmg" column="DESC_INFONAVIT_VSMG"></result>
+		<result property="desInfonavitPorc" column="DESC_INFONAVIT_PORC"></result>
+		<result property="descInfonavitImp" column="DESC_INFONAVIT_IMP"></result>
+		<result property="descFonacotNum" column="DESC_FONACOT_PAGO"></result>
+		<result property="descFonacotPago" column="DESC_FONACOT_NUM"></result>
+		<result property="pensionAlimImp" column="PENSION_ALIM_IMP"></result>
+		<result property="pensionAlimPorc" column="PENSION_ALIM_PORC"></result>
+		<result property="pensionAlimAcred" column="PENSION_ALIM_ACRED"></result>
+		<result property="pensionAlimObs" column="PENSION_ALIM_OBS"></result>
+	</resultMap>
+</mapper>
