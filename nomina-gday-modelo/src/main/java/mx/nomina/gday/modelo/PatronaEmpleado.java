@@ -2,39 +2,53 @@ package mx.nomina.gday.modelo;
 
 public class PatronaEmpleado {
 	
-	private int idPatrona;
-	private int idEmpleado;
+	private Patrona patrona;
+	private Empleado empleado;
 	private int numeroConsecutivo;
 	
 	
 	public PatronaEmpleado(){
 	}
-	
-	public PatronaEmpleado(int idPatrona, int idEmpleado, int numeroConsecutivo) {
+
+
+	public PatronaEmpleado(Patrona patrona, Empleado empleado,
+			int numeroConsecutivo) {
 		super();
-		this.idPatrona = idPatrona;
-		this.idEmpleado = idEmpleado;
+		this.patrona = patrona;
+		this.empleado = empleado;
 		this.numeroConsecutivo = numeroConsecutivo;
 	}
-	
-	
-	public int getIdPatrona() {
-		return idPatrona;
+
+
+	public Patrona getPatrona() {
+		return patrona;
 	}
-	public void setIdPatrona(int idPatrona) {
-		this.idPatrona = idPatrona;
+
+
+	public void setPatrona(Patrona patrona) {
+		this.patrona = patrona;
 	}
-	public int getIdEmpleado() {
-		return idEmpleado;
+
+
+	public Empleado getEmpleado() {
+		return empleado;
 	}
-	public void setIdEmpleado(int idEmpleado) {
-		this.idEmpleado = idEmpleado;
+
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
 	}
+
+
 	public int getNumeroConsecutivo() {
 		return numeroConsecutivo;
 	}
+
+
 	public void setNumeroConsecutivo(int numeroConsecutivo) {
 		this.numeroConsecutivo = numeroConsecutivo;
 	}
+	
+	
 
 }

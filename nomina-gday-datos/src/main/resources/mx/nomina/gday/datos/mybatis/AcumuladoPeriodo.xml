@@ -4,11 +4,41 @@
 <mapper namespace="mx.nomina.gday.dao.AcumuladoPeriodoDao">
 	
 	<resultMap type="AcumuladoPeriodo" id="acumuladoPeriodoResult">
-	<id property="idAcumuladoPeriodo" column="ID_ACUMULADO_PERIODO"></id>
-	<result property="archivoAcumulado" column="ARCHIVO_ACUMULADO"></result>
-	<result property="estatus" column="ESTATUS"></result>	
-	<result property="periodo" column="PERIODO"></result>
+		<id property="idAcumuladoPeriodo" column="ID_ACUMULADO_PERIODO"></id>
+		<result property="archivoAcumulado" column="ARCHIVO_ACUMULADO"></result>
+		<result property="estatus" column="ESTATUS"></result>	
+		<result property="periodo" column="PERIODO"></result>
+		<collection property="nomina" column="ID_NOMINA" javaType="List" select="selectNomina"/>
+		
 	</resultMap>
+	
+	<resultMap id="nominaResult" type="Nomina">
+		<result property="idNomina" column="ID_NOMINA"/>
+		<result property="nombreCorto" column="NOMBRE_CORTO"/>
+		<result property="provisionAguinaldo" column="PROVISION_AGUINALDO"/>
+		<result property="provisionVacaciones" column="PROVISION_VACACIONES"/>
+		<result property="provisionPrimaVacacional" column="PROVISION_PRIMA_VACACIONAL"/>
+		<result property="diasAguinaldo" column="DIAS_AGUINALDO"/>
+		<result property="porcPrimaVacacional" column="PORC_PRIMA_VACACIONAL"/>
+		<result property="fondoAhorro" column="FONDO_AHORRO"/>
+		<result property="facturaSubsidio" column="FACTURA_SUBSIDIO"/>
+		<result property="ivaExento" column="IVA_EXENTO"/>
+		<result property="reconoceAntiguedad" column="RECONOCE_ANTIGUEDAD"/>
+		<result property="comisionCostSocial" column="COMISION_COST_SOCIAL"/>
+		<result property="tipoPago" column="TIPO_PAGO"/>
+		<result property="claseRiesgo" column="CLASE_RIESGO"/>
+		<result property="registroPatronal" column="REGISTRO_PATRONAL"/>
+		<result property="periodicidad" column="PERIODICIDAD"/>
+		<result property="tipoCalendario" column="TIPO_CALENDARIO"/>
+		<collection property="ejecutivo" column="ID_EJECUTIVO" javaType="List" select="selectEjecutivo"/>
+		<collection property="esquema" column="ID_ESQUEMA" javaType="List" select="selectEsquema"/>
+		<collection property="tipoCalendario" column="ID_CALENDARIO" javaType="List" select="selectTipoCalendario"/>
+	</resultMap>
+	
+	<select id="selectNomina" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
+		select * from "NOMINA" where "ID_NOMINA"=#{idNomina} 	
+	</select> 
+	
 </mapper>
 
 

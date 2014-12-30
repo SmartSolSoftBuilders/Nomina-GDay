@@ -2,41 +2,54 @@ package mx.nomina.gday.modelo;
 
 public class NominaRazones {
 	
-	private int idNomina;
-	private int idRazonSocial;
+	private Nomina nomina;
+	private RazonSocial razonSocial;
 	private float porcentaje;
 	
 	
 	public NominaRazones(){
 	}
-	
-	public NominaRazones(int idNomina, int idRazonSocial, float porcentaje) {
+
+
+	public NominaRazones(Nomina nomina, RazonSocial razonSocial,
+			float porcentaje) {
 		super();
-		this.idNomina = idNomina;
-		this.idRazonSocial = idRazonSocial;
+		this.nomina = nomina;
+		this.razonSocial = razonSocial;
 		this.porcentaje = porcentaje;
 	}
-	
-	
-	public int getIdNomina() {
-		return idNomina;
+
+
+	public Nomina getNomina() {
+		return nomina;
 	}
-	public void setIdNomina(int idNomina) {
-		this.idNomina = idNomina;
+
+
+	public void setNomina(Nomina nomina) {
+		this.nomina = nomina;
 	}
-	public int getIdRazonSocial() {
-		return idRazonSocial;
+
+
+	public RazonSocial getRazonSocial() {
+		return razonSocial;
 	}
-	public void setIdRazonSocial(int idRazonSocial) {
-		this.idRazonSocial = idRazonSocial;
+
+
+	public void setRazonSocial(RazonSocial razonSocial) {
+		this.razonSocial = razonSocial;
 	}
+
+
 	public float getPorcentaje() {
 		return porcentaje;
 	}
+
+
 	public void setPorcentaje(float porcentaje) {
 		this.porcentaje = porcentaje;
 	}
 	
+		
 	
 
 }

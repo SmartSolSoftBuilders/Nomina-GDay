@@ -3,29 +3,26 @@ package mx.nomina.gday.modelo;
 public class AcumuladoPeriodo {
 	
 	private int idAcumuladoPeriodo;
-	private int idNomina;
-	private int idPeriodo;
+	private Nomina nomina;
+	private Periodo periodo;
 	private String archivoAcumulado;
 	private String estatus;
-	private String periodo;
 	
 	
 	
 	public AcumuladoPeriodo(){
 	}
-	
-	
 
-	public AcumuladoPeriodo(int idAcumuladoPeriodo, int idNomina,
-			int idPeriodo, String archivoAcumulado, String estatus,
-			String periodo) {
+
+
+	public AcumuladoPeriodo(int idAcumuladoPeriodo, Nomina nomina,
+			Periodo periodo, String archivoAcumulado, String estatus) {
 		super();
 		this.idAcumuladoPeriodo = idAcumuladoPeriodo;
-		this.idNomina = idNomina;
-		this.idPeriodo = idPeriodo;
+		this.nomina = nomina;
+		this.periodo = periodo;
 		this.archivoAcumulado = archivoAcumulado;
 		this.estatus = estatus;
-		this.periodo = periodo;
 	}
 
 
@@ -34,51 +31,63 @@ public class AcumuladoPeriodo {
 		return idAcumuladoPeriodo;
 	}
 
+
+
 	public void setIdAcumuladoPeriodo(int idAcumuladoPeriodo) {
 		this.idAcumuladoPeriodo = idAcumuladoPeriodo;
 	}
 
-	public int getIdNomina() {
-		return idNomina;
+
+
+	public Nomina getNomina() {
+		return nomina;
 	}
 
-	public void setIdNomina(int idNomina) {
-		this.idNomina = idNomina;
+
+
+	public void setNomina(Nomina nomina) {
+		this.nomina = nomina;
 	}
 
-	public int getIdPeriodo() {
-		return idPeriodo;
+
+
+	public Periodo getPeriodo() {
+		return periodo;
 	}
 
-	public void setIdPeriodo(int idPeriodo) {
-		this.idPeriodo = idPeriodo;
+
+
+	public void setPeriodo(Periodo periodo) {
+		this.periodo = periodo;
 	}
+
+
 
 	public String getArchivoAcumulado() {
 		return archivoAcumulado;
 	}
 
+
+
 	public void setArchivoAcumulado(String archivoAcumulado) {
 		this.archivoAcumulado = archivoAcumulado;
 	}
+
+
 
 	public String getEstatus() {
 		return estatus;
 	}
 
+
+
 	public void setEstatus(String estatus) {
 		this.estatus = estatus;
 	}
-
-	public String getPeriodo() {
-		return periodo;
-	}
-
-	public void setPeriodo(String periodo) {
-		this.periodo = periodo;
-	}
 	
 	
+
+
 	
 	
 	

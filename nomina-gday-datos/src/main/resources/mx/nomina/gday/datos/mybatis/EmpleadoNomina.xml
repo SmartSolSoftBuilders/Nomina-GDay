@@ -4,7 +4,6 @@
 <mapper namespace="mx.nomina.gday.dao.EmpleadoNominaDao">
 	
 	<resultMap type="EmpleadoNomina" id="empleadoNominaResult">
-		<id property="idNomina" column="ID_NOMINA"></id>
 		<result property="fechaIngreso" column="FECHA_INGRESO"/>
 		<result property="estatus" column="ESTATUS"/>
 		<result property="tipoSalario" column="TIPO_SALARIO"/>
@@ -28,6 +27,144 @@
 		<result property="entFederativa" column="ENT_FEDERATIVA"/>
 		<result property="loteMovImssBaja" column="LOTE_MOV_IMSS_BAJA"/>
 		<result property="aplicaFiniquito" column="APLICA_FINIQUITO"/>
-		<result property="montoFiniquito" column="MONTO_FINIQUITO"/>		
+		<result property="montoFiniquito" column="MONTO_FINIQUITO"/>	
+		<collection property="nomina" column="ID_NOMINA" javaType="List" select="selectNomina"/>
+		<collection property="empleado" column="ID_EMPLEADO" javaType="List" select="selectEmpleado"/>
+		<collection property="puesto" column="ID_PUESTO" javaType="List" select="selectPuesto"/>
+		<collection property="departamento" column="ID_DEPARTAMENTO" javaType="List" select="selectDepartamento"/>
+		<collection property="area" column="ID_AREA" javaType="List" select="selectArea"/>
+			
 	</resultMap>
+	
+	<resultMap id="nominaResult" type="Nomina">
+		<result property="idNomina" column="ID_NOMINA"/>
+		<result property="nombreCorto" column="NOMBRE_CORTO"/>
+		<result property="provisionAguinaldo" column="PROVISION_AGUINALDO"/>
+		<result property="provisionVacaciones" column="PROVISION_VACACIONES"/>
+		<result property="provisionPrimaVacacional" column="PROVISION_PRIMA_VACACIONAL"/>
+		<result property="diasAguinaldo" column="DIAS_AGUINALDO"/>
+		<result property="porcPrimaVacacional" column="PORC_PRIMA_VACACIONAL"/>
+		<result property="fondoAhorro" column="FONDO_AHORRO"/>
+		<result property="facturaSubsidio" column="FACTURA_SUBSIDIO"/>
+		<result property="ivaExento" column="IVA_EXENTO"/>
+		<result property="reconoceAntiguedad" column="RECONOCE_ANTIGUEDAD"/>
+		<result property="comisionCostSocial" column="COMISION_COST_SOCIAL"/>
+		<result property="tipoPago" column="TIPO_PAGO"/>
+		<result property="claseRiesgo" column="CLASE_RIESGO"/>
+		<result property="registroPatronal" column="REGISTRO_PATRONAL"/>
+		<result property="periodicidad" column="PERIODICIDAD"/>
+		<result property="tipoCalendario" column="TIPO_CALENDARIO"/>
+		<collection property="ejecutivo" column="ID_EJECUTIVO" javaType="List" select="selectEjecutivo"/>
+		<collection property="esquema" column="ID_ESQUEMA" javaType="List" select="selectEsquema"/>
+		<collection property="tipoCalendario" column="ID_CALENDARIO" javaType="List" select="selectTipoCalendario"/>
+	</resultMap>
+	
+	<resultMap id="ejecutivoResult" type="Ejecutivo">
+    	<id property="idEjecutivo" column="ID_EJECUTIVO"/>
+		<result property="nombreEjecutivo" column="NOMBRE_EJECUTIVO"/>
+		<result property="paternoEjecutivo" column="APP_PATERNO_EJECUTIVO"/> 
+		<result property="maternoEjecutivo" column="APP_MATERNO_EJECUTIVO"/>			  		
+	</resultMap>
+	
+	<resultMap id="esquemaResult" type="Esquema">
+    	<id property="idEsquema" column="ID_ESQUEMA"/>
+		<result property="nombreEsquema" column="NOMBRE_ESQUEMA"/>
+					  		
+	</resultMap>
+	
+	<resultMap id="tipoCalendarioResult" type="TipoCalendario">
+    	<id property="idCalendario" column="ID_CALENDARIO"/>
+		<result property="tipoCalendario" column="TIPO_CALENDARIO"/>
+		<result property="siglas" column="SIGLAS"/>
+		<result property="pr" column="PR"/>
+			
+	</resultMap>
+	
+	<resultMap id="empleadoResult" type="Empleado">
+		<id property="idEmpleado" column="ID_EMPLEADO"></id>
+		<result property="noControl" column="NO_CONTROL"></result>
+		<result property="nss" column="NSS"></result>
+		<result property="curp" column="CURP"></result>
+		<result property="apellidoPaterno" column="APELLIDO_PATERNO"></result>
+		<result property="apellidoMaterno" column="APELLIDO_MATERNO"></result>
+		<result property="nombre" column="NOMBRE"></result>
+		<result property="rfc" column="RFC"></result>
+		<result property="fechaNacimiento" column="FECHA_NACIMIENTO"></result>
+		<result property="edad" column="EDAD"></result>
+		<result property="sexo" column="SEXO"></result>
+		<result property="paisOrigen" column="PAIS_ORIGEN"></result>
+		<result property="nacionalidad" column="NACIONALIDAD"></result>
+		<result property="estadoCivil" column="ESTADO_CIVIL"></result>
+		<result property="correoElectronico" column="CORREO_ELECTRONICO"></result>
+		<result property="fechaIngresoReal" column="FECHA_INGRESO"></result>
+		<result property="listaNegra" column="LISTA_NEGRA"></result>
+		<result property="calle" column="CALLE"></result>
+		<result property="numExterior" column="NUM_EXTERIOR"></result>
+		<result property="numInterior" column="NUM_INTERIOR"></result>
+		<result property="colonia" column="COLONIA"></result>
+		<result property="codigoPostal" column="CODIGO_POSTAL"></result>
+		<result property="municipioDel" column="MUNICIPIO_DEL"></result>
+		<result property="entFederativa" column="ENT_FEDERATIVA"></result>
+		<result property="docIfe" column="DOC_IFE"></result>
+		<result property="docActNan" column="DOC_ACT_NAN"></result>
+		<result property="docCurp" column="DOC_CURP"></result>
+		<result property="docRfc" column="DOC_RFC"></result>
+		<result property="docComprobante" column="DOC_COMPROBANTE"></result>
+		<result property="docCompEst" column="DOC_COMP_EST"></result>
+		<result property="docCorreo" column="DOC_CORREO"></result>
+		<result property="docClabe" column="DOC_CLABE"></result>
+		<result property="docPreafiliacion" column="DOC_PREAFILIACION"></result>
+		<result property="cuenta" column="CUENTA"></result>
+		<result property="banco" column="BANCO"></result>
+		<result property="tipoPago" column="TIPO_PAGO"></result>
+		<result property="noCredInfonavit" column="NO_CRED_INFONAVIT"></result>
+		<result property="descInfonavitVsmg" column="DESC_INFONAVIT_VSMG"></result>
+		<result property="desInfonavitPorc" column="DESC_INFONAVIT_PORC"></result>
+		<result property="descInfonavitImp" column="DESC_INFONAVIT_IMP"></result>
+		<result property="descFonacotNum" column="DESC_FONACOT_PAGO"></result>
+		<result property="descFonacotPago" column="DESC_FONACOT_NUM"></result>
+		<result property="pensionAlimImp" column="PENSION_ALIM_IMP"></result>
+		<result property="pensionAlimPorc" column="PENSION_ALIM_PORC"></result>
+		<result property="pensionAlimAcred" column="PENSION_ALIM_ACRED"></result>
+		<result property="pensionAlimObs" column="PENSION_ALIM_OBS"></result>
+	</resultMap>
+	
+	<resultMap id="departamentoResult" type="Departamento">
+		<result property="idDepartamento" column="ID_DEPARTAMENTO"/>
+		<result property="descripcion" column="DESCRIPCION"/>
+	</resultMap>
+	
+	<resultMap id="areaResult" type="Area">
+		<result property="idArea" column="ID_AREA"/>
+		<result property="descripcion" column="DESCRIPCION"/>
+	</resultMap>
+	
+	<select id="selectNomina" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
+		select * from "NOMINA" where "ID_NOMINA"=#{idNomina} 	
+	</select> 
+	
+	<select id="selectEmpleado" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 
+		select * from "EMPLEADO" where "ID_EMPLEADO"=#{idEmpleado} 	
+	</select> 
+	
+	<select id="selectDepartamento" parameterType="int" resultMap="departamentoResult" resultType="Departamento">		 
+		select * from "DEPARTAMENTO" where "ID_DEPARTAMENTO"=#{idDepartamento} 	
+	</select> 
+	
+	<select id="selectArea" parameterType="int" resultMap="areaResult" resultType="Area">		 
+		select * from "AREA" where "ID_AREA"=#{idArea} 	
+	</select> 
+	
+	<select id="selectEjecutivo" parameterType="int" resultMap="ejecutivoResult" resultType="Ejecutivo">		 
+		select * from "EJECUTIVO" where "ID_EJECUTIVO"=#{idEjecutivo} 	
+	</select> 
+	
+	<select id="selectEsquema" parameterType="int" resultMap="esquemaResult" resultType="Esquema">		 
+		select * from "ESQUEMA" where "ID_ESQUEMA"=#{idEsquema} 	
+	</select> 
+	
+	
+	<select id="selectTipoCalendario" parameterType="int" resultMap="tipoCalendarioResult" resultType="TipoCalendario">		 
+		select * from "TIPO_CALENDARIO" where "ID_CALENDARIO"=#{idCalendario} 	
+	</select> 
 </mapper>
