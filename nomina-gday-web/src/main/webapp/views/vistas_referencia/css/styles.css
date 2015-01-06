@@ -1,0 +1,31 @@
+li {
+	color:#FFFFFF;
+}
+a {
+	color:#fff;
+}
+table {
+margin: auto;
+width: 80%;
+text-align: left;
+background: white;
+border: 1px solid silver;
+background-color:#d4e0ec
+}
+.table2 {
+margin: auto;
+width: 100%;
+text-align: left;
+background: white;
+border: 1px solid silver;
+background-color:#d4e0ec
+}
+.blanco
+		{
+			color: white;
+		}
+table th {background-color:#0051a4; }
+tr:nth-child(2n+1) {
+background-color: #eef3f7;
+
+}
