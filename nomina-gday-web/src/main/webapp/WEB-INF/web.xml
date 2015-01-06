@@ -45,7 +45,7 @@
     </servlet-mapping>    
     
     <welcome-file-list>
-        <welcome-file>mvc/index</welcome-file>
+        <welcome-file>views/grupos/agregar_grupo.jsp</welcome-file>
         <!--welcome-file>login.jsp</welcome-file-->
     </welcome-file-list>    
 </web-app>

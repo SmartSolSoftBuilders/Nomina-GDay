@@ -122,13 +122,13 @@
 		<bean id="dataSourceSeguridad" class="org.apache.commons.dbcp.BasicDataSource">
 			<property name="driverClassName" value="org.postgresql.Driver" />
 			<!-- property name="url" value="jdbc:postgresql://localhost:5532/seguridad" / -->
-			<property name="url" value="jdbc:postgresql://localhost:5532/seguridad_gday" />
+			<property name="url" value="jdbc:postgresql://localhost:5432/seguridad-gday" />
 			<property name="username" value="postgres" />
 			<property name="password" value="root" />
 			<property name="initialSize" value="2" />
 			<property name="maxActive" value="5" />
 		</bean>		 
-	</beans>  
+	</beans>   
 	
 	<beans profile="testing">	
 		<security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled">

@@ -9,4 +9,13 @@
 		<result property="nombreGrupo" column="NOMBRE_GRUPO"/>
 	</resultMap>
 
+<insert id="agregarGrupo" parameterType="Grupo" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_grupo')
+  		</selectKey>	
+	INSERT INTO "GRUPO"(
+		"ID_GRUPO", "NOMBRE_GRUPO", "NOMBRE_CORTO_GRUPO")
+	VALUES(#{id}, #{nombre}, #{nombreCorto});
+</insert>
+
 </mapper>

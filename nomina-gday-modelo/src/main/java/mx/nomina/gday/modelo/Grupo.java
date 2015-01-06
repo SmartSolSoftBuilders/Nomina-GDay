@@ -1,42 +1,50 @@
 package mx.nomina.gday.modelo;
 
-public class Grupo {
+public class Grupo extends BaseModelo {
 	
-	private int idGrupo;
-	private String  nombreCortoGrupo;
-	private String nombreGrupo;
+	private Integer idGrupo;
+	private String  nombre;
+	private String nombreCorto;
 	
 	
 	public Grupo(){
 	}
-	
-	
-	public Grupo(int idGrupo, String nombreCortoGrupo, String nombreGrupo) {
-		super();
+
+
+	public Grupo(Integer idGrupo, String nombre, String nombreCorto) {
 		this.idGrupo = idGrupo;
-		this.nombreCortoGrupo = nombreCortoGrupo;
-		this.nombreGrupo = nombreGrupo;
+		this.nombre = nombre;
+		this.nombreCorto = nombreCorto;
 	}
-	
-	public int getIdGrupo() {
+
+
+	public Integer getIdGrupo() {
 		return idGrupo;
 	}
-	public void setIdGrupo(int idGrupo) {
+
+
+	public void setIdGrupo(Integer idGrupo) {
 		this.idGrupo = idGrupo;
 	}
-	public String getNombreCortoGrupo() {
-		return nombreCortoGrupo;
+
+
+	public String getNombre() {
+		return nombre;
 	}
-	public void setNombreCortoGrupo(String nombreCortoGrupo) {
-		this.nombreCortoGrupo = nombreCortoGrupo;
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	public String getNombreGrupo() {
-		return nombreGrupo;
+
+
+	public String getNombreCorto() {
+		return nombreCorto;
 	}
-	public void setNombreGrupo(String nombreGrupo) {
-		this.nombreGrupo = nombreGrupo;
+
+
+	public void setNombreCorto(String nombreCorto) {
+		this.nombreCorto = nombreCorto;
 	}
-	
-	
 
 }
