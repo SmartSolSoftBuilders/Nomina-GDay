@@ -5,7 +5,7 @@ public class RazonSocial {
 	private int idRazonSocial;
 	private Grupo grupo;
 	private Referenciante referenciante;
-	private ObjetoSocial objetoSocial;
+	private String objetoSocial;
 	private String nombreRazonSocial;
 	private String rfc;
 	private String nombreCortoRazonS;
@@ -43,7 +43,7 @@ public class RazonSocial {
 
 
 	public RazonSocial(int idRazonSocial, Grupo grupo,
-			Referenciante referenciante, ObjetoSocial objetoSocial,
+			Referenciante referenciante, String objetoSocial,
 			String nombreRazonSocial, String rfc, String nombreCortoRazonS,
 			String codCliente, float comision, int actConstitutiva,
 			String fechaActConstitutiva, String fechaInicioOperacion,
@@ -56,7 +56,6 @@ public class RazonSocial {
 			String contactoDosNombre, String contactoDosTelefono,
 			String contactoDosCorreo, String contactoTresNombre,
 			String contactoTresTelefono, String contactoTresCorreo) {
-		super();
 		this.idRazonSocial = idRazonSocial;
 		this.grupo = grupo;
 		this.referenciante = referenciante;
@@ -128,13 +127,13 @@ public class RazonSocial {
 
 
 
-	public ObjetoSocial getObjetoSocial() {
+	public String getObjetoSocial() {
 		return objetoSocial;
 	}
 
 
 
-	public void setObjetoSocial(ObjetoSocial objetoSocial) {
+	public void setObjetoSocial(String objetoSocial) {
 		this.objetoSocial = objetoSocial;
 	}
 
@@ -461,9 +460,5 @@ public class RazonSocial {
 	public void setContactoTresCorreo(String contactoTresCorreo) {
 		this.contactoTresCorreo = contactoTresCorreo;
 	}
-	
-	
-
-	
-	
+		
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mx.nomina.gday.dao.NominaDao">
+<mapper namespace="mx.nomina.gday.dao.RazonSocialDao">
 	<resultMap type="RazonSocial" id="razonSocialResult">
 		<id property="idRazonSocial" column="ID_RAZON_SOCIAL"/>
 		<result property="nombreRazonSocial" column="NOMBRE_RAZON_SOCIAL"/>
@@ -30,6 +30,45 @@
 		<result property="contactoDosCorreo" column="CONTACTO2_CORREO"/>
 		<result property="contactoTresNombre" column="CONTACTO3_NOMBRE"/>
 		<result property="contactoTresTelefono" column="CONTACTO3_TELEFONO"/>
-		<result property="contactoTresCorreo" column="CONTACTO3_CORREO"/>		
+		<result property="contactoTresCorreo" column="CONTACTO3_CORREO"/>
+		<result property="objetoSocial" column="OBJETO_SOCIAL"/>
+		<association property="grupo" column="ID_GRUPO" javaType="Grupo" select="selectGrupo"/>		
 	</resultMap>
+	
+	<resultMap id="grupoResult" type="Grupo">
+		<id property="idGrupo" column="ID_GRUPO"/>
+		<result property="nombreCorto" column="NOMBRE_CORTO_GRUPO"/>
+		<result property="nombre" column="NOMBRE_GRUPO"/>
+	</resultMap>
+	
+	<select id="selectGrupo" parameterType="int" resultMap="grupoResult" resultType="Grupo">		 
+		select * from "GRUPO" where "ID_GRUPO"=#{idGrupo} 	
+	</select> 
+	
+	<select id="obtenerRazonesSociales" resultMap="razonSocialResult" resultType="RazonSocial">
+		select * from "RAZON_SOCIAL"
+	</select>
+	
+	<insert id="agregarRazonSocial" parameterType="RazonSocial" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_razonsocial')
+  		</selectKey>	
+	INSERT INTO "RAZON_SOCIAL"(
+            "ID_RAZON_SOCIAL", "ID_GRUPO", "NOMBRE_RAZON_SOCIAL", "RFC", 
+            "NOMBRE_CORTO_RAZON_S", "COD_CLIENTE", "COMISION", "ACT_CONSTITUTIVA", 
+            "FECHA_ACT_CONSTITUTIVA", "FECHA_INICIO_OPERACION", "PATERNO_REPRESENTANTE", 
+            "MATERNO_REPRESENTANTE", "NOMBRES_REPRESENTANTE", "CALLE_FISCAL", 
+            "COLONIA_FISCAL", "NUM_EXTERIOR_FISCAL", "NUM_INTERIOR_FISCAL", 
+            "CP_FISCAL", "MUNICIPIO_FISCAL", "ESTADO_FISCAL", "CONTACTO1_NOMBRE", 
+            "CONTACTO1_TELEFONO", "CONTACTO1_CORREO", "CONTACTO2_NOMBRE", 
+            "CONTACTO2_TELEFONO", "CONTACTO2_CORREO", "CONTACTO3_NOMBRE", 
+            "CONTACTO3_TELEFONO", "CONTACTO3_CORREO")
+	VALUES(#{id}, #{grupo.idGrupo}, #{nombreRazonSocial}, #{rfc}, #{nombreCortoRazonS}, #{codCliente}, #{comision},
+		   #{actConstitutiva}, #{fechaActConstitutiva}, #{fechaInicioOperacion}, #{paternoRepresentante}, 
+		   #{maternoRepresentante}, #{nombresRepresentante}, #{calleFiscal}, #{coloniaFiscal},
+		   #{numExteriorFiscal}, #{numInteriorFiscal}, #{cpFiscal}, #{municipioFiscal}, #{estadoFiscal},
+		   #{contactoUnoNombre}, #{contactoUnoTelefono}, #{contactoUnoCorreo}, #{contactoDosNombre}, #{contactoDosTelefono},
+		   #{contactoDosCorreo}, #{contactoTresNombre}, #{contactoTresTelefono}, #{contactoTresCorreo}, #{objetoSocial});
+</insert>
+	
 </mapper>

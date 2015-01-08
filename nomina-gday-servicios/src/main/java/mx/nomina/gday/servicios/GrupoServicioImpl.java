@@ -16,7 +16,8 @@ public class GrupoServicioImpl implements GrupoServicio {
 	public boolean agregarGrupo(Grupo grupo) {
 		
 		System.out.println("Agregando grupo service"+ grupo);
-		
+		grupo.setNombre(grupo.getNombre().toUpperCase());
+		grupo.setNombreCorto(grupo.getNombreCorto().toUpperCase());
 		int valor=this.grupoDao.agregarGrupo(grupo); 
 		return true;
 	}

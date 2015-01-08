@@ -13,10 +13,10 @@ SET escape_string_warning = off;
 -- Name: seguridad-Ngday; Type: SCHEMA; Schema: -; Owner: pruebas
 --
 
-CREATE SCHEMA seguridadgday;
+CREATE SCHEMA seguridad;
 
 
---ALTER SCHEMA seguridadgday OWNER TO pruebas;
+--ALTER SCHEMA seguridad OWNER TO pruebas;
 
 SET search_path = public, pg_catalog;
 
@@ -195,7 +195,7 @@ ALTER SEQUENCE acl_sid_id_seq OWNED BY acl_sid.id;
 SELECT pg_catalog.setval('acl_sid_id_seq', 1, false);
 
 
-SET search_path = seguridadgday, pg_catalog;
+SET search_path = seguridad, pg_catalog;
 
 --
 -- Name: t_opcion_menu; Type: TABLE; Schema: seguridad-Ngday-Ngday; Owner: pruebas; Tablespace: 
@@ -210,7 +210,7 @@ CREATE TABLE t_opcion_menu (
 );
 
 
---ALTER TABLE seguridadgday.t_opcion_menu OWNER TO pruebas;
+--ALTER TABLE seguridad.t_opcion_menu OWNER TO pruebas;
 
 --
 -- Name: t_r_usuario_rol; Type: TABLE; Schema: seguridad-Ngday-Ngday; Owner: pruebas; Tablespace: 
@@ -222,26 +222,26 @@ CREATE TABLE t_r_usuario_rol (
 );
 
 
---ALTER TABLE seguridadgday.t_r_usuario_rol OWNER TO pruebas;
+--ALTER TABLE seguridad.t_r_usuario_rol OWNER TO pruebas;
 
 --
 -- Name: t_rol_seguridad-Ngday-Ngday; Type: TABLE; Schema: seguridad-Ngday-Ngday; Owner: pruebas; Tablespace: 
 --
 
-CREATE TABLE t_rol_seguridadgday (
+CREATE TABLE t_rol_seguridad (
     id_t_rol integer NOT NULL,
     v_rol character varying(30) NOT NULL,
     l_rol_activo boolean DEFAULT true NOT NULL
 );
 
 
---ALTER TABLE seguridadgday.t_rol_seguridadgday OWNER TO pruebas;
+--ALTER TABLE seguridad.t_rol_seguridad OWNER TO pruebas;
 
 --
 -- Name: t_usuario_seguridad-Ngday-Ngday; Type: TABLE; Schema: seguridad-Ngday-Ngday; Owner: pruebas; Tablespace: 
 --
 
-CREATE TABLE t_usuario_seguridadgday (
+CREATE TABLE t_usuario_seguridad (
     id_t_usuario integer NOT NULL,
     v_username character varying(50) NOT NULL,
     v_password character varying(25) NOT NULL,
@@ -250,7 +250,7 @@ CREATE TABLE t_usuario_seguridadgday (
 );
 
 
---ALTER TABLE seguridadgday.t_usuario_seguridadgday OWNER TO pruebas;
+--ALTER TABLE seguridad.t_usuario_seguridad OWNER TO pruebas;
 
 SET search_path = public, pg_catalog;
 
@@ -323,7 +323,7 @@ INSERT INTO acl_sid VALUES (2, false, 'ROLE_USUARIO2');
 INSERT INTO acl_sid VALUES (3, false, 'ROLE_ADMINISTRADOR');
 
 
-SET search_path = seguridadgday, pg_catalog;
+SET search_path = seguridad, pg_catalog;
 
 --
 -- Data for Name: t_opcion_menu; Type: TABLE DATA; Schema: seguridad-Ngday-Ngday; Owner: pruebas
@@ -362,18 +362,18 @@ INSERT INTO t_r_usuario_rol VALUES (2, 2);
 -- Data for Name: t_rol_seguridad-Ngday; Type: TABLE DATA; Schema: seguridad-Ngday; Owner: pruebas
 --
 
-INSERT INTO t_rol_seguridadgday VALUES (2, 'ROLE_USUARIO2', true);
-INSERT INTO t_rol_seguridadgday VALUES (3, 'ROLE_ADMINISTRADOR', true);
-INSERT INTO t_rol_seguridadgday VALUES (1, 'ROLE_USUARIO', true);
+INSERT INTO t_rol_seguridad VALUES (2, 'ROLE_USUARIO2', true);
+INSERT INTO t_rol_seguridad VALUES (3, 'ROLE_ADMINISTRADOR', true);
+INSERT INTO t_rol_seguridad VALUES (1, 'ROLE_USUARIO', true);
 
 
 --
 -- Data for Name: t_usuario_seguridad-Ngday; Type: TABLE DATA; Schema: seguridad-Ngday; Owner: pruebas
 --
 
-INSERT INTO t_usuario_seguridadgday VALUES (1, 'admin1', 'admin1', 'admin1', true);
-INSERT INTO t_usuario_seguridadgday VALUES (2, 'admin2', 'admin2', 'admin2', true);
-INSERT INTO t_usuario_seguridadgday VALUES (3, 'admin3', 'admin3', 'admin3', true);
+INSERT INTO t_usuario_seguridad VALUES (1, 'admin1', 'admin1', 'admin1', true);
+INSERT INTO t_usuario_seguridad VALUES (2, 'admin2', 'admin2', 'admin2', true);
+INSERT INTO t_usuario_seguridad VALUES (3, 'admin3', 'admin3', 'admin3', true);
 
 
 SET search_path = public, pg_catalog;
@@ -442,7 +442,7 @@ ALTER TABLE ONLY acl_sid
     ADD CONSTRAINT acl_sid_sid_key UNIQUE (sid, principal);
 
 
-SET search_path = seguridadgday, pg_catalog;
+SET search_path = seguridad, pg_catalog;
 
 --
 -- Name: t_opcion_pkey; Type: CONSTRAINT; Schema: seguridad-Ngday; Owner: pruebas; Tablespace: 
@@ -464,32 +464,32 @@ ALTER TABLE ONLY t_r_usuario_rol
 -- Name: t_rol_seguridad-Ngday_pkey; Type: CONSTRAINT; Schema: seguridad-Ngday; Owner: pruebas; Tablespace: 
 --
 
-ALTER TABLE ONLY t_rol_seguridadgday
-    ADD CONSTRAINT t_rol_seguridadgday_pkey PRIMARY KEY (id_t_rol);
+ALTER TABLE ONLY t_rol_seguridad
+    ADD CONSTRAINT t_rol_seguridad_pkey PRIMARY KEY (id_t_rol);
 
 
 --
 -- Name: t_rol_seguridad-Ngday_v_rol_key; Type: CONSTRAINT; Schema: seguridad-Ngday; Owner: pruebas; Tablespace: 
 --
 
-ALTER TABLE ONLY t_rol_seguridadgday
-    ADD CONSTRAINT t_rol_seguridadgday_v_rol_key UNIQUE (v_rol);
+ALTER TABLE ONLY t_rol_seguridad
+    ADD CONSTRAINT t_rol_seguridad_v_rol_key UNIQUE (v_rol);
 
 
 --
 -- Name: t_usuario_seguridad-Ngday_pkey; Type: CONSTRAINT; Schema: seguridad-Ngday; Owner: pruebas; Tablespace: 
 --
 
-ALTER TABLE ONLY t_usuario_seguridadgday
-    ADD CONSTRAINT t_usuario_seguridadgday_pkey PRIMARY KEY (id_t_usuario);
+ALTER TABLE ONLY t_usuario_seguridad
+    ADD CONSTRAINT t_usuario_seguridad_pkey PRIMARY KEY (id_t_usuario);
 
 
 --
 -- Name: t_usuario_seguridad-Ngday_v_username_key; Type: CONSTRAINT; Schema: seguridad-Ngday; Owner: pruebas; Tablespace: 
 --
 
-ALTER TABLE ONLY t_usuario_seguridadgday
-    ADD CONSTRAINT t_usuario_seguridadgday_v_username_key UNIQUE (v_username);
+ALTER TABLE ONLY t_usuario_seguridad
+    ADD CONSTRAINT t_usuario_seguridad_v_username_key UNIQUE (v_username);
 
 
 --
@@ -533,7 +533,7 @@ ALTER TABLE ONLY acl_object_identity
     ADD CONSTRAINT fk_acl_object_identity_acl_sid FOREIGN KEY (owner_sid) REFERENCES acl_sid(id);
 
 
-SET search_path = seguridadgday, pg_catalog;
+SET search_path = seguridad, pg_catalog;
 
 --
 -- Name: fk_t_opcion_padre; Type: FK CONSTRAINT; Schema: seguridad-Ngday; Owner: pruebas
@@ -548,7 +548,7 @@ ALTER TABLE ONLY t_opcion_menu
 --
 
 ALTER TABLE ONLY t_r_usuario_rol
-    ADD CONSTRAINT t_r_usuario_rol_id_tr_rol_fkey FOREIGN KEY (id_tr_rol) REFERENCES t_rol_seguridadgday(id_t_rol);
+    ADD CONSTRAINT t_r_usuario_rol_id_tr_rol_fkey FOREIGN KEY (id_tr_rol) REFERENCES t_rol_seguridad(id_t_rol);
 
 
 --
@@ -556,7 +556,7 @@ ALTER TABLE ONLY t_r_usuario_rol
 --
 
 ALTER TABLE ONLY t_r_usuario_rol
-    ADD CONSTRAINT t_r_usuario_rol_id_tr_usuario_fkey FOREIGN KEY (id_tr_usuario) REFERENCES t_usuario_seguridadgday(id_t_usuario);
+    ADD CONSTRAINT t_r_usuario_rol_id_tr_usuario_fkey FOREIGN KEY (id_tr_usuario) REFERENCES t_usuario_seguridad(id_t_usuario);
 
 
 --

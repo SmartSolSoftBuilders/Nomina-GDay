@@ -28,51 +28,51 @@
 	</resultMap>
 	
 	<select id="consultarUsuarios" resultMap="resultUsuario">
-		select * from seguridad_gday.t_usuario_seguridad;
+		select * from seguridad.t_usuario_seguridad;
 	</select>
 	
 	<select id="consultarUsuariosByUser" parameterType="UsuarioSeguridad" resultMap="resultUsuario">
-		select * from seguridad_gday.t_usuario_seguridad where v_username=#{username};
+		select * from seguridad.t_usuario_seguridad where v_username=#{username};
 	</select>
 
 	<select id="consultarRoles" resultMap="resultRol">
-		select * from seguridad_gday.t_rol_seguridad;
+		select * from seguridad.t_rol_seguridad;
 	</select>
 	
 	<select id="consultarUsuarioConRoles" resultMap="resultUsuarioConRoles">
-		select * from seguridad_gday.t_usuario_seguridad as usu
-		inner join seguridad_gday.t_r_usuario_rol usu_rol on usu.id_t_usuario = usu_rol.id_tr_usuario
-		inner join seguridad_gday.t_rol_seguridad rol on rol.id_t_rol = usu_rol.id_tr_rol
+		select * from seguridad.t_usuario_seguridad as usu
+		inner join seguridad.t_r_usuario_rol usu_rol on usu.id_t_usuario = usu_rol.id_tr_usuario
+		inner join seguridad.t_rol_seguridad rol on rol.id_t_rol = usu_rol.id_tr_rol
 		where usu.v_username = #{username};
 	</select>
 	
 	<select id="consultarUsuariosConRoles" resultMap="resultUsuarioConRoles">
-		select * from seguridad_gday.t_usuario_seguridad as usu
-		inner join seguridad_gday.t_r_usuario_rol usu_rol on usu.id_t_usuario = usu_rol.id_tr_usuario
-		inner join seguridad_gday.t_rol_seguridad rol on rol.id_t_rol = usu_rol.id_tr_rol
+		select * from seguridad.t_usuario_seguridad as usu
+		inner join seguridad.t_r_usuario_rol usu_rol on usu.id_t_usuario = usu_rol.id_tr_usuario
+		inner join seguridad.t_rol_seguridad rol on rol.id_t_rol = usu_rol.id_tr_rol
 	</select>
 	
 	<insert id="agregarUsuarioSeguridad" parameterType="UsuarioSeguridad" keyProperty="id">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
-  		   	SELECT nextVal('seguridad_gday.sec_user')
+  		   	SELECT nextVal('seguridad.sec_user')
   		</selectKey>		
-		INSERT INTO seguridad_gday.t_usuario_seguridad(id_t_usuario,
+		INSERT INTO seguridad.t_usuario_seguridad(id_t_usuario,
         v_username, v_password, v_nombre_usuario, l_usuario_activo)
     	vALUES (#{id},#{username},#{password}, #{nombre}, true);
-    	INSERT INTO seguridad_gday.t_r_usuario_rol(
+    	INSERT INTO seguridad.t_r_usuario_rol(
             id_tr_usuario, id_tr_rol)
     	VALUES (#{id}, 1);
     	
 	</insert>
 	
 	<update id="actualizarPassword" parameterType="UsuarioSeguridad">			
-		UPDATE seguridad_gday.t_usuario_seguridad
+		UPDATE seguridad.t_usuario_seguridad
    			SET v_password=#{password}
    				WHERE v_username=#{username}       			    	
 	</update>
 	
 	<update id="actualizarUsuario" parameterType="UsuarioSeguridad">			
-		UPDATE seguridad_gday.t_usuario_seguridad
+		UPDATE seguridad.t_usuario_seguridad
    			SET v_password=#{password},l_usuario_activo=#{activo}
    				WHERE v_username=#{username}       			    	
 	</update>

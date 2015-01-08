@@ -1,11 +1,11 @@
 package mx.nomina.gday.dao;
 
+import java.util.List;
+
 import mx.nomina.gday.modelo.RazonSocial;
 
 public interface RazonSocialDao {
 
-	RazonSocial ConsultarRazonSocial();
-	RazonSocial CrearRazonSocial();
-	RazonSocial ModificaRazonSocial();
-	RazonSocial ConsultarNominasAsignadas();
+	public List<RazonSocial> obtenerRazonesSociales();
+	public int agregarRazonSocial(RazonSocial razonSocial);
 }

@@ -106,7 +106,8 @@ CREATE TABLE "RAZON_SOCIAL"
   "CONTACTO2_CORREO" character varying (30), 
   "CONTACTO3_NOMBRE" character varying (80),
   "CONTACTO3_TELEFONO" character varying (10),
-  "CONTACTO3_CORREO" character varying (30),   
+  "CONTACTO3_CORREO" character varying (30), 
+  "OBJETO_SOCIAL" character varying(256),
   CONSTRAINT "ID_RAZON_SOCIAL_PK" PRIMARY KEY ("ID_RAZON_SOCIAL"),
   CONSTRAINT "ID_GRUPO_FK" FOREIGN KEY ("ID_GRUPO")
       REFERENCES "GRUPO" ("ID_GRUPO") MATCH SIMPLE

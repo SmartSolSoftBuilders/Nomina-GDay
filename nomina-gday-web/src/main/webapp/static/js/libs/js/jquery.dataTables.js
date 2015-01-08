@@ -2080,7 +2080,7 @@
 			
 			var nFilter = document.createElement( 'div' );
 			nFilter.className = oSettings.oClasses.sFilter;
-			nFilter.innerHTML = '<label><img src="../../static/img/buscar.jpg" width=20 heigth=20></img>'+sSearchStr+'</label>';
+			nFilter.innerHTML = '<label><img src="static/img/buscar.jpg" width=20 heigth=20></img>'+sSearchStr+'</label>';
 			if ( !oSettings.aanFeatures.f )
 			{
 				nFilter.id = oSettings.sTableId+'_filter';

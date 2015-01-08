@@ -45,7 +45,7 @@
     </servlet-mapping>    
     
     <welcome-file-list>
-        <welcome-file>views/grupos/agregar_grupo.jsp</welcome-file>
+        <welcome-file>views/razones_sociales/razones_sociales.jsp</welcome-file>
         <!--welcome-file>login.jsp</welcome-file-->
     </welcome-file-list>    
 </web-app>
