@@ -1,9 +1,9 @@
 $(document).ready(function() {
-	oTableRazonesSociales=$('#tablaRazonSocial').dataTable();
+	oTableGrupos=$('#tablaGrupo').dataTable();
 	$.ajax({
 		sync: true,
 		type:  'post',
-		url:   'mvc/consultarrazonsocial/getrazonessociales',
+		url:   'mvc/grupo/getgrupos',
 		dataType:  'json',
 		beforeSend: function () {
 			$("#resultado").html("Procesando, espere por favor...");
@@ -15,12 +15,9 @@ $(document).ready(function() {
 		success:  function (response) {
 			$( "#demo" ).show();
 			$( "#progressbar" ).hide();
-			$('#tablaRazonSocial').dataTable().fnAddData(response);
+			$('#tablaGrupo').dataTable().fnAddData(response);
 			//setData(response);
-		}		,
-		error:  function (response) {
-			alert(response);
-		}
+		}	
 	});			
 
 });

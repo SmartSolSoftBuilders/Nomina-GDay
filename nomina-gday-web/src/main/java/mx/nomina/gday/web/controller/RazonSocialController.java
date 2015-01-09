@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/consultarrazonsocial")
+@RequestMapping("/razonsocial")
 public class RazonSocialController {
 	
 	@Autowired
@@ -43,7 +43,7 @@ public class RazonSocialController {
 				razonesSocialesTmp2.add(tmp.get(i).getNombreCortoRazonS());
 				razonesSocialesTmp2.add(tmp.get(i).getComision());
 				razonesSocialesTmp2.add(tmp.get(i).getNombreRazonSocial());
-				razonesSocialesTmp2.add("<a href='#' ("+tmp.get(i).getIdRazonSocial()+")'>Editar</a>");
+				razonesSocialesTmp2.add("<a href='#' ("+tmp.get(i).getIdRazonSocial()+","+tmp.get(i).getNombreCortoRazonS()+"'>Editar</a>");
 				razonesSocialesTmp.add(razonesSocialesTmp2);
 			}
 			return razonesSocialesTmp;
@@ -57,12 +57,16 @@ public class RazonSocialController {
 	  @RequestMapping(value="/guardarrazonsocial",method = RequestMethod.POST)
 		 @ResponseBody
 		    public boolean guardarRazonSocial(@ModelAttribute(value="razonsocial") RazonSocial razonSocial, BindingResult result){
-			 	System.out.println("Guardando razon social"+ razonSocial);
-			 	
-			 	razonSocialServicio.agregarRazonSocial(razonSocial);
-			 	
-				return true;
-			 
+		  		try {
+					
+		  			System.out.println("Guardando razon social"+ razonSocial);	  			
+		  			razonSocialServicio.agregarRazonSocial(razonSocial);
+		  			return true;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		  	
+			 	return false;
 		 }
 	
 }

@@ -62,9 +62,9 @@
             "CP_FISCAL", "MUNICIPIO_FISCAL", "ESTADO_FISCAL", "CONTACTO1_NOMBRE", 
             "CONTACTO1_TELEFONO", "CONTACTO1_CORREO", "CONTACTO2_NOMBRE", 
             "CONTACTO2_TELEFONO", "CONTACTO2_CORREO", "CONTACTO3_NOMBRE", 
-            "CONTACTO3_TELEFONO", "CONTACTO3_CORREO")
+            "CONTACTO3_TELEFONO", "CONTACTO3_CORREO", "OBJETO_SOCIAL")
 	VALUES(#{id}, #{grupo.idGrupo}, #{nombreRazonSocial}, #{rfc}, #{nombreCortoRazonS}, #{codCliente}, #{comision},
-		   #{actConstitutiva}, #{fechaActConstitutiva}, #{fechaInicioOperacion}, #{paternoRepresentante}, 
+		   #{actConstitutiva}, date(#{fechaActConstitutiva}),date(#{fechaInicioOperacion}), #{paternoRepresentante}, 
 		   #{maternoRepresentante}, #{nombresRepresentante}, #{calleFiscal}, #{coloniaFiscal},
 		   #{numExteriorFiscal}, #{numInteriorFiscal}, #{cpFiscal}, #{municipioFiscal}, #{estadoFiscal},
 		   #{contactoUnoNombre}, #{contactoUnoTelefono}, #{contactoUnoCorreo}, #{contactoDosNombre}, #{contactoDosTelefono},

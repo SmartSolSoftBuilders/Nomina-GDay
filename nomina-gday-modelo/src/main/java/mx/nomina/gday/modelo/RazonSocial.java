@@ -1,10 +1,9 @@
 package mx.nomina.gday.modelo;
 
-public class RazonSocial {
+public class RazonSocial extends BaseModelo{
 	
 	private int idRazonSocial;
 	private Grupo grupo;
-	private Referenciante referenciante;
 	private String objetoSocial;
 	private String nombreRazonSocial;
 	private String rfc;
@@ -43,7 +42,7 @@ public class RazonSocial {
 
 
 	public RazonSocial(int idRazonSocial, Grupo grupo,
-			Referenciante referenciante, String objetoSocial,
+			String objetoSocial,
 			String nombreRazonSocial, String rfc, String nombreCortoRazonS,
 			String codCliente, float comision, int actConstitutiva,
 			String fechaActConstitutiva, String fechaInicioOperacion,
@@ -58,7 +57,6 @@ public class RazonSocial {
 			String contactoTresTelefono, String contactoTresCorreo) {
 		this.idRazonSocial = idRazonSocial;
 		this.grupo = grupo;
-		this.referenciante = referenciante;
 		this.objetoSocial = objetoSocial;
 		this.nombreRazonSocial = nombreRazonSocial;
 		this.rfc = rfc;
@@ -111,18 +109,6 @@ public class RazonSocial {
 
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
-	}
-
-
-
-	public Referenciante getReferenciante() {
-		return referenciante;
-	}
-
-
-
-	public void setReferenciante(Referenciante referenciante) {
-		this.referenciante = referenciante;
 	}
 
 

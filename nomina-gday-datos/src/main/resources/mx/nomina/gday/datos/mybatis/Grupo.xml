@@ -5,8 +5,8 @@
 <mapper namespace="mx.nomina.gday.dao.GrupoDao">
 	<resultMap type="Grupo" id="grupoResult">
 		<id property="idGrupo" column="ID_GRUPO"/>
-		<result property="nombreCortoGrupo" column="NOMBRE_CORTO_GRUPO"/>
-		<result property="nombreGrupo" column="NOMBRE_GRUPO"/>
+		<result property="nombreCorto" column="NOMBRE_CORTO_GRUPO"/>
+		<result property="nombre" column="NOMBRE_GRUPO"/>
 	</resultMap>
 
 <insert id="agregarGrupo" parameterType="Grupo" keyProperty="id">
@@ -18,4 +18,7 @@
 	VALUES(#{id}, #{nombre}, #{nombreCorto});
 </insert>
 
+<select id="obtenerGrupos" resultMap="grupoResult" resultType="Grupo">
+		select * from "GRUPO"
+	</select>
 </mapper>
