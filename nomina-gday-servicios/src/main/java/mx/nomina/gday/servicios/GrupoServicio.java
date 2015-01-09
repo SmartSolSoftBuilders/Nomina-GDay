@@ -8,5 +8,9 @@ public interface GrupoServicio {
 
 	public boolean agregarGrupo(Grupo grupo);
 	public List<Grupo> obtenerGrupos(); 
+	void actualizarGrupo(Grupo grupo);
+	public Grupo obtenerGrupoById(int idGrupo);
+
+
 
 }

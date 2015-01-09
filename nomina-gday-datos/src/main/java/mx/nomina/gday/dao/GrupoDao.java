@@ -8,5 +8,7 @@ public interface GrupoDao {
 
 	public int agregarGrupo(Grupo grupo);
 	public List<Grupo> obtenerGrupos();
+	void actualizarGrupo(Grupo grupo);
+	public Grupo obtenerGrupoById(int id);
 
 }

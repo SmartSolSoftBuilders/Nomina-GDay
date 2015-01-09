@@ -13,6 +13,7 @@
 		<script type="text/javascript" language="javascript" src="static/js/libs/js/jquery.custom.js"></script>
 		<script type="text/javascript" language="javascript" src="static/js/libs/js/jquery.dataTables.js"></script>		
 		<script type="text/javascript" language="javascript" src="static/js/app/grupos/grupos.js"></script>
+		<script type="text/javascript" language="javascript" src="static/js/app/grupos/actualizar_grupo.js"></script>
 
 		<script type="text/javascript" charset="utf-8">
 			var oTableGrupos;
@@ -21,7 +22,7 @@
 	<body id="dt_example">
 		<div id="progressbar">Cargando (75%)...</div>	
 		<div id="container" class="mayuscula">
-			<h1>Seleccion de Grupos</h1>		
+			<h1>Grupos</h1>		
 			<div id="demo">
 				<form id="formSeleccionarGrupos">
 					<div style="text-align:right; padding-bottom:1em;">
@@ -45,10 +46,30 @@
 			<div id="Grupo">				
 			</div>
 			<br>
-			<br>		
-			<div align="center">
-				<input type="button" value="Agregar"/>
+			<br>
+<!-- 			Modal para Editar Grupo -->				
+			<div class="row">
+				<div id="divGrupos" title="Basic dialog" style="display:none"  class="col-lg-6">
+					<table>
+					 	<tr>
+					 		<td>NOMBRE<input id='nombre' name='nombre' type="text" class="form-control"></td>
+					 	</tr>
+					 	<tr>
+					 		<td>NOMBRE CORTO<input id='nombreCorto' name='nombreCorto' type="text" class="form-control">
+					 		<input id='grupoIdSel' name='grupoIdSel' type="hidden" class="form-control"></td>					 							 	
+					 	</tr>
+					</table>
+				<br>
+				<br>
+			<!-- /.col-lg-6 -->						
+				 <div class="input-group">      
+			     	 <span class="input-group-btn">
+			        	<button type="button" class="btn btn-default" onclick="actualizarGrupo()">AGREGAR</button>
+			     	 </span>			    
+   		 		</div><!-- /input-group -->
+				</div>
 			</div>
+
 			<br>
 			<br>
 			<!-- div id="footer" class="clear" style="text-align:center;"><span style="font-size:10px;"> DataTables designed and created by <a href="http://www.sprymedia.co.uk">Allan Jardine</a> &copy; 2007-2011<br>

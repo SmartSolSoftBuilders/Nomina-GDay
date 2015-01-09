@@ -9,6 +9,7 @@
 		<result property="nombre" column="NOMBRE_GRUPO"/>
 	</resultMap>
 
+<!-- Insert para guardar el Grupo -->
 <insert id="agregarGrupo" parameterType="Grupo" keyProperty="id">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
   		   	SELECT nextVal('sec_grupo')
@@ -18,7 +19,20 @@
 	VALUES(#{id}, #{nombre}, #{nombreCorto});
 </insert>
 
+<!-- Select para obtener la lista de todos los Grupos registrados -->
 <select id="obtenerGrupos" resultMap="grupoResult" resultType="Grupo">
 		select * from "GRUPO"
-	</select>
+</select>
+
+<!-- Select para obtener los Grupos registrados por id-->
+<select id="obtenerGrupoById" parameterType="int" resultMap="grupoResult">
+		select * from "GRUPO" WHERE "ID_GRUPO"=#{id};
+</select>
+
+<!-- Update para actualizar el Grupo seleccionado --> 
+<update id="actualizarGrupo" parameterType="Grupo">
+	UPDATE "GRUPO"
+   	SET "NOMBRE_CORTO_GRUPO"= #{nombreCorto}, "NOMBRE_GRUPO"=#{nombre}
+ 	WHERE "ID_GRUPO"=#{idGrupo}	
+</update>
 </mapper>

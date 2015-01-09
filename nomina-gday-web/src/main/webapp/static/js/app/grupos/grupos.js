@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$.ajax({
 		sync: true,
 		type:  'post',
-		url:   'mvc/grupo/getgrupos',
+		url:   'mvc/grupo/getgruposaeditar',
 		dataType:  'json',
 		beforeSend: function () {
 			$("#resultado").html("Procesando, espere por favor...");
