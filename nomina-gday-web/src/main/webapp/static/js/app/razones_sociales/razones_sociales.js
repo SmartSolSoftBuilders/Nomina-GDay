@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$.ajax({
 		sync: true,
 		type:  'post',
-		url:   'mvc/consultarrazonsocial/getrazonessociales',
+		url:   '../../mvc/razonsocial/getrazonessociales',
 		dataType:  'json',
 		beforeSend: function () {
 			$("#resultado").html("Procesando, espere por favor...");

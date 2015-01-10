@@ -9,7 +9,7 @@ function guardarGrupo() {
 				},
 				
 				dataType : 'json',
-				url : 'mvc/grupo/guardargrupo',
+				url : '../../mvc/grupo/guardargrupo',
 				type : 'post',
 				beforeSend : function() {
 				},

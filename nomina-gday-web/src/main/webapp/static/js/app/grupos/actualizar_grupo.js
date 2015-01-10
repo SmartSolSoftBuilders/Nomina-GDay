@@ -5,7 +5,7 @@ function obtenerGrupo(idGrupo){
 			"idGrupo" : idGrupo
 	},
 	dataType:'json',
-	url:   'mvc/grupo/obtenergrupobyid',
+	url:   '../../mvc/grupo/obtenergrupobyid',
 	type:  'post',		
 	beforeSend: function () {	
 	},
@@ -41,7 +41,7 @@ function actualizarGrupo() {
 				},
 				
 				dataType : 'json',
-				url : 'mvc/grupo/modificagrupo',
+				url : '../../mvc/grupo/modificagrupo',
 				type : 'post',
 				beforeSend : function() {
 				},

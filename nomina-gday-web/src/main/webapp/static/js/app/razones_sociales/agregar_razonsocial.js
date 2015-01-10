@@ -46,7 +46,7 @@ function showGrupos(){
 	$.ajax({
 		sync: true,
 		type:  'post',
-		url:   'mvc/grupo/getgrupos',
+		url:   '../../mvc/grupo/getgrupos',
 		dataType:  'json',
 		beforeSend: function () {
 			$("#resultado").html("Procesando, espere por favor...");
@@ -132,7 +132,7 @@ function guardarRazonSocial() {
 				},
 				
 				dataType : 'json',
-				url : 'mvc/razonsocial/guardarrazonsocial',
+				url : '../../mvc/razonsocial/guardarrazonsocial',
 				type : 'post',
 				beforeSend : function() {
 				},

@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <title>grupo day</title>
 
-<script type="text/javascript" language="javascript" src="static/js/app/razones_sociales/agregar_razonsocial.js"></script>
+<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/agregar_razonsocial.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  		<script type="text/javascript" language="javascript" src="static/js/libs/js/jquery.dataTables.js"></script>		
+  		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
   
-	<script src="static/js/bootstrap.min.js"></script>
-	<script src="static/js/modal.js"></script>
+	<script src="../../static/js/bootstrap.min.js"></script>
+	<script src="../../static/js/modal.js"></script>
 	<script>
         $(function() {
             Example.init({
@@ -22,15 +22,15 @@
     </script>
 
 	<!-- bootbox code -->
-	<script src="static/js/bootbox.js"></script>
+	<script src="../../static/js/bootbox.js"></script>
 
 	<!-- put all demo code in one place -->
-	<script src="static/js/control.js"></script>
+	<script src="../../static/js/control.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<link href="static/css/styles.css" rel="stylesheet">
-<link href="static/css/multiple-select.css" rel="stylesheet">
-<link href="static/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../static/css/styles.css" rel="stylesheet">
+<link href="../../static/css/multiple-select.css" rel="stylesheet">
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -58,14 +58,15 @@
 					 	</tr>
 					 	<tr>
 					 		<td>GRUPO<input id='grupo' name='grupo' type="text" class="form-control" onclick="showGrupos()">
-					 		<input id='grupoIdSel' name='grupoIdSel' type="hidden" class="form-control"></td>					 	
+					 		<input id='grupoIdSel' name='grupoIdSel' type="button" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>COMISION<input id='comision' name='comision' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
-					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control">
-					 		</td>
+					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control"></td>
+					 		<td><button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>					 		</td>
+				 		
 					 	</tr>
 					 	<tr>				 	
 					 		<td><select id="selectMult" multiple="multiple">

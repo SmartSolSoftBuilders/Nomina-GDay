@@ -5,15 +5,15 @@
 		
 		<title>GDAY</title>
 		<style type="text/css" title="currentStyle">
-			@import "static/js/libs/css/demo_page.css";
-			@import "static/js/libs/css/demo_table.css";
-			@import "static/js/libs/css/ui-lightness/jquery-ui-1.10.2.custom.css";
+			@import "../../static/js/libs/css/demo_page.css";
+			@import "../../static/js/libs/css/demo_table.css";
+			@import "../../static/js/libs/css/ui-lightness/jquery-ui-1.10.2.custom.css";
 		</style>
-		<script type="text/javascript" language="javascript" src="static/js/libs/js/jquery-1.9.1.js"></script>
-		<script type="text/javascript" language="javascript" src="static/js/libs/js/jquery.custom.js"></script>
-		<script type="text/javascript" language="javascript" src="static/js/libs/js/jquery.dataTables.js"></script>		
-		<script type="text/javascript" language="javascript" src="static/js/app/grupos/grupos.js"></script>
-		<script type="text/javascript" language="javascript" src="static/js/app/grupos/actualizar_grupo.js"></script>
+		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery-1.9.1.js"></script>
+		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.custom.js"></script>
+		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
+		<script type="text/javascript" language="javascript" src="../../static/js/app/grupos/grupos.js"></script>
+		<script type="text/javascript" language="javascript" src="../../static/js/app/grupos/actualizar_grupo.js"></script>
 
 		<script type="text/javascript" charset="utf-8">
 			var oTableGrupos;
