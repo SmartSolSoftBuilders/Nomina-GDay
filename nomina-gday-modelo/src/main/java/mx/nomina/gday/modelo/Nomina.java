@@ -1,10 +1,10 @@
 package mx.nomina.gday.modelo;
 
-public class Nomina {
+public class Nomina extends BaseModelo{
 	
-	private int idNomina;
+	private Integer idNomina;
 	private Patrona patrona;
-	private int idIntermediaria;
+	private Intermediaria idIntermediaria;
 	private Esquema esquema;
 	private Ejecutivo ejecutivoUsuario;
 	private TipoCalendario tipoCalendario;
@@ -13,7 +13,7 @@ public class Nomina {
 	private boolean provisionVacaciones;
 	private boolean provisionPrimaVacacional;
 	private int diasAguinaldo;
-	private float porcPrimaVacacional;
+	private boolean porcPrimaVacacional;
 	private boolean fondoAhorro;
 	private boolean facturaSubsidio;
 	private boolean ivaExento;
@@ -29,17 +29,16 @@ public class Nomina {
 	}
 
 
-	public Nomina(int idNomina, Patrona patrona, int idIntermediaria,
-			Esquema esquema, Ejecutivo ejecutivoUsuario,
-			TipoCalendario tipoCalendario, String nombreCorto,
-			boolean provisionAguinaldo, boolean provisionVacaciones,
-			boolean provisionPrimaVacacional, int diasAguinaldo,
-			float porcPrimaVacacional, boolean fondoAhorro,
+	public Nomina(Integer idNomina, Patrona patrona,
+			Intermediaria idIntermediaria, Esquema esquema,
+			Ejecutivo ejecutivoUsuario, TipoCalendario tipoCalendario,
+			String nombreCorto, boolean provisionAguinaldo,
+			boolean provisionVacaciones, boolean provisionPrimaVacacional,
+			int diasAguinaldo, boolean porcPrimaVacacional, boolean fondoAhorro,
 			boolean facturaSubsidio, boolean ivaExento,
 			boolean reconoceAntiguedad, boolean comisionCostSocial,
 			String tipoPago, String claseRiesgo, String registroPatronal,
 			String periodicidad) {
-		super();
 		this.idNomina = idNomina;
 		this.patrona = patrona;
 		this.idIntermediaria = idIntermediaria;
@@ -64,12 +63,12 @@ public class Nomina {
 	}
 
 
-	public int getIdNomina() {
+	public Integer getIdNomina() {
 		return idNomina;
 	}
 
 
-	public void setIdNomina(int idNomina) {
+	public void setIdNomina(Integer idNomina) {
 		this.idNomina = idNomina;
 	}
 
@@ -84,12 +83,12 @@ public class Nomina {
 	}
 
 
-	public int getIdIntermediaria() {
+	public Intermediaria getIdIntermediaria() {
 		return idIntermediaria;
 	}
 
 
-	public void setIdIntermediaria(int idIntermediaria) {
+	public void setIdIntermediaria(Intermediaria idIntermediaria) {
 		this.idIntermediaria = idIntermediaria;
 	}
 
@@ -174,12 +173,12 @@ public class Nomina {
 	}
 
 
-	public float getPorcPrimaVacacional() {
+	public boolean isPorcPrimaVacacional() {
 		return porcPrimaVacacional;
 	}
 
 
-	public void setPorcPrimaVacacional(float porcPrimaVacacional) {
+	public void setPorcPrimaVacacional(boolean porcPrimaVacacional) {
 		this.porcPrimaVacacional = porcPrimaVacacional;
 	}
 
@@ -272,9 +271,4 @@ public class Nomina {
 	public void setPeriodicidad(String periodicidad) {
 		this.periodicidad = periodicidad;
 	}
-	
-	
-	
-	
-	
 }

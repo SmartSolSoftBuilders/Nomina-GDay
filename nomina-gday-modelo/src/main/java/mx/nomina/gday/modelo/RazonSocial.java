@@ -4,7 +4,6 @@ public class RazonSocial extends BaseModelo{
 	
 	private int idRazonSocial;
 	private Grupo grupo;
-	private String objetoSocial;
 	private String nombreRazonSocial;
 	private String rfc;
 	private String nombreCortoRazonS;
@@ -32,6 +31,7 @@ public class RazonSocial extends BaseModelo{
 	private String contactoTresNombre;
 	private String contactoTresTelefono;
 	private String contactoTresCorreo;
+	private String objetoSocial;
 	
 	
 	

@@ -14,6 +14,7 @@
 		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.custom.js"></script>
 		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
 		<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/razones_sociales.js"></script>
+		
 
 		<script type="text/javascript" charset="utf-8">
 			var oTableRazonesSociales;

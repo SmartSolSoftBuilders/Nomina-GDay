@@ -49,6 +49,11 @@
 		select * from "RAZON_SOCIAL"
 	</select>
 	
+	<!-- Select para obtener las Razones Sociales  por id-->
+<select id="obtenerRazonSocialById" parameterType="int" resultMap="razonSocialResult">
+		select * from "RAZON_SOCIAL" WHERE "ID_RAZON_SOCIAL"=#{id};
+</select>
+	
 	<insert id="agregarRazonSocial" parameterType="RazonSocial" keyProperty="id">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
   		   	SELECT nextVal('sec_razonsocial')
@@ -70,5 +75,17 @@
 		   #{contactoUnoNombre}, #{contactoUnoTelefono}, #{contactoUnoCorreo}, #{contactoDosNombre}, #{contactoDosTelefono},
 		   #{contactoDosCorreo}, #{contactoTresNombre}, #{contactoTresTelefono}, #{contactoTresCorreo}, #{objetoSocial});
 </insert>
-	
+
+<update id="actualizarRazonSocial" parameterType="RazonSocial">
+	UPDATE "RAZON_SOCIAL"
+   	SET "ID_GRUPO"= #{grupo.idGrupo}, "NOMBRE_RAZON_SOCIAL"= #{nombreRazonSocial}, "RFC"=#{rfc}, "NOMBRE_CORTO_RAZON_S"=#{nombreCortoRazonS}, 
+   		"COD_CLIENTE"=#{codCliente}, "COMISION"=#{comision}, "ACT_CONSTITUTIVA"=#{actConstitutiva}, "FECHA_ACT_CONSTITUTIVA"=date(#{fechaActConstitutiva}), 
+   		"FECHA_INICIO_OPERACION"=date(#{fechaInicioOperacion}), "PATERNO_REPRESENTANTE"=#{paternoRepresentante}, "MATERNO_REPRESENTANTE"=#{maternoRepresentante}, 
+   		"NOMBRES_REPRESENTANTE"=#{nombresRepresentante}, "CALLE_FISCAL"=#{calleFiscal}, "COLONIA_FISCAL"=#{coloniaFiscal}, "NUM_EXTERIOR_FISCAL"=#{numExteriorFiscal}, 
+   		"NUM_INTERIOR_FISCAL"=#{numInteriorFiscal}, "CP_FISCAL"=#{cpFiscal}, "MUNICIPIO_FISCAL"=#{municipioFiscal}, "ESTADO_FISCAL"=#{estadoFiscal}, 
+   		"CONTACTO1_NOMBRE"=#{contactoUnoNombre}, "CONTACTO1_TELEFONO"=#{contactoUnoTelefono}, "CONTACTO1_CORREO"=#{contactoUnoCorreo}, "CONTACTO2_NOMBRE"=#{contactoDosNombre}, 
+        "CONTACTO2_TELEFONO"=#{contactoDosTelefono}, "CONTACTO2_CORREO"=#{contactoDosCorreo}, "CONTACTO3_NOMBRE"=#{contactoTresNombre}, "CONTACTO3_TELEFONO"=#{contactoTresTelefono}, 
+        "CONTACTO3_CORREO"=#{contactoTresCorreo}, "OBJETO_SOCIAL"=#{objetoSocial}
+ 	WHERE "ID_RAZON_SOCIAL"=#{idRazonSocial}
+</update>
 </mapper>

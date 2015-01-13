@@ -19,11 +19,16 @@
 		<result property="claseRiesgo" column="CLASE_RIESGO"/>
 		<result property="registroPatronal" column="REGISTRO_PATRONAL"/>
 		<result property="periodicidad" column="PERIODICIDAD"/>
-		<result property="tipoCalendario" column="TIPO_CALENDARIO"/>
-		<collection property="ejecutivo" column="ID_EJECUTIVO" javaType="List" select="selectEjecutivo"/>
-		<collection property="esquema" column="ID_ESQUEMA" javaType="List" select="selectEsquema"/>
-		<collection property="tipoCalendario" column="ID_CALENDARIO" javaType="List" select="selectTipoCalendario"/>
-				
+		<association property="intermediaria" column="ID_INTERMEDIARIA" javaType="Intermediaria" select="selectIntermediaria"/>
+		<association property="patrona" column="ID_PATRONA" javaType="Patrona" select="selectPatrona"/>
+		<association property="ejecutivo" column="ID_EJECUTIVO" javaType="Ejecutivo" select="selectEjecutivo"/>
+		<association property="esquema" column="ID_ESQUEMA" javaType="Esquema" select="selectEsquema"/>
+		<association property="tipoCalendario" column="ID_CALENDARIO" javaType="TipoCalendario" select="selectTipoCalendario"/>				
+	</resultMap>
+	
+	<resultMap id="intermediariaResult" type="Intermediaria">
+    	<id property="idIntermediaria" column="ID_INTERMEDIARIA"/>
+		<result property="nombreIntermediaria" column="NOMBRE_INTERMEDIARIA"/>					  		
 	</resultMap>
 	
 	<resultMap id="ejecutivoResult" type="Ejecutivo">
@@ -47,6 +52,10 @@
 			
 	</resultMap>
 	
+	<select id="selectIntermediaria" parameterType="int" resultMap="intermediariaResult" resultType="Intermediaria">		 
+		select * from "INTERMEDIARIA" where "ID_INTERMEDIARIA"=#{idIntermediaria} 	
+	</select> 
+	
 	<select id="selectEjecutivo" parameterType="int" resultMap="ejecutivoResult" resultType="Ejecutivo">		 
 		select * from "EJECUTIVO" where "ID_EJECUTIVO"=#{idEjecutivo} 	
 	</select> 
@@ -60,4 +69,22 @@
 		select * from "TIPO_CALENDARIO" where "ID_CALENDARIO"=#{idCalendario} 	
 	</select> 
 
+	<insert id="agregarNomina" parameterType="Nomina" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_nomina')
+  		</selectKey>
+  		
+  		INSERT INTO "NOMINA"(
+            "ID_NOMINA", "ID_PATRONA", "ID_INTERMEDIARIA", "ID_ESQUEMA", "ID_EJECUTIVO", 
+            "ID_CALENDARIO", "NOMBRE_CORTO", "PROVISION_AGUINALDO", 
+            "PROVISION_VACACIONES", "PROVISION_PRIMA_VACACIONAL", "DIAS_AGUINALDO", 
+            "PORC_PRIMA_VACACIONAL", "FONDO_AHORRO", "FACTURA_SUBSIDIO", 
+            "IVA_EXENTO", "RECONOCE_ANTIGUEDAD", "COMISION_COST_SOCIAL", 
+            "TIPO_PAGO", "CLASE_RIESGO", "REGISTRO_PATRONAL", "PERIODICIDAD")
+   	 	VALUES (#{id}, 1, 1, 1, 1, 1, #{nombreCorto},  #{provisionAguinaldo},  #{provisionVacaciones}, 
+            #{provisionPrimaVacacional}, #{diasAguinaldo}, #{porcPrimaVacacional}, #{fondoAhorro}, 
+            #{facturaSubsidio}, #{ivaExento}, #{reconoceAntiguedad}, 
+            #{comisionCostSocial}, #{tipoPago}, #{claseRiesgo}, 
+            #{registroPatronal}, #{periodicidad});	
+	</insert>
 </mapper>

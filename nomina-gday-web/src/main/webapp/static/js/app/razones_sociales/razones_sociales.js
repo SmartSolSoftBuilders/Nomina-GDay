@@ -24,3 +24,7 @@ $(document).ready(function() {
 	});			
 
 });
+
+function showEditarRazonSocial(idRazonSocial){
+	top.frames['main'].location="../razones_sociales/actualizar_razonsocial.jsp?id="+idRazonSocial; 	
+}

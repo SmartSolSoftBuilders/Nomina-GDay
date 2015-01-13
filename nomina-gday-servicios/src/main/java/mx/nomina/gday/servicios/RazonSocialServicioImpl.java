@@ -60,4 +60,22 @@ public class RazonSocialServicioImpl implements RazonSocialServicio {
 		return false;
 	}
 
+	@Override
+	public void actualizarRazonSocial(RazonSocial razonSocial) {
+		try {
+  			System.out.println("Actualizando razon social Servicio"+ razonSocial.getIdRazonSocial());
+  			System.out.println("Actualizando grupo de razon social Servicio"+ razonSocial.getGrupo().getIdGrupo());
+			this.razonSocialDao.actualizarRazonSocial(razonSocial);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public RazonSocial obtenerRazonSocialById(int idRazonSocial) {
+
+		return this.razonSocialDao.obtenerRazonSocialById(idRazonSocial);
+	}
+
 }
