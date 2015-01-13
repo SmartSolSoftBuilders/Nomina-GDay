@@ -1,5 +1,7 @@
 package mx.nomina.gday.modelo;
 
+import java.util.List;
+
 public class RazonSocial extends BaseModelo{
 	
 	private int idRazonSocial;
@@ -32,6 +34,7 @@ public class RazonSocial extends BaseModelo{
 	private String contactoTresTelefono;
 	private String contactoTresCorreo;
 	private String objetoSocial;
+	private List<Referenciante> referenciantes;
 	
 	
 	
@@ -42,7 +45,6 @@ public class RazonSocial extends BaseModelo{
 
 
 	public RazonSocial(int idRazonSocial, Grupo grupo,
-			String objetoSocial,
 			String nombreRazonSocial, String rfc, String nombreCortoRazonS,
 			String codCliente, float comision, int actConstitutiva,
 			String fechaActConstitutiva, String fechaInicioOperacion,
@@ -54,10 +56,10 @@ public class RazonSocial extends BaseModelo{
 			String contactoUnoTelefono, String contactoUnoCorreo,
 			String contactoDosNombre, String contactoDosTelefono,
 			String contactoDosCorreo, String contactoTresNombre,
-			String contactoTresTelefono, String contactoTresCorreo) {
+			String contactoTresTelefono, String contactoTresCorreo,
+			String objetoSocial, List<Referenciante> referenciantes) {
 		this.idRazonSocial = idRazonSocial;
 		this.grupo = grupo;
-		this.objetoSocial = objetoSocial;
 		this.nombreRazonSocial = nombreRazonSocial;
 		this.rfc = rfc;
 		this.nombreCortoRazonS = nombreCortoRazonS;
@@ -85,6 +87,8 @@ public class RazonSocial extends BaseModelo{
 		this.contactoTresNombre = contactoTresNombre;
 		this.contactoTresTelefono = contactoTresTelefono;
 		this.contactoTresCorreo = contactoTresCorreo;
+		this.objetoSocial = objetoSocial;
+		this.referenciantes = referenciantes;
 	}
 
 
@@ -109,18 +113,6 @@ public class RazonSocial extends BaseModelo{
 
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
-	}
-
-
-
-	public String getObjetoSocial() {
-		return objetoSocial;
-	}
-
-
-
-	public void setObjetoSocial(String objetoSocial) {
-		this.objetoSocial = objetoSocial;
 	}
 
 
@@ -446,5 +438,29 @@ public class RazonSocial extends BaseModelo{
 	public void setContactoTresCorreo(String contactoTresCorreo) {
 		this.contactoTresCorreo = contactoTresCorreo;
 	}
-		
+
+
+
+	public String getObjetoSocial() {
+		return objetoSocial;
+	}
+
+
+
+	public void setObjetoSocial(String objetoSocial) {
+		this.objetoSocial = objetoSocial;
+	}
+
+
+
+	public List<Referenciante> getReferenciantes() {
+		return referenciantes;
+	}
+
+
+
+	public void setReferenciantes(List<Referenciante> referenciantes) {
+		this.referenciantes = referenciantes;
+	}
+
 }
