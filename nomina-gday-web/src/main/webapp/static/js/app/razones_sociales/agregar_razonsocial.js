@@ -1,6 +1,7 @@
 function seleccionarGrupo (id,txt){
 	$("#grupo").val(txt);
 	$("#grupoIdSel").val(id);
+	$("#divGrupos").dialog("close");
 }
 
 function agregarReferenciante(){
@@ -32,11 +33,26 @@ function showGrupos(){
 			//setData(response);
 		}
 	});
-	$("#divGrupos").dialog(({show: "slide", modal: true,
+	$("#divGrupos").dialog(({show: "slide", modal: true, width:700, height:600,
 		autoOpen: true}));
 	}
 function getReferenciantes(){
-	var jsonString ="{\"referenciantes\":[{ \"idReferenciante\": 1, \"nombreReferenciante\": \"GABY VAZQUEZ\" },{ \"idReferenciante\": 2, \"nombreReferenciante\": \"GABY VAZQUEZ\" }]}";
+	var jsonString ="{\"referenciantes\":[";
+	var renglonJson="";
+	$('select#selectMult').find('option').each(function() {
+		console.log($(this));
+		console.log($(this).val());
+		console.log($(this)[0].innerHTML);
+		var txt=$(this).text(); var id=$(this).attr('value');
+		renglonJson=renglonJson+"{ \"idReferenciante\":"+id+", \"nombreReferenciante\": \""+txt+"\" }";
+		jsonString=jsonString+renglonJson;
+		renglonJson=",";
+
+	});
+	jsonString=jsonString+"]}";
+	console.log("JSON STRING");
+	console.log(jsonString);
+	
 	return jsonString;
 }
 function guardarRazonSocial() {

@@ -171,9 +171,9 @@
 					<table  cellpadding="0" cellspacing="0" border="0" class="display" id="tablaGrupo">
 					<thead>			
 						<tr class="odd gradeA">
-							<th>NUMERO GRUPO</th>
-							<th>NOMBRE CORTO</th>					
-							<th>NOMBRE</th>
+							<th width="40px">ID</th>
+							<th width="200px">NOMBRE CORTO</th>					
+							<th width="200px">NOMBRE</th>
 							<th></th>
 						</tr>
 					<tbody>			
