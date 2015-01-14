@@ -24,7 +24,7 @@ function showGrupos(){
 		      value: 75
 		    });	
         $( "#demo" ).hide();
-		},
+		}, 
 		success:  function (response) {
 			$("#demo").show();
 			$("#progressbar").hide();
@@ -32,10 +32,18 @@ function showGrupos(){
 			//setData(response);
 		}
 	});
-		$("#divGrupos").dialog();
+	$("#divGrupos").dialog(({show: "slide", modal: true,
+		autoOpen: true}));
 	}
+function getReferenciantes(){
+	var jsonString ="{\"referenciantes\":[{ \"idReferenciante\": 1, \"nombreReferenciante\": \"GABY VAZQUEZ\" },{ \"idReferenciante\": 2, \"nombreReferenciante\": \"GABY VAZQUEZ\" }]}";
+	return jsonString;
+}
 function guardarRazonSocial() {
-	console.log ($("#nombreRazonSocial").val());
+	console.log ("OK"+$("#nombreRazonSocial").val());
+
+	
+//	console.log(JSON.stringify(referenciantesTmp)); 
 		$
 			.ajax({
 				data : {
@@ -65,6 +73,7 @@ function guardarRazonSocial() {
 					"contactoTresNombre" : $("#nombreContTres").val(),
 					"contactoTresTelefono" : $("#telefonoContTres").val(),
 					"contactoTresCorreo" : $("#correoContTres").val(),
+					"jsonString": getReferenciantes(),
 				},
 				
 				dataType : 'json',
@@ -82,3 +91,6 @@ function guardarRazonSocial() {
 			});
 		}
 
+
+		
+		

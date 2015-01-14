@@ -20,15 +20,41 @@
 		<result property="registroPatronal" column="REGISTRO_PATRONAL"/>
 		<result property="periodicidad" column="PERIODICIDAD"/>
 		<association property="intermediaria" column="ID_INTERMEDIARIA" javaType="Intermediaria" select="selectIntermediaria"/>
-		<association property="patrona" column="ID_PATRONA" javaType="Patrona" select="selectPatrona"/>
-		<association property="ejecutivo" column="ID_EJECUTIVO" javaType="Ejecutivo" select="selectEjecutivo"/>
+		<association property="patrona" column="ID_PATRONA" javaType="Patrona" select="selectPatrona"/>				
 		<association property="esquema" column="ID_ESQUEMA" javaType="Esquema" select="selectEsquema"/>
-		<association property="tipoCalendario" column="ID_CALENDARIO" javaType="TipoCalendario" select="selectTipoCalendario"/>				
+		<association property="ejecutivo" column="ID_EJECUTIVO" javaType="Ejecutivo" select="selectEjecutivo"/>
+		<association property="tipoCalendario" column="ID_CALENDARIO" javaType="TipoCalendario" select="selectTipoCalendario"/>
 	</resultMap>
 	
 	<resultMap id="intermediariaResult" type="Intermediaria">
     	<id property="idIntermediaria" column="ID_INTERMEDIARIA"/>
-		<result property="nombreIntermediaria" column="NOMBRE_INTERMEDIARIA"/>					  		
+		<result property="nombreIntermediaria" column="NOMBRE_INTERMEDIARIA"/>
+		
+							  		
+	</resultMap>
+	
+	<resultMap id="patronaResult" type="Patrona">
+    	<id property="idPatrona" column="ID_PATRONA"/>
+		<result property="razonSocial" column="RAZON_SOCIAL"/>
+		<result property="nombreCorto" column="NOMBRE_CORTO"/>
+		<result property="esIntermediaria" column="ES_INTERMEDIARIA"/>
+		<result property="tipoRegimen" column="TIPO_REGIMEN"/>
+		<result property="folioMercantil" column="FOLIO_MERCANTIL"/>
+		<result property="calleFiscal" column="CALLE_FISCAL"/>
+		<result property="coloniaFiscal" column="COLONIA_FISCAL"/>
+		<result property="numExteriorFiscal" column="NUM_EXTERIOR_FISCAL"/>
+		<result property="numInteriorFiscal" column="NUM_INTERIOR_FISCAL"/>
+		<result property="cpFiscal" column="CP_FISCAL"/>
+		<result property="municipioFiscal" column="MUNICIPIO_FISCAL"/>
+		<result property="estadoFiscal" column="ESTADO_FISCAL"/>
+		<result property="fiscalNumPago" column="FISCAL_NUM_PAGO"/>
+		<result property="telContacto" column="TEL_CONTACTO"/>
+		<result property="actaNumero" column="ACTA_NUMERO"/>
+		<result property="actaNotaria" column="ACTA_NOTARIA"/>
+		<result property="actaFecha" column="ACTA_FECHA"/>
+		<result property="actaNotario" column="ACTA_NOTARIO"/>
+		<result property="actaCiudad" column="ACTA_CIUDAD"/>
+		<result property="actaEstado" column="ACTA_ESTADO"/>	
 	</resultMap>
 	
 	<resultMap id="ejecutivoResult" type="Ejecutivo">
@@ -56,6 +82,10 @@
 		select * from "INTERMEDIARIA" where "ID_INTERMEDIARIA"=#{idIntermediaria} 	
 	</select> 
 	
+	<select id="selectPatrona" parameterType="int" resultMap="patronaResult" resultType="Patrona">		 
+		select * from "PATRONA" where "ID_PATRONA"=#{idPatrona} 	
+	</select> 
+	
 	<select id="selectEjecutivo" parameterType="int" resultMap="ejecutivoResult" resultType="Ejecutivo">		 
 		select * from "EJECUTIVO" where "ID_EJECUTIVO"=#{idEjecutivo} 	
 	</select> 
@@ -69,6 +99,17 @@
 		select * from "TIPO_CALENDARIO" where "ID_CALENDARIO"=#{idCalendario} 	
 	</select> 
 
+	<!-- Select para obtener la Nomina por idNomina -->
+	<select id="obtenerNominaById" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
+		select * from "NOMINA" where "ID_NOMINA"=#{idNomina} 	
+	</select>
+	
+	<!-- Select para obtener la lista de todos las Nominas registradas -->
+		<select id="obtenerNominas" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
+		select * from "NOMINA" 	where "ID_CALENDARIO"= 1 AND "ID_ESQUEMA"= 1 AND "ID_INTERMEDIARIA"= 1
+	</select>  
+
+	<!-- Insert para guardar Nomina-->
 	<insert id="agregarNomina" parameterType="Nomina" keyProperty="id">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
   		   	SELECT nextVal('sec_nomina')
@@ -80,11 +121,25 @@
             "PROVISION_VACACIONES", "PROVISION_PRIMA_VACACIONAL", "DIAS_AGUINALDO", 
             "PORC_PRIMA_VACACIONAL", "FONDO_AHORRO", "FACTURA_SUBSIDIO", 
             "IVA_EXENTO", "RECONOCE_ANTIGUEDAD", "COMISION_COST_SOCIAL", 
-            "TIPO_PAGO", "CLASE_RIESGO", "REGISTRO_PATRONAL", "PERIODICIDAD")
+            "TIPO_PAGO", "CLASE_RIESGO", "REGISTRO_PATRONAL", "PERIODICIDAD", "TIPO_CALENDARIO")
    	 	VALUES (#{id}, 1, 1, 1, 1, 1, #{nombreCorto},  #{provisionAguinaldo},  #{provisionVacaciones}, 
             #{provisionPrimaVacacional}, #{diasAguinaldo}, #{porcPrimaVacacional}, #{fondoAhorro}, 
             #{facturaSubsidio}, #{ivaExento}, #{reconoceAntiguedad}, 
             #{comisionCostSocial}, #{tipoPago}, #{claseRiesgo}, 
-            #{registroPatronal}, #{periodicidad});	
+            #{registroPatronal}, #{periodicidad}, #{tipoCalendario.tipoCalendario});	
 	</insert>
+	
+<!-- Update para actualizar la Nomina seleccionada --> 
+<update id="actualizarNomina" parameterType="Nomina">
+	UPDATE "NOMINA"
+   	SET 	"ID_PATRONA", "ID_INTERMEDIARIA", "ID_ESQUEMA", "ID_EJECUTIVO", 
+            "ID_CALENDARIO", "NOMBRE_CORTO"=#{nombreCorto}, "PROVISION_AGUINALDO"=#{provisionAguinaldo}, 
+            "PROVISION_VACACIONES"=#{provisionVacaciones}, "PROVISION_PRIMA_VACACIONAL"=#{provisionPrimaVacacional}, "DIAS_AGUINALDO"=#{diasAguinaldo}, 
+            "PORC_PRIMA_VACACIONAL"=#{porcPrimaVacacional}, "FONDO_AHORRO"=#{fondoAhorro}, "FACTURA_SUBSIDIO"=#{facturaSubsidio}, 
+            "IVA_EXENTO"=#{ivaExento}, "RECONOCE_ANTIGUEDAD"=#{reconoceAntiguedad}, "COMISION_COST_SOCIAL"=#{comisionCostSocial}, 
+            "TIPO_PAGO"=#{tipoPago}, "CLASE_RIESGO"=#{claseRiesgo}, "REGISTRO_PATRONAL"=#{registroPatronal}, "PERIODICIDAD"=#{periodicidad}, 
+            "TIPO_CALENDARIO"=#{tipoCalendario.tipoCalendario}
+ 	WHERE "ID_NOMINA"=#{idNomina}	
+</update>
+
 </mapper>

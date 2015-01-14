@@ -1,6 +1,6 @@
 package mx.nomina.gday.modelo;
 
-public class Esquema {
+public class Esquema extends BaseModelo{
 	
 	private int idEsquema;
 	private String nombreEsquema;

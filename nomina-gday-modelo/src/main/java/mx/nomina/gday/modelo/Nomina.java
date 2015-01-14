@@ -4,9 +4,9 @@ public class Nomina extends BaseModelo{
 	
 	private Integer idNomina;
 	private Patrona patrona;
-	private Intermediaria idIntermediaria;
+	private Intermediaria intermediaria;
 	private Esquema esquema;
-	private Ejecutivo ejecutivoUsuario;
+	private Ejecutivo ejecutivo;
 	private TipoCalendario tipoCalendario;
 	private String nombreCorto;
 	private boolean provisionAguinaldo;
@@ -29,21 +29,24 @@ public class Nomina extends BaseModelo{
 	}
 
 
+	
+
 	public Nomina(Integer idNomina, Patrona patrona,
-			Intermediaria idIntermediaria, Esquema esquema,
-			Ejecutivo ejecutivoUsuario, TipoCalendario tipoCalendario,
+			Intermediaria intermediaria, Esquema esquema,
+			Ejecutivo ejecutivo, TipoCalendario tipoCalendario,
 			String nombreCorto, boolean provisionAguinaldo,
 			boolean provisionVacaciones, boolean provisionPrimaVacacional,
-			int diasAguinaldo, boolean porcPrimaVacacional, boolean fondoAhorro,
-			boolean facturaSubsidio, boolean ivaExento,
+			int diasAguinaldo, boolean porcPrimaVacacional,
+			boolean fondoAhorro, boolean facturaSubsidio, boolean ivaExento,
 			boolean reconoceAntiguedad, boolean comisionCostSocial,
 			String tipoPago, String claseRiesgo, String registroPatronal,
 			String periodicidad) {
+		super();
 		this.idNomina = idNomina;
 		this.patrona = patrona;
-		this.idIntermediaria = idIntermediaria;
+		this.intermediaria = intermediaria;
 		this.esquema = esquema;
-		this.ejecutivoUsuario = ejecutivoUsuario;
+		this.ejecutivo = ejecutivo;
 		this.tipoCalendario = tipoCalendario;
 		this.nombreCorto = nombreCorto;
 		this.provisionAguinaldo = provisionAguinaldo;
@@ -61,6 +64,8 @@ public class Nomina extends BaseModelo{
 		this.registroPatronal = registroPatronal;
 		this.periodicidad = periodicidad;
 	}
+
+
 
 
 	public Integer getIdNomina() {
@@ -83,13 +88,13 @@ public class Nomina extends BaseModelo{
 	}
 
 
-	public Intermediaria getIdIntermediaria() {
-		return idIntermediaria;
+	public Intermediaria getIntermediaria() {
+		return intermediaria;
 	}
 
 
-	public void setIdIntermediaria(Intermediaria idIntermediaria) {
-		this.idIntermediaria = idIntermediaria;
+	public void setIntermediaria(Intermediaria intermediaria) {
+		this.intermediaria = intermediaria;
 	}
 
 
@@ -103,13 +108,13 @@ public class Nomina extends BaseModelo{
 	}
 
 
-	public Ejecutivo getEjecutivoUsuario() {
-		return ejecutivoUsuario;
+	public Ejecutivo getEjecutivo() {
+		return ejecutivo;
 	}
 
 
-	public void setEjecutivoUsuario(Ejecutivo ejecutivoUsuario) {
-		this.ejecutivoUsuario = ejecutivoUsuario;
+	public void setEjecutivo(Ejecutivo ejecutivo) {
+		this.ejecutivo = ejecutivo;
 	}
 
 

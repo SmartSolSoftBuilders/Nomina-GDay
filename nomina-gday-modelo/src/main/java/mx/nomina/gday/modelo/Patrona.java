@@ -1,23 +1,22 @@
 package mx.nomina.gday.modelo;
 
-public class Patrona {
+public class Patrona extends BaseModelo{
 	
-	private int idPatrona;
+	private Integer idPatrona;
 	private String razonSocial;
 	private String nombreCorto;
 	private boolean esIntermediaria;
 	private String tipoRegimen;
-	private int folioMercantil;
+	private Integer folioMercantil;
 	private String calleFiscal;
 	private String coloniaFiscal;
-	private int numExteriorFiscal;
-	private int numInteriorFiscal;
-	private int cpFiscal;
+	private Integer numExteriorFiscal;
+	private Integer numInteriorFiscal;
+	private Integer cpFiscal;
 	private String municipioFiscal;
 	private String estadoFiscal;
-	private int fiscalNumPago;
-	private int telContacto;
-	private String domVirtuales;
+	private Integer fiscalNumPago;
+	private Integer telContacto;
 	private float actaNumero;
 	private float actaNotaria;
 	private String actaFecha;
@@ -28,16 +27,16 @@ public class Patrona {
 	
 	public Patrona(){
 	}
-	
-	
-	public Patrona(int idPatrona, String razonSocial, String nombreCorto,
-			boolean esIntermediaria, String tipoRegimen, int folioMercantil,
-			String calleFiscal, String coloniaFiscal, int numExteriorFiscal,
-			int numInteriorFiscal, int cpFiscal, String municipioFiscal,
-			String estadoFiscal, int fiscalNumPago, int telContacto,
-			String domVirtuales, float actaNumero, float actaNotaria,
-			String actaFecha, float actaNotario, String actaCiudad,
-			String actaEstado) {
+
+
+	public Patrona(Integer idPatrona, String razonSocial, String nombreCorto,
+			boolean esIntermediaria, String tipoRegimen,
+			Integer folioMercantil, String calleFiscal, String coloniaFiscal,
+			Integer numExteriorFiscal, Integer numInteriorFiscal,
+			Integer cpFiscal, String municipioFiscal, String estadoFiscal,
+			Integer fiscalNumPago, Integer telContacto, float actaNumero,
+			float actaNotaria, String actaFecha, float actaNotario,
+			String actaCiudad, String actaEstado) {
 		super();
 		this.idPatrona = idPatrona;
 		this.razonSocial = razonSocial;
@@ -54,7 +53,6 @@ public class Patrona {
 		this.estadoFiscal = estadoFiscal;
 		this.fiscalNumPago = fiscalNumPago;
 		this.telContacto = telContacto;
-		this.domVirtuales = domVirtuales;
 		this.actaNumero = actaNumero;
 		this.actaNotaria = actaNotaria;
 		this.actaFecha = actaFecha;
@@ -62,141 +60,215 @@ public class Patrona {
 		this.actaCiudad = actaCiudad;
 		this.actaEstado = actaEstado;
 	}
-	
-	
-	public int getIdPatrona() {
+
+
+	public Integer getIdPatrona() {
 		return idPatrona;
 	}
-	public void setIdPatrona(int idPatrona) {
+
+
+	public void setIdPatrona(Integer idPatrona) {
 		this.idPatrona = idPatrona;
 	}
+
+
 	public String getRazonSocial() {
 		return razonSocial;
 	}
+
+
 	public void setRazonSocial(String razonSocial) {
 		this.razonSocial = razonSocial;
 	}
+
+
 	public String getNombreCorto() {
 		return nombreCorto;
 	}
+
+
 	public void setNombreCorto(String nombreCorto) {
 		this.nombreCorto = nombreCorto;
 	}
+
+
 	public boolean isEsIntermediaria() {
 		return esIntermediaria;
 	}
+
+
 	public void setEsIntermediaria(boolean esIntermediaria) {
 		this.esIntermediaria = esIntermediaria;
 	}
+
+
 	public String getTipoRegimen() {
 		return tipoRegimen;
 	}
+
+
 	public void setTipoRegimen(String tipoRegimen) {
 		this.tipoRegimen = tipoRegimen;
 	}
-	public int getFolioMercantil() {
+
+
+	public Integer getFolioMercantil() {
 		return folioMercantil;
 	}
-	public void setFolioMercantil(int folioMercantil) {
+
+
+	public void setFolioMercantil(Integer folioMercantil) {
 		this.folioMercantil = folioMercantil;
 	}
+
+
 	public String getCalleFiscal() {
 		return calleFiscal;
 	}
+
+
 	public void setCalleFiscal(String calleFiscal) {
 		this.calleFiscal = calleFiscal;
 	}
+
+
 	public String getColoniaFiscal() {
 		return coloniaFiscal;
 	}
+
+
 	public void setColoniaFiscal(String coloniaFiscal) {
 		this.coloniaFiscal = coloniaFiscal;
 	}
-	public int getNumExteriorFiscal() {
+
+
+	public Integer getNumExteriorFiscal() {
 		return numExteriorFiscal;
 	}
-	public void setNumExteriorFiscal(int numExteriorFiscal) {
+
+
+	public void setNumExteriorFiscal(Integer numExteriorFiscal) {
 		this.numExteriorFiscal = numExteriorFiscal;
 	}
-	public int getNumInteriorFiscal() {
+
+
+	public Integer getNumInteriorFiscal() {
 		return numInteriorFiscal;
 	}
-	public void setNumInteriorFiscal(int numInteriorFiscal) {
+
+
+	public void setNumInteriorFiscal(Integer numInteriorFiscal) {
 		this.numInteriorFiscal = numInteriorFiscal;
 	}
-	public int getCpFiscal() {
+
+
+	public Integer getCpFiscal() {
 		return cpFiscal;
 	}
-	public void setCpFiscal(int cpFiscal) {
+
+
+	public void setCpFiscal(Integer cpFiscal) {
 		this.cpFiscal = cpFiscal;
 	}
+
+
 	public String getMunicipioFiscal() {
 		return municipioFiscal;
 	}
+
+
 	public void setMunicipioFiscal(String municipioFiscal) {
 		this.municipioFiscal = municipioFiscal;
 	}
+
+
 	public String getEstadoFiscal() {
 		return estadoFiscal;
 	}
+
+
 	public void setEstadoFiscal(String estadoFiscal) {
 		this.estadoFiscal = estadoFiscal;
 	}
-	public int getFiscalNumPago() {
+
+
+	public Integer getFiscalNumPago() {
 		return fiscalNumPago;
 	}
-	public void setFiscalNumPago(int fiscalNumPago) {
+
+
+	public void setFiscalNumPago(Integer fiscalNumPago) {
 		this.fiscalNumPago = fiscalNumPago;
 	}
-	public int getTelContacto() {
+
+
+	public Integer getTelContacto() {
 		return telContacto;
 	}
-	public void setTelContacto(int telContacto) {
+
+
+	public void setTelContacto(Integer telContacto) {
 		this.telContacto = telContacto;
 	}
-	public String getDomVirtuales() {
-		return domVirtuales;
-	}
-	public void setDomVirtuales(String domVirtuales) {
-		this.domVirtuales = domVirtuales;
-	}
+
+
 	public float getActaNumero() {
 		return actaNumero;
 	}
+
+
 	public void setActaNumero(float actaNumero) {
 		this.actaNumero = actaNumero;
 	}
+
+
 	public float getActaNotaria() {
 		return actaNotaria;
 	}
+
+
 	public void setActaNotaria(float actaNotaria) {
 		this.actaNotaria = actaNotaria;
 	}
+
+
 	public String getActaFecha() {
 		return actaFecha;
 	}
+
+
 	public void setActaFecha(String actaFecha) {
 		this.actaFecha = actaFecha;
 	}
+
+
 	public float getActaNotario() {
 		return actaNotario;
 	}
+
+
 	public void setActaNotario(float actaNotario) {
 		this.actaNotario = actaNotario;
 	}
+
+
 	public String getActaCiudad() {
 		return actaCiudad;
 	}
+
+
 	public void setActaCiudad(String actaCiudad) {
 		this.actaCiudad = actaCiudad;
 	}
+
+
 	public String getActaEstado() {
 		return actaEstado;
 	}
+
+
 	public void setActaEstado(String actaEstado) {
 		this.actaEstado = actaEstado;
-	}
-	
-	
+	}		
 
 }

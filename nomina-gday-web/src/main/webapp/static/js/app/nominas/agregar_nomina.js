@@ -10,7 +10,7 @@ function guardarNomina() {
 					"provisionAguinaldo" : $("#provisionAguinaldo").val(),
 					"provisionVacaciones" : $("#provisionVacaciones").val(),
 					"provisionPrimaVac" : $("#provisionPrimaVac").val(),
-					"primaVacacional" : $("#primaVacacional").val(),
+					"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
 					"fondoDeAhorro" : $("#fondoDeAhorro").val(),
 					"ivaExcento" : $("#ivaExcento").val(),
 					"comisionCostoSocial" : $("#comisionCostoSocial").val(),
@@ -18,6 +18,7 @@ function guardarNomina() {
 					"claseRiesgo" : $("#claseRiesgo").val(),
 					"registroPatronal" : $("#registroPatronal").val(),
 					"periodicidad" : $("#periodicidad").val(),
+					"tipoCalendario.tipoCalendario" : $("#tipoCalendario").val(),
 					},
 				
 				dataType : 'json',

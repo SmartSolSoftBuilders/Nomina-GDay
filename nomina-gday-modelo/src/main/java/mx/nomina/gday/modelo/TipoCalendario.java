@@ -1,6 +1,6 @@
 package mx.nomina.gday.modelo;
 
-public class TipoCalendario {
+public class TipoCalendario extends BaseModelo{
 
 	private int idCalendario;
 	private String tipoCalendario;
@@ -19,9 +19,11 @@ public class TipoCalendario {
 		this.siglas = siglas;
 		this.pr = pr;
 	}
+
 	public int getIdCalendario() {
 		return idCalendario;
 	}
+
 	public void setIdCalendario(int idCalendario) {
 		this.idCalendario = idCalendario;
 	}

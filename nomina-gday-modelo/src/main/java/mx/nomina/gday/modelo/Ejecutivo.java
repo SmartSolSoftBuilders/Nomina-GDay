@@ -1,6 +1,6 @@
 package mx.nomina.gday.modelo;
 
-public class Ejecutivo {
+public class Ejecutivo extends BaseModelo  {
 
 	private int idEjecutivo;
 	private String nombreEjecutivo;

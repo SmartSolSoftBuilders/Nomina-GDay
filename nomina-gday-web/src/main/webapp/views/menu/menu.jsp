@@ -47,12 +47,14 @@
 						<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DE DATOS <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <!-- <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >RAZONES SOCIALES</a></li>
+                <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >RAZONES SOCIALES</a></li>
                 <li><a href="../grupos/grupos.jsp" target="main" >GRUPOS</a></li>
                 <li><a href="../grupos/agregar_grupo.jsp" target="main" >CREAR GRUPO</a></li>                
-                <li><a href="../razones_sociales/actualizar_razonsocial.jsp" target="main" >MODIFICAR RAZON SOCIAL</a></li> -->                
-                <li><a href="../nominas/agregar_nomina.jsp" target="main" >CREAR NOMINA</a></li>                
-
+                <li><a href="../razones_sociales/actualizar_razonsocial.jsp" target="main" >MODIFICAR RAZON SOCIAL</a></li>                
+                <li><a href="../razones_sociales/agregar_razonsocial.jsp" target="main" >CREAR RS</a></li>                
+               <!--  <li><a href="../nominas/agregar_nomina.jsp" target="main" >CREAR NOMINA</a></li>                
+                <li><a href="../nominas/nominas.jsp" target="main" >CONSULTAR NOMINA</a></li>                
+ -->
               </ul>
             </li>
 			<li><a href="gformato.html" target="ventana" style="color:#FFFFFF">GESTOR DE FORMATOS</a></li>

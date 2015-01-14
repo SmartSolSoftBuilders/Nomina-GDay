@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <title>grupo day</title>
 
-<script type="text/javascript" language="javascript" src="../../static/js/app/nominas/agregar_nomina.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
+  <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
+  <script type="text/javascript" language="javascript" src="../../static/js/app/nominas/actualizar_nomina.js"></script>
   
 	<script src="../../static/js/bootstrap.min.js"></script>
 	<script src="../../static/js/modal.js"></script>
@@ -31,6 +31,7 @@
 <link href="../../static/css/styles.css" rel="stylesheet">
 <link href="../../static/css/multiple-select.css" rel="stylesheet">
 <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+
 
 </head>
 <body>
@@ -62,23 +63,23 @@
 					 		</select></td>
 					 	</tr>					 	
 					 	<tr>
-					 		<td>PATRONA<textarea id='patrona' name='patrona' type="text" class="form-control"></textarea></td>					 	
+					 		<td>PATRONA<textarea id='patrona' name='patrona' type="text" class="form-control"></textarea></td>
+					 		<input id='patronaIdSel' name='patronaIdSel' type="hidden" class="form-control"></td>					 	
+					 							 	
 					 	</tr>
 					 	<tr>
 					 		<td>EJECUTIVO</td>
 							 	<td><select id='ejecutivo' name='ejecutivo' type="text" class="form-control">
-		  							<option>Alejandro Lara Mendoza</option>
-		  							<option>Erika Gutierrez Morales</option>
-		  							<option>Ramon Suarez Herrera</option>
-								</select></td>					 	
+		  							
+								</select></td>
+													 	
 					 	</tr>
 					 	<tr>
 					 		<td>ESQUEMA</td>
 					 		<td><select id='esquema' name='esquema' type="text" class="form-control">
-		  							<option>Sindicato Uno</option>
-		  							<option>Sindicato Dos</option>
-		  							<option>Sindicato Tres</option>
-							</select></td>					 	
+		  						
+							</select></td>	
+											 	
 					 	</tr>
 					 	<tr>
 					 		<td>PROVISION AGINALDO<input id='provisionAguinaldo' name='provisionAguinaldo' type="checkbox" class="form-control"></td>					 	
@@ -108,7 +109,6 @@
 					 		<td><select id='tipoPago' name='tipoPago' type="text" class="form-control">
 		  							<option>Neto</option>
 		  							<option>Bruto</option>
-		  							<option>Sindicato Tres</option>
 							</select></td>					 	
 					 	</tr>
 					 	<tr>
@@ -140,18 +140,13 @@
 		  							<option>Semanal</option>
 		  							<option>Diario</option>
 		  							<option>Mensual</option>
-							</select></td>					 	
+							</select></td>
+							<input id='tipoCalendarioIdSel' name='tipoCalendarioIdSel' type="hidden" class="form-control"></td>					 	
 					 	</tr>
 				
 					 	</table>
 				<br>
-				<br>
-			<!-- /.col-lg-6 -->						
-				 <div class="input-group">      
-			     	 <span class="input-group-btn">
-			        	<button type="button" class="btn btn-default" onclick="guardarNomina();">CREAR</button>
-			     	 </span>			    
-   		 		</div><!-- /input-group -->
+				<br>						
 				</div>
 			</div>
 			</div>
