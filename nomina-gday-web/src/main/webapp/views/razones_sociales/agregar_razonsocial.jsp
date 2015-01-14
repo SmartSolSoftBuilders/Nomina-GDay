@@ -53,7 +53,7 @@
 						<tr>					 	
 					 		<td>CODIGO DE CLIENTE<input id='codCliente' name='codCliente' type="text" class="form-control"></td>					 	
 						 	<td width="5%"></td>
-					 		<td>GRUPO<input id='grupo' name='grupo' type="text" class="form-control" onclick="showGrupos()">
+					 		<td>GRUPO<input id='grupo' readonly=true name='grupo' type="text" class="form-control" onclick="showGrupos()">
 					 		<input id='grupoIdSel' name='grupoIdSel' type="hidden" class="form-control"></td>						 	
 					 	</tr>
 					 	<tr>
