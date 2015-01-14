@@ -66,7 +66,8 @@ public class RazonSocialController {
 		    public boolean guardarRazonSocial(@ModelAttribute(value="razonsocial") RazonSocial razonSocial){
 		  		try {
 					
-		  			System.out.println("Guardando razon social"+ razonSocial);
+		  			System.out.println("Guardando razon social"+ razonSocial.getNombreCortoRazonS());
+		  			System.out.println("Guardando razon social"+ razonSocial.getCodCliente());
 		  			System.out.println(razonSocial.getJsonString());
 
 		  			//razonSocial.setJsonString("{\"referenciantes\":[{ \"idReferenciante\": 1, \"nombreReferenciante\": \"GABY VAZQUEZ\" },{ \"idReferenciante\": 2,\"nombreReferenciante\": \"GABY VAZQUEZ\" }]}");

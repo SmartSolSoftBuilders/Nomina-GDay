@@ -1,3 +1,6 @@
+//*******************************************************************************
+//Obtener el idNomina por parametros en la url, que se manda desde el controller
+//*******************************************************************************
 function getParameter(parameter){
 	// Obtiene la cadena completa de URL
 	var url = location.href;
@@ -18,6 +21,9 @@ function getParameter(parameter){
 	}
 } 
 
+//*******************************************************************************
+//Function que obtiene los datos de la BD que se agregan a los combos del SELECT
+//*******************************************************************************
 $(document).ready(function() {
 	$.ajax({
 		sync:true,
@@ -49,12 +55,17 @@ $(document).ready(function() {
 			}		
 	});		
 	
+	//manda el parametro idNomina y llama a la function obtenerNomina()
 	var idNomina=getParameter("id");
 	console.log(idNomina);
 	obtenerNomina(idNomina);
 	
 });
 
+//*******************************************************************************
+//Function que obtiene la nomina por idNomina y llama a la function 
+//muestraDatos()
+//*******************************************************************************
 function obtenerNomina(idNomina){
 	console.log ("Obtener Nomina por id"+ idNomina);
 	$.ajax({
@@ -75,10 +86,11 @@ function obtenerNomina(idNomina){
 		$("#resultadoGuardar").html("Error");
 		}		
 	});		
-	
-	//$("#divGrupos").dialog({close: function(event, ui) { window.location.reload(); }});
 }
 
+//*******************************************************************************
+//Function que obtiene los datos registrados de la Nomina para modificarlos 
+//*******************************************************************************
 function muestraDatosNomina(datos){
 	console.log ("success");
 	console.log (datos);
@@ -106,6 +118,9 @@ function muestraDatosNomina(datos){
 
 }
 
+//*******************************************************************************
+//Function que actualiza la Nomina con los datos modificados 
+//*******************************************************************************
 function actualizarNomina() {
 			$
 			.ajax({

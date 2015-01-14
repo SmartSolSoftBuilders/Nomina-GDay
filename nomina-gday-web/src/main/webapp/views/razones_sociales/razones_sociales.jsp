@@ -21,7 +21,7 @@
 		</script>
 	</head>
 	<body id="dt_example">
-		<div id="progressbar">Cargando (75%)...</div>	
+		<div id="progressbar" >Cargando (75%)...</div>	
 		<div id="container" class="mayuscula">
 			<h1>Razones Sociales</h1>		
 			<div id="demo">
@@ -51,7 +51,7 @@
 			<br>
 			<br>		
 			<div align="center">
-				<input type="button" value="Añadir"/>
+				<input type="button" value="Añadir" onclick="showAgregarRazonSocial();"/>
 				<input type="button" value="Buscar"/>
 				<input type="button" value="Exportar"/>
 				<input type="button" value="Nominas"/>

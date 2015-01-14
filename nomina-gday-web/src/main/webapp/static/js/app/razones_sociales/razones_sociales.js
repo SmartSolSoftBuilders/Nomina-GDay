@@ -28,3 +28,8 @@ $(document).ready(function() {
 function showEditarRazonSocial(idRazonSocial){
 	top.frames['main'].location="../razones_sociales/actualizar_razonsocial.jsp?id="+idRazonSocial; 	
 }
+
+function showAgregarRazonSocial(){
+	top.frames['main'].location="../razones_sociales/agregar_razonsocial.jsp"; 	
+}
+

@@ -30,3 +30,7 @@ $(document).ready(function() {
 function showEditarNomina(idNomina){
 	top.frames['main'].location="../nominas/actualizar_nomina.jsp?id="+idNomina; 	
 }
+
+function showAgregarNomina(){
+	top.frames['main'].location="../nominas/agregar_nomina.jsp"; 	
+}

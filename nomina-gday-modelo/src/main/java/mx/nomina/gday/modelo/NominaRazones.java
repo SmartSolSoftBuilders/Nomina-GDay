@@ -1,6 +1,6 @@
 package mx.nomina.gday.modelo;
 
-public class NominaRazones {
+public class NominaRazones extends BaseModelo{
 	
 	private Nomina nomina;
 	private RazonSocial razonSocial;

@@ -64,6 +64,9 @@ function guardarRazonSocial() {
 			.ajax({
 				data : {
 					"nombreRazonSocial" : $("#nombreRazonSocial").val(),
+					"nombreCortoRazonS" : $("#nombreCorto").val(),
+					"rfc" : $("#rfc").val(),
+					"codCliente" : $("#codCliente").val(),
 					"grupo.idGrupo" : $("#grupoIdSel").val(),
 					"comision" : $("#comision").val(),
 					"objetoSocial" : $("#objetoSocial").val(),
@@ -98,10 +101,14 @@ function guardarRazonSocial() {
 				beforeSend : function() {
 				},
 				success : function(response) {
+					console.log("response");
+					console.log(response);
 					$("#resultadoGuardar")
 							.html(alert("La cotizaci\u00f3n se guard\u00f3 correctamente"));
 				},
 				error : function(response) {
+					console.log("response");
+					console.log(response);
 					$("#resultadoGuardar").html();
 				}
 			});

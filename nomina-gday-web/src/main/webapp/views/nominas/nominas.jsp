@@ -54,9 +54,9 @@
 			<br>
 			<br>		
 			<div align="center">
+				<input type="button" value="Añadir Nomina" onclick="showAgregarNomina();"/>
 				<input type="button" value="Empleados"/>
 				<input type="button" value="Exportar"/>
-				<input type="button" value="Crear"/>
 			</div>
 			<br>
 			<br>
