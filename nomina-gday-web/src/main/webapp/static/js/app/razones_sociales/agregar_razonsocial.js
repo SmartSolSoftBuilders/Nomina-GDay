@@ -57,14 +57,14 @@ function getReferenciantes(){
 }
 function guardarRazonSocial() {
 	console.log ("OK"+$("#nombreRazonSocial").val());
-
+ //
 	
 //	console.log(JSON.stringify(referenciantesTmp)); 
 		$
 			.ajax({
 				data : {
 					"nombreRazonSocial" : $("#nombreRazonSocial").val(),
-					"grupo.idGrupo" : $("#grupo").val(),
+					"grupo.idGrupo" : $("#grupoIdSel").val(),
 					"comision" : $("#comision").val(),
 					"objetoSocial" : $("#objetoSocial").val(),
 					"actConstitutiva" : $("#actaConst").val(),					
