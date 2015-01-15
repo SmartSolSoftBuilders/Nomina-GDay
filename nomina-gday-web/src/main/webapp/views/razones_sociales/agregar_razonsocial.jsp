@@ -5,22 +5,14 @@
 <meta charset="utf-8">
 <title>grupo day</title>
 
-<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/agregar_razonsocial.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="../../static/js/libs/js/jquery.validate.js"></script>
+
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
+ <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
   
 	<script src="../../static/js/bootstrap.min.js"></script>
-	<script src="../../static/js/modal.js"></script>
-	<script>
-        $(function() {
-            Example.init({
-                "selector": ".bb-alert"
-            });
-        });
-    </script>
-
 	<!-- bootbox code -->
 	<script src="../../static/js/bootbox.js"></script>
 
@@ -31,16 +23,18 @@
 <link href="../../static/css/styles.css" rel="stylesheet">
 <link href="../../static/css/multiple-select.css" rel="stylesheet">
 <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
+<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/agregar_razonsocial.js"></script>
 <body>
+	
 	<div class="container">
 		<div class="text-center col-lg-12">
+			    <h2 style="color:#0051a4">Sistema de Gestión de Información <br>para Esquema de Pago de Nómina</h2><br><br>
 			<div class="row">
 				<div class="col-lg-6" align="center">
+				<form  id="agregarRazonSocialForm" name="agregarRazonSocialForm" novalidate="novalidate">					
 					<table>
 					 	<tr>
-					 		<td>RAZON SOCIAL<input id='nombreRazonSocial' name='nombreRazonSocial' type="text" class="form-control" size=50></td>
+					 		<td>RAZON SOCIAL<input id='nombreRazonSocial' name='nombreRazonSocial' type="text" class="form-control" size=50 required /></td>
 					 	</tr>
 					 </table>
 					 <table border="2">
@@ -61,11 +55,6 @@
 					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control">
 					 		<button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>					 		
 					 		<select id="selectMult" multiple="multiple">
-					 			<option value="1">Miguel Gutierrez Perez</option>
-					 			<option value="2">Rafael Mora Moran</option>
-					 			<option value="3">Ricardo Perez Perez</option>
-					 			<option value="4">Veronica Orduña Contreras</option>
-					 			<option value="5">Monica Herrera Fernandez</option>
 					 		</select>
 					 	</tr>					 	
 					 	<tr>
@@ -145,19 +134,20 @@
 					 		<td>TELEFONO<input id='telefonoContTres' name='telefonoContTres' type="text" class="form-control"></td>					 	
 					 		<td>CORREO<input id='correoContTres' name='correoContTres' type="text" class="form-control"></td>					 	
 					 	</tr>
-					</table>
+						</table>
 				<br>
 				<br>
-			<!-- /.col-lg-6 -->						
 				 <div class="input-group">      
 			     	 <span class="input-group-btn">
 			        	<button type="button" class="btn btn-default" onclick="guardarRazonSocial();">AÑADIR</button>
 			     	 </span>			    
-   		 		</div><!-- /input-group -->
 				</div>
+				</form>
 			</div>
-			</div>
+		</div>
 	  </div>
+	</form>
+	  
 	<div id='resultadoGuardar'></div>
 	<div id="divGrupos" title="Basic dialog" style="display:none">
 		<div id="container" class="mayuscula">
@@ -179,7 +169,6 @@
 					</tbody>
 					</thead>
 					</table>
-				</form>
 			</div>
 			
 			</div>

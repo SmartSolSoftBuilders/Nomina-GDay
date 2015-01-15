@@ -1,3 +1,31 @@
+$( document ).ready(function() {
+ 
+    // Setup form validation on the #register-form element
+    $("#agregarRazonSocialForm").validate({
+    
+        // Specify the validation rules
+        rules: {
+        	nombreRazonSocial: "required",
+        	rfc: "required",
+            /*email: {
+                required: true,
+                email: true
+            },*/
+        },
+        
+        // Specify the validation error messages
+        messages: {
+            nombreRazonSocial: "Ingrese el nombre de la Razón Social",
+            rfc:"Ingrese el campo RFC"
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+  });
+
 function seleccionarGrupo (id,txt){
 	$("#grupo").val(txt);
 	$("#grupoIdSel").val(id);
@@ -39,12 +67,13 @@ function showGrupos(){
 function getReferenciantes(){
 	var jsonString ="{\"referenciantes\":[";
 	var renglonJson="";
+	var index=0;
 	$('select#selectMult').find('option').each(function() {
 		console.log($(this));
 		console.log($(this).val());
 		console.log($(this)[0].innerHTML);
 		var txt=$(this).text(); var id=$(this).attr('value');
-		renglonJson=renglonJson+"{ \"idReferenciante\":"+id+", \"nombreReferenciante\": \""+txt+"\" }";
+		renglonJson=renglonJson+"{ \"idReferenciante\":"+(index++)+", \"nombreReferenciante\": \""+txt+"\" }";
 		jsonString=jsonString+renglonJson;
 		renglonJson=",";
 
@@ -56,10 +85,8 @@ function getReferenciantes(){
 	return jsonString;
 }
 function guardarRazonSocial() {
+	if ($("#agregarRazonSocialForm").valid()){
 	console.log ("OK"+$("#nombreRazonSocial").val());
- //
-	
-//	console.log(JSON.stringify(referenciantesTmp)); 
 		$
 			.ajax({
 				data : {
@@ -101,19 +128,14 @@ function guardarRazonSocial() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					console.log("response");
-					console.log(response);
 					$("#resultadoGuardar")
 							.html(alert("La cotizaci\u00f3n se guard\u00f3 correctamente"));
 				},
 				error : function(response) {
-					console.log("response");
-					console.log(response);
 					$("#resultadoGuardar").html();
 				}
 			});
 		}
 
-
-		
+	}	
 		
