@@ -6,20 +6,14 @@
 <title>grupo day</title>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="../../static/js/libs/js/jquery.validate.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
-  <script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/actualizar_razonsocial.js"></script>
   
   <script src="../../static/js/bootstrap.min.js"></script>
   <script src="../../static/js/modal.js"></script>
-  <script>
-        $(function() {
-            Example.init({
-                "selector": ".bb-alert"
-            });
-        });
-  </script>
 
 	<!-- bootbox code -->
   <script src="../../static/js/bootbox.js"></script>
@@ -27,6 +21,7 @@
 	<!-- put all demo code in one place -->
   <script src="../../static/js/control.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/actualizar_razonsocial.js"></script>
 
 <link href="../../static/css/styles.css" rel="stylesheet">
 <link href="../../static/css/multiple-select.css" rel="stylesheet">
@@ -39,6 +34,7 @@
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">
+					<form  id="editarRazonSocialForm" name="editarRazonSocialForm" novalidate="novalidate">
 					<table>
 					 	<tr>
 					 		<td>RAZON SOCIAL<input id='nombreRazonSocial' name='nombreRazonSocial' type="text" class="form-control"></td>
@@ -153,6 +149,7 @@
 			        	<button type="button" class="btn btn-default" onclick="actualizarRazonSocial();">MODIFICAR</button>
 			     	 </span>			    
    		 		</div><!-- /input-group -->
+   		 		</form>
 				</div>
 			</div>
 			</div>
