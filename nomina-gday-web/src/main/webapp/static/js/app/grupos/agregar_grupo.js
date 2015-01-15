@@ -1,6 +1,4 @@
 function guardarGrupo() {
-	console.log ($("#nombre").val());
-	console.log ($("#nombreCorto").val());
 		$
 			.ajax({
 				data : {

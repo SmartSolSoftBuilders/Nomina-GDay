@@ -1,6 +1,35 @@
+$( document ).ready(function() {
+ 
+    // Setup form validation on the #register-form element
+    $("#agregarRazonSocialForm").validate({
+    
+        // Specify the validation rules
+        rules: {
+        	nombreRazonSocial: "required",
+        	rfc: "required",
+            /*email: {
+                required: true,
+                email: true
+            },*/
+        },
+        
+        // Specify the validation error messages
+        messages: {
+            nombreRazonSocial: "Ingrese el nombre de la Razón Social",
+            rfc:"Ingrese el campo RFC"
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+  });
+
 function seleccionarGrupo (id,txt){
 	$("#grupo").val(txt);
 	$("#grupoIdSel").val(id);
+	$("#divGrupos").dialog("close");
 }
 
 function agregarReferenciante(){
@@ -24,7 +53,7 @@ function showGrupos(){
 		      value: 75
 		    });	
         $( "#demo" ).hide();
-		},
+		}, 
 		success:  function (response) {
 			$("#demo").show();
 			$("#progressbar").hide();
@@ -32,15 +61,40 @@ function showGrupos(){
 			//setData(response);
 		}
 	});
-		$("#divGrupos").dialog();
+	$("#divGrupos").dialog(({show: "slide", modal: true, width:700, height:600,
+		autoOpen: true}));
 	}
+function getReferenciantes(){
+	var jsonString ="{\"referenciantes\":[";
+	var renglonJson="";
+	var index=0;
+	$('select#selectMult').find('option').each(function() {
+		console.log($(this));
+		console.log($(this).val());
+		console.log($(this)[0].innerHTML);
+		var txt=$(this).text(); var id=$(this).attr('value');
+		renglonJson=renglonJson+"{ \"idReferenciante\":"+(index++)+", \"nombreReferenciante\": \""+txt+"\" }";
+		jsonString=jsonString+renglonJson;
+		renglonJson=",";
+
+	});
+	jsonString=jsonString+"]}";
+	console.log("JSON STRING");
+	console.log(jsonString);
+	
+	return jsonString;
+}
 function guardarRazonSocial() {
-	console.log ($("#nombreRazonSocial").val());
+	if ($("#agregarRazonSocialForm").valid()){
+	console.log ("OK"+$("#nombreRazonSocial").val());
 		$
 			.ajax({
 				data : {
 					"nombreRazonSocial" : $("#nombreRazonSocial").val(),
-					"grupo.idGrupo" : $("#grupo").val(),
+					"nombreCortoRazonS" : $("#nombreCorto").val(),
+					"rfc" : $("#rfc").val(),
+					"codCliente" : $("#codCliente").val(),
+					"grupo.idGrupo" : $("#grupoIdSel").val(),
 					"comision" : $("#comision").val(),
 					"objetoSocial" : $("#objetoSocial").val(),
 					"actConstitutiva" : $("#actaConst").val(),					
@@ -65,6 +119,7 @@ function guardarRazonSocial() {
 					"contactoTresNombre" : $("#nombreContTres").val(),
 					"contactoTresTelefono" : $("#telefonoContTres").val(),
 					"contactoTresCorreo" : $("#correoContTres").val(),
+					"jsonString": getReferenciantes(),
 				},
 				
 				dataType : 'json',
@@ -82,3 +137,5 @@ function guardarRazonSocial() {
 			});
 		}
 
+	}	
+		

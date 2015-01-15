@@ -2,24 +2,25 @@ package mx.nomina.gday.modelo;
 
 public class Intermediaria extends BaseModelo{
 	
-	private Integer idIntermediria;
+	private Integer idIntermediaria;
 	private String nombreIntermediaria;
 	
 	public Intermediaria()  {
 	
 	}
-	
-	public Intermediaria(Integer idIntermediria, String nombreIntermediaria) {
-		this.idIntermediria = idIntermediria;
+
+	public Intermediaria(Integer idIntermediaria, String nombreIntermediaria) {
+		super();
+		this.idIntermediaria = idIntermediaria;
 		this.nombreIntermediaria = nombreIntermediaria;
 	}
 
-	public Integer getIdIntermediria() {
-		return idIntermediria;
+	public Integer getIdIntermediaria() {
+		return idIntermediaria;
 	}
 
-	public void setIdIntermediria(Integer idIntermediria) {
-		this.idIntermediria = idIntermediria;
+	public void setIdIntermediaria(Integer idIntermediaria) {
+		this.idIntermediaria = idIntermediaria;
 	}
 
 	public String getNombreIntermediaria() {
@@ -29,7 +30,5 @@ public class Intermediaria extends BaseModelo{
 	public void setNombreIntermediaria(String nombreIntermediaria) {
 		this.nombreIntermediaria = nombreIntermediaria;
 	}
-	
-	
-	
+		
 }

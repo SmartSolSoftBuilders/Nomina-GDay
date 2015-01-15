@@ -47,6 +47,9 @@
 			</div>
 			<br>
 			<br>
+			<div align="center">
+				<input type="button" value="Añadir Grupo" onclick="showAgregarGrupo();"/>
+			</div>
 <!-- 			Modal para Editar Grupo -->				
 			<div class="row">
 				<div id="divGrupos" title="Basic dialog" style="display:none"  class="col-lg-6">
@@ -64,7 +67,7 @@
 			<!-- /.col-lg-6 -->						
 				 <div class="input-group">      
 			     	 <span class="input-group-btn">
-			        	<button type="button" class="btn btn-default" onclick="actualizarGrupo()">AGREGAR</button>
+			        	<button type="button" class="btn btn-default" onclick="actualizarGrupo()">MODIFICAR</button>
 			     	 </span>			    
    		 		</div><!-- /input-group -->
 				</div>

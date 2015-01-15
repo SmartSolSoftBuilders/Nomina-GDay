@@ -1,30 +1,33 @@
 package mx.nomina.gday.modelo;
 
-public class Referenciante {
+public class Referenciante extends BaseModelo {
 	
-	private int idReferenciante;
-	private String referenciante;
+	private int idReferenciante;	
+	private String nombreReferenciante;
 	
-	public Referenciante(int idReferenciante, String referenciante) {
+	public Referenciante (){
+		
+	}
+	public Referenciante(int idReferenciante, String nombreReferenciante) {
 		super();
 		this.idReferenciante = idReferenciante;
-		this.referenciante = referenciante;
+		this.nombreReferenciante = nombreReferenciante;
 	}
 
 	public int getIdReferenciante() {
-		return idReferenciante;
+		return this.idReferenciante;
 	}
 
 	public void setIdReferenciante(int idReferenciante) {
 		this.idReferenciante = idReferenciante;
 	}
 
-	public String getReferenciante() {
-		return referenciante;
+	public String getNombreReferenciante() {
+		return this.nombreReferenciante;
 	}
 
-	public void setReferenciante(String referenciante) {
-		this.referenciante = referenciante;
+	public void setNombreReferenciante(String nombreReferenciante) {
+		this.nombreReferenciante = nombreReferenciante;
 	}
 	
 	

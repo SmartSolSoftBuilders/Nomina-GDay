@@ -16,8 +16,12 @@ $(document).ready(function() {
 			$( "#demo" ).show();
 			$( "#progressbar" ).hide();
 			$('#tablaGrupo').dataTable().fnAddData(response);
-			//setData(response);
 		}	
 	});			
 
 });
+
+
+function showAgregarGrupo(){
+	top.frames['main'].location="../grupos/agregar_grupo.jsp"; 	
+}

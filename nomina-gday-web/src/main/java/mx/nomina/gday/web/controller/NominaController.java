@@ -1,6 +1,13 @@
 package mx.nomina.gday.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import mx.nomina.gday.modelo.Grupo;
 import mx.nomina.gday.modelo.Nomina;
+import mx.nomina.gday.modelo.RazonSocial;
 import mx.nomina.gday.servicios.NominaServicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +25,7 @@ public class NominaController {
 	@Autowired
 	private NominaServicio nominaServicio;
 	
-	//Controller Guardar Grupo
+	//Controller Guardar Nomina
 		 @RequestMapping(value="/guardarnomina",method = RequestMethod.POST)
 		 @ResponseBody
 		    public boolean guardarNomina(@ModelAttribute(value="nomina") Nomina nomina, BindingResult result){
@@ -27,5 +34,71 @@ public class NominaController {
 			return true;
 			 
 		 }
+		 
+		//MODIFICAR
+		 
+		//Controller que muestra la lista de Grupos y permite la Edicion del mismo
+		 @RequestMapping(value="/getnominas",method = RequestMethod.POST)
+		    @ResponseBody
+		    public List obtenerNominasaEditar(){    	
+			  System.out.println("Controller Nomina");
+			  try {
+				List<Nomina> tmp =  this.nominaServicio.obtenerNominas();
+				System.out.println("tmp"+tmp.size());
+				List nominasTmp = new ArrayList();
+				List nominasTmp2 = new ArrayList<String>();
+
+				for (int i = 0; i < tmp.size(); i++) {
+					nominasTmp2 = new ArrayList<String>();
+					System.out.println("tmp"+tmp.get(i));
+					nominasTmp2.add(tmp.get(i).getIdNomina());
+					nominasTmp2.add(tmp.get(i).getNombreCorto());
+					nominasTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
+					nominasTmp2.add(tmp.get(i).getPatrona().getNombreCorto());
+					nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreIntermediaria());
+					nominasTmp2.add(tmp.get(i).getPeriodicidad());
+					nominasTmp2.add(tmp.get(i).getTipoPago());
+					nominasTmp2.add(tmp.get(i).getClaseRiesgo());
+					nominasTmp2.add("<a href='#' onclick='showEditarNomina("+tmp.get(i).getIdNomina()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
+					nominasTmp.add(nominasTmp2);
+				}
+				return nominasTmp;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			  return null;
+			}
+
+		//Controller que permite Actualizar los datos de la Nomina a Editar
+		 @RequestMapping(value="/modificanomina",method = RequestMethod.POST)
+		    @ResponseBody
+		    public boolean modificarNomina(@ModelAttribute(value="nomina") Nomina nomina, BindingResult result,HttpServletRequest request){    	    	    	    	   
+		    
+			 try {
+				 System.out.println("Controller Actualizar Nomina"+ nomina.getIdNomina());
+					 nominaServicio.actualizarNomina(nomina);			 
+				 return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			 	return false;
+		    }
 		
+		 //Controller que permite obtener la Nomina por idNomina
+		 @RequestMapping(value="/obtenernominabyid",method = RequestMethod.POST)
+		    @ResponseBody
+		    public Nomina obtenerNominaById(@ModelAttribute(value="Nomina") Nomina nomina, BindingResult result){   
+			 	System.out.println("Nomina por id"+ nomina);
+			 	return this.nominaServicio.obtenerNominaById(nomina.getIdNomina());
+			 	
+			}	 
+		 
+		 //Obteber los datos de Ejecutivo y Esquema para el llenado de sus respectivos Combos
+		 @RequestMapping(value="/getdatoscombo",method = RequestMethod.POST)
+		    @ResponseBody
+		    public List obtenerDatosCombo(){
+			 	System.out.println("Controller Datos del combo");
+				return this.nominaServicio.obtenerDatosCombo();
+			}
 }

@@ -32,7 +32,8 @@
 		<result property="contactoTresTelefono" column="CONTACTO3_TELEFONO"/>
 		<result property="contactoTresCorreo" column="CONTACTO3_CORREO"/>
 		<result property="objetoSocial" column="OBJETO_SOCIAL"/>
-		<association property="grupo" column="ID_GRUPO" javaType="Grupo" select="selectGrupo"/>		
+		<association property="grupo" column="ID_GRUPO" javaType="Grupo" select="selectGrupo"/>
+		<collection property="referenciantes" column="ID_RAZON_SOCIAL" javaType="List" select="selectReferenciantes"/>		
 	</resultMap>
 	
 	<resultMap id="grupoResult" type="Grupo">
@@ -41,8 +42,19 @@
 		<result property="nombre" column="NOMBRE_GRUPO"/>
 	</resultMap>
 	
+	<resultMap id="referencianteResult" type="Referenciante">
+		<result property="idReferenciante" column="ID_REF"/>
+		<result property="nombreReferenciante" column="NOMBRE_REF"/>
+	</resultMap>
+	
 	<select id="selectGrupo" parameterType="int" resultMap="grupoResult" resultType="Grupo">		 
 		select * from "GRUPO" where "ID_GRUPO"=#{idGrupo} 	
+	</select> 
+	
+	<select id="selectReferenciantes" parameterType="int" resultMap="referencianteResult" resultType="Referenciante">
+		select value->>'idReferenciante' as "ID_REF",value->>'nombreReferenciante' as 
+		"NOMBRE_REF" from  "RAZON_SOCIAL", json_array_elements("REFERENCIANTES"#>'{referenciantes}') 
+		 where "ID_RAZON_SOCIAL"=#{idRazonSocial} 
 	</select> 
 	
 	<select id="obtenerRazonesSociales" resultMap="razonSocialResult" resultType="RazonSocial">
@@ -50,9 +62,9 @@
 	</select>
 	
 	<!-- Select para obtener las Razones Sociales  por id-->
-<select id="obtenerRazonSocialById" parameterType="int" resultMap="razonSocialResult">
+	<select id="obtenerRazonSocialById" parameterType="int" resultMap="razonSocialResult">
 		select * from "RAZON_SOCIAL" WHERE "ID_RAZON_SOCIAL"=#{id};
-</select>
+	</select>
 	
 	<insert id="agregarRazonSocial" parameterType="RazonSocial" keyProperty="id">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
@@ -67,13 +79,13 @@
             "CP_FISCAL", "MUNICIPIO_FISCAL", "ESTADO_FISCAL", "CONTACTO1_NOMBRE", 
             "CONTACTO1_TELEFONO", "CONTACTO1_CORREO", "CONTACTO2_NOMBRE", 
             "CONTACTO2_TELEFONO", "CONTACTO2_CORREO", "CONTACTO3_NOMBRE", 
-            "CONTACTO3_TELEFONO", "CONTACTO3_CORREO", "OBJETO_SOCIAL")
+            "CONTACTO3_TELEFONO", "CONTACTO3_CORREO", "OBJETO_SOCIAL","REFERENCIANTES")
 	VALUES(#{id}, #{grupo.idGrupo}, #{nombreRazonSocial}, #{rfc}, #{nombreCortoRazonS}, #{codCliente}, #{comision},
 		   #{actConstitutiva}, date(#{fechaActConstitutiva}),date(#{fechaInicioOperacion}), #{paternoRepresentante}, 
 		   #{maternoRepresentante}, #{nombresRepresentante}, #{calleFiscal}, #{coloniaFiscal},
 		   #{numExteriorFiscal}, #{numInteriorFiscal}, #{cpFiscal}, #{municipioFiscal}, #{estadoFiscal},
 		   #{contactoUnoNombre}, #{contactoUnoTelefono}, #{contactoUnoCorreo}, #{contactoDosNombre}, #{contactoDosTelefono},
-		   #{contactoDosCorreo}, #{contactoTresNombre}, #{contactoTresTelefono}, #{contactoTresCorreo}, #{objetoSocial});
+		   #{contactoDosCorreo}, #{contactoTresNombre}, #{contactoTresTelefono}, #{contactoTresCorreo}, #{objetoSocial},json(#{jsonString}));
 </insert>
 
 <update id="actualizarRazonSocial" parameterType="RazonSocial">

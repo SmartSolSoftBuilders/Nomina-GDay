@@ -35,9 +35,21 @@ public class RazonSocial extends BaseModelo{
 	private String contactoTresCorreo;
 	private String objetoSocial;
 	private List<Referenciante> referenciantes;
+	private String jsonString;
 	
 	
-	
+	public String getJsonString() {
+		return jsonString;
+	}
+
+
+
+	public void setJsonString(String jsonString) {
+		this.jsonString = jsonString;
+	}
+
+
+
 	public RazonSocial(){
 		
 	}
@@ -57,7 +69,7 @@ public class RazonSocial extends BaseModelo{
 			String contactoDosNombre, String contactoDosTelefono,
 			String contactoDosCorreo, String contactoTresNombre,
 			String contactoTresTelefono, String contactoTresCorreo,
-			String objetoSocial, List<Referenciante> referenciantes) {
+			String objetoSocial, List<Referenciante> referenciantes,String jsonString) {
 		this.idRazonSocial = idRazonSocial;
 		this.grupo = grupo;
 		this.nombreRazonSocial = nombreRazonSocial;
@@ -89,6 +101,7 @@ public class RazonSocial extends BaseModelo{
 		this.contactoTresCorreo = contactoTresCorreo;
 		this.objetoSocial = objetoSocial;
 		this.referenciantes = referenciantes;
+		this.jsonString=jsonString;
 	}
 
 
@@ -438,7 +451,7 @@ public class RazonSocial extends BaseModelo{
 	public void setContactoTresCorreo(String contactoTresCorreo) {
 		this.contactoTresCorreo = contactoTresCorreo;
 	}
-
+ 
 
 
 	public String getObjetoSocial() {
@@ -454,7 +467,7 @@ public class RazonSocial extends BaseModelo{
 
 
 	public List<Referenciante> getReferenciantes() {
-		return referenciantes;
+		return this.referenciantes;
 	}
 
 

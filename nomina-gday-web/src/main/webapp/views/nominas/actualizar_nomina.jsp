@@ -9,7 +9,7 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
-  <script type="text/javascript" language="javascript" src="../../static/js/app/nominas/agregar_nomina.js"></script>
+  <script type="text/javascript" language="javascript" src="../../static/js/app/nominas/actualizar_nomina.js"></script>
   
 	<script src="../../static/js/bootstrap.min.js"></script>
 	<script src="../../static/js/modal.js"></script>
@@ -32,6 +32,7 @@
 <link href="../../static/css/multiple-select.css" rel="stylesheet">
 <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
 
+
 </head>
 <body>
 	<div class="container">
@@ -42,6 +43,8 @@
 					<table>
 					 	<tr>
 					 		<td>NOMBRE<input id='nombreNomina' name='nombreNomina' type="text" class="form-control"></td>
+					 		<input id='nominaIdSel' name='nominaIdSel' type="hidden" class="form-control"></td>					 	
+					 		
 					 	</tr>
 					  	<tr>
 					 		<td>RAZON SOCIAL<input id='razonSocial' name='razonSocial' type="text" class="form-control"></td>
@@ -58,15 +61,23 @@
 					 		</select></td>
 					 	</tr>					 	
 					 	<tr>
-					 		<td>PATRONA<input id='patrona' name='patrona' type="text" class="form-control"></input></td>					 	
+					 		<td>PATRONA<input id='patrona' name='patrona' type="text" class="form-control"></input></td>
+					 		<input id='patronaIdSel' name='patronaIdSel' type="hidden" class="form-control"></td>					 	
+					 							 	
 					 	</tr>
 					 	<tr>
 					 		<td>EJECUTIVO</td>
-							 	<td><select id='ejecutivo' name='ejecutivo' type="text" class="form-control"></select></td>					 	
+							 	<td><select id='ejecutivo' name='ejecutivo' type="text" class="form-control">
+		  							
+								</select></td>
+													 	
 					 	</tr>
 					 	<tr>
 					 		<td>ESQUEMA</td>
-					 		<td><select id='esquema' name='esquema' type="text" class="form-control"></select></td>					 	
+					 		<td><select id='esquema' name='esquema' type="text" class="form-control">
+		  						
+							</select></td>	
+											 	
 					 	</tr>
 					 	<tr>
 					 		<td>PROVISION AGINALDO<input id='provisionAguinaldo' name='provisionAguinaldo' type="checkbox" class="form-control"></td>					 	
@@ -84,8 +95,7 @@
 					 	</tr>
 					 	<tr>
 					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
+					 	</tr>					 	
 					 	<tr>
 					 		<td>FACTURA SUBSIDIO<input id='factSub' name='factSub' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
@@ -93,7 +103,7 @@
 					 		<td>IVA EXCENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
-					 		<td>RECONOCE ANTIGÜEDAD<input id='reconoceAntihuedad' name='reconoceAntihuedad' type="checkbox" class="form-control"></td>					 	
+					 		<td>RECONOCE ANTIGÜEDAD<input id='reconoceAntihuedad' name='reconoceAntihuedad' type="checkbox" class="form-control" disabled="true"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>COMISION SOBRE COSTO SOCIAL<input id='comisionCostoSocial' name='comisionCostoSocial' type="checkbox" class="form-control"></td>					 	
@@ -103,7 +113,6 @@
 					 		<td><select id='tipoPago' name='tipoPago' type="text" class="form-control">
 		  							<option>Neto</option>
 		  							<option>Bruto</option>
-		  							<option>Sindicato Tres</option>
 							</select></td>					 	
 					 	</tr>
 					 	<tr>
@@ -135,16 +144,17 @@
 		  							<option>Semanal</option>
 		  							<option>Diario</option>
 		  							<option>Mensual</option>
-							</select></td>					 	
+							</select></td>
+							<input id='tipoCalendarioIdSel' name='tipoCalendarioIdSel' type="hidden" class="form-control"></td>					 	
 					 	</tr>
 				
 					 	</table>
 				<br>
-				<br>
+				<br>						
 			<!-- /.col-lg-6 -->						
 				 <div class="input-group">      
 			     	 <span class="input-group-btn">
-			        	<button type="button" class="btn btn-default" onclick="guardarNomina();">CREAR</button>
+			        	<button type="button" class="btn btn-default" onclick="actualizarNomina();">MODIFICAR</button>
 			     	 </span>			    
    		 		</div><!-- /input-group -->
 				</div>

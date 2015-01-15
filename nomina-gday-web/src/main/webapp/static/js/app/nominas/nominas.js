@@ -1,9 +1,9 @@
 $(document).ready(function() {
-	oTableRazonesSociales=$('#tablaRazonSocial').dataTable();
+	oTableNominas=$('#tablaNomina').dataTable();
 	$.ajax({
 		sync: true,
 		type:  'post',
-		url:   '../../mvc/razonsocial/getrazonessociales',
+		url:   '../../mvc/nomina/getnominas',
 		dataType:  'json',
 		beforeSend: function () {
 			$("#resultado").html("Procesando, espere por favor...");
@@ -13,23 +13,24 @@ $(document).ready(function() {
         $( "#demo" ).hide();
 		},
 		success:  function (response) {
+			console.log(response);
 			$( "#demo" ).show();
 			$( "#progressbar" ).hide();
-			$('#tablaRazonSocial').dataTable().fnAddData(response);
+			$('#tablaNomina').dataTable().fnAddData(response);
 			//setData(response);
 		}		,
 		error:  function (response) {
+			console.log(response);
 			alert(response);
 		}
 	});			
 
 });
 
-function showEditarRazonSocial(idRazonSocial){
-	top.frames['main'].location="../razones_sociales/actualizar_razonsocial.jsp?id="+idRazonSocial; 	
+function showEditarNomina(idNomina){
+	top.frames['main'].location="../nominas/actualizar_nomina.jsp?id="+idNomina; 	
 }
 
-function showAgregarRazonSocial(){
-	top.frames['main'].location="../razones_sociales/agregar_razonsocial.jsp"; 	
+function showAgregarNomina(){
+	top.frames['main'].location="../nominas/agregar_nomina.jsp"; 	
 }
-

@@ -6,7 +6,8 @@ a {
 }
 table {
 margin: auto;
-width: 80%;
+width: 900px;
+
 text-align: left;
 background: white;
 border: 1px solid silver;
@@ -28,4 +29,8 @@ table th {background-color:#0051a4; }
 tr:nth-child(2n+1) {
 background-color: #eef3f7;
 
+}
+
+h2 {
+color:#0051a4
 }

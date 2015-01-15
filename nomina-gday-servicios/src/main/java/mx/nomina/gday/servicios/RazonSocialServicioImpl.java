@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import mx.nomina.gday.dao.NominaDao;
 import mx.nomina.gday.dao.RazonSocialDao;
+import mx.nomina.gday.modelo.Nomina;
 import mx.nomina.gday.modelo.RazonSocial;
 
 @Service
@@ -13,6 +15,9 @@ public class RazonSocialServicioImpl implements RazonSocialServicio {
 
 	@Autowired
 	private RazonSocialDao razonSocialDao; 
+	
+	@Autowired
+	private NominaDao nominaDao;
 	
 	@Override
 	public List<RazonSocial> obtenerRazonesSociales() {
@@ -76,6 +81,12 @@ public class RazonSocialServicioImpl implements RazonSocialServicio {
 	public RazonSocial obtenerRazonSocialById(int idRazonSocial) {
 
 		return this.razonSocialDao.obtenerRazonSocialById(idRazonSocial);
+	}
+
+	@Override
+	public List<Nomina> obtenerNominasByIdRazonSocial(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

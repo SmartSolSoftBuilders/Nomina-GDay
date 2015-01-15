@@ -63,10 +63,18 @@ public class RazonSocialController {
 	  //Controller 	que guarda una razon social
 	  @RequestMapping(value="/guardarrazonsocial",method = RequestMethod.POST)
 		 @ResponseBody
-		    public boolean guardarRazonSocial(@ModelAttribute(value="razonsocial") RazonSocial razonSocial, BindingResult result){
+		    public boolean guardarRazonSocial(@ModelAttribute(value="razonsocial") RazonSocial razonSocial){
 		  		try {
 					
-		  			System.out.println("Guardando razon social"+ razonSocial);	  			
+		  			System.out.println("Guardando razon social"+ razonSocial.getNombreCortoRazonS());
+		  			System.out.println("Guardando razon social"+ razonSocial.getCodCliente());
+		  			System.out.println(razonSocial.getJsonString());
+
+		  			//razonSocial.setJsonString("{\"referenciantes\":[{ \"idReferenciante\": 1, \"nombreReferenciante\": \"GABY VAZQUEZ\" },{ \"idReferenciante\": 2,\"nombreReferenciante\": \"GABY VAZQUEZ\" }]}");
+		  			//razonSocial.setJsonString("{ \"idReferenciante\": 1}");
+		  			
+		  			System.out.println(razonSocial.getJsonString());
+
 		  			razonSocialServicio.agregarRazonSocial(razonSocial);
 		  			return true;
 				} catch (Exception e) {
@@ -80,8 +88,7 @@ public class RazonSocialController {
 	//Controller que permite Actualizar los datos de la Razon Social a Editar
 		 @RequestMapping(value="/modificarazonsocial",method = RequestMethod.POST)
 		    @ResponseBody
-		    public boolean modificarRazonSocial(@ModelAttribute(value="RazonSocial") RazonSocial razonSocial, BindingResult result,HttpServletRequest request){    	    	    	    	   
-		    
+		    public boolean modificarRazonSocial(@ModelAttribute(value="RazonSocial") RazonSocial razonSocial, BindingResult result,HttpServletRequest request){    	    	    	    	   		    
 			 try {
 		  			System.out.println("Actualizando razon social Controller"+ razonSocial.getIdRazonSocial());
 		  			System.out.println("Actualizando grupo de razon social Controller"+ razonSocial.getGrupo().getIdGrupo());

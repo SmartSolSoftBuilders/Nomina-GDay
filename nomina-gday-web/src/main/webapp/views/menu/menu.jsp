@@ -47,11 +47,9 @@
 						<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DE DATOS <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <!-- <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >RAZONES SOCIALES</a></li>
-                <li><a href="../grupos/grupos.jsp" target="main" >GRUPOS</a></li>
-                <li><a href="../grupos/agregar_grupo.jsp" target="main" >CREAR GRUPO</a></li>                
-                <li><a href="../razones_sociales/actualizar_razonsocial.jsp" target="main" >MODIFICAR RAZON SOCIAL</a></li> -->                
-                <li><a href="../nominas/agregar_nomina.jsp" target="main" >CREAR NOMINA</a></li>                
+                <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >CONSULTAR RAZONES SOCIALES</a></li>
+                <li><a href="../nominas/nominas.jsp" target="main" >CONSULTAR NOMINAS</a></li>                
+                <li><a href="../grupos/grupos.jsp" target="main" >CONSULTAR GRUPOS</a></li>                
 
               </ul>
             </li>
@@ -73,9 +71,16 @@
 	</div>
 </div>
 
-
-<div class="container">
 <br>
+<br>
+<br>
+<br>
+<div class="container">
+	<div align="center">
+   		<h2>Sistema de Gestión de Información <br>para Esquema de Pago de Nómina</h2>
+   </div>
 </div>
+ 
+
 </body>
 </html>

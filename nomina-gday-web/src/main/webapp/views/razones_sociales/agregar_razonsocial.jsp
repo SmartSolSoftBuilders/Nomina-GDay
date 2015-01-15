@@ -5,22 +5,14 @@
 <meta charset="utf-8">
 <title>grupo day</title>
 
-<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/agregar_razonsocial.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="../../static/js/libs/js/jquery.validate.js"></script>
+
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
+ <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
   
 	<script src="../../static/js/bootstrap.min.js"></script>
-	<script src="../../static/js/modal.js"></script>
-	<script>
-        $(function() {
-            Example.init({
-                "selector": ".bb-alert"
-            });
-        });
-    </script>
-
 	<!-- bootbox code -->
 	<script src="../../static/js/bootbox.js"></script>
 
@@ -31,139 +23,131 @@
 <link href="../../static/css/styles.css" rel="stylesheet">
 <link href="../../static/css/multiple-select.css" rel="stylesheet">
 <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
+<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/agregar_razonsocial.js"></script>
 <body>
+	
 	<div class="container">
-
 		<div class="text-center col-lg-12">
-			<br>
 			    <h2 style="color:#0051a4">Sistema de Gestión de Información <br>para Esquema de Pago de Nómina</h2><br><br>
-
-			<br>
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg-6" align="center">
+				<form  id="agregarRazonSocialForm" name="agregarRazonSocialForm" novalidate="novalidate">					
 					<table>
 					 	<tr>
-					 		<td>RAZON SOCIAL<input id='nombreRazonSocial' name='nombreRazonSocial' type="text" class="form-control"></td>
+					 		<td>RAZON SOCIAL<input id='nombreRazonSocial' name='nombreRazonSocial' type="text" class="form-control" size=50 required /></td>
 					 	</tr>
-					 	<tr>
-					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
+					 </table>
+					 <table border="2">
+					 	<tr>	
+					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control"></td>
+					 		<td width="5%"></td>					 
 					 		<td>NOMBRE CORTO<input id='nombreCorto' name='nombreCorto' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
+						</tr>
+						<tr>					 	
 					 		<td>CODIGO DE CLIENTE<input id='codCliente' name='codCliente' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
-					 		<td>GRUPO<input id='grupo' name='grupo' type="text" class="form-control" onclick="showGrupos()">
-					 		<input id='grupoIdSel' name='grupoIdSel' type="button" class="form-control"></td>					 	
+						 	<td width="5%"></td>
+					 		<td>GRUPO<input id='grupo' readonly=true name='grupo' type="text" class="form-control" onclick="showGrupos()">
+					 		<input id='grupoIdSel' name='grupoIdSel' type="hidden" class="form-control"></td>						 	
 					 	</tr>
 					 	<tr>
 					 		<td>COMISION<input id='comision' name='comision' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
-					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control"></td>
-					 		<td><button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>					 		</td>
-				 		
-					 	</tr>
-					 	<tr>				 	
-					 		<td><select id="selectMult" multiple="multiple">
-					 			<option value="1">Miguel Gutierrez Perez</option>
-					 			<option value="2">Rafael Mora Moran</option>
-					 			<option value="3">Ricardo Perez Perez</option>
-					 			<option value="4">Veronica Orduña Contreras</option>
-					 			<option value="5">Monica Herrera Fernandez</option>
-					 		</select></td>
+							<td width="5%"></td>
+					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control">
+					 		<button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>					 		
+					 		<select id="selectMult" multiple="multiple">
+					 		</select>
 					 	</tr>					 	
 					 	<tr>
 					 		<td>OBJETO SOCIAL<textarea id='objetoSocial' name='objetoSocial' type="text" class="form-control"></textarea></td>					 	
-					 	</tr>
-					 	<tr>
+							<td width="5%"></td>					 	
 					 		<td>ACTA CONSTITUTIVA<input id='actaConst' name='actaConst' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
-					 		<td>FECHA ACTA CONSTITUTIVA<input id='fechaActaConst' name='fechaActaConst' type="text" class="form-control"></td>					 	
+					 		<td>FECHA ACTA CONSTITUTIVA<input id='fechaActaConst' name='fechaActaConst' type="date" class="form-control"></td>					 	
+					 		<td width="5%"></td>
+					 		<td>FECHA INICIO OPERACION<input id='fechaIniOper' name='fechaIniOper' type="date" class="form-control"></td>					 	
 					 	</tr>
-					 	<tr>
-					 		<td>FECHA INICIO OPERACION<input id='fechaIniOper' name='fechaIniOper' type="text" class="form-control"></td>					 	
-					 	</tr>
+					 	<table>
 					 	<tr>
 					 		<td>REPRESENTANTE LEGAL</td>
-					 		<td>APELLIDO PATERNO<input id='aPaterno' name='aPaterno' type="text" class="form-control"></td>					 	
-					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
+					 		<td>APELLIDO PATERNO<input id='aPaterno' name='aPaterno' type="text" class="form-control"></td>						
 					 		<td>APELLIDO MATERNO<input id='aMaterno' name='aMaterno' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>NOMBRES<input id='nombres' name='nombres' type="text" class="form-control"></td>					 	
 					 	</tr>
+					 	<table>
 					 	<tr>
 					 		<td>DOMICILIO FISCAL</td>
+					 	</tr>
+					 	</table>
+					 	<table>
+					 	<tr>
 					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>NUMERO EXT<input id='numeroExt' name='numeroExt' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>NUMERO INT<input id='numeroInt' name='numeroInt' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>COLONIA<input id='colonia' name='colonia' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>CODIGO POSTAL<input id='codPostal' name='codPostal' type="text" class="form-control"></td>					 	
+					 		<td>MUNICIPIO<input id='municipio' name='municipio' type="text" class="form-control"></td>
 					 	</tr>
-					 	<tr>
-					 		<td>MUNICIPIO<input id='municipio' name='municipio' type="text" class="form-control"></td>					 	
+					 	<tr>					 	
+					 		<td>ESTADO<input id='estado' name='estado' type="text" class="form-control"></td>
+					 		<td></td><td></td>					 	
 					 	</tr>
-					 	<tr>
-					 		<td>ESTADO<input id='estado' name='estado' type="text" class="form-control"></td>					 	
-					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
 					 		<td>CONTACTO1</td>
+					 	</tr>
+					 	</table>
+					 	<table>
+					 	<tr>
 					 		<td>NOMBRE<input id='nombreContUno' name='nombreContUno' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>TELEFONO<input id='telefonoContUno' name='telefonoContUno' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>CORREO<input id='correoContUno' name='correoContUno' type="text" class="form-control"></td>					 	
 					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
 					 		<td>CONTACTO2</td>
+					 	</tr>
+					 	</table>
+					 	<table>					 	
+					 	<tr>
 					 		<td>NOMBRE<input id='nombreContDos' name='nombreContDos' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>TELEFONO<input id='telefonoContDos' name='telefonoContDos' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>CORREO<input id='correoContDos' name='correoContDos' type="text" class="form-control"></td>					 	
 					 	</tr>
+						 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
 					 		<td>CONTACTO3</td>
+					 	</tr>
+					 	</table>
+					 	<table>	
+					 	<tr>				 	
 					 		<td>NOMBRE<input id='nombreContTres' name='nombreContTres' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>TELEFONO<input id='telefonoContTres' name='telefonoContTres' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>CORREO<input id='correoContTres' name='correoContTres' type="text" class="form-control"></td>					 	
 					 	</tr>
-					</table>
+						</table>
 				<br>
 				<br>
-			<!-- /.col-lg-6 -->						
 				 <div class="input-group">      
 			     	 <span class="input-group-btn">
 			        	<button type="button" class="btn btn-default" onclick="guardarRazonSocial();">AÑADIR</button>
 			     	 </span>			    
-   		 		</div><!-- /input-group -->
 				</div>
+				</form>
 			</div>
-			</div>
+		</div>
 	  </div>
+	</form>
+	  
 	<div id='resultadoGuardar'></div>
 	<div id="divGrupos" title="Basic dialog" style="display:none">
 		<div id="container" class="mayuscula">
@@ -176,16 +160,15 @@
 					<table  cellpadding="0" cellspacing="0" border="0" class="display" id="tablaGrupo">
 					<thead>			
 						<tr class="odd gradeA">
-							<th>NUMERO GRUPO</th>
-							<th>NOMBRE CORTO</th>					
-							<th>NOMBRE</th>
+							<th width="40px">ID</th>
+							<th width="200px">NOMBRE CORTO</th>					
+							<th width="200px">NOMBRE</th>
 							<th></th>
 						</tr>
 					<tbody>			
 					</tbody>
 					</thead>
 					</table>
-				</form>
 			</div>
 			
 			</div>

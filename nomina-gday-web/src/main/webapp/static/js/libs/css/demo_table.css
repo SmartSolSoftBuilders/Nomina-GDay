@@ -154,15 +154,18 @@ table.display thead th {
 	border-bottom: 1px solid black;	
 	cursor: pointer;
 	* cursor: hand;
+	color: white;
+	
 }
 
 table.display tfoot th {
 	padding: 3px 18px 3px 10px;
-	border-top: 1px solid black;	
+	border-top: 1px solid black;
 }
 
 table.display tr.heading2 td {
 	border-bottom: 1px solid #aaa;
+	
 }
 
 table.display td {
@@ -211,7 +214,7 @@ table.display thead td:active {
  * DataTables row classes
  */
 table.display tr.odd.gradeA {
-	background-color: #FF9900;
+	background-color: #0051a4;
 	font-size: 12px;	
 }
 
@@ -245,7 +248,7 @@ table.display tr.even.gradeU {
 
 
 tr.odd {
-	background-color: #FFAA55;
+	background-color: #7EACF2;
 }
 
 tr.even {
@@ -365,8 +368,9 @@ table.display tr.odd.row_selected td {
  * Sorting classes for columns
  */
 /* For the standard odd/even */
+
 tr.odd td.sorting_1 {
-	background-color: #FFAA55;
+	background-color: #7EACF2;
 	font-size: 12px;
 }
 
