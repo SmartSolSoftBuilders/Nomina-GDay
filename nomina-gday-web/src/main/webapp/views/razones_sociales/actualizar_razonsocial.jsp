@@ -11,22 +11,22 @@
   <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
   <script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/actualizar_razonsocial.js"></script>
   
-	<script src="../../static/js/bootstrap.min.js"></script>
-	<script src="../../static/js/modal.js"></script>
-	<script>
+  <script src="../../static/js/bootstrap.min.js"></script>
+  <script src="../../static/js/modal.js"></script>
+  <script>
         $(function() {
             Example.init({
                 "selector": ".bb-alert"
             });
         });
-    </script>
+  </script>
 
 	<!-- bootbox code -->
-	<script src="../../static/js/bootbox.js"></script>
+  <script src="../../static/js/bootbox.js"></script>
 
 	<!-- put all demo code in one place -->
-	<script src="../../static/js/control.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script src="../../static/js/control.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link href="../../static/css/styles.css" rel="stylesheet">
 <link href="../../static/css/multiple-select.css" rel="stylesheet">
@@ -68,11 +68,6 @@
 					 	</tr>
 					 	<tr>				 	
 					 		<td><select id="selectMult" multiple="multiple">
-					 			<option value="1">Miguel Gutierrez Perez</option>
-					 			<option value="2">Rafael Mora Moran</option>
-					 			<option value="3">Ricardo Perez Perez</option>
-					 			<option value="4">Veronica Orduña Contreras</option>
-					 			<option value="5">Monica Herrera Fernandez</option>
 					 		</select></td>
 					 	</tr>					 	
 					 	<tr>

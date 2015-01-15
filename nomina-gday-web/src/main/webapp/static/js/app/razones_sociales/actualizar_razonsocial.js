@@ -83,6 +83,14 @@ function muestraDatosRazonSocial(datos){
 	$("#telefonoContTres").val(data.contactoTresTelefono);
 	$("#correoContTres").val(data.contactoTresCorreo);
 	$("#objetoSocial").val(data.objetoSocial);
+	console.log(data.referenciantes);
+	for (i=0;i<data.referenciantes.length;i++){
+		console.log(data.referenciantes[i].nombreReferenciante);
+		var x = document.getElementById("selectMult");
+		var option = document.createElement("option");
+		option.text = data.referenciantes[i].nombreReferenciante;
+		x.add(option);  
+	}
 
 }
 
