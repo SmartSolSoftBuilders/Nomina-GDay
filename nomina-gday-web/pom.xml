@@ -89,7 +89,7 @@
 	        <targetPath>.</targetPath>	        
 	    </resource>   	
   	</resources>
-    <finalName>estrategas-fam-web</finalName>
+    <finalName>nomina-gday-web</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -111,7 +111,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
-                    <warName>estrategas-fam-web</warName>
+                    <warName>nomina-gday-web</warName>
                     <webResources>                    
                     <resource>
                         <filtering>true</filtering>
