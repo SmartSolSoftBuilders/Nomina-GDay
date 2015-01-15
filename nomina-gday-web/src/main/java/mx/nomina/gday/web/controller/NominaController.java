@@ -59,7 +59,7 @@ public class NominaController {
 					nominasTmp2.add(tmp.get(i).getPeriodicidad());
 					nominasTmp2.add(tmp.get(i).getTipoPago());
 					nominasTmp2.add(tmp.get(i).getClaseRiesgo());
-					nominasTmp2.add("<a href='#' onclick='showEditarNomina("+tmp.get(i).getIdNomina()+")'>Editar</a>");
+					nominasTmp2.add("<a href='#' onclick='showEditarNomina("+tmp.get(i).getIdNomina()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
 					nominasTmp.add(nominasTmp2);
 				}
 				return nominasTmp;
@@ -76,7 +76,7 @@ public class NominaController {
 		    public boolean modificarNomina(@ModelAttribute(value="nomina") Nomina nomina, BindingResult result,HttpServletRequest request){    	    	    	    	   
 		    
 			 try {
-				 System.out.println("Controller Actualizar Grupo"+ nomina.getIdNomina());
+				 System.out.println("Controller Actualizar Nomina"+ nomina.getIdNomina());
 					 nominaServicio.actualizarNomina(nomina);			 
 				 return true;
 			} catch (Exception e) {

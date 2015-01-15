@@ -13,7 +13,7 @@ public class Nomina extends BaseModelo{
 	private boolean provisionVacaciones;
 	private boolean provisionPrimaVacacional;
 	private int diasAguinaldo;
-	private boolean porcPrimaVacacional;
+	private float porcPrimaVacacional;
 	private boolean fondoAhorro;
 	private boolean facturaSubsidio;
 	private boolean ivaExento;
@@ -29,15 +29,13 @@ public class Nomina extends BaseModelo{
 	}
 
 
-	
-
 	public Nomina(Integer idNomina, Patrona patrona,
-			Intermediaria intermediaria, Esquema esquema,
-			Ejecutivo ejecutivo, TipoCalendario tipoCalendario,
-			String nombreCorto, boolean provisionAguinaldo,
-			boolean provisionVacaciones, boolean provisionPrimaVacacional,
-			int diasAguinaldo, boolean porcPrimaVacacional,
-			boolean fondoAhorro, boolean facturaSubsidio, boolean ivaExento,
+			Intermediaria intermediaria, Esquema esquema, Ejecutivo ejecutivo,
+			TipoCalendario tipoCalendario, String nombreCorto,
+			boolean provisionAguinaldo, boolean provisionVacaciones,
+			boolean provisionPrimaVacacional, int diasAguinaldo,
+			float porcPrimaVacacional, boolean fondoAhorro,
+			boolean facturaSubsidio, boolean ivaExento,
 			boolean reconoceAntiguedad, boolean comisionCostSocial,
 			String tipoPago, String claseRiesgo, String registroPatronal,
 			String periodicidad) {
@@ -64,8 +62,6 @@ public class Nomina extends BaseModelo{
 		this.registroPatronal = registroPatronal;
 		this.periodicidad = periodicidad;
 	}
-
-
 
 
 	public Integer getIdNomina() {
@@ -178,12 +174,12 @@ public class Nomina extends BaseModelo{
 	}
 
 
-	public boolean isPorcPrimaVacacional() {
+	public float getPorcPrimaVacacional() {
 		return porcPrimaVacacional;
 	}
 
 
-	public void setPorcPrimaVacacional(boolean porcPrimaVacacional) {
+	public void setPorcPrimaVacacional(float porcPrimaVacacional) {
 		this.porcPrimaVacacional = porcPrimaVacacional;
 	}
 
@@ -276,4 +272,5 @@ public class Nomina extends BaseModelo{
 	public void setPeriodicidad(String periodicidad) {
 		this.periodicidad = periodicidad;
 	}
+
 }

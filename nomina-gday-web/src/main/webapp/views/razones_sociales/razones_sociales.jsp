@@ -7,8 +7,9 @@
 		<title>FAM</title>
 		<style type="text/css" title="currentStyle">
 			@import "../../static/js/libs/css/demo_page.css";
-			@import "../../static/js/libs/css/demo_table.css";
-			@import "../../static/js/libs/css/ui-lightness/jquery-ui-1.10.2.custom.css";
+ 			@import "../../static/js/libs/css/demo_table.css";
+ 			@import "../../static/js/libs/css/ui-lightness/jquery-ui-1.10.2.custom.css";
+			@import "../../static/js/libs/css/ui-lightness/bootstrapTabla.min.css";
 		</style>
 		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery-1.9.1.js"></script>
 		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.custom.js"></script>
@@ -37,7 +38,7 @@
 							<th>NOMBRE CORTO</th>					
 							<th>COMISION</th>
 							<th>RAZON SOCIAL</th>
-							<th></th>
+							<th class='btn btn-default'></th>
 						</tr>
 					<tbody>			
 					</tbody>
@@ -52,10 +53,6 @@
 			<br>		
 			<div align="center">
 				<input type="button" value="Añadir" onclick="showAgregarRazonSocial();"/>
-				<input type="button" value="Buscar"/>
-				<input type="button" value="Exportar"/>
-				<input type="button" value="Nominas"/>
-				<input type="button" value="Empresas"/>
 			</div>
 			<br>
 			<br>

@@ -48,7 +48,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DE DATOS <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >CONSULTAR RAZONES SOCIALES</a></li>
-                <li><a href="../nominas/nominas.jsp" target="main" >CONSULTAR NOMINA</a></li>                
+                <li><a href="../nominas/nominas.jsp" target="main" >CONSULTAR NOMINAS</a></li>                
+                <li><a href="../grupos/grupos.jsp" target="main" >CONSULTAR GRUPOS</a></li>                
 
               </ul>
             </li>
@@ -70,9 +71,16 @@
 	</div>
 </div>
 
-
-<div class="container">
 <br>
+<br>
+<br>
+<br>
+<div class="container">
+	<div align="center">
+   		<h2>Sistema de Gestión de Información <br>para Esquema de Pago de Nómina</h2>
+   </div>
 </div>
+ 
+
 </body>
 </html>

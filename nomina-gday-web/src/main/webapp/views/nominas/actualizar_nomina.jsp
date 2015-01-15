@@ -38,15 +38,13 @@
 	<div class="container">
 
 		<div class="text-center col-lg-12">
-			<br>
-			    <h2 style="color:#0051a4">Sistema de Gestión de Información <br>para Esquema de Pago de Nómina</h2><br><br>
-
-			<br>
 			<div class="row">
 				<div class="col-lg-6">
 					<table>
 					 	<tr>
 					 		<td>NOMBRE<input id='nombreNomina' name='nombreNomina' type="text" class="form-control"></td>
+					 		<input id='nominaIdSel' name='nominaIdSel' type="hidden" class="form-control"></td>					 	
+					 		
 					 	</tr>
 					  	<tr>
 					 		<td>RAZON SOCIAL<input id='razonSocial' name='razonSocial' type="text" class="form-control"></td>
@@ -63,7 +61,7 @@
 					 		</select></td>
 					 	</tr>					 	
 					 	<tr>
-					 		<td>PATRONA<textarea id='patrona' name='patrona' type="text" class="form-control"></textarea></td>
+					 		<td>PATRONA<input id='patrona' name='patrona' type="text" class="form-control"></input></td>
 					 		<input id='patronaIdSel' name='patronaIdSel' type="hidden" class="form-control"></td>					 	
 					 							 	
 					 	</tr>
@@ -93,13 +91,19 @@
 					 		<td>PROVISION PRIMA VACACIONAL<input id='provisionPrimaVac' name='provisionPrimaVac' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
-					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="checkbox" class="form-control"></td>					 	
+					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
+					 	</tr>					 	
+					 	<tr>
+					 		<td>FACTURA SUBSIDIO<input id='factSub' name='factSub' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>IVA EXCENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control"></td>					 	
+					 	</tr>
+					 	<tr>
+					 		<td>RECONOCE ANTIGÜEDAD<input id='reconoceAntihuedad' name='reconoceAntihuedad' type="checkbox" class="form-control" disabled="true"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>COMISION SOBRE COSTO SOCIAL<input id='comisionCostoSocial' name='comisionCostoSocial' type="checkbox" class="form-control"></td>					 	
@@ -147,6 +151,12 @@
 					 	</table>
 				<br>
 				<br>						
+			<!-- /.col-lg-6 -->						
+				 <div class="input-group">      
+			     	 <span class="input-group-btn">
+			        	<button type="button" class="btn btn-default" onclick="actualizarNomina();">MODIFICAR</button>
+			     	 </span>			    
+   		 		</div><!-- /input-group -->
 				</div>
 			</div>
 			</div>

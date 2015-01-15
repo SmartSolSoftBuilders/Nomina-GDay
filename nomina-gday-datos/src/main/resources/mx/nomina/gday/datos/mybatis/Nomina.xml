@@ -132,14 +132,16 @@
 <!-- Update para actualizar la Nomina seleccionada --> 
 <update id="actualizarNomina" parameterType="Nomina">
 	UPDATE "NOMINA"
-   	SET 	"ID_PATRONA", "ID_INTERMEDIARIA", "ID_ESQUEMA", "ID_EJECUTIVO", 
-            "ID_CALENDARIO", "NOMBRE_CORTO"=#{nombreCorto}, "PROVISION_AGUINALDO"=#{provisionAguinaldo}, 
+   	SET 	"NOMBRE_CORTO"=#{nombreCorto}, "PROVISION_AGUINALDO"=#{provisionAguinaldo}, 
             "PROVISION_VACACIONES"=#{provisionVacaciones}, "PROVISION_PRIMA_VACACIONAL"=#{provisionPrimaVacacional}, "DIAS_AGUINALDO"=#{diasAguinaldo}, 
             "PORC_PRIMA_VACACIONAL"=#{porcPrimaVacacional}, "FONDO_AHORRO"=#{fondoAhorro}, "FACTURA_SUBSIDIO"=#{facturaSubsidio}, 
             "IVA_EXENTO"=#{ivaExento}, "RECONOCE_ANTIGUEDAD"=#{reconoceAntiguedad}, "COMISION_COST_SOCIAL"=#{comisionCostSocial}, 
             "TIPO_PAGO"=#{tipoPago}, "CLASE_RIESGO"=#{claseRiesgo}, "REGISTRO_PATRONAL"=#{registroPatronal}, "PERIODICIDAD"=#{periodicidad}, 
             "TIPO_CALENDARIO"=#{tipoCalendario.tipoCalendario}
- 	WHERE "ID_NOMINA"=#{idNomina}	
+ 	WHERE "ID_NOMINA"=#{idNomina} AND "ID_PATRONA"= 1 AND "ID_INTERMEDIARIA"= 1 AND "ID_ESQUEMA"= 1 AND "ID_EJECUTIVO"= 1 AND "ID_CALENDARIO"=1 
 </update>
 
+<select id="obtenerNominasByIdRazonSocial" parameterType="int" resultMap="nominaResult" resultType="Nomina">
+	SELECT "NOMINA"."ID_NOMINA" FROM "NOMINA" INNER JOIN "NOMINA_RAZON" ON  "NOMINA"."ID_NOMINA" = "NOMINA_RAZON"."ID_NOMINA" WHERE "NOMINA_RAZON"."ID_RAZON_SOCIAL" = #{id}
+</select>
 </mapper>

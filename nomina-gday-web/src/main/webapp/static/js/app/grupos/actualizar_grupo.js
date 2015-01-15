@@ -1,5 +1,4 @@
 function obtenerGrupo(idGrupo){
-	console.log ("Obtener Grupo por id"+ idGrupo);
 	$.ajax({
 		data: {
 			"idGrupo" : idGrupo
@@ -11,7 +10,6 @@ function obtenerGrupo(idGrupo){
 	},
 	success:  function (response) {
 		muestraDatosGrupo(response);	
-		console.log ("success"+ idGrupo);
 		},	
 	error: function (response) {																	
 		$("#resultadoGuardar").html("Error");
@@ -30,8 +28,6 @@ function muestraDatosGrupo(datos){
 }
 
 function actualizarGrupo() {
-	console.log ($("#nombre").val());
-	console.log ($("#nombreCorto").val());
 		$
 			.ajax({
 				data : {

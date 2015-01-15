@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <title>grupo day</title>
 
-<script type="text/javascript" language="javascript" src="../../static/js/app/nominas/agregar_nomina.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
+  <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
+  <script type="text/javascript" language="javascript" src="../../static/js/app/nominas/agregar_nomina.js"></script>
   
 	<script src="../../static/js/bootstrap.min.js"></script>
 	<script src="../../static/js/modal.js"></script>
@@ -37,10 +37,6 @@
 	<div class="container">
 
 		<div class="text-center col-lg-12">
-			<br>
-			    <h2 style="color:#0051a4">Sistema de Gestión de Información <br>para Esquema de Pago de Nómina</h2><br><br>
-
-			<br>
 			<div class="row">
 				<div class="col-lg-6">
 					<table>
@@ -62,23 +58,15 @@
 					 		</select></td>
 					 	</tr>					 	
 					 	<tr>
-					 		<td>PATRONA<textarea id='patrona' name='patrona' type="text" class="form-control"></textarea></td>					 	
+					 		<td>PATRONA<input id='patrona' name='patrona' type="text" class="form-control"></input></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>EJECUTIVO</td>
-							 	<td><select id='ejecutivo' name='ejecutivo' type="text" class="form-control">
-		  							<option>Alejandro Lara Mendoza</option>
-		  							<option>Erika Gutierrez Morales</option>
-		  							<option>Ramon Suarez Herrera</option>
-								</select></td>					 	
+							 	<td><select id='ejecutivo' name='ejecutivo' type="text" class="form-control"></select></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>ESQUEMA</td>
-					 		<td><select id='esquema' name='esquema' type="text" class="form-control">
-		  							<option>Sindicato Uno</option>
-		  							<option>Sindicato Dos</option>
-		  							<option>Sindicato Tres</option>
-							</select></td>					 	
+					 		<td><select id='esquema' name='esquema' type="text" class="form-control"></select></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>PROVISION AGINALDO<input id='provisionAguinaldo' name='provisionAguinaldo' type="checkbox" class="form-control"></td>					 	
@@ -92,13 +80,20 @@
 					 		<td>PROVISION PRIMA VACACIONAL<input id='provisionPrimaVac' name='provisionPrimaVac' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
-					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="checkbox" class="form-control"></td>					 	
+					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
+					 	<tr>
+					 		<td>FACTURA SUBSIDIO<input id='factSub' name='factSub' type="checkbox" class="form-control"></td>					 	
+					 	</tr>
+					 	<tr>
 					 		<td>IVA EXCENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control"></td>					 	
+					 	</tr>
+					 	<tr>
+					 		<td>RECONOCE ANTIGÜEDAD<input id='reconoceAntihuedad' name='reconoceAntihuedad' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>COMISION SOBRE COSTO SOCIAL<input id='comisionCostoSocial' name='comisionCostoSocial' type="checkbox" class="form-control"></td>					 	

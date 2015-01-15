@@ -37,10 +37,6 @@
 	<div class="container">
 
 		<div class="text-center col-lg-12">
-			<br>
-			    <h2 style="color:#0051a4">Sistema de Gestión de Información <br>para Esquema de Pago de Nómina</h2><br><br>
-
-			<br>
 			<div class="row">
 				<div class="col-lg-6">
 					<table>
