@@ -22,6 +22,30 @@ $(document).ready(function() {
 	var idRazonSocial=getParameter("id");
 	console.log(idRazonSocial);
 	obtenerRazonSocial(idRazonSocial);
+    // Setup form validation on the #register-form element
+    $("#editarRazonSocialForm").validate({
+    
+        // Specify the validation rules
+        rules: {
+        	nombreRazonSocial: "required",
+        	rfc: "required",
+            /*email: {
+                required: true,
+                email: true
+            },*/
+        },
+        
+        // Specify the validation error messages
+        messages: {
+            nombreRazonSocial: "Ingrese el nombre de la Razón Social",
+            rfc:"Ingrese el campo RFC"
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
 	
 });
 
@@ -83,10 +107,39 @@ function muestraDatosRazonSocial(datos){
 	$("#telefonoContTres").val(data.contactoTresTelefono);
 	$("#correoContTres").val(data.contactoTresCorreo);
 	$("#objetoSocial").val(data.objetoSocial);
+	console.log(data.referenciantes);
+	for (i=0;i<data.referenciantes.length;i++){
+		console.log(data.referenciantes[i].nombreReferenciante);
+		var x = document.getElementById("selectMult");
+		var option = document.createElement("option");
+		option.text = data.referenciantes[i].nombreReferenciante;
+		x.add(option);  
+	}
 
+}
+function getReferenciantes(){
+	var jsonString ="{\"referenciantes\":[";
+	var renglonJson="";
+	var index=0;
+	$('select#selectMult').find('option').each(function() {
+		console.log($(this));
+		console.log($(this).val());
+		console.log($(this)[0].innerHTML);
+		var txt=$(this).text(); var id=$(this).attr('value');
+		renglonJson=renglonJson+"{ \"idReferenciante\":"+(index++)+", \"nombreReferenciante\": \""+txt+"\" }";
+		jsonString=jsonString+renglonJson;
+		renglonJson=",";
+
+	});
+	jsonString=jsonString+"]}";
+	console.log("JSON STRING");
+	console.log(jsonString);
+	
+	return jsonString;
 }
 
 function actualizarRazonSocial() {
+	if ($("#editarRazonSocialForm").valid()){
 			$
 			.ajax({
 				data : {
@@ -119,9 +172,8 @@ function actualizarRazonSocial() {
 					"contactoTresNombre" : $("#nombreContTres").val(),
 					"contactoTresTelefono" : $("#telefonoContTres").val(),
 					"contactoTresCorreo" : $("#correoContTres").val(),
-					"objetoSocial" : $("#objetoSocial").val(),
-					
-
+					"objetoSocial" : $("#objetoSocial").val(),					
+					"jsonString": getReferenciantes()
 				
 				},
 				
@@ -140,7 +192,8 @@ function actualizarRazonSocial() {
 					$("#resultadoGuardar").html();
 				}
 			});
-		}
+	}
+}
 
 function seleccionarGrupo (id,txt){
 	$("#grupo").val(txt);
