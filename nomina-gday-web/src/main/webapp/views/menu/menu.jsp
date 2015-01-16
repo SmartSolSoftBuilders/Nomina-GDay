@@ -77,7 +77,7 @@
 <br>
 <div class="container">
 	<div align="center">
-   		<h2><%=session.getAttribute("titulo")%></h2>
+   		<h2>SISTEMA DE GESTION DE INFORMACION<br>PARA ESQUEMAS DE PAGO DE NOMINA</h2>
    </div>
 </div>
  
