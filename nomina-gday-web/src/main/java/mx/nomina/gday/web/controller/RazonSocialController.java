@@ -7,8 +7,12 @@ import java.util.List;
 
 
 
+
+
+
 import javax.servlet.http.HttpServletRequest;
 
+import mx.nomina.gday.modelo.Nomina;
 import mx.nomina.gday.modelo.RazonSocial;
 import mx.nomina.gday.servicios.RazonSocialServicio;
 
@@ -50,6 +54,7 @@ public class RazonSocialController {
 				razonesSocialesTmp2.add(tmp.get(i).getNombreRazonSocial());
 //				razonesSocialesTmp2.add("<a href='#' onclick='obtenerRazonSocial("+tmp.get(i).getIdRazonSocial()+")'>Editar</a>");				
 				razonesSocialesTmp2.add("<a href='#' onclick='showEditarRazonSocial("+tmp.get(i).getIdRazonSocial()+")'>Editar</a>");
+				razonesSocialesTmp2.add("<a href='#' onclick='showNominasPorRazonSocial("+tmp.get(i).getIdRazonSocial()+")'>Nominas</a>");
 				razonesSocialesTmp.add(razonesSocialesTmp2);
 			}
 			return razonesSocialesTmp;
@@ -104,10 +109,43 @@ public class RazonSocialController {
 		 @RequestMapping(value="/obtenerrazonsocialbyid",method = RequestMethod.POST)
 		    @ResponseBody
 		    public RazonSocial obtenerRazonSocialById(@ModelAttribute(value="RazonSocial") RazonSocial razonSocial, BindingResult result){   
-			 	System.out.println("Razon Social por id"+ razonSocial);
 			 	return this.razonSocialServicio.obtenerRazonSocialById(razonSocial.getIdRazonSocial());
 			 	
 			}	 
+//LISTA DE NOMINAS POR RAZON SOCIAL
+		 //Controller que permite obtener todas la razones sociales
+		  @RequestMapping(value="/getnominasbyidrazonsocial",method = RequestMethod.POST)
+		    @ResponseBody
+		    public List obtenerNominasByIdRazonSocial(@ModelAttribute (value="RazonSocial") RazonSocial razonSocial, BindingResult result){    	
+			  System.out.println("Controller NominasByIdRazonSocial"+razonSocial.getIdRazonSocial());
+			
+			  try {
 
-	
+				List<Nomina> tmp =  this.razonSocialServicio.obtenerNominasByIdRazonSocial(razonSocial.getIdRazonSocial());
+				System.out.println("tmp"+tmp.size());
+				List nominasRazonSocialTmp = new ArrayList();
+				List nominasRazonSocialTmp2 = new ArrayList<String>();
+
+				for (int i = 0; i < tmp.size(); i++) {
+					nominasRazonSocialTmp2 = new ArrayList<String>();
+					System.out.println("tmp"+tmp.get(i));
+					nominasRazonSocialTmp2.add(tmp.get(i).getIdNomina());
+					nominasRazonSocialTmp2.add(tmp.get(i).getNombreCorto());
+					nominasRazonSocialTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
+					nominasRazonSocialTmp2.add(tmp.get(i).getPatrona().getNombreCorto());
+					nominasRazonSocialTmp2.add(tmp.get(i).getIntermediaria().getNombreIntermediaria());
+					nominasRazonSocialTmp2.add(tmp.get(i).getPeriodicidad());
+					nominasRazonSocialTmp2.add(tmp.get(i).getTipoPago());
+					nominasRazonSocialTmp2.add(tmp.get(i).getClaseRiesgo());
+					nominasRazonSocialTmp2.add(tmp.get(i).getPorcPrimaVacacional());
+					nominasRazonSocialTmp2.add(tmp.get(i).getFechaContrato());
+					nominasRazonSocialTmp.add(nominasRazonSocialTmp2);
+				}
+				return nominasRazonSocialTmp;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			  return null;
+			}
 }

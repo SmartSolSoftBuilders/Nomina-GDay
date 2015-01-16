@@ -84,9 +84,22 @@ public class RazonSocialServicioImpl implements RazonSocialServicio {
 	}
 
 	@Override
-	public List<Nomina> obtenerNominasByIdRazonSocial(int id) {
-		// TODO Auto-generated method stub
+	public List<Nomina> obtenerNominasByIdRazonSocial(int idNomina) {
+		System.out.println("Nominas por Razon Social Service");
+		try {
+			 
+				List<Nomina> tmp=	this.nominaDao.obtenerNominasByIdRazonSocial(idNomina);
+				System.out.println("Lista de Nominas"+tmp.size());
+					return tmp;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
+	
+	
 }
+	
+

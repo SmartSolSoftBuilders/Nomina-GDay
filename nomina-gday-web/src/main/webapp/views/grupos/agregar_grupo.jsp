@@ -17,8 +17,8 @@
 <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-
+	<div class="container" class="mayuscula">
+	<h1>Grupos</h1>	
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">
@@ -33,10 +33,13 @@
 				<br>
 				<br>
 			<!-- /.col-lg-6 -->						
-				 <div class="input-group">      
-			     	 <span class="input-group-btn">
-			        	<button type="button" class="btn btn-default" onclick="guardarGrupo()">AGREGAR</button>
-			     	 </span>			    
+				 <div class="input-group">
+			     	 <span>
+			        	<button type="button" class="btn btn-success" onclick="guardarGrupo()">AGREGAR</button>
+			     	 </span>
+			     	 <span>
+			        	<button type="button" class="btn btn-success" onclick="cancelar()">CANCELAR</button>
+			     	 </span>
    		 		</div><!-- /input-group -->
 				</div>
 			</div>

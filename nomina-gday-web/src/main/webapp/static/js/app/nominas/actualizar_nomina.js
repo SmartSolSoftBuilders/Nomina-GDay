@@ -161,6 +161,7 @@ function actualizarNomina() {
 					"registroPatronal" : $("#registroPatronal").val(),
 					"periodicidad" : $("#periodicidad").val(),
 					"tipoCalendario.tipoCalendario" : $("#tipoCalendario").val(),
+					"fechaContrato" : $("#fechaContrato").val(),
 				},
 				
 				dataType : 'json',

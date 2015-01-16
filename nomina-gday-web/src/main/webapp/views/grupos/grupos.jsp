@@ -7,6 +7,7 @@
 		<style type="text/css" title="currentStyle">
 			@import "../../static/js/libs/css/demo_page.css";
 			@import "../../static/js/libs/css/demo_table.css";
+			@import "../../static/js/libs/css/bootstrap.min.css";
 			@import "../../static/js/libs/css/ui-lightness/jquery-ui-1.10.2.custom.css";
 		</style>
 		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery-1.9.1.js"></script>
@@ -32,8 +33,8 @@
 					<thead>			
 						<tr class="odd gradeA">
 							<th>NUMERO GRUPO</th>
-							<th>NOMBRE CORTO</th>					
 							<th>NOMBRE</th>
+							<th>NOMBRE CORTO</th>					
 							<th></th>
 						</tr>
 					<tbody>			
@@ -47,12 +48,12 @@
 			</div>
 			<br>
 			<br>
-			<div align="center">
-				<input type="button" value="Añadir Grupo" onclick="showAgregarGrupo();"/>
+			<div>
+				<input type="button" class="btn btn-success" value="Añadir Grupo" onclick="showAgregarGrupo();"/>
 			</div>
 <!-- 			Modal para Editar Grupo -->				
 			<div class="row">
-				<div id="divGrupos" title="Basic dialog" style="display:none"  class="col-lg-6">
+				<div id="divGrupos" title="Actualizar Grupo" style="display:none"  class="col-lg-6">
 					<table>
 					 	<tr>
 					 		<td>NOMBRE<input id='nombre' name='nombre' type="text" class="form-control"></td>
@@ -66,9 +67,7 @@
 				<br>
 			<!-- /.col-lg-6 -->						
 				 <div class="input-group">      
-			     	 <span class="input-group-btn">
-			        	<button type="button" class="btn btn-default" onclick="actualizarGrupo()">MODIFICAR</button>
-			     	 </span>			    
+			        	<button type="button" class="btn btn-success" onclick="actualizarGrupo()">MODIFICAR</button>
    		 		</div><!-- /input-group -->
 				</div>
 			</div>

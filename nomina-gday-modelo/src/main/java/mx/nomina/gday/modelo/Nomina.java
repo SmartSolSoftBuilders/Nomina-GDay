@@ -23,6 +23,7 @@ public class Nomina extends BaseModelo{
 	private String claseRiesgo;
 	private String registroPatronal;
 	private String periodicidad;
+	private String fechaContrato;
 	
 	
 	public Nomina(){
@@ -38,7 +39,7 @@ public class Nomina extends BaseModelo{
 			boolean facturaSubsidio, boolean ivaExento,
 			boolean reconoceAntiguedad, boolean comisionCostSocial,
 			String tipoPago, String claseRiesgo, String registroPatronal,
-			String periodicidad) {
+			String periodicidad, String fechaContrato) {
 		super();
 		this.idNomina = idNomina;
 		this.patrona = patrona;
@@ -61,6 +62,7 @@ public class Nomina extends BaseModelo{
 		this.claseRiesgo = claseRiesgo;
 		this.registroPatronal = registroPatronal;
 		this.periodicidad = periodicidad;
+		this.fechaContrato = fechaContrato;
 	}
 
 
@@ -272,5 +274,16 @@ public class Nomina extends BaseModelo{
 	public void setPeriodicidad(String periodicidad) {
 		this.periodicidad = periodicidad;
 	}
+
+
+	public String getFechaContrato() {
+		return fechaContrato;
+	}
+
+
+	public void setFechaContrato(String fechaContrato) {
+		this.fechaContrato = fechaContrato;
+	}
+
 
 }
