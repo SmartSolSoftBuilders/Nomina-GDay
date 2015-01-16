@@ -53,7 +53,9 @@
 					 		<td>COMISION<input id='comision' name='comision' type="text" class="form-control"></td>					 	
 							<td width="5%"></td>
 					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control">
-					 		<button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>					 		
+					 		<button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>
+					 		<button type="button" class="btn btn-default" onclick="quitarReferenciante();">QUITAR</button>					 		
+					 							 		
 					 		<select id="selectMult" multiple="multiple">
 					 		</select>
 					 	</tr>					 	

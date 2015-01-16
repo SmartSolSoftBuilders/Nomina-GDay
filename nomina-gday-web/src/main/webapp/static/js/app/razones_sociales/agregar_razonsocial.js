@@ -1,3 +1,4 @@
+var indexOpt=1;
 $( document ).ready(function() {
  
     // Setup form validation on the #register-form element
@@ -35,8 +36,13 @@ function seleccionarGrupo (id,txt){
 function agregarReferenciante(){
 	var x = document.getElementById("selectMult");
 	var option = document.createElement("option");
+	option.id=indexOpt++;
 	option.text = $("#referenciante").val();
 	x.add(option);
+}		
+function quitarReferenciante(){
+	var id=$("#selectMult").find('option:selected').attr("id");
+	$("#selectMult").find("option[id='"+id+"']").remove();  
 }		
 
 
