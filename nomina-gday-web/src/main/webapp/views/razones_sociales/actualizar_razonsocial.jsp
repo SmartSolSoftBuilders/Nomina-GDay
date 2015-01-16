@@ -38,107 +38,121 @@
 					<table>
 					 	<tr>
 					 		<td>RAZON SOCIAL<input id='nombreRazonSocial' name='nombreRazonSocial' type="text" class="form-control"></td>
-					 		<input id='razonSocialIdSel' name='razonSocialIdSel' type="hidden" class="form-control"></td>					 	
-					 		
+					 		<input id='razonSocialIdSel' name='razonSocialIdSel' type="hidden" class="form-control"></td>					 						 		
 					 	</tr>
+					 </table>
+					 <table>
 					 	<tr>
 					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
+						 	<td></td>
 					 		<td>NOMBRE CORTO<input id='nombreCorto' name='nombreCorto' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>CODIGO DE CLIENTE<input id='codCliente' name='codCliente' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
+							<td></td>
 					 		<td>GRUPO<input id='grupo' name='grupo' type="text" class="form-control" onclick="showGrupos()">
 					 		<input id='grupoIdSel' name='grupoIdSel' type="hidden" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>COMISION<input id='comision' name='comision' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
-					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control"></td>
-					 		<td><button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>					 		</td>
-				 		
+					 		<td></td>
+					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control">
+					 		<select id="selectMult" multiple="multiple">
+					 		</select><button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>					 		
+					 		</td>		 		
 					 	</tr>
 					 	<tr>				 	
-					 		<td><select id="selectMult" multiple="multiple">
-					 		</select></td>
-					 	</tr>					 	
-					 	<tr>
+					 		<td></td>
+						 	<td></td>
 					 		<td>OBJETO SOCIAL<textarea id='objetoSocial' name='objetoSocial' type="text" class="form-control"></textarea></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>ACTA CONSTITUTIVA<input id='actaConst' name='actaConst' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
+							<td></td>
 					 		<td>FECHA ACTA CONSTITUTIVA<input id='fechaActaConst' name='fechaActaConst' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>FECHA INICIO OPERACION<input id='fechaIniOper' name='fechaIniOper' type="text" class="form-control"></td>					 	
 					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
 					 		<td>REPRESENTANTE LEGAL</td>
-					 		<td>APELLIDO PATERNO<input id='aPaterno' name='aPaterno' type="text" class="form-control"></td>					 	
 					 	</tr>
-					 	<tr>
+					 	</table>
+					 	<table>
+					 		<td>APELLIDO PATERNO<input id='aPaterno' name='aPaterno' type="text" class="form-control"></td>					 	
+					 		<td></td>
 					 		<td>APELLIDO MATERNO<input id='aMaterno' name='aMaterno' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
-					 		<td>NOMBRES<input id='nombres' name='nombres' type="text" class="form-control"></td>					 	
+					 		<td>NOMBRES<input id='nombres' name='nombres' type="text" class="form-control"></td>
+					 		<td></td>					 	
 					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
 					 		<td>DOMICILIO FISCAL</td>
-					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control"></td>					 	
 					 	</tr>
-					 	<tr>
+					 	</table>
+					 	<table>
+					 		<tr>
+					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control"></td>					 	
+						 	<td></td>						 	
 					 		<td>NUMERO EXT<input id='numeroExt' name='numeroExt' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>NUMERO INT<input id='numeroInt' name='numeroInt' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
+							<td></td>
 					 		<td>COLONIA<input id='colonia' name='colonia' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>CODIGO POSTAL<input id='codPostal' name='codPostal' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
+							<td></td>					 	
 					 		<td>MUNICIPIO<input id='municipio' name='municipio' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>ESTADO<input id='estado' name='estado' type="text" class="form-control"></td>					 	
+							<td></td>
+							<td></td>					 	
 					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
 					 		<td>CONTACTO1</td>
+					 	</tr>
+					 	</table>
+					 	<table>
+					 	<tr>
 					 		<td>NOMBRE<input id='nombreContUno' name='nombreContUno' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>TELEFONO<input id='telefonoContUno' name='telefonoContUno' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>CORREO<input id='correoContUno' name='correoContUno' type="text" class="form-control"></td>					 	
 					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
 					 		<td>CONTACTO2</td>
-					 		<td>NOMBRE<input id='nombreContDos' name='nombreContDos' type="text" class="form-control"></td>					 	
+					 	
 					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
+					 		<td>NOMBRE<input id='nombreContDos' name='nombreContDos' type="text" class="form-control"></td>
 					 		<td>TELEFONO<input id='telefonoContDos' name='telefonoContDos' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>CORREO<input id='correoContDos' name='correoContDos' type="text" class="form-control"></td>					 	
+					 							 	
 					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
 					 		<td>CONTACTO3</td>
-					 		<td>NOMBRE<input id='nombreContTres' name='nombreContTres' type="text" class="form-control"></td>					 	
 					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
 					 		<td>TELEFONO<input id='telefonoContTres' name='telefonoContTres' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
-					 		<td>CORREO<input id='correoContTres' name='correoContTres' type="text" class="form-control"></td>					 	
+					 		<td>CORREO<input id='correoContTres' name='correoContTres' type="text" class="form-control"></td>
+					 		<td>NOMBRE<input id='nombreContTres' name='nombreContTres' type="text" class="form-control"></td>					 	
 					 	</tr>
 					</table>
 				<br>
