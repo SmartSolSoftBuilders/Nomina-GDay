@@ -112,6 +112,7 @@ function muestraDatosRazonSocial(datos){
 		console.log(data.referenciantes[i].nombreReferenciante);
 		var x = document.getElementById("selectMult");
 		var option = document.createElement("option");
+		option.id = (i+1);
 		option.text = data.referenciantes[i].nombreReferenciante;
 		x.add(option);  
 	}
@@ -137,6 +138,10 @@ function getReferenciantes(){
 	
 	return jsonString;
 }
+function quitarReferenciante(){
+	var id=$("#selectMult").find('option:selected').attr("id");
+	$("#selectMult").find("option[id='"+id+"']").remove();  
+}		
 
 function actualizarRazonSocial() {
 	if ($("#editarRazonSocialForm").valid()){

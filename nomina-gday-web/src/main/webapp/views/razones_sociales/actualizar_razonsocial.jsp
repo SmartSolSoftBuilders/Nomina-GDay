@@ -58,7 +58,9 @@
 					 		<td></td>
 					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control">
 					 		<select id="selectMult" multiple="multiple">
-					 		</select><button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>					 		
+					 		</select><button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>
+					 							 		<button type="button" class="btn btn-default" onclick="quitarReferenciante();">QUITAR</button>					 		
+					 							 		
 					 		</td>		 		
 					 	</tr>
 					 	<tr>				 	
