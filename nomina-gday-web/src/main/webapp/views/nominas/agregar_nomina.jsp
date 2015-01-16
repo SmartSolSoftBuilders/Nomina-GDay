@@ -33,18 +33,21 @@
 <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
+<%session.setAttribute("titulo","AGREGAR NOMINA");%>
+
 <body>
 	<div class="container">
-
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">
-					<table>
+					<table>					
 					 	<tr>
 					 		<td>NOMBRE<input id='nombreNomina' name='nombreNomina' type="text" class="form-control"></td>
 					 	</tr>
+					 </table>
+					 <table>
 					  	<tr>
-					 		<td>RAZON SOCIAL<input id='razonSocial' name='razonSocial' type="text" class="form-control"></td>
+					 		<td>RAZON SOCIAL</td>
 					 		<td><button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>					 		</td>
 				 		
 					 	</tr>
@@ -57,10 +60,11 @@
 					 			<option value="5">Monica Herrera Fernandez</option>
 					 		</select></td>
 					 	</tr>					 	
+					 </table>
+					 <table>
 					 	<tr>
 					 		<td>PATRONA<input id='patrona' name='patrona' type="text" class="form-control"></input></td>					 	
-					 	</tr>
-					 	<tr>
+					 		<td></td>
 					 		<td>EJECUTIVO</td>
 							 	<td><select id='ejecutivo' name='ejecutivo' type="text" class="form-control"></select></td>					 	
 					 	</tr>
@@ -137,7 +141,9 @@
 		  							<option>Mensual</option>
 							</select></td>					 	
 					 	</tr>
-				
+						<tr>
+					 		<td>FECHA CONTRATO<input id='fechaContrato' name='fechaContrato' type="date" class="form-control"></td>					 	
+					 	</tr>
 					 	</table>
 				<br>
 				<br>

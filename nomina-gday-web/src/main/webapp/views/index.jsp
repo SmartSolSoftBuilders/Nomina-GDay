@@ -29,8 +29,8 @@
 		<![endif]-->
 		<link href="static/css/styles.css" rel="stylesheet">
 	</head>
-
-  <frameset rows="170,*">
+  <%session.setAttribute("titulo","index");%>
+  <frameset rows="160,*">
     <frame name="menu" src="views/menu/menu.jsp" marginwidth="10"scrolling="no" frameborder="0">
     <frameset cols="100%,*">
       <frame name="main" src="views/main.jsp" marginwidth="10" marginheight="10" scrolling="auto" frameborder="0">     

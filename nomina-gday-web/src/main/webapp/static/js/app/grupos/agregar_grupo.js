@@ -13,7 +13,9 @@ function guardarGrupo() {
 				},
 				success : function(response) {
 					$("#resultadoGuardar")
-							.html(alert("La cotizaci\u00f3n se guard\u00f3 correctamente"));
+							.html(alert("Grupo creado correctamente"));
+					top.frames['main'].location="../grupos/grupos.jsp";
+
 				},
 				error : function(response) {
 					$("#resultadoGuardar").html();
@@ -21,3 +23,7 @@ function guardarGrupo() {
 			});
 		}
 
+
+function cancelar(){
+	top.frames['main'].location="../grupos/grupos.jsp"; 	
+}

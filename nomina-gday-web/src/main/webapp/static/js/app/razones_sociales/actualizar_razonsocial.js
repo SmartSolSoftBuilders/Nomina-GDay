@@ -82,7 +82,8 @@ function muestraDatosRazonSocial(datos){
 	$("#rfc").val(data.rfc);
 	$("#nombreCorto").val(data.nombreCortoRazonS);
 	$("#codCliente").val(data.codCliente);
-	$("#grupo").val(data.grupo.idGrupo);
+	$("#grupo").val(data.grupo.nombre);
+	$("#grupoIdSel").val(data.grupo.idGrupo);
 	$("#comision").val(data.comision);
 	$("#actaConst").val(data.actConstitutiva);
 	$("#fechaActaConst").val(data.fechaActConstitutiva);
@@ -192,6 +193,7 @@ function actualizarRazonSocial() {
 					console.log(response);
 					$("#resultadoGuardar")
 							.html(alert("La actualizaci\u00f3n de Raz\u00f3n Social se realiz\u00f3 correctamente"));
+					top.frames['main'].location="../razones_sociales/razones_sociales.jsp";
 				},
 				error : function(response) {
 					$("#resultadoGuardar").html();
@@ -235,3 +237,8 @@ function showGrupos(){
 	});
 		$("#divGrupos").dialog();
 	}
+
+function cancelar(){
+	top.frames['main'].location="../razones_sociales/razones_sociales.jsp"; 	
+}
+	

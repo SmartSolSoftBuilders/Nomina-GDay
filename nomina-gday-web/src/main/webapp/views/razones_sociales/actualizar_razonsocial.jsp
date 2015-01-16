@@ -47,7 +47,7 @@
 						 	<td></td>
 					 		<td>NOMBRE CORTO<input id='nombreCorto' name='nombreCorto' type="text" class="form-control"></td>					 	
 					 	</tr>
-					 	<tr>
+					  	<tr>
 					 		<td>CODIGO DE CLIENTE<input id='codCliente' name='codCliente' type="text" class="form-control"></td>					 	
 							<td></td>
 					 		<td>GRUPO<input id='grupo' name='grupo' type="text" class="form-control" onclick="showGrupos()">
@@ -161,8 +161,11 @@
 				<br>
 			<!-- /.col-lg-6 -->						
 				 <div class="input-group">      
-			     	 <span class="input-group-btn">
-			        	<button type="button" class="btn btn-default" onclick="actualizarRazonSocial();">MODIFICAR</button>
+			     	 <span>
+			        	<button type="button" class="btn btn-success" onclick="actualizarRazonSocial();">MODIFICAR</button>
+			     	 </span>			    
+			     	 <span>
+			        	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
 			     	 </span>			    
    		 		</div><!-- /input-group -->
    		 		</form>
@@ -171,7 +174,7 @@
 			</div>
 	  </div>
 	<div id='resultadoGuardar'></div>
-	<div id="divGrupos" title="Basic dialog" style="display:none">
+	<div id="divGrupos" title="Seleccionar Grupo" style="display:none">
 		<div id="container" class="mayuscula">
 			<h1>Seleccion de Grupos</h1>		
 			<div id="demo">

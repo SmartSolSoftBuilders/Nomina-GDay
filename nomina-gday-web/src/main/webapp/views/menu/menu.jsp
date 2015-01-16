@@ -77,7 +77,7 @@
 <br>
 <div class="container">
 	<div align="center">
-   		<h2>Sistema de Gestión de Información <br>para Esquema de Pago de Nómina</h2>
+   		<h2><%=session.getAttribute("titulo")%></h2>
    </div>
 </div>
  

@@ -136,6 +136,8 @@ function guardarRazonSocial() {
 				success : function(response) {
 					$("#resultadoGuardar")
 							.html(alert("La cotizaci\u00f3n se guard\u00f3 correctamente"));
+					top.frames['main'].location="../razones_sociales/razones_sociales.jsp";
+
 				},
 				error : function(response) {
 					$("#resultadoGuardar").html();
@@ -144,4 +146,8 @@ function guardarRazonSocial() {
 		}
 
 	}	
-		
+
+function cancelar(){
+	top.frames['main'].location="../razones_sociales/razones_sociales.jsp"; 	
+}
+	
