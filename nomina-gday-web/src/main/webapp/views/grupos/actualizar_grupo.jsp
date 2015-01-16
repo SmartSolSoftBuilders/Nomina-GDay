@@ -35,7 +35,7 @@
 			<!-- /.col-lg-6 -->						
 				 <div class="input-group">      
 			     	 <span class="input-group-btn">
-			        	<button type="button" class="btn btn-default" onclick="actualizarGrupo()">AGREGAR</button>
+			        	<button type="button" class="btn btn-success" onclick="actualizarGrupo()">AGREGAR</button>
 			     	 </span>			    
    		 		</div><!-- /input-group -->
 				</div>

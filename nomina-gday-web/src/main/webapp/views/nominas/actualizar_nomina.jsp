@@ -147,7 +147,9 @@
 							</select></td>
 							<input id='tipoCalendarioIdSel' name='tipoCalendarioIdSel' type="hidden" class="form-control"></td>					 	
 					 	</tr>
-				
+					 	<tr>
+					 		<td>FECHA CONTRATO<input id='fechaContrato' name='fechaContrato' type="date" class="form-control"></td>					 	
+					 	</tr>				
 					 	</table>
 				<br>
 				<br>						

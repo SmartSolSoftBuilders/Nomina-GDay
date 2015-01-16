@@ -12,6 +12,6 @@ public interface RazonSocialServicio {
 	public boolean agregarRazonSocial(RazonSocial razonSocial);
 	void actualizarRazonSocial(RazonSocial razonSocial);
 	public RazonSocial obtenerRazonSocialById(int idRazonSocial);
-	public List<Nomina> obtenerNominasByIdRazonSocial(int id);
+	public List<Nomina> obtenerNominasByIdRazonSocial(int idNomina);
 
 }

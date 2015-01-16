@@ -3,12 +3,11 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>grupo day</title>
-
+<title>GDAY</title>
+		
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="../../static/js/libs/js/jquery.validate.js"></script>
-
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
  <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
   
@@ -23,12 +22,13 @@
 <link href="../../static/css/styles.css" rel="stylesheet">
 <link href="../../static/css/multiple-select.css" rel="stylesheet">
 <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+		
 <script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/agregar_razonsocial.js"></script>
 <body>
 	
-	<div class="container">
+	<div class="container" class="mayuscula">
+	<h1>Agregar Razones Sociales</h1>	
 		<div class="text-center col-lg-12">
-			    <h2 style="color:#0051a4">Sistema de Gestión de Información <br>para Esquema de Pago de Nómina</h2><br><br>
 			<div class="row">
 				<div class="col-lg-6" align="center">
 				<form  id="agregarRazonSocialForm" name="agregarRazonSocialForm" novalidate="novalidate">					
@@ -138,18 +138,20 @@
 				<br>
 				<br>
 				 <div class="input-group">      
-			     	 <span class="input-group-btn">
-			        	<button type="button" class="btn btn-default" onclick="guardarRazonSocial();">AÑADIR</button>
+			     	 <span>
+			        	<button type="button" class="btn btn-success" onclick="guardarRazonSocial();">AÑADIR</button>
+			     	 </span>			    
+			     	 <span>
+			        	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
 			     	 </span>			    
 				</div>
 				</form>
 			</div>
 		</div>
 	  </div>
-	</form>
 	  
 	<div id='resultadoGuardar'></div>
-	<div id="divGrupos" title="Basic dialog" style="display:none">
+	<div id="divGrupos" title="Seleccionar Grupo" style="display:none">
 		<div id="container" class="mayuscula">
 			<h1>Seleccion de Grupos</h1>		
 			<div id="demo">

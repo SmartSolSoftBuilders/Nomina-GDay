@@ -19,6 +19,7 @@
 		<result property="claseRiesgo" column="CLASE_RIESGO"/>
 		<result property="registroPatronal" column="REGISTRO_PATRONAL"/>
 		<result property="periodicidad" column="PERIODICIDAD"/>
+		<result property="fechaContrato" column="FECHA_CONTRATO"/>
 		<association property="intermediaria" column="ID_INTERMEDIARIA" javaType="Intermediaria" select="selectIntermediaria"/>
 		<association property="patrona" column="ID_PATRONA" javaType="Patrona" select="selectPatrona"/>				
 		<association property="esquema" column="ID_ESQUEMA" javaType="Esquema" select="selectEsquema"/>
@@ -121,12 +122,12 @@
             "PROVISION_VACACIONES", "PROVISION_PRIMA_VACACIONAL", "DIAS_AGUINALDO", 
             "PORC_PRIMA_VACACIONAL", "FONDO_AHORRO", "FACTURA_SUBSIDIO", 
             "IVA_EXENTO", "RECONOCE_ANTIGUEDAD", "COMISION_COST_SOCIAL", 
-            "TIPO_PAGO", "CLASE_RIESGO", "REGISTRO_PATRONAL", "PERIODICIDAD", "TIPO_CALENDARIO")
+            "TIPO_PAGO", "CLASE_RIESGO", "REGISTRO_PATRONAL", "PERIODICIDAD", "TIPO_CALENDARIO", "FECHA_CONTRATO")
    	 	VALUES (#{id}, 1, 1, 1, 1, 1, #{nombreCorto},  #{provisionAguinaldo},  #{provisionVacaciones}, 
             #{provisionPrimaVacacional}, #{diasAguinaldo}, #{porcPrimaVacacional}, #{fondoAhorro}, 
             #{facturaSubsidio}, #{ivaExento}, #{reconoceAntiguedad}, 
             #{comisionCostSocial}, #{tipoPago}, #{claseRiesgo}, 
-            #{registroPatronal}, #{periodicidad}, #{tipoCalendario.tipoCalendario});	
+            #{registroPatronal}, #{periodicidad}, #{tipoCalendario.tipoCalendario}, date(#{fechaContrato}));	
 	</insert>
 	
 <!-- Update para actualizar la Nomina seleccionada --> 
@@ -137,11 +138,11 @@
             "PORC_PRIMA_VACACIONAL"=#{porcPrimaVacacional}, "FONDO_AHORRO"=#{fondoAhorro}, "FACTURA_SUBSIDIO"=#{facturaSubsidio}, 
             "IVA_EXENTO"=#{ivaExento}, "RECONOCE_ANTIGUEDAD"=#{reconoceAntiguedad}, "COMISION_COST_SOCIAL"=#{comisionCostSocial}, 
             "TIPO_PAGO"=#{tipoPago}, "CLASE_RIESGO"=#{claseRiesgo}, "REGISTRO_PATRONAL"=#{registroPatronal}, "PERIODICIDAD"=#{periodicidad}, 
-            "TIPO_CALENDARIO"=#{tipoCalendario.tipoCalendario}
+            "TIPO_CALENDARIO"=#{tipoCalendario.tipoCalendario}, "FECHA_CONTRATO"= date(#{fechaContrato})
  	WHERE "ID_NOMINA"=#{idNomina} AND "ID_PATRONA"= 1 AND "ID_INTERMEDIARIA"= 1 AND "ID_ESQUEMA"= 1 AND "ID_EJECUTIVO"= 1 AND "ID_CALENDARIO"=1 
 </update>
 
 <select id="obtenerNominasByIdRazonSocial" parameterType="int" resultMap="nominaResult" resultType="Nomina">
-	SELECT "NOMINA"."ID_NOMINA" FROM "NOMINA" INNER JOIN "NOMINA_RAZON" ON  "NOMINA"."ID_NOMINA" = "NOMINA_RAZON"."ID_NOMINA" WHERE "NOMINA_RAZON"."ID_RAZON_SOCIAL" = #{id}
-</select>
+SELECT "NOMINA"."ID_NOMINA","NOMINA"."NOMBRE_CORTO", "NOMINA"."ID_ESQUEMA", "NOMINA"."ID_PATRONA", "NOMINA"."ID_INTERMEDIARIA", "NOMINA"."PERIODICIDAD", "NOMINA"."TIPO_PAGO", "NOMINA"."CLASE_RIESGO","NOMINA"."PORC_PRIMA_VACACIONAL","NOMINA"."FECHA_CONTRATO"
+FROM "NOMINA" INNER JOIN "NOMINA_RAZON" ON  "NOMINA"."ID_NOMINA" = "NOMINA_RAZON"."ID_NOMINA" WHERE "NOMINA_RAZON"."ID_RAZON_SOCIAL" = #{id}</select>
 </mapper>

@@ -61,6 +61,7 @@ function guardarNomina() {
 					"tipoCalendario.tipoCalendario" : $("#tipoCalendario").val(),
 					"facturaSubsidio" : $("#factSub").val(),
 					"reconoceAntiguedad" : $("#reconoceAntihuedad").val(),
+					"fechaContrato" : $("#fechaContrato").val(),
 					},
 				
 				dataType : 'json',

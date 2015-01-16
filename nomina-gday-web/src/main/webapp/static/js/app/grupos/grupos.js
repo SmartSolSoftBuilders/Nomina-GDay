@@ -25,3 +25,4 @@ $(document).ready(function() {
 function showAgregarGrupo(){
 	top.frames['main'].location="../grupos/agregar_grupo.jsp"; 	
 }
+

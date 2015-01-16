@@ -138,4 +138,8 @@ function guardarRazonSocial() {
 		}
 
 	}	
-		
+
+function cancelar(){
+	top.frames['main'].location="../razones_sociales/razones_sociales.jsp"; 	
+}
+	

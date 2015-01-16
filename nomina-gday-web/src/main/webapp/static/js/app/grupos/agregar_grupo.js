@@ -21,3 +21,7 @@ function guardarGrupo() {
 			});
 		}
 
+
+function cancelar(){
+	top.frames['main'].location="../grupos/grupos.jsp"; 	
+}

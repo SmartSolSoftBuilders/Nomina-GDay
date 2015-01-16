@@ -177,3 +177,8 @@ function showGrupos(){
 	});
 		$("#divGrupos").dialog();
 	}
+
+function cancelar(){
+	top.frames['main'].location="../razones_sociales/razones_sociales.jsp"; 	
+}
+	
