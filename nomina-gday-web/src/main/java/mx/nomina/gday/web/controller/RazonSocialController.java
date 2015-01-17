@@ -10,6 +10,8 @@ import java.util.List;
 
 
 
+import java.util.StringTokenizer;
+
 import javax.servlet.http.HttpServletRequest;
 
 import mx.nomina.gday.modelo.Nomina;
@@ -64,6 +66,63 @@ public class RazonSocialController {
 		}
 		  return null;
 		}
+	  
+	  //Obtiene las razones sociales para ser seleccionadas
+	  @RequestMapping(value="/getrazonessociales_nomina",method = RequestMethod.POST)
+	    @ResponseBody
+	    public List obtenerRazonesSocialesSel(int porcentaje,String  id, String id2){ 
+		StringTokenizer tokens=new StringTokenizer(id, ",");
+		StringTokenizer tokens2=new StringTokenizer(id2, ",");
+		
+		ArrayList<String> ids=new ArrayList<String>();
+		ArrayList<String> ids2=new ArrayList<String>();
+		while(tokens.hasMoreTokens()) {
+			 ids.add(tokens.nextToken());
+		 }
+		while(tokens2.hasMoreTokens()) {
+			 ids2.add(tokens2.nextToken());
+		 }
+		 System.out.println("Controller Razon Social:"+id2);
+		  try {
+			  System.out.println("porcentaje:"+porcentaje+id); 
+			List<RazonSocial> tmp =  this.razonSocialServicio.obtenerRazonesSociales();
+			System.out.println("tmp"+tmp.size());
+			List razonesSocialesTmp = new ArrayList();
+			List razonesSocialesTmp2 = new ArrayList<String>();
+			if (porcentaje>0){
+			for (int i = 0; i < tmp.size(); i++) {
+				razonesSocialesTmp2 = new ArrayList<String>();
+				razonesSocialesTmp2.add(tmp.get(i).getIdRazonSocial());
+				razonesSocialesTmp2.add(tmp.get(i).getGrupo().getNombre());
+				razonesSocialesTmp2.add(tmp.get(i).getNombreRazonSocial());
+				razonesSocialesTmp2.add(tmp.get(i).getNombreCortoRazonS());
+				razonesSocialesTmp2.add(tmp.get(i).getRfc());
+				System.out.println("CONTIENE"+tmp.get(i).getIdRazonSocial()+"?"+ids.contains(""+tmp.get(i).getIdRazonSocial()));
+				if (!ids.contains(""+tmp.get(i).getIdRazonSocial())){
+					razonesSocialesTmp2.add("(%):"+"<input type='text' size=5 id='porcentaje"+tmp.get(i).getIdRazonSocial()+"' value='"+porcentaje+"'/>");
+					razonesSocialesTmp2.add("<a href='#' onclick='agregarRZ("+tmp.get(i).getIdRazonSocial()+",\""+tmp.get(i).getNombreCortoRazonS()+"\")'>Agregar</a>");
+				}
+				else{
+					int pos=0;
+					for (int k=0;k<ids.size();k++){
+						if (ids.get(k).equals(""+tmp.get(i).getIdRazonSocial())){
+							pos=k;
+						}
+					}
+					razonesSocialesTmp2.add("(%):"+"<input type='text' size=5 id='porcentaje"+tmp.get(i).getIdRazonSocial()+"' value='"+ids2.get(pos)+"' readonly/>");
+					razonesSocialesTmp2.add("YA ESTÁ AGREGADA");
+				} 
+				razonesSocialesTmp.add(razonesSocialesTmp2);
+			}
+			}
+			return razonesSocialesTmp;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		  return null;
+		}
+
 	  
 	  //Controller 	que guarda una razon social
 	  @RequestMapping(value="/guardarrazonsocial",method = RequestMethod.POST)

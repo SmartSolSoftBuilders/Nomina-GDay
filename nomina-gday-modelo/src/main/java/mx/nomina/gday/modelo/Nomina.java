@@ -24,8 +24,18 @@ public class Nomina extends BaseModelo{
 	private String registroPatronal;
 	private String periodicidad;
 	private String fechaContrato;
+	private String jsonValue;
 	
-	
+	public String getJsonValue() {
+		return jsonValue;
+	}
+
+
+	public void setJsonValue(String jsonValue) {
+		this.jsonValue = jsonValue;
+	}
+
+
 	public Nomina(){
 	}
 
@@ -39,7 +49,7 @@ public class Nomina extends BaseModelo{
 			boolean facturaSubsidio, boolean ivaExento,
 			boolean reconoceAntiguedad, boolean comisionCostSocial,
 			String tipoPago, String claseRiesgo, String registroPatronal,
-			String periodicidad, String fechaContrato) {
+			String periodicidad, String fechaContrato,String jsonValue) {
 		super();
 		this.idNomina = idNomina;
 		this.patrona = patrona;
@@ -63,6 +73,7 @@ public class Nomina extends BaseModelo{
 		this.registroPatronal = registroPatronal;
 		this.periodicidad = periodicidad;
 		this.fechaContrato = fechaContrato;
+		this.jsonValue=jsonValue;
 	}
 
 
