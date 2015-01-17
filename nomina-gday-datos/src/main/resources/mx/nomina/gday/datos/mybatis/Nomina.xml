@@ -127,7 +127,15 @@
             #{provisionPrimaVacacional}, #{diasAguinaldo}, #{porcPrimaVacacional}, #{fondoAhorro}, 
             #{facturaSubsidio}, #{ivaExento}, #{reconoceAntiguedad}, 
             #{comisionCostSocial}, #{tipoPago}, #{claseRiesgo}, 
-            #{registroPatronal}, #{periodicidad}, #{tipoCalendario.tipoCalendario}, date(#{fechaContrato}));	
+            #{registroPatronal}, #{periodicidad}, #{tipoCalendario.tipoCalendario}, date(#{fechaContrato}));
+            <if test="razonesSociales != null">
+            	<foreach  collection="razonesSociales" item="grsp">
+            	INSERT INTO "NOMINA_RAZON"(
+            			"ID_NOMINA", "ID_RAZON_SOCIAL", "PORCENTAJE")
+				    VALUES (#{id}, #{grsp.idRazonSocial},cast( #{grsp.jsonString} as double precision));            	
+            	</foreach>
+            </if>
+            	
 	</insert>
 	
 <!-- Update para actualizar la Nomina seleccionada --> 

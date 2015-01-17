@@ -63,6 +63,27 @@ function obtenerIdsAgregadosRZ(){
 	retArr[1]=ids2;
 	return retArr;
 }
+function obtenerIdsAgregadosRZ2(){
+	var retArr=new Array(2);
+	var ids="";
+	var ids2="";
+	var coma="";
+	$("#selectMult option").each(function()
+			{
+			console.log("VALOR"+$(this).attr("id"));
+			var porcentaje=document.getElementById("porcentaje"+$(this).attr("id")).value;
+			ids=ids+coma+$(this).attr("id")+":"+porcentaje;				
+			ids2=ids2+coma+porcentaje;
+			coma=","
+			});
+	console.log(ids);
+	console.log(ids2);
+
+	retArr[0]=ids;
+	retArr[1]=ids2;
+	return retArr;
+}
+
 function seleccionarPatrona(id,nombre){
 	$("#patrona").val(nombre);
 	$("#idPatrona").val(nombre);
@@ -154,6 +175,7 @@ function quitarRazonSocial(){
 }
 
 function guardarNomina() {
+	var ids=obtenerIdsAgregadosRZ2();
 		$
 			.ajax({
 				data : {
@@ -177,6 +199,7 @@ function guardarNomina() {
 					"facturaSubsidio" : $("#factSub").val(),
 					"reconoceAntiguedad" : $("#reconoceAntihuedad").val(),
 					"fechaContrato" : $("#fechaContrato").val(),
+					"jsonValue" : ids[0]
 					},
 				
 				dataType : 'json',

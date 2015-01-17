@@ -2,6 +2,7 @@ package mx.nomina.gday.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,6 +31,19 @@ public class NominaController {
 		 @ResponseBody
 		    public boolean guardarNomina(@ModelAttribute(value="nomina") Nomina nomina, BindingResult result){
 			 	System.out.println("Guardando Nomina"+ nomina);
+			 	System.out.println("nomina"+nomina.getJsonValue());
+				StringTokenizer tokens=new StringTokenizer(nomina.getJsonValue(), ",");				
+				List<RazonSocial> razonesSociales = new ArrayList<RazonSocial>();
+				while(tokens.hasMoreTokens()) {
+					StringTokenizer tokens2=new StringTokenizer(tokens.nextToken(), ":");
+					RazonSocial razonSocial = new RazonSocial();
+					razonSocial.setIdRazonSocial(Integer.parseInt(tokens2.nextToken()));
+					razonSocial.setJsonString(tokens2.nextToken());
+					System.out.println(razonSocial.getIdRazonSocial());
+					System.out.println(razonSocial.getJsonString());
+					razonesSociales.add(razonSocial);
+				 }
+				nomina.setRazonesSociales(razonesSociales);
 			 	nominaServicio.agregarNomina(nomina);			 	
 			return true;
 			 

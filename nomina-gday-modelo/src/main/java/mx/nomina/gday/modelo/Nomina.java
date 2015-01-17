@@ -1,5 +1,7 @@
 package mx.nomina.gday.modelo;
 
+import java.util.List;
+
 public class Nomina extends BaseModelo{
 	
 	private Integer idNomina;
@@ -25,7 +27,19 @@ public class Nomina extends BaseModelo{
 	private String periodicidad;
 	private String fechaContrato;
 	private String jsonValue;
+	private List<RazonSocial> razonesSociales;
 	
+	
+	public List<RazonSocial> getRazonesSociales() {
+		return razonesSociales;
+	}
+
+
+	public void setRazonesSociales(List<RazonSocial> razonesSociales) {
+		this.razonesSociales = razonesSociales;
+	}
+
+
 	public String getJsonValue() {
 		return jsonValue;
 	}
@@ -49,7 +63,7 @@ public class Nomina extends BaseModelo{
 			boolean facturaSubsidio, boolean ivaExento,
 			boolean reconoceAntiguedad, boolean comisionCostSocial,
 			String tipoPago, String claseRiesgo, String registroPatronal,
-			String periodicidad, String fechaContrato,String jsonValue) {
+			String periodicidad, String fechaContrato,String jsonValue,List <RazonSocial> razonesSociales) {
 		super();
 		this.idNomina = idNomina;
 		this.patrona = patrona;
@@ -74,6 +88,7 @@ public class Nomina extends BaseModelo{
 		this.periodicidad = periodicidad;
 		this.fechaContrato = fechaContrato;
 		this.jsonValue=jsonValue;
+		this.razonesSociales=razonesSociales;
 	}
 
 
