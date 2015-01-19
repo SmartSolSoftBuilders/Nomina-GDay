@@ -116,6 +116,8 @@ function guardarRazonSocial() {
 					"cpFiscal" : $("#codPostal").val(),					
 					"municipioFiscal" : $("#municipio").val(),					
 					"estadoFiscal" : $("#estado").val(),					
+					"regPublicoPropiedad" : $("#regPublicoPropiedad").val(),					
+					"fechaRegPublicoPropiedad" : $("#fechaRegPublicoPropiedad").val(),					
 					"contactoUnoNombre" : $("#nombreContUno").val(),
 					"contactoUnoTelefono" : $("#telefonoContUno").val(),
 					"contactoUnoCorreo" : $("#correoContUno").val(),

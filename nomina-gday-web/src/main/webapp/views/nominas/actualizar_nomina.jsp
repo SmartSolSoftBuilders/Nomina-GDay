@@ -44,77 +44,63 @@
 					 	<tr>
 					 		<td>NOMBRE<input id='nombreNomina' name='nombreNomina' type="text" class="form-control"></td>
 					 		<input id='nominaIdSel' name='nominaIdSel' type="hidden" class="form-control"></td>					 	
-					 		
-					 	</tr>
-					  	<tr>
+					 		<td></td>
+				 	</table>
+				 	<table>
+					 	<tr>				 	
 					 		<td>RAZON SOCIAL<input id='razonSocial' name='razonSocial' type="text" class="form-control"></td>
 					 		<td><button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>					 		</td>
-				 		
-					 	</tr>
-					 	<tr>				 	
-					 		<td><select id="selectMult" multiple="multiple">
+				 			<td><select id="selectMult" multiple="multiple">
 					 			<option value="1">Miguel Gutierrez Perez</option>
 					 			<option value="2">Rafael Mora Moran</option>
 					 			<option value="3">Ricardo Perez Perez</option>
 					 			<option value="4">Veronica Orduña Contreras</option>
 					 			<option value="5">Monica Herrera Fernandez</option>
 					 		</select></td>
-					 	</tr>					 	
+					 	</tr>
+					 </table>
+					 <table>					 	
 					 	<tr>
 					 		<td>PATRONA<input id='patrona' name='patrona' type="text" class="form-control"></input></td>
 					 		<input id='patronaIdSel' name='patronaIdSel' type="hidden" class="form-control"></td>					 	
-					 							 	
-					 	</tr>
-					 	<tr>
+					 		<td></td>						 	
 					 		<td>EJECUTIVO</td>
-							 	<td><select id='ejecutivo' name='ejecutivo' type="text" class="form-control">
-		  							
-								</select></td>
-													 	
+							 	<td><select id='ejecutivo' name='ejecutivo' type="text" class="form-control"></select></td>						 	
 					 	</tr>
+					 </table>
+					 <table>
 					 	<tr>
 					 		<td>ESQUEMA</td>
-					 		<td><select id='esquema' name='esquema' type="text" class="form-control">
-		  						
-							</select></td>	
-											 	
-					 	</tr>
-					 	<tr>
+					 		<td><select id='esquema' name='esquema' type="text" class="form-control"></select></td>											 					 	
 					 		<td>PROVISION AGINALDO<input id='provisionAguinaldo' name='provisionAguinaldo' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
-					 	<tr>
+					 </table>
+					 <table>
 					 	<tr>
 					 		<td>PROVISION VACACIONES<input id='provisionVacaciones' name='provisionVacaciones' type="checkbox" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
-					 	<tr>
 					 		<td>PROVISION PRIMA VACACIONAL<input id='provisionPrimaVac' name='provisionPrimaVac' type="checkbox" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control"></td>					 	
 					 	</tr>
+					 </table>
+					 <table>
 					 	<tr>
-					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
-					 	</tr>					 	
-					 	<tr>
+					  		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
 					 		<td>FACTURA SUBSIDIO<input id='factSub' name='factSub' type="checkbox" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>IVA EXCENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
+					 </table>
+					 <table>
 					 	<tr>
 					 		<td>RECONOCE ANTIGÜEDAD<input id='reconoceAntihuedad' name='reconoceAntihuedad' type="checkbox" class="form-control" disabled="true"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>COMISION SOBRE COSTO SOCIAL<input id='comisionCostoSocial' name='comisionCostoSocial' type="checkbox" class="form-control"></td>					 	
-					 	</tr>
-					 	<tr>
 					 		<td>TIPO PAGO</td>
 					 		<td><select id='tipoPago' name='tipoPago' type="text" class="form-control">
 		  							<option>Neto</option>
 		  							<option>Bruto</option>
 							</select></td>					 	
 					 	</tr>
+					 </table>
+					 <table>
 					 	<tr>
 					 		<td>CLASE DE RIESGO</td>
 					 		<td><select id='claseRiesgo' name='claseRiesgo' type="text" class="form-control">
@@ -123,11 +109,13 @@
 		  							<option>CIII</option>
 		  							<option>CIV</option>
 		  							<option>CV</option>
-							</select></td>					 	
+							</select></td>	
+							<td></td>				 	
+					 		<td>REGISTRO PATRONAL</td>
+					 		<td><input id='registroPatronal' name='registroPatronal' type="text" class="form-control"></td>					 	
 					 	</tr>
-					 	<tr>
-					 		<td>REGISTRO PATRONAL<input id='registroPatronal' name='registroPatronal' type="text" class="form-control"></td>					 	
-					 	</tr>
+					 </table>
+					 <table>
 					 	<tr>
 					 		<td>PERIODICIDAD</td>
 					 		<td><select id='periodicidad' name='periodicidad' type="text" class="form-control">
@@ -136,9 +124,6 @@
 		  							<option>M</option>
 		  							<option>C</option>
 							</select></td>					 	
-					 	</tr>
-				
-					 	<tr>
 					 		<td>TIPO CALENDARIO</td>
 					 		<td><select id='tipoCalendario' name='tipoCalendario' type="text" class="form-control">
 		  							<option>Semanal</option>
@@ -146,17 +131,18 @@
 		  							<option>Mensual</option>
 							</select></td>
 							<input id='tipoCalendarioIdSel' name='tipoCalendarioIdSel' type="hidden" class="form-control"></td>					 	
+					 		<td>FECHA CONTRATO</td>
+					 		<td><input id='fechaContrato' name='fechaContrato' type="date" class="form-control"></td>					 	
 					 	</tr>
-					 	<tr>
-					 		<td>FECHA CONTRATO<input id='fechaContrato' name='fechaContrato' type="date" class="form-control"></td>					 	
-					 	</tr>				
+					</table>
 					 	</table>
 				<br>
 				<br>						
 			<!-- /.col-lg-6 -->						
 				 <div class="input-group">      
-			     	 <span class="input-group-btn">
-			        	<button type="button" class="btn btn-default" onclick="actualizarNomina();">MODIFICAR</button>
+			     	 <span>
+			        	<button type="button" class="btn btn-success" onclick="actualizarNomina();">MODIFICAR</button>
+			        	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
 			     	 </span>			    
    		 		</div><!-- /input-group -->
 				</div>

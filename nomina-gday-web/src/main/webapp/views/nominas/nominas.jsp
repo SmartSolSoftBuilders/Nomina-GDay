@@ -8,6 +8,7 @@
 		<style type="text/css" title="currentStyle">
 			@import "../../static/js/libs/css/demo_page.css";
 			@import "../../static/js/libs/css/demo_table.css";
+			@import "../../static/js/libs/css/bootstrap.min.css";			
 			@import "../../static/js/libs/css/ui-lightness/jquery-ui-1.10.2.custom.css";
 		</style>
 		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery-1.9.1.js"></script>
@@ -53,8 +54,8 @@
 			</div>
 			<br>
 			<br>		
-			<div align="center">
-				<input type="button" value="Añadir Nomina" onclick="showAgregarNomina();"/>
+			<div>
+				<input type="button" class="btn btn-success" value="Añadir Nomina" onclick="showAgregarNomina();"/>
 			</div>
 			<br>
 			<br>

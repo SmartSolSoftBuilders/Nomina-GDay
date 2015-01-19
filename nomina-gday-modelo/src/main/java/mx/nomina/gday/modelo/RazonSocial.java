@@ -24,6 +24,8 @@ public class RazonSocial extends BaseModelo{
 	private float cpFiscal;
 	private String municipioFiscal;
 	private String estadoFiscal;
+	private String regPublicoPropiedad;
+	private String fechaRegPublicoPropiedad;
 	private String contactoUnoNombre;
 	private String contactoUnoTelefono;
 	private String contactoUnoCorreo;
@@ -64,12 +66,15 @@ public class RazonSocial extends BaseModelo{
 			String nombresRepresentante, String calleFiscal,
 			String coloniaFiscal, String numExteriorFiscal,
 			String numInteriorFiscal, float cpFiscal, String municipioFiscal,
-			String estadoFiscal, String contactoUnoNombre,
+			String estadoFiscal, String regPublicoPropiedad,
+			String fechaRegPublicoPropiedad, String contactoUnoNombre,
 			String contactoUnoTelefono, String contactoUnoCorreo,
 			String contactoDosNombre, String contactoDosTelefono,
 			String contactoDosCorreo, String contactoTresNombre,
 			String contactoTresTelefono, String contactoTresCorreo,
-			String objetoSocial, List<Referenciante> referenciantes,String jsonString) {
+			String objetoSocial, List<Referenciante> referenciantes,
+			String jsonString) {
+		super();
 		this.idRazonSocial = idRazonSocial;
 		this.grupo = grupo;
 		this.nombreRazonSocial = nombreRazonSocial;
@@ -90,6 +95,8 @@ public class RazonSocial extends BaseModelo{
 		this.cpFiscal = cpFiscal;
 		this.municipioFiscal = municipioFiscal;
 		this.estadoFiscal = estadoFiscal;
+		this.regPublicoPropiedad = regPublicoPropiedad;
+		this.fechaRegPublicoPropiedad = fechaRegPublicoPropiedad;
 		this.contactoUnoNombre = contactoUnoNombre;
 		this.contactoUnoTelefono = contactoUnoTelefono;
 		this.contactoUnoCorreo = contactoUnoCorreo;
@@ -101,7 +108,7 @@ public class RazonSocial extends BaseModelo{
 		this.contactoTresCorreo = contactoTresCorreo;
 		this.objetoSocial = objetoSocial;
 		this.referenciantes = referenciantes;
-		this.jsonString=jsonString;
+		this.jsonString = jsonString;
 	}
 
 
@@ -346,6 +353,30 @@ public class RazonSocial extends BaseModelo{
 
 
 
+	public String getRegPublicoPropiedad() {
+		return regPublicoPropiedad;
+	}
+
+
+
+	public void setRegPublicoPropiedad(String regPublicoPropiedad) {
+		this.regPublicoPropiedad = regPublicoPropiedad;
+	}
+
+
+
+	public String getFechaRegPublicoPropiedad() {
+		return fechaRegPublicoPropiedad;
+	}
+
+
+
+	public void setFechaRegPublicoPropiedad(String fechaRegPublicoPropiedad) {
+		this.fechaRegPublicoPropiedad = fechaRegPublicoPropiedad;
+	}
+
+
+
 	public String getContactoUnoNombre() {
 		return contactoUnoNombre;
 	}
@@ -451,7 +482,7 @@ public class RazonSocial extends BaseModelo{
 	public void setContactoTresCorreo(String contactoTresCorreo) {
 		this.contactoTresCorreo = contactoTresCorreo;
 	}
- 
+
 
 
 	public String getObjetoSocial() {
@@ -467,7 +498,7 @@ public class RazonSocial extends BaseModelo{
 
 
 	public List<Referenciante> getReferenciantes() {
-		return this.referenciantes;
+		return referenciantes;
 	}
 
 
@@ -475,5 +506,7 @@ public class RazonSocial extends BaseModelo{
 	public void setReferenciantes(List<Referenciante> referenciantes) {
 		this.referenciantes = referenciantes;
 	}
+
+
 
 }

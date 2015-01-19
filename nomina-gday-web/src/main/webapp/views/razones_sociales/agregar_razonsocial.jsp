@@ -99,7 +99,13 @@
 					 		<td>ESTADO<input id='estado' name='estado' type="text" class="form-control"></td>
 					 		<td></td><td></td>					 	
 					 	</tr>
-					 	</table>
+					 	<tr>					 	
+					 		<td>REGISTRO PUBLICO DE LA PROPIEDAD<input id='regPublicoPropiedad' name='regPublicoPropiedad' type="text" class="form-control"></td>
+					 		<td></td>					 	
+					 		<td>FECHA DE REGISTRO PUBLICO DE LA PROPIEDAD<input id='fechaRegPublicoPropiedad' name='fechaRegPublicoPropiedad' type="date" class="form-control"></td>
+					 		<td></td>					 	
+					 	</tr>
+					 	</table>					 	
 					 	<table>
 					 	<tr>
 					 		<td>CONTACTO1</td>

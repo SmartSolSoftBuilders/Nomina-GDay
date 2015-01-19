@@ -181,3 +181,7 @@ function actualizarNomina() {
 				}
 			});
 		}
+
+function cancelar(){
+	top.frames['main'].location="../nominas/nominas.jsp"; 	
+}

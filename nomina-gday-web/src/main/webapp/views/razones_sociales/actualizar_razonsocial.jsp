@@ -71,10 +71,10 @@
 					 	<tr>
 					 		<td>ACTA CONSTITUTIVA<input id='actaConst' name='actaConst' type="text" class="form-control"></td>					 	
 							<td></td>
-					 		<td>FECHA ACTA CONSTITUTIVA<input id='fechaActaConst' name='fechaActaConst' type="text" class="form-control"></td>					 	
+					 		<td>FECHA ACTA CONSTITUTIVA<input id='fechaActaConst' name='fechaActaConst' type="date" class="form-control"></td>					 	
 					 	</tr>
 					 	<tr>
-					 		<td>FECHA INICIO OPERACION<input id='fechaIniOper' name='fechaIniOper' type="text" class="form-control"></td>					 	
+					 		<td>FECHA INICIO OPERACION<input id='fechaIniOper' name='fechaIniOper' type="date" class="form-control"></td>					 	
 					 	</tr>
 					 	</table>
 					 	<table>
