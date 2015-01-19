@@ -26,4 +26,8 @@
 		<result property="actaEstado" column="ACTA_ESTADO"/>
 	</resultMap>
 
+<select id="obtenerPatronas" resultMap="patronaResult" resultType="Patrona">
+		select * from "PATRONA"
+</select>
+
 </mapper>

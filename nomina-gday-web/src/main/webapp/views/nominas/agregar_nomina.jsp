@@ -68,6 +68,20 @@
 					 			<option value="5">Monica Herrera Fernandez</option>
 					 		</select></td>
 					 	</tr>					 	
+							<tr>
+							  	<td>
+							  		<table>
+							  			<tr><td>PATRONA</td></tr>
+							  		</table>
+					  			</td>
+					  		</tr>	
+							<tr>
+								<td>
+									<input id='patrona' name='patrona' type="text" class="form-control"></input>
+									<input id='idPatrona' name='idPatrona' type="hidden" class="form-control"></input>
+									<button type="button" class="btn btn-default" onclick="showPatronas();">SELECCIONAR</button> 		
+						 		</td>
+						 </tr>
 					 </table>
 					 <table>
 					 	<tr>
@@ -81,7 +95,17 @@
 					 	<tr>
 					 		<td>ESQUEMA</td>
 					 		<td><select id='esquema' name='esquema' type="text" class="form-control"></select></td>					 	
+					 		<td>EJECUTIVO
+								<select id='ejecutivo' name='ejecutivo' type="text" class="form-control"></select>
+							</td>					 						 	
+					 		<td width="10%"></td>
+					 		<td>ESQUEMA
+					 			<select id='esquema' name='esquema' type="text" class="form-control"></select>
+					 		</td>					 	
+					 	</tr>
+					 	<tr>
 					 		<td>PROVISION AGINALDO<input id='provisionAguinaldo' name='provisionAguinaldo' type="checkbox" class="form-control"></td>					 	
+					 		<td></td>
 					 		<td>PROVISION VACACIONES<input id='provisionVacaciones' name='provisionVacaciones' type="checkbox" class="form-control"></td>					 	
 					 		<td></td>
 					 	</tr>
@@ -89,6 +113,7 @@
 					 <table>
 					 	<tr>
 					 		<td>PROVISION PRIMA VACACIONAL<input id='provisionPrimaVac' name='provisionPrimaVac' type="checkbox" class="form-control"></td>					 	
+							<td></td>
 					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control"></td>					 	
 					 		<td></td>
 					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
@@ -96,9 +121,11 @@
 					 </table>
 					 <table>
 					 	<tr>
+							<td></td>
 					 		<td>FACTURA SUBSIDIO<input id='factSub' name='factSub' type="checkbox" class="form-control"></td>					 	
 							<td></td>
 					 		<td>IVA EXCENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control"></td>					 	
+							<td></td>
 					 		<td>RECONOCE ANTIGÜEDAD<input id='reconoceAntihuedad' name='reconoceAntihuedad' type="checkbox" class="form-control"></td>					 	
 					 		<td></td>
 					 		<td>COMISION SOBRE COSTO SOCIAL<input id='comisionCostoSocial' name='comisionCostoSocial' type="checkbox" class="form-control"></td>					 	
@@ -108,10 +135,15 @@
 					 	<tr>
 					 		<td>TIPO PAGO</td>
 					 		<td><select id='tipoPago' name='tipoPago' type="text" class="form-control">
+					 		<td></td>
+					 		<td>TIPO PAGO
+					 		<select id='tipoPago' name='tipoPago' type="text" class="form-control">
 		  							<option>Neto</option>
 		  							<option>Bruto</option>
 		  							<option>Sindicato Tres</option>
 							</select></td>					 	
+					 	</tr>
+					 	<tr>
 					 		<td>CLASE DE RIESGO
 					 		<select id='claseRiesgo' name='claseRiesgo' type="text" class="form-control">
 		  							<option>CI</option>
@@ -130,6 +162,8 @@
 					 		<td>REGISTRO PATRONAL<input id='registroPatronal' name='registroPatronal' type="text" class="form-control"></td>					 	
 					 		<td>PERIODICIDAD</td>
 					 		<td><select id='periodicidad' name='periodicidad' type="text" class="form-control">
+					 		<td>PERIODICIDAD
+					 			<select id='periodicidad' name='periodicidad' type="text" class="form-control">
 		  							<option>Q</option>
 		  							<option>S</option>
 		  							<option>M</option>
@@ -141,11 +175,20 @@
 					 	<tr>
 					 		<td>TIPO CALENDARIO</td>
 					 		<td><select id='tipoCalendario' name='tipoCalendario' type="text" class="form-control">
+								</select>
+							</td>					 	
+							<td></td>
+					 		<td>TIPO CALENDARIO
+					 			<select id='tipoCalendario' name='tipoCalendario' type="text" class="form-control">
 		  							<option>Semanal</option>
 		  							<option>Diario</option>
 		  							<option>Mensual</option>
 								</select>
 							</td>					 	
+					 		<td>FECHA CONTRATO<input id='fechaContrato' name='fechaContrato' type="date" class="form-control"></td>
+					 		<td></td><td></td>					 	
+					 	</tr>
+						<tr>
 					 		<td>FECHA CONTRATO<input id='fechaContrato' name='fechaContrato' type="date" class="form-control"></td>
 					 		<td></td><td></td>					 	
 					 	</tr>
@@ -212,8 +255,6 @@
 				</table>
 			</div>
 		</div>
-	</div>
-	
-	
+	</div>	
 </body>
 </html>
