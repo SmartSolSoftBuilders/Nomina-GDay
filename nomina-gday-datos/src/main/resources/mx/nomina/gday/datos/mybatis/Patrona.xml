@@ -4,30 +4,61 @@
 <mapper namespace="mx.nomina.gday.dao.PatronaDao">
 	<resultMap type="Patrona" id="patronaResult">
 		<id property="idPatrona" column="ID_PATRONA"/>
-		<result property="razonSocial" column="RAZON_SOCIAL"/>
-		<result property="nombreCorto" column="NOMBRE_CORTO"/>
-		<result property="esIntermediaria" column="ES_INTERMEDIARIA"/>
-		<result property="tipoRegimen" column="TIPO_REGIMEN"/>
-		<result property="folioMercantil" column="FOLIO_MERCANTIL"/>
-		<result property="calleFiscal" column="CALLE_FISCAL"/>
-		<result property="coloniaFiscal" column="COLONIA_FISCAL"/>
-		<result property="numExteriorFiscal" column="NUM_EXTERIOR_FISCAL"/>
-		<result property="numInteriorFiscal" column="NUM_INTERIOR_FISCAL"/>
-		<result property="cpFiscal" column="CP_FISCAL"/>
-		<result property="municipioFiscal" column="MUNICIPIO_FISCAL"/>
-		<result property="estadoFiscal" column="ESTADO_FISCAL"/>
-		<result property="fiscalNumPago" column="FISCAL_NUM_PAGO"/>
-		<result property="telContacto" column="TEL_CONTACTO"/>
-		<result property="actaNumero" column="ACTA_NUMERO"/>
-		<result property="actaNotaria" column="ACTA_NOTARIA"/>
-		<result property="actaFecha" column="ACTA_FECHA"/>
-		<result property="actaNotario" column="ACTA_NOTARIO"/>
-		<result property="actaCiudad" column="ACTA_CIUDAD"/>
-		<result property="actaEstado" column="ACTA_ESTADO"/>
+		<result property="razonSocialPatrona" column="RAZON_SOCIAL"/>
+		<result property="rfcPatrona" column="RFC"/>
+		<result property="nombreCortoPatrona" column="NOMBRE_CORTO"/>
+		<result property="esIntermediariaPatrona" column="ES_INTERMEDIARIA"/>
+		<result property="tipoRegimenPatrona" column="TIPO_REGIMEN"/>
+		<result property="folioMercantilPatrona" column="FOLIO_MERCANTIL"/>
+		<result property="calleFiscalPatrona" column="CALLE_FISCAL"/>
+		<result property="coloniaFiscalPatrona" column="COLONIA_FISCAL"/>
+		<result property="numExteriorFiscalPatrona" column="NUM_EXTERIOR_FISCAL"/>
+		<result property="numInteriorFiscalPatrona" column="NUM_INTERIOR_FISCAL"/>
+		<result property="cpFiscalPatrona" column="CP_FISCAL"/>
+		<result property="municipioFiscalPatrona" column="MUNICIPIO_FISCAL"/>
+		<result property="estadoFiscalPatrona" column="ESTADO_FISCAL"/>
+		<result property="fiscalNumPagoPatrona" column="FISCAL_NUM_PAGO"/>
+		<result property="telContactoPatrona" column="TEL_CONTACTO"/>
+		<result property="actaNumeroPatrona" column="ACTA_NUMERO"/>
+		<result property="actaNotariaPatrona" column="ACTA_NOTARIA"/>
+		<result property="actaFechaPatrona" column="ACTA_FECHA"/>
+		<result property="actaNotarioPatrona" column="ACTA_NOTARIO"/>
+		<result property="actaCiudadPatrona" column="ACTA_CIUDAD"/>
+		<result property="actaEstadoPatrona" column="ACTA_ESTADO"/>
 	</resultMap>
 
-<select id="obtenerPatronas" resultMap="patronaResult" resultType="Patrona">
-		select * from "PATRONA"
-</select>
+<!-- Insert para guardar Patrona-->
+	<insert id="agregarPatrona" parameterType="Patrona" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_patrona')
+  		</selectKey>
+  		
+  		INSERT INTO "PATRONA"(
+            "ID_PATRONA", "RAZON_SOCIAL", "RFC", "NOMBRE_CORTO", "ES_INTERMEDIARIA", "TIPO_REGIMEN", 
+            "FOLIO_MERCANTIL", "CALLE_FISCAL", "COLONIA_FISCAL", 
+            "NUM_EXTERIOR_FISCAL", "NUM_INTERIOR_FISCAL", "CP_FISCAL", "MUNICIPIO_FISCAL", 
+            "ESTADO_FISCAL", "FISCAL_NUM_PAGO", "TEL_CONTACTO", "ACTA_NUMERO", 
+            "ACTA_NOTARIA", "ACTA_FECHA", "ACTA_NOTARIO", 
+            "ACTA_CIUDAD", "ACTA_ESTADO")
+   	 	VALUES (#{id}, #{razonSocialPatrona}, #{rfcPatrona}, #{nombreCortoPatrona}, #{esIntermediariaPatrona}, 
+   	 		#{tipoRegimenPatrona}, #{folioMercantilPatrona}, #{calleFiscalPatrona},  #{coloniaFiscalPatrona},  #{numExteriorFiscalPatrona}, 
+            #{numInteriorFiscalPatrona}, #{cpFiscalPatrona}, #{municipioFiscalPatrona}, #{estadoFiscalPatrona}, 
+            #{fiscalNumPagoPatrona}, #{telContactoPatrona}, #{actaNumeroPatrona}, 
+            #{actaNotariaPatrona},date(#{actaFechaPatrona}), #{actaNotarioPatrona}, 
+            #{actaCiudadPatrona}, #{actaEstadoPatrona});
+            	
+	</insert>
+	
+<!-- Update para actualizar la Patrona seleccionada --> 
+<update id="actualizarPatrona" parameterType="Patrona">
+	UPDATE "PATRONA"
+   	SET 	"RAZON_SOCIAL"=#{razonSocialPatrona}, "RFC"=#{rfcPatrona}, 
+            "NOMBRE_CORTO"=#{nombreCortoPatrona}, "ES_INTERMEDIARIA"=#{esIntermediariaPatrona}, "FOLIO_MERCANTIL"=#{folioMercantilPatrona}, 
+            "CALLE_FISCAL"=#{calleFiscalPatrona}, "COLONIA_FISCAL"=#{coloniaFiscalPatrona}, "NUM_EXTERIOR_FISCAL"=#{numExteriorFiscalPatrona}, 
+            "NUM_INTERIOR_FISCAL"=#{numInteriorFiscalPatrona}, "CP_FISCAL"=#{cpFiscalPatrona}, "MUNICIPIO_FISCAL"=#{municipioFiscalPatrona}, 
+            "ESTADO_FISCAL"=#{estadoFiscalPatrona}, "FISCAL_NUM_PAGO"=#{fiscalNumPagoPatrona}, "TEL_CONTACTO"=#{telContactoPatrona}, "ACTA_NUMERO"=#{actaNumeroPatrona}, 
+            "ACTA_NOTARIA"=#{actaNotariaPatrona}, "ACTA_FECHA"= date(#{actaFechaPatrona}), "ACTA_NOTARIO"=#{actaNotarioPatrona}, "ACTA_CIUDAD"=#{actaCiudadPatrona}, "ACTA_ESTADO"=#{actaNotariaPatrona} )
+ 	WHERE "ID_PATRONA"=#{idPatrona}  
+</update>
 
 </mapper>

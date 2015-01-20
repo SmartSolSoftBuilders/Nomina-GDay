@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import mx.nomina.gday.modelo.Grupo;
 import mx.nomina.gday.modelo.Patrona;
-import mx.nomina.gday.servicios.GrupoServicio;
 import mx.nomina.gday.servicios.PatronaServicio;
 
 @Controller
@@ -25,9 +23,17 @@ public class PatronaController {
 	@Autowired
 	private PatronaServicio patronaServicio;
 	
-	//Controller Guardar Grupo
-
-	//Controller que muestra la lista de Grupos y permite la seleccion del mismo
+	//Controller Guardar Patrona
+	@RequestMapping(value="/guardarpatrona",method = RequestMethod.POST)
+	 @ResponseBody
+	 public boolean guardarPatrona(@ModelAttribute(value="patrona") Patrona patrona, BindingResult result){
+		 	System.out.println("Guardando Patrona"+ patrona.getTelContactoPatrona());
+		 	patronaServicio.agregarPatrona(patrona);		 	
+			return true;
+	}
+	
+	
+	//Controller que muestra la lista de Patronas y permite la seleccion de la misma
 	 @RequestMapping(value="/getpatronas",method = RequestMethod.POST)
 	    @ResponseBody
 	    public List obtenerGrupos(){    	
@@ -42,8 +48,8 @@ public class PatronaController {
 				patronasTmp2 = new ArrayList<String>();
 				System.out.println("tmp"+tmp.get(i));
 				patronasTmp2.add(tmp.get(i).getIdPatrona());
-				patronasTmp2.add(tmp.get(i).getNombreCorto());
-				patronasTmp2.add("<a href='#' onclick='seleccionarPatrona("+tmp.get(i).getIdPatrona()+",\""+tmp.get(i).getNombreCorto()+"\")'>Seleccionar</a>");				
+				patronasTmp2.add(tmp.get(i).getNombreCortoPatrona());
+				patronasTmp2.add("<a href='#' onclick='seleccionarPatrona("+tmp.get(i).getIdPatrona()+",\""+tmp.get(i).getNombreCortoPatrona()+"\")'>Seleccionar</a>");				
 				patronasTmp.add(patronasTmp2);
 			}
 			return patronasTmp;
@@ -54,4 +60,20 @@ public class PatronaController {
 		  return null;
 		}
 	 
+	 //MODIFICAR
+	//Controller que permite Actualizar los datos de la Nomina a Editar
+	 @RequestMapping(value="/modificapatrona",method = RequestMethod.POST)
+	    @ResponseBody
+	    public boolean modificarPatrona(@ModelAttribute(value="patrona") Patrona patrona, BindingResult result,HttpServletRequest request){    	    	    	    	   
+	    
+		 try {
+			 System.out.println("Controller Actualizar Patrona"+ patrona.getIdPatrona());
+				 patronaServicio.actualizarPatrona(patrona);			 
+			 return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 	return false;
+	    }
+	
 }
