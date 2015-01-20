@@ -7,6 +7,9 @@ import mx.nomina.gday.modelo.Patrona;
 
 public interface PatronaServicio {
 
-	public List<Patrona> obtenerPatronas(); 
+	void actualizarPatrona(Patrona patrona);
+	public boolean agregarPatrona(Patrona patrona);
+	public List<Patrona> obtenerPatronas();
+
 
 }
