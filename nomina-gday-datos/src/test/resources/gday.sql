@@ -126,26 +126,27 @@ ALTER TABLE "RAZON_SOCIAL"
 CREATE TABLE "PATRONA"
 (
   "ID_PATRONA" integer NOT NULL,
-  "RAZON_SOCIAL" character varying (20),
-  "NOMBRE_CORTO" character varying (15),
+  "RAZON_SOCIAL" character varying(20),
+  "NOMBRE_CORTO" character varying(15),
   "ES_INTERMEDIARIA" boolean,
-  "TIPO_REGIMEN" character varying (20),
+  "TIPO_REGIMEN" character varying(20),
   "FOLIO_MERCANTIL" integer,
-  "CALLE_FISCAL" character varying (20),
-  "COLONIA_FISCAL" boolean,
-  "NUM_EXTERIOR_FISCAL" boolean,
+  "CALLE_FISCAL" character varying(20),
+  "COLONIA_FISCAL" character varying,
   "NUM_INTERIOR_FISCAL" integer,
   "CP_FISCAL" integer,
-  "MUNICIPIO_FISCAL" character varying (20),
-  "ESTADO_FISCAL" character varying (20),
+  "MUNICIPIO_FISCAL" character varying(20),
+  "ESTADO_FISCAL" character varying(20),
   "FISCAL_NUM_PAGO" integer,
-  "TEL_CONTACTO" boolean,
-  "ACTA_NUMERO" numeric (8),
-  "ACTA_NOTARIA" numeric (8),
+  "ACTA_NUMERO" numeric(8,0),
+  "ACTA_NOTARIA" numeric(8,0),
   "ACTA_FECHA" date,
-  "ACTA_NOTARIO" numeric(4),
-  "ACTA_CIUDAD" character varying (25),
-  "ACTA_ESTADO" character varying (25),
+  "ACTA_NOTARIO" numeric(4,0),
+  "ACTA_CIUDAD" character varying(25),
+  "ACTA_ESTADO" character varying(25),
+  "NUM_EXTERIOR_FISCAL" integer,
+  "TEL_CONTACTO" numeric(10,0),
+  "RFC" character varying(13),
   CONSTRAINT "ID_PATRONA_PK" PRIMARY KEY ("ID_PATRONA")
 )
 WITH (
@@ -158,7 +159,7 @@ ALTER TABLE "PATRONA"
   
 -- Table: "NOMINA"
 
---DROP TABLE "NOMINA";
+-- DROP TABLE "NOMINA";
 
 CREATE TABLE "NOMINA"
 (
@@ -168,34 +169,35 @@ CREATE TABLE "NOMINA"
   "ID_ESQUEMA" integer NOT NULL,
   "ID_EJECUTIVO" integer NOT NULL,
   "ID_CALENDARIO" integer NOT NULL,
-  "NOMBRE_CORTO" character varying (15),
+  "NOMBRE_CORTO" character varying(15),
   "PROVISION_AGUINALDO" boolean,
   "PROVISION_VACACIONES" boolean,
   "PROVISION_PRIMA_VACACIONAL" boolean,
   "DIAS_AGUINALDO" integer,
-  "PORC_PRIMA_VACACIONAL" boolean,
   "FONDO_AHORRO" boolean,
   "FACTURA_SUBSIDIO" boolean,
   "IVA_EXENTO" boolean,
   "RECONOCE_ANTIGUEDAD" boolean,
   "COMISION_COST_SOCIAL" boolean,
-  "TIPO_PAGO" character varying (15),
-  "CLASE_RIESGO" character varying (10),
-  "REGISTRO_PATRONAL" character varying (15),
-  "PERIODICIDAD" character varying (2),
-  "TIPO_CALENDARIO" character varying (30),  
+  "TIPO_PAGO" character varying(15),
+  "CLASE_RIESGO" character varying(10),
+  "REGISTRO_PATRONAL" character varying(15),
+  "PERIODICIDAD" character varying(2),
+  "TIPO_CALENDARIO" character varying(30),
+  "PORC_PRIMA_VACACIONAL" double precision,
+  "FECHA_CONTRATO" date,
   CONSTRAINT "ID_NOMINA_PK" PRIMARY KEY ("ID_NOMINA"),
-  CONSTRAINT "ID_INTERMEDIARIA_FK" FOREIGN KEY ("ID_PATRONA")
-      REFERENCES "PATRONA" ("ID_PATRONA") MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT "ID_ESQUEMA_FK" FOREIGN KEY ("ID_ESQUEMA")
-      REFERENCES "ESQUEMA" ("ID_ESQUEMA") MATCH SIMPLE
+  CONSTRAINT "ID_CALENDARIO_FK" FOREIGN KEY ("ID_CALENDARIO")
+      REFERENCES "TIPO_CALENDARIO" ("ID_CALENDARIO") MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT "ID_EJECUTIVO_FK" FOREIGN KEY ("ID_EJECUTIVO")
       REFERENCES "EJECUTIVO" ("ID_EJECUTIVO") MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT "ID_CALENDARIO_FK" FOREIGN KEY ("ID_CALENDARIO")
-      REFERENCES "TIPO_CALENDARIO" ("ID_CALENDARIO") MATCH SIMPLE
+  CONSTRAINT "ID_ESQUEMA_FK" FOREIGN KEY ("ID_ESQUEMA")
+      REFERENCES "ESQUEMA" ("ID_ESQUEMA") MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT "ID_INTERMEDIARIA_FK" FOREIGN KEY ("ID_INTERMEDIARIA")
+      REFERENCES "INTERMEDIARIA" ("ID_INTERMEDIARIA") MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
