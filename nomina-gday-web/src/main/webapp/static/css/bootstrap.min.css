@@ -8,7 +8,10 @@ html {
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%
 }
-
+.error{
+	font-family: sans-serif;
+	color:red
+}
 body {
 	margin: 0
 }

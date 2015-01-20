@@ -24,10 +24,10 @@
 				<div class="col-lg-6">
 					<table>
 					 	<tr>
-					 		<td>NOMBRE<input id='nombre' name='nombre' type="text" class="form-control"></td>
+					 		<td>NOMBRE<input id='nombre' name='nombre' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
 					 	<tr>
-					 		<td>NOMBRE CORTO<input id='nombreCorto' name='nombreCorto' type="text" class="form-control"></td>					 	
+					 		<td>NOMBRE CORTO<input id='nombreCorto' name='nombreCorto' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 					</table>
 				<br>

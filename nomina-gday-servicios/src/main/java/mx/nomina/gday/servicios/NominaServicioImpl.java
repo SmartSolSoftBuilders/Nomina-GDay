@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import mx.nomina.gday.dao.EjecutivoDao;
 import mx.nomina.gday.dao.EsquemaDao;
 import mx.nomina.gday.dao.NominaDao;
+import mx.nomina.gday.dao.RazonSocialDao;
+import mx.nomina.gday.dao.TipoCalendarioDao;
 import mx.nomina.gday.modelo.Nomina;
+import mx.nomina.gday.modelo.RazonSocial;
 
 @Service
 public class NominaServicioImpl implements NominaServicio {
@@ -22,6 +25,12 @@ public class NominaServicioImpl implements NominaServicio {
 	
 	@Autowired
 	private EsquemaDao esquemaDao;
+	
+	@Autowired
+	private TipoCalendarioDao tipoCalendarioDao;
+	
+	@Autowired
+	private RazonSocialDao razonSocialDao;
 	
 	//Metodo que agrega una Nomina
 	@Override
@@ -81,11 +90,20 @@ public class NominaServicioImpl implements NominaServicio {
 		try{
 			datosCombo.add(this.ejecutivoDao.obtenerEjecutivos());
 			datosCombo.add(this.esquemaDao.obtenerEsquemas());
+			datosCombo.add(this.tipoCalendarioDao.obtenerTiposCalendario());
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 		return datosCombo;
 	}
+
+	@Override
+	public List<RazonSocial> obtenerRazonesSocialesByIdNomina(Integer idNomina) {
+		// TODO Auto-generated method stub
+		return this.razonSocialDao.obtenerRazonesSocialesByIdNomina(idNomina);
+	}
+	
+	
 
 }

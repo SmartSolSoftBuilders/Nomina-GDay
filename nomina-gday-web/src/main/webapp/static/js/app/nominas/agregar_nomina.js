@@ -2,6 +2,26 @@
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
 $(document).ready(function() {
+	//Sección validaciones
+    $("#agregarNominaForm").validate({
+        rules: {
+        	nombreNomina: "required"
+        	//selectMult: "required"
+            /*email: {
+                required: true,
+                email: true
+            },*/
+        },        
+        messages: {
+        	nombreNomina: "Ingrese el nombre de la N&oacute;mina",
+        	selectMult:"Seleccione por lo menos un grupo y su porcentaje"
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
 	$.ajax({
 		sync:true,
 		dataType:'json',
@@ -16,7 +36,7 @@ $(document).ready(function() {
 			 for (var i = 0; i < result.length; i++) {
 			    	options += '<option value="' + result[i].idEjecutivo + '">' + result[i].nombreEjecutivo + ' '+ result[i].paternoEjecutivo + ' '+ result[i].maternoEjecutivo +'</option>';
 			    }
-			 $("#ejecutivo").append(options)
+			$("#ejecutivo").append(options)
 			console.log ("Esquema");
 			console.log (response[1]);
 				var options = "";
@@ -24,8 +44,15 @@ $(document).ready(function() {
 				 for (var i = 0; i < result.length; i++) {
 				    	options += '<option value="' + result[i].idEsquema + '">' + result[i].nombreEsquema +'</option>';
 				    }
-				 $("#esquema").append(options)
-				
+			$("#esquema").append(options)
+			console.log ("Tipo Calendario");
+			console.log (response[2]);
+				var options = "";
+				var result=response[2];
+				 for (var i = 0; i < result.length; i++) {
+				    	options += '<option value="' + result[i].idTipoCalendario + '">' + result[i].siglas +'</option>';
+				    }
+		    $("#tipoCalendario").append(options)	 	
 			},	
 		error: function (response) {																	
 			$("#resultadoGuardar").html("Error");
@@ -176,6 +203,7 @@ function quitarRazonSocial(){
 
 function guardarNomina() {
 	var ids=obtenerIdsAgregadosRZ2();
+	if ($("#agregarNominaForm").valid()){		
 		$
 			.ajax({
 				data : {
@@ -215,7 +243,8 @@ function guardarNomina() {
 					$("#resultadoGuardar").html();
 				}
 			});
-		}
+	}
+}
 
 function cancelar(){
 	top.frames['main'].location="../nominas/nominas.jsp"; 	

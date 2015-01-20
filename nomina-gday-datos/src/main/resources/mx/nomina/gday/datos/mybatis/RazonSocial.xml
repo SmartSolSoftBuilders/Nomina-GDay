@@ -63,6 +63,14 @@
 		select * from "RAZON_SOCIAL"
 	</select>
 	
+	<select id="obtenerRazonesSocialesByIdNomina" parameterType="int" resultMap="razonSocialResult" resultType="RazonSocial">
+		SELECT "RAZON_SOCIAL"."ID_RAZON_SOCIAL", "RAZON_SOCIAL"."NOMBRE_RAZON_SOCIAL", "RAZON_SOCIAL"."RFC", 
+      	 "RAZON_SOCIAL"."NOMBRE_CORTO_RAZON_S", "NOMINA_RAZON"."PORCENTAJE"  AS "COMISION" 
+		  FROM "RAZON_SOCIAL" INNER JOIN "NOMINA_RAZON" ON "RAZON_SOCIAL"."ID_RAZON_SOCIAL"="NOMINA_RAZON"."ID_RAZON_SOCIAL"
+		  	AND "NOMINA_RAZON"."ID_NOMINA" = #{id}
+ 
+	</select> 
+		
 	<!-- Select para obtener las Razones Sociales  por id-->
 	<select id="obtenerRazonSocialById" parameterType="int" resultMap="razonSocialResult">
 		select * from "RAZON_SOCIAL" WHERE "ID_RAZON_SOCIAL"=#{id};

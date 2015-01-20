@@ -10,6 +10,7 @@ public interface RazonSocialDao {
 	public int agregarRazonSocial(RazonSocial razonSocial);
 	void actualizarRazonSocial(RazonSocial razonSocial);
 	public RazonSocial obtenerRazonSocialById(int id);
+	public List<RazonSocial> obtenerRazonesSocialesByIdNomina(Integer idNomina);
 
 
 }

@@ -27,6 +27,12 @@
 		<result property="actaEstadoPatrona" column="ACTA_ESTADO"/>
 	</resultMap>
 
+
+	<select id="obtenerPatronas"  resultMap="patronaResult" resultType="Patrona">		 
+		select * from "PATRONA"  	
+	</select> 
+
+
 <!-- Insert para guardar Patrona-->
 	<insert id="agregarPatrona" parameterType="Patrona" keyProperty="id">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
