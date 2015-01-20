@@ -22,5 +22,9 @@
 		select * from "PERIODO" where "ID_PERIODO"=#{idPeriodo} 	
 	</select> 
 	
+	<select id="obtenerTiposCalendario" resultMap="tipoCalendarioResult" resultType="TipoCalendario">		 
+		select * from "TIPO_CALENDARIO" 	
+	</select> 
+	
 
 </mapper>

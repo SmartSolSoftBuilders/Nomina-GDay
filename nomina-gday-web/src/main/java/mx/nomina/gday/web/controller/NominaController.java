@@ -68,7 +68,7 @@ public class NominaController {
 					nominasTmp2.add(tmp.get(i).getIdNomina());
 					nominasTmp2.add(tmp.get(i).getNombreCorto());
 					nominasTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
-					nominasTmp2.add(tmp.get(i).getPatrona().getNombreCorto());
+					nominasTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
 					nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreIntermediaria());
 					nominasTmp2.add(tmp.get(i).getPeriodicidad());
 					nominasTmp2.add(tmp.get(i).getTipoPago());
@@ -104,7 +104,9 @@ public class NominaController {
 		    @ResponseBody
 		    public Nomina obtenerNominaById(@ModelAttribute(value="Nomina") Nomina nomina, BindingResult result){   
 			 	System.out.println("Nomina por id"+ nomina);
-			 	return this.nominaServicio.obtenerNominaById(nomina.getIdNomina());
+			 	Nomina nominaTmp=this.nominaServicio.obtenerNominaById(nomina.getIdNomina());
+			 	nominaTmp.setRazonesSociales(this.nominaServicio.obtenerRazonesSocialesByIdNomina(nomina.getIdNomina()));
+			 	return nominaTmp;
 			 	
 			}	 
 		 

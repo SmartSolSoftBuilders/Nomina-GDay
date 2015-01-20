@@ -7,6 +7,8 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="../../static/js/libs/js/jquery.validate.js"></script>
+  
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
   <script type="text/javascript" language="javascript" src="../../static/js/app/nominas/agregar_nomina.js"></script>
@@ -33,9 +35,10 @@
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">
+					<form  id="agregarNominaForm" name="agregarNominaForm" novalidate="novalidate">		
 					<table>					
 					 	<tr>
-					 		<td>NOMBRE<input id='nombreNomina' name='nombreNomina' type="text" class="form-control"></td>
+					 		<td>NOMBRE<input id='nombreNomina' name='nombreNomina' type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
 					 </table>
 					<table border=2>
@@ -48,7 +51,7 @@
 					  		</tr>						  		
 					   		<tr>
 						  		<td>							 			
-					 				<select id="selectMult" multiple="multiple" style="width:550px;height:100px">		
+					 				<select name="selectMult" id="selectMult" multiple="multiple" style="width:550px;height:100px">		
 					 				</select>					 				
 					 				<button type="button" class="btn btn-default" onclick="showRazonesSociales();">AÑADIR</button>
 					 				<button type="button" class="btn btn-default" onclick="quitarRazonSocial();">QUITAR</button>
@@ -56,18 +59,6 @@
 					 		</tr>
 					 </table>
 					 <table>
-					  	<tr>
-					 		<td>RAZON SOCIAL</td>
-					 	</tr>
-					 	<tr>				 	
-					 		<td><select id="selectMult" multiple="multiple">
-					 			<option value="1">Miguel Gutierrez Perez</option>
-					 			<option value="2">Rafael Mora Moran</option>
-					 			<option value="3">Ricardo Perez Perez</option>
-					 			<option value="4">Veronica Orduña Contreras</option>
-					 			<option value="5">Monica Herrera Fernandez</option>
-					 		</select></td>
-					 	</tr>					 	
 							<tr>
 							  	<td>
 							  		<table>
@@ -85,23 +76,13 @@
 					 </table>
 					 <table>
 					 	<tr>
-					 		<td>PATRONA<input id='patrona' name='patrona' type="text" class="form-control"></input></td>					 	
-					 		<td></td>
-					 		<td>EJECUTIVO</td>
-							<td><select id='ejecutivo' name='ejecutivo' type="text" class="form-control"></select></td>					 	
-					 	</tr>
-					 </table>
-					 <table>
-					 	<tr>
-					 		<td>ESQUEMA</td>
-					 		<td><select id='esquema' name='esquema' type="text" class="form-control"></select></td>					 	
+					 		<td>ESQUEMA
+					 		<select id='esquema' name='esquema' type="text" class="form-control"></select></td>					 	
+					 		<td width="10%"></td>
+
 					 		<td>EJECUTIVO
 								<select id='ejecutivo' name='ejecutivo' type="text" class="form-control"></select>
-							</td>					 						 	
-					 		<td width="10%"></td>
-					 		<td>ESQUEMA
-					 			<select id='esquema' name='esquema' type="text" class="form-control"></select>
-					 		</td>					 	
+							</td>				 						 	
 					 	</tr>
 					 	<tr>
 					 		<td>PROVISION AGINALDO<input id='provisionAguinaldo' name='provisionAguinaldo' type="checkbox" class="form-control"></td>					 	
@@ -132,18 +113,14 @@
 					 	</tr>
 					 </table>
 					 <table>
-					 	<tr>
-					 		<td>TIPO PAGO</td>
-					 		<td><select id='tipoPago' name='tipoPago' type="text" class="form-control">
-					 		<td></td>
+					 	<tr>		 		
 					 		<td>TIPO PAGO
 					 		<select id='tipoPago' name='tipoPago' type="text" class="form-control">
 		  							<option>Neto</option>
 		  							<option>Bruto</option>
 		  							<option>Sindicato Tres</option>
 							</select></td>					 	
-					 	</tr>
-					 	<tr>
+						 	<td></td>
 					 		<td>CLASE DE RIESGO
 					 		<select id='claseRiesgo' name='claseRiesgo' type="text" class="form-control">
 		  							<option>CI</option>
@@ -153,15 +130,9 @@
 		  							<option>CV</option>
 							</select>
 							</td>
-							<td></td>
-							<td>REGISTRO PATRONAL<input id='registroPatronal' name='registroPatronal' type="text" class="form-control"></td>					 	
-					 	</tr>
-					 	</table>
-					 	<table>
-					 	<tr>
-					 		<td>REGISTRO PATRONAL<input id='registroPatronal' name='registroPatronal' type="text" class="form-control"></td>					 	
-					 		<td>PERIODICIDAD</td>
-					 		<td><select id='periodicidad' name='periodicidad' type="text" class="form-control">
+						</tr>
+						<tr>
+							<td>REGISTRO PATRONAL<input id='registroPatronal' name='registroPatronal' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td>PERIODICIDAD
 					 			<select id='periodicidad' name='periodicidad' type="text" class="form-control">
 		  							<option>Q</option>
@@ -169,26 +140,12 @@
 		  							<option>M</option>
 		  							<option>C</option>
 							</select></td>					 	
-					 	</tr>
-						</table>
-						<table>
-					 	<tr>
-					 		<td>TIPO CALENDARIO</td>
-					 		<td><select id='tipoCalendario' name='tipoCalendario' type="text" class="form-control">
-								</select>
-							</td>					 	
-							<td></td>
 					 		<td>TIPO CALENDARIO
-					 			<select id='tipoCalendario' name='tipoCalendario' type="text" class="form-control">
-		  							<option>Semanal</option>
-		  							<option>Diario</option>
-		  							<option>Mensual</option>
+					 		<select id='tipoCalendario' name='tipoCalendario' type="text" class="form-control">
 								</select>
 							</td>					 	
-					 		<td>FECHA CONTRATO<input id='fechaContrato' name='fechaContrato' type="date" class="form-control"></td>
-					 		<td></td><td></td>					 	
-					 	</tr>
-						<tr>
+						</tr>	
+						<tr>					 	
 					 		<td>FECHA CONTRATO<input id='fechaContrato' name='fechaContrato' type="date" class="form-control"></td>
 					 		<td></td><td></td>					 	
 					 	</tr>
@@ -202,10 +159,11 @@
 			        	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
 			     	 </span>			    
    		 		</div><!-- /input-group -->
-				</div>
-			</div>
-			</div>
-	  </div>
+   		 	</form>
+		</div>
+	</div>
+	</div>
+</div>
 	<div id='resultadoGuardar'></div>
 	<!-- /.container -->
 	<!-- JS dependencies -->

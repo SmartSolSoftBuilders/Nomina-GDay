@@ -1,10 +1,12 @@
 package mx.nomina.gday.dao;
 
-import mx.nomina.gday.modelo.HojaTrabajo;
+import java.util.List;
+
+import mx.nomina.gday.modelo.Esquema;
+import mx.nomina.gday.modelo.TipoCalendario;
 
 public interface TipoCalendarioDao {
 
-	HojaTrabajo SeleccionarEmpresaNomina();
-	HojaTrabajo AsignarHojaDeTrabajoaNomina();
-	HojaTrabajo GenerarHojaDeTrabajo();
+	public List<TipoCalendario> obtenerTiposCalendario();
+
 }

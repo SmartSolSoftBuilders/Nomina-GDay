@@ -2,7 +2,6 @@ package mx.nomina.gday.dao;
 
 import java.util.List;
 
-import mx.nomina.gday.modelo.Grupo;
 import mx.nomina.gday.modelo.RazonSocial;
 
 public interface RazonSocialDao {
@@ -11,6 +10,7 @@ public interface RazonSocialDao {
 	public int agregarRazonSocial(RazonSocial razonSocial);
 	void actualizarRazonSocial(RazonSocial razonSocial);
 	public RazonSocial obtenerRazonSocialById(int id);
+	public List<RazonSocial> obtenerRazonesSocialesByIdNomina(Integer idNomina);
 
 
 }

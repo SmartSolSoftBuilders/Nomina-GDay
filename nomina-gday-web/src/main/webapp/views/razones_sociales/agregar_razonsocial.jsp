@@ -34,17 +34,17 @@
 				<form  id="agregarRazonSocialForm" name="agregarRazonSocialForm" novalidate="novalidate">					
 					<table>
 					 	<tr>
-					 		<td>RAZON SOCIAL<input id='nombreRazonSocial' name='nombreRazonSocial' type="text" class="form-control" size=50 required /></td>
+					 		<td>RAZON SOCIAL<input id='nombreRazonSocial' name='nombreRazonSocial' type="text" class="form-control" size=50 required onkeyup="javascript:this.value=this.value.toUpperCase();"/></td>
 					 	</tr>
 					 </table>
 					 <table border="2">
 					 	<tr>	
-					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control"></td>
+					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td width="5%"></td>					 
-					 		<td>NOMBRE CORTO<input id='nombreCorto' name='nombreCorto' type="text" class="form-control"></td>					 	
+					 		<td>NOMBRE CORTO<input id='nombreCorto' name='nombreCorto' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 						</tr>
 						<tr>					 	
-					 		<td>CODIGO DE CLIENTE<input id='codCliente' name='codCliente' type="text" class="form-control"></td>					 	
+					 		<td>CODIGO DE CLIENTE<input id='codCliente' name='codCliente' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 						 	<td width="5%"></td>
 					 		<td>GRUPO<input id='grupo' readonly=true name='grupo' type="text" class="form-control" onclick="showGrupos()">
 					 		<input id='grupoIdSel' name='grupoIdSel' type="hidden" class="form-control"></td>						 	
@@ -52,7 +52,7 @@
 					 	<tr>
 					 		<td>COMISION<input id='comision' name='comision' type="text" class="form-control"></td>					 	
 							<td width="5%"></td>
-					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control">
+					 		<td>REFERENCIANTES<input id='referenciante' name='referenciante' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 					 		<button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>
 					 		<button type="button" class="btn btn-default" onclick="quitarReferenciante();">QUITAR</button>					 		
 					 							 		
@@ -60,9 +60,9 @@
 					 		</select>
 					 	</tr>					 	
 					 	<tr>
-					 		<td>OBJETO SOCIAL<textarea id='objetoSocial' name='objetoSocial' type="text" class="form-control"></textarea></td>					 	
+					 		<td>OBJETO SOCIAL<textarea id='objetoSocial' name='objetoSocial' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea></td>					 	
 							<td width="5%"></td>					 	
-					 		<td>ACTA CONSTITUTIVA<input id='actaConst' name='actaConst' type="text" class="form-control"></td>					 	
+					 		<td>ACTA CONSTITUTIVA<input id='actaConst' name='actaConst' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 					 	<tr>
 					 		<td>FECHA ACTA CONSTITUTIVA<input id='fechaActaConst' name='fechaActaConst' type="date" class="form-control"></td>					 	
@@ -75,9 +75,9 @@
 					 	</table>
 					 	<table>
 					 	<tr>
-					 		<td>APELLIDO PATERNO<input id='aPaterno' name='aPaterno' type="text" class="form-control"></td>						
-					 		<td>APELLIDO MATERNO<input id='aMaterno' name='aMaterno' type="text" class="form-control"></td>					 	
-					 		<td>NOMBRES<input id='nombres' name='nombres' type="text" class="form-control"></td>					 	
+					 		<td>APELLIDO PATERNO<input id='aPaterno' name='aPaterno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>						
+					 		<td>APELLIDO MATERNO<input id='aMaterno' name='aMaterno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>NOMBRES<input id='nombres' name='nombres' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 					 	<table>
 					 	<tr>
@@ -86,21 +86,21 @@
 					 	</table>
 					 	<table>
 					 	<tr>
-					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control"></td>					 	
-					 		<td>NUMERO EXT<input id='numeroExt' name='numeroExt' type="text" class="form-control"></td>					 	
-					 		<td>NUMERO INT<input id='numeroInt' name='numeroInt' type="text" class="form-control"></td>					 	
+					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>NUMERO EXT<input id='numeroExt' name='numeroExt' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>NUMERO INT<input id='numeroInt' name='numeroInt' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 					 	<tr>
-					 		<td>COLONIA<input id='colonia' name='colonia' type="text" class="form-control"></td>					 	
-					 		<td>CODIGO POSTAL<input id='codPostal' name='codPostal' type="text" class="form-control"></td>					 	
-					 		<td>MUNICIPIO<input id='municipio' name='municipio' type="text" class="form-control"></td>
+					 		<td>COLONIA<input id='colonia' name='colonia' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>CODIGO POSTAL<input id='codPostal' name='codPostal' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>MUNICIPIO<input id='municipio' name='municipio' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
 					 	<tr>					 	
-					 		<td>ESTADO<input id='estado' name='estado' type="text" class="form-control"></td>
+					 		<td>ESTADO<input id='estado' name='estado' type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td></td><td></td>					 	
 					 	</tr>
 					 	<tr>					 	
-					 		<td>REGISTRO PUBLICO DE LA PROPIEDAD<input id='regPublicoPropiedad' name='regPublicoPropiedad' type="text" class="form-control"></td>
+					 		<td>REGISTRO PUBLICO DE LA PROPIEDAD<input id='regPublicoPropiedad' name='regPublicoPropiedad' type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td></td>					 	
 					 		<td>FECHA DE REGISTRO PUBLICO DE LA PROPIEDAD<input id='fechaRegPublicoPropiedad' name='fechaRegPublicoPropiedad' type="date" class="form-control"></td>
 					 		<td></td>					 	
@@ -113,9 +113,9 @@
 					 	</table>
 					 	<table>
 					 	<tr>
-					 		<td>NOMBRE<input id='nombreContUno' name='nombreContUno' type="text" class="form-control"></td>					 	
-					 		<td>TELEFONO<input id='telefonoContUno' name='telefonoContUno' type="text" class="form-control"></td>					 	
-					 		<td>CORREO<input id='correoContUno' name='correoContUno' type="text" class="form-control"></td>					 	
+					 		<td>NOMBRE<input id='nombreContUno' name='nombreContUno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>TELEFONO<input id='telefonoContUno' name='telefonoContUno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>CORREO<input id='correoContUno' name='correoContUno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 					 	</table>
 					 	<table>
@@ -125,9 +125,9 @@
 					 	</table>
 					 	<table>					 	
 					 	<tr>
-					 		<td>NOMBRE<input id='nombreContDos' name='nombreContDos' type="text" class="form-control"></td>					 	
-					 		<td>TELEFONO<input id='telefonoContDos' name='telefonoContDos' type="text" class="form-control"></td>					 	
-					 		<td>CORREO<input id='correoContDos' name='correoContDos' type="text" class="form-control"></td>					 	
+					 		<td>NOMBRE<input id='nombreContDos' name='nombreContDos' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>TELEFONO<input id='telefonoContDos' name='telefonoContDos' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>CORREO<input id='correoContDos' name='correoContDos' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 						 	</tr>
 					 	</table>
@@ -138,9 +138,9 @@
 					 	</table>
 					 	<table>	
 					 	<tr>				 	
-					 		<td>NOMBRE<input id='nombreContTres' name='nombreContTres' type="text" class="form-control"></td>					 	
-					 		<td>TELEFONO<input id='telefonoContTres' name='telefonoContTres' type="text" class="form-control"></td>					 	
-					 		<td>CORREO<input id='correoContTres' name='correoContTres' type="text" class="form-control"></td>					 	
+					 		<td>NOMBRE<input id='nombreContTres' name='nombreContTres' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>TELEFONO<input id='telefonoContTres' name='telefonoContTres' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>CORREO<input id='correoContTres' name='correoContTres' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 						</table>
 				<br>

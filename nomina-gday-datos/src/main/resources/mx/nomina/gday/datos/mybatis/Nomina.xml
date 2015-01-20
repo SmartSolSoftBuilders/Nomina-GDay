@@ -36,26 +36,26 @@
 	
 	<resultMap id="patronaResult" type="Patrona">
     	<id property="idPatrona" column="ID_PATRONA"/>
-		<result property="razonSocial" column="RAZON_SOCIAL"/>
-		<result property="nombreCorto" column="NOMBRE_CORTO"/>
-		<result property="esIntermediaria" column="ES_INTERMEDIARIA"/>
-		<result property="tipoRegimen" column="TIPO_REGIMEN"/>
-		<result property="folioMercantil" column="FOLIO_MERCANTIL"/>
-		<result property="calleFiscal" column="CALLE_FISCAL"/>
-		<result property="coloniaFiscal" column="COLONIA_FISCAL"/>
-		<result property="numExteriorFiscal" column="NUM_EXTERIOR_FISCAL"/>
-		<result property="numInteriorFiscal" column="NUM_INTERIOR_FISCAL"/>
-		<result property="cpFiscal" column="CP_FISCAL"/>
-		<result property="municipioFiscal" column="MUNICIPIO_FISCAL"/>
-		<result property="estadoFiscal" column="ESTADO_FISCAL"/>
-		<result property="fiscalNumPago" column="FISCAL_NUM_PAGO"/>
-		<result property="telContacto" column="TEL_CONTACTO"/>
-		<result property="actaNumero" column="ACTA_NUMERO"/>
-		<result property="actaNotaria" column="ACTA_NOTARIA"/>
-		<result property="actaFecha" column="ACTA_FECHA"/>
-		<result property="actaNotario" column="ACTA_NOTARIO"/>
-		<result property="actaCiudad" column="ACTA_CIUDAD"/>
-		<result property="actaEstado" column="ACTA_ESTADO"/>	
+		<result property="razonSocialPatrona" column="RAZON_SOCIAL"/>
+		<result property="nombreCortoPatrona" column="NOMBRE_CORTO"/>
+		<result property="esIntermediariaPatrona" column="ES_INTERMEDIARIA"/>
+		<result property="tipoRegimenPatrona" column="TIPO_REGIMEN"/>
+		<result property="folioMercantilPatrona" column="FOLIO_MERCANTIL"/>
+		<result property="calleFiscalPatrona" column="CALLE_FISCAL"/>
+		<result property="coloniaFiscalPatrona" column="COLONIA_FISCAL"/>
+		<result property="numExteriorFiscalPatrona" column="NUM_EXTERIOR_FISCAL"/>
+		<result property="numInteriorFiscalPatrona" column="NUM_INTERIOR_FISCAL"/>
+		<result property="cpFiscalPatrona" column="CP_FISCAL"/>
+		<result property="municipioFiscalPatrona" column="MUNICIPIO_FISCAL"/>
+		<result property="estadoFiscalPatrona" column="ESTADO_FISCAL"/>
+		<result property="fiscalNumPagoPatrona" column="FISCAL_NUM_PAGO"/>
+		<result property="telContactoPatrona" column="TEL_CONTACTO"/>
+		<result property="actaNumeroPatrona" column="ACTA_NUMERO"/>
+		<result property="actaNotariaPatrona" column="ACTA_NOTARIA"/>
+		<result property="actaFechaPatrona" column="ACTA_FECHA"/>
+		<result property="actaNotarioPatrona" column="ACTA_NOTARIO"/>
+		<result property="actaCiudadPatrona" column="ACTA_CIUDAD"/>
+		<result property="actaEstadoPatrona" column="ACTA_ESTADO"/>	
 </resultMap>
 	
 	<resultMap id="ejecutivoResult" type="Ejecutivo">

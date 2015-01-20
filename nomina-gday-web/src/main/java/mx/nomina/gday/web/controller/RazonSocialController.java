@@ -191,7 +191,7 @@ public class RazonSocialController {
 					nominasRazonSocialTmp2.add(tmp.get(i).getIdNomina());
 					nominasRazonSocialTmp2.add(tmp.get(i).getNombreCorto());
 					nominasRazonSocialTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
-					nominasRazonSocialTmp2.add(tmp.get(i).getPatrona().getNombreCorto());
+					nominasRazonSocialTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
 					nominasRazonSocialTmp2.add(tmp.get(i).getIntermediaria().getNombreIntermediaria());
 					nominasRazonSocialTmp2.add(tmp.get(i).getPeriodicidad());
 					nominasRazonSocialTmp2.add(tmp.get(i).getTipoPago());
