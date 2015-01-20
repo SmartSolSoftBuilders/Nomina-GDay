@@ -72,9 +72,9 @@ ALTER TABLE "GRUPO"
 
   
   
--- Table: "RAZON_SOCIAL"
+- Table: "RAZON_SOCIAL"
 
---DROP TABLE "RAZON_SOCIAL";
+-- DROP TABLE "RAZON_SOCIAL";
 
 CREATE TABLE "RAZON_SOCIAL"
 (
@@ -84,30 +84,33 @@ CREATE TABLE "RAZON_SOCIAL"
   "RFC" character varying(13),
   "NOMBRE_CORTO_RAZON_S" character varying(15),
   "COD_CLIENTE" character varying(20),
-  "COMISION" float,
-  "ACT_CONSTITUTIVA" numeric (8),
+  "COMISION" double precision,
+  "ACT_CONSTITUTIVA" numeric(8,0),
   "FECHA_ACT_CONSTITUTIVA" date,
   "FECHA_INICIO_OPERACION" date,
-  "PATERNO_REPRESENTANTE" character varying (25),
-  "MATERNO_REPRESENTANTE" character varying (25),
-  "NOMBRES_REPRESENTANTE" character varying (30),
-  "CALLE_FISCAL" character varying (30),
-  "COLONIA_FISCAL" character varying (30),
-  "NUM_EXTERIOR_FISCAL" character varying (20),
-  "NUM_INTERIOR_FISCAL" character varying (20),
-  "CP_FISCAL" numeric (5),
-  "MUNICIPIO_FISCAL" character varying (40),
-  "ESTADO_FISCAL" character varying (20),
-  "CONTACTO1_NOMBRE" character varying (80),
-  "CONTACTO1_TELEFONO" character varying (10),
-  "CONTACTO1_CORREO" character varying (30),
-  "CONTACTO2_NOMBRE" character varying (80),
-  "CONTACTO2_TELEFONO" character varying (10),
-  "CONTACTO2_CORREO" character varying (30), 
-  "CONTACTO3_NOMBRE" character varying (80),
-  "CONTACTO3_TELEFONO" character varying (10),
-  "CONTACTO3_CORREO" character varying (30),
+  "PATERNO_REPRESENTANTE" character varying(25),
+  "MATERNO_REPRESENTANTE" character varying(25),
+  "NOMBRES_REPRESENTANTE" character varying(30),
+  "CALLE_FISCAL" character varying(30),
+  "COLONIA_FISCAL" character varying(30),
+  "NUM_EXTERIOR_FISCAL" character varying(20),
+  "NUM_INTERIOR_FISCAL" character varying(20),
+  "CP_FISCAL" numeric(5,0),
+  "MUNICIPIO_FISCAL" character varying(40),
+  "ESTADO_FISCAL" character varying(20),
+  "CONTACTO1_NOMBRE" character varying(80),
+  "CONTACTO1_TELEFONO" character varying(10),
+  "CONTACTO1_CORREO" character varying(30),
+  "CONTACTO2_NOMBRE" character varying(80),
+  "CONTACTO2_TELEFONO" character varying(10),
+  "CONTACTO2_CORREO" character varying(30),
+  "CONTACTO3_NOMBRE" character varying(80),
+  "CONTACTO3_TELEFONO" character varying(10),
+  "CONTACTO3_CORREO" character varying(30),
   "REFERENCIANTES" json,
+  "OBJETO_SOCIAL" character varying(256),
+  "REGISTRO_PUBLICO_PROPIEDAD" character varying,
+  "FECHA_REGISTRO_PUBLICO_PROPIEDAD" date,
   CONSTRAINT "ID_RAZON_SOCIAL_PK" PRIMARY KEY ("ID_RAZON_SOCIAL"),
   CONSTRAINT "ID_GRUPO_FK" FOREIGN KEY ("ID_GRUPO")
       REFERENCES "GRUPO" ("ID_GRUPO") MATCH SIMPLE
