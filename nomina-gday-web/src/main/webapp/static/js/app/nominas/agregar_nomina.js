@@ -249,3 +249,11 @@ function guardarNomina() {
 function cancelar(){
 	top.frames['main'].location="../nominas/nominas.jsp"; 	
 }
+
+function showEditarPatrona(idPatrona){
+	top.frames['main'].location="../patronas/actualizar_patrona.jsp?id="+idPatrona; 
+}
+
+function guardarPatrona(){
+	top.frames['main'].location="../patronas/agregar_patrona.jsp"; 	
+}

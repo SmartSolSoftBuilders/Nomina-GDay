@@ -107,7 +107,7 @@
    		"NUM_INTERIOR_FISCAL"=#{numInteriorFiscal}, "CP_FISCAL"=#{cpFiscal}, "MUNICIPIO_FISCAL"=#{municipioFiscal}, "ESTADO_FISCAL"=#{estadoFiscal}, "REGISTRO_PUBLICO_PROPIEDAD"=#{regPublicoPropiedad},
    		"FECHA_REGISTRO_PUBLICO_PROPIEDAD"=date(#{fechaRegPublicoPropiedad}), "CONTACTO1_NOMBRE"=#{contactoUnoNombre}, "CONTACTO1_TELEFONO"=#{contactoUnoTelefono}, "CONTACTO1_CORREO"=#{contactoUnoCorreo}, "CONTACTO2_NOMBRE"=#{contactoDosNombre}, 
         "CONTACTO2_TELEFONO"=#{contactoDosTelefono}, "CONTACTO2_CORREO"=#{contactoDosCorreo}, "CONTACTO3_NOMBRE"=#{contactoTresNombre}, "CONTACTO3_TELEFONO"=#{contactoTresTelefono}, 
-        "CONTACTO3_CORREO"=#{contactoTresCorreo}, "OBJETO_SOCIAL"=#{objetoSocial}
+        "CONTACTO3_CORREO"=#{contactoTresCorreo}, "OBJETO_SOCIAL"=#{objetoSocial}, "REFERENCIANTES"=json(#{jsonString})
  	WHERE "ID_RAZON_SOCIAL"=#{idRazonSocial}
 </update>
 </mapper>

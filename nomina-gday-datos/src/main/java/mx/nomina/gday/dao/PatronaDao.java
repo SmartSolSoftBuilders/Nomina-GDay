@@ -9,7 +9,6 @@ public interface PatronaDao {
 	public int agregarPatrona(Patrona patrona);
 	public List<Patrona> obtenerPatronas();
 	void actualizarPatrona(Patrona patrona);
-
-
+	public Patrona obtenerPatronaById(int id);
 }
 

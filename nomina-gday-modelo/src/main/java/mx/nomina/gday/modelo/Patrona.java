@@ -7,7 +7,7 @@ public class Patrona extends BaseModelo{
 	private String rfcPatrona;
 	private String nombreCortoPatrona;
 	private boolean esIntermediariaPatrona;
-	private String tipoRegimenPatrona;
+	private TipoRegimen tipoRegimen;
 	private Integer folioMercantilPatrona;
 	private String calleFiscalPatrona;
 	private String coloniaFiscalPatrona;
@@ -32,7 +32,7 @@ public class Patrona extends BaseModelo{
 
 	public Patrona(Integer idPatrona, String razonSocialPatrona,
 			String rfcPatrona, String nombreCortoPatrona,
-			boolean esIntermediariaPatrona, String tipoRegimenPatrona,
+			boolean esIntermediariaPatrona, TipoRegimen tipoRegimen,
 			Integer folioMercantilPatrona, String calleFiscalPatrona,
 			String coloniaFiscalPatrona, Integer numExteriorFiscalPatrona,
 			Integer numInteriorFiscalPatrona, Integer cpFiscalPatrona,
@@ -47,7 +47,7 @@ public class Patrona extends BaseModelo{
 		this.rfcPatrona = rfcPatrona;
 		this.nombreCortoPatrona = nombreCortoPatrona;
 		this.esIntermediariaPatrona = esIntermediariaPatrona;
-		this.tipoRegimenPatrona = tipoRegimenPatrona;
+		this.tipoRegimen = tipoRegimen;
 		this.folioMercantilPatrona = folioMercantilPatrona;
 		this.calleFiscalPatrona = calleFiscalPatrona;
 		this.coloniaFiscalPatrona = coloniaFiscalPatrona;
@@ -117,13 +117,13 @@ public class Patrona extends BaseModelo{
 	}
 
 
-	public String getTipoRegimenPatrona() {
-		return tipoRegimenPatrona;
+	public TipoRegimen getTipoRegimen() {
+		return tipoRegimen;
 	}
 
 
-	public void setTipoRegimenPatrona(String tipoRegimenPatrona) {
-		this.tipoRegimenPatrona = tipoRegimenPatrona;
+	public void setTipoRegimen(TipoRegimen tipoRegimen) {
+		this.tipoRegimen = tipoRegimen;
 	}
 
 

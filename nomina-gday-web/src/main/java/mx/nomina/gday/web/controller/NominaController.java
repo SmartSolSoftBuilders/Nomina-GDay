@@ -68,7 +68,7 @@ public class NominaController {
 					nominasTmp2.add(tmp.get(i).getIdNomina());
 					nominasTmp2.add(tmp.get(i).getNombreCorto());
 					nominasTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
-					nominasTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
+					//nominasTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
 					nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreIntermediaria());
 					nominasTmp2.add(tmp.get(i).getPeriodicidad());
 					nominasTmp2.add(tmp.get(i).getTipoPago());
@@ -110,6 +110,7 @@ public class NominaController {
 			 	
 			}	 
 		 
+		 //LLENADO DEL SELECT COMBO, EJECUTIVO Y ESQUEMA
 		 //Obteber los datos de Ejecutivo y Esquema para el llenado de sus respectivos Combos
 		 @RequestMapping(value="/getdatoscombo",method = RequestMethod.POST)
 		    @ResponseBody

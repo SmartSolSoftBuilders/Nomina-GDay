@@ -8,7 +8,6 @@
 		<result property="rfcPatrona" column="RFC"/>
 		<result property="nombreCortoPatrona" column="NOMBRE_CORTO"/>
 		<result property="esIntermediariaPatrona" column="ES_INTERMEDIARIA"/>
-		<result property="tipoRegimenPatrona" column="TIPO_REGIMEN"/>
 		<result property="folioMercantilPatrona" column="FOLIO_MERCANTIL"/>
 		<result property="calleFiscalPatrona" column="CALLE_FISCAL"/>
 		<result property="coloniaFiscalPatrona" column="COLONIA_FISCAL"/>
@@ -25,12 +24,29 @@
 		<result property="actaNotarioPatrona" column="ACTA_NOTARIO"/>
 		<result property="actaCiudadPatrona" column="ACTA_CIUDAD"/>
 		<result property="actaEstadoPatrona" column="ACTA_ESTADO"/>
+		
+<!-- 		<association property="tipoRegimen" column="ID_TIPO_REGIMEN" javaType="TipoRegimen" select="selectTipoRegimen"/>		
+ -->	</resultMap>
+	
+	<!-- ResultMap de TipoRegimen que selecciona el tipoRegimen por idTipoRegimen -->
+	<resultMap id="tipoRegimenResult" type="TipoRegimen">
+    	<id property="idTipoRegimen" column="ID_TIPO_REGIMEN"/>
+		<result property="tipoRegimen" column="TIPO_REGIMEN"/>
 	</resultMap>
-
-
+	
+<!-- 	<select id="selectTipoRegimen" parameterType="int" resultMap="tipoRegimenResult" resultType="TipoRegimen">		 
+		select * from "TIPO_REGIMEN" where "ID_TIPO_REGIMEN"=#{idTipoRegimen} 	
+	</select> -->
+	
+	<!-- 	Select que obtiene una lista de patronas Registradas-->	
 	<select id="obtenerPatronas"  resultMap="patronaResult" resultType="Patrona">		 
 		select * from "PATRONA"  	
 	</select> 
+
+	<!-- Select para obtener la Patrona por idPatrona -->
+	<select id="obtenerPatronaById" parameterType="int" resultMap="patronaResult" resultType="Patrona">		 
+		select * from "PATRONA" where "ID_PATRONA"=#{idPatrona} 	
+	</select>
 
 
 <!-- Insert para guardar Patrona-->
@@ -47,7 +63,7 @@
             "ACTA_NOTARIA", "ACTA_FECHA", "ACTA_NOTARIO", 
             "ACTA_CIUDAD", "ACTA_ESTADO")
    	 	VALUES (#{id}, #{razonSocialPatrona}, #{rfcPatrona}, #{nombreCortoPatrona}, #{esIntermediariaPatrona}, 
-   	 		#{tipoRegimenPatrona}, #{folioMercantilPatrona}, #{calleFiscalPatrona},  #{coloniaFiscalPatrona},  #{numExteriorFiscalPatrona}, 
+   	 		#{tipoRegimen.tipoRegimen}, #{folioMercantilPatrona}, #{calleFiscalPatrona},  #{coloniaFiscalPatrona},  #{numExteriorFiscalPatrona}, 
             #{numInteriorFiscalPatrona}, #{cpFiscalPatrona}, #{municipioFiscalPatrona}, #{estadoFiscalPatrona}, 
             #{fiscalNumPagoPatrona}, #{telContactoPatrona}, #{actaNumeroPatrona}, 
             #{actaNotariaPatrona},date(#{actaFechaPatrona}), #{actaNotarioPatrona}, 
@@ -58,12 +74,11 @@
 <!-- Update para actualizar la Patrona seleccionada --> 
 <update id="actualizarPatrona" parameterType="Patrona">
 	UPDATE "PATRONA"
-   	SET 	"RAZON_SOCIAL"=#{razonSocialPatrona}, "RFC"=#{rfcPatrona}, 
-            "NOMBRE_CORTO"=#{nombreCortoPatrona}, "ES_INTERMEDIARIA"=#{esIntermediariaPatrona}, "FOLIO_MERCANTIL"=#{folioMercantilPatrona}, 
+   	SET 	"RAZON_SOCIAL"=#{razonSocialPatrona}, "RFC"=#{rfcPatrona}, "NOMBRE_CORTO"=#{nombreCortoPatrona}, "ES_INTERMEDIARIA"=#{esIntermediariaPatrona}, "FOLIO_MERCANTIL"=#{folioMercantilPatrona}, 
             "CALLE_FISCAL"=#{calleFiscalPatrona}, "COLONIA_FISCAL"=#{coloniaFiscalPatrona}, "NUM_EXTERIOR_FISCAL"=#{numExteriorFiscalPatrona}, 
             "NUM_INTERIOR_FISCAL"=#{numInteriorFiscalPatrona}, "CP_FISCAL"=#{cpFiscalPatrona}, "MUNICIPIO_FISCAL"=#{municipioFiscalPatrona}, 
             "ESTADO_FISCAL"=#{estadoFiscalPatrona}, "FISCAL_NUM_PAGO"=#{fiscalNumPagoPatrona}, "TEL_CONTACTO"=#{telContactoPatrona}, "ACTA_NUMERO"=#{actaNumeroPatrona}, 
-            "ACTA_NOTARIA"=#{actaNotariaPatrona}, "ACTA_FECHA"= date(#{actaFechaPatrona}), "ACTA_NOTARIO"=#{actaNotarioPatrona}, "ACTA_CIUDAD"=#{actaCiudadPatrona}, "ACTA_ESTADO"=#{actaNotariaPatrona} )
+            "ACTA_NOTARIA"=#{actaNotariaPatrona}, "ACTA_FECHA"= date(#{actaFechaPatrona}), "ACTA_NOTARIO"=#{actaNotarioPatrona}, "ACTA_CIUDAD"=#{actaCiudadPatrona}, "ACTA_ESTADO"=#{actaNotariaPatrona} 
  	WHERE "ID_PATRONA"=#{idPatrona}  
 </update>
 

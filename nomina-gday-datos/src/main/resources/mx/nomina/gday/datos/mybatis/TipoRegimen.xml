@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.nomina.gday.dao.TipoRegimenDao">
+	<resultMap type="TipoRegimen" id="tipoRegimenResult">
+		<id property="idTipoRegimen" column="ID_TIPO_REGIMEN"/>
+		<result property="tipoRegimen" column="TIPO_REGIMEN"/>
+	</resultMap>
+	
+<!-- Select para obtener la lista de todos los Tipo de Regimen registrados-->
+	<select id="obtenerTipoRegimenes" parameterType="int" resultMap="tipoRegimenResult" resultType="TipoRegimen">		 
+		select * from "TIPO_REGIMEN" 
+	</select>
+</mapper>

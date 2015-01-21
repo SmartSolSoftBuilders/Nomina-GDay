@@ -49,7 +49,8 @@ public class PatronaController {
 				System.out.println("tmp"+tmp.get(i));
 				patronasTmp2.add(tmp.get(i).getIdPatrona());
 				patronasTmp2.add(tmp.get(i).getNombreCortoPatrona());
-				patronasTmp2.add("<a href='#' onclick='seleccionarPatrona("+tmp.get(i).getIdPatrona()+",\""+tmp.get(i).getNombreCortoPatrona()+"\")'>Seleccionar</a>");				
+				patronasTmp2.add("<a href='#' onclick='seleccionarPatrona("+tmp.get(i).getIdPatrona()+",\""+tmp.get(i).getNombreCortoPatrona()+"\")'>Seleccionar</a>");
+				patronasTmp2.add("<a href='#' onclick='showEditarPatrona("+tmp.get(i).getIdPatrona()+")'><img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");				
 				patronasTmp.add(patronasTmp2);
 			}
 			return patronasTmp;
@@ -75,5 +76,20 @@ public class PatronaController {
 		}
 		 	return false;
 	    }
-	
+	//LLENADO DEL SELECT COMBO, TIPO_REGIMEN
+		 //Obteber los datos de TipoRegimen para el llenado de sus respectivos Combos
+		 @RequestMapping(value="/getdatoscombo",method = RequestMethod.POST)
+		    @ResponseBody
+		    public List obtenerDatosCombo(){
+			 	System.out.println("Controller Datos del combo");
+				return this.patronaServicio.obtenerDatosCombo();
+			}
+		 
+		 //Controller que permite obtener la Patrona por idPatrona
+		 @RequestMapping(value="/obtenerpatronabyid",method = RequestMethod.POST)
+		    @ResponseBody
+		    public Patrona obtenerPatronaById(@ModelAttribute(value="Patrona") Patrona patrona, BindingResult result){   
+			 	System.out.println("Patrona por id"+ patrona.getIdPatrona());
+			 	return 	this.patronaServicio.obtenerPatronaById(patrona.getIdPatrona());
+			}	
 }

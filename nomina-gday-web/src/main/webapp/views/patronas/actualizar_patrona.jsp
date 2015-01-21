@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>grupo day</title>
+<title>GDAY</title>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
-  <script type="text/javascript" language="javascript" src="../../static/js/app/patronas/agregar_patrona.js"></script>
+  <script type="text/javascript" language="javascript" src="../../static/js/app/patronas/actualizar_patrona.js"></script>
   
 	<script src="../../static/js/bootstrap.min.js"></script>
 	<script src="../../static/js/modal.js"></script>
@@ -29,13 +29,14 @@
 
 <body>
 	<div class="container">
-	<h1>Agregar Patrona</h1>
+	<h1>Actualizar Patrona</h1>
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">
 					<table>					
 					 	<tr>
 					 		<td>NOMBRE<input id='nombrePatrona' name='nombrePatrona' type="text" class="form-control"></td>
+					 		<input id='idPatrona' name='idPatrona' type="hidden" class="form-control"></input>					 		
 					 	</tr>
 					 </table>
 					<table>
@@ -58,9 +59,7 @@
 					  	<tr>
 					 		<td>TIPO REGIMEN
 					 		<select id='tipoReg' name='tipoReg' type="text" class="form-control">
-		  							<option>Asimilados</option>
-		  							<option>Asalariados</option>
-		  							<option>Nomina</option>
+		  							
 							</select></td>
 					 	</tr>
 					  	<tr>
@@ -91,9 +90,38 @@
 					 	<tr>
 					 		<td>ENTIDAD FEDERATIVA
 					 		<select id='entidadFed' name='entidadFed' type="text" class="form-control">
+		  							<option>AGUASCALIENTES</option>
+		  							<option>BAJA CALIFORNIA</option>
+		  							<option>BAJA CALIFORNIA SUR</option>
+		  							<option>CAMPECHE</option>
+		  							<option>CHIAPAS</option>
+		  							<option>CHIHUAHUA</option>
+		  							<option>COAHUILA</option>
+		  							<option>COLIMA</option>
+		  							<option>DISTRITO FEDERAL</option>
 		  							<option>DURANGO</option>
+		  							<option>GUANAJUATO</option>
+		  							<option>GUERRERO</option>
+		  							<option>HIDALGO</option>
+		  							<option>JALISCO</option>
+		  							<option>MEXICO</option>
+		  							<option>MICHOACAN</option>
+		  							<option>MORELOS</option>
+		  							<option>NAYARIT</option>
+		  							<option>NUEVO LEON</option>
+		  							<option>OAXACA</option>
+		  							<option>PUEBLA</option>
+		  							<option>QUERETARO</option>
+		  							<option>QUINTANA ROO</option>
+		  							<option>SAN LUIS POTOSI</option>
+		  							<option>SINALOA</option>
+		  							<option>SONORA</option>
+		  							<option>TABASCO</option>
+		  							<option>TAMAULIPAS</option>
+		  							<option>TLAXCALA</option>
 		  							<option>VERACRUZ</option>
-		  							<option>MEXICO, D.F</option>
+		  							<option>YUCATAN</option>
+		  							<option>ZACATECAS</option>
 							</select></td>					 	
 					 		<td></td>
 					 		<td>TELEFONO CONTACTO</td>
@@ -192,7 +220,7 @@
 					 	</tr>
 					 </table>
 					 
-					 <button type="button" class="btn btn-default" onclick="guardarPatrona();">AGREGAR</button> 		
+					 <button type="button" class="btn btn-default" onclick="actualizarPatrona();">AGREGAR</button> 		
 						 	
 				<br>
 				<br>

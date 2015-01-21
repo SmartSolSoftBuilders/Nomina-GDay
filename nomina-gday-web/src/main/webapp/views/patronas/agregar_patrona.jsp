@@ -58,9 +58,7 @@
 					  	<tr>
 					 		<td>TIPO REGIMEN
 					 		<select id='tipoReg' name='tipoReg' type="text" class="form-control">
-		  							<option>Asimilados</option>
-		  							<option>Asalariados</option>
-		  							<option>Nomina</option>
+		  							
 							</select></td>
 					 	</tr>
 					  	<tr>
@@ -91,9 +89,38 @@
 					 	<tr>
 					 		<td>ENTIDAD FEDERATIVA
 					 		<select id='entidadFed' name='entidadFed' type="text" class="form-control">
+		  							<option>AGUASCALIENTES</option>
+		  							<option>BAJA CALIFORNIA</option>
+		  							<option>BAJA CALIFORNIA SUR</option>
+		  							<option>CAMPECHE</option>
+		  							<option>CHIAPAS</option>
+		  							<option>CHIHUAHUA</option>
+		  							<option>COAHUILA</option>
+		  							<option>COLIMA</option>
+		  							<option>DISTRITO FEDERAL</option>
 		  							<option>DURANGO</option>
+		  							<option>GUANAJUATO</option>
+		  							<option>GUERRERO</option>
+		  							<option>HIDALGO</option>
+		  							<option>JALISCO</option>
+		  							<option>MEXICO</option>
+		  							<option>MICHOACAN</option>
+		  							<option>MORELOS</option>
+		  							<option>NAYARIT</option>
+		  							<option>NUEVO LEON</option>
+		  							<option>OAXACA</option>
+		  							<option>PUEBLA</option>
+		  							<option>QUERETARO</option>
+		  							<option>QUINTANA ROO</option>
+		  							<option>SAN LUIS POTOSI</option>
+		  							<option>SINALOA</option>
+		  							<option>SONORA</option>
+		  							<option>TABASCO</option>
+		  							<option>TAMAULIPAS</option>
+		  							<option>TLAXCALA</option>
 		  							<option>VERACRUZ</option>
-		  							<option>MEXICO, D.F</option>
+		  							<option>YUCATAN</option>
+		  							<option>ZACATECAS</option>
 							</select></td>					 	
 					 		<td></td>
 					 		<td>TELEFONO CONTACTO</td>

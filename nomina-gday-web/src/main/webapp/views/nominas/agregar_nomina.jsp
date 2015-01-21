@@ -206,11 +206,13 @@
 							<th width="40px">ID</th>
 							<th width="200px">NOMBRE CORTO</th>
 							<th width="200px"></th>
+							<th width="200px"></th>
 						</tr>
 						<tbody>			
 						</tbody>
 					</thead>
 				</table>
+				 <button type="button" class="btn btn-default" onclick="guardarPatrona();">AGREGAR</button>				
 			</div>
 		</div>
 	</div>	
