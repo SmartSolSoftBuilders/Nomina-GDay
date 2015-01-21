@@ -270,8 +270,7 @@ public class Patrona extends BaseModelo{
 	public String getActaCiudadPatrona() {
 		return actaCiudadPatrona;
 	}
-
-
+//Tipo
 	public void setActaCiudadPatrona(String actaCiudadPatrona) {
 		this.actaCiudadPatrona = actaCiudadPatrona;
 	}

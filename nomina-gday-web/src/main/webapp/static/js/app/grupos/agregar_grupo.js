@@ -12,10 +12,8 @@ function guardarGrupo() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					$("#resultadoGuardar")
-							.html(alert("Grupo creado correctamente"));
-					top.frames['main'].location="../grupos/grupos.jsp";
-
+					mensaje("Grupo creado correctamente");
+					//top.frames['main'].location="../grupos/grupos.jsp";
 				},
 				error : function(response) {
 					$("#resultadoGuardar").html();

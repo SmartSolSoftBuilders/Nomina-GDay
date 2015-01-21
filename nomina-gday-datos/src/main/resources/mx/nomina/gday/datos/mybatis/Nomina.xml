@@ -39,7 +39,7 @@
 		<result property="razonSocialPatrona" column="RAZON_SOCIAL"/>
 		<result property="nombreCortoPatrona" column="NOMBRE_CORTO"/>
 		<result property="esIntermediariaPatrona" column="ES_INTERMEDIARIA"/>
-		<result property="tipoRegimenPatrona" column="TIPO_REGIMEN"/>
+		<!-- result property="tipoRegimenPatrona" column="TIPO_REGIMEN"/-->
 		<result property="folioMercantilPatrona" column="FOLIO_MERCANTIL"/>
 		<result property="calleFiscalPatrona" column="CALLE_FISCAL"/>
 		<result property="coloniaFiscalPatrona" column="COLONIA_FISCAL"/>

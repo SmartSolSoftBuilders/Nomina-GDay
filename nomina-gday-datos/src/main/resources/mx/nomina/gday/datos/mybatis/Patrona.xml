@@ -26,7 +26,8 @@
 		<result property="actaEstadoPatrona" column="ACTA_ESTADO"/>
 		
 <!-- 		<association property="tipoRegimen" column="ID_TIPO_REGIMEN" javaType="TipoRegimen" select="selectTipoRegimen"/>		
- -->	</resultMap>
+ -->	
+ 	</resultMap>
 	
 	<!-- ResultMap de TipoRegimen que selecciona el tipoRegimen por idTipoRegimen -->
 	<resultMap id="tipoRegimenResult" type="TipoRegimen">
@@ -68,7 +69,7 @@
             #{fiscalNumPagoPatrona}, #{telContactoPatrona}, #{actaNumeroPatrona}, 
             #{actaNotariaPatrona},date(#{actaFechaPatrona}), #{actaNotarioPatrona}, 
             #{actaCiudadPatrona}, #{actaEstadoPatrona});
-            	
+             	
 	</insert>
 	
 <!-- Update para actualizar la Patrona seleccionada --> 

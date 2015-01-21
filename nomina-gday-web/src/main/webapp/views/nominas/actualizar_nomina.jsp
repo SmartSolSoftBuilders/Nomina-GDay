@@ -14,15 +14,6 @@
   
 	<script src="../../static/js/bootstrap.min.js"></script>
 	<script src="../../static/js/modal.js"></script>
-	<script>
-        $(function() {
-            Example.init({
-                "selector": ".bb-alert"
-            });
-        });
-    </script>
-
-	<!-- bootbox code -->
 	<script src="../../static/js/bootbox.js"></script>
 
 	<!-- put all demo code in one place -->
