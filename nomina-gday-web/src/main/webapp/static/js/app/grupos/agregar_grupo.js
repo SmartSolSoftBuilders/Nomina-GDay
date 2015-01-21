@@ -12,11 +12,10 @@ function guardarGrupo() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					mensaje("Grupo creado correctamente");
-					//top.frames['main'].location="../grupos/grupos.jsp";
+					mensajeRedireccion("Grupo creado correctamente","../grupos/grupos.jsp");
 				},
 				error : function(response) {
-					$("#resultadoGuardar").html();
+					mensaje("Imposible guardar el grupo. Contacte al administrador.");
 				}
 			});
 		}

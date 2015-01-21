@@ -236,8 +236,7 @@ function guardarNomina() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					$("#resultadoGuardar")
-							.html(alert("La nomina se guard\u00f3 correctamente"));
+					mensajeRedireccion("Nomina agregada correctamente.","../nominas/nominas.jsp");
 				},
 				error : function(response) {
 					$("#resultadoGuardar").html();

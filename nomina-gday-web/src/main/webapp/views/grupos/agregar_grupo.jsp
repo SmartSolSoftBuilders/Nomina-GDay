@@ -4,24 +4,8 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <title>grupo day</title>
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="../../static/js/libs/js/jquery.validate.js"></script>
-	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-	
-	<script src="../../static/js/bootstrap.min.js"></script>
-	<script src="../../static/js/modal.js"></script>
-	<script src="../../static/js/bootbox.js"></script>
-	<script src="../../static/js/control.js"></script>
-	
-	<script src="../../static/js/common.js"></script>
-	<link href="../../static/css/styles.css" rel="stylesheet">
-	<link href="../../static/css/multiple-select.css" rel="stylesheet">
-	
+<jsp:include page="../common/librerias.jsp"/>
 <script type="text/javascript" language="javascript" src="../../static/js/app/grupos/agregar_grupo.js"></script>		
-
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="../../static/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container" class="mayuscula">
@@ -53,9 +37,6 @@
 			</div>
 	  </div>
 	<div id='resultadoGuardar'></div>
-	<!-- /.container -->
-	<!-- JS dependencies -->
-	<div id="mensaje" title="Mensaje" style="display:none">
-	</div>
+	<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>
