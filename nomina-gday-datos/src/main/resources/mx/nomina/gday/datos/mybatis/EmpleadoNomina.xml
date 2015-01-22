@@ -28,8 +28,9 @@
 		<result property="loteMovImssBaja" column="LOTE_MOV_IMSS_BAJA"/>
 		<result property="aplicaFiniquito" column="APLICA_FINIQUITO"/>
 		<result property="montoFiniquito" column="MONTO_FINIQUITO"/>	
-		<collection property="nomina" column="ID_NOMINA" javaType="List" select="selectNomina"/>
+		<!-- collection property="nomina" column="ID_NOMINA" javaType="List" select="selectNomina"/>
 		<collection property="empleado" column="ID_EMPLEADO" javaType="List" select="selectEmpleado"/>
+		 -->
 		<collection property="puesto" column="ID_PUESTO" javaType="List" select="selectPuesto"/>
 		<collection property="departamento" column="ID_DEPARTAMENTO" javaType="List" select="selectDepartamento"/>
 		<collection property="area" column="ID_AREA" javaType="List" select="selectArea"/>
@@ -53,10 +54,11 @@
 		<result property="claseRiesgo" column="CLASE_RIESGO"/>
 		<result property="registroPatronal" column="REGISTRO_PATRONAL"/>
 		<result property="periodicidad" column="PERIODICIDAD"/>
-		<result property="tipoCalendario" column="TIPO_CALENDARIO"/>
+		<!-- result property="tipoCalendario" column="TIPO_CALENDARIO"/>
 		<collection property="ejecutivo" column="ID_EJECUTIVO" javaType="List" select="selectEjecutivo"/>
 		<collection property="esquema" column="ID_ESQUEMA" javaType="List" select="selectEsquema"/>
 		<collection property="tipoCalendario" column="ID_CALENDARIO" javaType="List" select="selectTipoCalendario"/>
+		- -->
 	</resultMap>
 	
 	<resultMap id="ejecutivoResult" type="Ejecutivo">
@@ -167,4 +169,10 @@
 	<select id="selectTipoCalendario" parameterType="int" resultMap="tipoCalendarioResult" resultType="TipoCalendario">		 
 		select * from "TIPO_CALENDARIO" where "ID_CALENDARIO"=#{idCalendario} 	
 	</select> 
+	
+	<select id="obtenerEmpleadoNominaByIdNominaEmpleado" parameterType="EmpleadoNomina" resultMap="empleadoNominaResult" resultType="EmpleadoNomina">
+		select * from "EMPLEADO_NOMINA" where "ID_EMPLEADO"=#{empleado.idEmpleado} AND "ID_NOMINA"=#{nomina.idNomina} 
+	</select>
+	
+	
 </mapper>

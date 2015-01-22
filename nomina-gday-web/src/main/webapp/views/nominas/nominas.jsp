@@ -42,6 +42,7 @@
 							<th>TIPO PAGO</th>
 							<th>CLASE</th>
 							<th></th>
+							<th></th>
 						</tr>
 					<tbody>			
 					</tbody>

@@ -74,6 +74,7 @@ public class NominaController {
 					nominasTmp2.add(tmp.get(i).getTipoPago());
 					nominasTmp2.add(tmp.get(i).getClaseRiesgo());
 					nominasTmp2.add("<a href='#' onclick='showEditarNomina("+tmp.get(i).getIdNomina()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
+					nominasTmp2.add("<a href='#' onclick='ajax_download("+tmp.get(i).getIdNomina()+")'>Empleados</a>");
 					nominasTmp.add(nominasTmp2);
 				}
 				return nominasTmp;
