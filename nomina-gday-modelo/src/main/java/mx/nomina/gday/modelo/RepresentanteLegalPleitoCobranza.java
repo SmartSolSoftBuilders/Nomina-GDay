@@ -1,15 +1,15 @@
 package mx.nomina.gday.modelo;
 
-public class RepresentanteLegalePleitoCobranza extends BaseModelo{
+public class RepresentanteLegalPleitoCobranza extends BaseModelo{
 	
 	private Integer idRepLegPleiCob;
 	private String nombreRepLegPleiCob;
 	
-	public RepresentanteLegalePleitoCobranza(){
+	public RepresentanteLegalPleitoCobranza(){
 		
 	}
 	
-	public RepresentanteLegalePleitoCobranza(Integer idRepLegPleiCob,
+	public RepresentanteLegalPleitoCobranza(Integer idRepLegPleiCob,
 			String nombreRepLegPleiCob) {
 		super();
 		this.idRepLegPleiCob = idRepLegPleiCob;

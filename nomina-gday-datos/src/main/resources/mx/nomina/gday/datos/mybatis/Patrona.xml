@@ -28,7 +28,7 @@
 		<collection property="accionistas" column="ID_PATRONA" javaType="List" select="selectAccionistas"/>		
 		<collection property="poderesNotarialesPleitosCobranzas" column="ID_PATRONA" javaType="List" select="selectPoderesNotarialesPleitosCobranzas"/>		
 		<collection property="poderesNotarialesLaborales" column="ID_PATRONA" javaType="List" select="selectPoderesNotarialesLaborales"/>		
-		<collection property="representantesLegalesLaborales" column="ID_PATRONA" javaType="List" select="selectrepResentantesLegalesLaborales"/>		
+		<collection property="representantesLegalesLaborales" column="ID_PATRONA" javaType="List" select="selectRepresentantesLegalesLaborales"/>		
 		<!--<association property="tipoRegimen" column="ID_TIPO_REGIMEN" javaType="TipoRegimen" select="selectTipoRegimen"/> -->	
  	</resultMap>
 	
@@ -62,6 +62,12 @@
 	<resultMap id="poderNotarialLaboralResult" type="PoderNotarialLaboral">
 		<result property="idPodNotLab" column="ID_POD_NOTA_LAB"/>
 		<result property="numeroPodNotLab" column="NUM_POD_NOTA_LAB"/>
+	</resultMap>
+
+	<!-- 	ResultMap de RepresentantesLegalesLaborales -->	
+	<resultMap id="representanteLegalLaboralResult" type="RepresentanteLegalLaboral">
+		<result property="idRepLegLab" column="ID_REP_LEG_LAB"/>
+		<result property="nombreRepLegLab" column="NOMBRE_REP_LEG_LAB"/>
 	</resultMap>
 	
 	<!-- 	<select id="selectTipoRegimen" parameterType="int" resultMap="tipoRegimenResult" resultType="TipoRegimen">		 
@@ -108,6 +114,13 @@
 		 where "ID_PATRONA"=#{idPatrona} 
 	</select> 
 
+	<!-- Inner join para obtener la lista de RepresentantesLegalesLaborales -->
+	<select id="selectRepresentantesLegalesLaborales" parameterType="int" resultMap="representanteLegalLaboralResult" resultType="RepresentanteLegalLaboral">
+		select value->>'idRepLegLab' as "ID_POD_NOTA_LAB",value->>'nombreRepLegLab' as 
+		"NUM_POD_NOTA_LAB" from  "PATRONA", json_array_elements("REP_LEG_LAB"#>'{representantesLegalesLaborales}') 
+		 where "ID_PATRONA"=#{idPatrona} 
+	</select> 
+
 <!-- Insert para guardar Patrona-->
 	<insert id="agregarPatrona" parameterType="Patrona" keyProperty="id">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
@@ -120,13 +133,15 @@
             "NUM_EXTERIOR_FISCAL", "NUM_INTERIOR_FISCAL", "CP_FISCAL", "MUNICIPIO_FISCAL", 
             "ESTADO_FISCAL", "FISCAL_NUM_PAGO", "TEL_CONTACTO", "ACTA_NUMERO", 
             "ACTA_NOTARIA", "ACTA_FECHA", "ACTA_NOTARIO", 
-            "ACTA_CIUDAD", "ACTA_ESTADO", "DOM_VIRTUALES", "ACCIONISTA")
+            "ACTA_CIUDAD", "ACTA_ESTADO", "DOM_VIRTUALES", "ACCIONISTA", "POD_NOTA_PLEITOS_Y_COBRANZAS",
+            "REP_LEG_PLEITOS_COBR", "POD_NOTA_LAB", "REP_LEG_LAB")
    	 	VALUES (#{id}, #{razonSocialPatrona}, #{rfcPatrona}, #{nombreCortoPatrona}, #{esIntermediariaPatrona}, 
    	 		#{folioMercantilPatrona}, #{calleFiscalPatrona},  #{coloniaFiscalPatrona},  #{numExteriorFiscalPatrona}, 
             #{numInteriorFiscalPatrona}, #{cpFiscalPatrona}, #{municipioFiscalPatrona}, #{estadoFiscalPatrona}, 
             #{fiscalNumPagoPatrona}, #{telContactoPatrona}, #{actaNumeroPatrona}, 
             #{actaNotariaPatrona},date(#{actaFechaPatrona}), #{actaNotarioPatrona}, 
-            #{actaCiudadPatrona}, #{actaEstadoPatrona}, json(#{jsonString}), json(#{jsonString}));
+            #{actaCiudadPatrona}, #{actaEstadoPatrona}, json(#{jsonString}), json(#{jsonString}), json(#{jsonString},
+            json(#{jsonString}), json(#{jsonString}), json(#{jsonString})));
              	
 	</insert>
 	
@@ -139,7 +154,9 @@
    			"MUNICIPIO_FISCAL"=#{municipioFiscalPatrona}, "ESTADO_FISCAL"=#{estadoFiscalPatrona}, "FISCAL_NUM_PAGO"=#{fiscalNumPagoPatrona}, 
    			"TEL_CONTACTO"=#{telContactoPatrona}, "ACTA_NUMERO"=#{actaNumeroPatrona}, "ACTA_NOTARIA"=#{actaNotariaPatrona}, 
    			"ACTA_FECHA"= date(#{actaFechaPatrona}), "ACTA_NOTARIO"=#{actaNotarioPatrona}, "ACTA_CIUDAD"=#{actaCiudadPatrona}, 
-   			"ACTA_ESTADO"=#{actaNotariaPatrona}, "DOM_VIRTUALES"=json(#{jsonString}), "ACCIONISTA"=json(#{jsonString})
+   			"ACTA_ESTADO"=#{actaNotariaPatrona}, "DOM_VIRTUALES"=json(#{jsonString}), "ACCIONISTA"=json(#{jsonString}),
+   			"POD_NOTA_PLEITOS_Y_COBRANZAS"=json(#{jsonString}), "REP_LEG_PLEITOS_COBR"=json(#{jsonString}), "POD_NOTA_LAB"=json(#{jsonString}), 
+   			"REP_LEG_LAB"=json(#{jsonString})
  	WHERE "ID_PATRONA"=#{idPatrona}  
 </update>
 

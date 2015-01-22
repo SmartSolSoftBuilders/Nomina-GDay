@@ -160,13 +160,13 @@
 					 </table>
 					 <table>
 					 	<tr>
-					 		<td>REPRESENTANTES LEGALES PLEITOS Y COBRANZAS</td>
-					 		<td></td>
-					 		<td>NOMBRE</td>
-							<td><input id='nombreRepresentantes' name='nombreAccionista' type="text" class="form-control"/></td>
-							<td>+<input id='agregarRepresentantes' name='agregarRepresentantes' type="text" class="form-control"/></td>
-							<td><textarea id='representantes' name='representantes' type="text" class="form-control"></textarea></td>
-							<td>-<input id='eliminarRepresentantes' name='eliminarRepresentantes' type="text" class="form-control"/></td>					 	
+					 		<td>REPRESENTANTES LEGALES PLEITOS Y COBRANZAS</td>					 	
+							<td width="5%"></td>
+					 		<td>NOMBRE<input id='nombreRepresentantes' name='nombreRepresentantes' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 		<button type="button" class="btn btn-default" onclick="agregarRepresentantes();">AÑADIR</button>
+					 		<button type="button" class="btn btn-default" onclick="quitarRepresentantes();">QUITAR</button>					 		
+					 							 		
+					 		<select id="selectMultRepresentantes" multiple="multiple"></select>					 	
 					 	</tr>
 					 </table>
 					 <table>
@@ -184,13 +184,13 @@
 					 </table>
 					 <table>
 					 	<tr>
-					 		<td>REPRESENTANTES LEGALES LABORALES</td>
-					 		<td></td>
-					 		<td>NOMBRE</td>
-							<td><input id='nombreRepresentantesLegLab' name='nombreRepresentantesLegLab' type="text" class="form-control"/></td>
-							<td>+<input id='agregarRepresentantesLegLab' name='agregarRepresentantesLegLab' type="text" class="form-control"/></td>
-							<td><textarea id='representantesRepresentantesLegLab' name='representantesRepresentantesLegLab' type="text" class="form-control"></textarea></td>
-							<td>-<input id='eliminarRepresentantesLegLab' name='eliminarRepresentantesLegLab' type="text" class="form-control"/></td>					 	
+					 		<td>REPRESENTANTES LEGALES LABORALES</td>					 	
+							<td width="5%"></td>
+					 		<td>NOMBRE<input id='nombreRepresentantesLegLab' name='nombreRepresentantesLegLab' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 		<button type="button" class="btn btn-default" onclick="agregarRepresentantesLegLab();">AÑADIR</button>
+					 		<button type="button" class="btn btn-default" onclick="quitarRepresentantesLegLab();">QUITAR</button>					 		
+					 							 		
+					 		<select id="selectMultRepresentantesLegLab" multiple="multiple"></select>							 	
 					 	</tr>
 					 </table>					 
 					 <button type="button" class="btn btn-default" onclick="guardarPatrona();">AGREGAR</button>						 	

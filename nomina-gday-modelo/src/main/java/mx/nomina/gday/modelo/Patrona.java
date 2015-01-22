@@ -31,7 +31,7 @@ public class Patrona extends BaseModelo{
 	private List<PoderNotarialPleitoCobranza> poderesNotarialesPleitosCobranzas;
 	private List<PoderNotarialLaboral> poderesNotarialesLaborales;
 	private List<RepresentanteLegalLaboral> representantesLegalesLaborales;
-	private List<RepresentanteLegalePleitoCobranza> representantesLegalesPleitosCobranzas;
+	private List<RepresentanteLegalPleitoCobranza> representantesLegalesPleitosCobranzas;
 	private String jsonString;
 	
 	
@@ -67,7 +67,7 @@ public class Patrona extends BaseModelo{
 			List<PoderNotarialPleitoCobranza> poderesNotarialesPleitosCobranzas,
 			List<PoderNotarialLaboral> poderesNotarialesLaborales,
 			List<RepresentanteLegalLaboral> representantesLegalesLaborales,
-			List<RepresentanteLegalePleitoCobranza> representantesLegalesPleitosCobranzas,
+			List<RepresentanteLegalPleitoCobranza> representantesLegalesPleitosCobranzas,
 			String jsonString) {
 		super();
 		this.idPatrona = idPatrona;
@@ -375,13 +375,13 @@ public class Patrona extends BaseModelo{
 	}
 
 
-	public List<RepresentanteLegalePleitoCobranza> getRepresentantesLegalesPleitosCobranzas() {
+	public List<RepresentanteLegalPleitoCobranza> getRepresentantesLegalesPleitosCobranzas() {
 		return representantesLegalesPleitosCobranzas;
 	}
 
 
 	public void setRepresentantesLegalesPleitosCobranzas(
-			List<RepresentanteLegalePleitoCobranza> representantesLegalesPleitosCobranzas) {
+			List<RepresentanteLegalPleitoCobranza> representantesLegalesPleitosCobranzas) {
 		this.representantesLegalesPleitosCobranzas = representantesLegalesPleitosCobranzas;
 	}
 
