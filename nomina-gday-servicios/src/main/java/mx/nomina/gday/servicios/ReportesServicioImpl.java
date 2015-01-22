@@ -64,7 +64,7 @@ public class ReportesServicioImpl implements ReportesServicio {
         	fila.createCell(3).setCellValue(nomina.getNombreCorto());
         	fila = hoja.getRow(4);	
         	//Nombre esquema
-        	fila.createCell(5).setCellValue(nomina.getPatrona().getNombreCortoPatrona());
+        	//fila.createCell(5).setCellValue(nomina.getPatrona().getNombreCortoPatrona());
         	fila = hoja.getRow(2);	
         	fila.createCell(5).setCellValue(nomina.getIntermediaria().getNombreIntermediaria());
         	fila = hoja.getRow(3);	

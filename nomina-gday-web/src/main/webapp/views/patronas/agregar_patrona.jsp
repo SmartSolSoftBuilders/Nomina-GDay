@@ -4,26 +4,8 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <title>grupo day</title>
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
-  <script type="text/javascript" language="javascript" src="../../static/js/app/patronas/agregar_patrona.js"></script>
-  
-	<script src="../../static/js/bootstrap.min.js"></script>
-	<script src="../../static/js/modal.js"></script>
-	<!-- bootbox code -->
-	<script src="../../static/js/bootbox.js"></script>
-
-	<!-- put all demo code in one place -->
-	<script src="../../static/js/control.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<link href="../../static/css/styles.css" rel="stylesheet">
-<link href="../../static/css/multiple-select.css" rel="stylesheet">
-<link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-
+<jsp:include page="../common/librerias.jsp"/>
+ 	<script type="text/javascript" language="javascript" src="../../static/js/app/patronas/agregar_patrona.js"></script>  
 </head>
 <%session.setAttribute("titulo","AGREGAR NOMINA");%>
 
@@ -60,12 +42,8 @@
 					 		<select id='tipoReg' name='tipoReg' type="text" class="form-control">
 		  							
 							</select></td>
-					 	</tr>
-					  	<tr>
-					  		<td>DOMICILIO FISCAL</td>
+					 		<td>DOMICILIO FISCAL</td>
 					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control"></td>
-					 	</tr>
-					  	<tr>
 					 		<td>COLONIA<input id='colonia' name='colonia' type="text" class="form-control"></td>
 					 	</tr>					
 					</table>
@@ -129,45 +107,42 @@
 					 </table>
 					 <table>
 					 	<tr>
-					 		<td>DOMICILIOS VIRTUALES</td>
-					 		<td></td>
-					 		<td>DOMICILIO</td>
-							<td><input id='domicilio' name='domicilio' type="text" class="form-control"/></td>
-							<td>+<input id='agregarDom' name='agregarDom' type="text" class="form-control"/></td>
-							<td><textarea id='domicilio' name='domicilio' type="text" class="form-control"></textarea></td>
-							<td>-<input id='eliminarDom' name='eliminarDom' type="text" class="form-control"/></td>					 	
+					 		<td>DOMICILIO</td>					 	
+							<td width="5%"></td>
+					 		<td>DOMICILIOS VIRTUALES<input id='domicilio' name='domicilio' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 		<button type="button" class="btn btn-default" onclick="agregarDomVirtual();">AÑADIR</button>
+					 		<button type="button" class="btn btn-default" onclick="quitarDomVirtual();">QUITAR</button>					 		
+					 							 		
+					 		<select id="selectMult" multiple="multiple"></select>				 		
 					 	</tr>
 					 </table>
 					  <table>
 					 	<tr>
 					 		<td>ACTA CONSTITUTIVA</td>
+					 		<td></td>
 							<td>NUMERO<input id='numActaConst' name='numActaConst' type="text" class="form-control"/></td>					 	
 					 		<td></td>
-					 		<td>NUMERO NOTARIA</td>
-							<td><input id='numNotaria' name='numNotaria' type="text" class="form-control"/></td>					 	
-					 	</tr>
-					 </table>	
-					  <table>
-					 	<tr>
+					 		<td>NUMERO NOTARIA<input id='numNotaria' name='numNotaria' type="text" class="form-control"/></td>					 	
 							<td>FECHA<input id='fecha' name='fecha' type="date" class="form-control"/></td>					 	
 					 		<td></td>
-					 		<td>NOTARIO</td>
-							<td><input id='notario' name='notario' type="text" class="form-control"/></td>					 	
-					 		<td>CIUDAD</td>
-							<td><input id='ciudad' name='ciudad' type="text" class="form-control"/></td>					 	
-					 		<td>ESTADO</td>
-							<td><input id='estado' name='estado' type="text" class="form-control"/></td>					 	
 					 	</tr>
 					 </table>
 					 <table>
 					 	<tr>
-					 		<td>ACCIONISTAS</td>
-					 		<td></td>
-					 		<td>NOMBRE</td>
-							<td><input id='nombreAccionista' name='nombreAccionista' type="text" class="form-control"/></td>
-							<td>+<input id='agregarAccionista' name='agregarAccionista' type="text" class="form-control"/></td>
-							<td><textarea id='accinistas' name='accinistas' type="text" class="form-control"></textarea></td>
-							<td>-<input id='eliminarAccionista' name='eliminarAccionista' type="text" class="form-control"/></td>					 	
+					 		<td>NOTARIO<input id='notario' name='notario' type="text" class="form-control"/></td>					 	
+					 		<td>CIUDAD<input id='ciudad' name='ciudad' type="text" class="form-control"/></td>					 	
+					 		<td>ESTADO<input id='estado' name='estado' type="text" class="form-control"/></td>
+						</tr>
+					</table>					 	
+					 <table>
+					 	<tr>
+					 		<td>ACCIONISTAS</td>					 	
+							<td width="5%"></td>
+					 		<td>NOMBRE<input id='nombreAccionista' name='nombreAccionista' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 		<button type="button" class="btn btn-default" onclick="agregarAccionista();">AÑADIR</button>
+					 		<button type="button" class="btn btn-default" onclick="quitarAccionista();">QUITAR</button>					 		
+					 							 		
+					 		<select id="selectMultAccionista" multiple="multiple"></select>					 	
 					 	</tr>
 					 </table>
 					 <table>
@@ -217,10 +192,8 @@
 							<td><textarea id='representantesRepresentantesLegLab' name='representantesRepresentantesLegLab' type="text" class="form-control"></textarea></td>
 							<td>-<input id='eliminarRepresentantesLegLab' name='eliminarRepresentantesLegLab' type="text" class="form-control"/></td>					 	
 					 	</tr>
-					 </table>
-					 
-					 <button type="button" class="btn btn-default" onclick="guardarPatrona();">AGREGAR</button> 		
-						 	
+					 </table>					 
+					 <button type="button" class="btn btn-default" onclick="guardarPatrona();">AGREGAR</button>						 	
 				<br>
 				<br>
 			</div>
@@ -228,6 +201,6 @@
 			</div>
 	  </div>
 	<div id='resultadoGuardar'></div>
-	
+		<jsp:include page="../common/footer.jsp"/>	
 </body>
 </html>

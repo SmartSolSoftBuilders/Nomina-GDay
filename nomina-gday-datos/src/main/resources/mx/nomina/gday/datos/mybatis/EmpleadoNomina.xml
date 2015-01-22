@@ -31,9 +31,9 @@
 		<!-- collection property="nomina" column="ID_NOMINA" javaType="List" select="selectNomina"/>
 		<collection property="empleado" column="ID_EMPLEADO" javaType="List" select="selectEmpleado"/>
 		 -->
-		<collection property="puesto" column="ID_PUESTO" javaType="List" select="selectPuesto"/>
-		<collection property="departamento" column="ID_DEPARTAMENTO" javaType="List" select="selectDepartamento"/>
-		<collection property="area" column="ID_AREA" javaType="List" select="selectArea"/>
+		<association property="puesto" column="ID_PUESTO" javaType="Puesto" select="selectPuesto"/>
+		<association property="departamento" column="ID_DEPARTAMENTO" javaType="Departamento" select="selectDepartamento"/>
+		<association property="area" column="ID_AREA" javaType="Area" select="selectArea"/>
 			
 	</resultMap>
 	
@@ -140,9 +140,18 @@
 		<result property="idArea" column="ID_AREA"/>
 		<result property="descripcion" column="DESCRIPCION"/>
 	</resultMap>
+
+	<resultMap id="puestoResult" type="Puesto">
+		<result property="idPuesto" column="ID_PUESTO"/>
+		<result property="descripcion" column="DESCRIPCION"/>
+	</resultMap>
 	
 	<select id="selectNomina" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
 		select * from "NOMINA" where "ID_NOMINA"=#{idNomina} 	
+	</select> 
+
+	<select id="selectPuesto" parameterType="int" resultMap="puestoResult" resultType="Puesto">		 
+		select * from "PUESTO" where "ID_PUESTO"=#{idPuesto} 	
 	</select> 
 	
 	<select id="selectEmpleado" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 

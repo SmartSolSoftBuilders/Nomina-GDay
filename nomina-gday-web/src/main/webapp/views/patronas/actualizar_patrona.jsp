@@ -130,13 +130,13 @@
 					 </table>
 					 <table>
 					 	<tr>
-					 		<td>DOMICILIOS VIRTUALES</td>
-					 		<td></td>
-					 		<td>DOMICILIO</td>
-							<td><input id='domicilio' name='domicilio' type="text" class="form-control"/></td>
-							<td>+<input id='agregarDom' name='agregarDom' type="text" class="form-control"/></td>
-							<td><textarea id='domicilio' name='domicilio' type="text" class="form-control"></textarea></td>
-							<td>-<input id='eliminarDom' name='eliminarDom' type="text" class="form-control"/></td>					 	
+					 		<td>DOMICILIO</td>					 	
+							<td width="5%"></td>
+					 		<td>DOMICILIOS VIRTUALES<input id='domicilio' name='domicilio' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 		<button type="button" class="btn btn-default" onclick="agregarDomVirtual();">AÑADIR</button>
+					 		<button type="button" class="btn btn-default" onclick="quitarDomVirtual();">QUITAR</button>					 		
+					 							 		
+					 		<select id="selectMult" multiple="multiple"></select>					 	
 					 	</tr>
 					 </table>
 					  <table>

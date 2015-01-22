@@ -82,9 +82,47 @@ function muestraDatosPatrona(datos){
 	$("#notario").val(data.actaNotarioPatrona);
 	$("#ciudad").val(data.actaCiudadPatrona);
 	$("#estado").val(data.actaEstadoPatrona);
+	for (i=0;i<data.domVirtuales.length;i++){
+		console.log(data.domVirtuales[i].domVirtual);
+		var x = document.getElementById("selectMult");
+		var option = document.createElement("option");
+		option.id = (i+1);
+		option.text = data.domVirtuales[i].domVirtual;
+		x.add(option); 
+	}
 }
 
+function getDomVirtuales(){
+		var jsonString ="{\"domVirtuales\":[";
+		var renglonJson="";
+		var index=0;
+		$('select#selectMult').find('option').each(function() {
+			console.log($(this));
+			console.log($(this).val());
+			console.log($(this)[0].innerHTML);
+			var txt=$(this).text(); var id=$(this).attr('value');
+			renglonJson=renglonJson+"{ \"idDomVirtual\":"+(index++)+", \"domVirtual\": \""+txt+"\" }";
+			jsonString=jsonString+renglonJson;
+			renglonJson=",";
 
+		});
+		jsonString=jsonString+"]}";
+		console.log("JSON STRING");
+		console.log(jsonString);
+		
+		return jsonString;
+	}
+	function quitarDomVirtual(){
+		var id=$("#selectMult").find('option:selected').attr("id");
+		$("#selectMult").find("option[id='"+id+"']").remove();  
+}
+	
+function agregarDomVirtual(){
+		var x = document.getElementById("selectMult");
+		var option = document.createElement("option");
+		option.text = $("#domicilio").val();
+		x.add(option);
+}
 
 //*******************************************************************************
 //Function que actualiza la Nomina con los datos modificados 
@@ -113,6 +151,8 @@ function actualizarPatrona() {
 					"actaNotarioPatrona" : $("#notario").val(),
 					"actaCiudadPatrona" : $("#ciudad").val(),
 					"actaEstadoPatrona" : $("#estado").val(),
+					"jsonString": getDomVirtuales()
+
 				},
 				
 				dataType : 'json',

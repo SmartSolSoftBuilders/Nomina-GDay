@@ -1,34 +1,43 @@
 package mx.nomina.gday.modelo;
 
-public class Puesto {
+public class Puesto extends BaseModelo{
 
-	private int idPuesto;
+	private Integer idPuesto;
 	private String descripcion;
 	
 	
 	public Puesto(){
 		
 	}
-	
-	public Puesto(int idPuesto, String descripcion) {
+
+
+	public Puesto(Integer idPuesto, String descripcion) {
 		super();
 		this.idPuesto = idPuesto;
 		this.descripcion = descripcion;
 	}
-	
-	
-	public int getIdPuesto() {
+
+
+	public Integer getIdPuesto() {
 		return idPuesto;
 	}
-	public void setIdPuesto(int idPuesto) {
+
+
+	public void setIdPuesto(Integer idPuesto) {
 		this.idPuesto = idPuesto;
 	}
+
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	
 	
 	
 }

@@ -1,5 +1,7 @@
 package mx.nomina.gday.modelo;
 
+import java.util.List;
+
 public class Patrona extends BaseModelo{
 	
 	private Integer idPatrona;
@@ -24,23 +26,49 @@ public class Patrona extends BaseModelo{
 	private float actaNotarioPatrona;
 	private String actaCiudadPatrona;
 	private String actaEstadoPatrona;
+	private List<DomVirtual> domVirtuales;
+	private List<Accionista> accionistas;
+	private List<PoderNotarialPleitoCobranza> poderesNotarialesPleitosCobranzas;
+	private List<PoderNotarialLaboral> poderesNotarialesLaborales;
+	private List<RepresentanteLegalLaboral> representantesLegalesLaborales;
+	private List<RepresentanteLegalePleitoCobranza> representantesLegalesPleitosCobranzas;
+	private String jsonString;
 	
 	
 	public Patrona(){
 	}
 
 
-	public Patrona(Integer idPatrona, String razonSocialPatrona,
-			String rfcPatrona, String nombreCortoPatrona,
-			boolean esIntermediariaPatrona, TipoRegimen tipoRegimen,
-			Integer folioMercantilPatrona, String calleFiscalPatrona,
-			String coloniaFiscalPatrona, Integer numExteriorFiscalPatrona,
-			Integer numInteriorFiscalPatrona, Integer cpFiscalPatrona,
-			String municipioFiscalPatrona, String estadoFiscalPatrona,
-			Integer fiscalNumPagoPatrona, Integer telContactoPatrona,
-			float actaNumeroPatrona, float actaNotariaPatrona,
-			String actaFechaPatrona, float actaNotarioPatrona,
-			String actaCiudadPatrona, String actaEstadoPatrona) {
+	public Patrona(
+			Integer idPatrona,
+			String razonSocialPatrona,
+			String rfcPatrona,
+			String nombreCortoPatrona,
+			boolean esIntermediariaPatrona,
+			TipoRegimen tipoRegimen,
+			Integer folioMercantilPatrona,
+			String calleFiscalPatrona,
+			String coloniaFiscalPatrona,
+			Integer numExteriorFiscalPatrona,
+			Integer numInteriorFiscalPatrona,
+			Integer cpFiscalPatrona,
+			String municipioFiscalPatrona,
+			String estadoFiscalPatrona,
+			Integer fiscalNumPagoPatrona,
+			Integer telContactoPatrona,
+			float actaNumeroPatrona,
+			float actaNotariaPatrona,
+			String actaFechaPatrona,
+			float actaNotarioPatrona,
+			String actaCiudadPatrona,
+			String actaEstadoPatrona,
+			List<DomVirtual> domVirtuales,
+			List<Accionista> accionistas,
+			List<PoderNotarialPleitoCobranza> poderesNotarialesPleitosCobranzas,
+			List<PoderNotarialLaboral> poderesNotarialesLaborales,
+			List<RepresentanteLegalLaboral> representantesLegalesLaborales,
+			List<RepresentanteLegalePleitoCobranza> representantesLegalesPleitosCobranzas,
+			String jsonString) {
 		super();
 		this.idPatrona = idPatrona;
 		this.razonSocialPatrona = razonSocialPatrona;
@@ -64,6 +92,13 @@ public class Patrona extends BaseModelo{
 		this.actaNotarioPatrona = actaNotarioPatrona;
 		this.actaCiudadPatrona = actaCiudadPatrona;
 		this.actaEstadoPatrona = actaEstadoPatrona;
+		this.domVirtuales = domVirtuales;
+		this.accionistas = accionistas;
+		this.poderesNotarialesPleitosCobranzas = poderesNotarialesPleitosCobranzas;
+		this.poderesNotarialesLaborales = poderesNotarialesLaborales;
+		this.representantesLegalesLaborales = representantesLegalesLaborales;
+		this.representantesLegalesPleitosCobranzas = representantesLegalesPleitosCobranzas;
+		this.jsonString = jsonString;
 	}
 
 
@@ -270,7 +305,8 @@ public class Patrona extends BaseModelo{
 	public String getActaCiudadPatrona() {
 		return actaCiudadPatrona;
 	}
-//Tipo
+
+
 	public void setActaCiudadPatrona(String actaCiudadPatrona) {
 		this.actaCiudadPatrona = actaCiudadPatrona;
 	}
@@ -283,6 +319,80 @@ public class Patrona extends BaseModelo{
 
 	public void setActaEstadoPatrona(String actaEstadoPatrona) {
 		this.actaEstadoPatrona = actaEstadoPatrona;
+	}
+
+
+	public List<DomVirtual> getDomVirtuales() {
+		return domVirtuales;
+	}
+
+
+	public void setDomVirtuales(List<DomVirtual> domVirtuales) {
+		this.domVirtuales = domVirtuales;
+	}
+
+
+	public List<Accionista> getAccionistas() {
+		return accionistas;
+	}
+
+
+	public void setAccionistas(List<Accionista> accionistas) {
+		this.accionistas = accionistas;
+	}
+
+
+	public List<PoderNotarialPleitoCobranza> getPoderesNotarialesPleitosCobranzas() {
+		return poderesNotarialesPleitosCobranzas;
+	}
+
+
+	public void setPoderesNotarialesPleitosCobranzas(
+			List<PoderNotarialPleitoCobranza> poderesNotarialesPleitosCobranzas) {
+		this.poderesNotarialesPleitosCobranzas = poderesNotarialesPleitosCobranzas;
+	}
+
+
+	public List<PoderNotarialLaboral> getPoderesNotarialesLaborales() {
+		return poderesNotarialesLaborales;
+	}
+
+
+	public void setPoderesNotarialesLaborales(
+			List<PoderNotarialLaboral> poderesNotarialesLaborales) {
+		this.poderesNotarialesLaborales = poderesNotarialesLaborales;
+	}
+
+
+	public List<RepresentanteLegalLaboral> getRepresentantesLegalesLaborales() {
+		return representantesLegalesLaborales;
+	}
+
+
+	public void setRepresentantesLegalesLaborales(
+			List<RepresentanteLegalLaboral> representantesLegalesLaborales) {
+		this.representantesLegalesLaborales = representantesLegalesLaborales;
+	}
+
+
+	public List<RepresentanteLegalePleitoCobranza> getRepresentantesLegalesPleitosCobranzas() {
+		return representantesLegalesPleitosCobranzas;
+	}
+
+
+	public void setRepresentantesLegalesPleitosCobranzas(
+			List<RepresentanteLegalePleitoCobranza> representantesLegalesPleitosCobranzas) {
+		this.representantesLegalesPleitosCobranzas = representantesLegalesPleitosCobranzas;
+	}
+
+
+	public String getJsonString() {
+		return jsonString;
+	}
+
+
+	public void setJsonString(String jsonString) {
+		this.jsonString = jsonString;
 	}
 
 }

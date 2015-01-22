@@ -36,7 +36,7 @@ public class PatronaController {
 	//Controller que muestra la lista de Patronas y permite la seleccion de la misma
 	 @RequestMapping(value="/getpatronas",method = RequestMethod.POST)
 	    @ResponseBody
-	    public List obtenerGrupos(){    	
+	    public List obtenerPatronas(){    	
 		  System.out.println("Controller Grupo");
 		  try {
 			List<Patrona> tmp =  this.patronaServicio.obtenerPatronas();
@@ -61,6 +61,34 @@ public class PatronaController {
 		  return null;
 		}
 	 
+	 
+	//Controller que muestra la lista de Patronas y permite la edicion de la misma
+		 @RequestMapping(value="/getpatronasaeditar",method = RequestMethod.POST)
+		    @ResponseBody
+		    public List obtenerPatronasaEditar(){    	
+			  System.out.println("Controller Grupo");
+			  try {
+				List<Patrona> tmp =  this.patronaServicio.obtenerPatronas();
+				System.out.println("tmp"+tmp.size());
+				List patronasTmp = new ArrayList();
+				List patronasTmp2 = new ArrayList<String>();
+
+				for (int i = 0; i < tmp.size(); i++) {
+					patronasTmp2 = new ArrayList<String>();
+					System.out.println("tmp"+tmp.get(i));
+					patronasTmp2.add(tmp.get(i).getIdPatrona());
+					patronasTmp2.add(tmp.get(i).getNombreCortoPatrona());
+					patronasTmp2.add("<a href='#' onclick='showEditarPatrona("+tmp.get(i).getIdPatrona()+")'><img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");				
+					patronasTmp.add(patronasTmp2);
+				}
+				return patronasTmp;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			  return null;
+	}
+		 
 	 //MODIFICAR
 	//Controller que permite Actualizar los datos de la Nomina a Editar
 	 @RequestMapping(value="/modificapatrona",method = RequestMethod.POST)
