@@ -324,7 +324,8 @@ function quitarRazonSocial(){
 //Function que actualiza la Nomina con los datos modificados 
 //*******************************************************************************
 function actualizarNomina() {
-	console.log(nominaIdSel);
+	var ids=obtenerIdsAgregadosRZ2();
+	console.log(ids);
 			$
 			.ajax({
 				data : {
@@ -346,6 +347,7 @@ function actualizarNomina() {
 					"periodicidad" : $("#periodicidad").val(),
 					"tipoCalendario.tipoCalendario" : $("#tipoCalendario").val(),
 					"fechaContrato" : $("#fechaContrato").val(),
+					"jsonValue" : ids[0]
 				},
 				
 				dataType : 'json',

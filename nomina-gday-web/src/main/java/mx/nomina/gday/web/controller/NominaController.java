@@ -92,6 +92,20 @@ public class NominaController {
 		    
 			 try {
 				 System.out.println("Controller Actualizar Nomina"+ nomina.getIdNomina());
+				 	System.out.println("Guardando Nomina"+ nomina);
+				 	System.out.println("nomina"+nomina.getJsonValue());
+					StringTokenizer tokens=new StringTokenizer(nomina.getJsonValue(), ",");				
+					List<RazonSocial> razonesSociales = new ArrayList<RazonSocial>();
+					while(tokens.hasMoreTokens()) {
+						StringTokenizer tokens2=new StringTokenizer(tokens.nextToken(), ":");
+						RazonSocial razonSocial = new RazonSocial();
+						razonSocial.setIdRazonSocial(Integer.parseInt(tokens2.nextToken()));
+						razonSocial.setJsonString(tokens2.nextToken());
+						System.out.println(razonSocial.getIdRazonSocial());
+						System.out.println(razonSocial.getJsonString());
+						razonesSociales.add(razonSocial);
+					 }
+					nomina.setRazonesSociales(razonesSociales);
 					 nominaServicio.actualizarNomina(nomina);			 
 				 return true;
 			} catch (Exception e) {
