@@ -16,7 +16,9 @@
 			<form  id="actualizarNominaForm" name="actualizarNominaForm" novalidate="novalidate">		
 					<table>					
 					 	<tr>
-					 		<td>NOMBRE<input id='nombreNomina' name='nombreNomina' type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 		<td>NOMBRE<input id='nombreNomina' name='nombreNomina' type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();">
+								<input id='nominaIdSel' name='nominaIdSel' type="hidden" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 		</td>
 					 	</tr>
 					 </table>
 					<table border=2>
@@ -133,7 +135,7 @@
 			<!-- /.col-lg-6 -->						
 				 <div class="input-group">      
 			     	 <span>
-			        	<button type="button" class="btn btn-success" onclick="guardarNomina();">CREAR</button>
+			        	<button type="button" class="btn btn-success" onclick="actualizarNomina();">ACTUALIZAR</button>
 			        	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
 			     	 </span>			    
    		 		</div><!-- /input-group -->
