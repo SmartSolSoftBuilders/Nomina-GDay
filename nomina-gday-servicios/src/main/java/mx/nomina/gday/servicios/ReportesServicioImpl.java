@@ -150,10 +150,10 @@ public class ReportesServicioImpl implements ReportesServicio {
         		}	
         	}  	 	
             file.close();
-            FileOutputStream outFile =new FileOutputStream(new File("C:\\tmp2\\update.xls"));
+            FileOutputStream outFile =new FileOutputStream(new File("C:\\archivosNGDAY\\tmp.xls"));
             workbook.write(outFile);
             outFile.close();
-            archivoXLS = new File("C:\\tmp2\\update.xls"); 	
+            archivoXLS = new File("C:\\archivosNGDAY\\tmp.xls"); 	
          	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
