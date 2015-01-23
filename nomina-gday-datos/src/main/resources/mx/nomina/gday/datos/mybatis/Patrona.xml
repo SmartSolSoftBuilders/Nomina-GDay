@@ -179,7 +179,9 @@
    			"TEL_CONTACTO"=#{telContactoPatrona}, "ACTA_NUMERO"=#{actaNumeroPatrona}, "ACTA_NOTARIA"=#{actaNotariaPatrona}, 
    			"ACTA_FECHA"= date(#{actaFechaPatrona}), "ACTA_NOTARIO"=#{actaNotarioPatrona}, "ACTA_CIUDAD"=#{actaCiudadPatrona}, 
    			"ACTA_ESTADO"=#{actaEstadoPatrona}, "DOM_VIRTUALES"=json(#{jsonStringDomicilio}), "ACCIONISTA"=json(#{jsonStringAccionistas}),
-   			"REP_LEG_PLEITOS_COBR"=json(#{jsonStringRepresentantesPleitos}), "REP_LEG_LAB"=json(#{jsonStringRepresentantesLegales})
+   			"REP_LEG_PLEITOS_COBR"=json(#{jsonStringRepresentantesPleitos}), "REP_LEG_LAB"=json(#{jsonStringRepresentantesLegales}),
+   			"POD_NOTA_PLEITOS_Y_COBRANZAS"=json(#{jsonStringPodNot}),"POD_NOTA_LAB"=json(#{jsonStringPodNotLab})
+   			
  	WHERE "ID_PATRONA"=#{idPatrona}  
 </update>
 
