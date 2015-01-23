@@ -61,6 +61,33 @@ public class PatronaController {
 		  return null;
 		}
 	 
+		//Controller que muestra la lista de Patronas y permite la seleccion de la misma
+	 @RequestMapping(value="/getpatronasintermediarias",method = RequestMethod.POST)
+	    @ResponseBody
+	    public List obtenerPatronasIntermediarias(){    	
+		  System.out.println("Controller PatronaIntermediaria");
+		  try {
+			List<Patrona> tmp =  this.patronaServicio.obtenerPatronasIntermediarias();
+			System.out.println("tmp"+tmp.size());
+			List patronasTmp = new ArrayList();
+			List patronasTmp2 = new ArrayList<String>();
+
+			for (int i = 0; i < tmp.size(); i++) {
+				patronasTmp2 = new ArrayList<String>();
+				System.out.println("tmp"+tmp.get(i));
+				patronasTmp2.add(tmp.get(i).getIdPatrona());
+				patronasTmp2.add(tmp.get(i).getNombreCortoPatrona());
+				patronasTmp2.add("<a href='#' onclick='seleccionarPatronaIntermediaria("+tmp.get(i).getIdPatrona()+",\""+tmp.get(i).getNombreCortoPatrona()+"\")'>Seleccionar</a>");
+				patronasTmp2.add("<a href='#' onclick='showEditarPatrona("+tmp.get(i).getIdPatrona()+")'><img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");				
+				patronasTmp.add(patronasTmp2);
+			}
+			return patronasTmp;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		  return null;
+		}
 	 
 	//Controller que muestra la lista de Patronas y permite la edicion de la misma
 		 @RequestMapping(value="/getpatronasaeditar",method = RequestMethod.POST)

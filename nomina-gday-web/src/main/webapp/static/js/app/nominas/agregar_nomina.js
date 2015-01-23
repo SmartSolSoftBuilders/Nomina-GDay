@@ -116,6 +116,12 @@ function seleccionarPatrona(id,nombre){
 	$("#idPatrona").val(nombre);
 	$("#divSeleccionPatrona").dialog("close");
 }
+function seleccionarPatronaIntermediaria(id,nombre){
+	$("#intermediaria").val(nombre);
+	$("#idIntermediaria").val(nombre);
+	$("#divSeleccionPatronaIntermediaria").dialog("close");
+}
+
 function showPatronas(){
 	oTablePatronas=$('#tablaPatronas').dataTable();
 	$.ajax({
@@ -140,6 +146,31 @@ function showPatronas(){
 	$("#divSeleccionPatrona").dialog(({show: "slide", modal: true, width:900, height:600,
 		autoOpen: true}));
 }
+function showPatronasIntermediarias(){
+	oTablePatronasIntermediarias=$('#tablaPatronasIntermediarias').dataTable();
+	$.ajax({
+		sync: true,
+		type:  'post',
+		url:   '../../mvc/patrona/getpatronasintermediarias',
+		dataType:  'json',
+		beforeSend: function () {
+			$("#resultado").html("Procesando, espere por favor...");
+      	$( "#progressbar" ).progressbar({
+		      value: 75
+		    });	
+        $( "#demo" ).hide();
+		}, 
+		success:  function (response) {
+			$("#demo").show();
+			$("#progressbar").hide();
+			oTablePatronasIntermediarias.fnClearTable();
+			oTablePatronasIntermediarias.fnAddData(response);
+		}
+	});	
+	$("#divSeleccionPatronaIntermediaria").dialog(({show: "slide", modal: true, width:900, height:600,
+		autoOpen: true}));
+}
+
 function showRazonesSociales(){
 	if (sumaPorcentaje<100){
 	oTableRZ=$('#tablaRazonesSociales').dataTable();

@@ -6,7 +6,7 @@ public class Nomina extends BaseModelo{
 	
 	private Integer idNomina;
 	private Patrona patrona;
-	private Intermediaria intermediaria;
+	private Patrona intermediaria;
 	private Esquema esquema;
 	private Ejecutivo ejecutivo;
 	private TipoCalendario tipoCalendario;
@@ -55,7 +55,7 @@ public class Nomina extends BaseModelo{
 
 
 	public Nomina(Integer idNomina, Patrona patrona,
-			Intermediaria intermediaria, Esquema esquema, Ejecutivo ejecutivo,
+			Patrona intermediaria, Esquema esquema, Ejecutivo ejecutivo,
 			TipoCalendario tipoCalendario, String nombreCorto,
 			boolean provisionAguinaldo, boolean provisionVacaciones,
 			boolean provisionPrimaVacacional, int diasAguinaldo,
@@ -112,12 +112,12 @@ public class Nomina extends BaseModelo{
 	}
 
 
-	public Intermediaria getIntermediaria() {
+	public Patrona getIntermediaria() {
 		return intermediaria;
 	}
 
 
-	public void setIntermediaria(Intermediaria intermediaria) {
+	public void setIntermediaria(Patrona intermediaria) {
 		this.intermediaria = intermediaria;
 	}
 

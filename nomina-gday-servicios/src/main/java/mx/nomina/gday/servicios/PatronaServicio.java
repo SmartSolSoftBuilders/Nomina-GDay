@@ -11,5 +11,6 @@ public interface PatronaServicio {
 	public List obtenerDatosCombo();
 	public List<Patrona> obtenerPatronas();
 	public Patrona obtenerPatronaById(int idPatrona);
+	List<Patrona> obtenerPatronasIntermediarias();
 
 }

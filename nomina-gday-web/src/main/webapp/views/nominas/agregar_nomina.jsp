@@ -53,6 +53,22 @@
 						 </tr>
 					 </table>
 					 <table>
+							<tr>
+							  	<td>
+							  		<table>
+							  			<tr><td>INTERMEDIARIA</td></tr>
+							  		</table>
+					  			</td>
+					  		</tr>	
+							<tr>
+								<td>
+									<input id='intermediaria' name='intermediaria' type="text" class="form-control"></input>
+									<input id='idIntermediaria' name='idIntermediaria' type="hidden" class="form-control"></input>
+									<button type="button" class="btn btn-default" onclick="showPatronasIntermediarias();">SELECCIONAR</button> 		
+						 		</td>
+						 </tr>
+					 </table>
+					 <table>
 					 	<tr>
 					 		<td>ESQUEMA
 					 		<select id='esquema' name='esquema' type="text" class="form-control"></select></td>					 	
@@ -194,6 +210,29 @@
 			</div>
 		</div>
 	</div>
+		<div id="divSeleccionPatronaIntermediaria" title="Selecci&oacute;n de Empresa Intermediaria" style="display:none">
+		<div id="container2" class="mayuscula">
+			<h1>Empresas Intermediarias</h1>		
+			<div id="demo2">
+				<div style="text-align:right; padding-bottom:1em;">
+				</div>
+				<table  cellpadding="0" cellspacing="0" border="0" class="display" id="tablaPatronasIntermediarias">
+					<thead>			
+						<tr class="odd gradeA">
+							<th width="40px">ID</th>
+							<th width="200px">NOMBRE CORTO</th>
+							<th width="200px"></th>
+							<th width="200px"></th>
+						</tr>
+						<tbody>			
+						</tbody>
+					</thead>
+				</table>
+				 <button type="button" class="btn btn-default" onclick="guardarPatrona();">AGREGAR</button>				
+			</div>
+		</div>
+	</div>
+	
 	<jsp:include page="../common/footer.jsp"/>	
 </body>
 </html>

@@ -10,5 +10,6 @@ public interface PatronaDao {
 	public List<Patrona> obtenerPatronas();
 	void actualizarPatrona(Patrona patrona);
 	public Patrona obtenerPatronaById(int id);
+	public List<Patrona> obtenerPatronasIntermediarias();
 }
 

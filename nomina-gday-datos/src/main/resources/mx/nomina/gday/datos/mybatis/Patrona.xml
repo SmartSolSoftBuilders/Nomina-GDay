@@ -84,6 +84,9 @@
 	<select id="obtenerPatronas"  resultMap="patronaResult" resultType="Patrona">		 
 		select * from "PATRONA"  	
 	</select> 
+	<select id="obtenerPatronasIntermediarias"  resultMap="patronaResult" resultType="Patrona">		 
+		select * from "PATRONA" where "ES_INTERMEDIARIA" = true  	
+	</select> 
 
 	<!-- Select para obtener la Patrona por idPatrona -->
 	<select id="obtenerPatronaById" parameterType="int" resultMap="patronaResult" resultType="Patrona">		 

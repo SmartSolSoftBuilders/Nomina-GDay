@@ -80,5 +80,10 @@ public class PatronaServicioImpl implements PatronaServicio {
 		return this.patronaDao.obtenerPatronaById(idPatrona);
 	}
 
+	@Override
+	public List<Patrona> obtenerPatronasIntermediarias() {
+		System.out.println("Servicio Patrona");
+		return this.patronaDao.obtenerPatronasIntermediarias();
+	}
 
 }
