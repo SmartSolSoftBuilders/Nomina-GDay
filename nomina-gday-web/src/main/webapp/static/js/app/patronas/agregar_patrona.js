@@ -145,7 +145,7 @@ function getAccionistas(){
 //Function que genera el json de los REPRESENTANTES LEGALES PLEITOS Y COBRANZAS*
 //******************************************************************************
 function getPodNot(){
-	var jsonString ="{\"poderesNot\":[";
+	var jsonString ="{\"poderesNotLabPleiCob\":[";
 	var renglonJson="";
 	var index=0;
 	var numReng=parseInt(document.getElementById("podNotNum").value);
@@ -159,7 +159,7 @@ function getPodNot(){
 		var numero=document.getElementById(row.cells[0].childNodes[0].id).value;
 		var notaria=document.getElementById(row.cells[1].childNodes[0].id).value;
 		var notario=document.getElementById(row.cells[2].childNodes[0].id).value;
-		renglonJson=renglonJson+"{ \"idpodNotNum\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
+		renglonJson=renglonJson+"{ \"idPoderesNotLabPleiCob\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
 		jsonString=jsonString+renglonJson;
 		renglonJson=",";
 		}
@@ -183,7 +183,7 @@ function getPodNotLab(){
 		var numero=document.getElementById(row.cells[0].childNodes[0].id).value;
 		var notaria=document.getElementById(row.cells[1].childNodes[0].id).value;
 		var notario=document.getElementById(row.cells[2].childNodes[0].id).value;
-		renglonJson=renglonJson+"{ \"idpodNotLabNum\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
+		renglonJson=renglonJson+"{ \"idPodNotLab\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
 		jsonString=jsonString+renglonJson;
 		renglonJson=",";
 		}
