@@ -153,11 +153,12 @@ function getPodNot(){
 	var table = document.getElementById("tablaPodNotPleitos");
 	for (i=0;i<=numReng;i++){       
 		var row = table.rows[i];
-		console.log("ID:"+row.cells[0].childNodes[0].id);
 		if (row.cells[0].childNodes[0].id!=null && row.cells[0].childNodes[0].id!="undefined"){
+			console.log("ID:"+row.cells[0].childNodes[0].id);
+			console.log("ID:"+row.cells[1].childNodes[0].id);
 		var numero=document.getElementById(row.cells[0].childNodes[0].id).value;
-		var notaria=document.getElementById(row.cells[0].childNodes[0].id).value;
-		var notario=document.getElementById(row.cells[0].childNodes[0].id).value;
+		var notaria=document.getElementById(row.cells[1].childNodes[0].id).value;
+		var notario=document.getElementById(row.cells[2].childNodes[0].id).value;
 		renglonJson=renglonJson+"{ \"idpodNotNum\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
 		jsonString=jsonString+renglonJson;
 		renglonJson=",";
@@ -180,8 +181,8 @@ function getPodNotLab(){
 		console.log("ID:::"+row.cells[0].childNodes[0].id);
 		if (row.cells[0].childNodes[0].id!=null && row.cells[0].childNodes[0].id!="undefined"){
 		var numero=document.getElementById(row.cells[0].childNodes[0].id).value;
-		var notaria=document.getElementById(row.cells[0].childNodes[0].id).value;
-		var notario=document.getElementById(row.cells[0].childNodes[0].id).value;
+		var notaria=document.getElementById(row.cells[1].childNodes[0].id).value;
+		var notario=document.getElementById(row.cells[2].childNodes[0].id).value;
 		renglonJson=renglonJson+"{ \"idpodNotLabNum\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
 		jsonString=jsonString+renglonJson;
 		renglonJson=",";
