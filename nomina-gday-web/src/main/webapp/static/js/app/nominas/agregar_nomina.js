@@ -240,7 +240,8 @@ function guardarNomina() {
 				data : {
 					"nombreCorto" : $("#nombreNomina").val(),
 					"razonSocial" : $("#razonSocial").val(),
-					"patrona.nombreCorto" : $("#patrona").val(),
+					"patrona.idPatrona" : $("#idPatrona").val(),
+					"intermediaria.idPatrona" : $("#idIntermediaria").val(),
 					"ejecutivo.nombreEjecutivo" : $("#ejecutivo").val(),
 					"esquema.nombreEsquema" : $("#esquema").val(),
 					"provisionAguinaldo" : $("#provisionAguinaldo").val(),
