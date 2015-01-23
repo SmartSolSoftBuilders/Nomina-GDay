@@ -487,30 +487,9 @@ function deleteRow(tableID,tabla) {
           				document.getElementById("podNotLabNum").value=parseInt(document.getElementById("podNotLabNum").value)-1;
           	}
          }
+      }    
     }
-    var rowCount = table.rows.length;
-    for(var i=0; i<rowCount; i++) {
-        var row = table.rows[i];
-    if (tabla==1){
-  		row.cells[0].childNodes[0].id="num"+parseInt(i+1);
-  		row.cells[1].childNodes[0].id="not"+parseInt(i+1);
-  		row.cells[2].childNodes[0].id="notario"+parseInt(i+1);
-					
-	}
-	if (tabla==2){
-  		row.cells[0].childNodes[0].id="num2"+parseInt(i+1);
-  		row.cells[1].childNodes[0].id="not2"+parseInt(i+1);
-  		row.cells[2].childNodes[0].id="notario2"+parseInt(i+1);
-		
-	}
-    console.log("lista");
-	console.log(row.cells[0].childNodes[0].id);
-
-    }
-    }catch(e) {
-
+    catch(e) {
          alert(e);
-
     }
-
 }
