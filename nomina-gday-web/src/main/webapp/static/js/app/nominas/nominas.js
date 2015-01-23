@@ -27,9 +27,45 @@ $(document).ready(function() {
 
 });
 
+//obtenerEmpleadoByIdNomina
+
+//Function que obtiene getempleadosbyidnomina
+function obtenerEmpleadoByIdNomina(idNominaB){
+	oTableEmpleados=$('#tablaEmpleados').dataTable();
+	document.getElementById("idNomina").value=idNominaB;
+	$.ajax({
+		sync: true,
+		data:{idNomina:idNominaB},
+		type:  'post',
+		url:   '../../mvc/empleado/getempleadosbyidnomina',
+		dataType:  'json',
+		beforeSend: function () {
+			$("#resultado").html("Procesando, espere por favor...");
+			$( "#progressbar" ).progressbar({
+				value: 75
+			});	
+			$( "#demo" ).hide();
+		},
+		success:  function (response) {
+			console.log(idNominaB);
+			$( "#demo" ).show();
+			$( "#progressbar" ).hide();
+			oTableEmpleados.dataTable().fnAddData(response);
+			$("#divSeleccionNominaPorEmpleado").dialog(({show: "slide", modal: true, width:700, height:600,
+				autoOpen: true}));
+			//setData(response);
+		}		,
+		error:  function (response) {
+			console.log(response);
+			alert(response);
+		}
+	});			
+	
+}
+
 function ajax_download(idNomina) {	
 	var input_name="id1";
-	var id1=idNomina;	
+	var id1=document.getElementById("idNomina").value;	
 	var url="../../mvc/reportes/obtenernominaempleados";
     var $iframe,
         iframe_doc,

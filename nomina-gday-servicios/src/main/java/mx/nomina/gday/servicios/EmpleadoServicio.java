@@ -7,5 +7,7 @@ import mx.nomina.gday.modelo.Empleado;
 public interface EmpleadoServicio {
 
 	public List<Empleado> obtenerEmpleados();
+	public List<Empleado> obtenerEmpleadosByIdNomina(Integer idNomina);
+
  
 }

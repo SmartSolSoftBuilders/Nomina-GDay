@@ -51,7 +51,7 @@ public class NominaController {
 		 
 		//MODIFICAR
 		 
-		//Controller que muestra la lista de Grupos y permite la Edicion del mismo
+		//Controller que muestra la lista de Nomina y permite la Edicion del mismo
 		 @RequestMapping(value="/getnominas",method = RequestMethod.POST)
 		    @ResponseBody
 		    public List obtenerNominasaEditar(){    	
@@ -69,12 +69,13 @@ public class NominaController {
 					nominasTmp2.add(tmp.get(i).getNombreCorto());
 					nominasTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
 					nominasTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
+					System.out.println(tmp.get(i).getIntermediaria().getNombreCortoPatrona());
 					nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreCortoPatrona());
 					nominasTmp2.add(tmp.get(i).getPeriodicidad());
 					nominasTmp2.add(tmp.get(i).getTipoPago());
 					nominasTmp2.add(tmp.get(i).getClaseRiesgo());
 					nominasTmp2.add("<a href='#' onclick='showEditarNomina("+tmp.get(i).getIdNomina()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
-					nominasTmp2.add("<a href='#' onclick='ajax_download("+tmp.get(i).getIdNomina()+")'>Empleados</a>");
+					nominasTmp2.add("<a href='#' onclick='obtenerEmpleadoByIdNomina("+tmp.get(i).getIdNomina()+")'>Empleados</a>");
 					nominasTmp.add(nominasTmp2);
 				}
 				return nominasTmp;
