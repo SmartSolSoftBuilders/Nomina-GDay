@@ -123,6 +123,9 @@ function muestraDatosNomina(datos){
 	$("#nominaIdSel").val(data.idNomina);
 	$("#patrona").val(data.patrona.nombreCortoPatrona);
 	$("#idPatrona").val(data.patrona.idPatrona);
+	$("#intermediaria").val(data.intermediaria.nombreCortoPatrona);
+	$("#idIntermediaria").val(data.intermediaria.idPatrona);
+
 	$("#patronaIdSel").val(data.patrona.idPatrona);
 	$("#ejecutivo").val(data.ejecutivo.idEjecutivo);
 	$("#esquema").val(data.esquema.idEsquema);
@@ -231,8 +234,37 @@ function obtenerIdsAgregadosRZ2(){
 
 function seleccionarPatrona(id,nombre){
 	$("#patrona").val(nombre);
-	$("#idPatrona").val(nombre);
+	$("#idPatrona").val(id);
 	$("#divSeleccionPatrona").dialog("close");
+}
+function seleccionarPatronaIntermediaria(id,nombre){
+	$("#intermediaria").val(nombre);
+	$("#idIntermediaria").val(id);
+	$("#divSeleccionPatronaIntermediaria").dialog("close");
+}
+function showPatronasIntermediarias(){
+	oTablePatronasIntermediarias=$('#tablaPatronasIntermediarias').dataTable();
+	$.ajax({
+		sync: true,
+		type:  'post',
+		url:   '../../mvc/patrona/getpatronasintermediarias',
+		dataType:  'json',
+		beforeSend: function () {
+			$("#resultado").html("Procesando, espere por favor...");
+      	$( "#progressbar" ).progressbar({
+		      value: 75
+		    });	
+        $( "#demo" ).hide();
+		}, 
+		success:  function (response) {
+			$("#demo").show();
+			$("#progressbar").hide();
+			oTablePatronasIntermediarias.fnClearTable();
+			oTablePatronasIntermediarias.fnAddData(response);
+		}
+	});	
+	$("#divSeleccionPatronaIntermediaria").dialog(({show: "slide", modal: true, width:900, height:600,
+		autoOpen: true}));
 }
 function showPatronas(){
 	oTablePatronas=$('#tablaPatronas').dataTable();
@@ -331,7 +363,8 @@ function actualizarNomina() {
 				data : {
 					"nombreCorto" : $("#nombreNomina").val(),
 					"idNomina" : $("#nominaIdSel").val(),
-					"patrona.nombreCorto" : $("#patrona").val(),
+					"patrona.idPatrona" : $("#idPatrona").val(),
+					"intermediaria.idPatrona" : $("#idIntermediaria").val(),
 					"ejecutivo.nombreEjecutivo" : $("#ejecutivo").val(),
 					"esquema.nombreEsquema" : $("#esquema").val(),
 					"provisionAguinaldo" : $("#provisionAguinaldo").val(),

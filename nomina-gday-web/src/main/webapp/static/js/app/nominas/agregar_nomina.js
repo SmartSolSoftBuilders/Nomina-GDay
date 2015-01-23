@@ -113,12 +113,12 @@ function obtenerIdsAgregadosRZ2(){
 
 function seleccionarPatrona(id,nombre){
 	$("#patrona").val(nombre);
-	$("#idPatrona").val(nombre);
+	$("#idPatrona").val(id);
 	$("#divSeleccionPatrona").dialog("close");
 }
 function seleccionarPatronaIntermediaria(id,nombre){
 	$("#intermediaria").val(nombre);
-	$("#idIntermediaria").val(nombre);
+	$("#idIntermediaria").val(id);
 	$("#divSeleccionPatronaIntermediaria").dialog("close");
 }
 
