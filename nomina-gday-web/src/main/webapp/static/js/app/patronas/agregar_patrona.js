@@ -375,19 +375,26 @@ function deleteRow(tableID,tabla) {
     for(var i=0; i<rowCount; i++) {
          var row = table.rows[i];
          var chkbox = row.cells[3].childNodes[0];
+         console.log(row.cells[0].childNodes[0].id);
          if(null != chkbox && true == chkbox.checked) {
               table.deleteRow(i);
               rowCount--;
               i--;
           	if (tabla==1){
+          		row.cells[0].childNodes[0].id="num"+parseInt(i+1);
+          		row.cells[1].childNodes[0].id="not"+parseInt(i+1);
+          		row.cells[2].childNodes[0].id="notario"+parseInt(i+1);
         		if (parseInt(document.getElementById("podNotNum").value)>0)
         			document.getElementById("podNotNum").value=parseInt(document.getElementById("podNotNum").value)-1;			
         	}
         	if (tabla==2){
+          		row.cells[0].childNodes[0].id="num2"+parseInt(i+1);
+          		row.cells[1].childNodes[0].id="not2"+parseInt(i+1);
+          		row.cells[2].childNodes[0].id="notario2"+parseInt(i+1);
         		if (parseInt(document.getElementById("podNotLabNum").value)>0)
         				document.getElementById("podNotLabNum").value=parseInt(document.getElementById("podNotLabNum").value)-1;
         	}
-
+            console.log(row.cells[0].childNodes[0].id);
          }
     }
     }catch(e) {
