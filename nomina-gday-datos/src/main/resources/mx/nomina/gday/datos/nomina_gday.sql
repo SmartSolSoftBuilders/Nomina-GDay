@@ -160,28 +160,32 @@ ALTER TABLE "TIPO_REGIMEN"
 CREATE TABLE "PATRONA"
 (
   "ID_PATRONA" integer NOT NULL,
-  "RAZON_SOCIAL" character varying (20),
-  "NOMBRE_CORTO" character varying (15),
+  "RAZON_SOCIAL" character varying(20),
+  "NOMBRE_CORTO" character varying(15),
   "ES_INTERMEDIARIA" boolean,
-  "TIPO_REGIMEN" character varying (20),
   "FOLIO_MERCANTIL" integer,
-  "CALLE_FISCAL" character varying (20),
-  "COLONIA_FISCAL" boolean,
-  "NUM_EXTERIOR_FISCAL" boolean,
+  "CALLE_FISCAL" character varying(20),
+  "COLONIA_FISCAL" character varying,
   "NUM_INTERIOR_FISCAL" integer,
   "CP_FISCAL" integer,
-  "MUNICIPIO_FISCAL" character varying (20),
-  "ESTADO_FISCAL" character varying (20),
+  "MUNICIPIO_FISCAL" character varying(20),
+  "ESTADO_FISCAL" character varying(20),
   "FISCAL_NUM_PAGO" integer,
-  "TEL_CONTACTO" boolean,
-  "ACTA_NUMERO" numeric (8),
-  "ACTA_NOTARIA" numeric (8),
+  "ACTA_NUMERO" numeric(8,0),
+  "ACTA_NOTARIA" numeric(8,0),
   "ACTA_FECHA" date,
-  "ACTA_NOTARIO" numeric(4),
-  "ACTA_CIUDAD" character varying (25),
-  "ACTA_ESTADO" character varying (25),
+  "ACTA_NOTARIO" numeric(4,0),
+  "ACTA_CIUDAD" character varying(25),
+  "ACTA_ESTADO" character varying(25),
+  "NUM_EXTERIOR_FISCAL" integer,
+  "TEL_CONTACTO" numeric(10,0),
+  "RFC" character varying(13),
   "DOM_VIRTUALES" json,
-  "NOMBRE_ACCIONISTA" json,
+  "ACCIONISTA" json,
+  "POD_NOTA_PLEITOS_Y_COBRANZAS" json,
+  "REP_LEG_PLEITOS_COBR" json,
+  "POD_NOTA_LAB" json,
+  "REP_LEG_LAB" json,
   CONSTRAINT "ID_PATRONA_PK" PRIMARY KEY ("ID_PATRONA")
 )
 WITH (
@@ -189,6 +193,7 @@ WITH (
 );
 ALTER TABLE "PATRONA"
   OWNER TO postgres;
+
 
 
   
