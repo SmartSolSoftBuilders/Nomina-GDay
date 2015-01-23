@@ -150,15 +150,16 @@
             "ESTADO_FISCAL", "FISCAL_NUM_PAGO", "TEL_CONTACTO", "ACTA_NUMERO", 
             "ACTA_NOTARIA", "ACTA_FECHA", "ACTA_NOTARIO", 
             "ACTA_CIUDAD", "ACTA_ESTADO", "DOM_VIRTUALES", "ACCIONISTA",
-            "REP_LEG_PLEITOS_COBR", "REP_LEG_LAB")
+            "REP_LEG_PLEITOS_COBR", "REP_LEG_LAB","POD_NOTA_PLEITOS_Y_COBRANZAS","POD_NOTA_LAB")
    	 	VALUES (#{id}, #{razonSocialPatrona}, #{rfcPatrona}, #{nombreCortoPatrona}, #{esIntermediariaPatrona}, 
    	 		#{folioMercantilPatrona}, #{calleFiscalPatrona},  #{coloniaFiscalPatrona},  #{numExteriorFiscalPatrona}, 
             #{numInteriorFiscalPatrona}, #{cpFiscalPatrona}, #{municipioFiscalPatrona}, #{estadoFiscalPatrona}, 
             #{fiscalNumPagoPatrona}, #{telContactoPatrona}, #{actaNumeroPatrona}, 
             #{actaNotariaPatrona},date(#{actaFechaPatrona}), #{actaNotarioPatrona}, 
             #{actaCiudadPatrona}, #{actaEstadoPatrona}, json(#{jsonStringDomicilio}), json(#{jsonStringAccionistas}),
-             json(#{jsonStringRepresentantesPleitos}), json(#{jsonStringRepresentantesLegales}));
-           	
+            json(#{jsonStringRepresentantesPleitos}), json(#{jsonStringRepresentantesLegales}),
+            json(#{jsonStringPodNot}),json(#{jsonStringPodNotLab})
+            );           			
 	</insert>
 	
 <!-- Update para actualizar la Patrona seleccionada --> 

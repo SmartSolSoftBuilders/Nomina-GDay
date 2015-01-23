@@ -35,11 +35,35 @@ public class Patrona extends BaseModelo{
 	private String jsonStringDomicilio;
 	private String jsonStringRepresentantesLegales;
 	private String jsonStringAccionistas;
-	private String jsonStringRepresentantesPleitos;
+	private String jsonStringRepresentantesPleitos;	
+	private String jsonStringPodNot;
+	private String jsonStringPodNotLab;
 	
 	
 	public Patrona(){
 	}
+
+	
+	public String getJsonStringPodNot() {
+		return jsonStringPodNot;
+	}
+
+
+	public void setJsonStringPodNot(String jsonStringPodNot) {
+		this.jsonStringPodNot = jsonStringPodNot;
+	}
+
+
+	public String getJsonStringPodNotLab() {
+		return jsonStringPodNotLab;
+	}
+
+
+	public void setJsonStringPodNotLab(String jsonStringPodNotLab) {
+		this.jsonStringPodNotLab = jsonStringPodNotLab;
+	}
+
+
 
 	public Patrona(
 			Integer idPatrona,
@@ -71,7 +95,9 @@ public class Patrona extends BaseModelo{
 			List<RepresentanteLegalLaboral> representantesLegalesLaborales,
 			List<RepresentanteLegalPleitoCobranza> representantesLegalesPleitosCobranzas,
 			String jsonStringDomicilio, String jsonStringRepresentantesLegales,
-			String jsonStringAccionistas, String jsonStringRepresentantesPleitos) {
+			String jsonStringAccionistas,
+			String jsonStringRepresentantesPleitos, String jsonStringPodNot,
+			String jsonStringPodNotLab) {
 		super();
 		this.idPatrona = idPatrona;
 		this.razonSocialPatrona = razonSocialPatrona;
@@ -105,7 +131,10 @@ public class Patrona extends BaseModelo{
 		this.jsonStringRepresentantesLegales = jsonStringRepresentantesLegales;
 		this.jsonStringAccionistas = jsonStringAccionistas;
 		this.jsonStringRepresentantesPleitos = jsonStringRepresentantesPleitos;
+		this.jsonStringPodNot = jsonStringPodNot;
+		this.jsonStringPodNotLab = jsonStringPodNotLab;
 	}
+
 
 	public Integer getIdPatrona() {
 		return idPatrona;
