@@ -1,6 +1,6 @@
 package mx.nomina.gday.modelo;
 
-public class Empleado {
+public class Empleado extends BaseModelo{
 
 	private int idEmpleado;
 	private String noControl;

@@ -17,17 +17,17 @@
 				<div class="col-lg-6">
 					<table>					
 					 	<tr>
-					 		<td>NOMBRE<input id='nombrePatrona' name='nombrePatrona' type="text" class="form-control"></td>
+					 		<td>NOMBRE<input id='nombrePatrona' name='nombrePatrona' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
 					 </table>
 					<table>
 						<tr>
-						   <td>RAZON SOCIAL<input id='razonSocial' name='razonSocial' type="text" class="form-control"></td>
+						   <td>RAZON SOCIAL<input id='razonSocial' name='razonSocial' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 						</tr>
 					</table>
 					 <table>
 					  	<tr>
-					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control"></td>
+					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
 					  	<tr>
 					 		<td>FOLIO MERCANTIL<input id='folioMerc' name='folioMerc' type="text" class="form-control"></td>
@@ -43,8 +43,8 @@
 		  							
 							</select></td>
 					 		<td>DOMICILIO FISCAL</td>
-					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control"></td>
-					 		<td>COLONIA<input id='colonia' name='colonia' type="text" class="form-control"></td>
+					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 		<td>COLONIA<input id='colonia' name='colonia' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>					
 					</table>
 					 <table>
@@ -60,7 +60,7 @@
 					 		<td>CODIGO POSTAL<input id='cp' name='cp' type="text" class="form-control"/></td>					 	
 					 		<td></td>
 					 		<td>MUNICIPIO</td>
-							<td><input id='municipio' name='municipio' type="text" class="form-control"/></td>					 	
+							<td><input id='municipio' name='municipio' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"/></td>					 	
 					 	</tr>
 					 </table>
 					 <table>
@@ -120,18 +120,18 @@
 					 	<tr>
 					 		<td>ACTA CONSTITUTIVA</td>
 					 		<td></td>
-							<td>NUMERO<input id='numActaConst' name='numActaConst' type="text" class="form-control"/></td>					 	
+							<td>NUMERO<input id='numActaConst' name='numActaConst' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"/></td>					 	
 					 		<td></td>
-					 		<td>NUMERO NOTARIA<input id='numNotaria' name='numNotaria' type="text" class="form-control"/></td>					 	
-							<td>FECHA<input id='fecha' name='fecha' type="date" class="form-control"/></td>					 	
+					 		<td>NUMERO NOTARIA<input id='numNotaria' name='numNotaria' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"/></td>					 	
+							<td>FECHA<input id='fecha' name='fecha' type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"/></td>					 	
 					 		<td></td>
 					 	</tr>
 					 </table>
 					 <table>
 					 	<tr>
 					 		<td>NOTARIO<input id='notario' name='notario' type="text" class="form-control"/></td>					 	
-					 		<td>CIUDAD<input id='ciudad' name='ciudad' type="text" class="form-control"/></td>					 	
-					 		<td>ESTADO<input id='estado' name='estado' type="text" class="form-control"/></td>
+					 		<td>CIUDAD<input id='ciudad' name='ciudad' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"/></td>					 	
+					 		<td>ESTADO<input id='estado' name='estado' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"/></td>
 						</tr>
 					</table>					 	
 					 <table>
@@ -193,7 +193,7 @@
 					 		<select id="selectMultRepresentantesLegLab" multiple="multiple"></select>							 	
 					 	</tr>
 					 </table>					 
-					 <button type="button" class="btn btn-default" onclick="guardarPatrona();">AGREGAR</button>						 	
+					 <button type="button" class="btn btn-success" onclick="guardarPatrona();">AGREGAR</button>						 	
 				<br>
 				<br>
 			</div>

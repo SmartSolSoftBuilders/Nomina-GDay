@@ -26,7 +26,7 @@
 		<result property="actaEstadoPatrona" column="ACTA_ESTADO"/>
 		<collection property="domVirtuales" column="ID_PATRONA" javaType="List" select="selectDomVirtuales"/>		
 		<collection property="accionistas" column="ID_PATRONA" javaType="List" select="selectAccionistas"/>		
-		<collection property="poderesNotarialesPleitosCobranzas" column="ID_PATRONA" javaType="List" select="selectPoderesNotarialesPleitosCobranzas"/>		
+		<collection property="representantesLegalesPleitosCobranzas" column="ID_PATRONA" javaType="List" select="selectRepresentantesLegalesPleitosCobranzas"/>		
 		<collection property="poderesNotarialesLaborales" column="ID_PATRONA" javaType="List" select="selectPoderesNotarialesLaborales"/>		
 		<collection property="representantesLegalesLaborales" column="ID_PATRONA" javaType="List" select="selectRepresentantesLegalesLaborales"/>		
 		<!--<association property="tipoRegimen" column="ID_TIPO_REGIMEN" javaType="TipoRegimen" select="selectTipoRegimen"/> -->	
@@ -69,6 +69,12 @@
 		<result property="idRepLegLab" column="ID_REP_LEG_LAB"/>
 		<result property="nombreRepLegLab" column="NOMBRE_REP_LEG_LAB"/>
 	</resultMap>
+
+	<!-- 	ResultMap de RepresentantesLegalesPleitosCobranzas -->	
+	<resultMap id="selectRepresentanteLegalPleitoCobranzaResult" type="RepresentanteLegalPleitoCobranza">
+		<result property="idRepLegPleiCob" column="ID_REP_LEG_PLEI_COB"/>
+		<result property="nombreRepLegPleiCob" column="NOMBRE_REP_LEG_PLEI_COB"/>
+	</resultMap>
 	
 	<!-- 	<select id="selectTipoRegimen" parameterType="int" resultMap="tipoRegimenResult" resultType="TipoRegimen">		 
 		select * from "TIPO_REGIMEN" where "ID_TIPO_REGIMEN"=#{idTipoRegimen} 	
@@ -97,6 +103,13 @@
 		"NOMBRE_ACCIONISTA" from  "PATRONA", json_array_elements("ACCIONISTA"#>'{accionistas}') 
 		 where "ID_PATRONA"=#{idPatrona} 
 	</select> 
+
+	<!-- Inner join para obtener la lista de Accionistas -->
+	<select id="selectRepresentantesLegalesPleitosCobranzas" parameterType="int" resultMap="selectRepresentanteLegalPleitoCobranzaResult" resultType="RepresentanteLegalPleitoCobranza">
+		select value->>'idRepLegPleiCob' as "ID_REP_LEG_PLEI_COB",value->>'nombreRepLegPleiCob' as 
+		"NOMBRE_REP_LEG_PLEI_COB" from  "PATRONA", json_array_elements("REP_LEG_PLEITOS_COBR"#>'{representantesLegalesPleitosCobranzas}') 
+		 where "ID_PATRONA"=#{idPatrona} 
+	</select> 
 	
 	<!-- Inner join para obtener la lista de  PoderesNotarialesPleitosCobranzas-->
 	<select id="selectPoderesNotarialesPleitosCobranzas" parameterType="int" resultMap="poderNotarialPleitoCobranzaResult" resultType="PoderNotarialPleitoCobranza">
@@ -116,8 +129,8 @@
 
 	<!-- Inner join para obtener la lista de RepresentantesLegalesLaborales -->
 	<select id="selectRepresentantesLegalesLaborales" parameterType="int" resultMap="representanteLegalLaboralResult" resultType="RepresentanteLegalLaboral">
-		select value->>'idRepLegLab' as "ID_POD_NOTA_LAB",value->>'nombreRepLegLab' as 
-		"NUM_POD_NOTA_LAB" from  "PATRONA", json_array_elements("REP_LEG_LAB"#>'{representantesLegalesLaborales}') 
+		select value->>'idRepLegLab' as "ID_REP_LEG_LAB",value->>'nombreRepLegLab' as 
+		"NOMBRE_REP_LEG_LAB" from  "PATRONA", json_array_elements("REP_LEG_LAB"#>'{representantesLegalesLaborales}') 
 		 where "ID_PATRONA"=#{idPatrona} 
 	</select> 
 
@@ -133,16 +146,16 @@
             "NUM_EXTERIOR_FISCAL", "NUM_INTERIOR_FISCAL", "CP_FISCAL", "MUNICIPIO_FISCAL", 
             "ESTADO_FISCAL", "FISCAL_NUM_PAGO", "TEL_CONTACTO", "ACTA_NUMERO", 
             "ACTA_NOTARIA", "ACTA_FECHA", "ACTA_NOTARIO", 
-            "ACTA_CIUDAD", "ACTA_ESTADO", "DOM_VIRTUALES", "ACCIONISTA", "POD_NOTA_PLEITOS_Y_COBRANZAS",
-            "REP_LEG_PLEITOS_COBR", "POD_NOTA_LAB", "REP_LEG_LAB")
+            "ACTA_CIUDAD", "ACTA_ESTADO", "DOM_VIRTUALES", "ACCIONISTA",
+            "REP_LEG_PLEITOS_COBR", "REP_LEG_LAB")
    	 	VALUES (#{id}, #{razonSocialPatrona}, #{rfcPatrona}, #{nombreCortoPatrona}, #{esIntermediariaPatrona}, 
    	 		#{folioMercantilPatrona}, #{calleFiscalPatrona},  #{coloniaFiscalPatrona},  #{numExteriorFiscalPatrona}, 
             #{numInteriorFiscalPatrona}, #{cpFiscalPatrona}, #{municipioFiscalPatrona}, #{estadoFiscalPatrona}, 
             #{fiscalNumPagoPatrona}, #{telContactoPatrona}, #{actaNumeroPatrona}, 
             #{actaNotariaPatrona},date(#{actaFechaPatrona}), #{actaNotarioPatrona}, 
-            #{actaCiudadPatrona}, #{actaEstadoPatrona}, json(#{jsonString}), json(#{jsonString}), json(#{jsonString},
-            json(#{jsonString}), json(#{jsonString}), json(#{jsonString})));
-             	
+            #{actaCiudadPatrona}, #{actaEstadoPatrona}, json(#{jsonStringDomicilio}), json(#{jsonStringAccionistas}),
+             json(#{jsonStringRepresentantesPleitos}), json(#{jsonStringRepresentantesLegales}));
+           	
 	</insert>
 	
 <!-- Update para actualizar la Patrona seleccionada --> 
@@ -154,9 +167,8 @@
    			"MUNICIPIO_FISCAL"=#{municipioFiscalPatrona}, "ESTADO_FISCAL"=#{estadoFiscalPatrona}, "FISCAL_NUM_PAGO"=#{fiscalNumPagoPatrona}, 
    			"TEL_CONTACTO"=#{telContactoPatrona}, "ACTA_NUMERO"=#{actaNumeroPatrona}, "ACTA_NOTARIA"=#{actaNotariaPatrona}, 
    			"ACTA_FECHA"= date(#{actaFechaPatrona}), "ACTA_NOTARIO"=#{actaNotarioPatrona}, "ACTA_CIUDAD"=#{actaCiudadPatrona}, 
-   			"ACTA_ESTADO"=#{actaNotariaPatrona}, "DOM_VIRTUALES"=json(#{jsonString}), "ACCIONISTA"=json(#{jsonString}),
-   			"POD_NOTA_PLEITOS_Y_COBRANZAS"=json(#{jsonString}), "REP_LEG_PLEITOS_COBR"=json(#{jsonString}), "POD_NOTA_LAB"=json(#{jsonString}), 
-   			"REP_LEG_LAB"=json(#{jsonString})
+   			"ACTA_ESTADO"=#{actaEstadoPatrona}, "DOM_VIRTUALES"=json(#{jsonStringDomicilio}), "ACCIONISTA"=json(#{jsonStringAccionistas}),
+   			"REP_LEG_PLEITOS_COBR"=json(#{jsonStringRepresentantesPleitos}), "REP_LEG_LAB"=json(#{jsonStringRepresentantesLegales})
  	WHERE "ID_PATRONA"=#{idPatrona}  
 </update>
 

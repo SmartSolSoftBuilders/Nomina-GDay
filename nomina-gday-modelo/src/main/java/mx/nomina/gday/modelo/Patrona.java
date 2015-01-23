@@ -20,10 +20,10 @@ public class Patrona extends BaseModelo{
 	private String estadoFiscalPatrona;
 	private Integer fiscalNumPagoPatrona;
 	private Integer telContactoPatrona;
-	private float actaNumeroPatrona;
-	private float actaNotariaPatrona;
+	private Integer actaNumeroPatrona;
+	private Integer actaNotariaPatrona;
 	private String actaFechaPatrona;
-	private float actaNotarioPatrona;
+	private Integer actaNotarioPatrona;
 	private String actaCiudadPatrona;
 	private String actaEstadoPatrona;
 	private List<DomVirtual> domVirtuales;
@@ -32,12 +32,14 @@ public class Patrona extends BaseModelo{
 	private List<PoderNotarialLaboral> poderesNotarialesLaborales;
 	private List<RepresentanteLegalLaboral> representantesLegalesLaborales;
 	private List<RepresentanteLegalPleitoCobranza> representantesLegalesPleitosCobranzas;
-	private String jsonString;
+	private String jsonStringDomicilio;
+	private String jsonStringRepresentantesLegales;
+	private String jsonStringAccionistas;
+	private String jsonStringRepresentantesPleitos;
 	
 	
 	public Patrona(){
 	}
-
 
 	public Patrona(
 			Integer idPatrona,
@@ -56,10 +58,10 @@ public class Patrona extends BaseModelo{
 			String estadoFiscalPatrona,
 			Integer fiscalNumPagoPatrona,
 			Integer telContactoPatrona,
-			float actaNumeroPatrona,
-			float actaNotariaPatrona,
+			Integer actaNumeroPatrona,
+			Integer actaNotariaPatrona,
 			String actaFechaPatrona,
-			float actaNotarioPatrona,
+			Integer actaNotarioPatrona,
 			String actaCiudadPatrona,
 			String actaEstadoPatrona,
 			List<DomVirtual> domVirtuales,
@@ -68,7 +70,8 @@ public class Patrona extends BaseModelo{
 			List<PoderNotarialLaboral> poderesNotarialesLaborales,
 			List<RepresentanteLegalLaboral> representantesLegalesLaborales,
 			List<RepresentanteLegalPleitoCobranza> representantesLegalesPleitosCobranzas,
-			String jsonString) {
+			String jsonStringDomicilio, String jsonStringRepresentantesLegales,
+			String jsonStringAccionistas, String jsonStringRepresentantesPleitos) {
 		super();
 		this.idPatrona = idPatrona;
 		this.razonSocialPatrona = razonSocialPatrona;
@@ -98,301 +101,272 @@ public class Patrona extends BaseModelo{
 		this.poderesNotarialesLaborales = poderesNotarialesLaborales;
 		this.representantesLegalesLaborales = representantesLegalesLaborales;
 		this.representantesLegalesPleitosCobranzas = representantesLegalesPleitosCobranzas;
-		this.jsonString = jsonString;
+		this.jsonStringDomicilio = jsonStringDomicilio;
+		this.jsonStringRepresentantesLegales = jsonStringRepresentantesLegales;
+		this.jsonStringAccionistas = jsonStringAccionistas;
+		this.jsonStringRepresentantesPleitos = jsonStringRepresentantesPleitos;
 	}
-
 
 	public Integer getIdPatrona() {
 		return idPatrona;
 	}
 
-
 	public void setIdPatrona(Integer idPatrona) {
 		this.idPatrona = idPatrona;
 	}
-
 
 	public String getRazonSocialPatrona() {
 		return razonSocialPatrona;
 	}
 
-
 	public void setRazonSocialPatrona(String razonSocialPatrona) {
 		this.razonSocialPatrona = razonSocialPatrona;
 	}
-
 
 	public String getRfcPatrona() {
 		return rfcPatrona;
 	}
 
-
 	public void setRfcPatrona(String rfcPatrona) {
 		this.rfcPatrona = rfcPatrona;
 	}
-
 
 	public String getNombreCortoPatrona() {
 		return nombreCortoPatrona;
 	}
 
-
 	public void setNombreCortoPatrona(String nombreCortoPatrona) {
 		this.nombreCortoPatrona = nombreCortoPatrona;
 	}
-
 
 	public boolean isEsIntermediariaPatrona() {
 		return esIntermediariaPatrona;
 	}
 
-
 	public void setEsIntermediariaPatrona(boolean esIntermediariaPatrona) {
 		this.esIntermediariaPatrona = esIntermediariaPatrona;
 	}
-
 
 	public TipoRegimen getTipoRegimen() {
 		return tipoRegimen;
 	}
 
-
 	public void setTipoRegimen(TipoRegimen tipoRegimen) {
 		this.tipoRegimen = tipoRegimen;
 	}
-
 
 	public Integer getFolioMercantilPatrona() {
 		return folioMercantilPatrona;
 	}
 
-
 	public void setFolioMercantilPatrona(Integer folioMercantilPatrona) {
 		this.folioMercantilPatrona = folioMercantilPatrona;
 	}
-
 
 	public String getCalleFiscalPatrona() {
 		return calleFiscalPatrona;
 	}
 
-
 	public void setCalleFiscalPatrona(String calleFiscalPatrona) {
 		this.calleFiscalPatrona = calleFiscalPatrona;
 	}
-
 
 	public String getColoniaFiscalPatrona() {
 		return coloniaFiscalPatrona;
 	}
 
-
 	public void setColoniaFiscalPatrona(String coloniaFiscalPatrona) {
 		this.coloniaFiscalPatrona = coloniaFiscalPatrona;
 	}
-
 
 	public Integer getNumExteriorFiscalPatrona() {
 		return numExteriorFiscalPatrona;
 	}
 
-
 	public void setNumExteriorFiscalPatrona(Integer numExteriorFiscalPatrona) {
 		this.numExteriorFiscalPatrona = numExteriorFiscalPatrona;
 	}
-
 
 	public Integer getNumInteriorFiscalPatrona() {
 		return numInteriorFiscalPatrona;
 	}
 
-
 	public void setNumInteriorFiscalPatrona(Integer numInteriorFiscalPatrona) {
 		this.numInteriorFiscalPatrona = numInteriorFiscalPatrona;
 	}
-
 
 	public Integer getCpFiscalPatrona() {
 		return cpFiscalPatrona;
 	}
 
-
 	public void setCpFiscalPatrona(Integer cpFiscalPatrona) {
 		this.cpFiscalPatrona = cpFiscalPatrona;
 	}
-
 
 	public String getMunicipioFiscalPatrona() {
 		return municipioFiscalPatrona;
 	}
 
-
 	public void setMunicipioFiscalPatrona(String municipioFiscalPatrona) {
 		this.municipioFiscalPatrona = municipioFiscalPatrona;
 	}
-
 
 	public String getEstadoFiscalPatrona() {
 		return estadoFiscalPatrona;
 	}
 
-
 	public void setEstadoFiscalPatrona(String estadoFiscalPatrona) {
 		this.estadoFiscalPatrona = estadoFiscalPatrona;
 	}
-
 
 	public Integer getFiscalNumPagoPatrona() {
 		return fiscalNumPagoPatrona;
 	}
 
-
 	public void setFiscalNumPagoPatrona(Integer fiscalNumPagoPatrona) {
 		this.fiscalNumPagoPatrona = fiscalNumPagoPatrona;
 	}
-
 
 	public Integer getTelContactoPatrona() {
 		return telContactoPatrona;
 	}
 
-
 	public void setTelContactoPatrona(Integer telContactoPatrona) {
 		this.telContactoPatrona = telContactoPatrona;
 	}
 
-
-	public float getActaNumeroPatrona() {
+	public Integer getActaNumeroPatrona() {
 		return actaNumeroPatrona;
 	}
 
-
-	public void setActaNumeroPatrona(float actaNumeroPatrona) {
+	public void setActaNumeroPatrona(Integer actaNumeroPatrona) {
 		this.actaNumeroPatrona = actaNumeroPatrona;
 	}
 
-
-	public float getActaNotariaPatrona() {
+	public Integer getActaNotariaPatrona() {
 		return actaNotariaPatrona;
 	}
 
-
-	public void setActaNotariaPatrona(float actaNotariaPatrona) {
+	public void setActaNotariaPatrona(Integer actaNotariaPatrona) {
 		this.actaNotariaPatrona = actaNotariaPatrona;
 	}
-
 
 	public String getActaFechaPatrona() {
 		return actaFechaPatrona;
 	}
 
-
 	public void setActaFechaPatrona(String actaFechaPatrona) {
 		this.actaFechaPatrona = actaFechaPatrona;
 	}
 
-
-	public float getActaNotarioPatrona() {
+	public Integer getActaNotarioPatrona() {
 		return actaNotarioPatrona;
 	}
 
-
-	public void setActaNotarioPatrona(float actaNotarioPatrona) {
+	public void setActaNotarioPatrona(Integer actaNotarioPatrona) {
 		this.actaNotarioPatrona = actaNotarioPatrona;
 	}
-
 
 	public String getActaCiudadPatrona() {
 		return actaCiudadPatrona;
 	}
 
-
 	public void setActaCiudadPatrona(String actaCiudadPatrona) {
 		this.actaCiudadPatrona = actaCiudadPatrona;
 	}
-
 
 	public String getActaEstadoPatrona() {
 		return actaEstadoPatrona;
 	}
 
-
 	public void setActaEstadoPatrona(String actaEstadoPatrona) {
 		this.actaEstadoPatrona = actaEstadoPatrona;
 	}
-
 
 	public List<DomVirtual> getDomVirtuales() {
 		return domVirtuales;
 	}
 
-
 	public void setDomVirtuales(List<DomVirtual> domVirtuales) {
 		this.domVirtuales = domVirtuales;
 	}
-
 
 	public List<Accionista> getAccionistas() {
 		return accionistas;
 	}
 
-
 	public void setAccionistas(List<Accionista> accionistas) {
 		this.accionistas = accionistas;
 	}
 
-
 	public List<PoderNotarialPleitoCobranza> getPoderesNotarialesPleitosCobranzas() {
 		return poderesNotarialesPleitosCobranzas;
 	}
-
 
 	public void setPoderesNotarialesPleitosCobranzas(
 			List<PoderNotarialPleitoCobranza> poderesNotarialesPleitosCobranzas) {
 		this.poderesNotarialesPleitosCobranzas = poderesNotarialesPleitosCobranzas;
 	}
 
-
 	public List<PoderNotarialLaboral> getPoderesNotarialesLaborales() {
 		return poderesNotarialesLaborales;
 	}
-
 
 	public void setPoderesNotarialesLaborales(
 			List<PoderNotarialLaboral> poderesNotarialesLaborales) {
 		this.poderesNotarialesLaborales = poderesNotarialesLaborales;
 	}
 
-
 	public List<RepresentanteLegalLaboral> getRepresentantesLegalesLaborales() {
 		return representantesLegalesLaborales;
 	}
-
 
 	public void setRepresentantesLegalesLaborales(
 			List<RepresentanteLegalLaboral> representantesLegalesLaborales) {
 		this.representantesLegalesLaborales = representantesLegalesLaborales;
 	}
 
-
 	public List<RepresentanteLegalPleitoCobranza> getRepresentantesLegalesPleitosCobranzas() {
 		return representantesLegalesPleitosCobranzas;
 	}
-
 
 	public void setRepresentantesLegalesPleitosCobranzas(
 			List<RepresentanteLegalPleitoCobranza> representantesLegalesPleitosCobranzas) {
 		this.representantesLegalesPleitosCobranzas = representantesLegalesPleitosCobranzas;
 	}
 
-
-	public String getJsonString() {
-		return jsonString;
+	public String getJsonStringDomicilio() {
+		return jsonStringDomicilio;
 	}
 
+	public void setJsonStringDomicilio(String jsonStringDomicilio) {
+		this.jsonStringDomicilio = jsonStringDomicilio;
+	}
 
-	public void setJsonString(String jsonString) {
-		this.jsonString = jsonString;
+	public String getJsonStringRepresentantesLegales() {
+		return jsonStringRepresentantesLegales;
+	}
+
+	public void setJsonStringRepresentantesLegales(
+			String jsonStringRepresentantesLegales) {
+		this.jsonStringRepresentantesLegales = jsonStringRepresentantesLegales;
+	}
+
+	public String getJsonStringAccionistas() {
+		return jsonStringAccionistas;
+	}
+
+	public void setJsonStringAccionistas(String jsonStringAccionistas) {
+		this.jsonStringAccionistas = jsonStringAccionistas;
+	}
+
+	public String getJsonStringRepresentantesPleitos() {
+		return jsonStringRepresentantesPleitos;
+	}
+
+	public void setJsonStringRepresentantesPleitos(
+			String jsonStringRepresentantesPleitos) {
+		this.jsonStringRepresentantesPleitos = jsonStringRepresentantesPleitos;
 	}
 
 }

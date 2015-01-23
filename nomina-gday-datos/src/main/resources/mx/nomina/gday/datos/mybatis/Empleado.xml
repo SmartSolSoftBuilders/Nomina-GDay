@@ -67,4 +67,7 @@
 		  FROM "EMPLEADO" INNER JOIN "EMPLEADO_NOMINA" ON "EMPLEADO"."ID_EMPLEADO" = "EMPLEADO_NOMINA"."ID_EMPLEADO" AND "EMPLEADO_NOMINA"."ID_NOMINA"=#{id}; 	
 	</select>
 	
+	<select id="selectEmpleado" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 
+		select * from "EMPLEADO" where "ID_EMPLEADO"=#{idEmpleado} 	
+	</select> 
 </mapper>

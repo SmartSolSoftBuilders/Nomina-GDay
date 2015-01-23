@@ -58,6 +58,39 @@ function quitarAccionista(){
 }
 
 
+//**************************************************************************************
+//Function que Agrega y Quita REPRESENTANTES LEGALES PLEITOS Y COBRANZAS del SelectMult*
+//**************************************************************************************
+function agregarRepresentantes(){
+	var x = document.getElementById("selectMultRepresentantes");
+	var option = document.createElement("option");
+	option.id=indexOpt++;
+	option.text = $("#nombreRepresentantes").val();
+	x.add(option);
+}		
+function quitarRepresentantes(){
+	var id=$("#selectMultRepresentantes").find('option:selected').attr("id");
+	$("#selectMultRepresentantes").find("option[id='"+id+"']").remove();  
+}
+
+
+//**************************************************************************************
+//Function que Agrega y Quita REPRESENTANTES LEGALES LABORALES del SelectMult*
+//**************************************************************************************
+function agregarRepresentantesLegLab(){
+	var x = document.getElementById("selectMultRepresentantesLegLab");
+	var option = document.createElement("option");
+	option.id=indexOpt++;
+	option.text = $("#nombreRepresentantesLegLab").val();
+	x.add(option);
+}		
+function quitarRepresentantesLegLab(){
+	var id=$("#selectMultRepresentantesLegLab").find('option:selected').attr("id");
+	$("#selectMultRepresentantesLegLab").find("option[id='"+id+"']").remove();  
+}
+
+////////////////////////////ARMAR JSON\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 //*******************************************************
 //Function que genera el json de los Domicilios Virtuales*
 //*******************************************************
@@ -107,10 +140,64 @@ function getAccionistas(){
 	return jsonString;
 }
 
+
+//******************************************************************************
+//Function que genera el json de los REPRESENTANTES LEGALES PLEITOS Y COBRANZAS*
+//******************************************************************************
+function getRepresentantesLegalesPleitosCobranzas(){
+	var jsonString ="{\"representantesLegalesPleitosCobranzas\":[";
+	var renglonJson="";
+	var index=0;
+	$('select#selectMultRepresentantes').find('option').each(function() {
+		console.log($(this));
+		console.log($(this).val());
+		console.log($(this)[0].innerHTML);
+		var txt=$(this).text(); var id=$(this).attr('value');
+		renglonJson=renglonJson+"{ \"idRepLegPleiCob\":"+(index++)+", \"nombreRepLegPleiCob\": \""+txt+"\" }";
+		jsonString=jsonString+renglonJson;
+		renglonJson=",";
+
+	});
+	jsonString=jsonString+"]}";
+	console.log("JSON STRING");
+	console.log(jsonString);
+	
+	return jsonString;
+}
+
+
+//********************************************************************
+//Function que genera el json de los REPRESENTANTES LEGALES LABORALES*
+//********************************************************************
+function getRepresentantesLegalesLaborales(){
+	var jsonString ="{\"representantesLegalesLaborales\":[";
+	var renglonJson="";
+	var index=0;
+	$('select#selectMultRepresentantesLegLab').find('option').each(function() {
+		console.log($(this));
+		console.log($(this).val());
+		console.log($(this)[0].innerHTML);
+		var txt=$(this).text(); var id=$(this).attr('value');
+		renglonJson=renglonJson+"{ \"idRepLegLab\":"+(index++)+", \"nombreRepLegLab\": \""+txt+"\" }";
+		jsonString=jsonString+renglonJson;
+		renglonJson=",";
+
+	});
+	jsonString=jsonString+"]}";
+	console.log("JSON STRING");
+	console.log(jsonString);
+	
+	return jsonString;
+}
+
 //******************************************************
 //Function que guarda los datos de la Patrona en la BD *
 //******************************************************
 function guardarPatrona() {
+	console.log(getDomVirtuales());
+	console.log(getAccionistas());
+	console.log(getRepresentantesLegalesPleitosCobranzas());
+	console.log(getRepresentantesLegalesLaborales());
 		$
 			.ajax({
 				data : {
@@ -135,10 +222,11 @@ function guardarPatrona() {
 					"actaNotarioPatrona" : $("#notario").val(),
 					"actaCiudadPatrona" : $("#ciudad").val(),
 					"actaEstadoPatrona" : $("#estado").val(),
-					"jsonString": getDomVirtuales(),
-					"jsonString": getAccionistas(),
-				},
-				
+					"jsonStringDomicilio": getDomVirtuales(),
+					"jsonStringAccionistas": getAccionistas(),
+					"jsonStringRepresentantesPleitos": getRepresentantesLegalesPleitosCobranzas(),
+					"jsonStringRepresentantesLegales": getRepresentantesLegalesLaborales()
+					},					
 				dataType : 'json',
 				url : '../../mvc/patrona/guardarpatrona',
 				type : 'post',

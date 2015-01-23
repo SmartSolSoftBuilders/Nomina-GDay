@@ -5,6 +5,8 @@
 		<!--link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/media/images/favicon.ico" /-->
 		
 		<title>GDAY</title>
+		<jsp:include page="../common/librerias.jsp"/>
+		
 		<style type="text/css" title="currentStyle">
 			@import "../../static/js/libs/css/demo_page.css";
 			@import "../../static/js/libs/css/demo_table.css";
