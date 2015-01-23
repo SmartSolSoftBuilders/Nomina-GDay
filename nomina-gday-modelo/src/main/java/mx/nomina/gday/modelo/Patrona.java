@@ -28,10 +28,11 @@ public class Patrona extends BaseModelo{
 	private String actaEstadoPatrona;
 	private List<DomVirtual> domVirtuales;
 	private List<Accionista> accionistas;
-	private List<PoderNotarialPleitoCobranza> poderesNotarialesPleitosCobranzas;
-	private List<PoderNotarialLaboral> poderesNotarialesLaborales;
 	private List<RepresentanteLegalLaboral> representantesLegalesLaborales;
 	private List<RepresentanteLegalPleitoCobranza> representantesLegalesPleitosCobranzas;
+	
+	private List<PoderNotarialPleitoCobranza> poderesNotarialesPleitosCobranzas;
+	private List<PoderNotarialLaboral> poderesNotarialesLaborales;
 	private String jsonStringDomicilio;
 	private String jsonStringRepresentantesLegales;
 	private String jsonStringAccionistas;

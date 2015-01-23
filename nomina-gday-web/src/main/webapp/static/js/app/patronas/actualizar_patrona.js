@@ -119,9 +119,24 @@ function muestraDatosPatrona(datos){
 		option.id = (i+1);
 		option.text = data.representantesLegalesLaborales[i].nombreRepLegLab;
 		x.add(option); 
+	} 
+	console.log("bjr");
+	console.log(data.poderesNotarialesPleitosCobranzas);
+	console.log(data.poderesNotarialesLaborales);
+
+	for (i=0;i<data.poderesNotarialesPleitosCobranzas.length;i++){														  
+		document.getElementById("numeroPoderesNot").value=data.poderesNotarialesPleitosCobranzas[i].numero;
+		document.getElementById("notariaPoderesNot").value=data.poderesNotarialesPleitosCobranzas[i].notaria;
+		document.getElementById("notarioPoderesNot").value=data.poderesNotarialesPleitosCobranzas[i].notario;
+		addRow("tablaPodNotPleitos",1);
 	}
-	
-	
+	for (i=0;i<data.poderesNotarialesLaborales.length;i++){														  
+		document.getElementById("numeroPoderesNot").value=data.poderesNotarialesLaborales[i].numero;
+		document.getElementById("notariaPoderesNot").value=data.poderesNotarialesLaborales[i].notaria;
+		document.getElementById("notarioPoderesNot").value=data.poderesNotarialesLaborales[i].notario;
+		addRow("tablaPodNotLab",1);
+	}
+
 }
 
 function getPodNot(){
@@ -130,14 +145,18 @@ function getPodNot(){
 	var index=0;
 	var numReng=parseInt(document.getElementById("podNotNum").value);
 	console.log(numReng);
-
-	for (i=1;i<=numReng;i++){  
-		var numero=document.getElementById("num"+i).value;
-		var notaria=document.getElementById("not"+i).value;
-		var notario=document.getElementById("notario"+i).value;
-		renglonJson=renglonJson+"{ \"idpodNotNum\":"+(i)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
+	var table = document.getElementById("tablaPodNotPleitos");
+	for (i=0;i<=numReng;i++){       
+		var row = table.rows[i];
+		console.log("ID:"+row.cells[0].childNodes[0].id);
+		if (row.cells[0].childNodes[0].id!=null && row.cells[0].childNodes[0].id!="undefined"){
+		var numero=document.getElementById(row.cells[0].childNodes[0].id).value;
+		var notaria=document.getElementById(row.cells[0].childNodes[0].id).value;
+		var notario=document.getElementById(row.cells[0].childNodes[0].id).value;
+		renglonJson=renglonJson+"{ \"idpodNotNum\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
 		jsonString=jsonString+renglonJson;
 		renglonJson=",";
+		}
 	}
 	jsonString=jsonString+"]}";
 	console.log("STRING PODNOT");
@@ -150,21 +169,24 @@ function getPodNotLab(){
 	var index=0;
 	var numReng=parseInt(document.getElementById("podNotLabNum").value);
 	console.log(numReng);
-	for (i=1;i<=numReng;i++){  
-		var numero=document.getElementById("num2"+i).value;
-		var notaria=document.getElementById("not2"+i).value;
-		var notario=document.getElementById("notario2"+i).value;
-		renglonJson=renglonJson+"{ \"idpodNotLabNum\":"+(i)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
+	var table = document.getElementById("tablaPodNotLab");
+	for (i=0;i<=numReng;i++){  
+		var row = table.rows[i];
+		console.log("ID:::"+row.cells[0].childNodes[0].id);
+		if (row.cells[0].childNodes[0].id!=null && row.cells[0].childNodes[0].id!="undefined"){
+		var numero=document.getElementById(row.cells[0].childNodes[0].id).value;
+		var notaria=document.getElementById(row.cells[0].childNodes[0].id).value;
+		var notario=document.getElementById(row.cells[0].childNodes[0].id).value;
+		renglonJson=renglonJson+"{ \"idpodNotLabNum\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
 		jsonString=jsonString+renglonJson;
 		renglonJson=",";
+		}
 	}	
 	jsonString=jsonString+"]}";
 	console.log("STRING PODNOTLAB");
 	console.log(jsonString);
 	return jsonString;
 }
-
-
 //Armar el json de DomVirtuales
 function getDomVirtuales(){
 		var jsonString ="{\"domVirtuales\":[";

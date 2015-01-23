@@ -2,55 +2,55 @@ package mx.nomina.gday.modelo;
 
 public class PoderNotarialPleitoCobranza extends BaseModelo {
 	
-	private Integer idPodNotPleitosCob;
-	private Integer numeroPodNotPleitosCob;
-	private Integer notariaPodNotPleitosCob;
-	private Integer notarioPodNotPleitosCob;
+	private Integer idPodNotLabPleiCob; 
+	private Integer numero;
+	private String notaria;
+	private String notario;
 	
 	public PoderNotarialPleitoCobranza(){
 		
 	}
-	
-	public PoderNotarialPleitoCobranza(Integer idPodNotPleitosCob,
-			Integer numeroPodNotPleitosCob, Integer notariaPodNotPleitosCob,
-			Integer notarioPodNotPleitosCob) {
+
+	public Integer getIdPodNotLabPleiCob() {
+		return idPodNotLabPleiCob;
+	}
+
+	public void setIdPodNotLabPleiCob(Integer idPodNotLabPleiCob) {
+		this.idPodNotLabPleiCob = idPodNotLabPleiCob;
+	}
+
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
+	public String getNotaria() {
+		return notaria;
+	}
+
+	public void setNotaria(String notaria) {
+		this.notaria = notaria;
+	}
+
+	public String getNotario() {
+		return notario;
+	}
+
+	public void setNotario(String notario) {
+		this.notario = notario;
+	}
+
+	public PoderNotarialPleitoCobranza(Integer idPodNotLabPleiCob,
+			Integer numero, String notaria, String notario) {
 		super();
-		this.idPodNotPleitosCob = idPodNotPleitosCob;
-		this.numeroPodNotPleitosCob = numeroPodNotPleitosCob;
-		this.notariaPodNotPleitosCob = notariaPodNotPleitosCob;
-		this.notarioPodNotPleitosCob = notarioPodNotPleitosCob;
+		this.idPodNotLabPleiCob = idPodNotLabPleiCob;
+		this.numero = numero;
+		this.notaria = notaria;
+		this.notario = notario;
 	}
 
-	public Integer getIdPodNotPleitosCob() {
-		return idPodNotPleitosCob;
-	}
-
-	public void setIdPodNotPleitosCob(Integer idPodNotPleitosCob) {
-		this.idPodNotPleitosCob = idPodNotPleitosCob;
-	}
-
-	public Integer getNumeroPodNotPleitosCob() {
-		return numeroPodNotPleitosCob;
-	}
-
-	public void setNumeroPodNotPleitosCob(Integer numeroPodNotPleitosCob) {
-		this.numeroPodNotPleitosCob = numeroPodNotPleitosCob;
-	}
-
-	public Integer getNotariaPodNotPleitosCob() {
-		return notariaPodNotPleitosCob;
-	}
-
-	public void setNotariaPodNotPleitosCob(Integer notariaPodNotPleitosCob) {
-		this.notariaPodNotPleitosCob = notariaPodNotPleitosCob;
-	}
-
-	public Integer getNotarioPodNotPleitosCob() {
-		return notarioPodNotPleitosCob;
-	}
-
-	public void setNotarioPodNotPleitosCob(Integer notarioPodNotPleitosCob) {
-		this.notarioPodNotPleitosCob = notarioPodNotPleitosCob;
-	}
-	
+		
 }

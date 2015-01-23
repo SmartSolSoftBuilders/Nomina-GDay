@@ -27,8 +27,11 @@
 		<collection property="domVirtuales" column="ID_PATRONA" javaType="List" select="selectDomVirtuales"/>		
 		<collection property="accionistas" column="ID_PATRONA" javaType="List" select="selectAccionistas"/>		
 		<collection property="representantesLegalesPleitosCobranzas" column="ID_PATRONA" javaType="List" select="selectRepresentantesLegalesPleitosCobranzas"/>		
-		<collection property="poderesNotarialesLaborales" column="ID_PATRONA" javaType="List" select="selectPoderesNotarialesLaborales"/>		
-		<collection property="representantesLegalesLaborales" column="ID_PATRONA" javaType="List" select="selectRepresentantesLegalesLaborales"/>		
+		<collection property="representantesLegalesLaborales" column="ID_PATRONA" javaType="List" select="selectRepresentantesLegalesLaborales"/>			
+
+		<collection property="poderesNotarialesLaborales" column="ID_PATRONA" javaType="List" select="selectPoderesNotarialesLaborales"/>
+		<collection property="poderesNotarialesPleitosCobranzas" column="ID_PATRONA" javaType="List" select="selectPoderesNotarialesLaboralesPleitosCobranzas"/>
+				
 		<!--<association property="tipoRegimen" column="ID_TIPO_REGIMEN" javaType="TipoRegimen" select="selectTipoRegimen"/> -->	
  	</resultMap>
 	
@@ -51,17 +54,18 @@
 	</resultMap>
 
 	<!-- 	ResultMap de PoderesNotarialesPleitosCobranzas -->	
-	<resultMap id="poderNotarialPleitoCobranzaResult" type="PoderNotarialPleitoCobranza">
-		<result property="idPodNotPleitosCob" column="ID_POD_NOTA_PLEITOS_Y_COBRANZAS"/>
-		<result property="numeroPodNotPleitosCob" column="NUM_POD_NOTA_PLEITOS_Y_COBRANZAS"/>
-		<result property="notariaPodNotPleitosCob" column="NOTARIA_POD_NOTA_PLEITOS_Y_COBRANZAS"/>
-		<result property="notarioPodNotPleitosCob" column="NOTARIO_POD_NOTA_PLEITOS_Y_COBRANZAS"/>
+	<resultMap id="poderNotarialLabPleitCobrResult" type="PoderNotarialPleitoCobranza">  
+		<result property="idPodNotLabPleiCob" column="ID_POD_NOT_LAB_PLEI_COB"/>
+		<result property="numero" column="NUM_POD_NOT_LAB_PLEI_COB"/>
+		<result property="notaria" column="NOT_POD_NOT_LAB_PLEI_COB"/>
+		<result property="notario" column="NOTA_POD_NOT_LAB_PLEI_COB"/>
 	</resultMap>
-
 	<!-- 	ResultMap de PoderesNotarialesLaborales -->	
-	<resultMap id="poderNotarialLaboralResult" type="PoderNotarialLaboral">
-		<result property="idPodNotLab" column="ID_POD_NOTA_LAB"/>
-		<result property="numeroPodNotLab" column="NUM_POD_NOTA_LAB"/>
+	<resultMap id="poderNotarialLabResult" type="PoderNotarialLaboral">
+		<result property="idPodNotLab" column="ID_POD_NOT_LAB"/>
+		<result property="numero" column="NUM_POD_NOT_LAB"/>
+		<result property="notaria" column="NOT_POD_NOT_LAB"/>
+		<result property="notario" column="NOTA_POD_NOT_LAB"/>
 	</resultMap>
 
 	<!-- 	ResultMap de RepresentantesLegalesLaborales -->	
@@ -108,27 +112,30 @@
 	</select> 
 
 	<!-- Inner join para obtener la lista de Accionistas -->
+	
 	<select id="selectRepresentantesLegalesPleitosCobranzas" parameterType="int" resultMap="selectRepresentanteLegalPleitoCobranzaResult" resultType="RepresentanteLegalPleitoCobranza">
 		select value->>'idRepLegPleiCob' as "ID_REP_LEG_PLEI_COB",value->>'nombreRepLegPleiCob' as 
 		"NOMBRE_REP_LEG_PLEI_COB" from  "PATRONA", json_array_elements("REP_LEG_PLEITOS_COBR"#>'{representantesLegalesPleitosCobranzas}') 
 		 where "ID_PATRONA"=#{idPatrona} 
 	</select> 
-	
-	<!-- Inner join para obtener la lista de  PoderesNotarialesPleitosCobranzas-->
-	<select id="selectPoderesNotarialesPleitosCobranzas" parameterType="int" resultMap="poderNotarialPleitoCobranzaResult" resultType="PoderNotarialPleitoCobranza">
-		select value->>'idPodNotPleitosCob' as "ID_POD_NOTA_PLEITOS_Y_COBRANZAS",value->>'numeroPodNotPleitosCob' as 
-		"NUM_POD_NOTA_PLEITOS_Y_COBRANZAS",value->>'notariaPodNotPleitosCob' as 
-		"NOTARIA_POD_NOTA_PLEITOS_Y_COBRANZAS",value->>'notarioPodNotPleitosCob' as 
-		"NOTARIO_POD_NOTA_PLEITOS_Y_COBRANZAS" from  "PATRONA", json_array_elements("POD_NOTA_PLEITOS_Y_COBRANZAS"#>'{poderesNotarialesPleitosCobranzas}') 
-		 where "ID_PATRONA"=#{idPatrona} 
-	</select> 
 
-	<!-- Inner join para obtener la lista de PoderesNotarialesLaborales -->
-	<select id="selectPoderesNotarialesLaborales" parameterType="int" resultMap="poderNotarialLaboralResult" resultType="PoderNotarialLaboral">
-		select value->>'idPodNotLab' as "ID_POD_NOTA_LAB",value->>'numeroPodNotLab' as 
-		"NUM_POD_NOTA_LAB" from  "PATRONA", json_array_elements("POD_NOTA_LAB"#>'{poderesNotarialesLaborales}') 
-		 where "ID_PATRONA"=#{idPatrona} 
+	<!-- Inner join para obtener la lista de  selectPoderesNotarialesLaboralesPleitosCobranzas-->	
+	<select id="selectPoderesNotarialesLaboralesPleitosCobranzas" parameterType="int" resultMap="poderNotarialLabPleitCobrResult" resultType="PoderNotarialPleitoCobranza">	
+			select value->>'idPodNotLabPleiCob' as "ID_POD_NOT_LAB_PLEI_COB", value->>'numero' as "NUM_POD_NOT_LAB_PLEI_COB",
+		value->>'notaria' as "NOT_POD_NOT_LAB_PLEI_COB", value->>'notario' as "NOTA_POD_NOT_LAB_PLEI_COB"
+			from  "PATRONA", json_array_elements("POD_NOTA_PLEITOS_Y_COBRANZAS"#>'{poderesNotLabPleiCob}') 
+				where "ID_PATRONA"=#{idPatrona} 
 	</select> 
+	
+	<!-- Inner join para obtener la lista de  selectPoderesNotarialesLaborales-->	
+	<select id="selectPoderesNotarialesLaborales" parameterType="int" resultMap="poderNotarialLabResult" resultType="PoderNotarialLaboral">	
+		select value->>'idpodNotLabNum' as "ID_POD_NOT_LAB", value->>'numero' as "NUM_POD_NOT_LAB",
+		value->>'notaria' as "NOT_POD_NOT_LAB", value->>'notario' as "NOTA_POD_NOT_LAB"
+			from  "PATRONA", json_array_elements("POD_NOTA_LAB"#>'{poderesNotLab}') 
+				where "ID_PATRONA"=#{idPatrona} 
+	</select> 
+	
+	<!-- Inner join para obtener la lista de PoderesNotarialesLaborales -->
 
 	<!-- Inner join para obtener la lista de RepresentantesLegalesLaborales -->
 	<select id="selectRepresentantesLegalesLaborales" parameterType="int" resultMap="representanteLegalLaboralResult" resultType="RepresentanteLegalLaboral">
