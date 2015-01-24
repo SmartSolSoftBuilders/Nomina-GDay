@@ -121,20 +121,21 @@ function muestraDatosPatrona(datos){
 		x.add(option); 
 	} 
 	console.log("bjr");
-	console.log(data.poderesNotarialesPleitosCobranzas);
-	console.log(data.poderesNotarialesLaborales);
-
+	console.log(data.poderesNotarialesPleitosCobranzas.length);
+	console.log(data.poderesNotarialesLaborales.length);
+	
 	for (i=0;i<data.poderesNotarialesPleitosCobranzas.length;i++){														  
 		document.getElementById("numeroPoderesNot").value=data.poderesNotarialesPleitosCobranzas[i].numero;
 		document.getElementById("notariaPoderesNot").value=data.poderesNotarialesPleitosCobranzas[i].notaria;
 		document.getElementById("notarioPoderesNot").value=data.poderesNotarialesPleitosCobranzas[i].notario;
 		addRow("tablaPodNotPleitos",1);
 	}
+	console.log("VALORES:"+i);
 	for (i=0;i<data.poderesNotarialesLaborales.length;i++){														  
-		document.getElementById("numeroPoderesNot").value=data.poderesNotarialesLaborales[i].numero;
-		document.getElementById("notariaPoderesNot").value=data.poderesNotarialesLaborales[i].notaria;
-		document.getElementById("notarioPoderesNot").value=data.poderesNotarialesLaborales[i].notario;
-		addRow("tablaPodNotLab",1);
+		document.getElementById("numeroPoderesNotLab").value=data.poderesNotarialesLaborales[i].numero;
+		document.getElementById("notariaPoderesNotLab").value=data.poderesNotarialesLaborales[i].notaria;
+		document.getElementById("notarioPoderesNotLab").value=data.poderesNotarialesLaborales[i].notario;
+		addRow("tablaPodNotLab",2); 
 	}
 
 }
@@ -457,7 +458,6 @@ function addRow(tableID,tabla) {
         element4.type = "checkbox";
         cell4.appendChild(element4);
 		document.getElementById("podNotLabNum").value=parseInt(document.getElementById("podNotLabNum").value)+1;			
-
 	}
 }
 
