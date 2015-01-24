@@ -4,6 +4,65 @@ var indexOpt=1;
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT*
 //*******************************************************************************
 $(document).ready(function() {
+	$("#agregarPatronaForm").validate({
+	rules: {
+		nombrePatrona: "required",
+		razonSocial: "required",
+		rfc: "required",
+		folioMerc: "required",
+		calle: "required",
+		colonia: "required",
+		numExt: "required",
+		numInt: "required",
+		cp: "required",
+		municipio: "required",
+		telContacto: "required",
+		selectMult: "required",
+		numActaConst: "required",
+		numNotaria: "required",
+		fecha: "required",
+		notario: "required",
+		ciudad: "required",
+		estado: "required",
+		selectMultAccionista: "required",
+		selectMultRepresentantes: "required",
+		selectMultRepresentantesLegLab: "required",
+    	
+    	//selectMult: "required"
+        /*email: {
+            required: true,
+            email: true
+        },*/
+    },        
+    messages: {
+    	nombrePatrona: "Ingrese el nombre de la Patrona",
+    	razonSocial: "Ingrese el nombre de la Raz&oacute;n Social",
+    	rfc:"Ingrese un rfc",
+    	folioMerc:"Ingrese el Folio Mercantil",
+    	selectMult:"Seleccione por lo menos un Domicilio Virtual",
+    	calle:"Ingrese una Calle",
+    	colonia:"Ingrese una Colonia",
+    	numExt:"Ingrese un N&uacute;mero Exterior",
+    	numInt:"Ingrese una N&uacute;mero Interior",
+    	cp: "Ingrese un CP",
+		municipio: "Ingrese un Municipio",
+		telContacto: "Ingrese un Tel&egrave;fono de Contacto",
+		numActaConst: "Ingrese un N&uacute;mero de Acta Constitutiva",
+		numNotaria: "Ingrese un N&uacute;mero de Notaria",
+		fecha: "Ingrese una Fecha",
+		notario: "Ingrese un N&uacute;mero de Notario",
+		ciudad: "Ingrese una Ciudad",
+		estado: "Ingrese un Estado",
+		selectMultAccionista: "Ingrese un Accionista",
+		selectMultRepresentantes: "Ingrese un Poder Notarial Pleitos y Cobranzas",
+		selectMultRepresentantesLegLab: "Ingrese un Representante Legal Laboral"
+    	
+    },
+    
+    submitHandler: function(form) {
+        form.submit();
+    }
+});
 	$.ajax({
 		sync:true,
 		dataType:'json',
@@ -145,7 +204,7 @@ function getAccionistas(){
 //Function que genera el json de los REPRESENTANTES LEGALES PLEITOS Y COBRANZAS*
 //******************************************************************************
 function getPodNot(){
-	var jsonString ="{\"poderesNot\":[";
+	var jsonString ="{\"poderesNotLabPleiCob\":[";
 	var renglonJson="";
 	var index=0;
 	var numReng=parseInt(document.getElementById("podNotNum").value);
@@ -159,7 +218,7 @@ function getPodNot(){
 		var numero=document.getElementById(row.cells[0].childNodes[0].id).value;
 		var notaria=document.getElementById(row.cells[1].childNodes[0].id).value;
 		var notario=document.getElementById(row.cells[2].childNodes[0].id).value;
-		renglonJson=renglonJson+"{ \"idpodNotNum\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
+		renglonJson=renglonJson+"{ \"idPoderesNotLabPleiCob\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
 		jsonString=jsonString+renglonJson;
 		renglonJson=",";
 		}
@@ -183,7 +242,7 @@ function getPodNotLab(){
 		var numero=document.getElementById(row.cells[0].childNodes[0].id).value;
 		var notaria=document.getElementById(row.cells[1].childNodes[0].id).value;
 		var notario=document.getElementById(row.cells[2].childNodes[0].id).value;
-		renglonJson=renglonJson+"{ \"idpodNotLabNum\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
+		renglonJson=renglonJson+"{ \"idPodNotLab\":"+(i+1)+", \"numero\": \""+numero+"\" " + ", \"notaria\": \""+notaria+"\" " +", \"notario\": \""+notario+"\" "+"}";
 		jsonString=jsonString+renglonJson;
 		renglonJson=",";
 		}
@@ -247,6 +306,7 @@ function guardarPatrona() {
 	console.log(getAccionistas());
 	console.log(getRepresentantesLegalesPleitosCobranzas());
 	console.log(getRepresentantesLegalesLaborales());
+	if ($("#agregarPatronaForm").valid()){	
 		$
 			.ajax({
 				data : {
@@ -284,14 +344,14 @@ function guardarPatrona() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					$("#resultadoGuardar").html(alert("Patrona creada correctamente"));
-					console.log("response")
-					console.log($("#telContacto").val());
+					mensajeRedireccion("Patrona agregada correctamente.","../patronas/patronas.jsp");
+
 				},
 				error : function(response) {
 					$("#resultadoGuardar").html();
 				}
 			});
+		 }
 		}
 
 function addRow(tableID,tabla) {
