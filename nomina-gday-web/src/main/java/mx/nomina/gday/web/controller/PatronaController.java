@@ -73,8 +73,7 @@ public class PatronaController {
 			List patronasTmp2 = new ArrayList<String>();
 
 			for (int i = 0; i < tmp.size(); i++) {
-				patronasTmp2 = new ArrayList<String>();
-				System.out.println("tmp"+tmp.get(i));
+				patronasTmp2 = new ArrayList<String>();				
 				patronasTmp2.add(tmp.get(i).getIdPatrona());
 				patronasTmp2.add(tmp.get(i).getNombreCortoPatrona());
 				patronasTmp2.add("<a href='#' onclick='seleccionarPatronaIntermediaria("+tmp.get(i).getIdPatrona()+",\""+tmp.get(i).getNombreCortoPatrona()+"\")'>Seleccionar</a>");
@@ -105,6 +104,9 @@ public class PatronaController {
 					patronasTmp2 = new ArrayList<String>();
 					System.out.println("tmp"+tmp.get(i));
 					System.out.println("Domicilios:"+tmp.get(i).getDomVirtuales().size());
+					System.out.println("Poderes notariales laborales:"+tmp.get(i).getPoderesNotarialesLaborales());
+					System.out.println("PleitCob:->"+tmp.get(i).getPoderesNotarialesPleitosCobranzas());
+
 					patronasTmp2.add(tmp.get(i).getIdPatrona());
 					patronasTmp2.add(tmp.get(i).getNombreCortoPatrona());
 					patronasTmp2.add("<a href='#' onclick='showEditarPatrona("+tmp.get(i).getIdPatrona()+")'><img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");				
