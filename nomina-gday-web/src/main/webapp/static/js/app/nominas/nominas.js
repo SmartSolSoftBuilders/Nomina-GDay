@@ -50,6 +50,8 @@ function obtenerEmpleadoByIdNomina(idNominaB){
 			console.log(idNominaB);
 			$( "#demo" ).show();
 			$( "#progressbar" ).hide();
+			oTableEmpleados.fnClearTable();
+
 			oTableEmpleados.dataTable().fnAddData(response);
 			$("#divSeleccionNominaPorEmpleado").dialog(({show: "slide", modal: true, width:700, height:600,
 				autoOpen: true}));

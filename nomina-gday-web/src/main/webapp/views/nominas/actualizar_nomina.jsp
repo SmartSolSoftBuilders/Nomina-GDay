@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container">
-
+	<h1>Actualizar N&oacute;mina</h1>
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">

@@ -6,7 +6,6 @@ $(document).ready(function() {
     $("#agregarNominaForm").validate({
         rules: {
         	nombreNomina: "required",
-        	selectMult: "required",
         	patrona: "required",
         	intermediaria: "required",
         	porcPrimaVacacional: "required",
@@ -21,7 +20,6 @@ $(document).ready(function() {
         },        
         messages: {
         	nombreNomina: "Ingrese el nombre de la N&oacute;mina",
-        	selectMult:"Seleccione por lo menos un grupo y su porcentaje",
         	patrona:"Ingrese el nombre de la Patrona",
         	intermediaria:"Ingrese el nombre de la Intermediaria",
         	porcPrimaVacacional:"Ingrese un porcentaje Vacacional",

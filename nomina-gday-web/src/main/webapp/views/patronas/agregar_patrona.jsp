@@ -14,6 +14,7 @@
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">
+				<form  id="agregarPatronaForm" name="agregarPatronaForm" novalidate="novalidate">				
 					<table>					
 					 	<tr>
 					 		<td>NOMBRE<input id='nombrePatrona' name='nombrePatrona' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
@@ -253,6 +254,7 @@
 					 <button type="button" class="btn btn-success" onclick="guardarPatrona();">AGREGAR</button>						 	
 				<br>
 				<br>
+				</form>			
 			</div>
 			</div>
 			</div>

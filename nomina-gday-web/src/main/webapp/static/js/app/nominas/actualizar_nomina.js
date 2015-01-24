@@ -29,17 +29,28 @@ function getParameter(parameter){
 $(document).ready(function() {
 	//Sección validaciones
     $("#actualizarNominaForm").validate({
-        rules: {
-        	nombreNomina: "required"
+    	rules: {
+        	nombreNomina: "required",
+        	patrona: "required",
+        	intermediaria: "required",
+        	porcPrimaVacacional: "required",
+        	registroPatronal: "required",
+        	fechaContrato: "required",
+        	
         	//selectMult: "required"
             /*email: {
                 required: true,
                 email: true
             },*/
-        },        
+        },         
         messages: {
         	nombreNomina: "Ingrese el nombre de la N&oacute;mina",
-        	selectMult:"Seleccione por lo menos un grupo y su porcentaje"
+        	patrona:"Ingrese el nombre de la Patrona",
+        	intermediaria:"Ingrese el nombre de la Intermediaria",
+        	porcPrimaVacacional:"Ingrese un porcentaje Vacacional",
+        	registroPatronal:"Ingrese un registro Patronal",
+        	fechaContrato:"Ingrese una Fecha",
+        	
         },
         
         submitHandler: function(form) {
@@ -125,10 +136,11 @@ function muestraDatosNomina(datos){
 	$("#idPatrona").val(data.patrona.idPatrona);
 	$("#intermediaria").val(data.intermediaria.nombreCortoPatrona);
 	$("#idIntermediaria").val(data.intermediaria.idPatrona);
-
+	$("#fechaContrato").val(data.fechaContrato);
 	$("#patronaIdSel").val(data.patrona.idPatrona);
 	$("#ejecutivo").val(data.ejecutivo.idEjecutivo);
 	$("#esquema").val(data.esquema.idEsquema);
+	$("#porcPrimaVacacional").val(data.porcPrimaVacacional);
 	if (data.provisionAguinaldo){
 		
 		$("#provisionAguinaldo").attr("checked",true);
@@ -139,14 +151,13 @@ function muestraDatosNomina(datos){
 	}
 	
 	if (data.provisionPrimaVacacional){
+		
 		$("#provisionPrimaVac").attr("checked",true);
 	}	
-	$("#porcPrimaVacacional").val(data.porcPrimaVacacional);
-	
 	if (data.fondoAhorro){
 		
 		$("#fondoDeAhorro").attr("checked",true);
-	}	
+	}
 	if (data.ivaExento){
 		
 		$("#ivaExcento").attr("checked",true);
@@ -357,7 +368,7 @@ function quitarRazonSocial(){
 //*******************************************************************************
 function actualizarNomina() {
 	var ids=obtenerIdsAgregadosRZ2();
-	console.log(ids);
+	if ($("#actualizarNominaForm").valid()){
 			$
 			.ajax({
 				data : {
@@ -369,11 +380,13 @@ function actualizarNomina() {
 					"esquema.nombreEsquema" : $("#esquema").val(),
 					"provisionAguinaldo" : $("#provisionAguinaldo").val(),
 					"provisionVacaciones" : $("#provisionVacaciones").val(),
-					"provisionPrimaVac" : $("#provisionPrimaVac").val(),
+					"provisionPrimaVacacional" : $("#provisionPrimaVac").val(),
 					"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
-					"fondoDeAhorro" : $("#fondoDeAhorro").val(),
-					"ivaExcento" : $("#ivaExcento").val(),
-					"comisionCostoSocial" : $("#comisionCostoSocial").val(),
+					"fondoAhorro" : $("#fondoDeAhorro").val(),
+					"facturaSubsidio" : $("#factSub").val(),
+					"ivaExento" : $("#ivaExcento").val(),
+					"reconoceAntiguedad" : $("#reconoceAntihuedad").val(),
+					"comisionCostSocial" : $("#comisionCostoSocial").val(),
 					"tipoPago" : $("#tipoPago").val(),
 					"claseRiesgo" : $("#claseRiesgo").val(),
 					"registroPatronal" : $("#registroPatronal").val(),
@@ -389,16 +402,15 @@ function actualizarNomina() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					console.log("Actualizando");
-					console.log(response);
-					$("#resultadoGuardar")
-							.html(alert("La actualizaci\u00f3n de Nomina se realiz\u00f3 correctamente"));
+					mensajeRedireccion("Nomina actualizada correctamente.","../nominas/nominas.jsp");
+
 				},
 				error : function(response) {
 					console.log(response);
 					$("#resultadoGuardar").html();
 				}
 			});
+			}
 		}
 
 function cancelar(){

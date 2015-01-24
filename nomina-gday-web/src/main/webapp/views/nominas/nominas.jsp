@@ -22,6 +22,8 @@
 		</script>
 	</head>
 	<body id="dt_example">
+								<input id='idNomina' name='idNomina' type="hidden" class="form-control"></input>
+	
 		<div id="progressbar">Cargando (75%)...</div>	
 		<div id="container" class="mayuscula">
 			<h1>Nominas</h1>		
@@ -43,7 +45,6 @@
 							<th>CLASE</th>
 							<th></th>
 							<th></th>
-							<input id='idNomina' name='idNomina' type="hidden" class="form-control"></input>
 							
 						</tr>
 					<tbody>			
