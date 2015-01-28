@@ -50,7 +50,8 @@
                 <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >CONSULTAR RAZONES SOCIALES</a></li>
                 <li><a href="../nominas/nominas.jsp" target="main" >CONSULTAR NOMINAS</a></li>                
                 <li><a href="../grupos/grupos.jsp" target="main" >CONSULTAR GRUPOS</a></li>                
-                <li><a href="../patronas/patronas.jsp" target="main" >CONSULTAR PATRONAS</a></li>                
+<!--                 <li><a href="../patronas/patronas.jsp" target="main" >CONSULTAR PATRONAS</a></li>                
+ -->            <li><a href="../empleados/empleados.jsp" target="main" >CONSULTAR EMPLEADOS</a></li>                
 
               </ul>
             </li>

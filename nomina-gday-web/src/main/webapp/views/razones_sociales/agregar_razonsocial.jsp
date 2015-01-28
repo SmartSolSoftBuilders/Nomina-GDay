@@ -6,10 +6,8 @@
 		<jsp:include page="../common/librerias.jsp"/>  
 
 		<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/agregar_razonsocial.js"></script>
-
 </head>
-<body>
-	
+<body>	
 	<div class="container" class="mayuscula">
 	<h1><font color=#0051a4 class="mayuscula">Agregar Razones Sociales</font></h1>	
 		<div class="text-center col-lg-12">
@@ -109,7 +107,6 @@
 					 		<td>TELEFONO<input id='telefonoContDos' name='telefonoContDos' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td>CORREO<input id='correoContDos' name='correoContDos' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
-						 	</tr>
 					 	</table>
 					 	<table>
 					 	<tr>
@@ -128,7 +125,7 @@
 				<br>
 				 <div class="input-group">      
 			     	 <span>
-			        	<button type="button" class="btn btn-success" onclick="guardarRazonSocial();">AÑADIR</button>
+			        	<button type="button" class="btn btn-success" onclick="guardarRazonSocial();">CREAR</button>
 			     	   	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
 			     	 </span>			    
 				</div>

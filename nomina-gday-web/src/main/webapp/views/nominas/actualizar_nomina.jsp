@@ -8,7 +8,7 @@
   <script type="text/javascript" language="javascript" src="../../static/js/app/nominas/actualizar_nomina.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="container" class="mayuscula">
 	<h1><font color=#0051a4 class="mayuscula">Actualizar N&oacute;mina</font></h1>
 		<div class="text-center col-lg-12">
 			<div class="row">

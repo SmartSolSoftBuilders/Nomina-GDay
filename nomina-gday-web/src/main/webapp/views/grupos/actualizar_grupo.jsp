@@ -18,8 +18,7 @@
 <link href="static/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-
+	<div class="container" class="mayuscula">
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">

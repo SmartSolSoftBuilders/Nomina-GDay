@@ -21,6 +21,37 @@ public class EmpleadoController {
 	@Autowired
 	private EmpleadoServicio empleadoServicio;
 	
+	 //Controller que muestra la lista de Empleado
+	 @RequestMapping(value="/getempleados",method = RequestMethod.POST)
+	    @ResponseBody
+	    public List obtenerEmpleados(){    	
+		  System.out.println("Controller Empleado");
+		  try {
+			List<Empleado> tmp =  this.empleadoServicio.obtenerEmpleados();
+			System.out.println("tmp"+tmp.size());
+			List empleadosTmp = new ArrayList();
+			List empleadosTmp2 = new ArrayList<String>();
+
+			for (int i = 0; i < tmp.size(); i++) {
+				empleadosTmp2 = new ArrayList<String>();
+				System.out.println("tmp"+tmp.get(i));
+				empleadosTmp2.add(tmp.get(i).getIdEmpleado());
+				empleadosTmp2.add(tmp.get(i).getRfc());
+				empleadosTmp2.add(tmp.get(i).getApellidoPaterno());
+				empleadosTmp2.add(tmp.get(i).getApellidoMaterno());
+				empleadosTmp2.add(tmp.get(i).getNombre());
+				empleadosTmp2.add(tmp.get(i).getCurp());
+				empleadosTmp2.add(tmp.get(i).getNss());
+				empleadosTmp.add(empleadosTmp2);
+			}
+			return empleadosTmp;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		  return null;
+	 }
+	 
 	 //Controller que muestra la lista de Empleado por Nomina
 	 @RequestMapping(value="/getempleadosbyidnomina",method = RequestMethod.POST)
 	    @ResponseBody

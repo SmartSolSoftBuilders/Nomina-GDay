@@ -40,7 +40,7 @@ $( document ).ready(function() {
         
         // Specify the validation error messages
         messages: {
-        	nombreRazonSocial: "Ingrese el nombre de la Raz&oacute; Social",
+        	nombreRazonSocial: "Ingrese el nombre de la Raz&oacute;n Social",
         	rfc: "Ingrese el rfc",
         	nombreCorto: "Ingrese el nombre corto de la Raz&oacute;n Social",
         	codCliente: "Ingrese el c&oacute;digo del cliente",
@@ -188,13 +188,10 @@ function guardarRazonSocial() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					$("#resultadoGuardar")
-							.html(alert("La cotizaci\u00f3n se guard\u00f3 correctamente"));
-					top.frames['main'].location="../razones_sociales/razones_sociales.jsp";
-
+					mensajeRedireccion("RAZON SOCIAL CREADA CORRECTAMENTE","../razones_sociales/razones_sociales.jsp");
 				},
 				error : function(response) {
-					$("#resultadoGuardar").html();
+					mensaje("IMPOSIBLE GUARDAR LA RAZON SOCIAL. CONTACTE CON EL ADMINISTRADOR.");
 				}
 			});
 		}

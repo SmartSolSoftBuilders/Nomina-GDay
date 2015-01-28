@@ -71,13 +71,12 @@ function actualizarGrupo() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					$("#resultadoGuardar")
-							.html(alert("La actualizaci\u00f3n de Grupo se guard\u00f3 correctamente"));
-					top.frames['main'].location="../grupos/grupos.jsp";
+					mensajeRedireccion("GRUPO ACTUALIZADO CORRECTAMENTE","../grupos/grupos.jsp");
+
 
 				},
 				error : function(response) {
-					$("#resultadoGuardar").html();
+					mensaje("IMPOSIBLE ACTUALIZAR EL GRUPO. CONTACTE CON EL ADMINISTRADOR.");
 				}
 			});
 		}

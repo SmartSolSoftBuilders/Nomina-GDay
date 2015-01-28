@@ -350,7 +350,7 @@ function guardarPatrona() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					mensajeRedireccion("Patrona agregada correctamente.","../patronas/patronas.jsp");
+					mensajeRedireccion("PATRONA AGREGADA CORRECTAMENTE.","../patronas/patronas.jsp");
 
 				},
 				error : function(response) {

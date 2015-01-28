@@ -30,18 +30,13 @@ $(document).ready(function() {
 	//Sección validaciones
     $("#actualizarNominaForm").validate({
     	rules: {
-        	nombreNomina: "required",
+    		nombreNomina: "required",
         	patrona: "required",
         	intermediaria: "required",
         	porcPrimaVacacional: "required",
         	registroPatronal: "required",
         	fechaContrato: "required",
-        	
-        	//selectMult: "required"
-            /*email: {
-                required: true,
-                email: true
-            },*/
+        	selectMult: "required",
         },         
         messages: {
         	nombreNomina: "Ingrese el nombre de la N&oacute;mina",
@@ -50,6 +45,7 @@ $(document).ready(function() {
         	porcPrimaVacacional:"Ingrese un porcentaje Vacacional",
         	registroPatronal:"Ingrese un registro Patronal",
         	fechaContrato:"Ingrese una Fecha",
+        	selectMult:"Ingrese una Raz&oacute;n Social",
         	
         },
         
@@ -401,8 +397,11 @@ function actualizarNomina() {
 				type : 'post',
 				beforeSend : function() {
 				},
-				success : function(response) {
-					mensajeRedireccion("Nomina actualizada correctamente.","../nominas/nominas.jsp");
+				success : function(response) {					
+					$("#resultadoGuardar")
+					.html(alert("La actualizaci\u00f3n de Raz\u00f3n Social se realiz\u00f3 correctamente"));
+					top.frames['main'].location="../nominas/nominas.jsp";
+					//mensajeRedireccion("Nomina actualizada correctamente.","../nominas/nominas.jsp");
 
 				},
 				error : function(response) {

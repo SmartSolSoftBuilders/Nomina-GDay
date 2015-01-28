@@ -35,10 +35,10 @@ function guardarGrupo() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					mensajeRedireccion("Grupo creado correctamente","../grupos/grupos.jsp");
+					mensajeRedireccion("GRUPO CREADO CORRECTAMENTE","../grupos/grupos.jsp");
 				},
 				error : function(response) {
-					mensaje("Imposible guardar el grupo. Contacte al administrador.");
+					mensaje("IMPOSIBLE GUARDAR EL GRUPO. CONTACTE CON EL ADMINISTRADOR.");
 				}
 			});
 		}

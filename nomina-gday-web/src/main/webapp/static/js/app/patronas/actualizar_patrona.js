@@ -78,7 +78,7 @@ $(document).ready(function() {
 			numActaConst: "Ingrese un N&uacute;mero de Acta Constitutiva",
 			numNotaria: "Ingrese un N&uacute;mero de Notaria",
 			fecha: "Ingrese una Fecha",
-			notario: "Ingrese un N&uacute;mero de Notario",
+			notario: "Ingrese un Nombre de Notario",
 			ciudad: "Ingrese una Ciudad",
 			estado: "Ingrese un Estado",
 			numeroPoderesNot: "Ingrese un N&uacute;mero Notarial",
@@ -442,10 +442,7 @@ function actualizarPatrona() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					console.log("Actualizando");
-					console.log(response);
-					$("#resultadoGuardar")
-							.html(alert("Patrona actualizada orrectamente"));
+					mensajeRedireccion("PATRONA ACTUALIZADA CORRECTAMENTE.","../patronas/patronas.jsp");
 				},
 				error : function(response) {
 					console.log(response);

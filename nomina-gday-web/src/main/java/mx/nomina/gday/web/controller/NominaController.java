@@ -68,7 +68,7 @@ public class NominaController {
 					nominasTmp2.add(tmp.get(i).getIdNomina());
 					nominasTmp2.add(tmp.get(i).getNombreCorto());
 					nominasTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
-					nominasTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
+					//nominasTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
 					System.out.println(tmp.get(i).getIntermediaria().getNombreCortoPatrona());
 					nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreCortoPatrona());
 					nominasTmp2.add(tmp.get(i).getPeriodicidad());

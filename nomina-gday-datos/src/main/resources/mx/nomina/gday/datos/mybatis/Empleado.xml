@@ -52,6 +52,12 @@
 		<result property="pensionAlimObs" column="PENSION_ALIM_OBS"></result>
 	</resultMap>
 	
+	
+	<!-- Select para obtener la lista de todos los Grupos registrados -->
+	<select id="obtenerEmpleados" resultMap="empleadoResult" resultType="Empleado">
+		select * from "EMPLEADO"
+	</select>
+	
 	<select id="obtenerEmpleadosByIdNomina" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 
 		SELECT "EMPLEADO"."ID_EMPLEADO" AS "ID_EMPLEADO", "NO_CONTROL", "NSS", "CURP", "APELLIDO_PATERNO", 
        "APELLIDO_MATERNO", "NOMBRE", "RFC", "FECHA_NACIMIENTO", "EDAD", 
@@ -70,4 +76,36 @@
 	<select id="selectEmpleado" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 
 		select * from "EMPLEADO" where "ID_EMPLEADO"=#{idEmpleado} 	
 	</select> 
+	
+	<!-- Insert para guardar Nomina-->
+	<insert id="agregarEmpleado" parameterType="Empleado" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_empleado')
+  		</selectKey>
+  		
+  		INSERT INTO "EMPLEADO"(
+            "ID_EMPLEADO", "NO_CONTROL", "NSS", "CURP", "APELLIDO_PATERNO", 
+            "APELLIDO_MATERNO", "NOMBRE", "RFC", 
+            "FECHA_NACIMIENTO", "EDAD", "SEXO", 
+            "PAIS_ORIGEN", "NACIONALIDAD", "ESTADO_CIVIL", 
+            "CORREO_ELECTRONICO", "FECHA_INGRESO", "LISTA_NEGRA", 
+            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", "MUNICIPIO_DEL",
+            "ENT_FEDERATIVA", "DOC_IFE", "DOC_ACT_NAN", "DOC_CURP", "DOC_RFC", "DOC_COMPROBANTE",
+            "DOC_COMP_EST", "DOC_CORREO", "DOC_CLABE", "DOC_PREAFILIACION", "CUENTA", "BANCO",
+            "TIPO_PAGO", "DESC_INFONAVIT_VSMG", "DESC_INFONAVIT_PORC", "DESC_INFONAVIT_IMP", "DESC_FONACOT_PAGO", "DESC_FONACOT_NUM",
+            "PENSION_ALIM_IMP", "PENSION_ALIM_PORC", "PENSION_ALIM_ACRED", "PENSION_ALIM_OBS", "NO_CRED_INFONAVIT")
+   	 	VALUES (#{id}, #{noControl}, #{nss}, #{curp},  #{apellidoPaterno},  #{apellidoMaterno}, 
+            #{nombre}, #{rfc}, #{fechaNacimiento}, #{edad}, 
+            #{sexo}, #{paisOrigen}, #{nacionalidad}, 
+            #{estadoCivil}, #{correoElectronico}, #{fechaIngresoReal}, 
+            #{listaNegra}, #{calle}, #{numExterior}, #{numInterior},
+            #{colonia}, #{codigoPostal}, #{municipioDel}, #{entFederativa},
+            #{docIfe}, #{docActNan}, #{docCurp}, #{docRfc},
+            #{docComprobante}, #{docCompEst}, #{docCorreo}, #{docClabe},
+            #{docPreafiliacion}, #{cuenta}, #{banco}, #{tipoPago},
+            #{noCredInfonavit}, #{descInfonavitVsmg}, #{desInfonavitPorc}, #{descInfonavitImp},
+            #{descFonacotNum}, #{descFonacotPago}, #{pensionAlimImp}, #{pensionAlimPorc},
+            #{pensionAlimAcred}, #{pensionAlimObs});
+     	
+	</insert>
 </mapper>

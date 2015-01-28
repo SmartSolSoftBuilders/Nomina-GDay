@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container" class="mayuscula">
-		<h1>Grupos</h1>
+		<h1><font color=#0051a4 class="mayuscula">Grupos</font></h1>
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">
