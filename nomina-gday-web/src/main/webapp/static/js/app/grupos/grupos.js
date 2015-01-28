@@ -1,3 +1,6 @@
+//*************************************************************************
+//Function que muestra los datos de los Grupos registrados en un dataTable*
+//*************************************************************************
 $(document).ready(function() {
 	oTableGrupos=$('#tablaGrupo').dataTable();
 	$.ajax({
@@ -21,7 +24,9 @@ $(document).ready(function() {
 
 });
 
-
+//*****************************************************
+//Function que llama al Formulario Agregar Grupo desde*
+//*****************************************************
 function showAgregarGrupo(){
 	top.frames['main'].location="../grupos/agregar_grupo.jsp"; 	
 }

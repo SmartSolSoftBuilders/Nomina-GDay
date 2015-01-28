@@ -81,7 +81,7 @@ public class GrupoController {
 					gruposTmp2.add(tmp.get(i).getIdGrupo());
 					gruposTmp2.add(tmp.get(i).getNombre());
 					gruposTmp2.add(tmp.get(i).getNombreCorto());
-					gruposTmp2.add("<a href='#' onclick='obtenerGrupo("+tmp.get(i).getIdGrupo()+")'>Editar</a>");				
+					gruposTmp2.add("<a href='#' onclick='obtenerGrupo("+tmp.get(i).getIdGrupo()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
 					gruposTmp.add(gruposTmp2);
 				}
 				return gruposTmp;

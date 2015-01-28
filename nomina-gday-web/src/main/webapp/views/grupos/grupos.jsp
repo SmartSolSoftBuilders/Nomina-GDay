@@ -4,21 +4,10 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		
 		<title>GDAY</title>
-		<style type="text/css" title="currentStyle">
-			@import "../../static/js/libs/css/demo_page.css";
-			@import "../../static/js/libs/css/demo_table.css";
-			@import "../../static/js/libs/css/bootstrap.min.css";
-			@import "../../static/js/libs/css/ui-lightness/jquery-ui-1.10.2.custom.css";
-		</style>
-		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery-1.9.1.js"></script>
-		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.custom.js"></script>
-		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
+		<jsp:include page="../common/librerias.jsp"/>
+				
 		<script type="text/javascript" language="javascript" src="../../static/js/app/grupos/grupos.js"></script>
 		<script type="text/javascript" language="javascript" src="../../static/js/app/grupos/actualizar_grupo.js"></script>
-
-		<script type="text/javascript" charset="utf-8">
-			var oTableGrupos;
-		</script>
 	</head>
 	<body id="dt_example">
 		<div id="progressbar">Cargando (75%)...</div>	
@@ -44,23 +33,25 @@
 				</form>
 			</div>
 			
-			<div id="Grupo">				
-			</div>
+			<div id="Grupo"></div>
+			
 			<br>
 			<br>
 			<div>
-				<input type="button" class="btn btn-success" value="Añadir Grupo" onclick="showAgregarGrupo();"/>
+				<input type="button" class="btn btn-success" value="AÑADIR GRUPO" onclick="showAgregarGrupo();"/>
 			</div>
 <!-- 			Modal para Editar Grupo -->				
 			<div class="row">
 				<div id="divGrupos" title="Actualizar Grupo" style="display:none"  class="col-lg-6">
+				<form id="actualizarGrupoForm" name="actualizarGrupoForm" novalidate="novalidate">
+				
 					<table>
 					 	<tr>
-					 		<td>NOMBRE<input id='nombre' name='nombre' type="text" class="form-control"></td>
+					 		<td>NOMBRE<input id='nombre' name='nombre' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
 					 	<tr>
 					 		<td>NOMBRE CORTO<input id='nombreCorto' name='nombreCorto' type="text" class="form-control">
-					 		<input id='grupoIdSel' name='grupoIdSel' type="hidden" class="form-control"></td>					 							 	
+					 		<input id='grupoIdSel' name='grupoIdSel' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 							 	
 					 	</tr>
 					</table>
 				<br>
@@ -69,15 +60,14 @@
 				 <div class="input-group">      
 			        	<button type="button" class="btn btn-success" onclick="actualizarGrupo()">MODIFICAR</button>
    		 		</div><!-- /input-group -->
+   		 		</form>
 				</div>
 			</div>
 
 			<br>
 			<br>
-			<!-- div id="footer" class="clear" style="text-align:center;"><span style="font-size:10px;"> DataTables designed and created by <a href="http://www.sprymedia.co.uk">Allan Jardine</a> &copy; 2007-2011<br>
-					DataTables is dual licensed under the <a href="http://www.datatables.net/license_gpl2">GPL v2 license</a> or a <a href="http://www.datatables.net/license_bsd">BSD (3-point) license</a>.
-				</span -->
+
 			</div>
-		</div>
+		<jsp:include page="../common/footer.jsp"/>	
 	</body>
 </html>

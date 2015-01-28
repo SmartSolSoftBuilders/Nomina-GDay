@@ -1,3 +1,6 @@
+//**************************************************************************
+//Function que muestra los datos de las Nominas registradas en un dataTable*
+//**************************************************************************
 $(document).ready(function() {
 	oTableNominas=$('#tablaNomina').dataTable();
 	$.ajax({
@@ -27,9 +30,10 @@ $(document).ready(function() {
 
 });
 
-//obtenerEmpleadoByIdNomina
 
-//Function que obtiene getempleadosbyidnomina
+//***********************************
+//Function obtenerEmpleadoByIdNomina*
+//***********************************
 function obtenerEmpleadoByIdNomina(idNominaB){
 	oTableEmpleados=$('#tablaEmpleados').dataTable();
 	document.getElementById("idNomina").value=idNominaB;
@@ -65,6 +69,9 @@ function obtenerEmpleadoByIdNomina(idNominaB){
 	
 }
 
+//**********************************************
+//Function que descargar la Nomina por Empleado*
+//**********************************************
 function ajax_download(idNomina) {	
 	var input_name="id1";
 	var id1=document.getElementById("idNomina").value;	
@@ -94,11 +101,16 @@ function ajax_download(idNomina) {
     $(iframe_doc).find('form').submit();
 }
 
+//****************************************
+//Function que llama al Formulario Editar*
+//****************************************
 function showEditarNomina(idNomina){
 	top.frames['main'].location="../nominas/actualizar_nomina.jsp?id="+idNomina; 	
 }
 
-
+//*****************************************
+//Function que llama al Formulario Agregar*
+//*****************************************
 function showAgregarNomina(){
 	top.frames['main'].location="../nominas/agregar_nomina.jsp"; 	
 }

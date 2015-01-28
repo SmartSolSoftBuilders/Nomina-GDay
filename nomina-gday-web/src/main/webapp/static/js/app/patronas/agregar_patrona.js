@@ -24,15 +24,15 @@ $(document).ready(function() {
 		notario: "required",
 		ciudad: "required",
 		estado: "required",
+		numeroPoderesNot: "required",
+		notariaPoderesNot: "required",
+		notarioPoderesNot: "required",
+		numeroPoderesNotLab: "required",
+		notariaPoderesNotLab: "required",
+		notarioPoderesNotLab: "required",
 		selectMultAccionista: "required",
 		selectMultRepresentantes: "required",
 		selectMultRepresentantesLegLab: "required",
-    	
-    	//selectMult: "required"
-        /*email: {
-            required: true,
-            email: true
-        },*/
     },        
     messages: {
     	nombrePatrona: "Ingrese el nombre de la Patrona",
@@ -53,6 +53,12 @@ $(document).ready(function() {
 		notario: "Ingrese un N&uacute;mero de Notario",
 		ciudad: "Ingrese una Ciudad",
 		estado: "Ingrese un Estado",
+		numeroPoderesNot: "Ingrese un N&uacute;mero Notarial",
+		notariaPoderesNot: "Ingrese una Notaria",
+		notarioPoderesNot: "Ingrese un Notario",
+		numeroPoderesNotLab: "Ingrese un N&uacute;mero de Poder Notarial",
+		notariaPoderesNotLab: "Ingrese una Notaria de Poder Notarial",
+		notarioPoderesNotLab: "Ingrese una Notario de Poder Notarial",
 		selectMultAccionista: "Ingrese un Accionista",
 		selectMultRepresentantes: "Ingrese un Poder Notarial Pleitos y Cobranzas",
 		selectMultRepresentantesLegLab: "Ingrese un Representante Legal Laboral"
@@ -469,5 +475,9 @@ function deleteRow(tableID,tabla) {
 
     }
 
+}
+
+function cancelar(){
+	top.frames['main'].location="../patronas/patronas.jsp"; 	
 }
 

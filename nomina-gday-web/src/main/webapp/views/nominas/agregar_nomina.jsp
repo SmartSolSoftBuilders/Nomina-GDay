@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container">
-	<h1>Agregar N&oacute;mina</h1>
+	<h1><font color=#0051a4 class="mayuscula">Agregar N&oacute;mina</font></h1>
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">

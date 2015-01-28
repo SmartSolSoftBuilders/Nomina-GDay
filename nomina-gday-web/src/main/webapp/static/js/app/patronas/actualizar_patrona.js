@@ -1,5 +1,10 @@
 var indexOpt=1;
 
+//*****************************************************
+//Function que valida los elementos que son requeridos*
+//*****************************************************
+
+
 function getParameter(parameter){
 	// Obtiene la cadena completa de URL
 	var url = location.href;
@@ -26,6 +31,73 @@ $(document).ready(function() {
 	console.log("PATRONAS!")
 	console.log(idPatrona);
 	obtenerPatrona(idPatrona);
+	
+	$("#actualizarPatronaForm").validate({
+		rules: {
+			nombrePatrona: "required",
+			razonSocial: "required",
+			rfc: "required",
+			folioMerc: "required",
+			calle: "required",
+			colonia: "required",
+			numExt: "required",
+			numInt: "required",
+			cp: "required",
+			municipio: "required",
+			telContacto: "required",
+			selectMult: "required",
+			numActaConst: "required",
+			numNotaria: "required",
+			fecha: "required",
+			notario: "required",
+			ciudad: "required",
+			estado: "required",
+			numeroPoderesNot: "required",
+			notariaPoderesNot: "required",
+			notarioPoderesNot: "required",
+			numeroPoderesNotLab: "required",
+			notariaPoderesNotLab: "required",
+			notarioPoderesNotLab: "required",
+			selectMultAccionista: "required",
+			selectMultRepresentantes: "required",
+			selectMultRepresentantesLegLab: "required",
+		},        
+		messages: {
+			nombrePatrona: "Ingrese el nombre de la Patrona",
+			razonSocial: "Ingrese el nombre de la Raz&oacute;n Social",
+			rfc:"Ingrese un rfc",
+			folioMerc:"Ingrese el Folio Mercantil",
+			selectMult:"Seleccione por lo menos un Domicilio Virtual",
+			calle:"Ingrese una Calle",
+			colonia:"Ingrese una Colonia",
+			numExt:"Ingrese un N&uacute;mero Exterior",
+			numInt:"Ingrese una N&uacute;mero Interior",
+			cp: "Ingrese un CP",
+			municipio: "Ingrese un Municipio",
+			telContacto: "Ingrese un Tel&egrave;fono de Contacto",
+			numActaConst: "Ingrese un N&uacute;mero de Acta Constitutiva",
+			numNotaria: "Ingrese un N&uacute;mero de Notaria",
+			fecha: "Ingrese una Fecha",
+			notario: "Ingrese un N&uacute;mero de Notario",
+			ciudad: "Ingrese una Ciudad",
+			estado: "Ingrese un Estado",
+			numeroPoderesNot: "Ingrese un N&uacute;mero Notarial",
+			notariaPoderesNot: "Ingrese una Notaria",
+			notarioPoderesNot: "Ingrese un Notario",
+			numeroPoderesNotLab: "Ingrese un N&uacute;mero de Poder Notarial",
+			notariaPoderesNotLab: "Ingrese una Notaria de Poder Notarial",
+			notarioPoderesNotLab: "Ingrese una Notario de Poder Notarial",
+			selectMultAccionista: "Ingrese un Accionista",
+			selectMultRepresentantes: "Ingrese un Poder Notarial Pleitos y Cobranzas",
+			selectMultRepresentantesLegLab: "Ingrese un Representante Legal Laboral"
+			
+		},
+
+		submitHandler: function(form) {
+		    form.submit();
+		}
+
+		});
 	
     	
 });
@@ -330,6 +402,7 @@ function quitarRepresentantesLegLab(){
 //Function que actualiza la Nomina con los datos modificados 
 //*******************************************************************************
 function actualizarPatrona() {
+	if ($("#actualizarPatronaForm").valid()){	
 			$
 			.ajax({
 				data : {
@@ -358,8 +431,9 @@ function actualizarPatrona() {
 					"jsonStringDomicilio": getDomVirtuales(),
 					"jsonStringAccionistas": getAccionistas(),
 					"jsonStringRepresentantesPleitos": getRepresentantesLegalesPleitosCobranzas(),
-					"jsonStringRepresentantesLegales": getRepresentantesLegalesLaborales()
-
+					"jsonStringRepresentantesLegales": getRepresentantesLegalesLaborales(),
+					"jsonStringPodNot":getPodNot(),
+					"jsonStringPodNotLab":getPodNotLab()			
 				},
 				
 				dataType : 'json',
@@ -379,6 +453,7 @@ function actualizarPatrona() {
 				}
 			});
 		}
+	}
 
 function addRow(tableID,tabla) {
 	if (tabla==1){
@@ -492,4 +567,8 @@ function deleteRow(tableID,tabla) {
     catch(e) {
          alert(e);
     }
+}
+
+function cancelar(){
+	top.frames['main'].location="../patronas/patronas.jsp"; 	
 }

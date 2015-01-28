@@ -1,33 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<title>GDAY</title>
-		
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="../../static/js/libs/js/jquery.validate.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
- <script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
-  
-	<script src="../../static/js/bootstrap.min.js"></script>
-	<!-- bootbox code -->
-	<script src="../../static/js/bootbox.js"></script>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">	<meta charset="utf-8">
+	<title>GDAY</title>
+		<jsp:include page="../common/librerias.jsp"/>  
 
-	<!-- put all demo code in one place -->
-	<script src="../../static/js/control.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/agregar_razonsocial.js"></script>
 
-<link href="../../static/css/styles.css" rel="stylesheet">
-<link href="../../static/css/multiple-select.css" rel="stylesheet">
-<link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-		
-<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/agregar_razonsocial.js"></script>
+</head>
 <body>
 	
 	<div class="container" class="mayuscula">
-	<h1>Agregar Razones Sociales</h1>	
+	<h1><font color=#0051a4 class="mayuscula">Agregar Razones Sociales</font></h1>	
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6" align="center">
@@ -56,8 +40,7 @@
 					 		<button type="button" class="btn btn-default" onclick="agregarReferenciante();">AÑADIR</button>
 					 		<button type="button" class="btn btn-default" onclick="quitarReferenciante();">QUITAR</button>					 		
 					 							 		
-					 		<select id="selectMult" multiple="multiple">
-					 		</select>
+					 		<select id="selectMult" multiple="multiple"></select>
 					 	</tr>					 	
 					 	<tr>
 					 		<td>OBJETO SOCIAL<textarea id='objetoSocial' name='objetoSocial' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea></td>					 	
@@ -69,17 +52,14 @@
 					 		<td width="5%"></td>
 					 		<td>FECHA INICIO OPERACION<input id='fechaIniOper' name='fechaIniOper' type="date" class="form-control"></td>					 	
 					 	</tr>
-					 	<table>
-					 	<tr>
-					 		<td>REPRESENTANTE LEGAL</td>
 					 	</table>
 					 	<table>
 					 	<tr>
+					 		<td>REPRESENTANTE LEGAL</td>
 					 		<td>APELLIDO PATERNO<input id='aPaterno' name='aPaterno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>						
 					 		<td>APELLIDO MATERNO<input id='aMaterno' name='aMaterno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td>NOMBRES<input id='nombres' name='nombres' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
-					 	<table>
 					 	<tr>
 					 		<td>DOMICILIO FISCAL</td>
 					 	</tr>
@@ -143,21 +123,20 @@
 					 		<td>CORREO<input id='correoContTres' name='correoContTres' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 						</table>
+				
 				<br>
 				<br>
 				 <div class="input-group">      
 			     	 <span>
 			        	<button type="button" class="btn btn-success" onclick="guardarRazonSocial();">AÑADIR</button>
-			     	 </span>			    
-			     	 <span>
-			        	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
+			     	   	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
 			     	 </span>			    
 				</div>
 				</form>
 			</div>
 		</div>
 	  </div>
-	  
+	 </div>
 	<div id='resultadoGuardar'></div>
 	<div id="divGrupos" title="Seleccionar Grupo" style="display:none">
 		<div id="container" class="mayuscula">
@@ -179,12 +158,10 @@
 					</tbody>
 					</thead>
 					</table>
-			</div>
-			
+			</form>
+			</div>			
 			</div>
 	</div>
-	<!-- /.container -->
-	<!-- JS dependencies -->
-	
+		<jsp:include page="../common/footer.jsp"/>	
 </body>
 </html>

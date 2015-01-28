@@ -2,24 +2,12 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<!--link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/media/images/favicon.ico" /-->
 		
 		<title>GDAY</title>
-		<style type="text/css" title="currentStyle">
-			@import "../../static/js/libs/css/demo_page.css";
- 			@import "../../static/js/libs/css/demo_table.css";
- 			@import "../../static/js/libs/css/bootstrap.min.css"; 			
- 			@import "../../static/js/libs/css/ui-lightness/jquery-ui-1.10.2.custom.css";
-		</style>
-		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery-1.9.1.js"></script>
-		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.custom.js"></script>
-		<script type="text/javascript" language="javascript" src="../../static/js/libs/js/jquery.dataTables.js"></script>		
+		<jsp:include page="../common/librerias.jsp" />
+
 		<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/razones_sociales.js"></script>
 		
-
-		<script type="text/javascript" charset="utf-8">
-			var oTableRazonesSociales;
-		</script>
 	</head>
 	<body id="dt_example">
 		<div id="progressbar" >Cargando (75%)...</div>	
@@ -53,7 +41,7 @@
 			<br>
 			<br>		
 			<div>
-				<input type="button" class="btn btn-success" value="Añadir" onclick="showAgregarRazonSocial();"/>
+				<input type="button" class="btn btn-success" value="AÑADIR" onclick="showAgregarRazonSocial();"/>
 			</div>
 			<br>
 			<br>
@@ -86,10 +74,9 @@
 			</div>
 			
 			</div>
-	</div>
-			<!-- div id="footer" class="clear" style="text-align:center;"><span style="font-size:10px;"> DataTables designed and created by <a href="http://www.sprymedia.co.uk">Allan Jardine</a> &copy; 2007-2011<br>
-					DataTables is dual licensed under the <a href="http://www.datatables.net/license_gpl2">GPL v2 license</a> or a <a href="http://www.datatables.net/license_bsd">BSD (3-point) license</a>.
-				</span -->
+		</div>
+			<jsp:include page="../common/footer.jsp"/>	
+
 			</div>
 		</div>
 	</body>

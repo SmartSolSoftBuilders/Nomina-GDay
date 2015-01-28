@@ -9,8 +9,8 @@
 </head>
 
 <body>
-	<div class="container">
-	<h1>Agregar Patrona</h1>
+	<div class="container" class="mayuscula">
+	<h1><font color=#0051a4 class="mayuscula">Agregar Patrona</font></h1>
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6">
@@ -114,13 +114,13 @@
 				  			</td>
 					  		</tr>						  		
 					   		<tr>
-						  		<td>
-									<input id='domicilio' name='domicilio' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+						  		<td><input id='domicilio' name='domicilio' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 					 				<button type="button" class="btn btn-default" onclick="agregarDomVirtual();">AÑADIR</button>
 					 				<button type="button" class="btn btn-default" onclick="quitarDomVirtual();">QUITAR</button>
 					 				<br>
-					 				<select id="selectMult" multiple="multiple"></select>						 				
+					 				<select id="selectMult" name="selectMult" multiple="multiple"></select>						 				
 					 			</td>
+					 			<td></td>
 					 		</tr>
 					 </table>
 					 
@@ -156,7 +156,7 @@
 					 			<button type="button" class="btn btn-default" onclick="agregarAccionista();">AÑADIR</button>
 					 			<button type="button" class="btn btn-default" onclick="quitarAccionista();">QUITAR</button>
 					 			<br>
-					 			<select id="selectMultAccionista" multiple="multiple"></select>							 				
+					 			<select id="selectMultAccionista" name="selectMultAccionista" multiple="multiple"></select>							 				
 					 			</td>
 					 		</tr>
 					 </table>
@@ -169,8 +169,7 @@
 				  			</td>
 					  	</tr>						  		
 					   	<tr>
-						  		<td>
-									<span style="float:left;">NUMERO</span><input id='numeroPoderesNot' name='numeroPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
+						  		<td><span style="float:left;">NUMERO</span><input id='numeroPoderesNot' name='numeroPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
 									<span style="float:left;">NOTARIA</span><input id='notariaPoderesNot' name='notariaPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
 									<span style="float:left;">NOTARIO</span><input id='notarioPoderesNot' name='notarioPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
 					 			<button type="button" class="btn btn-default" onclick="addRow('tablaPodNotPleitos',1);">AÑADIR</button>
@@ -185,6 +184,7 @@
 										</tr>
 									 </table>
 									 <input type="text" id="podNotNum" value="0"/>
+							 	</td>
 					 		</tr>
 					 </table>
 	 				<table border=2>
@@ -201,7 +201,7 @@
 					 			<button type="button" class="btn btn-default" onclick="agregarRepresentantes();">AÑADIR</button>
 					 			<button type="button" class="btn btn-default" onclick="quitarRepresentantes();">QUITAR</button>
 					 			<br>
-					 			<select id="selectMultRepresentantes" multiple="multiple"></select>							 				
+					 			<select id="selectMultRepresentantes" name="selectMultRepresentantes" multiple="multiple"></select>							 				
 					 			</td>
 					 		</tr>
 					 </table>
@@ -222,15 +222,15 @@
 					 			<button type="button" class="btn btn-default" onclick="deleteRow('tablaPodNotLab',2);">QUITAR</button>					 			
 					 			<br>
 									<table name="tablaPodNotLab" id="tablaPodNotLab">
-										<tr>
+									<tr>
 											<td>NUMERO</td>
 											<td>NOTARIA</td>
 											<td>NOTARIO</td>
 											<td>-</td>
-										</tr>
+									</tr>
 									 </table>
 									 <input type="text" id="podNotLabNum" value="0"/>
-	
+								</td>
 					 		</tr>
 					 </table>
 					 					<table border=2>
@@ -247,11 +247,19 @@
 					 			<button type="button" class="btn btn-default" onclick="agregarRepresentantesLegLab();">AÑADIR</button>
 					 		<button type="button" class="btn btn-default" onclick="quitarRepresentantesLegLab();">QUITAR</button>
 					 			<br>
-					 			<select id="selectMultRepresentantesLegLab" multiple="multiple"></select>							 				
+					 			<select id="selectMultRepresentantesLegLab" name="selectMultRepresentantesLegLab" multiple="multiple"></select>							 				
 					 			</td>
 					 		</tr>
 					 </table>
-					 <button type="button" class="btn btn-success" onclick="guardarPatrona();">AGREGAR</button>						 	
+					 <br>
+					 <div class="input-group">      
+			     	 <span>
+	            		 <button type="button" class="btn btn-success" onclick="guardarPatrona();">AGREGAR</button>						 	
+			     	 </span>			    
+			     	 <span>
+			        	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
+			     	 </span>			    
+				</div>
 				<br>
 				<br>
 				</form>			

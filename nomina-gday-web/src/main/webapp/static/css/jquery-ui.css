@@ -409,13 +409,13 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-dialog .ui-dialog-titlebar-close {
 	position: absolute;
-	background-image:url("images/cerrar.png");
+	background-image:url("images/cerrar.png") repeat-x;
 	right: .3em;
 	top: 50%;
-	width: 20px;
+	width: 5px;
 	margin: -10px 0 0 0;
 	padding: 1px;
-	height: 20px;
+	height: 5px;
 }
 .ui-dialog .ui-dialog-content {
 	position: relative;
@@ -982,7 +982,6 @@ body .ui-tooltip {
 	background-image: url("images/ui-icons_222222_256x240.png");
 }
 .ui-widget-header .ui-icon {
-	background-image: url("images/ui-icons_222222_256x240.png");
 }
 .ui-state-default .ui-icon {
 	background-image: url("images/ui-icons_888888_256x240.png");
