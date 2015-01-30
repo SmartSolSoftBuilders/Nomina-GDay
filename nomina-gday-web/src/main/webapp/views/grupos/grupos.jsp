@@ -18,7 +18,7 @@
 					<div style="text-align:right; padding-bottom:1em;">
 						<!--button type="submit">Submit form</button-->
 					</div>
-					<table  cellpadding="0" cellspacing="0" border="0" class="display" id="tablaEmpleado">
+					<table  cellpadding="0" cellspacing="0" border="0" class="display" id="tablaGrupo">
 					<thead>			
 						<tr class="odd gradeA">
 							<th>NUMERO GRUPO</th>
