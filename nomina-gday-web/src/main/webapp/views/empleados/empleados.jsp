@@ -10,7 +10,7 @@
 	<body id="dt_example">
 		<div id="progressbar">Cargando (75%)...</div>	
 		<div id="container" class="mayuscula">
-			<h1>Empleados</h1>		
+			<h1><font color=#0051a4 class="mayuscula">Empleados</font></h1>		
 			<div id="demo">
 				<form id="formSeleccionarEmpleados">
 					<div style="text-align:right; padding-bottom:1em;">
@@ -32,16 +32,16 @@
 				</form>
 			</div>
 			
-			<div id="Empleado">				
+			<div id="Empleado"></div>
+			<br>
+			<br>
+			<div  style="position:absolute">
+				<input type="button" class="btn btn-success" value="CREAR EMPLEADO" onclick="showAgregarEmpleado();"/>
 			</div>
 			<br>
 			<br>
 			<br>
-			<br>
-			<!-- div id="footer" class="clear" style="text-align:center;"><span style="font-size:10px;"> DataTables designed and created by <a href="http://www.sprymedia.co.uk">Allan Jardine</a> &copy; 2007-2011<br>
-					DataTables is dual licensed under the <a href="http://www.datatables.net/license_gpl2">GPL v2 license</a> or a <a href="http://www.datatables.net/license_bsd">BSD (3-point) license</a>.
-				</span -->
+					<jsp:include page="../common/footer.jsp"/>	
 			</div>
-		</div>
 	</body>
 </html>

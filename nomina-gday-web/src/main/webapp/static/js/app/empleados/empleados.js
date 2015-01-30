@@ -24,4 +24,10 @@ $(document).ready(function() {
 
 });
 
+//**************************************************
+//Function que llama al Formulario Agregar Empleado*
+//**************************************************
+function showAgregarEmpleado(){
+	top.frames['main'].location="../empleados/agregar_empleado.jsp"; 	
+}
 

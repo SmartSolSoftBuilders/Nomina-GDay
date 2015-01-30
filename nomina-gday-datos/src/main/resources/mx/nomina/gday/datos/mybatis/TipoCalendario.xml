@@ -23,7 +23,7 @@
 	</select> 
 	
 	<select id="obtenerTiposCalendario" resultMap="tipoCalendarioResult" resultType="TipoCalendario">		 
-		select * from "TIPO_CALENDARIO" 	
+		select * from "TIPO_CALENDARIO"  		
 	</select> 
 	
 

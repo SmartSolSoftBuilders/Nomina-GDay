@@ -21,14 +21,14 @@
 					 </table>
 					 <table border="2">
 					 	<tr>	
-					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control" maxlength="13" size="13" onblur="validaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();"/></td>
 					 		<td width="5%"></td>					 
 					 		<td>NOMBRE CORTO<input id='nombreCorto' name='nombreCorto' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 						</tr>
 						<tr>					 	
 					 		<td>CODIGO DE CLIENTE<input id='codCliente' name='codCliente' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 						 	<td width="5%"></td>
-					 		<td>GRUPO<input id='grupo' readonly=true name='grupo' type="text" class="form-control" onclick="showGrupos()">
+					 		<td>GRUPO<input id='grupo' name='grupo' readonly=true  type="text" class="form-control" onclick="showGrupos()">
 					 		<input id='grupoIdSel' name='grupoIdSel' type="hidden" class="form-control"></td>						 	
 					 	</tr>
 					 	<tr>
@@ -54,15 +54,16 @@
 					 	<table>
 					 	<tr>
 					 		<td>REPRESENTANTE LEGAL</td>
+					 		<td width="5%"></td>					 		
 					 		<td>APELLIDO PATERNO<input id='aPaterno' name='aPaterno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>						
 					 		<td>APELLIDO MATERNO<input id='aMaterno' name='aMaterno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td>NOMBRES<input id='nombres' name='nombres' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
+					 	</table>
+					 	<table>
 					 	<tr>
 					 		<td>DOMICILIO FISCAL</td>
 					 	</tr>
-					 	</table>
-					 	<table>
 					 	<tr>
 					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td>NUMERO EXT<input id='numeroExt' name='numeroExt' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
@@ -73,15 +74,47 @@
 					 		<td>CODIGO POSTAL<input id='codPostal' name='codPostal' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td>MUNICIPIO<input id='municipio' name='municipio' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
-					 	<tr>					 	
-					 		<td>ESTADO<input id='estado' name='estado' type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-					 		<td></td><td></td>					 	
+					 	<tr>
+					 	<td>ESTADO
+					 		<select id='estado' name='estado' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+		  							<option>AGUASCALIENTES</option>
+		  							<option>BAJA CALIFORNIA</option>
+		  							<option>BAJA CALIFORNIA SUR</option>
+		  							<option>CAMPECHE</option>
+		  							<option>CHIAPAS</option>
+		  							<option>CHIHUAHUA</option>
+		  							<option>COAHUILA</option>
+		  							<option>COLIMA</option>
+		  							<option>DISTRITO FEDERAL</option>
+		  							<option>DURANGO</option>
+		  							<option>GUANAJUATO</option>
+		  							<option>GUERRERO</option>
+		  							<option>HIDALGO</option>
+		  							<option>JALISCO</option>
+		  							<option>MEXICO</option>
+		  							<option>MICHOACAN</option>
+		  							<option>MORELOS</option>
+		  							<option>NAYARIT</option>
+		  							<option>NUEVO LEON</option>
+		  							<option>OAXACA</option>
+		  							<option>PUEBLA</option>
+		  							<option>QUERETARO</option>
+		  							<option>QUINTANA ROO</option>
+		  							<option>SAN LUIS POTOSI</option>
+		  							<option>SINALOA</option>
+		  							<option>SONORA</option>
+		  							<option>TABASCO</option>
+		  							<option>TAMAULIPAS</option>
+		  							<option>TLAXCALA</option>
+		  							<option>VERACRUZ</option>
+		  							<option>YUCATAN</option>
+		  							<option>ZACATECAS</option>
+							</select></td>						 				 	
 					 	</tr>
 					 	<tr>					 	
 					 		<td>REGISTRO PUBLICO DE LA PROPIEDAD<input id='regPublicoPropiedad' name='regPublicoPropiedad' type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td></td>					 	
 					 		<td>FECHA DE REGISTRO PUBLICO DE LA PROPIEDAD<input id='fechaRegPublicoPropiedad' name='fechaRegPublicoPropiedad' type="date" class="form-control"></td>
-					 		<td></td>					 	
 					 	</tr>
 					 	</table>					 	
 					 	<table>
@@ -123,7 +156,7 @@
 				
 				<br>
 				<br>
-				 <div class="input-group">      
+				 <div class="input-group" style="position:absolute">      
 			     	 <span>
 			        	<button type="button" class="btn btn-success" onclick="guardarRazonSocial();">CREAR</button>
 			     	   	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>

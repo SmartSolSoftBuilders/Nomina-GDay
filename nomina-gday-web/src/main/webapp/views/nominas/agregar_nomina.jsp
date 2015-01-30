@@ -71,11 +71,10 @@
 					 <table>
 					 	<tr>
 					 		<td>ESQUEMA
-					 		<select id='esquema' name='esquema' type="text" class="form-control"></select></td>					 	
+					 		<select id='esquema' name='esquema' class="form-control"></select></td>
 					 		<td width="10%"></td>
-
 					 		<td>EJECUTIVO
-								<select id='ejecutivo' name='ejecutivo' type="text" class="form-control"></select>
+								<select id='ejecutivo' name='ejecutivo' class="form-control"></select>
 							</td>				 						 	
 					 	</tr>
 					 	<tr>
@@ -135,8 +134,7 @@
 		  							<option>C</option>
 							</select></td>					 	
 					 		<td>TIPO CALENDARIO
-					 		<select id='tipoCalendario' name='tipoCalendario' type="text" class="form-control">
-								</select>
+					 		<select id='tipoCalendario' name='tipoCalendario' class="form-control"></select>
 							</td>					 	
 						</tr>	
 						<tr>					 	

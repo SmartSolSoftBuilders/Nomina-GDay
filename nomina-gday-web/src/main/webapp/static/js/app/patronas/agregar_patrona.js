@@ -310,8 +310,8 @@ function getRepresentantesLegalesLaborales(){
 function guardarPatrona() {
 	console.log(getDomVirtuales());
 	console.log(getAccionistas());
-	console.log(getRepresentantesLegalesPleitosCobranzas());
-	console.log(getRepresentantesLegalesLaborales());
+	console.log("tipoReg");
+	console.log($("#tipoReg").val());
 	if ($("#agregarPatronaForm").valid()){	
 		$
 			.ajax({
@@ -321,7 +321,7 @@ function guardarPatrona() {
 					"rfcPatrona" : $("#rfc").val(),
 					"folioMercantilPatrona" : $("#folioMerc").val(),
 					"esIntermediariaPatrona" : $("#intermediaria").val(),
-/*					"tipoRegimenPatrona" : $("#tipoReg").val(),*/
+					"tipoRegimenPatrona.idTipoRegimen" : $("#tipoReg").val(),
 					"calleFiscalPatrona" : $("#calle").val(),
 					"coloniaFiscalPatrona" : $("#colonia").val(),
 					"numExteriorFiscalPatrona" : $("#numExt").val(),

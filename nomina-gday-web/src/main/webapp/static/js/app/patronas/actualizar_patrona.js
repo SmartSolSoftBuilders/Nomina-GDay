@@ -98,6 +98,26 @@ $(document).ready(function() {
 		}
 
 		});
+	$.ajax({
+		sync:true,
+		dataType:'json',
+		url:   '../../mvc/patrona/getdatoscombo',
+		type:  'post',		
+		beforeSend: function () {	
+		},
+		success:  function (response) {
+			console.log (response[0]);
+			var options = "";
+			var result=response[0];
+			 for (var i = 0; i < result.length; i++) {
+			    	options += '<option value="' + result[i].idTipoRegimen + '">' + result[i].tipoRegimen +'</option>';
+			    }
+			$("#tipoReg").append(options)
+			console.log ("TipoRegimen");
+			console.log (response[1]);	
+
+		}	
+	});
 	
     	
 });
@@ -133,6 +153,8 @@ function obtenerPatrona(idPatrona){
 //*******************************************************************************
 function muestraDatosPatrona(datos){
 	var data=eval(datos);
+	console.log(data.numInteriorFiscalPatrona);
+	console.log(data.actaNotarioPatrona);
 	$("#idPatrona").val(data.idPatrona);
 	$("#nombrePatrona").val(data.nombreCortoPatrona);
 	$("#razonSocial").val(data.razonSocialPatrona);
@@ -402,7 +424,8 @@ function quitarRepresentantesLegLab(){
 //Function que actualiza la Nomina con los datos modificados 
 //*******************************************************************************
 function actualizarPatrona() {
-	if ($("#actualizarPatronaForm").valid()){	
+	if ($("#actualizarPatronaForm").valid()){
+		console.log($("#numInt").val());
 			$
 			.ajax({
 				data : {
@@ -412,7 +435,7 @@ function actualizarPatrona() {
 					"rfcPatrona" : $("#rfc").val(),
 					"folioMercantilPatrona" : $("#folioMerc").val(),
 					"esIntermediariaPatrona" : $("#intermediaria").val(),
-/*					"tipoRegimenPatrona" : $("#tipoReg").val(),*/
+					"tipoRegimenPatrona.idTipoRegimen" : $("#tipoReg").val(),
 					"calleFiscalPatrona" : $("#calle").val(),
 					"coloniaFiscalPatrona" : $("#colonia").val(),
 					"numExteriorFiscalPatrona" : $("#numExt").val(),

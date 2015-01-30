@@ -14,6 +14,17 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 	@Autowired
 	private EmpleadoDao empleadoDao;
 	
+	//Metodo para guardar Empleado
+		@Override
+		public boolean agregarEmpleado(Empleado empleado) {
+			
+			System.out.println("Agregando empleado service"+ empleado);
+			
+			int valor=this.empleadoDao.agregarEmpleado(empleado);
+			
+			return true;
+	}
+		
 	//Metodo que obtiene una lista de Empleados
 	@Override
 	public List<Empleado> obtenerEmpleados() {	

@@ -44,6 +44,7 @@ $(document).ready(function() {
 		},
 		success:  function (response) {
 			console.log (response[0]);
+			console.log ("Ejecutivo");
 			var options = "";
 			var result=response[0];
 			 for (var i = 0; i < result.length; i++) {
@@ -63,9 +64,10 @@ $(document).ready(function() {
 				var options = "";
 				var result=response[2];
 				 for (var i = 0; i < result.length; i++) {
-				    	options += '<option value="' + result[i].idTipoCalendario + '">' + result[i].siglas +'</option>';
+				    	options += '<option value="' + result[i].idCalendario + '">' + result[i].siglas +'</option>';
 				    }
-		    $("#tipoCalendario").append(options)	 	
+		    $("#tipoCalendario").append(options)
+		    
 			},	
 		error: function (response) {																	
 			$("#resultadoGuardar").html("Error");
@@ -247,6 +249,8 @@ function quitarRazonSocial(){
 
 function guardarNomina() {
 	var ids=obtenerIdsAgregadosRZ2();
+	console.log("tipoCalendario");
+	console.log($("#tipoCalendario").val());
 	if ($("#agregarNominaForm").valid()){		
 		$
 			.ajax({
@@ -255,8 +259,8 @@ function guardarNomina() {
 					"razonSocial" : $("#razonSocial").val(),
 					"patrona.idPatrona" : $("#idPatrona").val(),
 					"intermediaria.idPatrona" : $("#idIntermediaria").val(),
-					"ejecutivo.nombreEjecutivo" : $("#ejecutivo").val(),
-					"esquema.nombreEsquema" : $("#esquema").val(),
+					"ejecutivo.idEjecutivo" : $("#ejecutivo").val(),
+					"esquema.idEsquema" : $("#esquema").val(),
 					"provisionAguinaldo" : $("#provisionAguinaldo").val(),
 					"provisionVacaciones" : $("#provisionVacaciones").val(),
 					"provisionPrimaVacacional" : $("#provisionPrimaVac").val(),
@@ -268,7 +272,7 @@ function guardarNomina() {
 					"claseRiesgo" : $("#claseRiesgo").val(),
 					"registroPatronal" : $("#registroPatronal").val(),
 					"periodicidad" : $("#periodicidad").val(),
-					"tipoCalendario.tipoCalendario" : $("#tipoCalendario").val(),
+					"tipoCalendario.idCalendario" : $("#tipoCalendario").val(),
 					"facturaSubsidio" : $("#factSub").val(),
 					"reconoceAntiguedad" : $("#reconoceAntihuedad").val(),
 					"fechaContrato" : $("#fechaContrato").val(),

@@ -159,9 +159,9 @@
             "ACTA_CIUDAD", "ACTA_ESTADO", "DOM_VIRTUALES", "ACCIONISTA",
             "REP_LEG_PLEITOS_COBR", "REP_LEG_LAB","POD_NOTA_PLEITOS_Y_COBRANZAS","POD_NOTA_LAB")
    	 	VALUES (#{id}, #{razonSocialPatrona}, #{rfcPatrona}, #{nombreCortoPatrona}, #{esIntermediariaPatrona}, 
-   	 		#{folioMercantilPatrona}, #{calleFiscalPatrona},  #{coloniaFiscalPatrona},  #{numExteriorFiscalPatrona}, 
-            #{numInteriorFiscalPatrona}, #{cpFiscalPatrona}, #{municipioFiscalPatrona}, #{estadoFiscalPatrona}, 
-            #{fiscalNumPagoPatrona}, #{telContactoPatrona}, #{actaNumeroPatrona}, 
+   	 		#{folioMercantilPatrona}, #{calleFiscalPatrona},  #{coloniaFiscalPatrona},  
+   	 		#{numExteriorFiscalPatrona}, #{numInteriorFiscalPatrona}, #{cpFiscalPatrona}, #{municipioFiscalPatrona}, 
+   	 		#{estadoFiscalPatrona}, #{fiscalNumPagoPatrona}, #{telContactoPatrona}, #{actaNumeroPatrona}, 
             #{actaNotariaPatrona},date(#{actaFechaPatrona}), #{actaNotarioPatrona}, 
             #{actaCiudadPatrona}, #{actaEstadoPatrona}, json(#{jsonStringDomicilio}), json(#{jsonStringAccionistas}),
             json(#{jsonStringRepresentantesPleitos}), json(#{jsonStringRepresentantesLegales}),

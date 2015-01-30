@@ -94,18 +94,32 @@
             "DOC_COMP_EST", "DOC_CORREO", "DOC_CLABE", "DOC_PREAFILIACION", "CUENTA", "BANCO",
             "TIPO_PAGO", "DESC_INFONAVIT_VSMG", "DESC_INFONAVIT_PORC", "DESC_INFONAVIT_IMP", "DESC_FONACOT_PAGO", "DESC_FONACOT_NUM",
             "PENSION_ALIM_IMP", "PENSION_ALIM_PORC", "PENSION_ALIM_ACRED", "PENSION_ALIM_OBS", "NO_CRED_INFONAVIT")
-   	 	VALUES (#{id}, #{noControl}, #{nss}, #{curp},  #{apellidoPaterno},  #{apellidoMaterno}, 
-            #{nombre}, #{rfc}, #{fechaNacimiento}, #{edad}, 
-            #{sexo}, #{paisOrigen}, #{nacionalidad}, 
-            #{estadoCivil}, #{correoElectronico}, #{fechaIngresoReal}, 
-            #{listaNegra}, #{calle}, #{numExterior}, #{numInterior},
-            #{colonia}, #{codigoPostal}, #{municipioDel}, #{entFederativa},
-            #{docIfe}, #{docActNan}, #{docCurp}, #{docRfc},
-            #{docComprobante}, #{docCompEst}, #{docCorreo}, #{docClabe},
-            #{docPreafiliacion}, #{cuenta}, #{banco}, #{tipoPago},
-            #{noCredInfonavit}, #{descInfonavitVsmg}, #{desInfonavitPorc}, #{descInfonavitImp},
-            #{descFonacotNum}, #{descFonacotPago}, #{pensionAlimImp}, #{pensionAlimPorc},
-            #{pensionAlimAcred}, #{pensionAlimObs});
+   	 	VALUES (#{id}, #{noControl}, #{nss}, #{curp},  #{apellidoPaterno},  
+   	 		#{apellidoMaterno}, #{nombre}, #{rfc}, 
+   	 		date(#{fechaNacimiento}), #{edad}, #{sexo}, 
+   	 		#{paisOrigen}, #{nacionalidad}, #{estadoCivil},
+   	 		#{correoElectronico}, date(#{fechaIngresoReal}), #{listaNegra}, 
+   	 		#{calle}, #{numExterior}, #{numInterior}, #{colonia}, #{codigoPostal}, #{municipioDel}, 
+   	 		#{entFederativa}, #{docIfe}, #{docActNan}, #{docCurp}, #{docRfc}, #{docComprobante}, 
+   	 		#{docCompEst}, #{docCorreo}, #{docClabe}, #{docPreafiliacion}, #{cuenta}, #{banco}, 
+   	 		#{tipoPago}, #{descInfonavitVsmg}, #{desInfonavitPorc}, #{descInfonavitImp}, #{descFonacotPago}, #{descFonacotNum}, 
+   	 		#{pensionAlimImp}, #{pensionAlimPorc}, #{pensionAlimAcred}, #{pensionAlimObs}, #{noCredInfonavit});
      	
 	</insert>
+	
+	<!-- Update para actualizar el Empleado --> 
+<update id="actualizarEmpleado" parameterType="Empleado">
+	UPDATE "EMPLEADO"
+   		SET "NO_CONTROL"=#{noControl}, "NSS"=#{nss}, "CURP"=#{curp}, "APELLIDO_PATERNO"=#{apellidoPaterno}, 
+            "APELLIDO_MATERNO"=#{apellidoMaterno}, "NOMBRE", "RFC", 
+            "FECHA_NACIMIENTO", "EDAD"=#{nombre}, "SEXO"=#{sexo}, 
+            "PAIS_ORIGEN"=#{paisOrigen}, "NACIONALIDAD"=#{nacionalidad}, "ESTADO_CIVIL"=#{estadoCivil}, 
+            "CORREO_ELECTRONICO"=#{correoElectronico}, "FECHA_INGRESO"=date(#{fechaNacimiento}), "LISTA_NEGRA"=#{listaNegra}, 
+            "CALLE"=#{calle}, "NUM_EXTERIOR"=#{numExterior}, "NUM_INTERIOR"=#{numInterior}, "COLONIA"=#{colonia}, "CODIGO_POSTAL"=#{codigoPostal}, "MUNICIPIO_DEL"=#{municipioDel},
+            "ENT_FEDERATIVA"=#{entFederativa}, "DOC_IFE"=#{docIfe}, "DOC_ACT_NAN"=#{docActNan}, "DOC_CURP"=#{docCurp}, "DOC_RFC", "DOC_COMPROBANTE"=#{docComprobante},
+            "DOC_COMP_EST"=#{docCompEst}, "DOC_CORREO"=#{docCorreo}, "DOC_CLABE"=#{docClabe}, "DOC_PREAFILIACION"=#{docPreafiliacion}, "CUENTA"=#{cuenta}, "BANCO"=#{banco},
+            "TIPO_PAGO"=#{tipoPago}, "DESC_INFONAVIT_VSMG"=#{descInfonavitVsmg}, "DESC_INFONAVIT_PORC"=#{desInfonavitPorc}, "DESC_INFONAVIT_IMP"=#{descInfonavitImp}, "DESC_FONACOT_PAGO"=#{descFonacotPago}, "DESC_FONACOT_NUM"=#{descFonacotNum},
+            "PENSION_ALIM_IMP"=#{pensionAlimImp}, "PENSION_ALIM_PORC"=#{pensionAlimPorc}, "PENSION_ALIM_ACRED"=#{pensionAlimAcred}, "PENSION_ALIM_OBS"=#{pensionAlimObs}, "NO_CRED_INFONAVIT"=#{noCredInfonavit})
+         WHERE "EMPLEADO"=#{idEmpleado}; 	 
+	</update>
 </mapper>

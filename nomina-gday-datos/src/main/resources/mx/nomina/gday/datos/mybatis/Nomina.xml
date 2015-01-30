@@ -107,7 +107,7 @@
 	
 	<!-- Select para obtener la lista de todos las Nominas registradas -->
 		<select id="obtenerNominas" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
-		select * from "NOMINA" 	where "ID_CALENDARIO"= 1 AND "ID_ESQUEMA"= 1 AND "ID_INTERMEDIARIA"= 1
+		select * from "NOMINA" 	 	
 	</select>  
 
 	<!-- Insert para guardar Nomina-->
@@ -122,12 +122,13 @@
             "PROVISION_VACACIONES", "PROVISION_PRIMA_VACACIONAL", "DIAS_AGUINALDO", 
             "PORC_PRIMA_VACACIONAL", "FONDO_AHORRO", "FACTURA_SUBSIDIO", 
             "IVA_EXENTO", "RECONOCE_ANTIGUEDAD", "COMISION_COST_SOCIAL", 
-            "TIPO_PAGO", "CLASE_RIESGO", "REGISTRO_PATRONAL", "PERIODICIDAD", "TIPO_CALENDARIO", "FECHA_CONTRATO")
-   	 	VALUES (#{id}, #{patrona.idPatrona}, #{intermediaria.idPatrona}, 1, 1, 1, #{nombreCorto},  #{provisionAguinaldo},  #{provisionVacaciones}, 
-            #{provisionPrimaVacacional}, #{diasAguinaldo}, #{porcPrimaVacacional}, #{fondoAhorro}, 
-            #{facturaSubsidio}, #{ivaExento}, #{reconoceAntiguedad}, 
-            #{comisionCostSocial}, #{tipoPago}, #{claseRiesgo}, 
-            #{registroPatronal}, #{periodicidad}, #{tipoCalendario.tipoCalendario}, date(#{fechaContrato}));
+            "TIPO_PAGO", "CLASE_RIESGO", "REGISTRO_PATRONAL", "PERIODICIDAD", "FECHA_CONTRATO")
+   	 	VALUES (#{id}, #{patrona.idPatrona}, #{intermediaria.idPatrona}, #{esquema.idEsquema}, #{ejecutivo.idEjecutivo}, 
+   	 			#{tipoCalendario.idCalendario}, #{nombreCorto},  #{provisionAguinaldo},  
+   	 			#{provisionVacaciones}, #{provisionPrimaVacacional}, #{diasAguinaldo}, 
+   	 			#{porcPrimaVacacional}, #{fondoAhorro}, #{facturaSubsidio}, 
+   	 			#{ivaExento}, #{reconoceAntiguedad}, #{comisionCostSocial}, 
+   	 			#{tipoPago}, #{claseRiesgo}, #{registroPatronal}, #{periodicidad}, date(#{fechaContrato}));
             <if test="razonesSociales != null">
             	<foreach  collection="razonesSociales" item="grsp">
             	INSERT INTO "NOMINA_RAZON"(
@@ -141,14 +142,13 @@
 <!-- Update para actualizar la Nomina seleccionada --> 
 <update id="actualizarNomina" parameterType="Nomina">
 	UPDATE "NOMINA"
-   		SET "NOMBRE_CORTO"=#{nombreCorto}, "PROVISION_AGUINALDO"=#{provisionAguinaldo}, 
+   		SET "ID_CALENDARIO"=#{tipoCalendario.idCalendario}, "NOMBRE_CORTO"=#{nombreCorto}, "PROVISION_AGUINALDO"=#{provisionAguinaldo}, 
             "PROVISION_VACACIONES"=#{provisionVacaciones}, "PROVISION_PRIMA_VACACIONAL"=#{provisionPrimaVacacional}, "DIAS_AGUINALDO"=#{diasAguinaldo}, 
             "PORC_PRIMA_VACACIONAL"=#{porcPrimaVacacional}, "FONDO_AHORRO"=#{fondoAhorro}, "FACTURA_SUBSIDIO"=#{facturaSubsidio}, 
             "IVA_EXENTO"=#{ivaExento}, "RECONOCE_ANTIGUEDAD"=#{reconoceAntiguedad}, "COMISION_COST_SOCIAL"=#{comisionCostSocial}, 
             "TIPO_PAGO"=#{tipoPago}, "CLASE_RIESGO"=#{claseRiesgo}, "REGISTRO_PATRONAL"=#{registroPatronal}, "PERIODICIDAD"=#{periodicidad}, 
-            "TIPO_CALENDARIO"=#{tipoCalendario.tipoCalendario}, "FECHA_CONTRATO"= date(#{fechaContrato}),"ID_PATRONA"= #{patrona.idPatrona},
-            "ID_INTERMEDIARIA"=#{intermediaria.idPatrona}
-			 	WHERE "ID_NOMINA"=#{idNomina};
+            "FECHA_CONTRATO"= date(#{fechaContrato})
+		WHERE "ID_NOMINA"=#{idNomina};
  	        <if test="razonesSociales != null">
  	        	DELETE FROM "NOMINA_RAZON" WHERE "ID_NOMINA"=#{idNomina};
             	<foreach  collection="razonesSociales" item="grsp">

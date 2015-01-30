@@ -22,6 +22,8 @@
 					<table>					
 					 	<tr>
 					 		<td>NOMBRE<input id='nombrePatrona' name='nombrePatrona' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 		<input id='idPatrona' name='idPatrona' type="hidden" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 		
 					 	</tr>
 					 </table>
 					<table>

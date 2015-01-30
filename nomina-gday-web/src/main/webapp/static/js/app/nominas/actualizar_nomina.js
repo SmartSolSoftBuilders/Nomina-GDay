@@ -81,7 +81,15 @@ $(document).ready(function() {
 						 for (var i = 0; i < result.length; i++) {
 						    	options += '<option value="' + result[i].idTipoCalendario + '">' + result[i].siglas +'</option>';
 						    }
-				    $("#tipoCalendario").append(options)	 	
+				    $("#tipoCalendario").append(options)	 
+				    console.log ("Tipo Calendario");
+				    console.log (response[2]);
+				    var options = "";
+				    var result=response[2];
+				    for (var i = 0; i < result.length; i++) {
+				    	options += '<option value="' + result[i].idCalendario + '">' + result[i].siglas +'</option>';
+				    }
+				    $("#tipoCalendario").append(options)
 					
 			},	
 		error: function (response) {																	
@@ -174,8 +182,7 @@ function muestraDatosNomina(datos){
 	$("#claseRiesgo").val(data.claseRiesgo);
 	$("#registroPatronal").val(data.registroPatronal);
 	$("#periodicidad").val(data.periodicidad);
-	$("#tipoCalendario").val(data.tipoCalendario.tipoCalendario);
-	$("#tipoCalendarioIdSel").val(data.tipoCalendario.idTipoCalendario);
+	$("#tipoCalendario").val(data.tipoCalendario.idCalendario);
 	//alert(data.razonesSociales.length)
 	var valorT=0;
 	for (i=0;i<data.razonesSociales.length;i++){
@@ -387,7 +394,7 @@ function actualizarNomina() {
 					"claseRiesgo" : $("#claseRiesgo").val(),
 					"registroPatronal" : $("#registroPatronal").val(),
 					"periodicidad" : $("#periodicidad").val(),
-					"tipoCalendario.tipoCalendario" : $("#tipoCalendario").val(),
+					"tipoCalendario.idCalendario" : $("#tipoCalendario").val(),
 					"fechaContrato" : $("#fechaContrato").val(),
 					"jsonValue" : ids[0]
 				},
@@ -398,10 +405,7 @@ function actualizarNomina() {
 				beforeSend : function() {
 				},
 				success : function(response) {					
-					$("#resultadoGuardar")
-					.html(alert("La actualizaci\u00f3n de Raz\u00f3n Social se realiz\u00f3 correctamente"));
-					top.frames['main'].location="../nominas/nominas.jsp";
-					//mensajeRedireccion("Nomina actualizada correctamente.","../nominas/nominas.jsp");
+					mensajeRedireccion("Nomina actualizada correctamente.","../nominas/nominas.jsp");
 
 				},
 				error : function(response) {

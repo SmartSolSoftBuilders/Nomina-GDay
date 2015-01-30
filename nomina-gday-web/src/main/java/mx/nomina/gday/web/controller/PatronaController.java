@@ -27,7 +27,7 @@ public class PatronaController {
 	@RequestMapping(value="/guardarpatrona",method = RequestMethod.POST)
 	 @ResponseBody
 	 public boolean guardarPatrona(@ModelAttribute(value="patrona") Patrona patrona, BindingResult result){
-		 	System.out.println("Guardando Patrona"+ patrona.getTelContactoPatrona());
+		 	System.out.println("Guardando Patrona"+ patrona.getNumInteriorFiscalPatrona());
 		 	patronaServicio.agregarPatrona(patrona);		 	
 			return true;
 	}
@@ -127,7 +127,7 @@ public class PatronaController {
 	    public boolean modificarPatrona(@ModelAttribute(value="patrona") Patrona patrona, BindingResult result,HttpServletRequest request){    	    	    	    	   
 	    
 		 try {
-			 System.out.println("Controller Actualizar Patrona"+ patrona.getIdPatrona());
+			 System.out.println("Controller Actualizar Patrona"+ patrona.getNumInteriorFiscalPatrona());
 				 patronaServicio.actualizarPatrona(patrona);			 
 			 return true;
 		} catch (Exception e) {

@@ -8,9 +8,10 @@ $( document ).ready(function() {
         rules: {
         	nombreRazonSocial: "required",
         	rfc: "required",
-        	nombreCorto: "required",
+           	nombreCorto: "required",
         	codCliente: "required",
         	grupo: "required",
+        	referenciante: "required",
         	comision: "required",
         	selectMult: "required",
         	objetoSocial: "required",
@@ -41,10 +42,11 @@ $( document ).ready(function() {
         // Specify the validation error messages
         messages: {
         	nombreRazonSocial: "Ingrese el nombre de la Raz&oacute;n Social",
-        	rfc: "Ingrese el rfc",
+        	rfc: "Ingrese un rfc con formato XXXX000000X00",
         	nombreCorto: "Ingrese el nombre corto de la Raz&oacute;n Social",
         	codCliente: "Ingrese el c&oacute;digo del cliente",
         	grupo: "Ingrese el grupo",
+        	referenciante: "Ingrese por lo menos un referenciante",
         	comision: "Ingrese una comision",
         	selectMult: "Seleccione el grupo",
         	objetoSocial: "Ingrese un Objeto Social",
@@ -197,6 +199,28 @@ function guardarRazonSocial() {
 		}
 
 	}	
+
+function validaRfc(rfc) {
+	var strCorrecta;
+	strCorrecta = rfc;	
+	if (rfc.length == 12){
+	var valid = '^(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))';
+	}else{
+	var valid = '^(([A-Z]|[a-z]|\s){1})(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))';
+	}
+	var validRfc=new RegExp(valid);
+	var matchArray=strCorrecta.match(validRfc);
+	if (matchArray==null) {
+		mensaje('INGRESE UN RFC CON FORMATO: XXXX000000X00');
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+	
+	
+}
 
 function cancelar(){
 	top.frames['main'].location="../razones_sociales/razones_sociales.jsp"; 	

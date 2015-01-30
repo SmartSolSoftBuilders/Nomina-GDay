@@ -10,6 +10,8 @@ import mx.nomina.gday.servicios.ReportesServicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +23,17 @@ public class EmpleadoController {
 	@Autowired
 	private EmpleadoServicio empleadoServicio;
 	
+	//Controller Guardar Grupo
+		 @RequestMapping(value="/guardarempleado",method = RequestMethod.POST)
+		 @ResponseBody
+		    public boolean guardarEmpleado(@ModelAttribute(value="grupo") Empleado empleado, BindingResult result){
+			 	System.out.println("Guardando empleado"+ empleado);
+			 	empleadoServicio.agregarEmpleado(empleado);
+			 	
+				return true;
+			 
+	}
+		 
 	 //Controller que muestra la lista de Empleado
 	 @RequestMapping(value="/getempleados",method = RequestMethod.POST)
 	    @ResponseBody

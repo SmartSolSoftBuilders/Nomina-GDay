@@ -32,6 +32,7 @@ $(document).ready(function() {
         	nombreCorto: "required",
         	codCliente: "required",
         	grupo: "required",
+        	selectMult: "required",
         	comision: "required",
         	selectMult: "required",
         	objetoSocial: "required",
@@ -66,7 +67,7 @@ $(document).ready(function() {
         	codCliente: "Ingrese el c&oacute;digo del cliente",
         	grupo: "Ingrese el grupo",
         	comision: "Ingrese una comision",
-        	selectMult: "Seleccione el grupo",
+        	selectMult: "Ingrese por lo menos un referenciante",
         	objetoSocial: "Ingrese un Objeto Social",
         	actaConst: "Ingrese un Acta Constitutiva",
         	fechaActaConst: "Ingrese una fecha de Acta Constitutiva",
@@ -158,6 +159,8 @@ function muestraDatosRazonSocial(datos){
 	$("#telefonoContTres").val(data.contactoTresTelefono);
 	$("#correoContTres").val(data.contactoTresCorreo);
 	$("#objetoSocial").val(data.objetoSocial);
+	$("#regPublicoPropiedad").val(data.regPublicoPropiedad);
+	$("#fechaRegPublicoPropiedad").val(data.fechaRegPublicoPropiedad);
 	console.log(data.referenciantes);
 	for (i=0;i<data.referenciantes.length;i++){
 		console.log(data.referenciantes[i].nombreReferenciante);
@@ -239,10 +242,10 @@ function actualizarRazonSocial() {
 				beforeSend : function() {
 				},
 				success : function(response) {				
-					$("#resultadoGuardar")
+					/*$("#resultadoGuardar")
 							.html(alert("La actualizaci\u00f3n de Raz\u00f3n Social se realiz\u00f3 correctamente"));
-					top.frames['main'].location="../razones_sociales/razones_sociales.jsp";
-					//mensajeRedireccion("Nomina actualizada correctamente.","../razones_sociales/razones_sociales.jsp");
+					top.frames['main'].location="../razones_sociales/razones_sociales.jsp";*/
+					mensajeRedireccion("RAZON SOCIAL ACTUALIZADA CORRECTAMENTE.","../razones_sociales/razones_sociales.jsp");
 
 
 				},
@@ -289,6 +292,31 @@ function showGrupos(){
 	});
 		$("#divGrupos").dialog();
 	}
+
+
+function validaRfc(rfc) {
+	var strCorrecta;
+	strCorrecta = rfc;	
+	if (rfc.length == 12){
+	var valid = '^(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))';
+	}else{
+	var valid = '^(([A-Z]|[a-z]|\s){1})(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))';
+	}
+	var validRfc=new RegExp(valid);
+	var matchArray=strCorrecta.match(validRfc);
+	if (matchArray==null) {
+		alert('INGRESE UN RFC CON FORMATO: XXXX000000X00');
+
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+	
+	
+}
+
 
 function cancelar(){
 	top.frames['main'].location="../razones_sociales/razones_sociales.jsp"; 	

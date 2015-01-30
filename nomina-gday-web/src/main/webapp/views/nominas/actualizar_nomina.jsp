@@ -31,7 +31,7 @@
 					  		</tr>						  		
 					   		<tr>
 						  		<td>							 			
-					 				<select name="selectMult" id="selectMult" multiple="multiple" style="width:550px;height:100px">		
+					 				<select name="selectMult" id="selectMult" multiple="multiple" style="width:550px;height:100px" onkeyup="javascript:this.value=this.value.toUpperCase();">		
 					 				</select>					 				
 					 				<button type="button" class="btn btn-default" onclick="showRazonesSociales();">AÑADIR</button>
 					 				<button type="button" class="btn btn-default" onclick="quitarRazonSocial();">QUITAR</button>
@@ -48,7 +48,7 @@
 					  		</tr>	
 							<tr>
 								<td>
-									<input id='patrona' name='patrona' type="text" class="form-control"></input>
+									<input id='patrona' name='patrona' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></input>
 									<input id='idPatrona' name='idPatrona' type="hidden" class="form-control"></input>
 									<button type="button" class="btn btn-default" onclick="showPatronas();">SELECCIONAR</button> 		
 						 		</td>
@@ -64,7 +64,7 @@
 					  		</tr>	
 							<tr>
 								<td>
-									<input id='intermediaria' name='intermediaria' type="text" class="form-control"></input>
+									<input id='intermediaria' name='intermediaria' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></input>
 									<input id='idIntermediaria' name='idIntermediaria' type="hidden" class="form-control"></input>
 									<button type="button" class="btn btn-default" onclick="showPatronasIntermediarias();">SELECCIONAR</button> 		
 						 		</td>
@@ -73,39 +73,39 @@
 					 <table>
 					 	<tr>
 					 		<td>ESQUEMA
-					 		<select id='esquema' name='esquema' type="text" class="form-control"></select></td>					 	
+					 		<select id='esquema' name='esquema' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></select></td>					 	
 					 		<td width="10%"></td>
 
 					 		<td>EJECUTIVO
-								<select id='ejecutivo' name='ejecutivo' type="text" class="form-control"></select>
+								<select id='ejecutivo' name='ejecutivo' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></select>
 							</td>				 						 	
 					 	</tr>
 					 	<tr>
-					 		<td>PROVISION AGINALDO<input id='provisionAguinaldo' name='provisionAguinaldo' type="checkbox" class="form-control"></td>					 	
+					 		<td>PROVISION AGINALDO<input id='provisionAguinaldo' name='provisionAguinaldo' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td></td>
-					 		<td>PROVISION VACACIONES<input id='provisionVacaciones' name='provisionVacaciones' type="checkbox" class="form-control"></td>					 	
+					 		<td>PROVISION VACACIONES<input id='provisionVacaciones' name='provisionVacaciones' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td></td>
 					 	</tr>
 					 </table>
 					 <table>
 					 	<tr>
-					 		<td>PROVISION PRIMA VACACIONAL<input id='provisionPrimaVac' name='provisionPrimaVac' type="checkbox" class="form-control"></td>					 	
+					 		<td>PROVISION PRIMA VACACIONAL<input id='provisionPrimaVac' name='provisionPrimaVac' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 							<td></td>
-					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control"></td>					 	
+					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td></td>
-					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
+					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 					 </table>
 					 <table>
 					 	<tr>
 							<td></td>
-					 		<td>FACTURA SUBSIDIO<input id='factSub' name='factSub' type="checkbox" class="form-control"></td>					 	
+					 		<td>FACTURA SUBSIDIO<input id='factSub' name='factSub' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 							<td></td>
-					 		<td>IVA EXCENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control"></td>					 	
+					 		<td>IVA EXCENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 							<td></td>
-					 		<td>RECONOCE ANTIGÜEDAD<input id='reconoceAntihuedad' name='reconoceAntihuedad' type="checkbox" class="form-control"></td>					 	
+					 		<td>RECONOCE ANTIGÜEDAD<input id='reconoceAntihuedad' name='reconoceAntihuedad' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td></td>
-					 		<td>COMISION SOBRE COSTO SOCIAL<input id='comisionCostoSocial' name='comisionCostoSocial' type="checkbox" class="form-control"></td>					 	
+					 		<td>COMISION SOBRE COSTO SOCIAL<input id='comisionCostoSocial' name='comisionCostoSocial' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 					 </table>
 					 <table>

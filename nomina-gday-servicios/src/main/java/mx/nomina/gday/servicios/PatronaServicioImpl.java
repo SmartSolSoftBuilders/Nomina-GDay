@@ -47,7 +47,7 @@ public class PatronaServicioImpl implements PatronaServicio {
 	//Metodo que Modifica los datos de una Patrona
 	@Override
 	public void actualizarPatrona(Patrona patrona) {
-
+		System.out.println("Actualizar Patrona Servicio"+patrona.getNumInteriorFiscalPatrona());
 		this.patronaDao.actualizarPatrona(patrona);
 	}
 
