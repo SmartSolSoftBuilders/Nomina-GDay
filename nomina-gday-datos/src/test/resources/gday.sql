@@ -201,7 +201,6 @@ CREATE TABLE "NOMINA"
   "CLASE_RIESGO" character varying(10),
   "REGISTRO_PATRONAL" character varying(15),
   "PERIODICIDAD" character varying(2),
-  "TIPO_CALENDARIO" character varying(30),
   "PORC_PRIMA_VACACIONAL" double precision,
   "FECHA_CONTRATO" date,
   CONSTRAINT "ID_NOMINA_PK" PRIMARY KEY ("ID_NOMINA"),
