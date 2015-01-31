@@ -24,7 +24,16 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 			
 			return true;
 	}
+	
+	//Metodo que Modifica los datos de una Nomina
+	@Override
+	public void actualizarEmpleado(Empleado empleado) {
 		
+		this.empleadoDao.actualizarEmpleado(empleado);
+	}
+	
+	
+	
 	//Metodo que obtiene una lista de Empleados
 	@Override
 	public List<Empleado> obtenerEmpleados() {	
@@ -57,6 +66,17 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+
+	//Metodo que obtiene un Empleado por idEmpleado
+	@Override
+	public Empleado obtenerEmpleadoById(int idEmpleado) {
+
+		System.out.println("Servicio obtenerNominaById"+ idEmpleado);
+
+		return this.empleadoDao.obteneEmpleadoById(idEmpleado);
 	}	
 	
+			
 }

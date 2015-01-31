@@ -26,6 +26,7 @@
 							<th width="200px">NOMBRE</th>
 							<th width="200px">CURP</th>					
 							<th width="200px">NSS</th>	
+							<th width="200px"></th>	
 						</tr>
 					</thead>
 					</table>

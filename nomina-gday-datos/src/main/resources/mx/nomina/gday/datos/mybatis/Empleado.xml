@@ -58,6 +58,11 @@
 		select * from "EMPLEADO"
 	</select>
 	
+	<!-- Select para obtener la Nomina por idNomina -->
+	<select id="obtenerEmpleadoById" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 
+		select * from "EMPLEADO" where "ID_EMPLEADO"=#{idEmpleado} 	
+	</select>
+	
 	<select id="obtenerEmpleadosByIdNomina" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 
 		SELECT "EMPLEADO"."ID_EMPLEADO" AS "ID_EMPLEADO", "NO_CONTROL", "NSS", "CURP", "APELLIDO_PATERNO", 
        "APELLIDO_MATERNO", "NOMBRE", "RFC", "FECHA_NACIMIENTO", "EDAD", 
