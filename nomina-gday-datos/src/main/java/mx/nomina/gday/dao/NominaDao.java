@@ -11,4 +11,5 @@ public interface NominaDao {
 	public Nomina obtenerNominaById(int id);
 	public List<Nomina> obtenerNominas();
 	public List<Nomina> obtenerNominasByIdRazonSocial(int id);
+	public List<Nomina> obtenerNominasByIdEmpleado(Integer idEmpleado);
 }
