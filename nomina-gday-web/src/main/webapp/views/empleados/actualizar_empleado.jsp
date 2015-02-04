@@ -374,9 +374,8 @@
 					</tr>
 				</table>
 			</div>
-	  
-		
-		<div id='resultadoGuardar'></div>
+	  	
+	<div id='resultadoGuardar'></div>
 	<jsp:include page="../common/footer.jsp"/>	
 </body>
 </html>

@@ -113,8 +113,8 @@
 	<select id="obtenerNominasByIdEmpleado" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
 		SELECT * FROM "NOMINA" WHERE "ID_NOMINA" IN (SELECT "ID_NOMINA" FROM "EMPLEADO_NOMINA" WHERE "ID_EMPLEADO"=#{id}) 	 	
 	</select>  
-
-	<!-- Insert para guardar Nomina-->
+	
+	<!-- Insert para Guardar Nomina-->
 	<insert id="agregarNomina" parameterType="Nomina" keyProperty="id">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
   		   	SELECT nextVal('sec_nomina')
