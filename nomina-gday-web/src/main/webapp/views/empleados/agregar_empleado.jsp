@@ -5,9 +5,8 @@
 <meta charset="utf-8">
 <title>grupo day</title>
 <jsp:include page="../common/librerias.jsp"/>
- 	<script type="text/javascript" language="javascript" src="../../static/js/app/empleados/agregar_empleado.js"></script>  
+ <script type="text/javascript" language="javascript" src="../../static/js/app/empleados/agregar_empleado.js"></script>  
 </head>
-<%session.setAttribute("titulo","AGREGAR NOMINA");%>
 
 <body>
 	<div class="container">
@@ -39,13 +38,24 @@
 					 		<td>FECHA DE NACIMIENTO<input id='fechaNacimiento' name='fechaNacimiento' type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>EDAD<input id='edad' name='edad' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>SEXO<input id='sexo' name='sexo' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-					 		<td>PAIS ORIGEN<select id='paisOrigen' name='paisOrigen' type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></select></td>
+							<td>PAIS ORIGEN<select id='paisOrigen' name='paisOrigen' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 						<option>MEXICO</option>
+					 						<option>E.U.A</option>
+					 						<option>CANADA</option>
+					 						
+					 		</select></td>					 	
 					 	</tr>					  						
 					</table>
 					 <table>
 					  	<tr>					 	
 					 		<td>NACIONALIDAD<input id='nacionalidad' name='nacionalidad' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-					 		<td>ESTADO CIVIL<select id='estadoCivil' name='estadoCivil' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></select></td>
+							<td>ESTADO CIVIL<select id='estadoCivil' name='estadoCivil' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 						<option>SOLTERO(A)</option>
+					 						<option>CASADO(A)</option>
+					 						<option>DIVORCIADO(A)</option>
+					 						<option>UNION LIBRE</option>
+					 			
+					 		</select></td>					 		
 					 		<td>CORREO ELECTRONICO<input id='correoElectronico' name='correoElectronico' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>					  						
 					</table>
@@ -66,8 +76,41 @@
 					 		<td>COLONIA<input id='colonia' name='colonia' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>CODIGO POSTAL<input id='codPostal' name='codPostal' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>MUNICIPIO O DELEGACION<input id='municipioDel' name='municipioDel' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-					 		<td>ESTADO<select id='estado' name='estado' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></select></td>
-					 	</tr>					  						
+							<td>ESTADO<select id='estado' name='estado' type="text" class="form-control">
+		  							<option>AGUASCALIENTES</option>
+		  							<option>BAJA CALIFORNIA</option>
+		  							<option>BAJA CALIFORNIA SUR</option>
+		  							<option>CAMPECHE</option>
+		  							<option>CHIAPAS</option>
+		  							<option>CHIHUAHUA</option>
+		  							<option>COAHUILA</option>
+		  							<option>COLIMA</option>
+		  							<option>DISTRITO FEDERAL</option>
+		  							<option>DURANGO</option>
+		  							<option>GUANAJUATO</option>
+		  							<option>GUERRERO</option>
+		  							<option>HIDALGO</option>
+		  							<option>JALISCO</option>
+		  							<option>MEXICO</option>
+		  							<option>MICHOACAN</option>
+		  							<option>MORELOS</option>
+		  							<option>NAYARIT</option>
+		  							<option>NUEVO LEON</option>
+		  							<option>OAXACA</option>
+		  							<option>PUEBLA</option>
+		  							<option>QUERETARO</option>
+		  							<option>QUINTANA ROO</option>
+		  							<option>SAN LUIS POTOSI</option>
+		  							<option>SINALOA</option>
+		  							<option>SONORA</option>
+		  							<option>TABASCO</option>
+		  							<option>TAMAULIPAS</option>
+		  							<option>TLAXCALA</option>
+		  							<option>VERACRUZ</option>
+		  							<option>YUCATAN</option>
+		  							<option>ZACATECAS</option>
+							</select></td>					 	
+						</tr>					  						
 					</table>
 					<table>
 						<tr>
@@ -95,9 +138,17 @@
 						</tr>
 					  	<tr>				 		
 					 		<td>NUMERO DE CUENTA<input id='numCuenta' name='numCuenta' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-					 		<td>BANCO<select id='banco' name='banco' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></select></td>
-					 		<td>TIPO DE PAGO<select id='tipoPago' name='tipoPago' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></select></td>
-					 		
+					 		<td>BANCO<select id='banco' name='banco' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 			     <option>BANCOMER VBBA</option>
+					 			     <option>BANAMEX</option>
+					 			     <option>SCOTIANK BANK INVERLAT</option>
+					 			
+					 		</select></td>
+					 		<td>TIPO DE PAGO<select id='tipoPago' name='tipoPago' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 				<option>EFECTIVO</option>
+					 				<option>CHEQUE</option>
+					 				
+					 		</select></td>
 					 	</tr>					  						
 					</table>				  						
 					<table>
@@ -130,6 +181,30 @@
 					</table>				  						
 				<br>
 				<br>
+				<table width=900px>
+					<tr>
+						<td>NOMINAS ASIGNADAS</td>
+					</tr>
+				</table>
+				<table border=2>
+					   	<tr>
+						  		<td>
+							 		<button type="button" class="btn btn-success" onclick="agregarNominaAEmpleado();">AÑADIR</button>
+									<button type="button" class="btn btn-success" onclick="eliminarObjetoJS();">ELIMINAR</button>
+									<button type="button" class="btn btn-success" onclick="editarNominaAEmpleado();">EDITAR</button>					 			
+					 			<br>
+									<table name="tablanominasasignadas" id="tablanominasasignadas">
+										<tr>
+											<td>NÓMINA</td>
+											<td>ESTATUS</td>
+											<td>¿Eliminar?</td>
+										</tr>
+									 </table>
+									 <input type="text" id="nominasNum" value="0"/>
+							 	</td>
+					 		</tr>
+					 </table>
+							
 				<!-- /.col-lg-6 -->						
 				 <div class="input-group">      
 			     	 <span>
@@ -141,7 +216,164 @@
 			</div>
 			</div>
 	  </div>
-	<div id='resultadoGuardar'></div>
+		<div id="divSeleccionNominaParaEmpleado"
+				title="SELECCIONE UNA N&#211;MINA PARA ASIGNAR" style="display: none" >
+				<div id="tablaSelNominas">
+					<table cellpadding="0" cellspacing="0" border="0" class="display"
+						id="tablaNominas">
+						<thead>
+							<tr class="odd gradeA">
+								<th>ID</th>
+								<th>NOMBRE CORTO</th>
+								<th>ESQUEMA</th>
+								<th>PATRONA</th>
+								<th>INTERMEDIARIA</th>
+								<th>PERIODICIDAD</th>
+								<th>TIPO PAGO</th>
+								<th>CLASE</th>
+								<th></th>
+							</tr>
+						<tbody>
+						</tbody>
+						</thead>
+					</table>	
+				</div>
+			</div>
+
+			<div id="tablaFormNominas" title="INGRESE LOS DATOS NÓMINA-EMPLEADO" style="display: none" >
+				<table>					
+				 	<tr>
+				 		<td>FECHA DE INGRESO<input id='fechaingresoformnomina' name='fechaingresoformnomina' type="text" class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>ESTATUS<select id='estatusformnomina' name='estatusformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 				<option value="1">ACTIVO</option>
+				 				<option value="2">BAJA</option>
+				 			</select>
+				 		</td>
+				 		<td>TIPO SALARIO<select id='tiposalarioformnomina' name='tiposalarioformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 				<option value="1">SALARIO 1</option>
+				 			</select>
+				 		</td>					 			
+					</tr>
+					<tr>
+				 		<td>FECHA DE BAJA<input id='fechabajaformnomina' name='fechabajaformnomina' type="text" class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>TIPO CONTRATO<select id='tipocontratoformnomina' name='tipocontratoformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 				<option value="1">TIPO 1</option>
+				 			</select>
+				 		</td>
+				 		<td>FECHA DE VENCIMIENTO<input id='fechavencimientoformnomina' name='fechavencimientoformnomina' type="text" class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
+					</tr>
+					<tr>
+						<td>SUELDO MENSUAL<input id='sueldomensualformnomina' name='sueldomensualformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>SUELDO DIARIO<input id='sueldodiarioformnomina' name='sueldodiarioformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>SUELDO DIARIO INTEGRADO<input id='sueldodiariointformnomina' name='sueldodiariointformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
+					</tr>
+					<tr>
+				 		<td>LOTE MOVIMIENTO ALTA IMSS<input id='loteimssformnomina' name='loteimssformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>PLAZA DE TRABAJO<select id='plazatrabajoformnomina' name='plazatrabajoformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 				<option value="PLAZA 1">PLAZA 1</option>
+				 			</select>
+				 		</td>
+				 		<td>NÚMERO TRABAJADOR CLIENTE<input id='numtrabajadorclienteoformnomina' name='numtrabajadorclienteoformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
+					</tr>
+					<tr>
+				 		<td>¿TIENE OTRO PATRÓN?<select id=otropatronformnomina name='otropatronformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 				<option value="SI">SI</option>
+				 				<option value="SI">NO</option>
+				 			</select>
+				 		</td>
+				 		<td>NOMBRE OTRO PATRÓN<input id='nombreotropatronformnomina' name='nombreotropatronformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>RFC<input id='rfcnformnomina' name='rfcnformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
+					</tr>
+					<tr>
+						<td>REQUIERE DOMICILIO DE TRABAJO (PERMANENCIAS)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+				 		<td>CALLE<input id='calleformnomina' name='calleformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>NUM EXT<input id='numextformnomina' name='numextformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>NUM INT<input id='numintformnomina' name='numintformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
+					</tr>
+					<tr>
+				 		<td>CODIGO POSTAL<input id='cpformnomina' name='cpformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>nomasignadavolverhidden:<input id='idnominaformnomina' name='idnominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>nomasignadavolverhidden:<input id='nombrenominaformnomina' name='nombrenominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
+					</tr>
+					<tr>
+				 		<td>COLONIA<input id='coloniaformnomina' name='coloniaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>MUNICIPIO O DELEGACIÓN<input id='mundelformnomina' name='mundelformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>ESTADO<select id='estadoformnomina' name='estadoformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+									<option>AGUASCALIENTES</option>
+		  							<option>BAJA CALIFORNIA</option>
+		  							<option>BAJA CALIFORNIA SUR</option>
+		  							<option>CAMPECHE</option>
+		  							<option>CHIAPAS</option>
+		  							<option>CHIHUAHUA</option>
+		  							<option>COAHUILA</option>
+		  							<option>COLIMA</option>
+		  							<option>DISTRITO FEDERAL</option>
+		  							<option>DURANGO</option>
+		  							<option>GUANAJUATO</option>
+		  							<option>GUERRERO</option>
+		  							<option>HIDALGO</option>
+		  							<option>JALISCO</option>
+		  							<option>MEXICO</option>
+		  							<option>MICHOACAN</option>
+		  							<option>MORELOS</option>
+		  							<option>NAYARIT</option>
+		  							<option>NUEVO LEON</option>
+		  							<option>OAXACA</option>
+		  							<option>PUEBLA</option>
+		  							<option>QUERETARO</option>
+		  							<option>QUINTANA ROO</option>
+		  							<option>SAN LUIS POTOSI</option>
+		  							<option>SINALOA</option>
+		  							<option>SONORA</option>
+		  							<option>TABASCO</option>
+		  							<option>TAMAULIPAS</option>
+		  							<option>TLAXCALA</option>
+		  							<option>VERACRUZ</option>
+		  							<option>YUCATAN</option>
+		  							<option>ZACATECAS</option>
+							</select>					 		
+				 		</td>				 							 		
+					</tr>
+					<tr>
+				 		<td>SUMINISTROS<select id='suministrosformnomina' name='suministrosformnomina'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 				<option value="SUM1">SUM1</option>
+				 			</select>
+				 		</td>
+						<td>ACTIVIDADES<select id='actividadesformnomina' name='actividadesformnomina'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+								<option value="ACTIV1">ACTIV1</option>
+							</select>
+						</td>
+				 		<td>PUESTOS<select id='puestosformnomina' name='puestosformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 				<option value="PUESTO1">PUESTO1</option>
+				 			</select>
+				 		</td>					 		
+					</tr>							
+					<tr>
+						 <td></td>
+						 <td>SERVICIOS<select id='serviciosformnomina' name='serviciosformnomina'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+								<option value="SERV1">SERV1</option>
+								<option value="SERV2">SERV2</option>
+						 	</select>
+						 </td>
+						 <td>ÁREA<select id='areaformnomina' name='areaformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+								<option value="AREA1">AREA1</option>	
+							</select>						 
+						 </td>					 		
+					</tr>
+						
+					<tr>
+						<td></td>
+						<td><button type="button" class="btn btn-success" onclick="agregarObjetoJS();">ACEPTAR</button></td>
+						<td><button type="button" class="btn btn-success" onclick="hideNominaForm();">CANCELAR</button></td>
+					</tr>
+				</table>
+			</div>
+
+		<div id='resultadoGuardar'></div>
 		<jsp:include page="../common/footer.jsp"/>	
 </body>
 </html>

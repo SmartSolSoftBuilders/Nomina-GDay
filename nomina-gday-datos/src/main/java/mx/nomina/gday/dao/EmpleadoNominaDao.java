@@ -3,7 +3,7 @@ package mx.nomina.gday.dao;
 import mx.nomina.gday.modelo.EmpleadoNomina;
 
 public interface EmpleadoNominaDao {
-
+	public int agregarEmpleadoNomina(EmpleadoNomina empleadoNomina);
 	EmpleadoNomina AñadirEmpleadoNomina();
 	EmpleadoNomina BajaEmpleadoEnNomina();
 	EmpleadoNomina ModficarDatosEnNomina();
