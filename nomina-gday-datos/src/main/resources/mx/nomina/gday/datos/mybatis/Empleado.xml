@@ -83,7 +83,7 @@
 	</select> 
 	
 	<!-- Insert para guardar Nomina-->
-	<insert id="agregarEmpleado" parameterType="Empleado" keyProperty="id">
+	<insert id="agregarEmpleado" parameterType="Empleado" >
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
   		   	SELECT nextVal('sec_empleado')
   		</selectKey>
@@ -109,10 +109,9 @@
    	 		#{docCompEst}, #{docCorreo}, #{docClabe}, #{docPreafiliacion}, #{cuenta}, #{banco}, 
    	 		#{tipoPago}, #{descInfonavitVsmg}, #{desInfonavitPorc}, #{descInfonavitImp}, #{descFonacotPago}, #{descFonacotNum}, 
    	 		#{pensionAlimImp}, #{pensionAlimPorc}, #{pensionAlimAcred}, #{pensionAlimObs}, #{noCredInfonavit});
-     	
-	</insert>
+	</insert> 
 	
-	<!-- Update para actualizar el Empleado --> 
+	<!-- Update par actualizar el Empleado --> 
 <update id="actualizarEmpleado" parameterType="Empleado">
 	UPDATE "EMPLEADO"
    		SET "NO_CONTROL"=#{noControl}, "NSS"=#{nss}, "CURP"=#{curp}, "APELLIDO_PATERNO"=#{apellidoPaterno}, 

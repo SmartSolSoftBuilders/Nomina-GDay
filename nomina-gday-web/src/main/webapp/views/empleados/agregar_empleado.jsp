@@ -180,7 +180,6 @@
 					 	</tr>					  						
 					</table>				  						
 				<br>
-				<br>
 				<table width=900px>
 					<tr>
 						<td>NOMINAS ASIGNADAS</td>
@@ -197,7 +196,7 @@
 										<tr>
 											<td>NÓMINA</td>
 											<td>ESTATUS</td>
-											<td>¿Eliminar?</td>
+											<td>Seleccionar</td>
 										</tr>
 									 </table>
 									 <input type="text" id="nominasNum" value="0"/>
@@ -243,10 +242,10 @@
 			<div id="tablaFormNominas" title="INGRESE LOS DATOS NÓMINA-EMPLEADO" style="display: none" >
 				<table>					
 				 	<tr>
-				 		<td>FECHA DE INGRESO<input id='fechaingresoformnomina' name='fechaingresoformnomina' type="text" class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>FECHA DE INGRESO<input id='fechaingresoformnomina' name='fechaingresoformnomina'  class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 				 		<td>ESTATUS<select id='estatusformnomina' name='estatusformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-				 				<option value="1">ACTIVO</option>
-				 				<option value="2">BAJA</option>
+				 				<option value="ACTIVO">ACTIVO</option>
+				 				<option value="BAJA">BAJA</option>
 				 			</select>
 				 		</td>
 				 		<td>TIPO SALARIO<select id='tiposalarioformnomina' name='tiposalarioformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
@@ -255,12 +254,12 @@
 				 		</td>					 			
 					</tr>
 					<tr>
-				 		<td>FECHA DE BAJA<input id='fechabajaformnomina' name='fechabajaformnomina' type="text" class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>FECHA DE BAJA<input id='fechabajaformnomina' name='fechabajaformnomina'  class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 				 		<td>TIPO CONTRATO<select id='tipocontratoformnomina' name='tipocontratoformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 				<option value="1">TIPO 1</option>
 				 			</select>
 				 		</td>
-				 		<td>FECHA DE VENCIMIENTO<input id='fechavencimientoformnomina' name='fechavencimientoformnomina' type="text" class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
+				 		<td>FECHA DE VENCIMIENTO<input id='fechavencimientoformnomina' name='fechavencimientoformnomina' class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
 					</tr>
 					<tr>
 						<td>SUELDO MENSUAL<input id='sueldomensualformnomina' name='sueldomensualformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>

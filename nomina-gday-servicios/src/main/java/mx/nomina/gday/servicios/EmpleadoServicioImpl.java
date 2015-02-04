@@ -25,7 +25,8 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 		
 		System.out.println("Agregando empleado service"+ empleado);
 		int valor=this.empleadoDao.agregarEmpleado(empleado);
-		System.out.println("VALOR DEL EMPLEADO OBTENIDO"+valor);
+		valor=Integer.parseInt(""+empleado.getId());
+		System.out.println("VALOR DEL EMPLEADO OBTENIDO:"+valor);
 		return valor;
 	}
 		
@@ -92,4 +93,11 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 	}	
 	
 			
+	@Override
+	public EmpleadoNomina obtenerEmpleadoNominaByIds(
+			EmpleadoNomina empleadoNomina) {
+		// TODO Auto-generated method stub
+		return this.empleadoNominaDao.obtenerEmpleadoNominaByIdNominaEmpleado(empleadoNomina);
+	}
+
 }

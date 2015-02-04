@@ -191,8 +191,8 @@
             "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
             "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
             "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA")
- 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, #{fechaIngreso},#{estatus}, #{tipoSalario}, 
-            #{fechaBaja}, #{loteMovImssAlta}, #{fechaVencimiento}, #{sueldoMensual}, 
+ 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
+            date(#{fechaBaja}), #{loteMovImssAlta}, date(#{fechaVencimiento}), #{sueldoMensual}, 
             #{salarioDiarioInt}, #{plazaTrabajo}, #{numeroTrabajadorCliente}, 
             #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
             #{calle}, #{numExterior}, #{numInterior}, #{colonia}, #{codigoPostal}, 

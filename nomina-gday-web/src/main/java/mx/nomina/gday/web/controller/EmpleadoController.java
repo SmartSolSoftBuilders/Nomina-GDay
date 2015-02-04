@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import mx.nomina.gday.modelo.Empleado;
+import mx.nomina.gday.modelo.EmpleadoNomina;
 import mx.nomina.gday.modelo.Grupo;
 import mx.nomina.gday.modelo.Nomina;
 import mx.nomina.gday.servicios.EmpleadoServicio;
@@ -25,17 +26,34 @@ public class EmpleadoController {
 	
 	@Autowired
 	private EmpleadoServicio empleadoServicio;
+
+
+	//Controller Guardar Grupo
+	@RequestMapping(value="/guardarempleado",method = RequestMethod.POST)
+	@ResponseBody
+    public int guardarEmpleado(@ModelAttribute(value="grupo") Empleado empleado, BindingResult result){
+		 	System.out.println("Guardando empleado"+ empleado);
+		 	return empleadoServicio.agregarEmpleado(empleado);
+	}
 	
 	//Controller Guardar Grupo
-		 @RequestMapping(value="/guardarempleado",method = RequestMethod.POST)
-		 @ResponseBody
-		    public boolean guardarEmpleado(@ModelAttribute(value="grupo") Empleado empleado, BindingResult result){
-			 	System.out.println("Guardando empleado"+ empleado);
-			 	empleadoServicio.agregarEmpleado(empleado);
-			 	
-				return true;
-			 
+	@RequestMapping(value="/guardarempleadonomina",method = RequestMethod.POST)
+	@ResponseBody
+    public boolean guardarEmpleadoNomina(@ModelAttribute(value="empleadoNomina") EmpleadoNomina empleadoNomina, BindingResult result){
+		 	System.out.println("Guardando empleado nomina"+ empleadoNomina.getNomina().getIdNomina());
+		 	empleadoServicio.agregarEmpleadoNomina(empleadoNomina);
+		return true;	 
 	}
+
+	//Controller Guardar Grupo
+	@RequestMapping(value="/guardareditarempleadonomina",method = RequestMethod.POST)
+	@ResponseBody
+    public boolean guardarEditarEmpleadoNomina(@ModelAttribute(value="empleadoNomina") EmpleadoNomina empleadoNomina, BindingResult result){
+		 	System.out.println("Guardando empleado nomina"+ empleadoNomina.getNomina().getIdNomina());
+		 	empleadoServicio.agregarEmpleadoNomina(empleadoNomina);
+		return true;	 
+	}
+
 	
 	// Controller que permite Actualizar los datos del Empleado a Editar
 	@RequestMapping(value = "/modificaempleado", method = RequestMethod.POST)
@@ -46,8 +64,9 @@ public class EmpleadoController {
 
 		try {
 			System.out.println("Controller Actualizar Empleado");
+			System.out.println("Controller Actualizar Empleado"+empleado.getPaisOrigen());
 			empleadoServicio.actualizarEmpleado(empleado);
-			;
+	
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,7 +96,7 @@ public class EmpleadoController {
 				empleadosTmp2.add(tmp.get(i).getNombre());
 				empleadosTmp2.add(tmp.get(i).getCurp());
 				empleadosTmp2.add(tmp.get(i).getNss());
-				empleadosTmp2.add("<a href='#' onclick='obtenerEmpleado("+tmp.get(i).getIdEmpleado()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
+				empleadosTmp2.add("<a href='#' onclick='showEditarEmpleado("+tmp.get(i).getIdEmpleado()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
 				empleadosTmp.add(empleadosTmp2);
 			}
 			return empleadosTmp;
@@ -126,4 +145,14 @@ public class EmpleadoController {
 		 	return this.empleadoServicio.obtenerEmpleadoById(empleado.getIdEmpleado());
 		 	
 		}
+		//Controller que permite obtener el Empleado por idEmpleado
+	 @RequestMapping(value="/getnominasempbyid",method = RequestMethod.POST)
+	    @ResponseBody
+	    public EmpleadoNomina obtenerNominaEmpleadoById(@ModelAttribute(value="Empleado") EmpleadoNomina empleadoNomina, BindingResult result){   
+		 	System.out.println("Empleado por id"+ empleadoNomina.getEmpleado().getIdEmpleado());
+		 	System.out.println("Empleado por id"+ empleadoNomina.getNomina().getIdNomina());
+		 	return this.empleadoServicio.obtenerEmpleadoNominaByIds(empleadoNomina);
+		 	
+		}	  
+	 
 }

@@ -106,8 +106,12 @@
 	</select>
 	
 	<!-- Select para obtener la lista de todos las Nominas registradas -->
-		<select id="obtenerNominas" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
+	<select id="obtenerNominas" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
 		select * from "NOMINA" 	 	
+	</select>
+	
+	<select id="obtenerNominasByIdEmpleado" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
+		SELECT * FROM "NOMINA" WHERE "ID_NOMINA" IN (SELECT "ID_NOMINA" FROM "EMPLEADO_NOMINA" WHERE "ID_EMPLEADO"=#{id}) 	 	
 	</select>  
 
 	<!-- Insert para guardar Nomina-->

@@ -2,6 +2,7 @@ package mx.nomina.gday.servicios;
 
 import java.util.List;
 
+import mx.nomina.gday.modelo.EmpleadoNomina;
 import mx.nomina.gday.modelo.Nomina;
 import mx.nomina.gday.modelo.RazonSocial;
 
@@ -13,5 +14,5 @@ public interface NominaServicio {
 	public List<Nomina> obtenerNominas();
 	public List obtenerDatosCombo();
 	public List<RazonSocial> obtenerRazonesSocialesByIdNomina(Integer idNomina);
-
+	public List<Nomina> obtenerNominasByIdEmpleado(Integer idEmpleado);
 }

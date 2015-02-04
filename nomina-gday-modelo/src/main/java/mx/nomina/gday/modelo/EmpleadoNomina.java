@@ -15,6 +15,7 @@ public class EmpleadoNomina extends BaseModelo{
 			private String loteMovImssAlta;
 			private String fechaVencimiento;
 			private double sueldoMensual;
+			private double sueldoDiario;
 			private double salarioDiarioInt;
 			private String plazaTrabajo;
 			private String numeroTrabajadorCliente;
@@ -32,55 +33,14 @@ public class EmpleadoNomina extends BaseModelo{
 			private int loteMovImssBaja;
 			private boolean aplicaFiniquito;
 			private double montoFiniquito;
+			private String suministros;
+			private String actividades;
+			private String puestos;
+			private String servicios;
+			private String tipoContrato;
 			
 			public EmpleadoNomina(){
 				
-			}
-
-			public EmpleadoNomina(Nomina nomina, Empleado empleado,
-					Puesto puesto, Departamento departamento, Area area,
-					Proceso proceso, String fechaIngreso, String estatus,
-					String tipoSalario, String fechaBaja,
-					String loteMovImssAlta, String fechaVencimiento,
-					double sueldoMensual, double salarioDiarioInt,
-					String plazaTrabajo, String numeroTrabajadorCliente,
-					boolean otroPatron, String rfcOtroPatron,
-					String nombreOtroPatron, boolean permanencia, String calle,
-					String numExterior, String numInterior, String colonia,
-					String codigoPostal, String municipioDel,
-					String entFederativa, int loteMovImssBaja,
-					boolean aplicaFiniquito, double montoFiniquito) {
-				super();
-				this.nomina = nomina;
-				this.empleado = empleado;
-				this.puesto = puesto;
-				this.departamento = departamento;
-				this.area = area;
-				this.proceso = proceso;
-				this.fechaIngreso = fechaIngreso;
-				this.estatus = estatus;
-				this.tipoSalario = tipoSalario;
-				this.fechaBaja = fechaBaja;
-				this.loteMovImssAlta = loteMovImssAlta;
-				this.fechaVencimiento = fechaVencimiento;
-				this.sueldoMensual = sueldoMensual;
-				this.salarioDiarioInt = salarioDiarioInt;
-				this.plazaTrabajo = plazaTrabajo;
-				this.numeroTrabajadorCliente = numeroTrabajadorCliente;
-				this.otroPatron = otroPatron;
-				this.rfcOtroPatron = rfcOtroPatron;
-				this.nombreOtroPatron = nombreOtroPatron;
-				this.permanencia = permanencia;
-				this.calle = calle;
-				this.numExterior = numExterior;
-				this.numInterior = numInterior;
-				this.colonia = colonia;
-				this.codigoPostal = codigoPostal;
-				this.municipioDel = municipioDel;
-				this.entFederativa = entFederativa;
-				this.loteMovImssBaja = loteMovImssBaja;
-				this.aplicaFiniquito = aplicaFiniquito;
-				this.montoFiniquito = montoFiniquito;
 			}
 
 			public Nomina getNomina() {
@@ -185,6 +145,14 @@ public class EmpleadoNomina extends BaseModelo{
 
 			public void setSueldoMensual(double sueldoMensual) {
 				this.sueldoMensual = sueldoMensual;
+			}
+
+			public double getSueldoDiario() {
+				return sueldoDiario;
+			}
+
+			public void setSueldoDiario(double sueldoDiario) {
+				this.sueldoDiario = sueldoDiario;
 			}
 
 			public double getSalarioDiarioInt() {
@@ -321,8 +289,103 @@ public class EmpleadoNomina extends BaseModelo{
 
 			public void setMontoFiniquito(double montoFiniquito) {
 				this.montoFiniquito = montoFiniquito;
-			}			
+			}
+
+			public String getSuministros() {
+				return suministros;
+			}
+
+			public void setSuministros(String suministros) {
+				this.suministros = suministros;
+			}
+
+			public String getActividades() {
+				return actividades;
+			}
+
+			public void setActividades(String actividades) {
+				this.actividades = actividades;
+			}
+
+			public String getPuestos() {
+				return puestos;
+			}
+
+			public void setPuestos(String puestos) {
+				this.puestos = puestos;
+			}
+
+			public String getServicios() {
+				return servicios;
+			}
+
+			public void setServicios(String servicios) {
+				this.servicios = servicios;
+			}
 			
 			
 
+			public String getTipoContrato() {
+				return tipoContrato;
+			}
+
+			public void setTipoContrato(String tipoContrato) {
+				this.tipoContrato = tipoContrato;
+			}
+
+			public EmpleadoNomina(Nomina nomina, Empleado empleado,
+					Puesto puesto, Departamento departamento, Area area,
+					Proceso proceso, String fechaIngreso, String estatus,
+					String tipoSalario, String fechaBaja,
+					String loteMovImssAlta, String fechaVencimiento,
+					double sueldoMensual, double sueldoDiario,
+					double salarioDiarioInt, String plazaTrabajo,
+					String numeroTrabajadorCliente, boolean otroPatron,
+					String rfcOtroPatron, String nombreOtroPatron,
+					boolean permanencia, String calle, String numExterior,
+					String numInterior, String colonia, String codigoPostal,
+					String municipioDel, String entFederativa,
+					int loteMovImssBaja, boolean aplicaFiniquito,
+					double montoFiniquito, String suministros,
+					String actividades, String puestos, String servicios,String tipoContrato) {
+				super();
+				this.nomina = nomina;
+				this.empleado = empleado;
+				this.puesto = puesto;
+				this.departamento = departamento;
+				this.area = area;
+				this.proceso = proceso;
+				this.fechaIngreso = fechaIngreso;
+				this.estatus = estatus;
+				this.tipoSalario = tipoSalario;
+				this.fechaBaja = fechaBaja;
+				this.loteMovImssAlta = loteMovImssAlta;
+				this.fechaVencimiento = fechaVencimiento;
+				this.sueldoMensual = sueldoMensual;
+				this.sueldoDiario = sueldoDiario;
+				this.salarioDiarioInt = salarioDiarioInt;
+				this.plazaTrabajo = plazaTrabajo;
+				this.numeroTrabajadorCliente = numeroTrabajadorCliente;
+				this.otroPatron = otroPatron;
+				this.rfcOtroPatron = rfcOtroPatron;
+				this.nombreOtroPatron = nombreOtroPatron;
+				this.permanencia = permanencia;
+				this.calle = calle;
+				this.numExterior = numExterior;
+				this.numInterior = numInterior;
+				this.colonia = colonia;
+				this.codigoPostal = codigoPostal;
+				this.municipioDel = municipioDel;
+				this.entFederativa = entFederativa;
+				this.loteMovImssBaja = loteMovImssBaja;
+				this.aplicaFiniquito = aplicaFiniquito;
+				this.montoFiniquito = montoFiniquito;
+				this.suministros = suministros;
+				this.actividades = actividades;
+				this.puestos = puestos;
+				this.servicios = servicios;
+				this.tipoContrato=tipoContrato;
+			}
+			
+						
 }

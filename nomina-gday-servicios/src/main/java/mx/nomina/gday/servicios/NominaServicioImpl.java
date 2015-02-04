@@ -11,6 +11,7 @@ import mx.nomina.gday.dao.EsquemaDao;
 import mx.nomina.gday.dao.NominaDao;
 import mx.nomina.gday.dao.RazonSocialDao;
 import mx.nomina.gday.dao.TipoCalendarioDao;
+import mx.nomina.gday.modelo.EmpleadoNomina;
 import mx.nomina.gday.modelo.Nomina;
 import mx.nomina.gday.modelo.RazonSocial;
 
@@ -105,5 +106,22 @@ public class NominaServicioImpl implements NominaServicio {
 	}
 	
 	
+	//Metodo que obtiene la lista de todas las Nominas registradas
+	@Override
+	public List<Nomina> obtenerNominasByIdEmpleado(Integer idEmpleado) {
+
+		System.out.println("Nomina Service");
+		try {
+			 
+				List<Nomina> tmp=this.nominaDao.obtenerNominasByIdEmpleado(idEmpleado);
+				System.out.println("Lista de Nominas"+tmp.size());
+					return tmp;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 
 }

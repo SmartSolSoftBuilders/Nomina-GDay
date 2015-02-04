@@ -6,6 +6,8 @@ import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 
+import mx.nomina.gday.modelo.Empleado;
+import mx.nomina.gday.modelo.EmpleadoNomina;
 import mx.nomina.gday.modelo.Grupo;
 import mx.nomina.gday.modelo.Nomina;
 import mx.nomina.gday.modelo.RazonSocial;
@@ -50,7 +52,6 @@ public class NominaController {
 		 }
 		 
 		//MODIFICAR
-		 
 		//Controller que muestra la lista de Nomina y permite la Edicion del mismo
 		 @RequestMapping(value="/getnominas",method = RequestMethod.POST)
 		    @ResponseBody
@@ -83,7 +84,40 @@ public class NominaController {
 				e.printStackTrace();
 			}
 			  return null;
+		}
+		//Controller que muestra la lista de nóminas para seleccionarla a un empleado
+		@RequestMapping(value="/getnominasemp",method = RequestMethod.POST)
+		    @ResponseBody
+		    public List obtenerNominasEmpleado(){    	
+			  System.out.println("Controller Nomina");
+			  try {
+				List<Nomina> tmp =  this.nominaServicio.obtenerNominas();
+				System.out.println("tmp"+tmp.size());
+				List nominasTmp = new ArrayList();
+				List nominasTmp2 = new ArrayList<String>();
+
+				for (int i = 0; i < tmp.size(); i++) {
+					nominasTmp2 = new ArrayList<String>();
+					System.out.println("tmp"+tmp.get(i));
+					nominasTmp2.add(tmp.get(i).getIdNomina());
+					nominasTmp2.add(tmp.get(i).getNombreCorto());
+					nominasTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
+					nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreCortoPatrona());
+					nominasTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
+					nominasTmp2.add(tmp.get(i).getPeriodicidad());
+					nominasTmp2.add(tmp.get(i).getTipoPago());
+					nominasTmp2.add(tmp.get(i).getClaseRiesgo());
+					nominasTmp2.add("<a href='#' onclick='showNominaForm("+tmp.get(i).getIdNomina()+",\""+tmp.get(i).getNombreCorto()+"\")'><img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
+					nominasTmp.add(nominasTmp2);
+				}
+				return nominasTmp;
+
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
+			  return null;
+		}
+
 
 		//Controller que permite Actualizar los datos de la Nomina a Editar
 		 @RequestMapping(value="/modificanomina",method = RequestMethod.POST)
@@ -133,4 +167,14 @@ public class NominaController {
 			 	System.out.println("Controller Datos del combo");
 				return this.nominaServicio.obtenerDatosCombo();
 			}
+		 
+		 @RequestMapping(value="/obtenernominasbyempleado",method = RequestMethod.POST)
+		    @ResponseBody
+		    public List<Nomina> obtenerNominasByEmpleadoById(@ModelAttribute(value="Empleado") Empleado empleado, BindingResult result){   
+			 	System.out.println("Empleado por id"+ empleado.getIdEmpleado());
+			 	return this.nominaServicio.obtenerNominasByIdEmpleado(empleado.getIdEmpleado());
+			 	
+			}
+		
+
 }

@@ -56,9 +56,7 @@ function guardarEmpleado() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					//guardarNominasEmpleado();
-					//mensajeRedireccion("EMPLEADO CREADO CORRECTAMENTE.","../empleados/empleados.jsp");
-					mensaje("EMPLEADO CREADO CORRECTAMENTE.");
+					guardarNominasEmpleado(response);					
 				},
 				error : function(response) {
 					$("#resultadoGuardar").html();
@@ -70,13 +68,60 @@ function cancelar(){
 	top.frames['main'].location="../empleados/empleados.jsp"; 	
 }
 
-function guardarNominasEmpleado(){
+function guardarNominasEmpleado(idEmpleado){
+	console.log("EMPLEADO GUARDADO:"+idEmpleado);
 	console.log("Nominas a guardar:");
 	console.log(nominasAsignadas);
 	for (var i=0; i<nominasAsignadas.length; i++){
-		
+		$.ajax({
+			data : {
+				"nomina.idNomina":nominasAsignadas[i][0],
+				"empleado.idEmpleado":idEmpleado,
+				"fechaIngreso":nominasAsignadas[i][1],
+				"estatus":nominasAsignadas[i][2],
+				"tipoSalario":nominasAsignadas[i][3],
+				"fechaBaja":nominasAsignadas[i][4],
+				"loteMovImssAlta":nominasAsignadas[i][5],
+				"fechaVencimiento":nominasAsignadas[i][6],
+				"sueldoMensual":nominasAsignadas[i][7],
+				"sueldoDiario":nominasAsignadas[i][8],
+				"sueldoDiarioInt":nominasAsignadas[i][9],
+				"loteMovImssAlta":nominasAsignadas[i][10],
+				"plazaTrabajo":nominasAsignadas[i][11],
+				"numeroTrabajadorCliente":nominasAsignadas[i][12],
+				"otroPatron":nominasAsignadas[i][13],
+				"nombreOtroPatron":nominasAsignadas[i][14],
+				"rfcOtroPatron":nominasAsignadas[i][15],
+				"calle":nominasAsignadas[i][16],
+				"numExterior":nominasAsignadas[i][17],
+				"numInterior":nominasAsignadas[i][18],
+				"codigoPostal":nominasAsignadas[i][19],
+				"colonia":nominasAsignadas[i][20],
+				"municipioDel":nominasAsignadas[i][21],
+				"entFederativa":nominasAsignadas[i][22],
+				"suministros":nominasAsignadas[i][23],
+				"actividades":nominasAsignadas[i][24],
+				"puestos":nominasAsignadas[i][25],
+				"servicios":nominasAsignadas[i][26],
+				"area.idArea":nominasAsignadas[i][27]
+				},
+			sync: true,
+			dataType : 'json',
+			url : '../../mvc/empleado/guardarempleadonomina',
+			type : 'post',
+			beforeSend : function() {
+			},
+			success : function(response) {
+				console.log("EMPLEADO CREADO CORRECTAMENTE.");
+			},
+			error : function(response) {
+				$("#resultadoGuardar").html();
+			}
+		});
 	}
-	
+	mensajeRedireccion("EMPLEADO CREADO CORRECTAMENTE.","../empleados/empleados.jsp");
+
+	//mensaje("EMPLEADO CREADO CORRECTAMENTE.");
 }
 
 //LOGICA PARA AGREGAR EMPLEADOS
@@ -130,8 +175,7 @@ function closeAllModal(){
 function agregarObjetoJS(){
 	var nominaAsignada=new Array();
 	//Asignamos cada valor del formulario de nomina-empleado
-	nominaAsignada.push($("#idnominaformnomina").val());
-	nominaAsignada.push($("#estatusformnomina").val());
+	nominaAsignada.push($("#idnominaformnomina").val());	
 	nominaAsignada.push($("#fechaingresoformnomina").val());
 	nominaAsignada.push($("#estatusformnomina").val());
 	nominaAsignada.push($("#tiposalarioformnomina").val());

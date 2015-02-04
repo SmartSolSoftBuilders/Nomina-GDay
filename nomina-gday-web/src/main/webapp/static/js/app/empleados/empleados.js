@@ -31,3 +31,7 @@ function showAgregarEmpleado(){
 	top.frames['main'].location="../empleados/agregar_empleado.jsp"; 	
 }
 
+
+function showEditarEmpleado(id){
+	top.frames['main'].location="../empleados/actualizar_empleado.jsp?id="+id; 	
+}
