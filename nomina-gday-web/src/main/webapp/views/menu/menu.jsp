@@ -57,7 +57,6 @@
               <ul class="dropdown-menu">
                 <li><a href="../nominas/nominas.jsp" target="main" >CONSULTAR NOMINAS</a></li>                
               <li><a href="../empleados/empleados.jsp" target="main" >CONSULTAR EMPLEADOS</a></li>     
-              <li><a href="../carga/carga.jsp" target="main" >CARGA</a></li>     
               </ul>
              </li>
 			<li><a href="gformato.html" target="ventana" style="color:#FFFFFF">GESTOR DE FORMATOS</a></li>
@@ -71,10 +70,6 @@
               </ul>
             </li>
 		</ul>
-	
-		
-		
-		
 	</div>
 </div>
 
