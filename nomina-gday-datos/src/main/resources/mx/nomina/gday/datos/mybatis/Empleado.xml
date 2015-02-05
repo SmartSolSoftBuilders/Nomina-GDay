@@ -83,7 +83,7 @@
 	</select> 
 	
 	<!-- Count para contar los empleados por NSS -->
-	<select id="obtenerCountIdEmpleadoByRfc" parameterType="String"  resultType="int">
+	<select id="obtenerCountIdEmpleadoByNss" parameterType="String"  resultType="int">
 		select count(*) from "EMPLEADO"	where "NSS"=#{nss};
 	</select>	
 	

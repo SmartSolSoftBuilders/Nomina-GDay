@@ -38,7 +38,7 @@ public class Empleado extends BaseModelo{
 	private String cuenta;
 	private String banco;
 	private String tipoPago;
-	private Integer noCredInfonavit;
+	private String noCredInfonavit;
 	private double descInfonavitVsmg;
 	private double desInfonavitPorc;
 	private double descInfonavitImp;
@@ -64,7 +64,7 @@ public class Empleado extends BaseModelo{
 			boolean docIfe, boolean docActNan, boolean docCurp, boolean docRfc,
 			boolean docComprobante, boolean docCompEst, boolean docCorreo,
 			boolean docClabe, boolean docPreafiliacion, String cuenta,
-			String banco, String tipoPago, Integer noCredInfonavit,
+			String banco, String tipoPago, String noCredInfonavit,
 			double descInfonavitVsmg, double desInfonavitPorc,
 			double descInfonavitImp, double descFonacotNum,
 			double descFonacotPago, double pensionAlimImp,
@@ -407,11 +407,11 @@ public class Empleado extends BaseModelo{
 		this.tipoPago = tipoPago;
 	}
 
-	public Integer getNoCredInfonavit() {
+	public String getNoCredInfonavit() {
 		return noCredInfonavit;
 	}
 
-	public void setNoCredInfonavit(Integer noCredInfonavit) {
+	public void setNoCredInfonavit(String noCredInfonavit) {
 		this.noCredInfonavit = noCredInfonavit;
 	}
 

@@ -104,7 +104,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     				empleado.setCuenta(datos.get(31));
     				empleado.setBanco(datos.get(32));
     				empleado.setTipoPago(datos.get(33));
-    				empleado.setNoCredInfonavit(Integer.parseInt(datos.get(34)));
+    				empleado.setNoCredInfonavit(datos.get(34));
     				empleado.setDescInfonavitVsmg(Double.parseDouble(datos.get(35)));
     				empleado.setDesInfonavitPorc(Double.parseDouble(datos.get(36)));
 					empleado.setDescInfonavitImp(Double.parseDouble(datos.get(37)));
@@ -117,21 +117,23 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     				
     				
 					System.out.println("GUARDANDO!123");
-
+					System.out.println("NSS"+empleado.getNss());
     				
     				int idEmpleadoTest=this.empleadoDao.obtenerCountIdEmpleadoByNss(empleado.getNss());
 					if (idEmpleadoTest==0){
-						System.out.println("<OTIKA>Empleado aún no dado de alta");
 						this.empleadoDao.agregarEmpleado(empleado);
-						Empleado idEmpleado=this.empleadoDao.obtenerEmpleadoById(empleado.getIdEmpleado());
-						if (idEmpleado.getIdEmpleado() != 0){
+						System.out.println("<OTIKA>Empleado aún no dado de alta"+empleado.getId());
+						
+						Long idEmpleado = empleado.getId();
+						if (idEmpleado!= 0){
 							System.out.println("Guardé al Empleado:"+idEmpleado+":"+empleado.getNombre());
-							empleado.setIdEmpleado(idEmpleado.getIdEmpleado());
+							empleado.setIdEmpleado(Integer.parseInt(""+idEmpleado));
 																										
 							if (datos.get(43)!="" && datos.get(43)!=null){
 								
 								EmpleadoNomina empleadoNomina = new EmpleadoNomina();
-								empleadoNomina.getEmpleado().setIdEmpleado(Integer.parseInt(datos.get(43)));
+								empleado.setIdEmpleado(Integer.parseInt(""+empleado.getId()));
+								empleadoNomina.setEmpleado(empleado);
 								empleadoNomina.setFechaIngreso(datos.get(44));
 								empleadoNomina.setEstatus(datos.get(45));
 								empleadoNomina.setTipoSalario(datos.get(46));
