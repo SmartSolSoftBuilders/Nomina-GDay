@@ -573,6 +573,8 @@ function editarObjetoJS () {
 }
 
 function guardarCambiosNominaEmpleado(url){
+if ($("#actualizarNominaEmpleadoForm").valid()){	
+
 	$.ajax({
 		sync: true,
 		data:{
@@ -625,6 +627,7 @@ function guardarCambiosNominaEmpleado(url){
 			alert(response);
 		}
 	});	
+  }
 	
 }
 
