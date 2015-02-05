@@ -82,6 +82,11 @@
 		select * from "EMPLEADO" where "ID_EMPLEADO"=#{idEmpleado} 	
 	</select> 
 	
+	<!-- Count para contar los empleados por NSS -->
+	<select id="obtenerCountIdEmpleadoByRfc" parameterType="String"  resultType="int">
+		select count(*) from "EMPLEADO"	where "NSS"=#{nss};
+	</select>	
+	
 	<!-- Insert para guardar Nomina-->
 	<insert id="agregarEmpleado" parameterType="Empleado" >
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
@@ -111,6 +116,7 @@
    	 		#{pensionAlimImp}, #{pensionAlimPorc}, #{pensionAlimAcred}, #{pensionAlimObs}, #{noCredInfonavit});
 	</insert> 
 	
+		 
 	<!-- Update par actualizar el Empleado --> 
 <update id="actualizarEmpleado" parameterType="Empleado">
 	UPDATE "EMPLEADO"
