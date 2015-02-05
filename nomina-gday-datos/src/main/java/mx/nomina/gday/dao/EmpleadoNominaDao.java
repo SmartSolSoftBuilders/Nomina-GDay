@@ -11,4 +11,6 @@ public interface EmpleadoNominaDao {
 	EmpleadoNomina RevertirUltimaAltaMasivaDeEmpleados();
 	EmpleadoNomina DescargarEnExcel();
 	public EmpleadoNomina obtenerEmpleadoNominaByIdNominaEmpleado(EmpleadoNomina empleadoNomina);
+	public int actualizarEmpleadoNomina(EmpleadoNomina empleadoNomina);
+	public int darBajaEmpleadoNomina(EmpleadoNomina empleadoNomina);
 }

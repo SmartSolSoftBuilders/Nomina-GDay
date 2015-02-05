@@ -443,6 +443,13 @@ function showEditarNominaForm(idNomina,nombre){
 
 }
 
+function shoBajaNominaForm(){
+	$("#tablaBajaFormNominas").dialog(({show: "slide", stack: false,
+		draggable: false,resizable: false,modal: true, width:960, height:900,
+		autoOpen: true}));	
+}
+
+
 function hideNominaForm(){
 	$("#tablaFormNominas").dialog("close");	
 	$("#divSeleccionNominaParaEmpleado").dialog("open");	
@@ -457,6 +464,8 @@ function setDataNominasEmpleado(data){
 	for (var i=0;i<data.length;i++){
 		document.getElementById("nombrenominaformnomina").value=data[i].nombreCorto;
 		document.getElementById("idnominaformnomina").value=data[i].idNomina;
+		document.getElementById("statnominaformnomina").value=data[i].estatus;
+		console.log(data[i]);
 		agregarObjetoJS();
 	}
 }
@@ -482,7 +491,7 @@ function agregarObjetoJS(){
     var cell2 = row.insertCell(1);
     var element2 = document.createElement("input");
     element2.type = "text";
-    element2.value="ACTIVO";
+    element2.value=		document.getElementById("statnominaformnomina").value;
     var att2 = document.createAttribute("readonly");
     element2.setAttributeNode(att2);
     cell2.appendChild(element2);
@@ -563,7 +572,7 @@ function editarObjetoJS () {
 
 }
 
-function guardarCambiosNominaEmpleado(){
+function guardarCambiosNominaEmpleado(url){
 	$.ajax({
 		sync: true,
 		data:{
@@ -597,7 +606,7 @@ function guardarCambiosNominaEmpleado(){
 				"servicios":$("#serviciosformnomina").val()
 		},
 		type:  'post',
-		url:   '../../mvc/empleado/guardareditarempleadonomina',
+		url:   url,
 		dataType:  'json',
 		beforeSend: function () {
 			$("#resultado").html("Procesando, espere por favor...");
@@ -607,7 +616,8 @@ function guardarCambiosNominaEmpleado(){
 	    $( "#demo" ).hide();
 		},
 		success:  function (data) {
-			mensaje("CAMBIOS REALIZADOS CON EXITO");
+			mensajeRedireccion("EMPLEADO CREADO CORRECTAMENTE.","../empleados/actualizar_empleado.jsp?id="+$("#idEmpleado").val());
+		//	mensajeRedireccion("CAMBIOS REALIZADOS CON EXITO");
 			console.log(data);
 		},
 		error:  function (response) {
@@ -616,4 +626,39 @@ function guardarCambiosNominaEmpleado(){
 		}
 	});	
 	
+}
+
+function darBajaNominaEmpleado(){
+	if (confirm ("Seguro que desea dar de baja al empleado de la nómina?")){
+		$.ajax({
+			sync: true,
+			data:{
+					"nomina.idNomina":document.getElementById("idnominaformnomina").value,
+					"empleado.idEmpleado":$("#idEmpleado").val(),
+					"fechaBaja":$("#fechabajaTmpformnomina").val(),					
+					"loteMovImssBaja":$("#loteimssbajaformnomina").val(),			
+					"aplicaFiniquito":$("#aplicafiniquitoformnomina").val(),
+					"montoFiniquito":$("#montofiniquitoformnomina").val()
+			},
+			type:  'post',
+			url:    '../../mvc/empleado/bajaempleadonomina',
+			dataType:  'json',
+			beforeSend: function () {
+				$("#resultado").html("Procesando, espere por favor...");
+		  	$( "#progressbar" ).progressbar({
+			      value: 75
+			    });	
+		    $( "#demo" ).hide();
+			},
+			success:  function (data) {
+				mensajeRedireccion("EMPLEADO DADO DE BAJA CORRECTAMENTE.","../empleados/actualizar_empleado.jsp?id="+$("#idEmpleado").val());
+			//	mensajeRedireccion("CAMBIOS REALIZADOS CON EXITO");
+				console.log(data);
+			},
+			error:  function (response) {
+				console.log(response);
+				alert(response);
+			}
+		});			
+	}
 }

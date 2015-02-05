@@ -15,6 +15,8 @@ public interface EmpleadoServicio {
 	public List<Empleado> obtenerEmpleados();
 	public List<Empleado> obtenerEmpleadosByIdNomina(Integer idNomina);
 	public EmpleadoNomina obtenerEmpleadoNominaByIds(EmpleadoNomina empleadoNomina);
+	public int actualizarEmpleadoNomina(EmpleadoNomina empleadoNomina);
+	public int darBajaEmpleadoNomina(EmpleadoNomina empleadoNomina);
 
  
 }
