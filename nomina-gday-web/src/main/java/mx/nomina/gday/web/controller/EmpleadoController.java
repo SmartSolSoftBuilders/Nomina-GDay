@@ -162,6 +162,15 @@ public class EmpleadoController {
 		 	System.out.println("Empleado por id"+ empleadoNomina.getNomina().getIdNomina());
 		 	return this.empleadoServicio.obtenerEmpleadoNominaByIds(empleadoNomina);
 		 	
-		}	  
+		}	
+	 
+	//LLENADO DEL SELECT COMBO, TIPO_REGIMEN
+	 //Obteber los datos de TipoRegimen para el llenado de sus respectivos Combos
+	 @RequestMapping(value="/getdatoscombo",method = RequestMethod.POST)
+	    @ResponseBody
+	    public List obtenerDatosCombo(){
+		 	System.out.println("Controller Datos del combo");
+			return this.empleadoServicio.obtenerDatosCombo();
+		}
 	 
 }

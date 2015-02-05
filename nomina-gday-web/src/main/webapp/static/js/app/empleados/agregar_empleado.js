@@ -126,6 +126,54 @@ $(document).ready(function() {
 			form.submit();
 		}
 	});
+	
+	$.ajax({
+		sync:true,
+		dataType:'json',
+		url:   '../../mvc/empleado/getdatoscombo',
+		type:  'post',		
+		beforeSend: function () {	
+		},
+		success:  function (response) {
+			console.log (response[0]);
+			var options = "";
+			var result=response[0];
+			 for (var i = 0; i < result.length; i++) {
+			    	options += '<option value="' + result[i].idArea + '">' + result[i].descripcion +'</option>';
+			    }
+			$("#area").append(options)
+			console.log ("area");
+			
+			console.log (response[1]);	
+			var options = "";
+			var result=response[1];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idProceso + '">' + result[i].descripcion +'</option>';
+			}
+			$("#proceso").append(options)
+			console.log ("proceso");
+
+			console.log (response[2]);	
+			var options = "";
+			var result=response[2];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idDepartamento + '">' + result[i].descripcion +'</option>';
+			}
+			$("#departamento").append(options)
+			console.log ("departamento");
+
+			console.log (response[3]);	
+			var options = "";
+			var result=response[3];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idPrceso + '">' + result[i].descripcion +'</option>';
+			}
+			$("#proceso").append(options)
+			console.log ("proceso");				
+
+		}	
+	
+	});
 });//Cierra la validacion del formulario
 
 

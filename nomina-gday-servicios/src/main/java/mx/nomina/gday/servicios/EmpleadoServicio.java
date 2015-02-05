@@ -17,6 +17,6 @@ public interface EmpleadoServicio {
 	public EmpleadoNomina obtenerEmpleadoNominaByIds(EmpleadoNomina empleadoNomina);
 	public int actualizarEmpleadoNomina(EmpleadoNomina empleadoNomina);
 	public int darBajaEmpleadoNomina(EmpleadoNomina empleadoNomina);
+	public List obtenerDatosCombo();
 
- 
 }

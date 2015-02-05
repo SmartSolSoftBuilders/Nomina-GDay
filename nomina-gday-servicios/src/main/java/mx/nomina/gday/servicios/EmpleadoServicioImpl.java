@@ -1,12 +1,17 @@
 package mx.nomina.gday.servicios;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import mx.nomina.gday.dao.AreaDao;
+import mx.nomina.gday.dao.DepartamentoDao;
 import mx.nomina.gday.dao.EmpleadoDao;
 import mx.nomina.gday.dao.EmpleadoNominaDao;
+import mx.nomina.gday.dao.ProcesoDao;
+import mx.nomina.gday.dao.PuestoDao;
 import mx.nomina.gday.modelo.Empleado;
 import mx.nomina.gday.modelo.EmpleadoNomina;
 
@@ -18,6 +23,18 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 
 	@Autowired
 	private EmpleadoNominaDao empleadoNominaDao;
+	
+	@Autowired
+	private AreaDao areaDao;
+	
+	@Autowired
+	private PuestoDao puestoDao;
+	
+	@Autowired
+	private ProcesoDao procesoDao;
+	
+	@Autowired
+	private DepartamentoDao departamentoDao;
 
 	//Metodo para guardar Empleado
 		@Override
@@ -116,6 +133,23 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 			EmpleadoNomina empleadoNomina) {
 		// TODO Auto-generated method stub
 		return this.empleadoNominaDao.obtenerEmpleadoNominaByIdNominaEmpleado(empleadoNomina);
+	}
+
+	@Override
+	public List obtenerDatosCombo() {
+
+		System.out.println("Datos del Combo Servicio");
+		List datosCombo = new ArrayList();
+		try{
+			datosCombo.add(this.areaDao.obtenerAreas());
+			datosCombo.add(this.procesoDao.obtenerProcesos());
+			datosCombo.add(this.departamentoDao.obtenerDepartamentos());
+			datosCombo.add(this.procesoDao.obtenerProcesos());
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return datosCombo;
 	}
 
 }

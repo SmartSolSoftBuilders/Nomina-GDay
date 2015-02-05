@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.nomina.gday.dao.AreaDao">
+	<resultMap type="Area" id="areaResult">
+		<id property="idArea" column="ID_AREA"/>
+		<result property="descripcion" column="DESCRIPCION"/>
+	</resultMap>
+	
+<!-- Select para obtener la lista de todos los Tipo de Regimen registrados-->
+	<select id="obtenerAreas" parameterType="int" resultMap="areaResult" resultType="Area">		 
+		select * from "AREA" 
+	</select>
+</mapper>
