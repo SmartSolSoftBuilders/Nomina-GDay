@@ -16,6 +16,7 @@ import mx.nomina.gday.modelo.Empleado;
 
 
 import mx.nomina.gday.modelo.EmpleadoNomina;
+import mx.nomina.gday.modelo.Nomina;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -46,7 +47,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 
         	//Se llena el encabezado
         			        	
-    			int numColumnas = 64; 
+    			int numColumnas = 89; 
     			int numFilas = 5; 
     			String data; 
     			//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
@@ -132,29 +133,65 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 							if (datos.get(43)!="" && datos.get(43)!=null){
 								
 								EmpleadoNomina empleadoNomina = new EmpleadoNomina();
+								Nomina nomina=new Nomina();
 								empleado.setIdEmpleado(Integer.parseInt(""+empleado.getId()));
+								nomina.setIdNomina(Integer.parseInt(datos.get(44)));
+								empleadoNomina.setNomina(nomina);
 								empleadoNomina.setEmpleado(empleado);
-								empleadoNomina.setFechaIngreso(datos.get(44));
-								empleadoNomina.setEstatus(datos.get(45));
-								empleadoNomina.setTipoSalario(datos.get(46));
-								empleadoNomina.setFechaBaja(datos.get(47));
-								empleadoNomina.setLoteMovImssAlta(datos.get(48));
-								empleadoNomina.setFechaVencimiento(datos.get(49));
-								empleadoNomina.setSueldoMensual(Double.parseDouble(datos.get(50)));
-								empleadoNomina.setSalarioDiarioInt(Double.parseDouble(datos.get(51)));
-								empleadoNomina.setPlazaTrabajo(datos.get(52));
-								empleadoNomina.setNumeroTrabajadorCliente(datos.get(53));
-								empleadoNomina.setOtroPatron(Boolean.parseBoolean(datos.get(54)));
-								empleadoNomina.setRfcOtroPatron(datos.get(55));
-								empleadoNomina.setNombreOtroPatron(datos.get(56));
-								empleadoNomina.setPermanencia(Boolean.parseBoolean(datos.get(57)));
-								empleadoNomina.setCalle(datos.get(58));
-								empleadoNomina.setCodigoPostal(datos.get(59));
-								empleadoNomina.setMunicipioDel(datos.get(60));
-								empleadoNomina.setEntFederativa(datos.get(61));
-								empleadoNomina.setLoteMovImssBaja(Integer.parseInt(datos.get(62)));
-								empleadoNomina.setAplicaFiniquito(Boolean.parseBoolean(datos.get(63)));
-								empleadoNomina.setMontoFiniquito(Double.parseDouble(datos.get(64)));
+								empleadoNomina.setFechaIngreso(datos.get(45));
+								empleadoNomina.setEstatus(datos.get(46));
+								empleadoNomina.setTipoSalario(datos.get(47));
+								empleadoNomina.setFechaBaja(datos.get(48));
+								empleadoNomina.setLoteMovImssAlta(datos.get(49));
+								empleadoNomina.setFechaVencimiento(datos.get(50));
+								empleadoNomina.setSueldoMensual(Double.parseDouble(datos.get(51)));
+								empleadoNomina.setSalarioDiarioInt(Double.parseDouble(datos.get(52)));
+								empleadoNomina.setPlazaTrabajo(datos.get(53));
+								empleadoNomina.setNumeroTrabajadorCliente(datos.get(54));
+								empleadoNomina.setOtroPatron(Boolean.parseBoolean(datos.get(55)));
+								empleadoNomina.setRfcOtroPatron(datos.get(56));
+								empleadoNomina.setNombreOtroPatron(datos.get(57));
+								empleadoNomina.setPermanencia(Boolean.parseBoolean(datos.get(58)));
+								empleadoNomina.setCalle(datos.get(59));
+								empleadoNomina.setCodigoPostal(datos.get(60));
+								empleadoNomina.setMunicipioDel(datos.get(61));
+								empleadoNomina.setEntFederativa(datos.get(62));
+								empleadoNomina.setLoteMovImssBaja(Integer.parseInt(datos.get(63)));
+								empleadoNomina.setAplicaFiniquito(Boolean.parseBoolean(datos.get(64)));
+								empleadoNomina.setMontoFiniquito(Double.parseDouble(datos.get(65)));
+								System.out.println("GUARDANDO!");
+								this.empleadoNominaDao.agregarEmpleadoNomina(empleadoNomina);
+								System.out.println("Guardé un nuevo empleado nomina!");
+							}							
+							if (datos.get(66)!="" && datos.get(66)!=null){
+								
+								EmpleadoNomina empleadoNomina = new EmpleadoNomina();
+								Nomina nomina=new Nomina();
+								empleado.setIdEmpleado(Integer.parseInt(""+empleado.getId()));
+								nomina.setIdNomina(Integer.parseInt(datos.get(66)));
+								empleadoNomina.setNomina(nomina);
+								empleadoNomina.setEmpleado(empleado);
+								empleadoNomina.setFechaIngreso(datos.get(67));
+								empleadoNomina.setEstatus(datos.get(68));
+								empleadoNomina.setTipoSalario(datos.get(69));
+								empleadoNomina.setFechaBaja(datos.get(70));
+								empleadoNomina.setLoteMovImssAlta(datos.get(71));
+								empleadoNomina.setFechaVencimiento(datos.get(72));
+								empleadoNomina.setSueldoMensual(Double.parseDouble(datos.get(73)));
+								empleadoNomina.setSalarioDiarioInt(Double.parseDouble(datos.get(74)));
+								empleadoNomina.setPlazaTrabajo(datos.get(75));
+								empleadoNomina.setNumeroTrabajadorCliente(datos.get(76));
+								empleadoNomina.setOtroPatron(Boolean.parseBoolean(datos.get(77)));
+								empleadoNomina.setRfcOtroPatron(datos.get(78));
+								empleadoNomina.setNombreOtroPatron(datos.get(79));
+								empleadoNomina.setPermanencia(Boolean.parseBoolean(datos.get(80)));
+								empleadoNomina.setCalle(datos.get(81));
+								empleadoNomina.setCodigoPostal(datos.get(82));
+								empleadoNomina.setMunicipioDel(datos.get(83));
+								empleadoNomina.setEntFederativa(datos.get(84));
+								empleadoNomina.setLoteMovImssBaja(Integer.parseInt(datos.get(85)));
+								empleadoNomina.setAplicaFiniquito(Boolean.parseBoolean(datos.get(86)));
+								empleadoNomina.setMontoFiniquito(Double.parseDouble(datos.get(87)));
 								System.out.println("GUARDANDO!");
 								this.empleadoNominaDao.agregarEmpleadoNomina(empleadoNomina);
 								System.out.println("Guardé un nuevo empleado nomina!");
