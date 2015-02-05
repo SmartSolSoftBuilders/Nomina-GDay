@@ -115,15 +115,15 @@
 <update id="actualizarEmpleado" parameterType="Empleado">
 	UPDATE "EMPLEADO"
    		SET "NO_CONTROL"=#{noControl}, "NSS"=#{nss}, "CURP"=#{curp}, "APELLIDO_PATERNO"=#{apellidoPaterno}, 
-            "APELLIDO_MATERNO"=#{apellidoMaterno}, "NOMBRE", "RFC", 
-            "FECHA_NACIMIENTO", "EDAD"=#{nombre}, "SEXO"=#{sexo}, 
+            "APELLIDO_MATERNO"=#{apellidoMaterno}, "NOMBRE"=#{nombre}, "RFC"=#{rfc}, 
+            "FECHA_NACIMIENTO"=date(#{fechaNacimiento}), "EDAD"=#{edad}, "SEXO"=#{sexo}, 
             "PAIS_ORIGEN"=#{paisOrigen}, "NACIONALIDAD"=#{nacionalidad}, "ESTADO_CIVIL"=#{estadoCivil}, 
-            "CORREO_ELECTRONICO"=#{correoElectronico}, "FECHA_INGRESO"=date(#{fechaNacimiento}), "LISTA_NEGRA"=#{listaNegra}, 
+            "CORREO_ELECTRONICO"=#{correoElectronico}, "FECHA_INGRESO"=date(#{fechaIngresoReal}), "LISTA_NEGRA"=#{listaNegra}, 
             "CALLE"=#{calle}, "NUM_EXTERIOR"=#{numExterior}, "NUM_INTERIOR"=#{numInterior}, "COLONIA"=#{colonia}, "CODIGO_POSTAL"=#{codigoPostal}, "MUNICIPIO_DEL"=#{municipioDel},
-            "ENT_FEDERATIVA"=#{entFederativa}, "DOC_IFE"=#{docIfe}, "DOC_ACT_NAN"=#{docActNan}, "DOC_CURP"=#{docCurp}, "DOC_RFC", "DOC_COMPROBANTE"=#{docComprobante},
+            "ENT_FEDERATIVA"=#{entFederativa}, "DOC_IFE"=#{docIfe}, "DOC_ACT_NAN"=#{docActNan}, "DOC_CURP"=#{docCurp}, "DOC_RFC"=#{docRfc}, "DOC_COMPROBANTE"=#{docComprobante},
             "DOC_COMP_EST"=#{docCompEst}, "DOC_CORREO"=#{docCorreo}, "DOC_CLABE"=#{docClabe}, "DOC_PREAFILIACION"=#{docPreafiliacion}, "CUENTA"=#{cuenta}, "BANCO"=#{banco},
             "TIPO_PAGO"=#{tipoPago}, "DESC_INFONAVIT_VSMG"=#{descInfonavitVsmg}, "DESC_INFONAVIT_PORC"=#{desInfonavitPorc}, "DESC_INFONAVIT_IMP"=#{descInfonavitImp}, "DESC_FONACOT_PAGO"=#{descFonacotPago}, "DESC_FONACOT_NUM"=#{descFonacotNum},
-            "PENSION_ALIM_IMP"=#{pensionAlimImp}, "PENSION_ALIM_PORC"=#{pensionAlimPorc}, "PENSION_ALIM_ACRED"=#{pensionAlimAcred}, "PENSION_ALIM_OBS"=#{pensionAlimObs}, "NO_CRED_INFONAVIT"=#{noCredInfonavit})
-         WHERE "EMPLEADO"=#{idEmpleado}; 	 
+            "PENSION_ALIM_IMP"=#{pensionAlimImp}, "PENSION_ALIM_PORC"=#{pensionAlimPorc}, "PENSION_ALIM_ACRED"=#{pensionAlimAcred}, "PENSION_ALIM_OBS"=#{pensionAlimObs}, "NO_CRED_INFONAVIT"=#{noCredInfonavit}
+         WHERE "ID_EMPLEADO"=#{idEmpleado} 	 
 	</update>
 </mapper>

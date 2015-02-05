@@ -13,6 +13,7 @@
 	<h1><font color=#0051a4 class="mayuscula">Actualizar Empleado</font></h1>
 		<div class="text-center col-lg-12">
 			<div class="row">
+			  <form id="actualizarEmpleadoForm" name="actualizarEmpleadoForm"			
 				<div class="col-lg-6">
 					<table>					
 					 	<tr>
@@ -212,13 +213,13 @@
 			        	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
 			     	 </span>			    
    		 		</div><!-- /input-group -->
-	 						
+	 		  </form>	 				
 			</div>
 			</div>
 			</div>
 	  </div>
 	 <div id="divSeleccionNominaParaEmpleado"
-				title="SELECCIONE UNA N&#211;MINA PARA ASIGNAR" style="display: none" >
+	 		title="SELECCIONE UNA N&#211;MINA PARA ASIGNAR" style="display: none" >
 				<div id="tablaSelNominas">
 					<table cellpadding="0" cellspacing="0" border="0" class="display"
 						id="tablaNominas">
@@ -242,6 +243,7 @@
 			</div>
 
 			<div id="tablaFormNominas" title="INGRESE LOS DATOS NÓMINA-EMPLEADO" style="display: none" >
+			 <form id="actualizarNominaEmpleadoForm" name="actualizarNominaEmpleadoForm" novalidate="novalidate">
 				<table>					
 				 	<tr>
 				 		<td>FECHA DE INGRESO<input id='fechaingresoformnomina' name='fechaingresoformnomina'  class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
@@ -373,6 +375,7 @@
 						<td><button type="button" class="btn btn-success" onclick="hideNominaForm();">CANCELAR</button></td>
 					</tr>
 				</table>
+			   </form>
 			</div>
 	  	
 	<div id='resultadoGuardar'></div>

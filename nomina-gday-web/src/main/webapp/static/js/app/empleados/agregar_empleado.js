@@ -1,6 +1,140 @@
 var nominasAsignadas = new Array();
 
+
+//Valida los elementos del Formulario
+$(document).ready(function() {
+	$("#agregarEmpleadoForm").validate({
+
+		rules: {
+			numeroControl: "required",
+			nss : "required",
+			curp : "required",
+			paterno : "required",
+			materno : "required",
+			nombre : "required",
+			rfc :  "required",
+			fechaNacimiento : "required",
+			edad : "required",
+			sexo : "required",
+			nacionalidad : "required",
+			correoElectronico : "required",
+			fechaIngreso : "required",
+			calle : "required",
+			numExt : "required",
+			numInt : "required",
+			colonia : "required",
+			codPostal : "required",
+			municipioDel : "required",
+			entFederativa : "required",
+			numCuenta : "required",
+			numCredito : "required",
+			descuentoVsmg : "required",
+			descuento : "required",
+			importe : "required",
+			numPagos : "required",
+			importeFonacot : "required",
+			importeAlimenticio : "required",
+			porcentajeAlimenticio : "required",
+			nombreAcreedor : "required",
+			observaciones : "required",		
+		},        
+		messages: {
+			numeroControl: "Ingrese el No.Control",
+			nss : "Ingrese el NSS",
+			curp : "Ingrese el CURP",
+			paterno : "Ingrese el Apellido Paterno",
+			materno : "Ingrese el Apellido Materno",
+			nombre : "Ingrese el Nombre del Empleado",
+			rfc :  "Ingrese el RFC",
+			fechaNacimiento : "Seleccione una Fecha de Nacimiento",
+			edad : "Ingrese la Edad",
+			sexo : "Ingrese el sexo del Empleado",
+			nacionalidad : "Ingrese la Nacionalidad",
+			correoElectronico : "Ingrese el Correo Electronico",
+			fechaIngreso : "Ingrese la Fecha de Ingreso",
+			calle : "Ingrese una calle",
+			numExt : "Ingrese un No.Exterior",
+			numInt : "Ingrese un No.Interior",
+			colonia : "Ingrese una Colonia",
+			codPostal : "Ingrese un Codigo Postal",
+			municipioDel : "Ingrese un Municipio",
+			entFederativa : "Ingrese un Estado",
+			numCuenta : "Ingrese un No.Cuenta",
+			numCredito : "Ingrese un No.Credito",
+			descuentoVsmg : "Ingrese el Descuento",
+			descuento : "Ingrese un porcentaje",
+			importe : "Ingrese un Importe",
+			numPagos : "Ingrese el No.Pagos",
+			importeFonacot : "Ingrese el Importe de Fonacot",
+			importeAlimenticio : "Ingrese el Importe Alimenticio",
+			porcentajeAlimenticio : "Ingrese el porcentaje Alimenticio",
+			nombreAcreedor : "Ingrese el nombre del Acreedor",
+			observaciones : "Ingrese observaciones",			
+		},
+		
+		submitHandler: function(form) {
+			form.submit();
+		}
+	});
+	
+	$("#agregarNominaEmpleadoForm").validate({
+		rules: {
+			fechaingresoformnomina: "required",
+			fechabajaformnomina : "required",
+			fechaNacimiento : "required",
+			fechavencimientoformnomina : "required",
+			sueldomensualformnomina : "required",
+			sueldodiarioformnomina : "required",
+			sueldodiariointformnomina : "required",
+			loteimssformnomina : "required",
+			numtrabajadorclienteoformnomina : "required",
+			nombreotropatronformnomina : "required",
+			rfcnformnomina : "required",
+			calleformnomina:"required",
+			numextformnomina : "required",
+			numintformnomina : "required",
+			cpformnomina : "required",
+			coloniaformnomina : "required",
+			mundelformnomina : "required",
+			suministrosformnomina : "required",
+			actividadesformnomina : "required",
+			puestosformnomina : "required",
+			serviciosformnomina : "required",
+			tiposalarioformnomina : "required",
+			areaformnomina : "required",		
+		},        
+		messages: {
+			fechaingresoformnomina: "Ingrese una fecha de Ingreso",
+			fechabajaformnomina : "Ingrese una Fecha de Baja",
+			fechavencimientoformnomina : "Ingrese una Fecha de Vencimiento",
+			sueldomensualformnomina : "Ingrese el sueldo Mensual",
+			sueldodiarioformnomina : "Ingrese el sueldo Diario",
+			sueldodiariointformnomina : "Ingrese el Sueldo Diario Integrado",
+			loteimssformnomina : "Ingrese el lote movimiento alta IMSS",
+			numtrabajadorclienteoformnomina : "Ingrese un Numero de Trabajador Cliente",
+			nombreotropatronformnomina : "Ingrese el nombre de otro patron",
+			rfcnformnomina : "Ingrese el RFC",
+			calleformnomina : "Ingrese el nombre de la Calle",
+			numextformnomina : "Ingrese el numero Exterior",
+			numintformnomina : "Ingrese el numero Interior",
+			cpformnomina : "Ingrese el Codigo Postel",
+			coloniaformnomina : "Ingrese la Colonia",
+			mundelformnomina : "Ingrese el Municipio",
+		},
+		
+		submitHandler: function(form) {
+			form.submit();
+		}
+	});
+});//Cierra la validacion del formulario
+
+
+
+
+
 function guardarEmpleado() {	
+	if ($("#agregarEmpleadoForm").valid()){	
+
 		$
 			.ajax({
 				data : {
@@ -62,6 +196,7 @@ function guardarEmpleado() {
 					$("#resultadoGuardar").html();
 				}
 			});
+	}
 }
 
 function cancelar(){
@@ -73,6 +208,7 @@ function guardarNominasEmpleado(idEmpleado){
 	console.log("Nominas a guardar:");
 	console.log(nominasAsignadas);
 	for (var i=0; i<nominasAsignadas.length; i++){
+
 		$.ajax({
 			data : {
 				"nomina.idNomina":nominasAsignadas[i][0],
@@ -173,6 +309,7 @@ function closeAllModal(){
 }
 
 function agregarObjetoJS(){
+	if ($("#agregarNominaEmpleadoForm").valid()){	
 	var nominaAsignada=new Array();
 	//Asignamos cada valor del formulario de nomina-empleado
 	nominaAsignada.push($("#idnominaformnomina").val());	
@@ -233,6 +370,7 @@ function agregarObjetoJS(){
     cell4.appendChild(element4);
 	document.getElementById("nominasNum").value=parseInt(document.getElementById("nominasNum").value)+1;
 	closeAllModal();
+ }
 }
 
 function eliminarObjetoJS () {
