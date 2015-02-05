@@ -50,7 +50,16 @@ public class EmpleadoController {
 	@ResponseBody
     public boolean guardarEditarEmpleadoNomina(@ModelAttribute(value="empleadoNomina") EmpleadoNomina empleadoNomina, BindingResult result){
 		 	System.out.println("Guardando empleado nomina"+ empleadoNomina.getNomina().getIdNomina());
-		 	empleadoServicio.agregarEmpleadoNomina(empleadoNomina);
+		 	empleadoServicio.actualizarEmpleadoNomina(empleadoNomina);
+		return true;	 
+	}
+
+	//Controller Guardar Grupo
+	@RequestMapping(value="/bajaempleadonomina",method = RequestMethod.POST)
+	@ResponseBody
+    public boolean darBajaEmpleadoNomina(@ModelAttribute(value="empleadoNomina") EmpleadoNomina empleadoNomina, BindingResult result){
+		 	System.out.println("Guardando baja empleado nomina"+ empleadoNomina.getNomina().getIdNomina());
+		 	empleadoServicio.darBajaEmpleadoNomina(empleadoNomina);
 		return true;	 
 	}
 

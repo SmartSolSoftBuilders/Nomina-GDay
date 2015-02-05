@@ -37,7 +37,25 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 		int valor=this.empleadoNominaDao.agregarEmpleadoNomina(empleadoNomina);
 		System.out.println("VALOR DEL EMPLEADO OBTENIDO"+valor);
 		return valor;
+	}	
+	
+	@Override
+	public int darBajaEmpleadoNomina(EmpleadoNomina empleadoNomina) {			
+		System.out.println("Agregando empleado service"+ empleadoNomina);
+		int valor=this.empleadoNominaDao.darBajaEmpleadoNomina(empleadoNomina);
+		System.out.println("VALOR DEL EMPLEADO OBTENIDO"+valor);
+		return valor;
 	}		
+	
+	@Override
+	public int actualizarEmpleadoNomina(EmpleadoNomina empleadoNomina) {			
+		System.out.println("Actualizando empleado service"+ empleadoNomina.getNomina().getIdNomina());
+		System.out.println("Actualizando empleado service"+ empleadoNomina.getEmpleado().getIdEmpleado());
+		int valor=this.empleadoNominaDao.actualizarEmpleadoNomina(empleadoNomina);
+		System.out.println("VALOR DEL EMPLEADO OBTENIDO"+valor);
+		return valor;
+	}		
+
 	
 	//Metodo que Modifica los datos de una Nomina
 	@Override

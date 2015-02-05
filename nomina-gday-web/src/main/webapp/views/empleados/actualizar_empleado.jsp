@@ -1,19 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE html>	
 <html lang="en">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<title>grupo day</title>
-<jsp:include page="../common/librerias.jsp"/>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>grupo day</title>
+	<jsp:include page="../common/librerias.jsp"/>
  	<script type="text/javascript" language="javascript" src="../../static/js/app/empleados/actualizar_empleado.js"></script>  
-</head>
+	</head>
 
 <body>
 	<div class="container">
-	<h1><font color=#0051a4 class="mayuscula">Actualizar Empleado</font></h1>
+		<h1><font color=#0051a4 class="mayuscula">Actualizar Empleado</font></h1>
 		<div class="text-center col-lg-12">
 			<div class="row">
-			  <form id="actualizarEmpleadoForm" name="actualizarEmpleadoForm"			
+			  <form id="actualizarEmpleadoForm" name="actualizarEmpleadoForm">			
 				<div class="col-lg-6">
 					<table>					
 					 	<tr>
@@ -22,20 +22,20 @@
 					 		<td>NSS<input id='nss' name='nss' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
 					 		<td>CURP<input id='curp' name='curp' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
-					 </table>
+					</table>
 					<table>
 						<tr>
 						   <td>PATERNO<input id='paterno' name='paterno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	   <td>MATERNO<input id='materno' name='materno' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 						</tr>
 					</table>
-					 <table>
+					<table>
 					  	<tr>					 	
 					 		<td>NOMBRE<input id='nombre' name='nombre' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>					  						
 					</table>
-					 <table>
+					<table>
 					  	<tr>					 	
 					 		<td>FECHA DE NACIMIENTO<input id='fechaNacimiento' name='fechaNacimiento' type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>EDAD<input id='edad' name='edad' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
@@ -48,7 +48,7 @@
 					 		</select></td>
 					 	</tr>					  						
 					</table>
-					 <table>
+					<table>
 					  	<tr>					 	
 					 		<td>NACIONALIDAD<input id='nacionalidad' name='nacionalidad' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>ESTADO CIVIL<select id='estadoCivil' name='estadoCivil' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
@@ -61,7 +61,7 @@
 					 		<td>CORREO ELECTRONICO<input id='correoElectronico' name='correoElectronico' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>					  						
 					</table>
-					 <table>
+					<table>
 					  	<tr>					 	
 					 		<td>FECHA INGRESO<input id='fechaIngreso' name='fechaIngreso' type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>LISTA NEGRA POR DEMANDA<input id='listaNegra' name='listaNegra' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
@@ -183,7 +183,7 @@
 					 	</tr>					  						
 					</table>				  						
 				<br>
-		<table width=900px>
+				<table width=900px>
 					<tr>
 						<td>NOMINAS ASIGNADAS</td>
 					</tr>
@@ -192,7 +192,7 @@
 					   	<tr>
 						  		<td>
 							 		<button type="button" class="btn btn-success" onclick="agregarNominaAEmpleado();">AÑADIR</button>
-									<button type="button" class="btn btn-success" onclick="eliminarObjetoJS();">ELIMINAR</button>
+									<button type="button" class="btn btn-success" onclick="shoBajaNominaForm();">ELIMINAR</button>
 									<button type="button" class="btn btn-success" onclick="editarObjetoJS();">EDITAR</button>					 			
 					 			<br>
 									<table name="tablanominasasignadas" id="tablanominasasignadas">
@@ -300,7 +300,9 @@
 					<tr>
 				 		<td>CODIGO POSTAL<input id='cpformnomina' name='cpformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 				 		<td>nomasignadavolverhidden:<input id='idnominaformnomina' name='idnominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td>nomasignadavolverhidden:<input id='nombrenominaformnomina' name='nombrenominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
+				 		<td>nomasignadavolverhidden:<input id='nombrenominaformnomina' name='nombrenominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 		<input id='statnominaformnomina' name='statnominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 		</td>					 		
 					</tr>
 					<tr>
 				 		<td>COLONIA<input id='coloniaformnomina' name='coloniaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
@@ -370,12 +372,34 @@
 						
 					<tr>
 						<td></td>
-						<td><button id="buttonAgregar" type="button" class="btn btn-success" onclick="agregarObjetoJS();">AGREGAR</button></td>
-						<td><button id="buttonGuardar" type="button" class="btn btn-success" onclick="guardarCambiosNominaEmpleado();">GUARDAR</button></td>
+						<!-- button id="buttonAgregar" type="button" class="btn btn-success" onclick="agregarObjetoJS();">AGREGAR</button></td-->
+						<td><button id="buttonAgregar" type="button" class="btn btn-success" onclick="guardarCambiosNominaEmpleado('../../mvc/empleado/guardarempleadonomina');">AGREGAR</button></td> 
+						<td><button id="buttonGuardar" type="button" class="btn btn-success" onclick="guardarCambiosNominaEmpleado('../../mvc/empleado/guardareditarempleadonomina');">ACTUALIZAR</button></td>
 						<td><button type="button" class="btn btn-success" onclick="hideNominaForm();">CANCELAR</button></td>
 					</tr>
 				</table>
 			   </form>
+			</div>
+			
+			<div id="tablaBajaFormNominas" title="INGRESE LOS DATOS DE BAJA NÓMINA-EMPLEADO" style="display: none" >
+			 <form id="bajaNominaEmpleadoForm" name="bajaNominaEmpleadoForm" novalidate="novalidate">
+				<table>					
+				 	<tr>
+				 		<td>FECHA DE BAJA<input id='fechabajaTmpformnomina' name='fechabajaTmpformnomina'  class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>LOTE MOVIMIENTO BAJA IMSS<input id='loteimssbajaformnomina' name='loteimssbajaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>¿APLICA FINIQUITO?<select id=aplicafiniquitoformnomina name='aplicafiniquitoformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 				<option value="SI">SI</option>
+				 				<option value="NO">NO</option>
+				 			</select>
+				 		</td>	
+				 	</tr>
+				 	<tr>
+				 		<td></td>			 		
+				 		<td>MONTO<input id='montofiniquitoformnomina' name='montofiniquitoformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td><button id="buttonAgregar" type="button" class="btn btn-success" onclick="darBajaNominaEmpleado();">ACEPTAR</button></td>			 			
+					</tr>
+				</table>
+			</form>
 			</div>
 	  	
 	<div id='resultadoGuardar'></div>
