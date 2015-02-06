@@ -80,13 +80,10 @@ $(document).ready(function() {
 	$("#agregarNominaEmpleadoForm").validate({
 		rules: {
 			fechaingresoformnomina: "required",
-			fechabajaformnomina : "required",
 			fechaNacimiento : "required",
-			fechavencimientoformnomina : "required",
 			sueldomensualformnomina : "required",
 			sueldodiarioformnomina : "required",
 			sueldodiariointformnomina : "required",
-			loteimssformnomina : "required",
 			numtrabajadorclienteoformnomina : "required",
 			nombreotropatronformnomina : "required",
 			rfcnformnomina : "required",
@@ -105,12 +102,9 @@ $(document).ready(function() {
 		},        
 		messages: {
 			fechaingresoformnomina: "Ingrese una fecha de Ingreso",
-			fechabajaformnomina : "Ingrese una Fecha de Baja",
-			fechavencimientoformnomina : "Ingrese una Fecha de Vencimiento",
 			sueldomensualformnomina : "Ingrese el sueldo Mensual",
 			sueldodiarioformnomina : "Ingrese el sueldo Diario",
 			sueldodiariointformnomina : "Ingrese el Sueldo Diario Integrado",
-			loteimssformnomina : "Ingrese el lote movimiento alta IMSS",
 			numtrabajadorclienteoformnomina : "Ingrese un Numero de Trabajador Cliente",
 			nombreotropatronformnomina : "Ingrese el nombre de otro patron",
 			rfcnformnomina : "Ingrese el RFC",
