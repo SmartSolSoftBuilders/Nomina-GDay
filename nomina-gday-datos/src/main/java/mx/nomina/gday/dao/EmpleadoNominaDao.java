@@ -13,4 +13,5 @@ public interface EmpleadoNominaDao {
 	public EmpleadoNomina obtenerEmpleadoNominaByIdNominaEmpleado(EmpleadoNomina empleadoNomina);
 	public int actualizarEmpleadoNomina(EmpleadoNomina empleadoNomina);
 	public int darBajaEmpleadoNomina(EmpleadoNomina empleadoNomina);
+	public int eliminarEmpleadoNominayEmpleado(int id);
 }

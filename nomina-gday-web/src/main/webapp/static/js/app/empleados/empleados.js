@@ -39,3 +39,22 @@ function showEditarEmpleado(id){
 function altaMasivaDeEmpleado(){
 	top.frames['main'].location="../carga/carga.jsp"; 	
 }
+
+function bajaMasivaDeEmpleado(){
+	$.ajax({
+		sync: true,
+		type:  'post',
+		url:   '../../mvc/carga/revertir',
+		dataType:  'json',
+		beforeSend: function () {
+			$("#resultado").html("Procesando, espere por favor...");
+      	$( "#progressbar" ).progressbar({
+		      value: 75
+		    });	
+        $( "#demo" ).hide();
+		},
+		success:  function (response) {
+			mensaje("CARGA REVERTIDA");
+		}	
+	});		
+}

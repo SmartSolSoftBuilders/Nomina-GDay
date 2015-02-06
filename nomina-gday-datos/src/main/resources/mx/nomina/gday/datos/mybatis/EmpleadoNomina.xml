@@ -183,6 +183,12 @@
 		select * from "EMPLEADO_NOMINA" where "ID_EMPLEADO"=#{empleado.idEmpleado} AND "ID_NOMINA"=#{nomina.idNomina} 
 	</select>
 	
+<!-- 	Select para Eliminar El empleado a partir del empleadoNomina -->	
+	<delete id="eliminarEmpleadoNominayEmpleado" parameterType="int">
+		DELETE FROM "EMPLEADO_NOMINA" WHERE "ID_EMPLEADO" = #{id} 
+		DELETE FROM "EMPLEADO" WHERE "ID_EMPLEADO"=#{id}
+	</delete>
+	
 	<insert id="agregarEmpleadoNomina" parameterType="EmpleadoNomina">	
 		INSERT INTO "EMPLEADO_NOMINA"(
             "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 

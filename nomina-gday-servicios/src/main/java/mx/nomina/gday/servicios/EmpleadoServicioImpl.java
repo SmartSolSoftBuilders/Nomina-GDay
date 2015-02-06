@@ -152,4 +152,10 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 		return datosCombo;
 	}
 
+	@Override
+	public int eliminarEmpleadoNominayEmpleado(int idEmpleado) {
+		// TODO Auto-generated method stub
+		return this.eliminarEmpleadoNominayEmpleado(idEmpleado);
+	}
+
 }

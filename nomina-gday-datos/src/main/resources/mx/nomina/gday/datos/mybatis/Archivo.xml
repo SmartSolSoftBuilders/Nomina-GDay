@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.nomina.gday.dao.ArchivoDao">
+	<resultMap type="Archivo" id="archivoResult">
+		<id property="idArchivo" column="ID_ARCHIVO"/>
+		<result property="fechaCarga" column="FECHA_CARGA"/>
+		<result property="archivo" column="ARCHIVO" javaType = "byte[]" jdbcType = "BINARY" typeHandler = "org.apache.ibatis.type.ByteArrayTypeHandler" />
+		<result property="tipoArchivo" column="TIPO_ARCHIVO"/>
+	</resultMap>
+	
+	 <insert id="agregarArchivo" parameterType="Archivo" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_archivo')
+  		</selectKey>
+		INSERT INTO "ARCHIVO"(
+			    	"ID_ARCHIVO", "FECHA_CARGA", "ARCHIVO", "TIPO_ARCHIVO")	
+           		 	VALUES (#{id}, date(#{fechaCarga}),#{archivo,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler},#{tipoArchivo});
+            	   
+    </insert>
+<!-- Select para obtener la ultima Carga de archivo -->
+	<select id="obtenerUltimaCargaArchivo"  resultMap="archivoResult" resultType="Archivo">		 
+		SELECT * FROM "ARCHIVO" WHERE "ID_ARCHIVO"=(SELECT MAX("ID_ARCHIVO") FROM "ARCHIVO")
+	</select>
+ 
+</mapper>

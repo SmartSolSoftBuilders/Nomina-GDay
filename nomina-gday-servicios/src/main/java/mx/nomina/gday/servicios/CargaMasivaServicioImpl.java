@@ -41,6 +41,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 	    
     	try {
     		//System.out.println("se carga el archivo:"+nombreArchivo);
+    		
     		FileInputStream file = new FileInputStream(nombreArchivo);
     		HSSFWorkbook workbook = new HSSFWorkbook(file);    		
         	HSSFSheet hoja = workbook.getSheetAt(0);
