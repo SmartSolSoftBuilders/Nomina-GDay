@@ -19,7 +19,7 @@
 					 	<tr>
 					 		<td>NUMERO DE CONTROL<input id='numeroControl' name='numeroControl' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>NSS<input id='nss' name='nss' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
-					 		<td>CURP<input id='curp' name='curp' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 		<td>CURP<input onchange="setFieldsCurp();" id='curp' name='curp' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
 					 </table>
 					<table>
