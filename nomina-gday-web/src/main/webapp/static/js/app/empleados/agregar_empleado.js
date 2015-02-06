@@ -582,14 +582,62 @@ function validate_fecha(fecha)
 
 //Habilitar elementos por checkbox
 
-function habilitar()
+function habilitarInfonavit()
 {
-	if($("#numCuenta").val()==false)
+	console.log($("#datosInfonavit").val())
+	if($('#datosInfonavit').prop('checked'))
 	{
 		// habilitamos
-		$("#numCredito").val().disabled=true;
-	}else if($("#numCuenta").val()==false){
+		console.log("ON")
+		$("#numCredito").prop("disabled",false);
+		$("#descuentoVsmg").prop("disabled",false);
+		$("#descuento").prop("disabled",false);
+		$("#importe").prop("disabled",false);
+	}else {
 		// deshabilitamos
-		document.getElementById("numCredito").disabled=true;
+		console.log("Off")
+		$("#numCredito").prop("disabled",true);
+		$("#descuentoVsmg").prop("disabled",true);
+		$("#descuento").prop("disabled",true);
+		$("#importe").prop("disabled",true);
+	}
+}
+function habilitarFonacot()
+{
+	console.log($("#fonacot").val())
+	if($('#fonacot').prop('checked'))
+	{
+		// habilitamos
+		console.log("ON")
+		$("#numPagos").prop("disabled",false);
+		$("#importeFonacot").prop("disabled",false);
+	}else {
+		// deshabilitamos
+		console.log("Off")
+		$("#numPagos").prop("disabled",true);
+		$("#importeFonacot").prop("disabled",true);
+	
+	}
+}
+function habilitarPensionAlim()
+{
+	console.log($("#pensionAlimenticia").val())
+	if($('#pensionAlimenticia').prop('checked'))
+	{
+		// habilitamos
+		console.log("ON")	
+		$("#importeAlimenticio").prop("disabled",false);
+		$("#porcentajeAlimenticio").prop("disabled",false);
+		$("#nombreAcreedor").prop("disabled",false);
+		$("#observaciones").prop("disabled",false);
+		
+	}else {
+		// deshabilitamos
+		console.log("Off")
+		$("#importeAlimenticio").prop("disabled",true);
+		$("#porcentajeAlimenticio").prop("disabled",true);
+		$("#nombreAcreedor").prop("disabled",true);
+		$("#observaciones").prop("disabled",true);
+		
 	}
 }
