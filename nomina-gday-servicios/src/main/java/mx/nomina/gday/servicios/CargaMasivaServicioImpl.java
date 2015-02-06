@@ -124,8 +124,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     				int idEmpleadoTest=this.empleadoDao.obtenerCountIdEmpleadoByNss(empleado.getNss());
 					if (idEmpleadoTest==0){
 						this.empleadoDao.agregarEmpleado(empleado);
-						System.out.println("<OTIKA>Empleado aún no dado de alta"+empleado.getId());
-						
+						System.out.println("<OTIKA>Empleado aún no dado de alta"+empleado.getId());						
 						Long idEmpleado = empleado.getId();
 						if (idEmpleado!= 0){
 							System.out.println("Guardé al Empleado:"+idEmpleado+":"+empleado.getNombre());

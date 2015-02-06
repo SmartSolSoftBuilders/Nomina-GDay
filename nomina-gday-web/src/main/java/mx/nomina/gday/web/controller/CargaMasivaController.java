@@ -77,7 +77,6 @@ public @ResponseBody String guardaFichero(MultipartHttpServletRequest request, H
 		System.out.println("Done"+ufile.length+archivo.getArchivo().length);
         archivo.setFechaCarga("2015-02-05");
     	this.archivoServicio.agregarArchivo(archivo);		
-
 		//archivoServicio.agregarArchivo(archivo);
 		System.out.println("LOS VALORES DEL ARCHIVO:"+archivo.getArchivo().length);		
 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmp.xls");
