@@ -191,8 +191,8 @@
 						  		<td>
 							 		<button type="button" class="btn btn-success" onclick="agregarNominaAEmpleado();">AÑADIR</button>
 									<button type="button" class="btn btn-success" onclick="eliminarObjetoJS();">ELIMINAR</button>
-									<button type="button" class="btn btn-success" onclick="editarNominaAEmpleado();">EDITAR</button>					 			
-					 			<br>
+<!-- 									<button type="button" class="btn btn-success" onclick="editarNominaAEmpleado();">EDITAR</button>					 			
+ -->					 			<br>
 									<table name="tablanominasasignadas" id="tablanominasasignadas">
 										<tr>
 											<td>NÓMINA</td>

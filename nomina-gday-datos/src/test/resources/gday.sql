@@ -295,7 +295,7 @@ CREATE TABLE "EMPLEADO"
   "RFC" character varying(13),
   "FECHA_NACIMIENTO" date,
   "EDAD" integer,
-  "SEXO" character varying(2),
+  "SEXO" character varying,
   "PAIS_ORIGEN" character varying(20),
   "NACIONALIDAD" character varying(20),
   "ESTADO_CIVIL" character varying(15),

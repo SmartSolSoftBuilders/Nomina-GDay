@@ -29,10 +29,8 @@ $(document).ready(function() {
 		notarioPoderesNot: "required",
 		numeroPoderesNotLab: "required",
 		notariaPoderesNotLab: "required",
-		notarioPoderesNotLab: "required",
-		selectMultAccionista: "required",
-		selectMultRepresentantes: "required",
-		selectMultRepresentantesLegLab: "required",
+		notarioPoderesNotLab: "required"
+		
     },        
     messages: {
     	nombrePatrona: "Ingrese el nombre de la Patrona",
@@ -58,10 +56,7 @@ $(document).ready(function() {
 		notarioPoderesNot: "Ingrese un Notario",
 		numeroPoderesNotLab: "Ingrese un N&uacute;mero de Poder Notarial",
 		notariaPoderesNotLab: "Ingrese una Notaria de Poder Notarial",
-		notarioPoderesNotLab: "Ingrese una Notario de Poder Notarial",
-		selectMultAccionista: "Ingrese un Accionista",
-		selectMultRepresentantes: "Ingrese un Poder Notarial Pleitos y Cobranzas",
-		selectMultRepresentantesLegLab: "Ingrese un Representante Legal Laboral"
+		notarioPoderesNotLab: "Ingrese una Notario de Poder Notarial"
     	
     },
     

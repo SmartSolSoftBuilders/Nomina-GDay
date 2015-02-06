@@ -11,7 +11,6 @@ $(document).ready(function() {
         	porcPrimaVacacional: "required",
         	registroPatronal: "required",
         	fechaContrato: "required",
-        	selectMult: "required",
         	
         	//selectMult: "required"
             /*email: {
@@ -26,7 +25,6 @@ $(document).ready(function() {
         	porcPrimaVacacional:"Ingrese un porcentaje Vacacional",
         	registroPatronal:"Ingrese un registro Patronal",
         	fechaContrato:"Ingrese una Fecha",
-        	selectMult:"Ingrese una Raz&oacute;n Social",
         	
         },
         

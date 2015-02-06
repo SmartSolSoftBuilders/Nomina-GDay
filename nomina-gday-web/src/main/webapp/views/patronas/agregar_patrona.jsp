@@ -171,7 +171,7 @@
 					   	<tr>
 						  		<td><span style="float:left;">NUMERO</span><input id='numeroPoderesNot' name='numeroPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
 									<span style="float:left;">NOTARIA</span><input id='notariaPoderesNot' name='notariaPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
-									<span style="float:left;">NOTARIO</span><input id='notarioPoderesNot' name='notarioPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
+									<span style="float:left;">NOTARIO</span><input id='notarioPoderesNot' name='notarioPoderesNot' onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" style="width:150px;float:left;" />
 					 			<button type="button" class="btn btn-default" onclick="addRow('tablaPodNotPleitos',1);">AÑADIR</button>
 					 			<button type="button" class="btn btn-default" onclick="deleteRow('tablaPodNotPleitos',1);">QUITAR</button>					 			
 					 			<br>

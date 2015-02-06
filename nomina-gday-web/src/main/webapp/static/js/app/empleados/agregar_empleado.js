@@ -585,3 +585,17 @@ function validate_fecha(fecha)
     }
     return false;
 }
+
+//Habilitar elementos por checkbox
+
+function habilitar()
+{
+	if($("#numCuenta").val()==false)
+	{
+		// habilitamos
+		$("#numCredito").val().disabled=true;
+	}else if($("#numCuenta").val()==false){
+		// deshabilitamos
+		document.getElementById("numCredito").disabled=true;
+	}
+}
