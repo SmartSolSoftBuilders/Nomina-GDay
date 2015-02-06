@@ -198,18 +198,17 @@
             "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
             "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA")
  	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
-            #{loteMovImssAlta}, date(#{fechaVencimiento}), #{sueldoMensual}, 
-            #{salarioDiarioInt}, #{plazaTrabajo}, #{numeroTrabajadorCliente}, 
+            12345, date(#{fechaVencimiento}), #{sueldoMensual}, 
+            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
             #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
-            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, #{codigoPostal}, 
-            #{municipioDel}, #{entFederativa}, #{loteMovImssBaja});		
+            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
+            #{municipioDel}, #{entFederativa}, 1234);		
 	</insert>
 
 	<update id="actualizarEmpleadoNomina" parameterType="EmpleadoNomina">
 			UPDATE "EMPLEADO_NOMINA"
 		   SET "FECHA_INGRESO"=date(#{fechaIngreso}), "ESTATUS"=#{estatus}, 
 		       "TIPO_SALARIO"= #{tipoSalario}, "FECHA_BAJA"=date(#{fechaBaja}),
-		       "LOTE_MOV_IMSS_ALTA"=#{loteMovImssAlta},
 		       "FECHA_VENCIMIENTO"=date(#{fechaVencimiento}), 
 		       "SUELDO_MENSUAL"= #{sueldoMensual}, "SALARIO_DIARIO_INT"=#{salarioDiarioInt}, 
 		       "PLAZA_TRABAJO"=#{plazaTrabajo}, 

@@ -111,7 +111,7 @@
 	</select>
 	
 	<select id="obtenerNominasByIdEmpleado" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
-		SELECT * FROM "NOMINA" WHERE "ID_NOMINA" IN (SELECT "ID_NOMINA" FROM "EMPLEADO_NOMINA" WHERE "ID_EMPLEADO"=#{id}) 	 	
+		SELECT "NOMINA"."ID_NOMINA", "NOMINA"."NOMBRE_CORTO", "EMPLEADO_NOMINA"."ESTATUS" AS "TIPO_PAGO" FROM "NOMINA" INNER JOIN "EMPLEADO_NOMINA" ON "NOMINA"."ID_NOMINA"= "EMPLEADO_NOMINA"."ID_NOMINA"  AND "ID_EMPLEADO"=#{id} 	 	
 	</select>  
 	
 	<!-- Insert para Guardar Nomina-->

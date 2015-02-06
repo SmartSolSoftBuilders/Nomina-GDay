@@ -464,7 +464,7 @@ function setDataNominasEmpleado(data){
 	for (var i=0;i<data.length;i++){
 		document.getElementById("nombrenominaformnomina").value=data[i].nombreCorto;
 		document.getElementById("idnominaformnomina").value=data[i].idNomina;
-		document.getElementById("statnominaformnomina").value=data[i].estatus;
+		document.getElementById("statnominaformnomina").value=data[i].tipoPago;
 		console.log(data[i]);
 		agregarObjetoJS();
 	}
