@@ -7,6 +7,8 @@ import java.util.List;
 
 import mx.nomina.gday.dao.EmpleadoDao;
 import mx.nomina.gday.dao.EmpleadoNominaDao;
+import mx.nomina.gday.modelo.Area;
+import mx.nomina.gday.modelo.Departamento;
 import mx.nomina.gday.modelo.Empleado;
 
 
@@ -17,6 +19,8 @@ import mx.nomina.gday.modelo.Empleado;
 
 import mx.nomina.gday.modelo.EmpleadoNomina;
 import mx.nomina.gday.modelo.Nomina;
+import mx.nomina.gday.modelo.Proceso;
+import mx.nomina.gday.modelo.Puesto;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -48,7 +52,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 
         	//Se llena el encabezado
         			        	
-    			int numColumnas = 89; 
+    			int numColumnas = 97; 
     			int numFilas = 5; 
     			String data; 
     			//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
@@ -115,9 +119,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 					empleado.setPensionAlimImp(Double.parseDouble(datos.get(40)));
 					empleado.setPensionAlimPorc(Double.parseDouble(datos.get(41)));
 					empleado.setPensionAlimAcred(datos.get(42));
-					empleado.setPensionAlimObs(datos.get(43));
-    				
-    				
+					empleado.setPensionAlimObs(datos.get(43));    				
 					System.out.println("GUARDANDO!123");
 					System.out.println("NSS"+empleado.getNss());
     				
@@ -130,8 +132,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 							System.out.println("Guardé al Empleado:"+idEmpleado+":"+empleado.getNombre());
 							empleado.setIdEmpleado(Integer.parseInt(""+idEmpleado));
 																										
-							if (datos.get(43)!="" && datos.get(43)!=null){
-								
+							if (datos.get(43)!="" && datos.get(43)!=null){								
 								EmpleadoNomina empleadoNomina = new EmpleadoNomina();
 								Nomina nomina=new Nomina();
 								empleado.setIdEmpleado(Integer.parseInt(""+empleado.getId()));
@@ -159,6 +160,10 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 								empleadoNomina.setLoteMovImssBaja(Integer.parseInt(datos.get(63)));
 								empleadoNomina.setAplicaFiniquito(Boolean.parseBoolean(datos.get(64)));
 								empleadoNomina.setMontoFiniquito(Double.parseDouble(datos.get(65)));
+								empleadoNomina.setArea(obtenerArea(datos.get(66)));
+								empleadoNomina.setDepartamento(obtenerDepartamento(datos.get(67)));
+								empleadoNomina.setProceso(obtenerProceso(datos.get(68)));
+								empleadoNomina.setPuesto(obtenerPuesto(datos.get(69)));
 								System.out.println("GUARDANDO!");
 								this.empleadoNominaDao.agregarEmpleadoNomina(empleadoNomina);
 								System.out.println("Guardé un nuevo empleado nomina!");
@@ -168,30 +173,34 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 								EmpleadoNomina empleadoNomina = new EmpleadoNomina();
 								Nomina nomina=new Nomina();
 								empleado.setIdEmpleado(Integer.parseInt(""+empleado.getId()));
-								nomina.setIdNomina(Integer.parseInt(datos.get(66)));
+								nomina.setIdNomina(Integer.parseInt(datos.get(70)));
 								empleadoNomina.setNomina(nomina);
 								empleadoNomina.setEmpleado(empleado);
-								empleadoNomina.setFechaIngreso(datos.get(67));
-								empleadoNomina.setEstatus(datos.get(68));
-								empleadoNomina.setTipoSalario(datos.get(69));
-								empleadoNomina.setFechaBaja(datos.get(70));
-								empleadoNomina.setLoteMovImssAlta(datos.get(71));
-								empleadoNomina.setFechaVencimiento(datos.get(72));
-								empleadoNomina.setSueldoMensual(Double.parseDouble(datos.get(73)));
-								empleadoNomina.setSalarioDiarioInt(Double.parseDouble(datos.get(74)));
-								empleadoNomina.setPlazaTrabajo(datos.get(75));
-								empleadoNomina.setNumeroTrabajadorCliente(datos.get(76));
-								empleadoNomina.setOtroPatron(Boolean.parseBoolean(datos.get(77)));
-								empleadoNomina.setRfcOtroPatron(datos.get(78));
-								empleadoNomina.setNombreOtroPatron(datos.get(79));
-								empleadoNomina.setPermanencia(Boolean.parseBoolean(datos.get(80)));
-								empleadoNomina.setCalle(datos.get(81));
-								empleadoNomina.setCodigoPostal(datos.get(82));
-								empleadoNomina.setMunicipioDel(datos.get(83));
-								empleadoNomina.setEntFederativa(datos.get(84));
-								empleadoNomina.setLoteMovImssBaja(Integer.parseInt(datos.get(85)));
-								empleadoNomina.setAplicaFiniquito(Boolean.parseBoolean(datos.get(86)));
-								empleadoNomina.setMontoFiniquito(Double.parseDouble(datos.get(87)));
+								empleadoNomina.setFechaIngreso(datos.get(71));
+								empleadoNomina.setEstatus(datos.get(72));
+								empleadoNomina.setTipoSalario(datos.get(73));
+								empleadoNomina.setFechaBaja(datos.get(74));
+								empleadoNomina.setLoteMovImssAlta(datos.get(75));
+								empleadoNomina.setFechaVencimiento(datos.get(76));
+								empleadoNomina.setSueldoMensual(Double.parseDouble(datos.get(77)));
+								empleadoNomina.setSalarioDiarioInt(Double.parseDouble(datos.get(78)));
+								empleadoNomina.setPlazaTrabajo(datos.get(79));
+								empleadoNomina.setNumeroTrabajadorCliente(datos.get(80));
+								empleadoNomina.setOtroPatron(Boolean.parseBoolean(datos.get(81)));
+								empleadoNomina.setRfcOtroPatron(datos.get(82));
+								empleadoNomina.setNombreOtroPatron(datos.get(83));
+								empleadoNomina.setPermanencia(Boolean.parseBoolean(datos.get(84)));
+								empleadoNomina.setCalle(datos.get(85));
+								empleadoNomina.setCodigoPostal(datos.get(86));
+								empleadoNomina.setMunicipioDel(datos.get(87));
+								empleadoNomina.setEntFederativa(datos.get(88));
+								empleadoNomina.setLoteMovImssBaja(Integer.parseInt(datos.get(89)));
+								empleadoNomina.setAplicaFiniquito(Boolean.parseBoolean(datos.get(90)));
+								empleadoNomina.setMontoFiniquito(Double.parseDouble(datos.get(91)));
+								empleadoNomina.setArea(obtenerArea(datos.get(92)));
+								empleadoNomina.setDepartamento(obtenerDepartamento(datos.get(93)));
+								empleadoNomina.setProceso(obtenerProceso(datos.get(94)));
+								empleadoNomina.setPuesto(obtenerPuesto(datos.get(95)));							
 								System.out.println("GUARDANDO!");
 								this.empleadoNominaDao.agregarEmpleadoNomina(empleadoNomina);
 								System.out.println("Guardé un nuevo empleado nomina!");
@@ -210,6 +219,32 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 	}
 
 	
+	private Area obtenerArea(String valor) {
+		// TODO Auto-generated method stub
+		Area area = new Area();
+		area.setIdArea(Integer.parseInt(valor));
+		return area;
+	}
+	private Departamento obtenerDepartamento(String valor) {
+		// TODO Auto-generated method stub
+		Departamento departamento = new Departamento();
+		departamento.setIdDepartamento(Integer.parseInt(valor));
+		return departamento;
+	}
+	private Proceso obtenerProceso(String valor) {
+		// TODO Auto-generated method stub
+		Proceso proceso = new Proceso();
+		proceso.setIdProceso(Integer.parseInt(valor));
+		return proceso;
+	}
+	private Puesto obtenerPuesto(String valor) {
+		// TODO Auto-generated method stub
+		Puesto puesto = new Puesto();
+		puesto.setIdPuesto(Integer.parseInt(valor));
+		return puesto;
+	}
+
+
 	@Override
 	public int getCountIdEmpleadoByNss(String nssEmpleado) {
 		

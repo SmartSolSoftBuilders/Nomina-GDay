@@ -242,6 +242,7 @@ CREATE TABLE "NOMINA_RAZON"
   "ID_NOMINA" integer NOT NULL,
   "ID_RAZON_SOCIAL" integer NOT NULL,
   "PORCENTAJE" double precision,
+  CONSTRAINT "PK-NOM_RAZ" PRIMARY KEY ("ID_NOMINA", "ID_RAZON_SOCIAL"),
   CONSTRAINT "ID_NOMINA_FK" FOREIGN KEY ("ID_NOMINA")
       REFERENCES "NOMINA" ("ID_NOMINA") MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
@@ -295,7 +296,7 @@ CREATE TABLE "EMPLEADO"
   "RFC" character varying(13),
   "FECHA_NACIMIENTO" date,
   "EDAD" integer,
-  "SEXO" character varying(2),
+  "SEXO" character varying(10),
   "PAIS_ORIGEN" character varying(20),
   "NACIONALIDAD" character varying(20),
   "ESTADO_CIVIL" character varying(15),

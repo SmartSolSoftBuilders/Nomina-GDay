@@ -59,6 +59,10 @@
 	</select>
 	
 	<!-- Select para obtener la Nomina por idNomina -->
+	<select id="obtenerIdEmpleadoByCurp" parameterType="Empleado" resultMap="empleadoResult" resultType="int">		 
+		select "ID_EMPLEADO" from "EMPLEADO" where "CURP"=#{curp} 	
+	</select>
+
 	<select id="obtenerEmpleadoById" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 
 		select * from "EMPLEADO" where "ID_EMPLEADO"=#{idEmpleado} 	
 	</select>

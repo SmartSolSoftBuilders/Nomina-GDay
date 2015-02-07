@@ -285,9 +285,10 @@ function guardarNominasEmpleado(idEmpleado){
 				"entFederativa":nominasAsignadas[i][22],
 				"suministros":nominasAsignadas[i][23],
 				"actividades":nominasAsignadas[i][24],
-				"puestos":nominasAsignadas[i][25],
-				"servicios":nominasAsignadas[i][26],
-				"area.idArea":nominasAsignadas[i][27]
+				"area.idArea":1,
+				"proceso.idArea":1,
+				"departamento.idArea":1,
+				"puesto.idPuesto":1
 				},
 			sync: true,
 			dataType : 'json',
