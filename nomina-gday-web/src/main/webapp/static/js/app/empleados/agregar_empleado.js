@@ -80,13 +80,10 @@ $(document).ready(function() {
 	$("#agregarNominaEmpleadoForm").validate({
 		rules: {
 			fechaingresoformnomina: "required",
-			fechabajaformnomina : "required",
 			fechaNacimiento : "required",
-			fechavencimientoformnomina : "required",
 			sueldomensualformnomina : "required",
 			sueldodiarioformnomina : "required",
 			sueldodiariointformnomina : "required",
-			loteimssformnomina : "required",
 			numtrabajadorclienteoformnomina : "required",
 			nombreotropatronformnomina : "required",
 			rfcnformnomina : "required",
@@ -105,12 +102,9 @@ $(document).ready(function() {
 		},        
 		messages: {
 			fechaingresoformnomina: "Ingrese una fecha de Ingreso",
-			fechabajaformnomina : "Ingrese una Fecha de Baja",
-			fechavencimientoformnomina : "Ingrese una Fecha de Vencimiento",
 			sueldomensualformnomina : "Ingrese el sueldo Mensual",
 			sueldodiarioformnomina : "Ingrese el sueldo Diario",
 			sueldodiariointformnomina : "Ingrese el Sueldo Diario Integrado",
-			loteimssformnomina : "Ingrese el lote movimiento alta IMSS",
 			numtrabajadorclienteoformnomina : "Ingrese un Numero de Trabajador Cliente",
 			nombreotropatronformnomina : "Ingrese el nombre de otro patron",
 			rfcnformnomina : "Ingrese el RFC",
@@ -585,4 +579,66 @@ function validate_fecha(fecha)
         }
     }
     return false;
+}
+
+//Habilitar elementos por checkbox
+
+function habilitarInfonavit()
+{
+	console.log($("#datosInfonavit").val())
+	if($('#datosInfonavit').prop('checked'))
+	{
+		// habilitamos
+		console.log("ON")
+		$("#numCredito").prop("disabled",false);
+		$("#descuentoVsmg").prop("disabled",false);
+		$("#descuento").prop("disabled",false);
+		$("#importe").prop("disabled",false);
+	}else {
+		// deshabilitamos
+		console.log("Off")
+		$("#numCredito").prop("disabled",true);
+		$("#descuentoVsmg").prop("disabled",true);
+		$("#descuento").prop("disabled",true);
+		$("#importe").prop("disabled",true);
+	}
+}
+function habilitarFonacot()
+{
+	console.log($("#fonacot").val())
+	if($('#fonacot').prop('checked'))
+	{
+		// habilitamos
+		console.log("ON")
+		$("#numPagos").prop("disabled",false);
+		$("#importeFonacot").prop("disabled",false);
+	}else {
+		// deshabilitamos
+		console.log("Off")
+		$("#numPagos").prop("disabled",true);
+		$("#importeFonacot").prop("disabled",true);
+	
+	}
+}
+function habilitarPensionAlim()
+{
+	console.log($("#pensionAlimenticia").val())
+	if($('#pensionAlimenticia').prop('checked'))
+	{
+		// habilitamos
+		console.log("ON")	
+		$("#importeAlimenticio").prop("disabled",false);
+		$("#porcentajeAlimenticio").prop("disabled",false);
+		$("#nombreAcreedor").prop("disabled",false);
+		$("#observaciones").prop("disabled",false);
+		
+	}else {
+		// deshabilitamos
+		console.log("Off")
+		$("#importeAlimenticio").prop("disabled",true);
+		$("#porcentajeAlimenticio").prop("disabled",true);
+		$("#nombreAcreedor").prop("disabled",true);
+		$("#observaciones").prop("disabled",true);
+		
+	}
 }

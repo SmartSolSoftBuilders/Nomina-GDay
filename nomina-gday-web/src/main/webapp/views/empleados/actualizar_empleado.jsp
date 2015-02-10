@@ -158,7 +158,7 @@
 						<tr>
 							<td>DATOS INFONAVIT<input id='numCuenta' name='numCuenta' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							<td></td>
-							<td>NUMERO DE CREDITO<input id='numCredito' name='numCredito' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+							<td>NUMERO DE CREDITO<input id='numCredito' name='numCredito' type="text" class="form-control" onclick="habilitar();"></td>
 					 		<td>DESCUENTO VSMG<input id='descuentoVsmg' name='descuentoVsmg' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>DESCUENTO %<input id='descuento' name='descuento' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>IMPORTE<input id='importe' name='importe' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
