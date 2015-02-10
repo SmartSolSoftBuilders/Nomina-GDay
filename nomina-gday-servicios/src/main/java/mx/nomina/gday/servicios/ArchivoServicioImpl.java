@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mx.nomina.gday.dao.ArchivoDao;
+import mx.nomina.gday.dao.EmpleadoDao;
 import mx.nomina.gday.dao.EmpleadoNominaDao;
 import mx.nomina.gday.modelo.Archivo;
 import mx.nomina.gday.modelo.Empleado;
@@ -28,6 +29,9 @@ public class ArchivoServicioImpl implements ArchivoServicio{
 	
 	@Autowired
 	private EmpleadoNominaDao empleadoNominaDao;
+
+	@Autowired
+	private EmpleadoDao empleadoDao;
 
 	@Override
 	public void agregarArchivo(Archivo archivo) {
@@ -82,14 +86,21 @@ public class ArchivoServicioImpl implements ArchivoServicio{
     				//fila de la hoja
     				fila = hoja.getRow(filaNum);    				    				
     				List <String> datos = new ArrayList<String>();    				
-    					if (fila.getCell(0)!=null){
-    						fila.getCell(0).setCellType(Cell.CELL_TYPE_STRING);
-    						data = fila.getCell(0).getStringCellValue();
-    					}
-    					else
-    						data = "";
-    					System.out.print(data + " ->");	
-    					datos.add(data);
+    					if (fila.getCell(2)!=null){
+    						fila.getCell(2).setCellType(Cell.CELL_TYPE_STRING);
+    						String curp = fila.getCell(2).getStringCellValue();
+    						Empleado empleado = new Empleado();
+    						empleado.setCurp(curp);
+    						empleado=empleadoDao.obtenerIdEmpleadoByCurp(empleado);
+    						System.out.println(curp);
+    						if (empleado!=null){
+        						int idEmpleado=empleado.getIdEmpleado();
+           						System.out.println("ID OBTENIDO:"+idEmpleado);
+           					
+    							data = ""+idEmpleado;
+    							datos.add(data);
+    						}
+    					}    						
     				for (int i=0; i<datos.size();i++){
     					this.empleadoNominaDao.eliminarEmpleadoNominayEmpleado(Integer.parseInt(datos.get(i)));
     				}

@@ -96,10 +96,9 @@ public @ResponseBody String guardaFichero(MultipartHttpServletRequest request, H
 
 
 @RequestMapping(value="/revertir", method = RequestMethod.POST)
-public @ResponseBody String revertir(){  
-	
+public @ResponseBody String revertir(){  	
 	int valor = this.archivoServicio.revertirCarga();
-    
+	System.out.println("Terminando CARGA REVERTIDA");
     return "Fichero grabado correctamente";
 }        
 

@@ -185,7 +185,7 @@
 	
 <!-- 	Select para Eliminar El empleado a partir del empleadoNomina -->	
 	<delete id="eliminarEmpleadoNominayEmpleado" parameterType="int">
-		DELETE FROM "EMPLEADO_NOMINA" WHERE "ID_EMPLEADO" = #{id} 
+		DELETE FROM "EMPLEADO_NOMINA" WHERE "ID_EMPLEADO" = #{id}; 
 		DELETE FROM "EMPLEADO" WHERE "ID_EMPLEADO"=#{id}
 	</delete>
 	
@@ -196,13 +196,17 @@
             "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
             "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
             "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
-            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA")
+            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
+            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
+            "ID_PROCESO")
  	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
             12345, date(#{fechaVencimiento}), #{sueldoMensual}, 
             #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
             #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
             #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
-            #{municipioDel}, #{entFederativa}, 1234);		
+            #{municipioDel}, #{entFederativa}, 1234,
+            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso}
+            );		
 	</insert>
 
 	<update id="actualizarEmpleadoNomina" parameterType="EmpleadoNomina">
