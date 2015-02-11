@@ -3,15 +3,25 @@
 //*******************************************************************************
 $(document).ready(function() {
 	//Sección validaciones
-    $("#agregarNominaForm").validate({
+	 $("#agregarNominaForm").validate({
         rules: {
         	nombreNomina: "required",
         	patrona: "required",
         	intermediaria: "required",
         	porcPrimaVacacional: "required",
         	registroPatronal: "required",
-        	fechaContrato: "required",
-        	
+        	fechaContrato: "required",   
+        	selectMult:{
+
+                    required: function () {
+                        if ($("#selectMult").val()=="") {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+                
+            }
         	//selectMult: "required"
             /*email: {
                 required: true,
@@ -291,6 +301,8 @@ function guardarNomina() {
 			});
 	}
 }
+
+
 
 function cancelar(){
 	top.frames['main'].location="../nominas/nominas.jsp"; 	
