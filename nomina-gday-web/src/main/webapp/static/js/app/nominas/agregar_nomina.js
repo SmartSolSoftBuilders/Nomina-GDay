@@ -1,6 +1,14 @@
 //*******************************************************************************
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
+function ifSelectNotEmpty(field, rules, i, options){
+alert("Ok")
+  if ($(field).find("option").length > 0 && 
+      $(field).find("option:selected").length == 0) {
+     // this allows the use of i18 for the error msgs
+     return "* This field is required";
+  }
+}
 $(document).ready(function() {
 	//Sección validaciones
     $("#agregarNominaForm").validate({
@@ -10,8 +18,7 @@ $(document).ready(function() {
         	intermediaria: "required",
         	porcPrimaVacacional: "required",
         	registroPatronal: "required",
-        	fechaContrato: "required",
-        	
+        	fechaContrato: "required"
         	//selectMult: "required"
             /*email: {
                 required: true,
@@ -24,8 +31,7 @@ $(document).ready(function() {
         	intermediaria:"Ingrese el nombre de la Intermediaria",
         	porcPrimaVacacional:"Ingrese un porcentaje Vacacional",
         	registroPatronal:"Ingrese un registro Patronal",
-        	fechaContrato:"Ingrese una Fecha",
-        	
+        	fechaContrato:"Ingrese una Fecha"
         },
         
         submitHandler: function(form) {
