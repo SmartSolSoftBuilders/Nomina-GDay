@@ -29,7 +29,9 @@
 					  		</tr>						  		
 					   		<tr>
 						  		<td>							 			
-					 				<select name="selectMult" id="selectMult" multiple="multiple" style="width:550px;height:100px">		
+					 				<select name="selectMult[]" id="selectMult" multiple="multiple" style="width:550px;height:100px"
+					 				        class="validate[funcCall[ifSelectNotEmpty]]">
+					 				
 					 				</select>					 				
 					 				<button type="button" class="btn btn-default" onclick="showRazonesSociales();">AÑADIR</button>
 					 				<button type="button" class="btn btn-default" onclick="quitarRazonSocial();">QUITAR</button>

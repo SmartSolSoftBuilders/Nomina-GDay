@@ -54,7 +54,7 @@
 		<!--  cloud:data-source id="dataSource" service-name="postgresql-a480712"/>-->
 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 			<property name="driverClassName" value="org.postgresql.Driver" />
-			<property name="url" value="jdbc:postgresql://localhost:5432/nomina_gday"/>  
+			<property name="url" value="jdbc:postgresql://localhost:5532/nomina_gday"/>  
 			<!-- property name="url" value="jdbc:postgresql://localhost:5532/fam"/-->
 			<property name="username" value="postgres" />
 			<property name="password" value="root" />
