@@ -1,5 +1,7 @@
 package mx.nomina.gday.seguridad.util;
 
+import java.util.List;
+
 import mx.nomina.gday.seguridad.modelo.UsuarioSeguridad;
 import mx.nomina.gday.seguridad.servicios.CustomUserDetails;
 import mx.nomina.gday.seguridad.servicios.MenuSeguridadServicio;
@@ -60,4 +62,32 @@ public class SeguridadUtil {
         
         return us;
     }
+    
+    //Metodo que regresa una lista de usuarios
+    public  List<UsuarioSeguridad> obtenerUsuariosSeguridad(){
+		try {
+			 
+				List<UsuarioSeguridad> tmp=this.mttoSeguridad.consultarUsuarios();
+				System.out.println("Lista de Usuarios"+tmp.size());
+					return tmp;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+    }
+
+    //Metodo que guarda usuarios
+    public void guardarUsuario(UsuarioSeguridad usuarioSeguridad){
+    	
+    	this.mttoSeguridad.agregarUsuarioSeguridad(usuarioSeguridad);
+    }
+
+    //Metodo que modifica usuarios
+	void actualizarUsuario(UsuarioSeguridad usuarioSeguridad){
+		
+		this.actualizarUsuario(usuarioSeguridad);
+	}
+	
 }
+

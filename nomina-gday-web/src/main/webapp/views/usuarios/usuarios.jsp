@@ -24,6 +24,7 @@
 							<th>ID</th>
 							<th>NICK</th>
 							<th>NOMBRE</th>					
+							<th>ESTATUS</th>					
 							<th class='btn btn-success'></th>
 						</tr>
 					<tbody>			
@@ -38,7 +39,7 @@
 			<br>
 			<br>		
 			<div>
-				<input type="button" class="btn btn-success" value="AÑADIR" onclick="showAgregarUsuario();"/>
+				<input type="button" class="btn btn-success" value="AÑADIR USUARIO" onclick="showAgregarUsuario();"/>
 			</div>
 			<br>
 			<br>

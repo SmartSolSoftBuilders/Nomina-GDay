@@ -25,3 +25,10 @@ $(document).ready(function() {
 	});			
 
 });
+
+//*************************************************
+//Function que llama al Formulario Agregar Usuario*
+//*************************************************
+function showAgregarUsuario(){
+	top.frames['main'].location="../usuarios/agregar_usuario.jsp"; 	
+}

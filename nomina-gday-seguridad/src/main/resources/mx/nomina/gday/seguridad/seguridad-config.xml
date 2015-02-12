@@ -21,7 +21,7 @@
        	http://schema.cloudfoundry.org/spring
       	http://schema.cloudfoundry.org/spring/cloudfoundry-spring-0.6.xsd">
        
-	<context:component-scan base-package="mx.estrategas.seguridad"/>
+	<context:component-scan base-package="mx.nomina.gday.seguridad"/>
 	
 	<tx:advice id="txAdviceSeguridad" transaction-manager="txManagerSeguridad">
 	    <tx:attributes>
