@@ -27,12 +27,34 @@
 		<result property="activo" column="l_rol_activo"/>
 	</resultMap>
 	
-	<select id="consultarUsuarios" resultMap="resultUsuario">
+	<resultMap type="UsuarioSeguridad" id="resultUsuarioConRol">
+		<id property="id" column="id_t_usuario"/>
+		<result property="username" column="v_username"/>
+		<result property="password" column="v_password"/>
+		<result property="nombre" column="v_nombre_usuario"/>
+		<result property="activo" column="l_usuario_activo"/>
+		<result property="rol" column="v_rolt"/>
+	</resultMap>
+	
+	<select id="consultarUsuariosSeguridadConRol" parameterType="UsuarioSeguridad" resultMap="resultUsuarioConRol">
+		select id_t_usuario, v_username, v_password, v_nombre_usuario, l_usuario_activo,
+	(select "v_rol" from "seguridad"."t_rol_seguridad" as "rs", 
+	"seguridad"."t_r_usuario_rol" as "rt" where "rt"."id_tr_rol" = "rs"."id_t_rol" and "rt"."id_tr_usuario"=
+	#{id}) v_rolt
+	from "seguridad"."t_usuario_seguridad"
+	where id_t_usuario=#{id};
+	</select>
+	
+	<select id="consultarUsuarios" resultMap="resultUsuario"> 
 		select * from seguridad.t_usuario_seguridad;
 	</select>
 	
 	<select id="consultarUsuariosByUser" parameterType="UsuarioSeguridad" resultMap="resultUsuario">
 		select * from seguridad.t_usuario_seguridad where v_username=#{username};
+	</select>
+
+	<select id="consultarUsuariosById" parameterType="UsuarioSeguridad" resultMap="resultUsuario">
+		select * from seguridad.t_usuario_seguridad where id_t_usuario=#{id};
 	</select>
 
 	<select id="consultarRoles" resultMap="resultRol">
@@ -46,10 +68,11 @@
 		where usu.v_username = #{username};
 	</select>
 	
-	<select id="consultarUsuariosConRoles" resultMap="resultUsuarioConRoles">
+	<select id="consultarUsuariosConRolesById" resultMap="resultUsuarioConRoles" parameterType="UsuarioSeguridad">
 		select * from seguridad.t_usuario_seguridad as usu
 		inner join seguridad.t_r_usuario_rol usu_rol on usu.id_t_usuario = usu_rol.id_tr_usuario
 		inner join seguridad.t_rol_seguridad rol on rol.id_t_rol = usu_rol.id_tr_rol
+		where id_t_usuario =(select id_t_usuario from seguridad.t_usuario_seguridad where v_username= #{username});
 	</select>
 	
 	<insert id="agregarUsuarioSeguridad" parameterType="UsuarioSeguridad" keyProperty="id">
@@ -61,7 +84,7 @@
     	vALUES (#{id},#{username},#{password}, #{nombre}, true);
     	INSERT INTO seguridad.t_r_usuario_rol(
             id_tr_usuario, id_tr_rol)
-    	VALUES (#{id}, 1);
+    	VALUES (#{id}, (select id_t_rol from seguridad.t_rol_seguridad where v_rol= #{rol}));
     	
 	</insert>
 	
@@ -75,6 +98,14 @@
 		UPDATE seguridad.t_usuario_seguridad
    			SET v_password=#{password},l_usuario_activo=#{activo}
    				WHERE v_username=#{username}       			    	
+	</update>
+	<update id="actualizarUsuarioConRol" parameterType="UsuarioSeguridad">			
+		UPDATE seguridad.t_usuario_seguridad
+   			SET v_password=#{password},l_usuario_activo=#{activo}, v_nombre_usuario= #{nombre}
+   				WHERE v_username=#{username};       			    	
+		UPDATE seguridad.t_r_usuario_rol
+			SET  id_tr_rol= (select id_t_rol from seguridad.t_rol_seguridad where v_rol= #{rol})
+				WHERE id_tr_usuario=#{id};       			    	
 	</update>
 		
 </mapper>

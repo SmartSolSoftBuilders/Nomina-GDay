@@ -1,5 +1,6 @@
 package mx.nomina.gday.seguridad.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import mx.nomina.gday.seguridad.modelo.UsuarioSeguridad;
@@ -58,7 +59,7 @@ public class SeguridadUtil {
                 getAuthentication().
                 getPrincipal();
         
-        UsuarioSeguridad us = new UsuarioSeguridad(cud.getUsername(), "", cud.getNombre(), cud.isEnabled());
+        UsuarioSeguridad us = new UsuarioSeguridad(cud.getUsername(), "", cud.getNombre(), "", cud.isEnabled());
         
         return us;
     }
@@ -83,11 +84,31 @@ public class SeguridadUtil {
     	this.mttoSeguridad.agregarUsuarioSeguridad(usuarioSeguridad);
     }
 
-    //Metodo que modifica usuarios
-	void actualizarUsuario(UsuarioSeguridad usuarioSeguridad){
+   	
+	public List obtenerDatosCombo(){
 		
-		this.actualizarUsuario(usuarioSeguridad);
+		System.out.println("Datos del Combo Servicio");
+		List datosCombo = new ArrayList();
+		try{
+			datosCombo.add(this.mttoSeguridad.consultarRoles());
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return datosCombo;
 	}
 	
+	//Metodo para obtener el usuario por id
+	
+	public UsuarioSeguridad obtenerUsuarioById(int idUsuario){
+		
+		return this.mttoSeguridad.consultarUsuariosById(idUsuario);
+	}
+	
+	 //Metodo que modifica usuarios
+	public UsuarioSeguridad consultarUsuariosConRolesById(UsuarioSeguridad usuarioSeguridad){
+			
+		return this.mttoSeguridad.consultarUsuariosSeguridadConRol(usuarioSeguridad);
+		}
 }
 

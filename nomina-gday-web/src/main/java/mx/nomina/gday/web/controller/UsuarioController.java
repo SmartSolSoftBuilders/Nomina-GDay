@@ -61,7 +61,8 @@ public class UsuarioController {
 		 @RequestMapping(value="/guardarusuario",method = RequestMethod.POST)
 		 @ResponseBody
 		    public boolean guardarUsuario(@ModelAttribute(value="usuario") UsuarioSeguridad usuarioSeguridad, BindingResult result){
-			 	System.out.println("Guardando el Usuario"+ usuarioSeguridad);
+			 	
+			 	System.out.println("Guardando el Usuario"+ usuarioSeguridad.getRoles().size());
 			 	mttoSeguridadServicio.agregarUsuarioSeguridad(usuarioSeguridad);
 			 return true;
 			 
@@ -73,13 +74,37 @@ public class UsuarioController {
 		    public boolean modificarUsuario(@ModelAttribute(value="usuario") UsuarioSeguridad usuarioSeguridad, BindingResult result,HttpServletRequest request){    	    	    	    	   
 		    
 			 try {
-				 System.out.println("Controller Actualizar Grupo"+ usuarioSeguridad.getId());
-				 mttoSeguridadServicio.actualizarUsuario(usuarioSeguridad);			 
+				 System.out.println("Controller Actualizar Usuario ID"+ usuarioSeguridad.getId());
+				 System.out.println("Controller Actualizar RolUsuario"+ usuarioSeguridad.getRol());
+				 mttoSeguridadServicio.actualizarUsuarioConRol(usuarioSeguridad);			 
 				 return true;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			 	return false;
 		    }
-		 
+		
+		//Controller que permite obtener el grupo por idGrupo
+		 @RequestMapping(value="/obtenerusuarioconrolesbyid",method = RequestMethod.POST)
+		    @ResponseBody
+		    public UsuarioSeguridad obtenerUsuarioConRolesById(@ModelAttribute(value="usuario") UsuarioSeguridad usuarioSeguridad, BindingResult result){
+			 try {
+				 
+				 System.out.println("Controller USUARIO USERNAME"+ usuarioSeguridad);
+				 usuarioSeguridad= this.mttoSeguridadServicio.consultarUsuariosSeguridadConRol(usuarioSeguridad);
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			return usuarioSeguridad;
+			 	
+			}	
+		 //LLENADO DEL SELECT COMBO, ROLES
+		 @RequestMapping(value="/getdatoscombo",method = RequestMethod.POST)
+		    @ResponseBody
+		    public List obtenerDatosCombo(){
+			 	System.out.println("Controller Datos del combo");
+				return this.mttoSeguridadServicio.consultarRoles();
+			}
 }

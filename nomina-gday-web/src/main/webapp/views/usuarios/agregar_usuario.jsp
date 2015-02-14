@@ -38,6 +38,12 @@
 									type="text" class="form-control"
 									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							</tr>
+							<tr>
+								<td>ROLES
+									<select id='rol' name='rol' class="form-control"></select>
+									
+								</td>
+							</tr>
 						</table>
 						<br> <br>
 						<!-- /.col-lg-6 -->

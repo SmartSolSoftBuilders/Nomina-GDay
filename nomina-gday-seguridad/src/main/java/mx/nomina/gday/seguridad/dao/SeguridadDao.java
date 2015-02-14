@@ -18,6 +18,10 @@ public interface SeguridadDao {
 	List<RolSeguridad> consultarRoles();
 	
 	UsuarioSeguridad consultarUsuarioConRoles(String username);
+
+	UsuarioSeguridad consultarUsuariosConRolesById(UsuarioSeguridad usuarioSeguridad);
+
+	UsuarioSeguridad consultarUsuariosSeguridadConRol(UsuarioSeguridad usuarioSeguridad);
 	
 	List<UsuarioSeguridad> consultarUsuariosConRoles();
 	
@@ -28,4 +32,9 @@ public interface SeguridadDao {
 	void actualizarPassword(UsuarioSeguridad usuario);
 
 	void actualizarUsuario(UsuarioSeguridad usuarioSeguridad);
+
+	void actualizarUsuarioConRol(UsuarioSeguridad usuarioSeguridad);
+	
+	public UsuarioSeguridad consultarUsuariosById(int id);
+
 }

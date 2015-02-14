@@ -8,16 +8,18 @@ public class UsuarioSeguridad extends BaseModelo{
 	private String username;
 	private String password;
 	private String nombre;
-	private boolean activo;
+	private boolean activo;	
+	private String rol;
 	private List<RolSeguridad> roles = new ArrayList<RolSeguridad>();	
 	
 	public UsuarioSeguridad(){}
 	
-	public UsuarioSeguridad(String username, String password, String nombre,
+	public UsuarioSeguridad(String username, String password, String nombre, String rol,
 			boolean activo) {
 		this.username = username;
 		this.password = password;
 		this.nombre = nombre;
+		this.rol=rol;
 		this.activo = activo;
 	}	
 	
@@ -57,6 +59,12 @@ public class UsuarioSeguridad extends BaseModelo{
 			sb.append(rs.getRol()).append(",");
 		}
 		return sb.toString();
-	}	
-	
+	}		
+	public String getRol() {
+		return this.rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 }
