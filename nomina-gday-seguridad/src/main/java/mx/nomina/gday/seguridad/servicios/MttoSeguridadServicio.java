@@ -18,7 +18,7 @@ public interface MttoSeguridadServicio {
 	public List<UsuarioSeguridad> consultarRoles();
 	public UsuarioSeguridad consultarUsuariosById(int idUsuario);
 
-	//Para agregar al git de nuevo
+	//Para agregar al git de nuevo\\
 
 }
 
