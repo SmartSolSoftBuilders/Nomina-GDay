@@ -40,3 +40,4 @@ function showEditarUsuario(idUsuario, username){
 	//http:/../usuarios/actualizar_usuario.jsp?id=1&nick=ADMIN1
 	top.frames['main'].location="../usuarios/actualizar_usuario.jsp?id="+ idUsuario +"&nick=ADMIN1"; 	
 }
+

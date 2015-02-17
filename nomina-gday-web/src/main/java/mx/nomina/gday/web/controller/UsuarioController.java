@@ -107,4 +107,5 @@ public class UsuarioController {
 			 	System.out.println("Controller Datos del combo");
 				return this.mttoSeguridadServicio.consultarRoles();
 			}
+		 
 }

@@ -6,8 +6,43 @@
 	<resultMap type="HojaTrabajo" id="hojaTrabajoResult">
 		<id property="idHojaTrabajo" column="ID_HOJA_DE_TRABAJO"/>
 		<result property="nombreArchivo" column="NOMBRE_ARCHIVO"/>
-		<result property="archivoPlantilla" column="ARCHIVO_PLANTILLA"/>			
-	
+		<result property="archivoPlantilla" column="ESTATUS"/>
+		<result property="archivoAcumulado" column="ARCHIVO_ACUMULADO" javaType = "byte[]" jdbcType = "BINARY" typeHandler = "org.apache.ibatis.type.ByteArrayTypeHandler" />	
 	</resultMap>
 
+	<!-- Select para obtener la Nomina por idNomina -->
+	
+	<select id="obtenerHojaById" parameterType="int" resultMap="hojaTrabajoResult" resultType="HojaTrabajo">		 
+		select * from "HOJA_DE_TRABAJO" where "ID_HOJA_DE_TRABAJO"=#{idHojaTrabajo}
+	</select>
+	
+	<select id="obtenerHojasByIdNomina" parameterType="int" resultMap="hojaTrabajoResult" resultType="HojaTrabajo">		 
+		select * from "HOJA_DE_TRABAJO" where "ID_NOMINA"=#{idNomina}
+	</select>
+	<select id="obtenerHojas" resultMap="hojaTrabajoResult" resultType="HojaTrabajo">		 
+		select * from "HOJA_DE_TRABAJO" where "ESTATUS"='1'
+	</select>
+	<update id="activarHojaTrabajo" parameterType="HojaTrabajo">
+		UPDATE "HOJA_DE_TRABAJO"
+   		SET "ESTATUS"='0'
+		WHERE "ID_NOMINA"=#{nomina.idNomina};
+		UPDATE "HOJA_DE_TRABAJO"
+   		SET "ESTATUS"='1'
+		WHERE "ID_HOJA_DE_TRABAJO"=#{idHojaTrabajo};		
+	</update>
+	<update id="eliminarHojaTrabajo" parameterType="HojaTrabajo">
+		DELETE FROM "HOJA_DE_TRABAJO" WHERE "ID_HOJA_DE_TRABAJO"=#{idHojaTrabajo};				
+	</update>
+	
+	 <insert id="agregarArchivo" parameterType="Archivo" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_hoja')
+  		</selectKey>
+			INSERT INTO "HOJA_DE_TRABAJO"(
+            "ID_HOJA_DE_TRABAJO", "ID_NOMINA", "ARCHIVO_ACUMULADO", "ESTATUS", 
+            "PERIODO", "NOMBRE_ARCHIVO")
+           	VALUES (#{id},#{nomina.idNomina},#{archivoAcumulado,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler},	
+           	'0','1',#{nombreArchivo});            	   
+    </insert>
+			
 </mapper>

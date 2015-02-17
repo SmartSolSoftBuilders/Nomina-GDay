@@ -85,6 +85,39 @@ public class NominaController {
 			}
 			  return null;
 		}
+			//Controller que muestra la lista de Nomina y permite la Edicion del mismo
+		 @RequestMapping(value="/getnominas_hojas",method = RequestMethod.POST)
+		    @ResponseBody
+		    public List obtenerNominasHojas(){    	
+			  System.out.println("Controller HojasTrab- Nomina");
+			  try {
+				List<Nomina> tmp =  this.nominaServicio.obtenerNominas();
+				System.out.println("tmp"+tmp.size());
+				List nominasTmp = new ArrayList();
+				List nominasTmp2 = new ArrayList<String>();
+
+				for (int i = 0; i < tmp.size(); i++) {
+					nominasTmp2 = new ArrayList<String>();
+					System.out.println("tmp"+tmp.get(i));
+					nominasTmp2.add(tmp.get(i).getIdNomina());
+					nominasTmp2.add(tmp.get(i).getNombreCorto());
+					nominasTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
+					nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreCortoPatrona());
+					nominasTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
+					nominasTmp2.add(tmp.get(i).getPeriodicidad());
+					nominasTmp2.add(tmp.get(i).getTipoPago());
+					nominasTmp2.add(tmp.get(i).getClaseRiesgo());
+					nominasTmp2.add("<a href='#' onclick='showHojasTrabajoNomina("+tmp.get(i).getIdNomina()+")'>GESTIONAR FORMATO</a>");		
+					nominasTmp.add(nominasTmp2);
+				}
+				return nominasTmp;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			  return null;
+		}
+
 		//Controller que muestra la lista de nóminas para seleccionarla a un empleado
 		@RequestMapping(value="/getnominasemp",method = RequestMethod.POST)
 		    @ResponseBody
@@ -118,6 +151,7 @@ public class NominaController {
 			  return null;
 		}
 
+		
 
 		//Controller que permite Actualizar los datos de la Nomina a Editar
 		 @RequestMapping(value="/modificanomina",method = RequestMethod.POST)
