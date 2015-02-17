@@ -50,7 +50,7 @@
 	<groupId>org.postgresql</groupId>
 		<artifactId>postgresql</artifactId>
 		<version>9.3-1100-jdbc41</version>
-	</dependency>	
+	</dependency>
 	<dependency>
         <groupId>org.cloudfoundry</groupId>
         <artifactId>cloudfoundry-runtime</artifactId>
