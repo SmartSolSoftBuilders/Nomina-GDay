@@ -107,5 +107,6 @@
 			SET  id_tr_rol= (select id_t_rol from seguridad.t_rol_seguridad where v_rol= #{rol})
 				WHERE id_tr_usuario=#{id};       			    	
 	</update>
-		
+<!-- 			//Para agregar al git de nuevo
+ -->		
 </mapper>

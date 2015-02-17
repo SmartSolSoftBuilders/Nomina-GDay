@@ -36,5 +36,7 @@ public interface SeguridadDao {
 	void actualizarUsuarioConRol(UsuarioSeguridad usuarioSeguridad);
 	
 	public UsuarioSeguridad consultarUsuariosById(int id);
+	
+	//Para agregar al git de nuevo
 
 }

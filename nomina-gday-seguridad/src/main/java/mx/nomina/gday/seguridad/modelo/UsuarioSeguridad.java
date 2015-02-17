@@ -67,4 +67,7 @@ public class UsuarioSeguridad extends BaseModelo{
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	
+	//Para agregar al git de nuevo
+
 }
