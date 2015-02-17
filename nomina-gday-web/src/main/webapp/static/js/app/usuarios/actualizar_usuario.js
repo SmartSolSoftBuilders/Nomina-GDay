@@ -1,5 +1,34 @@
+var idUsuario=getParameter("id");
+var username=getParameter("nick");
+console.log("USUARIOS!")
+console.log(idUsuario);
+console.log(username);
+
 //Valida los elementos del Formulario
 $(document).ready(function() {
+	$.ajax({
+		sync:true,
+		dataType:'json',
+		url:   '../../mvc/usuario/getdatoscombo',
+		type:  'post',		
+		beforeSend: function () {	
+		},
+		success:  function (response) {
+			console.log (response[0]);
+			console.log ("Rol Usuario");
+			var options = "";
+			var result=response[0];
+			 for (var i = 0; i < result.length; i++) {
+			    	options += '<option value="' + result[i].rol + '">' + result[i].rol + '</option>';
+			    }
+			$("#rol").append(options)
+			obtenerUsuario(idUsuario, username);
+			},	
+		error: function (response) {																	
+			$("#resultadoGuardar").html("Error");
+			}		
+	});
+	
 	$("#actualizarUsuarioForm").validate({
 		rules: {
 			nombre: "required",
@@ -45,13 +74,6 @@ function getParameter(parameter){
 } 
 
 
-var idUsuario=getParameter("id");
-var username=getParameter("nick");
-console.log("USUARIOS!")
-console.log(idUsuario);
-console.log(username);
-obtenerUsuario(idUsuario, username);
-
 //*******************************************************************************
 //Function que obtiene la nomina por idNomina y llama a la function 
 //muestraDatos()
@@ -61,6 +83,7 @@ function obtenerUsuario(idUsuario, username){
 	console.log(idUsuario);
 	console.log(username);
 	$.ajax({
+		sync:true,
 		data: {
 			"id" : idUsuario,
 			"username" : username
@@ -101,29 +124,7 @@ function muestraDatosUsuario(datos){
 //*******************************************************************************
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
-$(document).ready(function() {
-	$.ajax({
-		sync:true,
-		dataType:'json',
-		url:   '../../mvc/usuario/getdatoscombo',
-		type:  'post',		
-		beforeSend: function () {	
-		},
-		success:  function (response) {
-			console.log (response[0]);
-			console.log ("Rol Usuario");
-			var options = "";
-			var result=response[0];
-			 for (var i = 0; i < result.length; i++) {
-			    	options += '<option value="' + result[i].rol + '">' + result[i].rol + '</option>';
-			    }
-			$("#rol").append(options)		    
-			},	
-		error: function (response) {																	
-			$("#resultadoGuardar").html("Error");
-			}		
-	});			
-});
+
 
 //*************************************************
 //Function que actualiza todos los datos del Grupo*

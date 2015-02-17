@@ -106,7 +106,7 @@ public class SeguridadUtil {
 	}
 	
 	 //Metodo que modifica usuarios
-	public UsuarioSeguridad consultarUsuariosConRolesById(UsuarioSeguridad usuarioSeguridad){
+	public UsuarioSeguridad obtenerUsuariosSeguridadConRol(UsuarioSeguridad usuarioSeguridad){
 			
 		return this.mttoSeguridad.consultarUsuariosSeguridadConRol(usuarioSeguridad);
 		}
