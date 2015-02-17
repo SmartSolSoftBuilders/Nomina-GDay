@@ -59,7 +59,13 @@
               <li><a href="../empleados/empleados.jsp" target="main" >CONSULTAR EMPLEADOS</a></li>     
               </ul>
              </li>
-			<li><a href="gformato.html" target="ventana" style="color:#FFFFFF">GESTOR DE FORMATOS</a></li>
+			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DE FORMATOS <b class="caret"></b></a>
+			              <ul class="dropdown-menu">
+                <li><a href="../hojas_trabajo/nominas.jsp" target="main" >CONSULTAR HOJAS DE TRABAJO</a></li>                
+              <li><a href="../hojas_trabajo/generar_hoja.jsp" target="main" >GENERAR HOJAS DE TRABAJO</a></li>     
+              </ul>
+			
+			</li>
 			<li><a href="#" style="color:#FFFFFF">CARGA DE ACUMULADOS</a></li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DEL SISTEMA <b class="caret"></b></a>
