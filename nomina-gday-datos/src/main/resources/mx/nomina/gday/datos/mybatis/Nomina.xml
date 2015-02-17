@@ -131,7 +131,7 @@
    	 			#{tipoCalendario.idCalendario}, #{nombreCorto},  #{provisionAguinaldo},  
    	 			#{provisionVacaciones}, #{provisionPrimaVacacional}, #{diasAguinaldo}, 
    	 			#{porcPrimaVacacional}, #{fondoAhorro}, #{facturaSubsidio}, 
-   	 			#{ivaExento}, #{reconoceAntiguedad}, #{comisionCostSocial}, 
+   	 				#{ivaExento}, #{reconoceAntiguedad}, #{comisionCostSocial}, 
    	 			#{tipoPago}, #{claseRiesgo}, #{registroPatronal}, #{periodicidad}, date(#{fechaContrato}));
             <if test="razonesSociales != null">
             	<foreach  collection="razonesSociales" item="grsp">
@@ -165,6 +165,11 @@
 </update>
 
 <select id="obtenerNominasByIdRazonSocial" parameterType="int" resultMap="nominaResult" resultType="Nomina">
-SELECT "NOMINA"."ID_NOMINA","NOMINA"."NOMBRE_CORTO", "NOMINA"."ID_ESQUEMA", "NOMINA"."ID_PATRONA", "NOMINA"."ID_INTERMEDIARIA", "NOMINA"."PERIODICIDAD", "NOMINA"."TIPO_PAGO", "NOMINA"."CLASE_RIESGO","NOMINA"."PORC_PRIMA_VACACIONAL","NOMINA"."FECHA_CONTRATO"
-FROM "NOMINA" INNER JOIN "NOMINA_RAZON" ON  "NOMINA"."ID_NOMINA" = "NOMINA_RAZON"."ID_NOMINA" WHERE "NOMINA_RAZON"."ID_RAZON_SOCIAL" = #{id}</select>
+	SELECT "NOMINA"."ID_NOMINA","NOMINA"."NOMBRE_CORTO", "NOMINA"."ID_ESQUEMA", "NOMINA"."ID_PATRONA", "NOMINA"."ID_INTERMEDIARIA", "NOMINA"."PERIODICIDAD", "NOMINA"."TIPO_PAGO", "NOMINA"."CLASE_RIESGO","NOMINA"."PORC_PRIMA_VACACIONAL","NOMINA"."FECHA_CONTRATO"
+	FROM "NOMINA" INNER JOIN "NOMINA_RAZON" ON  "NOMINA"."ID_NOMINA" = "NOMINA_RAZON"."ID_NOMINA" WHERE "NOMINA_RAZON"."ID_RAZON_SOCIAL" = #{id}
+</select>
+
+<select id="obtenerNominaByIdHojaTrabajo" parameterType="int" resultMap="nominaResult" resultType="Nomina">
+	SELECT * FROM "NOMINA" WHERE "ID_NOMINA" = ( SELECT "NOMINA"."ID_NOMINA" FROM "NOMINA" INNER JOIN "HOJA_DE_TRABAJO" ON  "NOMINA"."ID_NOMINA" = "HOJA_DE_TRABAJO"."ID_NOMINA" WHERE "HOJA_DE_TRABAJO"."ID_HOJA_DE_TRABAJO" = #{id})
+</select>
 </mapper>
