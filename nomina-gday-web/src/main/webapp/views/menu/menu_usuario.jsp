@@ -45,7 +45,7 @@
  <div class="collapse navbar-collapse">		
 		<ul class="nav navbar-nav" >
 						<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DE DATOS <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN 123c DE DATOS <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >CONSULTAR RAZONES SOCIALES</a></li>
                 <li><a href="../grupos/grupos.jsp" target="main" >CONSULTAR GRUPOS</a></li>                
@@ -75,13 +75,6 @@
                 <li><a href="#">PERMISOS</a></li>
               </ul>
             </li>
-                       
-			<li class="dropdown">
-              <a href="../nomina-gday-web/logout" class="dropdown-toggle" target="_none" style="color:#FFFFFF">SALIR<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-				<li><a href="../nomina-gday-web/logout" target="main">SALIR</a></li>
-              </ul>     
-            </li>         
 		</ul>
 	</div>
 </div>

@@ -28,10 +28,17 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="static/css/styles.css" rel="stylesheet">
-	</head>
-  <%session.setAttribute("titulo","index");%>
+	</head>  
   <frameset rows="160,*">
-    <frame name="menu" src="views/menu/menu.jsp" marginwidth="10"scrolling="no" frameborder="0">
+  <%if (session.getAttribute("rolUser").equals("ROLE_ADMINISTRADOR")){%>
+  		<frame name="menu" src="views/menu/menu.jsp" marginwidth="10"scrolling="no" frameborder="0">
+  <%} %>    
+  <%if (session.getAttribute("rolUser").equals("ROLE_USUARIO")){%>
+  		<frame name="menu" src="views/menu/menu.jsp" marginwidth="10"scrolling="no" frameborder="0">
+  <%} %>    
+  <%if (session.getAttribute("rolUser").equals("ROLE_USUARIO2")){%>
+  		<frame name="menu" src="views/menu/menu_usuario2.jsp" marginwidth="10"scrolling="no" frameborder="0">
+  <%} %>    
     <frameset cols="100%,*">
       <frame name="main" src="views/main.jsp" marginwidth="10" marginheight="10" scrolling="auto" frameborder="0">     
     <frameset>
