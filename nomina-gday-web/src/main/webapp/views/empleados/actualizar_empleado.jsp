@@ -389,7 +389,7 @@
 				 	<tr>
 				 		<td>FECHA DE BAJA<input id='fechabajaTmpformnomina' name='fechabajaTmpformnomina'  class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 				 		<td>LOTE MOVIMIENTO BAJA IMSS<input id='loteimssbajaformnomina' name='loteimssbajaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td>¿APLICA FINIQUITO?<select id=aplicafiniquitoformnomina name='aplicafiniquitoformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 		<td>¿APLICA FINIQUITO?<select id=aplicafiniquitoformnomina name='aplicafiniquitoformnomina' onclick="habilitaMontoFiniquito();" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 				<option value="SI">SI</option>
 				 				<option value="NO">NO</option>
 				 			</select>
@@ -398,7 +398,7 @@
 				 	<tr>
 				 		<td></td>			 		
 				 		<td>MONTO<input id='montofiniquitoformnomina' name='montofiniquitoformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td><button id="buttonAgregar" type="button" class="btn btn-success" onclick="darBajaNominaEmpleado();">ACEPTAR</button></td>			 			
+				 		<td><button id="buttonAgregar" type="button" class="btn btn-success" onclick="darBajaNominaEmpleado();" >ACEPTAR</button></td>			 			
 					</tr>
 				</table>
 			</form>
