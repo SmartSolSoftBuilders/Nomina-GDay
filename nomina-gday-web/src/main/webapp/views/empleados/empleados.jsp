@@ -39,7 +39,10 @@
 			<div  style="position:absolute">
 				<input type="button" class="btn btn-success" value="CREAR EMPLEADO" onclick="showAgregarEmpleado();"/>
 				<input type="button" class="btn btn-success" value="ALTA MASIVA" onclick="altaMasivaDeEmpleado();"/>
-				<input type="button" class="btn btn-success" value="REVERTIR ULTIMA CARGA" onclick="bajaMasivaDeEmpleado();"/>
+			    <%if (session.getAttribute("rolUser").equals("ROLE_ADMINISTRADOR")){%>
+					<input type="button" class="btn btn-success" value="REVERTIR ULTIMA CARGA" onclick="bajaMasivaDeEmpleado();"/>
+	            <%} %>    
+								
 			</div>
 			<br>
 			<br>
