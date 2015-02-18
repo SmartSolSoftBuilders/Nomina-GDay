@@ -79,7 +79,7 @@
 			<li class="dropdown">
               <a href="../nomina-gday-web/logout" class="dropdown-toggle" target="_parent" style="color:#FFFFFF">SALIR<b class="caret"></b></a>
               <ul class="dropdown-menu">
-				<li><a href="../nomina-gday-web/logout" target="main">SALIR</a></li>
+				<li><a href="/logout" target="main">SALIR</a></li>
               </ul>     
             </li>         
 		</ul>

@@ -31,17 +31,17 @@
 	</head>  
   <frameset rows="160,*">
   <%if (session.getAttribute("rolUser").equals("ROLE_ADMINISTRADOR")){%>
-  		<frame name="menu" src="menu/menu.jsp" marginwidth="10"scrolling="no" frameborder="0">
+  		<frame name="menu" src="views/menu/menu.jsp" marginwidth="10"scrolling="no" frameborder="0">
   <%} %>    
   <%if (session.getAttribute("rolUser").equals("ROLE_USUARIO")){%>
-  		<frame name="menu" src="menu/menu.jsp" marginwidth="10"scrolling="no" frameborder="0">
+  		<frame name="menu" src="views/menu/menu.jsp" marginwidth="10"scrolling="no" frameborder="0">
   <%} %>    
   <%if (session.getAttribute("rolUser").equals("ROLE_USUARIO2")){%>
-  		<frame name="menu" src="menu/menu_usuario2.jsp" marginwidth="10"scrolling="no" frameborder="0">
+  		<frame name="menu" src="views/menu/menu_usuario2.jsp" marginwidth="10"scrolling="no" frameborder="0">
   <%} %>    
     <frameset cols="100%,*">
-      <frame name="main" src="main.jsp" marginwidth="10" marginheight="10" scrolling="auto" frameborder="0">     
+      <frame name="main" src="views/main.jsp" marginwidth="10" marginheight="10" scrolling="auto" frameborder="0">     
     <frameset>
-  <frameset>
+  <frameset> 
 
 </html>

@@ -35,6 +35,6 @@ public class IndexController {
     			break;
     		}    		
     	}
-    	return new ModelAndView("index");    	
+    	return new ModelAndView("../views/index");    	
 	}
 }
