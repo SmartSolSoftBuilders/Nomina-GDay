@@ -43,3 +43,5 @@ public interface OpcionMenuDao {
 	 */
 	OpcionMenu consultarOpcionSubOpciones(Long idPadre);
 }
+
+//Para agregar al git de nuevo

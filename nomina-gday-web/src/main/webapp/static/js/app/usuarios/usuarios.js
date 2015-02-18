@@ -32,3 +32,12 @@ $(document).ready(function() {
 function showAgregarUsuario(){
 	top.frames['main'].location="../usuarios/agregar_usuario.jsp"; 	
 }
+
+//****************************************
+//Function que llama al Formulario Editar*
+//****************************************
+function showEditarUsuario(idUsuario, username){
+	//http:/../usuarios/actualizar_usuario.jsp?id=1&nick=ADMIN1
+	top.frames['main'].location="../usuarios/actualizar_usuario.jsp?id="+ idUsuario +"&nick=ADMIN1"; 	
+}
+

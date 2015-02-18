@@ -10,7 +10,15 @@ public interface MttoSeguridadServicio {
 	List<UsuarioSeguridad> consultarUsuariosConRoles();
 	List<UsuarioSeguridad> consultarUsuariosByUser(UsuarioSeguridad usuario);
 	UsuarioSeguridad consultarUsuarioConRoles(String username);
+	UsuarioSeguridad consultarUsuariosSeguridadConRol(UsuarioSeguridad usuarioSeguridad);
 	void agregarUsuarioSeguridad(UsuarioSeguridad usuario);
 	void actualizarPassword(UsuarioSeguridad usuario);
 	void actualizarUsuario(UsuarioSeguridad usuarioSeguridad);
+	void actualizarUsuarioConRol(UsuarioSeguridad usuarioSeguridad);
+	public List<UsuarioSeguridad> consultarRoles();
+	public UsuarioSeguridad consultarUsuariosById(int idUsuario);
+
+	//Para agregar al git de nuevo
+
 }
+

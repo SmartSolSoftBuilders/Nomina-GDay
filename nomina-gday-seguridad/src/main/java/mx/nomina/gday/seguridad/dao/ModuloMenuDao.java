@@ -24,4 +24,7 @@ public interface ModuloMenuDao {
 	 * @return Un único objeto tipo {@link ModuloMenu}
 	 */
 	ModuloMenu consultarModulo(Long id);
+	
+	//Para agregar al git de nuevo
+
 }

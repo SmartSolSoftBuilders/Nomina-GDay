@@ -1,5 +1,8 @@
 package mx.nomina.gday.seguridad.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import mx.nomina.gday.seguridad.modelo.UsuarioSeguridad;
 import mx.nomina.gday.seguridad.servicios.CustomUserDetails;
 import mx.nomina.gday.seguridad.servicios.MenuSeguridadServicio;
@@ -56,8 +59,59 @@ public class SeguridadUtil {
                 getAuthentication().
                 getPrincipal();
         
-        UsuarioSeguridad us = new UsuarioSeguridad(cud.getUsername(), "", cud.getNombre(), cud.isEnabled());
+        UsuarioSeguridad us = new UsuarioSeguridad(cud.getUsername(), "", cud.getNombre(), "", cud.isEnabled());
         
         return us;
     }
+    
+    //Metodo que regresa una lista de usuarios
+    public  List<UsuarioSeguridad> obtenerUsuariosSeguridad(){
+		try {
+			 
+				List<UsuarioSeguridad> tmp=this.mttoSeguridad.consultarUsuarios();
+				System.out.println("Lista de Usuarios"+tmp.size());
+					return tmp;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+    }
+
+    //Metodo que guarda usuarios
+    public void guardarUsuario(UsuarioSeguridad usuarioSeguridad){
+    	
+    	this.mttoSeguridad.agregarUsuarioSeguridad(usuarioSeguridad);
+    }
+
+   	
+	public List obtenerDatosCombo(){
+		
+		System.out.println("Datos del Combo Servicio");
+		List datosCombo = new ArrayList();
+		try{
+			datosCombo.add(this.mttoSeguridad.consultarRoles());
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return datosCombo;
+	}
+	
+	//Metodo para obtener el usuario por id
+	
+	public UsuarioSeguridad obtenerUsuarioById(int idUsuario){
+		
+		return this.mttoSeguridad.consultarUsuariosById(idUsuario);
+	}
+	
+	 //Metodo que modifica usuarios
+	public UsuarioSeguridad obtenerUsuariosSeguridadConRol(UsuarioSeguridad usuarioSeguridad){
+			
+		return this.mttoSeguridad.consultarUsuariosSeguridadConRol(usuarioSeguridad);
+		}
+	
+	//Para agregar al git de nuevo\\
+
 }
+

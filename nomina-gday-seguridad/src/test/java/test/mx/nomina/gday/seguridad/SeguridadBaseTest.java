@@ -62,7 +62,7 @@ public abstract class SeguridadBaseTest {
 	 * @param permisos
 	 */
 	protected void crearTestAuthentication(String username, String password, List<RolSeguridad> roles){
-		UsuarioSeguridad us = new UsuarioSeguridad(username, password, "b", true);
+		UsuarioSeguridad us = new UsuarioSeguridad(username, password, "b", "", true);
 		
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
