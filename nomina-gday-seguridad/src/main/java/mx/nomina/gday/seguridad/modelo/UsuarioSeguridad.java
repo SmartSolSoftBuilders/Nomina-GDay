@@ -68,6 +68,6 @@ public class UsuarioSeguridad extends BaseModelo{
 		this.rol = rol;
 	}
 	
-	//Para agregar al git de nuevo
+	//Para agregar al git de nuevo\\
 
 }

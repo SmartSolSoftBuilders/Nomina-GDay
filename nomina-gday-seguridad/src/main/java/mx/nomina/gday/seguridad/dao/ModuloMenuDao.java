@@ -25,6 +25,6 @@ public interface ModuloMenuDao {
 	 */
 	ModuloMenu consultarModulo(Long id);
 	
-	//Para agregar al git de nuevo\\
+	//Para agregar al git de nuevo
 
 }

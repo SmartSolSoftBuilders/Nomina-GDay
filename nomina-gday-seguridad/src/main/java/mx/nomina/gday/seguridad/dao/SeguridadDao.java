@@ -37,6 +37,6 @@ public interface SeguridadDao {
 	
 	public UsuarioSeguridad consultarUsuariosById(int id);
 	
-	//Para agregar al git de nuevo
+	//Para agregar al git de nuevo\\
 
 }

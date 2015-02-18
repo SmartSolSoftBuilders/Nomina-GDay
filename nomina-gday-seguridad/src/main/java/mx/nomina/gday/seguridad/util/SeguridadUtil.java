@@ -111,7 +111,7 @@ public class SeguridadUtil {
 		return this.mttoSeguridad.consultarUsuariosSeguridadConRol(usuarioSeguridad);
 		}
 	
-	//Para agregar al git de nuevo
+	//Para agregar al git de nuevo\\
 
 }
 
