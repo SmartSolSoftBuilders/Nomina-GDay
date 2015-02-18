@@ -146,6 +146,22 @@ $(document).ready(function() {
 			form.submit();
 		}
 	});
+	$("#bajaNominaEmpleadoForm").validate({
+		rules: {
+			fechabajaTmpformnomina: "required",
+			loteimssbajaformnomina: "required",
+		    
+					
+		},        
+		messages: {
+			fechabajaTmpformnomina: "Ingrese una fecha de Baja",
+			loteimssbajaformnomina: "Ingrese un lote movimiento baja IMSS",
+		},
+		
+		submitHandler: function(form) {
+			form.submit();
+		}
+	});
 });//Cierra la validacion del formulario
 
 
@@ -626,6 +642,7 @@ if ($("#actualizarNominaEmpleadoForm").valid()){
 }
 
 function darBajaNominaEmpleado(){
+	if ($("#bajaNominaEmpleadoForm").valid()){	
 	if (confirm ("Seguro que desea dar de baja al empleado de la nómina?")){
 		$.ajax({
 			sync: true,
@@ -658,6 +675,7 @@ function darBajaNominaEmpleado(){
 			}
 		});			
 	}
+  }
 }
 
 
@@ -782,4 +800,14 @@ function validate_fecha(fecha)
         }
     }
     return false;
+}
+
+
+//Habilitar finiquito segun ¿APLICA FINIQUITO?
+
+function habilitaMontoFiniquito(){
+    var opcion = $("#aplicafiniquitoformnomina").val();
+    if(opcion == 'NO') 
+    	$('#montofiniquitoformnomina').attr("disabled", true);    
+    else  $("#montofiniquitoformnomina").attr("disabled",false);
 }

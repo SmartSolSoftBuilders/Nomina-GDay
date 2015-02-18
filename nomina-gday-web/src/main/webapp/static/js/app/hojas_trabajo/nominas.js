@@ -116,6 +116,7 @@ function showHojasTrabajoNomina(idNomina){
 //Function que llama al Formulario Agregar*
 //*****************************************
 function showAgregarNomina(){
-	top.frames['main'].location="../nominas/agregar_nomina.jsp"; 	
+	top.frames['main'].location="../hojas_trabajo/agregar_nomina.jsp"; 	
 }
+
 

@@ -44,10 +44,10 @@
 		Por favor teclee sus datos:<br>
 		${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} </p>
 		<div class="form-group">
-              <input type="text" id="j_username" name="j_username" class="form-control input-lg" placeholder="Usuario">
+              <input type="text" id="j_username" name="j_username" class="form-control input-lg" onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Usuario">
             </div>
             <div class="form-group">
-              <input type="password" name="j_password" id="j_password" class="form-control input-lg" placeholder="Contraseña">
+              <input type="password" name="j_password" id="j_password" class="form-control input-lg" onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Contraseña">
          </div>
 		
 			<input  class="btn btn-primary btn-lg btn-block" type="submit" value="Aceptar"/>
