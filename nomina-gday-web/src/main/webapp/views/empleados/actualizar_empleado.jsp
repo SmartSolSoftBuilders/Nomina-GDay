@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<title>grupo day</title>
 	<jsp:include page="../common/librerias.jsp"/>
- 	<script type="text/javascript" language="javascript" src="../../static/js/app/empleados/actualizar_empleado.js"></script>  
+ 	<script type="text/javascript" language="javascript" src="../../static/js/app/empleados/actualizar_empleado.js"></script>
 	</head>
 
 <body>
@@ -219,7 +219,6 @@
 			</div>
 			</div>
 			</div>
-	  </div>
 	 <div id="divSeleccionNominaParaEmpleado"
 	 		title="SELECCIONE UNA N&#211;MINA PARA ASIGNAR" style="display: none" >
 				<div id="tablaSelNominas">
@@ -389,18 +388,17 @@
 				 	<tr>
 				 		<td>FECHA DE BAJA<input id='fechabajaTmpformnomina' name='fechabajaTmpformnomina'  class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 				 		<td>LOTE MOVIMIENTO BAJA IMSS<input id='loteimssbajaformnomina' name='loteimssbajaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 	</tr>
+				 	<tr>
 				 		<td>¿APLICA FINIQUITO?<select id=aplicafiniquitoformnomina name='aplicafiniquitoformnomina' onclick="habilitaMontoFiniquito();" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 				<option value="SI">SI</option>
 				 				<option value="NO">NO</option>
 				 			</select>
 				 		</td>	
-				 	</tr>
-				 	<tr>
-				 		<td></td>			 		
 				 		<td>MONTO<input id='montofiniquitoformnomina' name='montofiniquitoformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td><button id="buttonAgregar" type="button" class="btn btn-success" onclick="darBajaNominaEmpleado();" >ACEPTAR</button></td>			 			
 					</tr>
 				</table>
+			 		<button id="buttonAgregar" type="button" class="btn btn-success" onclick="darBajaNominaEmpleado();" >ACEPTAR</button>
 			</form>
 			</div>
 	  	
