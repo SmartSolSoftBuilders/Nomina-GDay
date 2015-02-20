@@ -455,7 +455,7 @@ function showEditarNominaForm(idNomina,nombre){
 
 function shoBajaNominaForm(){
 	$("#tablaBajaFormNominas").dialog(({show: "slide", stack: false,
-		draggable: false,resizable: false,modal: true, width:960, height:900,
+		draggable: false,resizable: false,modal: true, width:780, height:900,
 		autoOpen: true}));	
 }
 
