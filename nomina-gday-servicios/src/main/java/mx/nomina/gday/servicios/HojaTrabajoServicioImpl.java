@@ -1,6 +1,8 @@
 package mx.nomina.gday.servicios;
 
 import java.io.File;
+
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,6 +25,8 @@ import mx.nomina.gday.dao.EmpleadoDao;
 import mx.nomina.gday.dao.EmpleadoNominaDao;
 import mx.nomina.gday.dao.HojaTrabajoDao;
 import mx.nomina.gday.dao.NominaDao;
+import mx.nomina.gday.dao.RazonSocialDao;
+import mx.nomina.gday.dao.EmpleadoNominaDao;
 import mx.nomina.gday.modelo.Archivo;
 import mx.nomina.gday.modelo.Empleado;
 import mx.nomina.gday.modelo.EmpleadoNomina;
@@ -38,7 +42,16 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
 
 	@Autowired
 	private NominaDao nominaDao;
-	
+
+	@Autowired
+	private EmpleadoNominaDao empleadoNominaDao;
+
+	@Autowired
+	private EmpleadoDao empleadoDao;
+
+	@Autowired
+	private RazonSocialDao razonSocialDao;
+
 	@Override
 	public List<HojaTrabajo> obtenerHojasByIdNomina(Integer idNomina) {
 		// TODO Auto-generated method stub
@@ -104,8 +117,15 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	//Se trabaja la primer HOJA GENERALES EMPRESA
         	Sheet hoja = wb.getSheetAt(0);
         	Nomina nomina = this.nominaDao.obtenerNominaByIdHojaTrabajo(idHojaTrabajo);
-        	nomina=this.nominaDao.obtenerNominaById(37);
-        	System.out.println(nomina.getIdNomina());
+        	//nomina=this.nominaDao.obtenerNominaById(37);
+        	System.out.println("GENERANDO LAYOUT"+nomina.getIdNomina());
+        	System.out.println(nomina.getEsquema());
+        	System.out.println(nomina.getEjecutivo().getNombreEjecutivo());
+        	nomina.setRazonesSociales(this.razonSocialDao.obtenerRazonesSocialesByIdNomina(nomina.getIdNomina()));
+        	System.out.println(nomina.getRazonesSociales());
+        	EmpleadoNomina empleado=new EmpleadoNomina();
+        	//empleado  = this.empleadoNominaDao.obtenerEmpleadoNominaByIdNomina(nomina.)
+        	List<Empleado> empleados = this.empleadoDao.obtenerEmpleadosByIdNomina(nomina.getIdNomina());
         	/****Se llena 1era hoja****/
         	Row fila = hoja.getRow(0);	
         	fila.createCell(1).setCellValue(nomina.getNombreCorto());
@@ -116,12 +136,73 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	fila = hoja.getRow(3);	
         	fila.createCell(1).setCellValue(nomina.getPatrona().getNombreCortoPatrona());
         	fila = hoja.getRow(6);	
-        	//fila.createCell(1).setCellValue(nomina.getEjecutivo().getNombreEjecutivo());
+        	fila.createCell(1).setCellValue(nomina.getEjecutivo().getNombreEjecutivo());
+        	fila = hoja.getRow(7);	
+        	fila.createCell(1).setCellValue(nomina.getTipoPago());
+        	fila = hoja.getRow(8);	
+        	fila.createCell(1).setCellValue(nomina.getTipoPago());
+        	fila = hoja.getRow(9);	
+        	fila.createCell(1).setCellValue(nomina.getEsquema().getNombreEsquema());
+        	fila = hoja.getRow(10);	
+        	fila.createCell(1).setCellValue(nomina.getPeriodicidad());
+        	fila = hoja.getRow(13);	
+        	fila.createCell(1).setCellValue(nomina.getTipoCalendario().getSiglas());
+        	fila = hoja.getRow(14);	
+        	fila.createCell(1).setCellValue(nomina.getDiasAguinaldo());
+        	fila = hoja.getRow(15);	
+        	fila.createCell(1).setCellValue(nomina.getPorcPrimaVacacional());
+        	fila = hoja.getRow(16);	
+        	fila.createCell(1).setCellValue(nomina.getPorcPrimaVacacional());
+        	fila = hoja.getRow(17);	
+        	fila.createCell(1).setCellValue(nomina.getDiasAguinaldo());
         	/****Se llena 2da hoja****/
         	hoja = wb.getSheetAt(1);
-        	fila = hoja.getRow(1);
-//        	nomina.setRazonesSociales(this.nominaDao.);
-        	fila.createCell(0).setCellValue(nomina.getRazonesSociales().get(0).getNombreCortoRazonS());
+           	fila = hoja.getRow(2);
+           	int numRz=0;
+           	for (int j=0; j<nomina.getRazonesSociales().size();j++){
+           		fila.createCell(0).setCellValue(nomina.getRazonesSociales().get(j).getNombreRazonSocial());
+           		fila.createCell(1).setCellValue(nomina.getRazonesSociales().get(j).getNombreCortoRazonS());
+           		fila.createCell(2).setCellValue(nomina.getRazonesSociales().get(j).getRfc());
+           		fila.createCell(3).setCellValue(nomina.getRazonesSociales().get(j).getCodCliente());
+           		fila.createCell(4).setCellValue(nomina.getRazonesSociales().get(j).getComision());
+           		fila.createCell(5).setCellValue("100");
+           		numRz++;
+           		fila = hoja.getRow(numRz+1);
+           	}
+           	System.out.println("Número de Empleados:"+empleados.size());
+           	/****Se llena 3ra hoja****/
+        	hoja = wb.getSheetAt(2);
+           	fila = hoja.getRow(1);
+           	for (int j=0; j<empleados.size();j++){
+           		fila.createCell(0).setCellValue(""+j+1);	
+           		fila.createCell(1).setCellValue(empleados.get(j).getNoControl());
+           		fila.createCell(2).setCellValue(empleados.get(j).getNss());	
+           		fila.createCell(3).setCellValue(empleados.get(j).getNombre()+" "+empleados.get(j).getApellidoPaterno()+ " " +empleados.get(j).getApellidoMaterno());
+              	numRz++;
+           		fila = hoja.getRow(numRz+1);
+           	}
+           	/****Se llena 4ta hoja****/
+           	hoja = wb.getSheetAt(3);
+           	fila = hoja.getRow(2);
+           	for (int j=0; j<empleados.size();j++){
+           		fila.createCell(0).setCellValue(""+j+1);	
+           		fila.createCell(1).setCellValue(empleados.get(j).getNoControl());
+           		fila.createCell(2).setCellValue(empleados.get(j).getNss());	
+           		fila.createCell(3).setCellValue(empleados.get(j).getNombre());
+           		fila.createCell(4).setCellValue(empleados.get(j).getApellidoPaterno());
+           		fila.createCell(5).setCellValue(empleados.get(j).getApellidoMaterno());
+           		fila.createCell(6).setCellValue(empleados.get(j).getCurp());
+           		fila.createCell(7).setCellValue(empleados.get(j).getRfc());
+           		fila.createCell(8).setCellValue(empleados.get(j).getNss());
+           		fila.createCell(9).setCellValue(empleados.get(j).getFechaNacimiento());
+           		fila.createCell(10).setCellValue(empleados.get(j).getEdad());
+           		fila.createCell(11).setCellValue(empleados.get(j).getSexo());
+           		fila.createCell(12).setCellValue(empleados.get(j).getEstadoCivil());
+           		fila.createCell(13).setCellValue(empleados.get(j).getNacionalidad());
+           		fila.createCell(14).setCellValue(empleados.get(j).getCalle());      		
+              	numRz++;
+           		fila = hoja.getRow(numRz+1);
+           	}
             file.close();
             FileOutputStream outFile =new FileOutputStream(new File("C:\\archivosNGDAY\\tmp12.xlsm"));
             wb.write(outFile);
