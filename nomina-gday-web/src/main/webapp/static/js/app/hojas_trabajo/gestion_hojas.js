@@ -98,7 +98,7 @@ function activarHojaTrabajo(idHoja){
 	        $( "#demo" ).hide();
 			}, 
 			success:  function (response) {
-				mensaje("Eliminado correctamente");
+				mensaje("Activado correctamente");
 			}
 		});
 	}	
