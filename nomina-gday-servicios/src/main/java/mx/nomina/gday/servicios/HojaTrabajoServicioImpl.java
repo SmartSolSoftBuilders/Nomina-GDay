@@ -3,6 +3,7 @@ package mx.nomina.gday.servicios;
 import java.io.File;
 
 
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,7 +20,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import mx.nomina.gday.dao.ArchivoDao;
 import mx.nomina.gday.dao.EmpleadoDao;
 import mx.nomina.gday.dao.EmpleadoNominaDao;
@@ -157,34 +157,36 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	fila.createCell(1).setCellValue(nomina.getDiasAguinaldo());
         	/****Se llena 2da hoja****/
         	hoja = wb.getSheetAt(1);
-           	fila = hoja.getRow(2);
-           	int numRz=0;
+           	int numRz=1;
+           	System.out.println("Razones Sociales"+nomina.getRazonesSociales().size());
            	for (int j=0; j<nomina.getRazonesSociales().size();j++){
+           		fila = hoja.createRow(numRz);
            		fila.createCell(0).setCellValue(nomina.getRazonesSociales().get(j).getNombreRazonSocial());
            		fila.createCell(1).setCellValue(nomina.getRazonesSociales().get(j).getNombreCortoRazonS());
            		fila.createCell(2).setCellValue(nomina.getRazonesSociales().get(j).getRfc());
            		fila.createCell(3).setCellValue(nomina.getRazonesSociales().get(j).getCodCliente());
-           		fila.createCell(4).setCellValue(nomina.getRazonesSociales().get(j).getComision());
-           		fila.createCell(5).setCellValue("100");
+           		fila.createCell(4).setCellValue("23%");
+           		fila.createCell(5).setCellValue(nomina.getRazonesSociales().get(j).getComision()+"%");
            		numRz++;
-           		fila = hoja.getRow(numRz+1);
+           		System.out.println(nomina.getRazonesSociales().get(j));
            	}
            	System.out.println("Número de Empleados:"+empleados.size());
            	/****Se llena 3ra hoja****/
         	hoja = wb.getSheetAt(2);
-           	fila = hoja.getRow(1);
+           	numRz=2;
            	for (int j=0; j<empleados.size();j++){
+           		fila = hoja.createRow(numRz);
            		fila.createCell(0).setCellValue(""+j+1);	
            		fila.createCell(1).setCellValue(empleados.get(j).getNoControl());
            		fila.createCell(2).setCellValue(empleados.get(j).getNss());	
            		fila.createCell(3).setCellValue(empleados.get(j).getNombre()+" "+empleados.get(j).getApellidoPaterno()+ " " +empleados.get(j).getApellidoMaterno());
               	numRz++;
-           		fila = hoja.getRow(numRz+1);
            	}
            	/****Se llena 4ta hoja****/
            	hoja = wb.getSheetAt(3);
-           	fila = hoja.getRow(2);
+           	numRz=2;
            	for (int j=0; j<empleados.size();j++){
+           		fila = hoja.createRow(numRz);
            		fila.createCell(0).setCellValue(""+j+1);	
            		fila.createCell(1).setCellValue(empleados.get(j).getNoControl());
            		fila.createCell(2).setCellValue(empleados.get(j).getNss());	
@@ -201,7 +203,6 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(13).setCellValue(empleados.get(j).getNacionalidad());
            		fila.createCell(14).setCellValue(empleados.get(j).getCalle());      		
               	numRz++;
-           		fila = hoja.getRow(numRz+1);
            	}
             file.close();
             FileOutputStream outFile =new FileOutputStream(new File("C:\\archivosNGDAY\\tmp12.xlsm"));
