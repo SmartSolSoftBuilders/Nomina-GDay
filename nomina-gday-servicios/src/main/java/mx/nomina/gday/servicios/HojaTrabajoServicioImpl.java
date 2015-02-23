@@ -176,7 +176,7 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            	numRz=2;
            	for (int j=0; j<empleados.size();j++){
            		fila = hoja.createRow(numRz);
-           		fila.createCell(0).setCellValue(""+j+1);	
+           		fila.createCell(0).setCellValue(""+(j+1));	
            		fila.createCell(1).setCellValue(empleados.get(j).getNoControl());
            		fila.createCell(2).setCellValue(empleados.get(j).getNss());	
            		fila.createCell(3).setCellValue(empleados.get(j).getNombre()+" "+empleados.get(j).getApellidoPaterno()+ " " +empleados.get(j).getApellidoMaterno());
@@ -187,7 +187,7 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            	numRz=2;
            	for (int j=0; j<empleados.size();j++){
            		fila = hoja.createRow(numRz);
-           		fila.createCell(0).setCellValue(""+j+1);	
+           		fila.createCell(0).setCellValue(""+(j+1));	
            		fila.createCell(1).setCellValue(empleados.get(j).getNoControl());
            		fila.createCell(2).setCellValue(empleados.get(j).getNss());	
            		fila.createCell(3).setCellValue(empleados.get(j).getNombre());
