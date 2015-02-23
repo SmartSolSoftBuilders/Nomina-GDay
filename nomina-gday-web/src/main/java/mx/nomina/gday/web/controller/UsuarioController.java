@@ -33,18 +33,24 @@ public class UsuarioController {
 				
 				SeguridadUtil seguridadUtil = new SeguridadUtil();
 				List<UsuarioSeguridad> tmpUsuarios = mttoSeguridadServicio.consultarUsuarios();
+				String estatusTmp = "";
 				
 				System.out.println("tmp"+tmpUsuarios.size());
 				List usuariosTmp = new ArrayList();
 				List usuariosTmp2 = new ArrayList<String>();
-
+				
 				for (int i = 0; i < tmpUsuarios.size(); i++) {
 					usuariosTmp2 = new ArrayList<String>();
 					System.out.println("tmp"+tmpUsuarios.get(i));
+					if(tmpUsuarios.get(i).isActivo() == true){
+						estatusTmp = "ACTIVO";
+					}else{
+						estatusTmp = "BAJA";
+					}
 					usuariosTmp2.add(tmpUsuarios.get(i).getId());
 					usuariosTmp2.add(tmpUsuarios.get(i).getUsername());
 					usuariosTmp2.add(tmpUsuarios.get(i).getNombre());
-					usuariosTmp2.add(tmpUsuarios.get(i).isActivo());
+					usuariosTmp2.add(estatusTmp);					
 					usuariosTmp2.add("<a href='#' onclick='showEditarUsuario("+tmpUsuarios.get(i).getId()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
 					usuariosTmp.add(usuariosTmp2);
 				}
