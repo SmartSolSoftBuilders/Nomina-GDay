@@ -1,15 +1,13 @@
-package mx.nomina.gday.dao;
+package mx.nomina.gday.servicios;
 
 import java.util.List;
 
 import mx.nomina.gday.modelo.AcumuladoPeriodo;
-import mx.nomina.gday.modelo.Nomina;
-import mx.nomina.gday.modelo.Periodo;
 
-public interface AcumuladoPeriodoDao {
+public interface AcumuladoPeriodoServicio {
 
 	public void agregarAcumulado(AcumuladoPeriodo acumuladoPeriodo);
-	
+	public List obtenerDatosCombo();
 
 
 }

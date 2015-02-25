@@ -66,7 +66,12 @@
               </ul>
 			
 			</li>
-			<li><a href="#" style="color:#FFFFFF">CARGA DE ACUMULADOS</a></li>
+			<li class="dropdown">
+			 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">CARGA DE ACUMULADOS<b class="caret"></b></a>
+			  <ul class="dropdown-menu">
+				<li><a href="../acumulados/acumuladoPeriodo.jsp" target="main">ACUMULADOS</a></li>
+            </ul>
+			</li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DEL SISTEMA <b class="caret"></b></a>
               <ul class="dropdown-menu">

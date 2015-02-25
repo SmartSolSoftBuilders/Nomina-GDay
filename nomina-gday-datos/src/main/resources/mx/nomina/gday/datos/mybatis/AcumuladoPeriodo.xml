@@ -5,11 +5,19 @@
 	
 	<resultMap type="AcumuladoPeriodo" id="acumuladoPeriodoResult">
 		<id property="idAcumuladoPeriodo" column="ID_ACUMULADO_PERIODO"></id>
-		<result property="archivoAcumulado" column="ARCHIVO_ACUMULADO"></result>
+		<result property="archivoAcumulado" column="ARCHIVO_ACUMULADO" javaType = "byte[]" jdbcType = "BINARY" typeHandler = "org.apache.ibatis.type.ByteArrayTypeHandler" />
 		<result property="estatus" column="ESTATUS"></result>	
-		<result property="periodo" column="PERIODO"></result>
-		<collection property="nomina" column="ID_NOMINA" javaType="List" select="selectNomina"/>
+		<association property="periodo" column="ID_PERIODO" javaType="Periodo" select="selectPeriodo"/>
+		<association property="nomina" column="ID_NOMINA" javaType="Nomina" select="selectNomina"/>
 		
+	</resultMap>
+	
+	<resultMap type="Periodo" id="periodoResult">
+		<result property="idPeriodo" column="ID_PERIODO"/>
+		<result property="noPago" column="NO_PAGO"/>
+		<result property="fechaInicialPago" column="FECHA_INICIAL_PAGO"/>
+		<result property="fechaFinalPago" column="FECHA_FINAL_PAGO"/>
+		<association property="tipoCalendario" column="ID_CALENDARIO" javaType="TipoCalendario" select="selectTipoCalendario"/>		
 	</resultMap>
 	
 	<resultMap id="nominaResult" type="Nomina">
@@ -29,16 +37,106 @@
 		<result property="claseRiesgo" column="CLASE_RIESGO"/>
 		<result property="registroPatronal" column="REGISTRO_PATRONAL"/>
 		<result property="periodicidad" column="PERIODICIDAD"/>
-		<result property="tipoCalendario" column="TIPO_CALENDARIO"/>
-		<collection property="ejecutivo" column="ID_EJECUTIVO" javaType="List" select="selectEjecutivo"/>
-		<collection property="esquema" column="ID_ESQUEMA" javaType="List" select="selectEsquema"/>
-		<collection property="tipoCalendario" column="ID_CALENDARIO" javaType="List" select="selectTipoCalendario"/>
+		<result property="fechaContrato" column="FECHA_CONTRATO"/>
+		<association property="intermediaria" column="ID_INTERMEDIARIA" javaType="Patrona" select="selectPatrona"/>
+		<association property="patrona" column="ID_PATRONA" javaType="Patrona" select="selectPatrona"/>				
+		<association property="esquema" column="ID_ESQUEMA" javaType="Esquema" select="selectEsquema"/>
+		<association property="ejecutivo" column="ID_EJECUTIVO" javaType="Ejecutivo" select="selectEjecutivo"/>
+		<association property="tipoCalendario" column="ID_CALENDARIO" javaType="TipoCalendario" select="selectTipoCalendario"/>
+	
 	</resultMap>
+	
+	<resultMap id="intermediariaResult" type="Intermediaria">
+    	<id property="idIntermediaria" column="ID_INTERMEDIARIA"/>
+		<result property="nombreIntermediaria" column="NOMBRE_INTERMEDIARIA"/>							  		
+	</resultMap>
+	
+	<resultMap id="patronaResult" type="Patrona">
+    	<id property="idPatrona" column="ID_PATRONA"/>
+		<result property="razonSocialPatrona" column="RAZON_SOCIAL"/>
+		<result property="nombreCortoPatrona" column="NOMBRE_CORTO"/>
+		<result property="esIntermediariaPatrona" column="ES_INTERMEDIARIA"/>
+		<!-- result property="tipoRegimenPatrona" column="TIPO_REGIMEN"/-->
+		<result property="folioMercantilPatrona" column="FOLIO_MERCANTIL"/>
+		<result property="calleFiscalPatrona" column="CALLE_FISCAL"/>
+		<result property="coloniaFiscalPatrona" column="COLONIA_FISCAL"/>
+		<result property="numExteriorFiscalPatrona" column="NUM_EXTERIOR_FISCAL"/>
+		<result property="numInteriorFiscalPatrona" column="NUM_INTERIOR_FISCAL"/>
+		<result property="cpFiscalPatrona" column="CP_FISCAL"/>
+		<result property="municipioFiscalPatrona" column="MUNICIPIO_FISCAL"/>
+		<result property="estadoFiscalPatrona" column="ESTADO_FISCAL"/>
+		<result property="fiscalNumPagoPatrona" column="FISCAL_NUM_PAGO"/>
+		<result property="telContactoPatrona" column="TEL_CONTACTO"/>
+		<result property="actaNumeroPatrona" column="ACTA_NUMERO"/>
+		<result property="actaNotariaPatrona" column="ACTA_NOTARIA"/>
+		<result property="actaFechaPatrona" column="ACTA_FECHA"/>
+		<result property="actaNotarioPatrona" column="ACTA_NOTARIO"/>
+		<result property="actaCiudadPatrona" column="ACTA_CIUDAD"/>
+		<result property="actaEstadoPatrona" column="ACTA_ESTADO"/>	
+	</resultMap>
+	
+	<resultMap id="ejecutivoResult" type="Ejecutivo">
+    	<id property="idEjecutivo" column="ID_EJECUTIVO"/>
+		<result property="nombreEjecutivo" column="NOMBRE_EJECUTIVO"/>
+		<result property="paternoEjecutivo" column="APP_PATERNO_EJECUTIVO"/> 
+		<result property="maternoEjecutivo" column="APP_MATERNO_EJECUTIVO"/>			  		
+	</resultMap>
+	
+	<resultMap id="esquemaResult" type="Esquema">
+    	<id property="idEsquema" column="ID_ESQUEMA"/>
+		<result property="nombreEsquema" column="NOMBRE_ESQUEMA"/>
+					  		
+	</resultMap>
+	
+	<resultMap id="tipoCalendarioResult" type="TipoCalendario">
+    	<id property="idCalendario" column="ID_CALENDARIO"/>
+		<result property="tipoCalendario" column="TIPO_CALENDARIO"/>
+		<result property="siglas" column="SIGLAS"/>
+		<result property="pr" column="PR"/>
+			
+	</resultMap>
+	
+		
+	<select id="selectPeriodo" parameterType="int" resultMap="periodoResult" resultType="Periodo">
+		select * from "PERIODO" where "ID_PERIODO"=#{idPeriodo}
+	</select>
 	
 	<select id="selectNomina" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
 		select * from "NOMINA" where "ID_NOMINA"=#{idNomina} 	
 	</select> 
 	
+	<select id="selectIntermediaria" parameterType="int" resultMap="intermediariaResult" resultType="Intermediaria">		 
+		select * from "INTERMEDIARIA" where "ID_INTERMEDIARIA"=#{idIntermediaria} 	
+	</select> 
+	
+	<select id="selectPatrona" parameterType="int" resultMap="patronaResult" resultType="Patrona">		 
+		select * from "PATRONA" where "ID_PATRONA"=#{idPatrona} 	
+	</select> 
+	
+	<select id="selectEjecutivo" parameterType="int" resultMap="ejecutivoResult" resultType="Ejecutivo">		 
+		select * from "EJECUTIVO" where "ID_EJECUTIVO"=#{idEjecutivo} 	
+	</select> 
+	
+	<select id="selectEsquema" parameterType="int" resultMap="esquemaResult" resultType="Esquema">		 
+		select * from "ESQUEMA" where "ID_ESQUEMA"=#{idEsquema} 	
+	</select> 
+	
+	
+	<select id="selectTipoCalendario" parameterType="int" resultMap="tipoCalendarioResult" resultType="TipoCalendario">		 
+		select * from "TIPO_CALENDARIO" where "ID_CALENDARIO"=#{idCalendario} 	
+	</select> 
+	
+		
+	 <insert id="agregarAcumulado" parameterType="Archivo" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_acumulado')
+  	</selectKey>
+		INSERT INTO "ACUMULADO_POR_PERIODO"(
+			    	"ID_ACUMULADO_PERIODO", "ID_PERIODO", "ID_NOMINA", "ARCHIVO_ACUMULADO", "ESTATUS", "PERIODO")	
+           		 	VALUES (#{id}, #{periodo.idPeriodo}, #{nomina.idNomina},#{archivo,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler}, #{estatus}, #{periodo});            	   
+    </insert>
+    
+    
 </mapper>
 
 

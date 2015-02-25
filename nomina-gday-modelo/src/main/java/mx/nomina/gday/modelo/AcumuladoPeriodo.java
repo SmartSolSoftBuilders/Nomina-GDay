@@ -5,7 +5,7 @@ public class AcumuladoPeriodo {
 	private int idAcumuladoPeriodo;
 	private Nomina nomina;
 	private Periodo periodo;
-	private String archivoAcumulado;
+	private byte[] archivoAcumulado;
 	private String estatus;
 	
 	
@@ -16,7 +16,7 @@ public class AcumuladoPeriodo {
 
 
 	public AcumuladoPeriodo(int idAcumuladoPeriodo, Nomina nomina,
-			Periodo periodo, String archivoAcumulado, String estatus) {
+			Periodo periodo, byte[] archivoAcumulado, String estatus) {
 		super();
 		this.idAcumuladoPeriodo = idAcumuladoPeriodo;
 		this.nomina = nomina;
@@ -63,13 +63,13 @@ public class AcumuladoPeriodo {
 
 
 
-	public String getArchivoAcumulado() {
+	public byte[] getArchivoAcumulado() {
 		return archivoAcumulado;
 	}
 
 
 
-	public void setArchivoAcumulado(String archivoAcumulado) {
+	public void setArchivoAcumulado(byte[] archivoAcumulado) {
 		this.archivoAcumulado = archivoAcumulado;
 	}
 
@@ -84,12 +84,6 @@ public class AcumuladoPeriodo {
 	public void setEstatus(String estatus) {
 		this.estatus = estatus;
 	}
-	
-	
-
-
-	
-	
 	
 	
 }
