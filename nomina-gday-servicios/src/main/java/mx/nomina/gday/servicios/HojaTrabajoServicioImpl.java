@@ -201,7 +201,41 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(11).setCellValue(empleados.get(j).getSexo());
            		fila.createCell(12).setCellValue(empleados.get(j).getEstadoCivil());
            		fila.createCell(13).setCellValue(empleados.get(j).getNacionalidad());
-           		fila.createCell(14).setCellValue(empleados.get(j).getCalle());      		
+           		fila.createCell(14).setCellValue(empleados.get(j).getCalle());
+           		
+           		fila.createCell(15).setCellValue(empleados.get(j).getNumExterior());
+           		fila.createCell(16).setCellValue(empleados.get(j).getNumInterior());
+           		fila.createCell(17).setCellValue(empleados.get(j).getColonia());
+           		fila.createCell(18).setCellValue(empleados.get(j).getCodigoPostal());
+           		fila.createCell(19).setCellValue(empleados.get(j).getMunicipioDel());
+           		fila.createCell(20).setCellValue(empleados.get(j).getEntFederativa());
+           		fila.createCell(21).setCellValue(empleados.get(j).getCuenta());
+           		fila.createCell(22).setCellValue(empleados.get(j).getBanco());
+           		fila.createCell(23).setCellValue(empleados.get(j).getTipoPago());
+           		fila.createCell(24).setCellValue(empleados.get(j).getFechaIngresoReal());
+           		fila.createCell(25).setCellValue(empleados.get(j).getNoCredInfonavit());
+           		fila.createCell(26).setCellValue("");
+           		fila.createCell(27).setCellValue("");
+           		fila.createCell(28).setCellValue("");
+           		fila.createCell(29).setCellValue("");
+           		fila.createCell(30).setCellValue("");
+           		fila.createCell(31).setCellValue("");
+           		fila.createCell(32).setCellValue("");
+           		//Nómina Empleado	
+           		EmpleadoNomina emp1= new EmpleadoNomina();
+           		emp1.setNomina(nomina);
+           		emp1.setEmpleado(empleados.get(j));
+           		emp1= this.empleadoNominaDao.obtenerEmpleadoNominaByIdNominaEmpleado(emp1);
+           		fila.createCell(34).setCellValue("SI");
+           		fila.createCell(35).setCellValue(emp1.getNombreOtroPatron());
+           		fila.createCell(36).setCellValue(emp1.getRfcOtroPatron());
+           		fila.createCell(37).setCellValue(emp1.getFechaIngreso());
+           		fila.createCell(38).setCellValue(emp1.getTipoContrato());
+           		fila.createCell(39).setCellValue(emp1.getFechaVencimiento());
+           		fila.createCell(40).setCellValue(emp1.getFechaBaja());
+           		fila.createCell(41).setCellValue(emp1.getSalarioDiarioInt()*26);
+           		fila.createCell(42).setCellValue(emp1.getSalarioDiarioInt());
+           		
               	numRz++;
            	}
             file.close();
