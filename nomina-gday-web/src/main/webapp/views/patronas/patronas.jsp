@@ -23,7 +23,10 @@
 						<tr class="odd gradeA">
 							<th>NOMBRE</th>
 							<th>TIPO REGIMEN</th>
-							 <%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>							 						 											
+							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>							 						 											
+							<th></th>
+							<%} %>							
+							<%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>							 						 											
 							<th></th>
 							<%} %>							
 						</tr>
@@ -38,6 +41,9 @@
 			<br>		
 			<div>
 			 <%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>		
+				<input type="button" class="btn btn-success" value="AGREGAR" onclick="showAgregarPatrona();"/>
+			<%} %>			
+			 <%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>		
 				<input type="button" class="btn btn-success" value="AGREGAR" onclick="showAgregarPatrona();"/>
 			<%} %>			
 			</div>

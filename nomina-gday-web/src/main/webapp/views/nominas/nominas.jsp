@@ -35,7 +35,11 @@
 							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>	
 							<th></th>
 							<th></th>
-							 <%} %>
+							<%} %>
+							<%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>	
+							<th></th>
+							<th></th>
+							<%} %>
 						</tr>
 					<tbody>
 					</tbody>
@@ -48,6 +52,10 @@
 		<br> <br>
 		<div>
 		<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>	
+			<input type="button" class="btn btn-success" value="AÑADIR NOMINA"
+				onclick="showAgregarNomina();" />
+		 <%} %>
+		<%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>	
 			<input type="button" class="btn btn-success" value="AÑADIR NOMINA"
 				onclick="showAgregarNomina();" />
 		 <%} %>

@@ -27,6 +27,9 @@
 							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>						 					
 							<th></th>
 							 <%} %>							
+							<%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>						 					
+							<th></th>
+							 <%} %>							
 						</tr>
 					<tbody>			
 					</tbody>
@@ -41,6 +44,9 @@
 			<br>
 			<div>
 			<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>							 
+				<input type="button" class="btn btn-success" value="AÑADIR GRUPO" onclick="showAgregarGrupo();"/>
+			 <%} %>							
+			<%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>							 
 				<input type="button" class="btn btn-success" value="AÑADIR GRUPO" onclick="showAgregarGrupo();"/>
 			 <%} %>							
 			</div>

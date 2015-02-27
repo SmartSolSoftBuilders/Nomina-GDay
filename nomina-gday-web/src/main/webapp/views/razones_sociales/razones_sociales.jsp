@@ -26,7 +26,11 @@
 							<th>NOMBRE CORTO</th>					
 							<th>COMISION</th>
 							<th>RAZON SOCIAL</th>
-							 <%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>							 			
+							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>							 			
+							<th class='btn btn-success'></th>
+							<th></th>
+							<%} %>							
+							<%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>							 			
 							<th class='btn btn-success'></th>
 							<th></th>
 							<%} %>							
@@ -43,7 +47,10 @@
 			<br>
 			<br>		
 			<div>
-				 <%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>				
+				<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>				
+				<input type="button" class="btn btn-success" value="AÑADIR" onclick="showAgregarRazonSocial();"/>
+				<%} %>
+				<%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>				
 				<input type="button" class="btn btn-success" value="AÑADIR" onclick="showAgregarRazonSocial();"/>
 				<%} %>
 			</div>
