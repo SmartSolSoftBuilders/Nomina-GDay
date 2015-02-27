@@ -109,7 +109,8 @@
 	<select id="obtenerNominas" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
 		select * from "NOMINA" 	 	
 	</select>
-	
+
+		
 	<select id="obtenerNominasByIdEmpleado" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
 		SELECT "NOMINA"."ID_NOMINA", "NOMINA"."NOMBRE_CORTO", "EMPLEADO_NOMINA"."ESTATUS" AS "TIPO_PAGO" FROM "NOMINA" INNER JOIN "EMPLEADO_NOMINA" ON "NOMINA"."ID_NOMINA"= "EMPLEADO_NOMINA"."ID_NOMINA"  AND "ID_EMPLEADO"=#{id} 	 	
 	</select>  

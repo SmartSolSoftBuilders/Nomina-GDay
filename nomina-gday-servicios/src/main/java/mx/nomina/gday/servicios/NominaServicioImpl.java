@@ -123,5 +123,4 @@ public class NominaServicioImpl implements NominaServicio {
 		return null;
 	}
 
-
 }

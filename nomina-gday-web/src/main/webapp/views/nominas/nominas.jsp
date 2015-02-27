@@ -32,8 +32,10 @@
 							<th>PERIODICIDAD</th>
 							<th>TIPO PAGO</th>
 							<th>CLASE</th>
+							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>	
 							<th></th>
 							<th></th>
+							 <%} %>
 						</tr>
 					<tbody>
 					</tbody>
@@ -45,8 +47,10 @@
 		<div id="Nomina"></div>
 		<br> <br>
 		<div>
+		<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>	
 			<input type="button" class="btn btn-success" value="AÑADIR NOMINA"
 				onclick="showAgregarNomina();" />
+		 <%} %>
 		</div>
 		<br> <br>
 		<!-- 			Modal para consultar Empleado por Nomina -->

@@ -22,7 +22,7 @@
 					<thead>			
 						<tr class="odd gradeA">
 							<th>ID</th>
-							<th>NICK</th>
+							<th>USUARIO</th>
 							<th>NOMBRE</th>					
 							<th>ESTATUS</th>					
 							<th class='btn btn-success'></th>

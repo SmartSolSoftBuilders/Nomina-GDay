@@ -30,13 +30,13 @@
 		<link href="static/css/styles.css" rel="stylesheet">
 	</head>  
   <frameset rows="160,*">
-  <%if (session.getAttribute("rolUser").equals("ROLE_ADMINISTRADOR")){%>
+  <%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>
   		<frame name="menu" src="views/menu/menu.jsp" marginwidth="10"scrolling="no" frameborder="0">
   <%} %>    
-  <%if (session.getAttribute("rolUser").equals("ROLE_USUARIO")){%>
+  <%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>
   		<frame name="menu" src="views/menu/menu.jsp" marginwidth="10"scrolling="no" frameborder="0">
   <%} %>    
-  <%if (session.getAttribute("rolUser").equals("ROLE_USUARIO2")){%>
+  <%if (session.getAttribute("rolUser").equals("ROL_EJECUTIVO_NOMINA")){%>
   		<frame name="menu" src="views/menu/menu_usuario2.jsp" marginwidth="10"scrolling="no" frameborder="0">
   <%} %>    
     <frameset cols="100%,*">
