@@ -192,7 +192,7 @@
 					   	<tr>
 						  		<td>
 							 		<button type="button" class="btn btn-success" onclick="agregarNominaAEmpleado();">AÑADIR</button>
-						 		  <%if (session.getAttribute("rolUser").equals("ROLE_ADMINISTRADOR")){%>
+						 		  <%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>
 										<button type="button" class="btn btn-success" onclick="shoBajaNominaForm();">ELIMINAR</button>
 						            <%} %>  
 									<button type="button" class="btn btn-success" onclick="editarObjetoJS();">EDITAR</button>					 			

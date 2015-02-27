@@ -26,8 +26,10 @@
 							<th>NOMBRE CORTO</th>					
 							<th>COMISION</th>
 							<th>RAZON SOCIAL</th>
+							 <%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>							 			
 							<th class='btn btn-success'></th>
 							<th></th>
+							<%} %>							
 						</tr>
 					<tbody>			
 					</tbody>
@@ -41,7 +43,9 @@
 			<br>
 			<br>		
 			<div>
+				 <%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>				
 				<input type="button" class="btn btn-success" value="AÑADIR" onclick="showAgregarRazonSocial();"/>
+				<%} %>
 			</div>
 			<br>
 			<br>

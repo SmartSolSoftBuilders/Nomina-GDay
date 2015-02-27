@@ -1,12 +1,15 @@
 package mx.nomina.gday.modelo;
 
-public class AcumuladoPeriodo {
+public class AcumuladoPeriodo extends BaseModelo{
 	
-	private int idAcumuladoPeriodo;
+	private Integer idAcumuladoPeriodo;
 	private Nomina nomina;
 	private Periodo periodo;
 	private byte[] archivoAcumulado;
 	private String estatus;
+	private String nombreArchivo;
+
+	
 	
 	
 	
@@ -14,28 +17,35 @@ public class AcumuladoPeriodo {
 	}
 
 
-
-	public AcumuladoPeriodo(int idAcumuladoPeriodo, Nomina nomina,
-			Periodo periodo, byte[] archivoAcumulado, String estatus) {
+	public AcumuladoPeriodo(Integer idAcumuladoPeriodo, Nomina nomina,
+			Periodo periodo, byte[] archivoAcumulado, String estatus,
+			String nombreArchivo) {
 		super();
 		this.idAcumuladoPeriodo = idAcumuladoPeriodo;
 		this.nomina = nomina;
 		this.periodo = periodo;
 		this.archivoAcumulado = archivoAcumulado;
 		this.estatus = estatus;
+		this.nombreArchivo = nombreArchivo;
 	}
 
 
 
-	public int getIdAcumuladoPeriodo() {
+
+
+	public Integer getIdAcumuladoPeriodo() {
 		return idAcumuladoPeriodo;
 	}
 
 
 
-	public void setIdAcumuladoPeriodo(int idAcumuladoPeriodo) {
+
+
+	public void setIdAcumuladoPeriodo(Integer idAcumuladoPeriodo) {
 		this.idAcumuladoPeriodo = idAcumuladoPeriodo;
 	}
+
+
 
 
 
@@ -45,9 +55,13 @@ public class AcumuladoPeriodo {
 
 
 
+
+
 	public void setNomina(Nomina nomina) {
 		this.nomina = nomina;
 	}
+
+
 
 
 
@@ -57,9 +71,13 @@ public class AcumuladoPeriodo {
 
 
 
+
+
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
 	}
+
+
 
 
 
@@ -69,9 +87,13 @@ public class AcumuladoPeriodo {
 
 
 
+
+
 	public void setArchivoAcumulado(byte[] archivoAcumulado) {
 		this.archivoAcumulado = archivoAcumulado;
 	}
+
+
 
 
 
@@ -81,9 +103,28 @@ public class AcumuladoPeriodo {
 
 
 
+
+
 	public void setEstatus(String estatus) {
 		this.estatus = estatus;
 	}
-	
-	
+
+
+
+
+
+	public String getNombreArchivo() {
+		return nombreArchivo;
+	}
+
+
+
+
+
+	public void setNombreArchivo(String nombreArchivo) {
+		this.nombreArchivo = nombreArchivo;
+	}
+
+
+		
 }

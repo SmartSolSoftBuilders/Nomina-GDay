@@ -23,8 +23,10 @@
 						<tr class="odd gradeA">
 							<th>NUMERO GRUPO</th>
 							<th>NOMBRE</th>
-							<th>NOMBRE CORTO</th>					
+							<th>NOMBRE CORTO</th>
+							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>						 					
 							<th></th>
+							 <%} %>							
 						</tr>
 					<tbody>			
 					</tbody>
@@ -38,7 +40,9 @@
 			<br>
 			<br>
 			<div>
+			<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>							 
 				<input type="button" class="btn btn-success" value="AÑADIR GRUPO" onclick="showAgregarGrupo();"/>
+			 <%} %>							
 			</div>
 			<br>
 			<br>

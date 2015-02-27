@@ -26,7 +26,7 @@
 									
 							</tr>
 							<tr>
-								<td>NICK<input id='nick' name='nick'
+								<td>USUARIO<input id='nick' name='nick'
 									type="text" class="form-control"
 									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							</tr>
@@ -37,7 +37,7 @@
 							</tr>
 							<tr>
 								<td>PASSWORD<input id='password' name='password'
-									type="text" class="form-control"
+									type="password" class="form-control"
 									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							</tr>
 							<tr>

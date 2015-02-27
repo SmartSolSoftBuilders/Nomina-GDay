@@ -7,6 +7,7 @@
 		<id property="idAcumuladoPeriodo" column="ID_ACUMULADO_PERIODO"></id>
 		<result property="archivoAcumulado" column="ARCHIVO_ACUMULADO" javaType = "byte[]" jdbcType = "BINARY" typeHandler = "org.apache.ibatis.type.ByteArrayTypeHandler" />
 		<result property="estatus" column="ESTATUS"></result>	
+		<result property="nombreArchivo" column="NOMBRE_ARCHIVO"></result>	
 		<association property="periodo" column="ID_PERIODO" javaType="Periodo" select="selectPeriodo"/>
 		<association property="nomina" column="ID_NOMINA" javaType="Nomina" select="selectNomina"/>
 		
@@ -126,14 +127,23 @@
 		select * from "TIPO_CALENDARIO" where "ID_CALENDARIO"=#{idCalendario} 	
 	</select> 
 	
+	<select id="obtenerAcumuladosById" parameterType="int" resultMap="acumuladoPeriodoResult" resultType="AcumuladoPeriodo">		 
+		select * from "ACUMULADO_POR_PERIODO" where "ID_ACUMULADO_PERIODO"=#{idAcumuladoPeriodo}
+	</select>
+	
+	<select id="obtenerAcumuladosByIdNominaAndIdPeriodo" parameterType="int" resultMap="acumuladoPeriodoResult" resultType="AcumuladoPeriodo">		 
+		select * from "ACUMULADO_POR_PERIODO" where "ID_NOMINA"=#{nomina.idNomina} and "ID_PERIODO"=#{periodo.idPeriodo}
+	</select>
+	
+	
 		
-	 <insert id="agregarAcumulado" parameterType="Archivo" keyProperty="id">
+	 <insert id="agregarArchivo" parameterType="Archivo" keyProperty="id">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
   		   	SELECT nextVal('sec_acumulado')
   	</selectKey>
 		INSERT INTO "ACUMULADO_POR_PERIODO"(
-			    	"ID_ACUMULADO_PERIODO", "ID_PERIODO", "ID_NOMINA", "ARCHIVO_ACUMULADO", "ESTATUS", "PERIODO")	
-           		 	VALUES (#{id}, #{periodo.idPeriodo}, #{nomina.idNomina},#{archivo,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler}, #{estatus}, #{periodo});            	   
+			    	"ID_ACUMULADO_PERIODO", "ID_PERIODO", "ID_NOMINA", "ARCHIVO_ACUMULADO", "ESTATUS","NOMBRE_ARCHIVO")	
+           		 	VALUES (#{id}, #{periodo.idPeriodo}, #{nomina.idNomina},#{archivoAcumulado,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler}, #{estatus},#{nombreArchivo});            	   
     </insert>
     
     

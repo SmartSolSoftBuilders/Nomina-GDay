@@ -71,9 +71,9 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DEL SISTEMA <b class="caret"></b></a>
               <ul class="dropdown-menu">
 				<li><a href="../usuarios/usuarios.jsp" target="main">USUARIOS</a></li>
-                <li><a href="#">ROLES</a></li>
+             <!--    <li><a href="#">ROLES</a></li>
                 <li><a href="#">PERMISOS</a></li>
-              </ul>
+ -->              </ul>
             </li>
 		</ul>
 	</div>

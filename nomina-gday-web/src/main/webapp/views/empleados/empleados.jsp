@@ -26,7 +26,9 @@
 							<th width="200px">NOMBRE</th>
 							<th width="200px">CURP</th>					
 							<th width="200px">NSS</th>	
+							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>	
 							<th width="200px"></th>	
+							 <%} %>
 						</tr>
 					</thead>
 					</table>
@@ -37,9 +39,9 @@
 			<br>
 			<br>
 			<div  style="position:absolute">
+			    <%if (session.getAttribute("rolUser").equals("ROLE_ADMINISTRADOR")){%>
 				<input type="button" class="btn btn-success" value="CREAR EMPLEADO" onclick="showAgregarEmpleado();"/>
 				<input type="button" class="btn btn-success" value="ALTA MASIVA" onclick="altaMasivaDeEmpleado();"/>
-			    <%if (session.getAttribute("rolUser").equals("ROLE_ADMINISTRADOR")){%>
 					<input type="button" class="btn btn-success" value="REVERTIR ULTIMA CARGA" onclick="bajaMasivaDeEmpleado();"/>
 	            <%} %>    
 								
