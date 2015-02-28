@@ -44,7 +44,6 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 		System.out.println("Acumulado"+acumuladoPeriodo.getPeriodo().getIdPeriodo());
 		try{
 			this.acumuladoPeriodoDao.agregarArchivo(acumuladoPeriodo);
-			
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -102,5 +101,5 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
        /*Cerramos el flujo de datos*/        
         return null;
 	}
-
+	
 }

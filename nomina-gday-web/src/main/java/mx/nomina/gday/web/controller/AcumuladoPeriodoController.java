@@ -16,6 +16,7 @@ import mx.nomina.gday.modelo.Empleado;
 import mx.nomina.gday.modelo.Nomina;
 import mx.nomina.gday.modelo.Periodo;
 import mx.nomina.gday.servicios.AcumuladoPeriodoServicio;
+import mx.nomina.gday.servicios.EmpleadoMongoServicio;
 import mx.nomina.gday.servicios.NominaServicio;
 import mx.nomina.gday.web.util.UploadFile;
 
@@ -35,6 +36,9 @@ public class AcumuladoPeriodoController {
 	
 	@Autowired
 	private AcumuladoPeriodoServicio  acumuladoPeriodoServicio;
+
+	@Autowired
+	private EmpleadoMongoServicio empleadoMongoServicio;
 	
 	@Autowired
 	private NominaServicio nominaServicio;
@@ -73,7 +77,8 @@ public class AcumuladoPeriodoController {
 	 		acumuladoPeriodo.setNombreArchivo(ufile.name);
 	 		acumuladoPeriodo.setArchivoAcumulado(mpf.getBytes());
 	 		System.out.println("Done"+ufile.length+acumuladoPeriodo.getArchivoAcumulado().length);
-	     	this.acumuladoPeriodoServicio.agregarArchivo(acumuladoPeriodo);		
+	     	this.acumuladoPeriodoServicio.agregarArchivo(acumuladoPeriodo);
+	     	this.empleadoMongoServicio.guardarDocumento(acumuladoPeriodo);
 	 		System.out.println("LOS VALORES DEL ARCHIVO:"+acumuladoPeriodo.getArchivoAcumulado().length);		
 	 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpAcumulado.xls");
 	 	    fos.write(acumuladoPeriodo.getArchivoAcumulado());
