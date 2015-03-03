@@ -24,20 +24,23 @@ public class EmpleadoMongoImpl implements EmpleadoMongo {
 	public void saveDocument(DBCollection collection,HashMap map){
 		BasicDBObject document = new BasicDBObject();
 		Set set = map.entrySet();
+		int registros=0;
 		Iterator iterator = set.iterator();
 		document.put("_id", new Random().nextInt());
 	    while(iterator.hasNext()) {
 	        Map.Entry mentry = (Map.Entry)iterator.next();
-	    	System.out.print("key: "+ mentry.getKey() + " & Value: ");
+	    	//System.out.print("key: "+ mentry.getKey() + " & Value: ");
 	        System.out.println(mentry.getValue());	        
-	        document.put(""+mentry.getKey(), mentry.getValue());	        
+	        document.put(""+mentry.getKey(), mentry.getValue());
+	        System.out.println("num Registros:"+registros++);
+	        System.out.println(document.size());
 	    }
 	    collection.insert(document);
 	    System.out.println("Inserción realizada");
-	    DBCursor cursor = collection.find();
+	    /*DBCursor cursor = collection.find();
         while(cursor.hasNext()) {
             System.out.println(cursor.next());
-        }        
+        } */       
 	}
 	
 	public  void basicDBObject_Example(DBCollection collection){
