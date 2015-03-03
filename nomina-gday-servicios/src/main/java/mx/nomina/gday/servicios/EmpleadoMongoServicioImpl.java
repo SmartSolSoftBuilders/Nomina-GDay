@@ -71,7 +71,9 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     		int colNum=1;
     		Row filaTitulo = hoja.getRow(1);
     		Row fila = hoja.getRow(colNum);
-    		for (; filaNum < hoja.getLastRowNum()-1; filaNum++) { // Recorre cada fila de la hoja     			
+    		System.out.println("LINEAS:"+hoja.getLastRowNum());
+    		for (; filaNum < hoja.getLastRowNum()-1; filaNum++) { // Recorre cada fila de la hoja
+        		System.out.println("columnas:"+hoja.getLastRowNum());
     			fila = hoja.getRow(filaNum);
     			map = new HashMap();
     			map.put("id_nomina",acumuladoPeriodo.getNomina().getIdNomina());
@@ -84,9 +86,12 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     					titulo = filaTitulo.getCell(columna).getStringCellValue();
     					fila.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
     					data = fila.getCell(columna).getStringCellValue();    					
-    					System.out.print(" Columna->"+titulo+"\n");	
-        				System.out.print(" Valor->"+data+"\n");	
+    					//System.out.print(" Columna->"+titulo+"\n");	
+        				//System.out.print(" Valor->"+data+"\n");	
         				map.put(titulo,data);
+    					System.out.print(" Columna->"+titulo+"Valor_"+data);	
+        				if (titulo.length()>1)
+        					map.put(titulo.replace(".","_"),data);
     				}
     			}
     			this.empleadoMongo.saveDocument(collection, map);
