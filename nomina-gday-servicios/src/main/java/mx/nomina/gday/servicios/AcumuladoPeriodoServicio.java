@@ -13,5 +13,5 @@ public interface AcumuladoPeriodoServicio {
 	public File obtenerArchivoAcumulado(Integer idAcumulado);
 	public boolean validarArchivo(AcumuladoPeriodo acumuladoPeriodo);
 
-
+ 
 }
