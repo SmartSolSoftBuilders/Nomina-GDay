@@ -77,8 +77,10 @@ public class AcumuladoPeriodoController {
 	 		acumuladoPeriodo.setNombreArchivo(ufile.name);
 	 		acumuladoPeriodo.setArchivoAcumulado(mpf.getBytes());
 	 		System.out.println("Done"+ufile.length+acumuladoPeriodo.getArchivoAcumulado().length);
-	     	this.acumuladoPeriodoServicio.agregarArchivo(acumuladoPeriodo);
-	     	this.empleadoMongoServicio.guardarDocumento(acumuladoPeriodo);
+	 		if (this.acumuladoPeriodoServicio.validarArchivo(acumuladoPeriodo)){
+	 			this.acumuladoPeriodoServicio.agregarArchivo(acumuladoPeriodo);
+	     		this.empleadoMongoServicio.guardarDocumento(acumuladoPeriodo);
+	 		}
 	 		System.out.println("LOS VALORES DEL ARCHIVO:"+acumuladoPeriodo.getArchivoAcumulado().length);		
 	 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpAcumulado.xls");
 	 	    fos.write(acumuladoPeriodo.getArchivoAcumulado());
