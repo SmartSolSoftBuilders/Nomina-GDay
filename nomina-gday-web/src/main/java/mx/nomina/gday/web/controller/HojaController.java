@@ -88,32 +88,33 @@ public class HojaController {
 			  return null;
 		}
 		 
-		 @RequestMapping(value="/activarhojatrabajo",method = RequestMethod.POST)
-		 @ResponseBody
-		    public boolean activarHojaTrabajo(@ModelAttribute(value="hojaTrabajo") HojaTrabajo hojaTrabajo, BindingResult result){
-			 	try{
-			 	System.out.println("Guardando Nomina"+ hojaTrabajo.getNomina().getIdNomina());
-			 	this.hojaTrabajoServicio.activarHojaTrabajo(hojaTrabajo);
-			 	}
-			 	catch(Exception e){
-			 		e.printStackTrace();
-			 	}
-			 	return true;
-		 }		 
-		 @RequestMapping(value="/eliminarhojatrabajo",method = RequestMethod.POST)
-		 @ResponseBody
-		    public boolean eliminarHojaTrabajo(@ModelAttribute(value="hojaTrabajo") HojaTrabajo hojaTrabajo, BindingResult result){
-			 	System.out.println("Eliminando"+ hojaTrabajo.getIdHojaTrabajo());
-			 	this.hojaTrabajoServicio.eliminarHojaTrabajo(hojaTrabajo);
-			 	return true;
-		 }
+		@RequestMapping(value="/activarhojatrabajo",method = RequestMethod.POST)
+		@ResponseBody
+		public boolean activarHojaTrabajo(@ModelAttribute(value="hojaTrabajo") HojaTrabajo hojaTrabajo, BindingResult result){
+			try{
+				System.out.println("Guardando Nomina"+ hojaTrabajo.getNomina().getIdNomina());
+				this.hojaTrabajoServicio.activarHojaTrabajo(hojaTrabajo);
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return true;
+		}		 
+		
+		@RequestMapping(value="/eliminarhojatrabajo",method = RequestMethod.POST)
+		@ResponseBody
+		public boolean eliminarHojaTrabajo(@ModelAttribute(value="hojaTrabajo") HojaTrabajo hojaTrabajo, BindingResult result){
+		 	System.out.println("Eliminando"+ hojaTrabajo.getIdHojaTrabajo());
+		 	this.hojaTrabajoServicio.eliminarHojaTrabajo(hojaTrabajo);
+		 	return true;
+		}
 		 
-		 @RequestMapping(value="/carga", method = RequestMethod.POST)
-		 public @ResponseBody String guardaFichero(MultipartHttpServletRequest request, HttpServletResponse response){  
-		 	Iterator<String> itr =request.getFileNames();
+		@RequestMapping(value="/carga", method = RequestMethod.POST)
+		public @ResponseBody String guardaFichero(MultipartHttpServletRequest request, HttpServletResponse response){  
+			Iterator<String> itr =request.getFileNames();
 		 	MultipartFile mpf = request.getFile(itr.next());
 		 	HojaTrabajo hojaTrabajo=new HojaTrabajo();
-		     try {
+		    try {
 		     	ufile.idEvento = mpf.getBytes().length;
 		 		ufile.length = mpf.getBytes().length;
 		 		ufile.bytes= mpf.getBytes();
@@ -135,34 +136,32 @@ public class HojaController {
 		 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpHojaTrabajo.xls");
 		 	    fos.write(hojaTrabajo.getArchivoAcumulado());
 		 	    fos.close(); 
-		     }
-		     catch (Exception e) {
-		     	System.out.println("Error creando el archivo - Carga"+e.getMessage());
-		         e.printStackTrace();
-		         return "No se ha podido grabar el fichero";
-		     }
-		      
-		     return "Fichero grabado correctamente";
+		    }
+		    catch (Exception e) {
+		    	System.out.println("Error creando el archivo - Carga"+e.getMessage());
+		        e.printStackTrace();
+		        return "No se ha podido grabar el fichero";
+		    }		     
+		    return "Fichero grabado correctamente";
 		 }        
 
-			@RequestMapping(value="/generarHojaTrabajo",method = RequestMethod.POST)
-		    @ResponseBody
-		    public void getFile(HttpServletRequest request,HttpServletResponse response) {
-				File fileToDownload = null;
-		        InputStream inputStream = null;
-		        Integer idHojaTrabajo=Integer.parseInt(request.getParameter("id1"));
-		        System.out.println("buscando el registro de nómina:"+idHojaTrabajo);
-		 		try{            
-					fileToDownload = this.hojaTrabajoServicio.generarHojaTrabajo(idHojaTrabajo);
-		            inputStream = new FileInputStream(fileToDownload);
-		            response.setContentType("application/force-download");
-		            response.setHeader("Content-Disposition", "attachment; filename="+"hoja-1.xlsm"); 
-		            IOUtils.copy(inputStream, response.getOutputStream());
-		            response.flushBuffer();
-		        }catch(Exception e){            
-		            e.printStackTrace();
-		        }
-		 
+		@RequestMapping(value="/generarHojaTrabajo",method = RequestMethod.POST)
+		@ResponseBody
+		public void getFile(HttpServletRequest request,HttpServletResponse response) {
+			File fileToDownload = null;
+		    InputStream inputStream = null;
+		    Integer idHojaTrabajo=Integer.parseInt(request.getParameter("id1"));
+		    System.out.println("buscando el registro de nómina:"+idHojaTrabajo);
+		 	try{            
+		 		fileToDownload = this.hojaTrabajoServicio.generarHojaTrabajo(idHojaTrabajo);
+		        inputStream = new FileInputStream(fileToDownload);
+		        response.setContentType("application/force-download");
+		        response.setHeader("Content-Disposition", "attachment; filename="+"hoja-1.xlsm"); 
+		        IOUtils.copy(inputStream, response.getOutputStream());
+		        response.flushBuffer();
 		    }
-
+		 	catch(Exception e){            
+		            e.printStackTrace();
+		    }		 
+		}
 }

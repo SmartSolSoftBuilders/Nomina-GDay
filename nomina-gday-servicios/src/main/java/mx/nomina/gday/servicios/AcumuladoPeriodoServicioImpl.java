@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -111,64 +112,67 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 	@Override
 	public boolean validarArchivo(AcumuladoPeriodo acumuladoPeriodo) {
 		// TODO Auto-generated method stub
-			int numArchivo=new Random().nextInt();
-			String rutaArchivo = "c://archivosNGDAY//acumuladoTmp"+numArchivo+".xls";        
-		    File archivoXLS = new File(rutaArchivo);
-	        try{
-	        	List<String> titulosArchivo=new ArrayList<String>();
-		        File archivo = null;
-		        FileReader fr = null;
-		        BufferedReader br = null;
-	            // Apertura del fichero y creacion de BufferedReader para poder
-	            // hacer una lectura comoda (disponer del metodo readLine()).
-	            archivo = new File ("C:\\archivosNGDAY\\encabezados.txt");
-	            fr = new FileReader (archivo);
-	            br = new BufferedReader(fr);
+		int numArchivo=new Random().nextInt();
+		String rutaArchivo = "c://archivosNGDAY//acumuladoTmp"+numArchivo+".xls";        
+		File archivoXLS = new File(rutaArchivo);
+	    try{
+	       	List<String> titulosArchivo=new ArrayList<String>();
+	        File archivo = null;
+		    FileReader fr = null;
+		    BufferedReader br = null;
+	        archivo = new File ("C:\\archivosNGDAY\\encabezados.txt");
+	        fr = new FileReader (archivo);
+	        br = new BufferedReader(fr);
 	      
-	            // Lectura del fichero
-	            String linea;
-	            while((linea=br.readLine())!=null){
-	                 System.out.println(linea);
-	                 titulosArchivo.add(linea);
-	            }
-	                 
-	            fr.close();
-	     		FileOutputStream fos = new FileOutputStream(rutaArchivo);
-	     	    fos.write(acumuladoPeriodo.getArchivoAcumulado());
-	     	    fos.close();
-	    		FileInputStream file = new FileInputStream(rutaArchivo);
-	    		HSSFWorkbook workbook = new HSSFWorkbook(file);    		
-	        	HSSFSheet hoja = workbook.getSheetAt(0);
-	      		String data; 
-	    		//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
-	    		int filaNum=1;	    		
-	    		Row fila = hoja.getRow(1);	    		
-	    		System.out.println("datos:"+titulosArchivo.size());
-	    		System.out.println("Columnas:"+fila.getLastCellNum());
-	    		int numErrores=0;
-	    		for (int columna = 1; columna < fila.getLastCellNum()-1; columna++) { // Recorre					
-	    			// cada columna de la fila
-	    			if (fila.getCell(columna)!=null){
-	    				fila.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
-	    				data = fila.getCell(columna).getStringCellValue();
-	    				int encontrado=0;
-	    				for (int i=0;i<titulosArchivo.size();i++){
-	    					if (data.equals(titulosArchivo.get(i))){
-	    						encontrado++;
-	    					}
+	        String linea;
+	        while((linea=br.readLine())!=null){
+	    		StringTokenizer st = new StringTokenizer(linea,",");	    			
+	    		while (st.hasMoreElements()) {
+	    			String valor=""+st.nextElement();	    	
+		            titulosArchivo.add(valor);
+	    		}	     
+	    		
+	        }
+	               
+	        fr.close();
+	        FileOutputStream fos = new FileOutputStream(rutaArchivo);
+	     	fos.write(acumuladoPeriodo.getArchivoAcumulado());
+	     	fos.close();
+	    	FileInputStream file = new FileInputStream(rutaArchivo);
+	    	HSSFWorkbook workbook = new HSSFWorkbook(file);    		
+	        HSSFSheet hoja = workbook.getSheetAt(0);
+	      	String data; 
+	    	//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
+	    	int filaNum=1;	    		
+	    	Row fila = hoja.getRow(1);	    		
+	    	System.out.println("datos:"+titulosArchivo.size());
+	    	System.out.println("Columnas:"+fila.getLastCellNum());
+	    	int numErrores=0;
+	    	String cadenaErrores="No se encontraron las columnas:";
+	    	for (int columna = 1; columna < fila.getLastCellNum()-1; columna++) { // Recorre					
+	    		// cada columna de la fila
+	    		if (fila.getCell(columna)!=null){
+	    			fila.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
+	    			data = fila.getCell(columna).getStringCellValue();
+	    			int encontrado=0;
+	    			for (int i=0;i<titulosArchivo.size();i++){
+	    				if (data.equals(titulosArchivo.get(i))){
+	    					encontrado++;
 	    				}
-	    				if (encontrado==0) 
-	    					numErrores++;
-	    				else
-	    					System.out.println("Encontrado:"+data);
+	    			}
+	    			if (encontrado==0){
+	    				cadenaErrores=cadenaErrores+data+"-->";
+	    				numErrores++;
 	    			}
 	    		}
-	    		System.out.println("Errores"+numErrores);
-	     	    return true;
-	        }
-	        catch(Exception e){
-	        	e.printStackTrace();
-	        }
+	    	}
+	    	System.out.println("Errores"+numErrores);
+	    	System.out.println(cadenaErrores);
+	       return true;	      
+	    }
+	    catch(Exception e){
+	    	e.printStackTrace();
+	    }
 		return false;
 	}
 	
