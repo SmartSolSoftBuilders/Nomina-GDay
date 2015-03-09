@@ -4,16 +4,33 @@
 <mapper namespace="mx.nomina.gday.dao.EjecutivoDao">
 	<resultMap type="Ejecutivo" id="ejecutivoResult">
 		<result property="idEjecutivo" column="ID_EJECUTIVO"/>
+		<result property="idUsuario" column="id_t_usuario"/>
 		<result property="nombreEjecutivo" column="NOMBRE_EJECUTIVO"/>
 		<result property="paternoEjecutivo" column="APP_PATERNO_EJECUTIVO"/>
 		<result property="maternoEjecutivo" column="APP_MATERNO_EJECUTIVO"/>
 	</resultMap>
 
 	<!-- Select para obtener la lista de todos las Ejecutivos registrados por nombre y apellidos -->
-		<select id="obtenerEjecutivos" parameterType="int" resultMap="ejecutivoResult" resultType="Ejecutivo">		 
+	<select id="obtenerEjecutivos" parameterType="int" resultMap="ejecutivoResult" resultType="Ejecutivo">		 
 		select * from "EJECUTIVO" 
 	</select>
-	  
+	
+	<insert id="agregarEjecutivo" parameterType="Ejecutivo" >
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_ejecutivo')
+  		</selectKey>
+  		
+  	INSERT INTO "EJECUTIVO"("ID_EJECUTIVO", id_t_usuario, "APP_PATERNO_EJECUTIVO", "APP_MATERNO_EJECUTIVO", "NOMBRE_EJECUTIVO")
+  	VALUES (#{id},#{idUsuario}, #{paternoEjecutivo}, #{maternoEjecutivo}, #{nombreEjecutivo});
+        
+  	</insert>
+  	
+  	<update id="actualizarEjecutivo" parameterType="Ejecutivo">			
+		UPDATE "EJECUTIVO"
+   			SET "ID_EJECUTIVO"=#{id}, id_t_usuario=#{idUsuario}, "APP_PATERNO_EJECUTIVO"=#{paternoEjecutivo}, "APP_MATERNO_EJECUTIVO"=#{maternoEjecutivo}, "NOMBRE_EJECUTIVO"=#{nombreEjecutivo}
+   				WHERE "ID_EJECUTIVO"=#{id}       			    	
+	</update>
+  	  
 </mapper>
 	
 	

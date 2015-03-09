@@ -114,6 +114,8 @@ function muestraDatosUsuario(datos){
 	console.log(datos);
 	var data=eval(datos);
 	$("#nombre").val(data.nombre);
+	$("#app").val(data.apellidoP);
+	$("#apm").val(data.apellidoM);
 	$("#nick").val(data.username);
 	$("#estatus").val(data.activo);
 	$("#password").val(data.password);
@@ -138,6 +140,8 @@ function actualizarUsuario() {
 			.ajax({
 				data : {
 					"nombre" : $("#nombre").val(),
+					"apellidoP" : $("#app").val(),
+					"apellidoM" : $("#apm").val(),
 					"username" : $("#nick").val(),
 					"activo" : $("#estatus").val(),
 					"password" : $("#password").val(),

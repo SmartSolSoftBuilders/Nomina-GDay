@@ -5,10 +5,14 @@ $(document).ready(function() {
 			nombre: "required",
 			nick: "required",
 			password: "required",
+			app: "required",
+			apm: "required",
 			
 		},        
 		messages: {
 			nombre: "Ingrese el nombre",
+			app: "Ingrese un apellido paterno",
+			apm: "Ingrese un apellido materno",
 			nick: "Ingrese un nick",
 			password: "Ingrese un password",
 		},
@@ -36,10 +40,12 @@ $(document).ready(function() {
 			var options = "";
 			var result=response[0];
 			 for (var i = 0; i < result.length; i++) {
-			    	options += '<option value="' + result[i].rol + '">' + result[i].rol + '</option>';
+			    	options += '<option value="' + result[i].id + '">' + result[i].rol + '</option>';
 			    }
-			$("#rol").append(options)		    
-			},	
+			$("#rol").append(options)	
+			var idRol=($('#rol').find(":selected").val())
+			console.log(idRol)
+		},	
 		error: function (response) {																	
 			$("#resultadoGuardar").html("Error");
 			}		
@@ -50,14 +56,18 @@ $(document).ready(function() {
 //Function que guarda todos los datos del Grupo*
 //**********************************************
 function agregarUsuario() {
-	console.log("nombreRol");
-	console.log($("#rol").val());
+	console.log("idRol");
+	var idRol=($('#rol').find(":selected").val())
+	console.log(idRol)
+
 	if ($("#agregarUsuarioForm").valid()){	
 		
 		$
 			.ajax({
 				data : {
 					"nombre" : $("#nombre").val(),
+					"apellidoP" : $("#app").val(),
+					"apellidoM" : $("#apm").val(),
 					"username" : $("#nick").val(),
 					"activo" : $("#estatus").val(),
 					"password" : $("#password").val(),
@@ -78,7 +88,6 @@ function agregarUsuario() {
 			});
 		}
 }
-
 
 function cancelar(){
 	top.frames['main'].location="../usuarios/usuarios.jsp"; 	

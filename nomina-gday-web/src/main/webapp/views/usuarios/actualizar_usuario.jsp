@@ -24,7 +24,16 @@
 									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 									<input id='idUsuario' name='idUsuario' type="hidden" class="form-control">
 									
+								<td>APELLIDO PATERNO<input id='app' name='app' type="text"
+									class="form-control"
+									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+									
+								<td>APELLIDO MATERNO<input id='apm' name='apm' type="text"
+									class="form-control"
+									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>								
+									
 							</tr>
+							
 							<tr>
 								<td>USUARIO<input id='nick' name='nick'
 									type="text" class="form-control"
@@ -42,7 +51,7 @@
 							</tr>
 							<tr>
 								<td>ROLES
-									<select id='rol' name='rol' class="form-control"></select>
+									<select id='rol' name='rol' class="form-control" disabled></select>
 								</td>
 							</tr>
 						</table>
@@ -51,7 +60,7 @@
 						<div class="input-group">
 							<span>
 								<button type="button" class="btn btn-success"
-									onclick="actualizarUsuario()">AGREGAR</button>
+									onclick="actualizarUsuario()">ACTUALIZAR</button>
 							</span> <span>
 								<button type="button" class="btn btn-success"
 									onclick="cancelar()">CANCELAR</button>

@@ -30,6 +30,8 @@
 	<resultMap type="UsuarioSeguridad" id="resultUsuarioConRol">
 		<id property="id" column="id_t_usuario"/>
 		<result property="username" column="v_username"/>
+		<result property="apellidoP" column="v_apellido_p"/>
+		<result property="apellidoM" column="v_apellido_m"/>
 		<result property="password" column="v_password"/>
 		<result property="nombre" column="v_nombre_usuario"/>
 		<result property="activo" column="l_usuario_activo"/>
@@ -37,10 +39,10 @@
 	</resultMap>
 	
 	<select id="consultarUsuariosSeguridadConRol" parameterType="UsuarioSeguridad" resultMap="resultUsuarioConRol">
-		select id_t_usuario, v_username, v_password, v_nombre_usuario, l_usuario_activo,
+	select id_t_usuario, v_username, v_apellido_p, v_apellido_m, v_password, v_nombre_usuario, l_usuario_activo,
 	(select "v_rol" from "seguridad"."t_rol_seguridad" as "rs", 
 	"seguridad"."t_r_usuario_rol" as "rt" where "rt"."id_tr_rol" = "rs"."id_t_rol" and "rt"."id_tr_usuario"=
-	#{id}) v_rolt
+	3) v_rolt
 	from "seguridad"."t_usuario_seguridad"
 	where id_t_usuario=#{id};
 	</select>
@@ -80,11 +82,11 @@
   		   	SELECT nextVal('seguridad.sec_user')
   		</selectKey>		
 		INSERT INTO seguridad.t_usuario_seguridad(id_t_usuario,
-        v_username, v_password, v_nombre_usuario, l_usuario_activo)
-    	vALUES (#{id},#{username},#{password}, #{nombre}, true);
+        v_username, v_apellido_p, v_apellido_m, v_password, v_nombre_usuario, l_usuario_activo)
+    	vALUES (#{id},#{username}, #{apellidoP}, #{apellidoM}, #{password}, #{nombre}, true);
     	INSERT INTO seguridad.t_r_usuario_rol(
             id_tr_usuario, id_tr_rol)
-    	VALUES (#{id}, (select id_t_rol from seguridad.t_rol_seguridad where v_rol= #{rol}));
+    	VALUES (#{id}, cast(#{rol} as Integer));
     	
 	</insert>
 	
@@ -101,7 +103,7 @@
 	</update>
 	<update id="actualizarUsuarioConRol" parameterType="UsuarioSeguridad">			
 		UPDATE seguridad.t_usuario_seguridad
-   			SET v_password=#{password},l_usuario_activo=#{activo}, v_nombre_usuario= #{nombre}
+   			SET v_password=#{password},l_usuario_activo=#{activo}, v_nombre_usuario= #{nombre}, v_apellido_p=#{apellidoP}, v_apellido_m=#{apellidoM}
    				WHERE v_username=#{username};       			    	
 		UPDATE seguridad.t_r_usuario_rol
 			SET  id_tr_rol= (select id_t_rol from seguridad.t_rol_seguridad where v_rol= #{rol})

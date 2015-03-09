@@ -59,7 +59,7 @@ public class SeguridadUtil {
                 getAuthentication().
                 getPrincipal();
         
-        UsuarioSeguridad us = new UsuarioSeguridad(cud.getUsername(), "", cud.getNombre(), "", cud.isEnabled());
+        UsuarioSeguridad us = new UsuarioSeguridad(cud.getUsername(), "", cud.getNombre(), "", "", cud.isEnabled(), "");
         
         return us;
     }

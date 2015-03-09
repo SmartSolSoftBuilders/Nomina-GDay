@@ -22,6 +22,12 @@
 								<td>NOMBRE<input id='nombre' name='nombre' type="text"
 									class="form-control"
 									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+								<td>APELLIDO PATERNO<input id='app' name='app' type="text"
+									class="form-control"
+									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+								<td>APELLIDO MATERNO<input id='apm' name='apm' type="text"
+									class="form-control"
+									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							</tr>
 							<tr>
 								<td>USUARIO<input id='nick' name='nick'

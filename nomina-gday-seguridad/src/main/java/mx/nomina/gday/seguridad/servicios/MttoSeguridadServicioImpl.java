@@ -79,10 +79,11 @@ public class MttoSeguridadServicioImpl implements MttoSeguridadServicio{
 	public UsuarioSeguridad consultarUsuariosSeguridadConRol(UsuarioSeguridad usuarioSeguridad) {
 		// TODO Auto-generated method stub
 		try {
-			System.out.println("USUARIO CON ROLES SERVICIO USERNAME"+usuarioSeguridad.getUsername());
 			System.out.println("USUARIO CON ROLES SERVICIO id"+usuarioSeguridad.getId());
 			usuarioSeguridad=this.seguridadDao.consultarUsuariosSeguridadConRol(usuarioSeguridad);
 			System.out.println("USUARIO CON ROLES SERVICIO USERNAME"+usuarioSeguridad.getNombre());
+			System.out.println("USUARIO CON ROLES SERVICIO APP"+usuarioSeguridad.getApellidoP());
+			System.out.println("USUARIO CON ROLES SERVICIO APM"+usuarioSeguridad.getApellidoM());
 			System.out.println("USUARIO CON ROLES SERVICIO USERNAME"+usuarioSeguridad.getPassword());
 			System.out.println("USUARIO CON ROLES SERVICIO USERNAME"+usuarioSeguridad.getRol());
 			

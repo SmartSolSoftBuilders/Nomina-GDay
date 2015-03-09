@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import mx.nomina.gday.modelo.Ejecutivo;
 import mx.nomina.gday.seguridad.modelo.UsuarioSeguridad;
 import mx.nomina.gday.seguridad.servicios.MttoSeguridadServicio;
 import mx.nomina.gday.seguridad.util.SeguridadUtil;
+import mx.nomina.gday.servicios.EjecutivoServicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class UsuarioController {
 	@Autowired
 	private MttoSeguridadServicio mttoSeguridadServicio;
 
+	@Autowired
+	private EjecutivoServicio ejecutivoServicio;
+	
 	//Controller que muestra la lista de Usuarios y permite la Edicion del mismo
 		 @RequestMapping(value="/getusuarios",method = RequestMethod.POST)
 		    @ResponseBody
@@ -67,8 +72,21 @@ public class UsuarioController {
 		 @ResponseBody
 		    public boolean guardarUsuario(@ModelAttribute(value="usuario") UsuarioSeguridad usuarioSeguridad, BindingResult result){
 			 	
-			 	System.out.println("Guardando el Usuario"+ usuarioSeguridad.getRoles().size());
-			 	mttoSeguridadServicio.agregarUsuarioSeguridad(usuarioSeguridad);
+			 	System.out.println("Guardando el Usuario"+ usuarioSeguridad.getRol());
+			 	
+			 	mttoSeguridadServicio.agregarUsuarioSeguridad(usuarioSeguridad);			 	
+			 	Ejecutivo ejecutivo = new Ejecutivo();
+			 	System.out.println("Supuesto id generado:"+usuarioSeguridad.getId());
+			 	 if(usuarioSeguridad.getRol().equals("2")){
+					 ejecutivo.setIdUsuario(Integer.valueOf(String.valueOf(usuarioSeguridad.getId())));
+					 ejecutivo.setMaternoEjecutivo(usuarioSeguridad.getApellidoM());
+					 ejecutivo.setNombreEjecutivo(usuarioSeguridad.getNombre());
+					 ejecutivo.setPaternoEjecutivo(usuarioSeguridad.getApellidoP());
+					 System.out.println("Guardando el Ejecutivo"+ ejecutivo.getIdUsuario());
+					 System.out.println("Guardando el Ejecutivo"+ usuarioSeguridad.getId());
+					 
+					 ejecutivoServicio.agregarEjecutivo(ejecutivo);
+			 	 }
 			 return true;
 			 
 		 }
@@ -81,7 +99,20 @@ public class UsuarioController {
 			 try {
 				 System.out.println("Controller Actualizar Usuario ID"+ usuarioSeguridad.getId());
 				 System.out.println("Controller Actualizar RolUsuario"+ usuarioSeguridad.getRol());
-				 mttoSeguridadServicio.actualizarUsuarioConRol(usuarioSeguridad);			 
+				 mttoSeguridadServicio.actualizarUsuarioConRol(usuarioSeguridad);
+				 
+				 Ejecutivo ejecutivo = new Ejecutivo();
+				 	System.out.println("Supuesto id generado:"+usuarioSeguridad.getId());
+				 	 if(usuarioSeguridad.getRol().equals("2")){
+						 ejecutivo.setIdUsuario(Integer.valueOf(String.valueOf(usuarioSeguridad.getId())));
+						 ejecutivo.setMaternoEjecutivo(usuarioSeguridad.getApellidoM());
+						 ejecutivo.setNombreEjecutivo(usuarioSeguridad.getNombre());
+						 ejecutivo.setPaternoEjecutivo(usuarioSeguridad.getApellidoP());
+						 System.out.println("Actualizando el Ejecutivo"+ ejecutivo.getIdUsuario());
+						 System.out.println("Actualizando el Ejecutivo"+ usuarioSeguridad.getId());
+						 
+						 ejecutivoServicio.actualizarEjecutivo(ejecutivo);
+				 	 }
 				 return true;
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -95,7 +126,7 @@ public class UsuarioController {
 		    public UsuarioSeguridad obtenerUsuarioConRolesById(@ModelAttribute(value="usuario") UsuarioSeguridad usuarioSeguridad, BindingResult result){
 			 try {
 				 
-				 System.out.println("Controller USUARIO USERNAME"+ usuarioSeguridad);
+				 System.out.println("Controller USUARIO APM"+ usuarioSeguridad.getApellidoM());
 				 usuarioSeguridad= this.mttoSeguridadServicio.consultarUsuariosSeguridadConRol(usuarioSeguridad);
 				
 			} catch (Exception e) {
@@ -112,7 +143,5 @@ public class UsuarioController {
 			 	System.out.println("Controller Datos del combo");
 				return this.mttoSeguridadServicio.consultarRoles();
 			}
-		 
-			//Para agregar al git de nuevo
-
+	
 }
