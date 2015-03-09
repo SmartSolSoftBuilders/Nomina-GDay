@@ -15,6 +15,11 @@
 		select * from "EJECUTIVO" 
 	</select>
 	
+	<!-- Select para obtener los Ejecutivo registrados por id-->
+	<select id="obtenerEjecutivoById" parameterType="int" resultMap="ejecutivoResult">
+		select * from "EJECUTIVO" WHERE "ID_EJECUTIVO"=#{id};
+	</select>
+	
 	<insert id="agregarEjecutivo" parameterType="Ejecutivo" >
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
   		   	SELECT nextVal('sec_ejecutivo')
@@ -27,8 +32,8 @@
   	
   	<update id="actualizarEjecutivo" parameterType="Ejecutivo">			
 		UPDATE "EJECUTIVO"
-   			SET "ID_EJECUTIVO"=#{id}, id_t_usuario=#{idUsuario}, "APP_PATERNO_EJECUTIVO"=#{paternoEjecutivo}, "APP_MATERNO_EJECUTIVO"=#{maternoEjecutivo}, "NOMBRE_EJECUTIVO"=#{nombreEjecutivo}
-   				WHERE "ID_EJECUTIVO"=#{id}       			    	
+   			SET "APP_PATERNO_EJECUTIVO"=#{paternoEjecutivo}, "APP_MATERNO_EJECUTIVO"=#{maternoEjecutivo}, "NOMBRE_EJECUTIVO"=#{nombreEjecutivo}
+   				WHERE id_t_usuario=#{id}       			    	
 	</update>
   	  
 </mapper>

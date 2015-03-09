@@ -96,28 +96,23 @@ public class UsuarioController {
 		    @ResponseBody
 		    public boolean modificarUsuario(@ModelAttribute(value="usuario") UsuarioSeguridad usuarioSeguridad, BindingResult result,HttpServletRequest request){    	    	    	    	   
 		    
-			 try {
-				 System.out.println("Controller Actualizar Usuario ID"+ usuarioSeguridad.getId());
-				 System.out.println("Controller Actualizar RolUsuario"+ usuarioSeguridad.getRol());
-				 mttoSeguridadServicio.actualizarUsuarioConRol(usuarioSeguridad);
-				 
-				 Ejecutivo ejecutivo = new Ejecutivo();
-				 	System.out.println("Supuesto id generado:"+usuarioSeguridad.getId());
-				 	 if(usuarioSeguridad.getRol().equals("2")){
-						 ejecutivo.setIdUsuario(Integer.valueOf(String.valueOf(usuarioSeguridad.getId())));
-						 ejecutivo.setMaternoEjecutivo(usuarioSeguridad.getApellidoM());
-						 ejecutivo.setNombreEjecutivo(usuarioSeguridad.getNombre());
-						 ejecutivo.setPaternoEjecutivo(usuarioSeguridad.getApellidoP());
-						 System.out.println("Actualizando el Ejecutivo"+ ejecutivo.getIdUsuario());
-						 System.out.println("Actualizando el Ejecutivo"+ usuarioSeguridad.getId());
-						 
-						 ejecutivoServicio.actualizarEjecutivo(ejecutivo);
+			 System.out.println("Guardando el Usuario"+ usuarioSeguridad.getRol());
+			 	
+			 	mttoSeguridadServicio.actualizarUsuarioConRol(usuarioSeguridad);			 	
+			 	Ejecutivo ejecutivo = new Ejecutivo();
+			 	System.out.println("Supuesto id generado:"+usuarioSeguridad.getId());
+			 	 if(usuarioSeguridad.getRol().equals("ROL_EJECUTIVO_NOMINA")){
+					 ejecutivo.setIdUsuario(Integer.valueOf(String.valueOf(usuarioSeguridad.getId())));
+					 ejecutivo.setMaternoEjecutivo(usuarioSeguridad.getApellidoM());
+					 ejecutivo.setNombreEjecutivo(usuarioSeguridad.getNombre());
+					 ejecutivo.setPaternoEjecutivo(usuarioSeguridad.getApellidoP());
+					 System.out.println("Guardando el Ejecutivo"+ usuarioSeguridad.getRol());
+					 System.out.println("Guardando el Ejecutivo"+ usuarioSeguridad.getId());
+					 
+					 ejecutivoServicio.actualizarEjecutivo(ejecutivo);
 				 	 }
-				 return true;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			 	return false;
+					return true;
+			
 		    }
 		
 		//Controller que permite obtener el grupo por idGrupo
@@ -143,5 +138,13 @@ public class UsuarioController {
 			 	System.out.println("Controller Datos del combo");
 				return this.mttoSeguridadServicio.consultarRoles();
 			}
-	
+		 
+		 //Controller que permite obtener el ejecutivo por idEjecutivo
+		 @RequestMapping(value="/obtenerejecutivobyid",method = RequestMethod.POST)
+		    @ResponseBody
+		    public Ejecutivo obtenerEjecutivoById(@ModelAttribute(value="ejecutivo") Ejecutivo ejecutivo, BindingResult result){    	
+		    	System.out.println("Controller que obtiene el idEjecutivo"+ ejecutivo.getIdEjecutivo());
+			 	return this.ejecutivoServicio.obtenerEjecutivoById(ejecutivo.getIdEjecutivo());
+			 	
+			}	 	
 }

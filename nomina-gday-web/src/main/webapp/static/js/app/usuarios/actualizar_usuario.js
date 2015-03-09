@@ -1,8 +1,8 @@
 var idUsuario=getParameter("id");
 var username=getParameter("nick");
-console.log("USUARIOS!")
-console.log(idUsuario);
-console.log(username);
+//console.log("USUARIOS!")
+//console.log(idUsuario);
+//console.log(username);
 
 //Valida los elementos del Formulario
 $(document).ready(function() {
@@ -22,6 +22,9 @@ $(document).ready(function() {
 			    	options += '<option value="' + result[i].rol + '">' + result[i].rol + '</option>';
 			    }
 			$("#rol").append(options)
+			var idRol=($('#rol').find(":selected").val())
+			console.log("idRol")
+			console.log(idRol)
 			obtenerUsuario(idUsuario, username);
 			},	
 		error: function (response) {																	
@@ -79,14 +82,14 @@ function getParameter(parameter){
 //muestraDatos()
 //*******************************************************************************
 function obtenerUsuario(idUsuario, username){
-	console.log("OBTENER DATOS");
-	console.log(idUsuario);
-	console.log(username);
+	//console.log("OBTENER DATOS");
+	//console.log(idUsuario);
+	//console.log(username);
 	$.ajax({
 		sync:true,
 		data: {
 			"id" : idUsuario,
-			"username" : username
+			"username" : username,
 	},
 	dataType:'json',
 	url:   '../../mvc/usuario/obtenerusuarioconrolesbyid',
@@ -94,16 +97,39 @@ function obtenerUsuario(idUsuario, username){
 	beforeSend: function () {	
 	},
 	success:  function (response) {
-		console.log("RESPONSE")
-		console.log(response)
+		//console.log("RESPONSE")
+		//console.log(response)
 		muestraDatosUsuario(response);	
 		},	
 	error: function (response) {																	
 		$("#resultadoGuardar").html("Error");
-		console.log("RESPONSE ERROR")
-		console.log(response)
+		//console.log("RESPONSE ERROR")
+		//console.log(response)
 		}		
 	});		
+}
+
+//*******************************************************************
+//Function que obtiene todos los datos del Ejecutivo por idEjecutivo*
+//*******************************************************************
+function obtenerEjecutivo(idEjecutivo){
+	$.ajax({
+		data: {
+			"idEjecutivo" : idEjecutivo
+	},
+	dataType:'json',
+	url:   '../../mvc/usuario/obtenerejecutivobyid',
+	type:  'post',		
+	beforeSend: function () {	
+	},
+	success:  function (response) {
+		muestraDatosGrupo(response);	
+		},	
+	error: function (response) {																	
+		$("#resultadoGuardar").html("Error");
+		}		
+	});		
+	
 }
 
 //*******************************************************************************
@@ -111,7 +137,6 @@ function obtenerUsuario(idUsuario, username){
 //*******************************************************************************
 function muestraDatosUsuario(datos){
 	console.log("datos");
-	console.log(datos);
 	var data=eval(datos);
 	$("#nombre").val(data.nombre);
 	$("#app").val(data.apellidoP);
@@ -121,6 +146,7 @@ function muestraDatosUsuario(datos){
 	$("#password").val(data.password);
 	$("#rol").val(data.rol);
 	$("#idUsuario").val(data.id);
+	$("#idEjecutivo").val(data.idEjecutivo);
 }
 
 //*******************************************************************************
@@ -132,13 +158,17 @@ function muestraDatosUsuario(datos){
 //Function que actualiza todos los datos del Grupo*
 //*************************************************
 function actualizarUsuario() {
-	console.log("ROL Y ID");
-	console.log($("#rol").val());
-	console.log($("#idUsuario").val());
+	//console.log("ROL Y ID");
+	//console.log($("#rol").val());
+	//console.log($("#idUsuario").val());
+	console.log("idRol");
+	var idRol=($('#rol').find(":selected").val())
+	console.log(idRol)
 	if ($("#actualizarUsuarioForm").valid()){	
 		$
 			.ajax({
 				data : {
+					"idEjecutivo" : $("#idEjecutivo").val(),
 					"nombre" : $("#nombre").val(),
 					"apellidoP" : $("#app").val(),
 					"apellidoM" : $("#apm").val(),

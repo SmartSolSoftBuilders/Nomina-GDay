@@ -23,6 +23,7 @@
 									class="form-control"
 									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 									<input id='idUsuario' name='idUsuario' type="hidden" class="form-control">
+									<input id='idEjecutivo' name='idEjecutivo' type="hidden" class="form-control">
 									
 								<td>APELLIDO PATERNO<input id='app' name='app' type="text"
 									class="form-control"

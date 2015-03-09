@@ -27,4 +27,11 @@ public class EjecutivoServicioImpl implements EjecutivoServicio {
 		this.ejecutivoDao.actualizarEjecutivo(ejecutivo);
 	}
 
+
+	@Override
+	public Ejecutivo obtenerEjecutivoById(int idEjecutivo) {
+		
+		return this.ejecutivoDao.obtenerEjecutivoById(idEjecutivo);
+	}
+
 }
