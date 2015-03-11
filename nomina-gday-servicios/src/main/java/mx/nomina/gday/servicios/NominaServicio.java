@@ -15,4 +15,5 @@ public interface NominaServicio {
 	public List obtenerDatosCombo();
 	public List<RazonSocial> obtenerRazonesSocialesByIdNomina(Integer idNomina);
 	public List<Nomina> obtenerNominasByIdEmpleado(Integer idEmpleado);
+	public List<Nomina> obtenerNominasByIdEjecutivo(Integer idEjecutivo);
 }

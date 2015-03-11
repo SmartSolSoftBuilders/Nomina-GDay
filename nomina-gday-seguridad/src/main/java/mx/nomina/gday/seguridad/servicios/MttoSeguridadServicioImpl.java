@@ -39,6 +39,7 @@ public class MttoSeguridadServicioImpl implements MttoSeguridadServicio{
 	public List<UsuarioSeguridad> consultarUsuariosByUser(
 			UsuarioSeguridad usuario) {
 		// TODO Auto-generated method stub
+		System.out.println(usuario.getUsername());
 		return seguridadDao.consultarUsuariosByUser(usuario);
 	}
 

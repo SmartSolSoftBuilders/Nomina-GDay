@@ -110,6 +110,15 @@ public class SeguridadUtil {
 			
 		return this.mttoSeguridad.consultarUsuariosSeguridadConRol(usuarioSeguridad);
 		}
+
+
+	public UsuarioSeguridad obtenerUsuarioById(UsuarioSeguridad usuario) {
+		// TODO Auto-generated method stub
+		System.out.println("USER2::"+usuario.getUsername());
+		System.out.println("Object:"+this.mttoSeguridad);
+		System.out.println(this.mttoSeguridad.consultarUsuariosByUser(usuario));
+		return this.mttoSeguridad.consultarUsuariosByUser(usuario).get(0);
+	}
 	
 	//Para agregar al git de nuevo\\
 

@@ -5,8 +5,10 @@ import java.util.Iterator;
 import javax.servlet.http.HttpServletRequest;
 
 import mx.nomina.gday.seguridad.modelo.UsuarioSeguridad;
+import mx.nomina.gday.seguridad.servicios.MttoSeguridadServicio;
 import mx.nomina.gday.seguridad.util.SeguridadUtil;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/index")
 public class IndexController {
+
+	@Autowired
+	private MttoSeguridadServicio mttoSeguridadServicio;
 
 	public final String ROLE_ADMINISTRADOR="ROLE_ADMINISTRADOR";
 	public final String ROLE_USUARIO="ROLE_USUARIO";
@@ -31,6 +36,10 @@ public class IndexController {
     		Iterator it = ((SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT")).getAuthentication().getAuthorities().iterator();
     		while (it.hasNext()){
     			rol=it.next().toString();
+    			usuario=this.mttoSeguridadServicio.consultarUsuariosByUser(usuario).get(0);
+    			System.out.println(usuario.getId());
+    			request.getSession().setAttribute("idUserSeg",usuario.getId());
+    			
     			request.getSession().setAttribute("rolUser",rol);
     			break;
     		}    		

@@ -55,10 +55,19 @@ public class NominaController {
 		//Controller que muestra la lista de Nomina y permite la Edicion del mismo
 		 @RequestMapping(value="/getnominas",method = RequestMethod.POST)
 		    @ResponseBody
-		    public List obtenerNominasaEditar(){    	
+		    public List obtenerNominasaEditar(HttpServletRequest request){    	
 			  System.out.println("Controller Nomina");
+			  String rol=request.getSession().getAttribute("rolUser").toString();
+			  Integer idUsr=Integer.parseInt(request.getSession().getAttribute("idUserSeg").toString());
 			  try {
-				List<Nomina> tmp =  this.nominaServicio.obtenerNominas();
+				List<Nomina> tmp = new ArrayList<Nomina>();
+				if (rol.equals("ROL_EJECUTIVO_NOMINA")){
+					System.out.println("EJECUTIVO!!!");
+					tmp =  this.nominaServicio.obtenerNominasByIdEjecutivo(idUsr);
+				}
+				else{
+					tmp =  this.nominaServicio.obtenerNominas();
+				}
 				System.out.println("tmp"+tmp.size());
 				List nominasTmp = new ArrayList();
 				List nominasTmp2 = new ArrayList<String>();
@@ -88,11 +97,21 @@ public class NominaController {
 			//Controller que muestra la lista de Nomina y permite la Edicion del mismo
 		 @RequestMapping(value="/getnominas_hojas",method = RequestMethod.POST)
 		    @ResponseBody
-		    public List obtenerNominasHojas(){    	
+		    public List obtenerNominasHojas(HttpServletRequest request){
 			  System.out.println("Controller HojasTrab- Nomina");
+			  System.out.println("Controller Nomina");
+			  String rol=request.getSession().getAttribute("rolUser").toString();
+			  Integer idUsr=Integer.parseInt(request.getSession().getAttribute("idUserSeg").toString());
 			  try {
-				List<Nomina> tmp =  this.nominaServicio.obtenerNominas();
-				System.out.println("tmp"+tmp.size());
+				List<Nomina> tmp = new ArrayList<Nomina>();
+				if (rol.equals("ROL_EJECUTIVO_NOMINA")){
+					System.out.println("EJECUTIVO!!!");
+					tmp =  this.nominaServicio.obtenerNominasByIdEjecutivo(idUsr);
+				}
+				else{
+					tmp =  this.nominaServicio.obtenerNominas();
+				}
+			  System.out.println("tmp"+tmp.size());
 				List nominasTmp = new ArrayList();
 				List nominasTmp2 = new ArrayList<String>();
 

@@ -123,4 +123,19 @@ public class NominaServicioImpl implements NominaServicio {
 		return null;
 	}
 
+	@Override
+	public List<Nomina> obtenerNominasByIdEjecutivo(Integer idEjecutivo) {
+		// TODO Auto-generated method stub
+
+		System.out.println("Nomina Service");
+		try {			 
+			List<Nomina> tmp=this.nominaDao.obtenerNominasByIdEjecutivo(idEjecutivo);
+			System.out.println("Lista de Nominas"+tmp.size());
+			return tmp;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

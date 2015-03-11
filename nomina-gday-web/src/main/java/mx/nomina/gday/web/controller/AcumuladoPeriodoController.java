@@ -121,8 +121,8 @@ public class AcumuladoPeriodoController {
 				System.out.println("tmp"+tmp.get(i));
 				acumuladosTmp2.add(tmp.get(i).getIdAcumuladoPeriodo());
 				acumuladosTmp2.add(tmp.get(i).getNombreArchivo());				
-				acumuladosTmp2.add("<a href='#' onclick='ajax_download("+tmp.get(i).getIdAcumuladoPeriodo()+")'>Descargar</a>");			
-				acumuladosTmp2.add(tmp.get(i).getPeriodo().getIdPeriodo());
+				acumuladosTmp2.add("<a href='#' onclick='ajax_download("+tmp.get(i).getIdAcumuladoPeriodo()+")'>Descargar</a>");
+				acumuladosTmp2.add("<a href='#' onclick='showVerDatos("+tmp.get(i).getNomina().getIdNomina()+")'>Consultar Datos</a>");
 				acumuladosTmp.add(acumuladosTmp2);
 			}
 			return acumuladosTmp;

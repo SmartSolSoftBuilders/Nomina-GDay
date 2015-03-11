@@ -72,19 +72,18 @@ public class UsuarioController {
 		 @ResponseBody
 		    public boolean guardarUsuario(@ModelAttribute(value="usuario") UsuarioSeguridad usuarioSeguridad, BindingResult result){
 			 	
-			 	System.out.println("Guardando el Usuario"+ usuarioSeguridad.getRol());
-			 	
+			 	System.out.println("Guardando el Usuario"+ usuarioSeguridad.getRol());			 	
 			 	mttoSeguridadServicio.agregarUsuarioSeguridad(usuarioSeguridad);			 	
 			 	Ejecutivo ejecutivo = new Ejecutivo();
 			 	System.out.println("Supuesto id generado:"+usuarioSeguridad.getId());
-			 	 if(usuarioSeguridad.getRol().equals("2")){
+			 	System.out.println(usuarioSeguridad.getRol());
+			 	 if(usuarioSeguridad.getRol().equals("1")){
 					 ejecutivo.setIdUsuario(Integer.valueOf(String.valueOf(usuarioSeguridad.getId())));
 					 ejecutivo.setMaternoEjecutivo(usuarioSeguridad.getApellidoM());
 					 ejecutivo.setNombreEjecutivo(usuarioSeguridad.getNombre());
 					 ejecutivo.setPaternoEjecutivo(usuarioSeguridad.getApellidoP());
 					 System.out.println("Guardando el Ejecutivo"+ ejecutivo.getIdUsuario());
-					 System.out.println("Guardando el Ejecutivo"+ usuarioSeguridad.getId());
-					 
+					 System.out.println("Guardando el Ejecutivo"+ usuarioSeguridad.getId());					 
 					 ejecutivoServicio.agregarEjecutivo(ejecutivo);
 			 	 }
 			 return true;
@@ -93,14 +92,12 @@ public class UsuarioController {
 		 
 		 //Controller que permite Actualizar los datos del Grupo a Editar
 		 @RequestMapping(value="/modificarusuario",method = RequestMethod.POST)
-		    @ResponseBody
-		    public boolean modificarUsuario(@ModelAttribute(value="usuario") UsuarioSeguridad usuarioSeguridad, BindingResult result,HttpServletRequest request){    	    	    	    	   
-		    
-			 System.out.println("Guardando el Usuario"+ usuarioSeguridad.getRol());
-			 	
-			 	mttoSeguridadServicio.actualizarUsuarioConRol(usuarioSeguridad);			 	
-			 	Ejecutivo ejecutivo = new Ejecutivo();
-			 	System.out.println("Supuesto id generado:"+usuarioSeguridad.getId());
+		 @ResponseBody
+		 public boolean modificarUsuario(@ModelAttribute(value="usuario") UsuarioSeguridad usuarioSeguridad, BindingResult result,HttpServletRequest request){    	    	    	    	   		   
+			 System.out.println("Guardando el Usuario"+ usuarioSeguridad.getRol());			 
+			 mttoSeguridadServicio.actualizarUsuarioConRol(usuarioSeguridad);			 	
+			 Ejecutivo ejecutivo = new Ejecutivo();
+			 System.out.println("Supuesto id generado:"+usuarioSeguridad.getId());
 			 	 if(usuarioSeguridad.getRol().equals("ROL_EJECUTIVO_NOMINA")){
 					 ejecutivo.setIdUsuario(Integer.valueOf(String.valueOf(usuarioSeguridad.getId())));
 					 ejecutivo.setMaternoEjecutivo(usuarioSeguridad.getApellidoM());
@@ -108,12 +105,17 @@ public class UsuarioController {
 					 ejecutivo.setPaternoEjecutivo(usuarioSeguridad.getApellidoP());
 					 System.out.println("Guardando el Ejecutivo"+ usuarioSeguridad.getRol());
 					 System.out.println("Guardando el Ejecutivo"+ usuarioSeguridad.getId());
-					 
-					 ejecutivoServicio.actualizarEjecutivo(ejecutivo);
-				 	 }
-					return true;
-			
-		    }
+					 try{
+						 ejecutivoServicio.actualizarEjecutivo(ejecutivo);
+						 return true;
+					 }
+					 catch(Exception e){
+						 e.printStackTrace();
+						 return false;
+					 }
+				 	 }			
+			 	return true;
+		 }
 		
 		//Controller que permite obtener el grupo por idGrupo
 		 @RequestMapping(value="/obtenerusuarioconrolesbyid",method = RequestMethod.POST)
