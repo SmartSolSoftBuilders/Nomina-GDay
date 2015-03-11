@@ -34,48 +34,13 @@ $(document).ready(function() {
 //*******************************************************************************
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
-function obtenerAcumulados(){
-	var idNomina=($('#nomina').find(":selected").val())
-	var idPeriodo=($('#periodo').find(":selected").val())
-	console.log(idNomina)
-	console.log(idPeriodo)
-	//Sección validaciones
-	oTablaPlantillas=$('#tablaPlantillas').dataTable();
-	$.ajax({
-		data:{
-			"nomina.idNomina": idNomina,
-			"periodo.idPeriodo": idPeriodo
-			
-		},
-		sync: true,
-		type:  'post',
-		url:   '../../mvc/acumulado/getacumulados',
-		dataType:  'json',
-		beforeSend: function () {
-			$("#resultado").html("Procesando, espere por favor...");
-      	$( "#progressbar" ).progressbar({
-		      value: 75
-		    });	
-        $( "#demo" ).hide();
-		}, 
-		success:  function (response) {
-			$("#demo").show();
-			$("#progressbar").hide();
-			oTablaPlantillas.fnClearTable();
-			oTablaPlantillas.fnAddData(response);
-			$('#idNomina').val(idNomina);
-			$('#idPeriodo').val(idPeriodo);
-		}
-	});	
-	
-}
 
-
-
-function ajax_download(id) {	
-	var input_name="id1";
-	var id1=id;	
-	var url="../../mvc/acumulado/obteneracumulado";
+function ajax_download2(id1,id2,id3) {	
+	var input_name="id1";		
+	var input_name2="id2";		
+	var input_name3="id3";	
+	var url="../../mvc/acumulado/obteneracumuladoval";
+	console.log(id1+id2+id3);
     var $iframe,
         iframe_doc,
         iframe_html;
@@ -94,9 +59,21 @@ function ajax_download(id) {
     iframe_html = "<html><head></head><body><form method='POST' action='" +
                   url +"'>" +
                   "<input type=hidden name='" + input_name + "' value='" +
-                  id1 +"'/></form>" +
+                  id1 +"'/>" +
+                  "<input type=hidden name='" + input_name2 + "' value='" +
+                  id2 +"'/>" +
+                  "<input type=hidden name='" + input_name3 + "' value='" +
+                  id3 +"'/></form>" +
                   "</body></html>";
     iframe_doc.open();
     iframe_doc.write(iframe_html);
     $(iframe_doc).find('form').submit();
 }
+
+function obtenerAcumuladosVal(){
+	var id1=$("#nomina").val();
+	var id2=$("#anio").val();
+	var id3=$("#periodo").val();	
+	console.log(id1+id2+id3);
+	ajax_download2(id1,id2,id3);
+} 

@@ -12,6 +12,7 @@ public interface AcumuladoPeriodoServicio {
 	List<AcumuladoPeriodo> obtenerAcumuladosByIdNominaAndIdPeriodo(AcumuladoPeriodo acumuladoPeriodo);
 	public File obtenerArchivoAcumulado(Integer idAcumulado);
 	public boolean validarArchivo(AcumuladoPeriodo acumuladoPeriodo);
+	public File obtenerArchivoAcumuladoByData(List tmp2);
 
  
 }

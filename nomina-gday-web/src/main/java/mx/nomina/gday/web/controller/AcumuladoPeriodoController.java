@@ -153,5 +153,32 @@ public class AcumuladoPeriodoController {
 	            e.printStackTrace();
 	        }
 	 
-	    }	 
+	    }	 			
+		
+		@RequestMapping(value="/obteneracumuladoval",method = RequestMethod.POST)
+	    @ResponseBody
+	    public void getFile2(HttpServletRequest request,HttpServletResponse response) {
+			File fileToDownload = null;
+	        InputStream inputStream = null;
+	        System.out.println("DATOSssss");
+	        Integer id1=Integer.parseInt(request.getParameter("id1"));
+	        String id2=request.getParameter("id2").toString();
+	        Integer id3=Integer.parseInt(request.getParameter("id3"));
+
+	        System.out.println("buscando el registro de nómina:"+id1);
+	 		try{            
+				//fileToDownload = this.hojaTrabajoServicio.generarHojaTrabajo(idHojaTrabajo);
+	 			List tmp2=this.empleadoMongoServicio.obtenerDocumentos(id1, id2, id3);
+	 			System.out.println("Num archivos:"+tmp2.size());
+				fileToDownload=acumuladoPeriodoServicio.obtenerArchivoAcumuladoByData(tmp2);
+	            inputStream = new FileInputStream(fileToDownload);
+	            response.setContentType("application/force-download");
+	            response.setHeader("Content-Disposition", "attachment; filename="+"acumulado.xls"); 
+	            IOUtils.copy(inputStream, response.getOutputStream());
+	            response.flushBuffer();
+	        }catch(Exception e){            
+	            e.printStackTrace();
+	        }
+	 
+	    }	 			
 }

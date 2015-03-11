@@ -100,3 +100,7 @@ function ajax_download(id) {
     iframe_doc.write(iframe_html);
     $(iframe_doc).find('form').submit();
 }
+
+function showVerDatos(idNomina){
+	top.frames['main'].location="../acumulados/ver_acumulados.jsp?id="+idNomina;
+}

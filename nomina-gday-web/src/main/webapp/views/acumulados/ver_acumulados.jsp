@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="../common/librerias.jsp"/>
- <script type="text/javascript" language="javascript" src="../../static/js/app/acumulados/acumulado_periodo.js"></script>  
+ <script type="text/javascript" language="javascript" src="../../static/js/app/acumulados/ver_acumulados.js"></script>  
 
 <body id="dt_example">
 <div id="container" >
@@ -54,7 +54,7 @@
 		</tr>
 		<tr>
 			<td>
-				<input type="submit" value="Consultar">
+				<input type="button" value="Consultar" onclick="obtenerAcumuladosVal()">
 			</td>
 		</tr>
 	</table>

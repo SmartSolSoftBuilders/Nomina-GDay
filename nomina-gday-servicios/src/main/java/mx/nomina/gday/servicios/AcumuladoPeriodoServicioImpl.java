@@ -175,5 +175,58 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 	    }
 		return false;
 	}
-	
+
+	@Override
+	public File obtenerArchivoAcumuladoByData(List datos) {
+		// TODO Auto-generated method stub
+		   //String rutaArchivo = System.getProperty("user.home")+"/ejemploExcelJava.xls";	    
+		String rutaArchivo = "c://archivosNGDAY//acumuladoMongo.xls";        
+        /*Se crea el objeto de tipo File con la ruta del archivo*/
+		File archivoXLS = new File(rutaArchivo); 
+		//Evento eventoTmp=new Evento();
+		System.out.println("Los datos que se buscan:"+datos.size());
+		/*Se crea el archivo*/
+        int filaInicial=1;
+        int columnaInicial=0;        
+        int totalDatos=20;
+        try{
+        	FileInputStream file = new FileInputStream(archivoXLS);
+        	HSSFWorkbook workbook = new HSSFWorkbook(file);
+        	HSSFSheet hoja = workbook.getSheetAt(0);
+        	//Se llena el encabezado        	
+        	//Se guardarán todos los empleados
+        	Row fila = hoja.getRow(1);
+        	for (int j=filaInicial,indexEmpleados=0; j<(datos.size()+filaInicial); j++,indexEmpleados++){
+        		List <String> tmp=(List<String>) datos.get(indexEmpleados);
+        		fila=hoja.createRow(j);
+        		
+        		int recorrerCeldas=0;
+        	    			
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(0));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(1));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(2));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(3));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(4));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(5));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(6));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(7)); 
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(8));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(9));
+        	}  	 	
+            file.close();
+            FileOutputStream outFile = new FileOutputStream(new File("C:\\archivosNGDAY\\tmpMongoGen.xls"));
+            workbook.write(outFile);
+            outFile.close();
+            archivoXLS = new File("C:\\archivosNGDAY\\tmpMongoGen.xls"); 	
+         	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("<OTIKA>ERROR!"+e.getMessage());
+			e.printStackTrace();
+		}
+        /*Cerramos el flujo de datos*/        
+        return archivoXLS;
+	}
 }
+
+

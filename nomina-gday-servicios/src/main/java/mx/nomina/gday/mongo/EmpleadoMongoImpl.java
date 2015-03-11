@@ -100,4 +100,7 @@ public class EmpleadoMongoImpl implements EmpleadoMongo {
 	      
 	        collection.insert(dbObject);
 	    }
+	    
+        
+
 }
