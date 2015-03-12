@@ -21,6 +21,7 @@
 					<table  cellpadding="0" cellspacing="0" border="0" class="display" id="tablaPatrona">
 					<thead>			
 						<tr class="odd gradeA">
+							<th>ID</th>
 							<th>NOMBRE</th>
 							<th>TIPO REGIMEN</th>
 							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>							 						 											

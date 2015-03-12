@@ -371,6 +371,7 @@ function quitarRazonSocial(){
 //*******************************************************************************
 function actualizarNomina() {
 	var ids=obtenerIdsAgregadosRZ2();
+	console.log("EJECUTIVO"+$("#ejecutivo").val())
 	if ($("#actualizarNominaForm").valid()){
 			$
 			.ajax({
@@ -379,7 +380,7 @@ function actualizarNomina() {
 					"idNomina" : $("#nominaIdSel").val(),
 					"patrona.idPatrona" : $("#idPatrona").val(),
 					"intermediaria.idPatrona" : $("#idIntermediaria").val(),
-					"ejecutivo.nombreEjecutivo" : $("#ejecutivo").val(),
+					"ejecutivo.idEjecutivo" : $("#ejecutivo").val(),
 					"esquema.nombreEsquema" : $("#esquema").val(),
 					"provisionAguinaldo" : $("#provisionAguinaldo").val(),
 					"provisionVacaciones" : $("#provisionVacaciones").val(),

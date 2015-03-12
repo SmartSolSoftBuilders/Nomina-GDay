@@ -24,15 +24,15 @@
 		<result property="actaNotarioPatrona" column="ACTA_NOTARIO"/>
 		<result property="actaCiudadPatrona" column="ACTA_CIUDAD"/>
 		<result property="actaEstadoPatrona" column="ACTA_ESTADO"/>
+		<association property="tipoRegimen" column="ID_TIPO_REGIMEN" javaType="TipoRegimen" select="selectTipoRegimen"/>		
 		<collection property="domVirtuales" column="ID_PATRONA" javaType="List" select="selectDomVirtuales"/>		
 		<collection property="accionistas" column="ID_PATRONA" javaType="List" select="selectAccionistas"/>		
 		<collection property="representantesLegalesPleitosCobranzas" column="ID_PATRONA" javaType="List" select="selectRepresentantesLegalesPleitosCobranzas"/>		
 		<collection property="representantesLegalesLaborales" column="ID_PATRONA" javaType="List" select="selectRepresentantesLegalesLaborales"/>			
-
 		<collection property="poderesNotarialesLaborales" column="ID_PATRONA" javaType="List" select="selectPoderesNotarialesLaborales"/>
 		<collection property="poderesNotarialesPleitosCobranzas" column="ID_PATRONA" javaType="List" select="selectPoderesNotarialesLaboralesPleitosCobranzas"/>
 				
-		<!--<association property="tipoRegimen" column="ID_TIPO_REGIMEN" javaType="TipoRegimen" select="selectTipoRegimen"/> -->	
+			
  	</resultMap>
 	
 	<!-- ResultMap de TipoRegimen que selecciona el tipoRegimen por idTipoRegimen -->
@@ -80,9 +80,9 @@
 		<result property="nombreRepLegPleiCob" column="NOMBRE_REP_LEG_PLEI_COB"/>
 	</resultMap>
 	
-	<!-- 	<select id="selectTipoRegimen" parameterType="int" resultMap="tipoRegimenResult" resultType="TipoRegimen">		 
+	<select id="selectTipoRegimen" parameterType="int" resultMap="tipoRegimenResult" resultType="TipoRegimen">		 
 		select * from "TIPO_REGIMEN" where "ID_TIPO_REGIMEN"=#{idTipoRegimen} 	
-	</select> -->
+	</select>
 	
 	<!-- 	Select que obtiene una lista de patronas Registradas-->	
 	<select id="obtenerPatronas"  resultMap="patronaResult" resultType="Patrona">		 
@@ -157,7 +157,7 @@
             "ESTADO_FISCAL", "FISCAL_NUM_PAGO", "TEL_CONTACTO", "ACTA_NUMERO", 
             "ACTA_NOTARIA", "ACTA_FECHA", "ACTA_NOTARIO", 
             "ACTA_CIUDAD", "ACTA_ESTADO", "DOM_VIRTUALES", "ACCIONISTA",
-            "REP_LEG_PLEITOS_COBR", "REP_LEG_LAB","POD_NOTA_PLEITOS_Y_COBRANZAS","POD_NOTA_LAB")
+            "REP_LEG_PLEITOS_COBR", "REP_LEG_LAB","POD_NOTA_PLEITOS_Y_COBRANZAS","POD_NOTA_LAB","ID_TIPO_REGIMEN")
    	 	VALUES (#{id}, #{razonSocialPatrona}, #{rfcPatrona}, #{nombreCortoPatrona}, #{esIntermediariaPatrona}, 
    	 		#{folioMercantilPatrona}, #{calleFiscalPatrona},  #{coloniaFiscalPatrona},  
    	 		#{numExteriorFiscalPatrona}, #{numInteriorFiscalPatrona}, #{cpFiscalPatrona}, #{municipioFiscalPatrona}, 
@@ -165,7 +165,7 @@
             #{actaNotariaPatrona},date(#{actaFechaPatrona}), #{actaNotarioPatrona}, 
             #{actaCiudadPatrona}, #{actaEstadoPatrona}, json(#{jsonStringDomicilio}), json(#{jsonStringAccionistas}),
             json(#{jsonStringRepresentantesPleitos}), json(#{jsonStringRepresentantesLegales}),
-            json(#{jsonStringPodNot}),json(#{jsonStringPodNotLab})
+            json(#{jsonStringPodNot}),json(#{jsonStringPodNotLab}),#{tipoRegimen.idTipoRegimen}
             );           			
 	</insert>
 	

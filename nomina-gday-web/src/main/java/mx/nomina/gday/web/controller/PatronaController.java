@@ -47,8 +47,10 @@ public class PatronaController {
 			for (int i = 0; i < tmp.size(); i++) {
 				patronasTmp2 = new ArrayList<String>();
 				System.out.println("tmp"+tmp.get(i));
-				patronasTmp2.add(tmp.get(i).getIdPatrona());
+				patronasTmp2.add(tmp.get(i).getIdPatrona());				
 				patronasTmp2.add(tmp.get(i).getNombreCortoPatrona());
+				patronasTmp2.add(tmp.get(i).getTipoRegimen().getTipoRegimen());
+				System.out.println("REG"+tmp.get(i).getTipoRegimen().getTipoRegimen());
 				patronasTmp2.add("<a href='#' onclick='seleccionarPatrona("+tmp.get(i).getIdPatrona()+",\""+tmp.get(i).getNombreCortoPatrona()+"\")'>Seleccionar</a>");
 				patronasTmp2.add("<a href='#' onclick='showEditarPatrona("+tmp.get(i).getIdPatrona()+")'><img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");				
 				patronasTmp.add(patronasTmp2);
@@ -109,6 +111,8 @@ public class PatronaController {
 
 					patronasTmp2.add(tmp.get(i).getIdPatrona());
 					patronasTmp2.add(tmp.get(i).getNombreCortoPatrona());
+					patronasTmp2.add(tmp.get(i).getTipoRegimen().getTipoRegimen());
+					System.out.println("REG"+tmp.get(i).getTipoRegimen().getTipoRegimen());
 					patronasTmp2.add("<a href='#' onclick='showEditarPatrona("+tmp.get(i).getIdPatrona()+")'><img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");				
 					patronasTmp.add(patronasTmp2);
 				}

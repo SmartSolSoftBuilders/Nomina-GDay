@@ -198,20 +198,28 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
         	Row fila = hoja.getRow(1);
         	for (int j=filaInicial,indexEmpleados=0; j<(datos.size()+filaInicial); j++,indexEmpleados++){
         		List <String> tmp=(List<String>) datos.get(indexEmpleados);
-        		fila=hoja.createRow(j);
-        		
-        		int recorrerCeldas=0;
-        	    			
+        		fila=hoja.createRow(j);        		
+        		int recorrerCeldas=0;        	    			
         		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(0));
         		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(1));
         		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(2));
         		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(3));
         		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(4));
         		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(5));
-        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(6));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(6));	
         		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(7)); 
         		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(8));
         		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(9));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(10));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(11));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(12));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(13));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(14));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(15));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(16));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(17));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(18));
+        		fila.createCell(recorrerCeldas++).setCellValue(tmp.get(19));
         	}  	 	
             file.close();
             FileOutputStream outFile = new FileOutputStream(new File("C:\\archivosNGDAY\\tmpMongoGen.xls"));
