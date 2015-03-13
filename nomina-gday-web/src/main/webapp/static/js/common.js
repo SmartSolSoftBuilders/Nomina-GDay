@@ -1,4 +1,5 @@
-function mensaje(mensaje){	
+function mensaje(mensaje){
+	$("#mensaje").html("");
 	$("#mensaje").append(mensaje);
 	$("#mensaje").dialog({
 		show: "slide", modal: true, width:500, height:200,	
@@ -13,7 +14,8 @@ function mensaje(mensaje){
 	});
 }
 
-function mensajeRedireccion(mensaje,url){	
+function mensajeRedireccion(mensaje,url){
+	$("#mensaje").html("");
 	$("#mensaje").append(mensaje);
 	$("#mensaje").dialog({
 		show: "slide", modal: true,  resizable: false,

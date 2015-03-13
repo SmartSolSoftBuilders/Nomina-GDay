@@ -30,7 +30,7 @@
 					 		<td>RFC<input id='rfc' name='rfc' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
 					  	<tr>
-					 		<td>FOLIO MERCANTIL<input id='folioMerc' name='folioMerc' type="text" class="form-control"></td>
+					 		<td>FOLIO MERCANTIL<input id='folioMerc' name='folioMerc' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
 					  	<tr>
 					 		<td>¿ES INTERMEDIARIA?<input id='intermediaria' name='intermediaria' type="checkbox" class="form-control"></td>
@@ -39,8 +39,7 @@
 					 <table>
 					  	<tr>
 					 		<td>TIPO REGIMEN
-					 		<select id='tipoReg' name='tipoReg' type="text" class="form-control">
-		  							
+					 		<select id='tipoReg' name='tipoReg' type="text" class="form-control">		  							
 							</select></td>
 					 		<td>DOMICILIO FISCAL</td>
 					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
@@ -183,7 +182,7 @@
 											<td>-</td>
 										</tr>
 									 </table>
-									 <input type="text" id="podNotNum" value="0"/>
+									 <input type="hidden" id="podNotNum" value="0"/>
 							 	</td>
 					 		</tr>
 					 </table>
@@ -229,7 +228,7 @@
 											<td>-</td>
 									</tr>
 									 </table>
-									 <input type="text" id="podNotLabNum" value="0"/>
+									 <input type="hidden" id="podNotLabNum" value="0"/>
 								</td>
 					 		</tr>
 					 </table>

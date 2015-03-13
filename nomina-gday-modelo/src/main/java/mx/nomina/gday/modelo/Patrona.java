@@ -10,7 +10,7 @@ public class Patrona extends BaseModelo{
 	private String nombreCortoPatrona;
 	private boolean esIntermediariaPatrona;
 	private TipoRegimen tipoRegimen;
-	private Integer folioMercantilPatrona;
+	private String folioMercantilPatrona;
 	private String calleFiscalPatrona;
 	private String coloniaFiscalPatrona;
 	private Integer numExteriorFiscalPatrona;
@@ -29,8 +29,7 @@ public class Patrona extends BaseModelo{
 	private List<DomVirtual> domVirtuales;
 	private List<Accionista> accionistas;
 	private List<RepresentanteLegalLaboral> representantesLegalesLaborales;
-	private List<RepresentanteLegalPleitoCobranza> representantesLegalesPleitosCobranzas;
-	
+	private List<RepresentanteLegalPleitoCobranza> representantesLegalesPleitosCobranzas;	
 	private List<PoderNotarialPleitoCobranza> poderesNotarialesPleitosCobranzas;
 	private List<PoderNotarialLaboral> poderesNotarialesLaborales;
 	private String jsonStringDomicilio;
@@ -38,12 +37,10 @@ public class Patrona extends BaseModelo{
 	private String jsonStringAccionistas;
 	private String jsonStringRepresentantesPleitos;	
 	private String jsonStringPodNot;
-	private String jsonStringPodNotLab;
-	
+	private String jsonStringPodNotLab;	
 	
 	public Patrona(){
 	}
-
 
 	public Patrona(
 			Integer idPatrona,
@@ -52,7 +49,7 @@ public class Patrona extends BaseModelo{
 			String nombreCortoPatrona,
 			boolean esIntermediariaPatrona,
 			TipoRegimen tipoRegimen,
-			Integer folioMercantilPatrona,
+			String folioMercantilPatrona,
 			String calleFiscalPatrona,
 			String coloniaFiscalPatrona,
 			Integer numExteriorFiscalPatrona,
@@ -115,16 +112,13 @@ public class Patrona extends BaseModelo{
 		this.jsonStringPodNotLab = jsonStringPodNotLab;
 	}
 
-
 	public Integer getIdPatrona() {
 		return idPatrona;
 	}
 
-
 	public void setIdPatrona(Integer idPatrona) {
 		this.idPatrona = idPatrona;
 	}
-
 
 	public String getRazonSocialPatrona() {
 		return razonSocialPatrona;
@@ -135,7 +129,6 @@ public class Patrona extends BaseModelo{
 		this.razonSocialPatrona = razonSocialPatrona;
 	}
 
-
 	public String getRfcPatrona() {
 		return rfcPatrona;
 	}
@@ -144,7 +137,6 @@ public class Patrona extends BaseModelo{
 	public void setRfcPatrona(String rfcPatrona) {
 		this.rfcPatrona = rfcPatrona;
 	}
-
 
 	public String getNombreCortoPatrona() {
 		return nombreCortoPatrona;
@@ -155,16 +147,13 @@ public class Patrona extends BaseModelo{
 		this.nombreCortoPatrona = nombreCortoPatrona;
 	}
 
-
 	public boolean isEsIntermediariaPatrona() {
 		return esIntermediariaPatrona;
 	}
 
-
 	public void setEsIntermediariaPatrona(boolean esIntermediariaPatrona) {
 		this.esIntermediariaPatrona = esIntermediariaPatrona;
 	}
-
 
 	public TipoRegimen getTipoRegimen() {
 		return tipoRegimen;
@@ -175,21 +164,17 @@ public class Patrona extends BaseModelo{
 		this.tipoRegimen = tipoRegimen;
 	}
 
-
-	public Integer getFolioMercantilPatrona() {
+	public String getFolioMercantilPatrona() {
 		return folioMercantilPatrona;
 	}
 
-
-	public void setFolioMercantilPatrona(Integer folioMercantilPatrona) {
+	public void setFolioMercantilPatrona(String folioMercantilPatrona) {
 		this.folioMercantilPatrona = folioMercantilPatrona;
 	}
-
 
 	public String getCalleFiscalPatrona() {
 		return calleFiscalPatrona;
 	}
-
 
 	public void setCalleFiscalPatrona(String calleFiscalPatrona) {
 		this.calleFiscalPatrona = calleFiscalPatrona;
@@ -215,7 +200,7 @@ public class Patrona extends BaseModelo{
 		this.numExteriorFiscalPatrona = numExteriorFiscalPatrona;
 	}
 
-
+	
 	public Integer getNumInteriorFiscalPatrona() {
 		return numInteriorFiscalPatrona;
 	}
@@ -224,7 +209,6 @@ public class Patrona extends BaseModelo{
 	public void setNumInteriorFiscalPatrona(Integer numInteriorFiscalPatrona) {
 		this.numInteriorFiscalPatrona = numInteriorFiscalPatrona;
 	}
-
 
 	public Integer getCpFiscalPatrona() {
 		return cpFiscalPatrona;
@@ -310,11 +294,9 @@ public class Patrona extends BaseModelo{
 		return actaNotarioPatrona;
 	}
 
-
 	public void setActaNotarioPatrona(String actaNotarioPatrona) {
 		this.actaNotarioPatrona = actaNotarioPatrona;
-	}
-
+	}		
 
 	public String getActaCiudadPatrona() {
 		return actaCiudadPatrona;
@@ -325,11 +307,9 @@ public class Patrona extends BaseModelo{
 		this.actaCiudadPatrona = actaCiudadPatrona;
 	}
 
-
 	public String getActaEstadoPatrona() {
 		return actaEstadoPatrona;
 	}
-
 
 	public void setActaEstadoPatrona(String actaEstadoPatrona) {
 		this.actaEstadoPatrona = actaEstadoPatrona;
@@ -340,16 +320,13 @@ public class Patrona extends BaseModelo{
 		return domVirtuales;
 	}
 
-
 	public void setDomVirtuales(List<DomVirtual> domVirtuales) {
 		this.domVirtuales = domVirtuales;
 	}
 
-
 	public List<Accionista> getAccionistas() {
 		return accionistas;
 	}
-
 
 	public void setAccionistas(List<Accionista> accionistas) {
 		this.accionistas = accionistas;
@@ -441,25 +418,20 @@ public class Patrona extends BaseModelo{
 		this.jsonStringRepresentantesPleitos = jsonStringRepresentantesPleitos;
 	}
 
-
 	public String getJsonStringPodNot() {
 		return jsonStringPodNot;
 	}
-
 
 	public void setJsonStringPodNot(String jsonStringPodNot) {
 		this.jsonStringPodNot = jsonStringPodNot;
 	}
 
-
 	public String getJsonStringPodNotLab() {
 		return jsonStringPodNotLab;
 	}
 
-
 	public void setJsonStringPodNotLab(String jsonStringPodNotLab) {
 		this.jsonStringPodNotLab = jsonStringPodNotLab;
 	}
-
 	
 }

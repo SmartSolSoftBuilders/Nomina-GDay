@@ -307,6 +307,11 @@ function guardarPatrona() {
 	console.log(getAccionistas());
 	console.log("tipoReg");
 	console.log($("#tipoReg").val());
+	var esInt=false;
+	if($("#intermediaria").is(':checked')) {  
+        esInt=true;  
+    } 
+	console.log($("#intermediaria").val());
 	if ($("#agregarPatronaForm").valid()){	
 		$
 			.ajax({
@@ -315,8 +320,8 @@ function guardarPatrona() {
 					"razonSocialPatrona" : $("#razonSocial").val(),
 					"rfcPatrona" : $("#rfc").val(),
 					"folioMercantilPatrona" : $("#folioMerc").val(),
-					"esIntermediariaPatrona" : $("#intermediaria").val(),
-					"tipoRegimenPatrona.idTipoRegimen" : $("#tipoReg").val(),
+					"esIntermediariaPatrona" : esInt,
+					"tipoRegimen.idTipoRegimen" : $("#tipoReg").val(),
 					"calleFiscalPatrona" : $("#calle").val(),
 					"coloniaFiscalPatrona" : $("#colonia").val(),
 					"numExteriorFiscalPatrona" : $("#numExt").val(),

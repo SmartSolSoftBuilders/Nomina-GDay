@@ -111,8 +111,8 @@ public class PatronaController {
 
 					patronasTmp2.add(tmp.get(i).getIdPatrona());
 					patronasTmp2.add(tmp.get(i).getNombreCortoPatrona());
-					patronasTmp2.add(tmp.get(i).getTipoRegimen().getTipoRegimen());
 					System.out.println("REG"+tmp.get(i).getTipoRegimen().getTipoRegimen());
+					patronasTmp2.add(tmp.get(i).getTipoRegimen().getTipoRegimen());
 					patronasTmp2.add("<a href='#' onclick='showEditarPatrona("+tmp.get(i).getIdPatrona()+")'><img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");				
 					patronasTmp.add(patronasTmp2);
 				}

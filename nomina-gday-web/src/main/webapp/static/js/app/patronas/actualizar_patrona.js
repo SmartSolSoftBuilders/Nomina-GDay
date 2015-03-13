@@ -426,16 +426,21 @@ function quitarRepresentantesLegLab(){
 function actualizarPatrona() {
 	if ($("#actualizarPatronaForm").valid()){
 		console.log($("#numInt").val());
-			$
-			.ajax({
+		console.log($("#tipoReg").val());
+		var esInt=false;
+		if($("#intermediaria").is(':checked')) {  
+	        esInt=true;  
+	    } 
+		console.log($("#intermediaria").val());
+			$.ajax({
 				data : {
 					"idPatrona" : $("#idPatrona").val(),
 					"nombreCortoPatrona" : $("#nombrePatrona").val(),
 					"razonSocialPatrona" : $("#razonSocial").val(),
 					"rfcPatrona" : $("#rfc").val(),
 					"folioMercantilPatrona" : $("#folioMerc").val(),
-					"esIntermediariaPatrona" : $("#intermediaria").val(),
-					"tipoRegimenPatrona.idTipoRegimen" : $("#tipoReg").val(),
+					"esIntermediariaPatrona" : esInt,
+					"tipoRegimen.idTipoRegimen" : $("#tipoReg").val(),
 					"calleFiscalPatrona" : $("#calle").val(),
 					"coloniaFiscalPatrona" : $("#colonia").val(),
 					"numExteriorFiscalPatrona" : $("#numExt").val(),
