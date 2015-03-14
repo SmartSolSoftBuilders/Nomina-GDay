@@ -100,7 +100,7 @@
 							<td></td>
 					 		<td>FACTURA SUBSIDIO<input id='factSub' name='factSub' type="checkbox" class="form-control"></td>					 	
 							<td></td>
-					 		<td>IVA EXCENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control"></td>					 	
+					 		<td>IVA EXENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control"></td>					 	
 							<td></td>
 					 		<td>RECONOCE ANTIGÜEDAD<input id='reconoceAntihuedad' name='reconoceAntihuedad' type="checkbox" class="form-control"></td>					 	
 					 		<td></td>

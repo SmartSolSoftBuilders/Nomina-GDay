@@ -1,3 +1,4 @@
+var idRazonSocial=0;
 function getParameter(parameter){
 	// Obtiene la cadena completa de URL
 	var url = location.href;
@@ -19,7 +20,7 @@ function getParameter(parameter){
 } 
 
 $(document).ready(function() {
-	var idRazonSocial=getParameter("id");
+	idRazonSocial=getParameter("id");
 	console.log(idRazonSocial);
 	obtenerRazonSocial(idRazonSocial);
     // Setup form validation on the #register-form element
@@ -198,6 +199,8 @@ function quitarReferenciante(){
 }		
 
 function actualizarRazonSocial() {
+	console.log("EDITANDO")
+	console.log("EDIT:"+$("#razonSocialIdSel").val())
 	if ($("#editarRazonSocialForm").valid()){
 			$
 			.ajax({
@@ -246,7 +249,6 @@ function actualizarRazonSocial() {
 							.html(alert("La actualizaci\u00f3n de Raz\u00f3n Social se realiz\u00f3 correctamente"));
 					top.frames['main'].location="../razones_sociales/razones_sociales.jsp";*/
 					mensajeRedireccion("RAZON SOCIAL ACTUALIZADA CORRECTAMENTE.","../razones_sociales/razones_sociales.jsp");
-
 
 				},
 				error : function(response) {

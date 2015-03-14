@@ -259,6 +259,32 @@ function guardarNomina() {
 	var ids=obtenerIdsAgregadosRZ2();
 	console.log("tipoCalendario");
 	console.log($("#tipoCalendario").val());
+	var aguinald=false;
+	if($("#provisionAguinaldo").is(':checked')) {  
+        aguinald=true;  
+    }
+	var provisionVacacionesTmp=false;
+	if($("#provisionVacaciones").is(':checked')) {  
+		provisionVacacionesTmp=true;  
+    }	
+	var provisionPrimaVacTmp=false;
+	if($("#provisionPrimaVac").is(':checked')) {  
+		provisionPrimaVacTmp=true;  
+    }	
+	var fondoDeAhorro=false;
+	if($("#fondoDeAhorro").is(':checked')) {  
+		fondoDeAhorro=true;  
+    }	
+	var ivaExento=false;
+	if($("#ivaExcento").is(':checked')) {  
+		ivaExento=true;  
+    }	
+	
+	var comisionCostoSocialTmp=false;
+	if($("#comisionCostoSocial").is(':checked')) {  
+		comisionCostoSocialTmp=true;  
+    }
+	
 	if ($("#agregarNominaForm").valid()){		
 		$
 			.ajax({
@@ -269,13 +295,13 @@ function guardarNomina() {
 					"intermediaria.idPatrona" : $("#idIntermediaria").val(),
 					"ejecutivo.idEjecutivo" : $("#ejecutivo").val(),
 					"esquema.idEsquema" : $("#esquema").val(),
-					"provisionAguinaldo" : $("#provisionAguinaldo").val(),
-					"provisionVacaciones" : $("#provisionVacaciones").val(),
-					"provisionPrimaVacacional" : $("#provisionPrimaVac").val(),
+					"provisionAguinaldo" : aguinald,
+					"provisionVacaciones" : provisionVacacionesTmp,
+					"provisionPrimaVacacional" : provisionPrimaVacTmp,
 					"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
-					"fondoAhorro" : $("#fondoDeAhorro").val(),
-					"ivaExento" : $("#ivaExcento").val(),
-					"comisionCostSocial" : $("#comisionCostoSocial").val(),
+					"fondoAhorro" : fondoDeAhorro,
+					"ivaExento" : ivaExento,
+					"comisionCostSocial" : comisionCostoSocialTmp,
 					"tipoPago" : $("#tipoPago").val(),
 					"claseRiesgo" : $("#claseRiesgo").val(),
 					"registroPatronal" : $("#registroPatronal").val(),
@@ -301,7 +327,6 @@ function guardarNomina() {
 			});
 	}
 }
-
 
 
 function cancelar(){

@@ -4,8 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">	<meta charset="utf-8">
 	<title>GDAY</title>
 		<jsp:include page="../common/librerias.jsp"/>  
-
-		<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/actualizar_razonsocial.js"></script>
+		<script type="text/javascript" language="javascript" src="../../static/js/app/razones_sociales/actualizar_razonsocial.js"></script>		
 </head>
 <body>	
 	<div class="container" class="mayuscula">
@@ -13,10 +12,12 @@
 		<div class="text-center col-lg-12">
 			<div class="row">
 				<div class="col-lg-6" align="center">
-				<form  id="agregarRazonSocialForm" name="agregarRazonSocialForm" novalidate="novalidate">					
+				<form  id="editarRazonSocialForm" name="editarRazonSocialForm" novalidate="novalidate">					
 					<table>
 					 	<tr>
-					 		<td>RAZON SOCIAL<input id='nombreRazonSocial' name='nombreRazonSocial' type="text" class="form-control" size=50 required onkeyup="javascript:this.value=this.value.toUpperCase();"/></td>
+					 		<td>RAZON SOCIAL<input id='nombreRazonSocial' name='nombreRazonSocial' type="text" class="form-control" size=50 required onkeyup="javascript:this.value=this.value.toUpperCase();"/>
+					 		<input id='razonSocialIdSel' name='razonSocialIdSel' type="hidden" />
+					 		</td>
 					 	</tr>
 					 </table>
 					 <table border="2">
@@ -158,7 +159,7 @@
 				<br>
 				 <div class="input-group" style="position:absolute">      
 			     	 <span>
-			        	<button type="button" class="btn btn-success" onclick="guardarRazonSocial();">CREAR</button>
+			        	<button type="button" class="btn btn-success" onclick="actualizarRazonSocial();">GUARDAR</button>
 			     	   	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
 			     	 </span>			    
 				</div>

@@ -27,7 +27,7 @@ function getParameter(parameter){
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
 $(document).ready(function() {
-	
+	$("#botonSubmit").hide();
 	var idNom=getParameter("id");
 	console.log("nomina:"+idNom);
 	$("#idNomSubirArchivo").val(idNom);
@@ -51,6 +51,9 @@ $(document).ready(function() {
 			$("#progressbar").hide();
 			oTablaPlantillas.fnClearTable();
 			oTablaPlantillas.fnAddData(response);
+			$("#botonSubmit").show();
+			$("#imgLoading").hide();
+			
 		}
 	});	
 	
@@ -72,7 +75,7 @@ function eliminarHojaTrabajo(idHoja){
 	        $( "#demo" ).hide();
 			}, 
 			success:  function (response) {
-				mensaje("Eliminado correctamente");
+				mensajeRedireccion("Eliminado correctamente","../hojas_trabajo/nominas.jsp");
 			}
 		});
 	}
@@ -98,7 +101,7 @@ function activarHojaTrabajo(idHoja){
 	        $( "#demo" ).hide();
 			}, 
 			success:  function (response) {
-				mensaje("Activado correctamente");
+				mensajeRedireccion("Activado correctamente","../hojas_trabajo/nominas.jsp");
 			}
 		});
 	}	

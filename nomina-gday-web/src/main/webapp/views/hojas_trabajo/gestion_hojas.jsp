@@ -23,7 +23,7 @@
 			        </tr>
 			        <tr>
 			        	<td colspan="2" align="center">
-			        	<input type="submit" value="Subir Archivo">
+			        	<input name="botonSubmit" id="botonSubmit" type="submit"  value="Subir Archivo" onclick="$('#botonSubmit').hide();">
 			        	</td>
 			        </tr>
 			     </table>          
@@ -36,6 +36,7 @@
 	<!-- /.container -->
 	<!-- JS dependencies -->
 	<div id="divSeleccionPlantillas" title="Selecci&oacute;n de Raz&oacute;n Social" >
+		<center><img width=200 height=80 name="imgLoading" id="imgLoading" src="../../static/img/loading-bar.gif"></img></center>
 		<div id="container" class="mayuscula">
 			<h1>Formatos:</h1>		
 			<div id="demo">

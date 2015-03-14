@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/hoja")
@@ -110,7 +111,7 @@ public class HojaController {
 		}
 		 
 		@RequestMapping(value="/carga", method = RequestMethod.POST)
-		public @ResponseBody String guardaFichero(MultipartHttpServletRequest request, HttpServletResponse response){  
+		public @ResponseBody ModelAndView  guardaFichero(MultipartHttpServletRequest request, HttpServletResponse response){  
 			Iterator<String> itr =request.getFileNames();
 		 	MultipartFile mpf = request.getFile(itr.next());
 		 	HojaTrabajo hojaTrabajo=new HojaTrabajo();
@@ -140,9 +141,11 @@ public class HojaController {
 		    catch (Exception e) {
 		    	System.out.println("Error creando el archivo - Carga"+e.getMessage());
 		        e.printStackTrace();
-		        return "No se ha podido grabar el fichero";
-		    }		     
-		    return "Fichero grabado correctamente";
+		        //return "No se ha podido grabar el fichero";
+		        return null;
+		    }		 
+		    return new ModelAndView("hojas_trabajo/nominas");
+		    //return "Fichero grabado correctamente";
 		 }        
 
 		@RequestMapping(value="/generarHojaTrabajo",method = RequestMethod.POST)

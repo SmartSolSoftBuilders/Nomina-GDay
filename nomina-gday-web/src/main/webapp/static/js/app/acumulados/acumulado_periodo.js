@@ -1,4 +1,9 @@
 $(document).ready(function() {
+	$("#imgLoading").hide();
+	$("#imgLoading2").hide();
+	$("#ficheroDiv").hide();
+	$("#botonSubmit").hide();
+	
 	$.ajax({
 	sync:true,
 	dataType:'json',
@@ -9,7 +14,7 @@ $(document).ready(function() {
 	success:  function (response) {
 		console.log ("NOMINA");
 		console.log (response[0]);
-			var options = "";
+			var options = '<option value="0">Seleccione...</option>';
 			var result=response[0];
 			 for (var i = 0; i < result.length; i++) {
 			    	options += '<option value="' + result[i].idNomina + '">' + result[i].nombreCorto +'</option>';
@@ -18,7 +23,7 @@ $(document).ready(function() {
 		
 		console.log ("PERIODO");
 		console.log (response[1]);
-			var options = "";
+			var options = '<option value="0">Seleccione...</option>';
 			var result=response[1];
 			 for (var i = 0; i < result.length; i++) {
 			    	options += '<option value="' + result[i].idPeriodo + '">' + result[i].fechaInicialPago +'</option>';
@@ -35,6 +40,7 @@ $(document).ready(function() {
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
 function obtenerAcumulados(){
+	$("#imgLoading2").show();
 	var idNomina=($('#nomina').find(":selected").val())
 	var idPeriodo=($('#periodo').find(":selected").val())
 	console.log(idNomina)
@@ -65,11 +71,13 @@ function obtenerAcumulados(){
 			oTablaPlantillas.fnAddData(response);
 			$('#idNomina').val(idNomina);
 			$('#idPeriodo').val(idPeriodo);
+			$("#imgLoading2").hide();
+			$("#ficheroDiv").show();
+			$("#botonSubmit").show();			
 		}
 	});	
 	
 }
-
 
 
 function ajax_download(id) {	

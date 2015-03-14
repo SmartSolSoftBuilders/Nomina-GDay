@@ -87,7 +87,7 @@
 					 	</tr>
 					 </table>
 					 <table>
-					 	<tr>
+					 	<tr> 
 					 		<td>PROVISION PRIMA VACACIONAL<input id='provisionPrimaVac' name='provisionPrimaVac' type="checkbox" class="form-control"></td>					 	
 							<td></td>
 					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control"></td>					 	
@@ -95,12 +95,12 @@
 					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
 					 </table>
-					 <table>
+					 <table>  
 					 	<tr>
 							<td></td>
 					 		<td>FACTURA SUBSIDIO<input id='factSub' name='factSub' type="checkbox" class="form-control"></td>					 	
 							<td></td>
-					 		<td>IVA EXCENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control"></td>					 	
+					 		<td>IVA EXENTO<input id='ivaExcento' name='ivaExcento' type="checkbox" class="form-control"></td>					 	
 							<td></td>
 					 		<td>RECONOCE ANTIGÜEDAD<input id='reconoceAntihuedad' name='reconoceAntihuedad' type="checkbox" class="form-control"></td>					 	
 					 		<td></td>

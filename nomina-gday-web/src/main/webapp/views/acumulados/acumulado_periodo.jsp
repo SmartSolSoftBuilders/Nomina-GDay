@@ -22,7 +22,10 @@
 	</table>
     <table>
         <tr>
-          <td colspan="2" align="center">Archivo:<input type="file" name="fichero" /></td>
+          <td colspan="2" align="center">
+          	<div id="ficheroDiv">Archivo:<input type="file" id="fichero" name="fichero" />
+          	</div>
+          </td>
           <input id="idNomina" name="idNomina" type="hidden"/>
           <input id="idPeriodo" name="idPeriodo" type="hidden"/>          
           <td></td>
@@ -30,14 +33,16 @@
         <tr>     
         </tr>
         <tr>
-        <td colspan="2" align="center">
-        <input type="submit" value="Subir Archivo"></td>
+        <td colspan="2" align="center">        
+        <input name="botonSubmit" id="botonSubmit" type="submit"  value="Subir Archivo" onclick="$('#botonSubmit').hide();$('#imgLoading').show();">
+        <center><img width=200 height=80 name="imgLoading" id="imgLoading" src="../../static/img/loading-bar.gif"></img></center>        
         </tr>
      </table>          
 </form:form>
 <!-- /.container -->
 	<!-- JS dependencies -->
 	<div id="divSeleccionPlantillas" title="Selecci&oacute;n de Raz&oacute;n Social" >
+	<center><img width=200 height=80 name="imgLoading2" id="imgLoading2" src="../../static/img/loading-bar.gif"></img></center>
 		<div id="container" class="mayuscula">
 			<h1>Formatos:</h1>		
 			<div id="demo">
