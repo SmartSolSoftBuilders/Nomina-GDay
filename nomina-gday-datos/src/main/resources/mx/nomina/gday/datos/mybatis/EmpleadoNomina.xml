@@ -192,7 +192,7 @@
 	<insert id="agregarEmpleadoNomina" parameterType="EmpleadoNomina">	
 		INSERT INTO "EMPLEADO_NOMINA"(
             "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 
-            "LOTE_MOV_IMSS_ALTA", "FECHA_VENCIMIENTO", "SUELDO_MENSUAL", 
+            "LOTE_MOV_IMSS_ALTA", "SUELDO_MENSUAL", 
             "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
             "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
             "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
@@ -200,7 +200,7 @@
             "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
             "ID_PROCESO")
  	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
-            12345, date(#{fechaVencimiento}), #{sueldoMensual}, 
+            1234, #{sueldoMensual}, 
             #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
             #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
             #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 

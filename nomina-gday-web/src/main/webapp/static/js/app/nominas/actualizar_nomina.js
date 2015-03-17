@@ -372,6 +372,36 @@ function quitarRazonSocial(){
 function actualizarNomina() {
 	var ids=obtenerIdsAgregadosRZ2();
 	console.log("EJECUTIVO"+$("#ejecutivo").val())
+	var aguinald=false;
+	if($("#provisionAguinaldo").is(':checked')) {  
+        aguinald=true;  
+    }
+	var provisionVacacionesTmp=false;
+	if($("#provisionVacaciones").is(':checked')) {  
+		provisionVacacionesTmp=true;  
+    }	
+	var provisionPrimaVacTmp=false;
+	if($("#provisionPrimaVac").is(':checked')) {  
+		provisionPrimaVacTmp=true;  
+    }	
+	var fondoDeAhorro=false;
+	if($("#fondoDeAhorro").is(':checked')) {  
+		fondoDeAhorro=true;  
+    }	
+	var ivaExento=false;
+	if($("#ivaExcento").is(':checked')) {  
+		ivaExento=true;  
+    }	
+	
+	var comisionCostoSocialTmp=false;
+	if($("#comisionCostoSocial").is(':checked')) {  
+		comisionCostoSocialTmp=true;  
+    }
+	var facturaSubsidioTmp = false;
+	if($("#factSub").is(':checked')) {  
+		facturaSubsidioTmp=true;  
+    }	
+
 	if ($("#actualizarNominaForm").valid()){
 			$
 			.ajax({
@@ -382,13 +412,14 @@ function actualizarNomina() {
 					"intermediaria.idPatrona" : $("#idIntermediaria").val(),
 					"ejecutivo.idEjecutivo" : $("#ejecutivo").val(),
 					"esquema.nombreEsquema" : $("#esquema").val(),
-					"provisionAguinaldo" : $("#provisionAguinaldo").val(),
-					"provisionVacaciones" : $("#provisionVacaciones").val(),
-					"provisionPrimaVacacional" : $("#provisionPrimaVac").val(),
+					"provisionAguinaldo" : aguinald,
+					"provisionVacaciones" : provisionVacacionesTmp,
+					"provisionPrimaVacacional" : provisionPrimaVacTmp,
 					"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
-					"fondoAhorro" : $("#fondoDeAhorro").val(),
-					"facturaSubsidio" : $("#factSub").val(),
-					"ivaExento" : $("#ivaExcento").val(),
+					"fondoAhorro" : fondoDeAhorro,					
+					"comisionCostSocial" : comisionCostoSocialTmp,
+					"facturaSubsidio" : facturaSubsidioTmp,
+					"ivaExento" : ivaExento,
 					"reconoceAntiguedad" : $("#reconoceAntihuedad").val(),
 					"comisionCostSocial" : $("#comisionCostoSocial").val(),
 					"tipoPago" : $("#tipoPago").val(),

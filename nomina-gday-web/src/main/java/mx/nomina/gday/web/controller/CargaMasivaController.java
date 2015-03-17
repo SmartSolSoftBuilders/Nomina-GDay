@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/carga")
@@ -53,7 +54,7 @@ public @ModelAttribute("ufile") FileFormBean getInitialMessage() {
 }
 
 @RequestMapping(value="/carga", method = RequestMethod.POST)
-public @ResponseBody String guardaFichero(MultipartHttpServletRequest request, HttpServletResponse response){  
+public @ResponseBody ModelAndView guardaFichero(MultipartHttpServletRequest request, HttpServletResponse response, ModelAndView mav){  
 	Iterator<String> itr =request.getFileNames();
 	MultipartFile mpf = request.getFile(itr.next());
 	Archivo archivo = new Archivo();
@@ -88,10 +89,11 @@ public @ResponseBody String guardaFichero(MultipartHttpServletRequest request, H
     catch (Exception e) {
     	System.out.println("Error creando el archivo - Carga"+e.getMessage());
         e.printStackTrace();
-        return "No se ha podido grabar el fichero";
+        return null;
     }
-     
-    return "Fichero grabado correctamente";
+    request.getSession().setAttribute("notification","Cargado con éxito");
+    mav.setViewName("empleados/empleados");
+    return mav;
 }        
 
 

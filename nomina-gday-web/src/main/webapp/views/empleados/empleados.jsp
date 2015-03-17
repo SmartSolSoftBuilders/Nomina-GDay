@@ -10,6 +10,8 @@
 	<body id="dt_example">
 		<div id="progressbar">Cargando (75%)...</div>	
 		<div id="container" class="mayuscula">
+		<%=session.getAttribute("notification")%>
+		<%session.setAttribute("notification","");%>				
 			<h1><font color=#0051a4 class="mayuscula">Empleados</font></h1>		
 			<div id="demo">
 				<form id="formSeleccionarEmpleados">

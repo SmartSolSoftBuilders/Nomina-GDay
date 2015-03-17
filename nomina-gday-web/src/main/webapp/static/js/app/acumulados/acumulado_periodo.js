@@ -40,6 +40,10 @@ $(document).ready(function() {
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
 function obtenerAcumulados(){
+	$("#imgLoading").hide();
+	$("#imgLoading2").hide();
+	$("#ficheroDiv").hide();
+	$("#botonSubmit").hide();
 	$("#imgLoading2").show();
 	var idNomina=($('#nomina').find(":selected").val())
 	var idPeriodo=($('#periodo').find(":selected").val())

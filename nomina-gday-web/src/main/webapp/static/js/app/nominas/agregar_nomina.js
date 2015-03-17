@@ -284,6 +284,10 @@ function guardarNomina() {
 	if($("#comisionCostoSocial").is(':checked')) {  
 		comisionCostoSocialTmp=true;  
     }
+	var facturaSubsidioTmp = false;
+	if($("#factSub").is(':checked')) {  
+		facturaSubsidioTmp=true;  
+    }
 	
 	if ($("#agregarNominaForm").valid()){		
 		$
@@ -299,15 +303,15 @@ function guardarNomina() {
 					"provisionVacaciones" : provisionVacacionesTmp,
 					"provisionPrimaVacacional" : provisionPrimaVacTmp,
 					"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
-					"fondoAhorro" : fondoDeAhorro,
-					"ivaExento" : ivaExento,
+					"fondoAhorro" : fondoDeAhorro,					
 					"comisionCostSocial" : comisionCostoSocialTmp,
+					"facturaSubsidio" : facturaSubsidioTmp,
+					"ivaExento" : ivaExento,
 					"tipoPago" : $("#tipoPago").val(),
 					"claseRiesgo" : $("#claseRiesgo").val(),
 					"registroPatronal" : $("#registroPatronal").val(),
 					"periodicidad" : $("#periodicidad").val(),
-					"tipoCalendario.idCalendario" : $("#tipoCalendario").val(),
-					"facturaSubsidio" : $("#factSub").val(),
+					"tipoCalendario.idCalendario" : $("#tipoCalendario").val(),					
 					"reconoceAntiguedad" : $("#reconoceAntihuedad").val(),
 					"fechaContrato" : $("#fechaContrato").val(),
 					"jsonValue" : ids[0]
