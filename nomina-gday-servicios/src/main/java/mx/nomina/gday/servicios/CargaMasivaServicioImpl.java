@@ -41,12 +41,14 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 	private EmpleadoNominaDao empleadoNominaDao;
 	
 	@Override
-	public String cargarExcel(String nombreArchivo) {	    
+	public String cargarExcel(String nombreArchivo) {
+		StringBuffer strBMain= new StringBuffer();
     	try {
     		//System.out.println("se carga el archivo:"+nombreArchivo);    		
     		FileInputStream file = new FileInputStream(nombreArchivo);
     		HSSFWorkbook workbook = new HSSFWorkbook(file);    		
         	HSSFSheet hoja = workbook.getSheetAt(0);
+    		
         	System.out.println("nombre de archivo"+nombreArchivo);
         	//Se llena el encabezado        			        	
     			int numColumnas = 97; 
@@ -63,7 +65,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     				List <String> datos = new ArrayList<String>();
     				for (int columna = 0; columna < numColumnas-1; columna++) { // Recorre					
     					// cada columna de la fila
-    					System.out.print(" ->"+columna+"\n");	    					
+    					//System.out.print(" ->"+columna+"\n");	    					
     					if (fila.getCell(columna)!=null){
     						fila.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
     						data = fila.getCell(columna).getStringCellValue();
@@ -75,6 +77,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     					datos.add(data);
     				}
     				if (datos.get(0)==""){
+    					strBMain.append("Se encontró registro vacío, se interrumpe la carga\n");
     					System.out.println("Se encontró registro vacío, se interrumpe la carga");
     					break;
     				}    		
@@ -125,15 +128,14 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 					empleado.setPensionAlimImp(Double.parseDouble(datos.get(40)));
 					empleado.setPensionAlimPorc(Double.parseDouble(datos.get(41)));
 					empleado.setPensionAlimAcred(datos.get(42));
-					empleado.setPensionAlimObs(datos.get(43));    				
-					System.out.println("GUARDANDO!123");
-					System.out.println("NSS"+empleado.getNss());    				
+					empleado.setPensionAlimObs(datos.get(43));
+					strBMain.append("Se intenta Guardar:"+empleado.getNss()+"\n");    				
     				int idEmpleadoTest=this.empleadoDao.obtenerCountIdEmpleadoByNss(empleado.getNss());
 					if (idEmpleadoTest==0){
-						this.empleadoDao.agregarEmpleado(empleado);
-						System.out.println("<OTIKA>Empleado aún no dado de alta"+empleado.getId());						
+						this.empleadoDao.agregarEmpleado(empleado);						
 						Long idEmpleado = empleado.getId();
 						if (idEmpleado!= 0){
+							strBMain.append("Se guarda al Empleado!\n");
 							System.out.println("Guardé al Empleado:"+idEmpleado+":"+empleado.getNombre());
 							empleado.setIdEmpleado(Integer.parseInt(""+idEmpleado));
 							System.out.println("Supuesto empleado:"+datos.get(44));
@@ -219,8 +221,9 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 							}							
 						}
 					}
-					else
-						System.out.println("Se interrumpió el insert de afiliado porque ya existe!");
+					else{
+						strBMain.append("Se interrumpió el insert de Empleados porque el empleado ya existe!\n");						
+					}
     			}     	
     	}
     	catch (Exception ioe) { 
@@ -230,7 +233,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     		ioe.printStackTrace();
     		return strB.toString();
     	} 
-    	return "CARGA REALIZADA CON ÉXITO";		
+    	return strBMain.toString();		
 	}
 
 	
