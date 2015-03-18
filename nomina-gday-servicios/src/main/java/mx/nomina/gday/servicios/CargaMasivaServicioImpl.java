@@ -41,33 +41,29 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 	private EmpleadoNominaDao empleadoNominaDao;
 	
 	@Override
-	public boolean cargarExcel(String nombreArchivo) {
-	    
+	public String cargarExcel(String nombreArchivo) {	    
     	try {
-    		//System.out.println("se carga el archivo:"+nombreArchivo);
-    		
+    		//System.out.println("se carga el archivo:"+nombreArchivo);    		
     		FileInputStream file = new FileInputStream(nombreArchivo);
     		HSSFWorkbook workbook = new HSSFWorkbook(file);    		
         	HSSFSheet hoja = workbook.getSheetAt(0);
         	System.out.println("nombre de archivo"+nombreArchivo);
-        	//Se llena el encabezado
-        			        	
+        	//Se llena el encabezado        			        	
     			int numColumnas = 97; 
-    			int numFilas = 200; 
+    			int numFilas = 2000; 
     			String data; 
     			//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
     			int filaNum=3;
     			Row fila = hoja.getRow(filaNum);
     			System.out.println("Num filas:"+hoja.getLastRowNum());
-    			for (; filaNum < numFilas; filaNum++) { // Recorre cada 
+    			for (; filaNum < hoja.getLastRowNum(); filaNum++) { // Recorre cada 
     				//fila de la hoja
     				fila = hoja.getRow(filaNum);
     				Empleado empleado = new Empleado();
     				List <String> datos = new ArrayList<String>();
     				for (int columna = 0; columna < numColumnas-1; columna++) { // Recorre					
     					// cada columna de la fila
-    					System.out.print(" ->"+columna+"\n");	
-    					System.out.print(" ->"+columna+"\n");	
+    					System.out.print(" ->"+columna+"\n");	    					
     					if (fila.getCell(columna)!=null){
     						fila.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
     						data = fila.getCell(columna).getStringCellValue();
@@ -78,8 +74,11 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     					System.out.print(data + " ->"+columna+"\n");	
     					datos.add(data);
     				}
-    				if (datos.get(0)=="")
+    				if (datos.get(0)==""){
+    					System.out.println("Se encontró registro vacío, se interrumpe la carga");
     					break;
+    				}    		
+    				//DATOS DE EMPLEADO
     				empleado.setNoControl(datos.get(0));
     				empleado.setNss(datos.get(1));
     				empleado.setCurp(datos.get(2));
@@ -225,10 +224,13 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     			}     	
     	}
     	catch (Exception ioe) { 
-    		System.out.println("Error:"+ioe.getMessage());
-    		ioe.printStackTrace(); 
+    		System.out.println("ERROR EN LA CARGA MASIVA DE EMPLEADOS!!!");
+    		StringBuffer strB= new StringBuffer();
+    		strB.append("Error:"+ioe.getMessage());
+    		ioe.printStackTrace();
+    		return strB.toString();
     	} 
-    	return true;		
+    	return "CARGA REALIZADA CON ÉXITO";		
 	}
 
 	

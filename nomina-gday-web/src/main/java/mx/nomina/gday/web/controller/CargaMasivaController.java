@@ -2,12 +2,18 @@ package mx.nomina.gday.web.controller;
 
 
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,6 +24,7 @@ import mx.nomina.gday.servicios.EmpleadoServicio;
 import mx.nomina.gday.web.util.FileFormBean;
 import mx.nomina.gday.web.util.UploadFile;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -54,12 +61,21 @@ public @ModelAttribute("ufile") FileFormBean getInitialMessage() {
 }
 
 @RequestMapping(value="/carga", method = RequestMethod.POST)
-public @ResponseBody ModelAndView guardaFichero(MultipartHttpServletRequest request, HttpServletResponse response, ModelAndView mav){  
+public @ResponseBody void guardaFichero(MultipartHttpServletRequest request, HttpServletResponse response, ModelAndView mav){  
 	Iterator<String> itr =request.getFileNames();
 	MultipartFile mpf = request.getFile(itr.next());
 	Archivo archivo = new Archivo();
-
-    try {
+	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	Date date = new Date();	
+	String nombreArchivoLog="C:\\archivosNGDAY\\log-"+dateFormat.format(date)+(new Random().nextInt())+".txt";
+	System.out.println(nombreArchivoLog);
+	File fileToDownload = new File(nombreArchivoLog);	
+	String logContent="";
+    InputStream inputStream = null;
+    System.out.println("DATOSssss");
+    try {    	    
+    	if (!fileToDownload.exists())
+    		fileToDownload.createNewFile();    	
     	ufile.idEvento = mpf.getBytes().length;
 		ufile.length = mpf.getBytes().length;
 		ufile.bytes= mpf.getBytes();
@@ -73,27 +89,32 @@ public @ResponseBody ModelAndView guardaFichero(MultipartHttpServletRequest requ
 	   if (ufile.type.equals("application/vnd.ms-excel"))
 		   archivo.setTipoArchivo("xls");
 	   if (ufile.type.equals("application/excel"))
-		   archivo.setTipoArchivo("xlsx");
-				
+		   archivo.setTipoArchivo("xlsx");				
 		System.out.println("Done"+ufile.length+archivo.getArchivo().length);
-        archivo.setFechaCarga("2015-02-05");
+		System.out.println("FECHA DE CARGA:"+dateFormat.format(date));
+        archivo.setFechaCarga(dateFormat.format(date));
     	this.archivoServicio.agregarArchivo(archivo);		
 		//archivoServicio.agregarArchivo(archivo);
 		System.out.println("LOS VALORES DEL ARCHIVO:"+archivo.getArchivo().length);		
 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmp.xls");
 	    fos.write(archivo.getArchivo());
 	    fos.close();		
-        this.cargaMasivaServicio.cargarExcel("C://archivosNGDAY//tmp.xls");
-                
+        logContent=this.cargaMasivaServicio.cargarExcel("C://archivosNGDAY//tmp.xls");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileToDownload));
+        writer.write(logContent);
+        writer.close();
+        inputStream = new FileInputStream(fileToDownload);        
+        response.setContentType("application/force-download");
+        response.setHeader("Content-Disposition", "attachment; filename="+nombreArchivoLog); 
+        IOUtils.copy(inputStream, response.getOutputStream());
+        response.flushBuffer();                
     }
-    catch (Exception e) {
-    	System.out.println("Error creando el archivo - Carga"+e.getMessage());
-        e.printStackTrace();
-        return null;
+    catch (IOException e) {
+    	System.out.println("Error creando el archivo de log!!:"+e.getMessage());
+        e.printStackTrace();        
     }
     request.getSession().setAttribute("notification","Cargado con éxito");
-    mav.setViewName("empleados/empleados");
-    return mav;
+
 }        
 
 

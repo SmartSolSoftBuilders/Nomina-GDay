@@ -403,8 +403,7 @@ function actualizarNomina() {
     }	
 
 	if ($("#actualizarNominaForm").valid()){
-			$
-			.ajax({
+			$.ajax({
 				data : {
 					"nombreCorto" : $("#nombreNomina").val(),
 					"idNomina" : $("#nominaIdSel").val(),
