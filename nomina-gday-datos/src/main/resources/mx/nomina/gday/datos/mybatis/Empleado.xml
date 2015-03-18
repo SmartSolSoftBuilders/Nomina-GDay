@@ -118,6 +118,7 @@
    	 		#{docCompEst}, #{docCorreo}, #{docClabe}, #{docPreafiliacion}, #{cuenta}, #{banco}, 
    	 		#{tipoPago}, #{descInfonavitVsmg}, #{desInfonavitPorc}, #{descInfonavitImp}, #{descFonacotPago}, #{descFonacotNum}, 
    	 		#{pensionAlimImp}, #{pensionAlimPorc}, #{pensionAlimAcred}, #{pensionAlimObs}, #{noCredInfonavit});
+   	 	
 	</insert> 
 	
 		 

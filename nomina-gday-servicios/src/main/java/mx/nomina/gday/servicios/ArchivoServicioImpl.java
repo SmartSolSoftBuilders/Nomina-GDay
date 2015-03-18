@@ -82,7 +82,8 @@ public class ArchivoServicioImpl implements ArchivoServicio{
     			//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
     			int filaNum=3;
     			Row fila = hoja.getRow(filaNum);
-    			for (; filaNum < numFilas; filaNum++) { // Recorre cada 
+    			System.out.println("Num Filas:"+hoja.getLastRowNum());
+    			for (; filaNum < hoja.getLastRowNum(); filaNum++) { // Recorre cada 
     				//fila de la hoja
     				fila = hoja.getRow(filaNum);    				    				
     				List <String> datos = new ArrayList<String>();    				
@@ -92,15 +93,17 @@ public class ArchivoServicioImpl implements ArchivoServicio{
     						Empleado empleado = new Empleado();
     						empleado.setCurp(curp);
     						empleado=empleadoDao.obtenerIdEmpleadoByCurp(empleado);
-    						System.out.println(curp);
+    						System.out.println("Curp"+curp);
     						if (empleado!=null){
         						int idEmpleado=empleado.getIdEmpleado();
-           						System.out.println("ID OBTENIDO:"+idEmpleado);
-           					
+           						System.out.println("ID OBTENIDO:"+idEmpleado);           					
     							data = ""+idEmpleado;
     							datos.add(data);
-    						}
-    					}    						
+    						}    						
+    					}    
+    					else
+							break;
+    				System.out.println("Empleados encontrados:"+datos.size());
     				for (int i=0; i<datos.size();i++){
     					this.empleadoNominaDao.eliminarEmpleadoNominayEmpleado(Integer.parseInt(datos.get(i)));
     				}

@@ -89,10 +89,12 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     				empleado.setApellidoMaterno(datos.get(4));
     				empleado.setNombre(datos.get(5));
     				empleado.setRfc(datos.get(6));
-    				System.out.println("Fecha Nac:"+datos.get(6));
-    				System.out.println("Fecha Nac:"+datos.get(7));
+    				System.out.println("Fecha Nac:"+datos.get(7));    				
     				empleado.setFechaNacimiento(datos.get(7));
-    				empleado.setEdad(Integer.parseInt(datos.get(8)));
+    				if (datos.get(8)!="")
+    					empleado.setEdad(Integer.parseInt(datos.get(8)));
+    				else
+    					empleado.setEdad(0);
     				empleado.setSexo(datos.get(9));
     				empleado.setPaisOrigen(datos.get(10));
     				empleado.setNacionalidad(datos.get(11));
@@ -100,34 +102,86 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     				empleado.setCorreoElectronico(datos.get(13));
     				empleado.setFechaIngresoReal(datos.get(14));
     				System.out.println("Fecha real:"+datos.get(14));
-    				empleado.setListaNegra(Boolean.parseBoolean(datos.get(15)));
+    				if (datos.get(15)!="")
+    					empleado.setListaNegra(Boolean.parseBoolean(datos.get(15)));
+    				else
+    					empleado.setListaNegra(false);
     				empleado.setCalle(datos.get(16));
     				empleado.setNumExterior(datos.get(17));
     				empleado.setNumInterior(datos.get(18));
     				empleado.setColonia(datos.get(19));
-    				empleado.setCodigoPostal(Integer.parseInt(datos.get(20)));
+    				if (datos.get(20)!="")
+    					empleado.setCodigoPostal(Integer.parseInt(datos.get(20)));
+    				else
+    					empleado.setCodigoPostal(0);
     				empleado.setMunicipioDel(datos.get(21));
     				empleado.setEntFederativa(datos.get(22));
-    				empleado.setDocIfe(Boolean.parseBoolean(datos.get(23)));
-    				empleado.setDocActNan(Boolean.parseBoolean(datos.get(24)));
-    				empleado.setDocCurp(Boolean.parseBoolean(datos.get(25)));
+    				if (datos.get(23)!="")
+    					empleado.setDocIfe(Boolean.parseBoolean(datos.get(23)));
+    				else
+    					empleado.setDocIfe(false);
+    				if (datos.get(24)!="")
+    					empleado.setDocActNan(Boolean.parseBoolean(datos.get(24)));
+    				else
+    					empleado.setDocActNan(false);
+    				if (datos.get(25)!="")
+    					empleado.setDocCurp(Boolean.parseBoolean(datos.get(25)));
+    				else
+    					empleado.setDocCurp(false);    				
     				empleado.setRfc(datos.get(26));
-    				empleado.setDocComprobante(Boolean.parseBoolean(datos.get(27)));
-    				empleado.setDocCompEst(Boolean.parseBoolean(datos.get(28)));
-    				empleado.setDocCorreo(Boolean.parseBoolean(datos.get(29)));
-    				empleado.setDocPreafiliacion(Boolean.parseBoolean(datos.get(30)));
+    				if (datos.get(27)!="")
+    					empleado.setDocComprobante(Boolean.parseBoolean(datos.get(27)));
+    				else
+    					empleado.setDocComprobante(false);
+    				if (datos.get(28)!="")
+    					empleado.setDocCompEst(Boolean.parseBoolean(datos.get(28)));
+    				else
+    					empleado.setDocCompEst(false);
+    				if (datos.get(29)!="")
+    					empleado.setDocCorreo(Boolean.parseBoolean(datos.get(29)));
+    				else
+    					empleado.setDocCorreo(false);
+    				if (datos.get(30)!="")
+    					empleado.setDocPreafiliacion(Boolean.parseBoolean(datos.get(30)));
+    				else
+    					empleado.setDocPreafiliacion(false);
+    				
     				empleado.setCuenta(datos.get(31));
     				empleado.setBanco(datos.get(32));
     				empleado.setTipoPago(datos.get(33));
     				empleado.setNoCredInfonavit(datos.get(34));
-    				empleado.setDescInfonavitVsmg(Double.parseDouble(datos.get(35)));
-    				empleado.setDesInfonavitPorc(Double.parseDouble(datos.get(36)));
-					empleado.setDescInfonavitImp(Double.parseDouble(datos.get(37)));
-					empleado.setDescFonacotPago(Double.parseDouble(datos.get(38)));
-					empleado.setDescFonacotNum(Double.parseDouble(datos.get(39)));
-					empleado.setPensionAlimImp(Double.parseDouble(datos.get(40)));
-					empleado.setPensionAlimPorc(Double.parseDouble(datos.get(41)));
-					empleado.setPensionAlimAcred(datos.get(42));
+    				if (datos.get(35)!="")    					
+    					empleado.setDescInfonavitVsmg(Double.parseDouble(datos.get(35)));
+    				else
+    					empleado.setDescInfonavitVsmg(0);
+    				if (datos.get(36)!="")
+    					empleado.setDesInfonavitPorc(Double.parseDouble(datos.get(36)));
+    				else
+    					empleado.setDesInfonavitPorc(0);
+    				if (datos.get(37)!="")
+    					empleado.setDescInfonavitImp(Double.parseDouble(datos.get(37)));
+    				else
+    					empleado.setDescInfonavitImp(0);
+    				if (datos.get(38)!="")
+    					empleado.setDescFonacotPago(Double.parseDouble(datos.get(38)));
+    				else
+    					empleado.setDescFonacotPago(0);
+    				if (datos.get(39)!="")	
+    					empleado.setDescFonacotNum(Double.parseDouble(datos.get(39)));
+    				else
+    					empleado.setDescFonacotNum(0);
+    				if (datos.get(40)!="") 
+    					empleado.setPensionAlimImp(Double.parseDouble(datos.get(40)));
+    				else
+    					empleado.setPensionAlimImp(0);
+    				if (datos.get(41)!="")
+    					empleado.setPensionAlimPorc(Double.parseDouble(datos.get(41)));
+    				else
+    					empleado.setPensionAlimPorc(0);
+    				if (datos.get(42)!="")
+    					empleado.setPensionAlimAcred(datos.get(42));
+    				else
+    					empleado.setPensionAlimAcred("0");
 					empleado.setPensionAlimObs(datos.get(43));
 					strBMain.append("Se intenta Guardar:"+empleado.getNss()+"\n");    				
     				int idEmpleadoTest=this.empleadoDao.obtenerCountIdEmpleadoByNss(empleado.getNss());
@@ -229,7 +283,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     	catch (Exception ioe) { 
     		System.out.println("ERROR EN LA CARGA MASIVA DE EMPLEADOS!!!");
     		StringBuffer strB= new StringBuffer();
-    		strB.append("Error:"+ioe.getMessage());
+    		strB.append("ERROR EN LA CARGA MASIVA DE EMPLEADOS!!!El Error es:"+ioe.getMessage());
     		ioe.printStackTrace();
     		return strB.toString();
     	} 
