@@ -189,24 +189,85 @@
 		DELETE FROM "EMPLEADO" WHERE "ID_EMPLEADO"=#{id}
 	</delete>
 	
-	<insert id="agregarEmpleadoNomina" parameterType="EmpleadoNomina">	
-		INSERT INTO "EMPLEADO_NOMINA"(
-            "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 
-            "LOTE_MOV_IMSS_ALTA", "SUELDO_MENSUAL", 
-            "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
-            "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
-            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
-            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
-            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
-            "ID_PROCESO")
- 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
-            1234, #{sueldoMensual}, 
-            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
-            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
-            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
-            #{municipioDel}, #{entFederativa}, 1234,
-            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso}
-            );		
+	<insert id="agregarEmpleadoNomina" parameterType="EmpleadoNomina">
+		<if test="fechaBaja != '' and fechaVencimiento!=''">	
+			INSERT INTO "EMPLEADO_NOMINA"(
+	            "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 
+	            "LOTE_MOV_IMSS_ALTA", "SUELDO_MENSUAL", 
+	            "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
+	            "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
+	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
+	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
+	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
+	            "ID_PROCESO","FECHA_BAJA","FECHA_VENCIMIENTO")
+	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
+	            1234, #{sueldoMensual}, 
+	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
+	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
+	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
+	            #{municipioDel}, #{entFederativa}, 1234,
+	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso},
+	            date(#{fechaBaja}),date(#{fechaVencimiento}));
+	       </if>
+			<if test="fechaBaja == '' and fechaVencimiento!=''">	
+			INSERT INTO "EMPLEADO_NOMINA"(
+	            "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 
+	            "LOTE_MOV_IMSS_ALTA", "SUELDO_MENSUAL", 
+	            "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
+	            "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
+	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
+	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
+	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
+	            "ID_PROCESO","FECHA_VENCIMIENTO")
+	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
+	            1234, #{sueldoMensual}, 
+	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
+	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
+	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
+	            #{municipioDel}, #{entFederativa}, 1234,
+	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso},
+	            date(#{fechaVencimiento}));
+
+	       </if>
+	       	<if test="fechaBaja != '' and fechaVencimiento==''">	
+			INSERT INTO "EMPLEADO_NOMINA"(
+	            "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 
+	            "LOTE_MOV_IMSS_ALTA", "SUELDO_MENSUAL", 
+	            "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
+	            "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
+	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
+	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
+	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
+	            "ID_PROCESO","FECHA_BAJA")
+	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
+	            1234, #{sueldoMensual}, 
+	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
+	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
+	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
+	            #{municipioDel}, #{entFederativa}, 1234,
+	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso},
+	            date(#{fechaBaja}) );
+	            
+	       </if>
+	       <if test="fechaBaja == '' and fechaVencimiento==''">	
+			INSERT INTO "EMPLEADO_NOMINA"(
+	            "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 
+	            "LOTE_MOV_IMSS_ALTA", "SUELDO_MENSUAL", 
+	            "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
+	            "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
+	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
+	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
+	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
+	            "ID_PROCESO")
+	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
+	            1234, #{sueldoMensual}, 
+	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
+	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
+	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
+	            #{municipioDel}, #{entFederativa}, 1234,
+	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso}
+	            );
+	       </if>
 	</insert>
 
 	<update id="actualizarEmpleadoNomina" parameterType="EmpleadoNomina">

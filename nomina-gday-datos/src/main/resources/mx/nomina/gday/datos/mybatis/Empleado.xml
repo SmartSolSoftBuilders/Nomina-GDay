@@ -123,9 +123,9 @@
 	
 		 
 	<!-- Update par actualizar el Empleado --> 
-<update id="actualizarEmpleado" parameterType="Empleado">
-	UPDATE "EMPLEADO"
-   		SET "NO_CONTROL"=#{noControl}, "NSS"=#{nss}, "CURP"=#{curp}, "APELLIDO_PATERNO"=#{apellidoPaterno}, 
+	<update id="actualizarEmpleado" parameterType="Empleado">
+		UPDATE "EMPLEADO"
+   			SET "NO_CONTROL"=#{noControl}, "NSS"=#{nss}, "CURP"=#{curp}, "APELLIDO_PATERNO"=#{apellidoPaterno}, 
             "APELLIDO_MATERNO"=#{apellidoMaterno}, "NOMBRE"=#{nombre}, "RFC"=#{rfc}, 
             "FECHA_NACIMIENTO"=date(#{fechaNacimiento}), "EDAD"=#{edad}, "SEXO"=#{sexo}, 
             "PAIS_ORIGEN"=#{paisOrigen}, "NACIONALIDAD"=#{nacionalidad}, "ESTADO_CIVIL"=#{estadoCivil}, 
