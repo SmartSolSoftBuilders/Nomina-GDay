@@ -56,7 +56,7 @@
 		<result property="actaNotarioPatrona" column="ACTA_NOTARIO"/>
 		<result property="actaCiudadPatrona" column="ACTA_CIUDAD"/>
 		<result property="actaEstadoPatrona" column="ACTA_ESTADO"/>	
-</resultMap>
+	</resultMap>
 	
 	<resultMap id="ejecutivoResult" type="Ejecutivo">
     	<id property="idEjecutivo" column="ID_EJECUTIVO"/>

@@ -7,8 +7,28 @@
 		<id property="idHojaTrabajo" column="ID_HOJA_DE_TRABAJO"/>
 		<result property="nombreArchivo" column="NOMBRE_ARCHIVO"/>
 		<result property="archivoPlantilla" column="ESTATUS"/>
-		<result property="archivoAcumulado" column="ARCHIVO_ACUMULADO" javaType = "byte[]" jdbcType = "BINARY" typeHandler = "org.apache.ibatis.type.ByteArrayTypeHandler" />	
+		<result property="archivoAcumulado" column="ARCHIVO_ACUMULADO" javaType = "byte[]" jdbcType = "BINARY" typeHandler = "org.apache.ibatis.type.ByteArrayTypeHandler" />
+		<association property="nomina" column="ID_NOMINA" javaType="Nomina" select="selectNomina"/>
 	</resultMap>
+	
+	<resultMap type="Nomina" id="nominaResult">
+		<result property="idNomina" column="ID_NOMINA"/>
+		<result property="nombreCorto" column="NOMBRE_CORTO"/>		
+		<association property="patrona" column="ID_PATRONA" javaType="Patrona" select="selectPatrona"/>						
+	</resultMap>
+	
+	<resultMap id="patronaResult" type="Patrona">
+    	<id property="idPatrona" column="ID_PATRONA"/>
+		<result property="nombreCortoPatrona" column="NOMBRE_CORTO"/>	
+	</resultMap>
+
+	<select id="selectPatrona" parameterType="int" resultMap="patronaResult" resultType="Patrona">		 
+		select * from "PATRONA" where "ID_PATRONA"=#{idPatrona} 	
+	</select> 
+	
+	<select id="selectNomina" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
+		select * from "NOMINA" where "ID_NOMINA"=#{idNomina} 	
+	</select>
 
 	<!-- Select para obtener la Nomina por idNomina -->
 	

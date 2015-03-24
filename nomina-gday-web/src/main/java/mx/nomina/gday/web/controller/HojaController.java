@@ -89,6 +89,32 @@ public class HojaController {
 			  return null;
 		}
 		 
+		@RequestMapping("/gethojastogen_nomina")
+		@ResponseBody
+		    public List obtenerHojastoGenNomina(@ModelAttribute(value="nomina") Nomina nomina, BindingResult result){    				  
+			  try {
+				List<HojaTrabajo> tmp = new ArrayList<HojaTrabajo>();				
+				tmp=this.hojaTrabajoServicio.obtenerHojas();				
+				System.out.println("tmp"+tmp.size());
+				List nominasTmp = new ArrayList();
+				List nominasTmp2 = new ArrayList<String>();
+				for (int i = 0; i < tmp.size(); i++) {
+					nominasTmp2 = new ArrayList<String>();
+					System.out.println("tmp"+tmp.get(i));
+					nominasTmp2.add(tmp.get(i).getIdHojaTrabajo());					
+					nominasTmp2.add(tmp.get(i).getNomina().getNombreCorto());	
+					nominasTmp2.add(tmp.get(i).getNomina().getPatrona().getNombreCortoPatrona());
+					nominasTmp2.add("<a href='#' onclick='generarHojaTrabajo("+tmp.get(i).getIdHojaTrabajo()+")'>Generar Hoja</a>");					
+					nominasTmp.add(nominasTmp2);
+				}
+				return nominasTmp;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			  return null;
+		}
+
 		@RequestMapping(value="/activarhojatrabajo",method = RequestMethod.POST)
 		@ResponseBody
 		public boolean activarHojaTrabajo(@ModelAttribute(value="hojaTrabajo") HojaTrabajo hojaTrabajo, BindingResult result){

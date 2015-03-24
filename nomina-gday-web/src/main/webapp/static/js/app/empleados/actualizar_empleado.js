@@ -218,6 +218,8 @@ function obtenerNominasAsignadasAEmpleado(idEmpleado){
 //**************************************************************************
 function muestraDatosEmpleado(datos){
 	var data=eval(datos);
+	console.log("DAtos empleados")
+	console.log(datos)
 	$("#idEmpleado").val(data.idEmpleado),
 	$("#numeroControl").val(data.noControl);
 	$("#nss").val(data.nss);
@@ -242,15 +244,25 @@ function muestraDatosEmpleado(datos){
 	$("#codPostal").val(data.codigoPostal);
 	$("#municipioDel").val(data.municipioDel);
 	$("#estado").val(data.entFederativa);
-	$("#indentificacionOficial").val(data.docIfe);
-	$("#actaNacimiento").val(data.docActNan);
-	$("#curpDoc").val(data.docCurp);
-	$("#rfcDoc").val(data.docRfc);
-	$("#comprobanteDom").val(data.docComprobante);
-	$("#comprobanteEst").val(data.docCompEst);
-	$("#correoElec").val(data.docCorreo);
-	$("#cuentaClave").val(data.docClabe);
-	$("#preafiliacionImss").val(data.docPreafiliacion);
+	
+	if (data.docIfe==true)
+		$("#indentificacionOficial").prop('checked', true);
+	if (data.docActNan==true)
+		$("#actaNacimiento").prop('checked', true);
+	if (data.docCurp==true)
+		$("#curpDoc").prop('checked', true);
+	if (data.docRfc==true)
+		$("#rfcDoc").prop('checked', true);	
+	if (data.docComprobante==true)
+		$("#comprobanteDom").prop('checked', true);
+	if (data.docCompEst==true)
+		$("#comprobanteEst").prop('checked', true);
+	if (data.docCorreo==true)
+		$("#correoElec").prop('checked', true);
+	if (data.docClabe==true)
+		$("#cuentaClave").prop('checked', true);
+	if (data.docPreafiliacion==true)
+		$("#preafiliacionImss").prop('checked', true);	
 	$("#numCuenta").val(data.cuenta);
 	$("#banco").val(data.banco);
 	$("#tipoPago").val(data.tipoPago);

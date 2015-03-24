@@ -26,9 +26,10 @@ function getParameter(parameter){
 //*******************************************************************************
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
+var valForm;
 $(document).ready(function() {
 	//Sección validaciones
-    $("#actualizarNominaForm").validate({
+    valForm=$("#actualizarNominaForm").validate({
     	rules: {
     		nombreNomina: "required",
         	patrona: "required",
@@ -53,7 +54,7 @@ $(document).ready(function() {
             form.submit();
         }
     });
-
+        
 	$.ajax({
 		sync:true,
 		dataType:'json',
@@ -444,8 +445,11 @@ function actualizarNomina() {
 					$("#resultadoGuardar").html();
 				}
 			});
-			}
 		}
+	else{
+		valForm.focusInvalid();
+	}
+}
 
 function cancelar(){
 	top.frames['main'].location="../nominas/nominas.jsp"; 	

@@ -37,7 +37,7 @@ $(document).ready(function() {
 		data:{"idNomina":0},
 		sync: true,
 		type:  'post',
-		url:   '../../mvc/hoja/gethojas_nomina',
+		url:   '../../mvc/hoja/gethojastogen_nomina',
 		dataType:  'json',
 		beforeSend: function () {
 			$("#resultado").html("Procesando, espere por favor...");

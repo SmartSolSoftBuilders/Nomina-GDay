@@ -204,7 +204,7 @@
 											<td>Seleccionar</td>
 										</tr>
 									 </table>
-									 <input type="text" id="nominasNum" value="0"/>
+									 <input type="hidden" id="nominasNum" value="0"/>
 							 	</td>
 					 		</tr>
 					 </table>
