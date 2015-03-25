@@ -31,7 +31,7 @@
 					  		</tr>						  		
 					   		<tr>
 						  		<td>							 			
-					 				<select name="selectMult" id="selectMult" multiple="multiple" style="width:550px;height:100px" onkeyup="javascript:this.value=this.value.toUpperCase();">		
+					 				<select name="selectMult" id="selectMult" >		
 					 				</select>					 				
 					 				<button type="button" class="btn btn-default" onclick="showRazonesSociales();">AÑADIR</button>
 					 				<button type="button" class="btn btn-default" onclick="quitarRazonSocial();">QUITAR</button>

@@ -1,9 +1,10 @@
 //*******************************************************************************
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
+var valForm;
 $(document).ready(function() {
 	//Sección validaciones
-	 $("#agregarNominaForm").validate({
+	valForm=$("#agregarNominaForm").validate({
         rules: {
         	nombreNomina: "required",
         	patrona: "required",
@@ -11,17 +12,7 @@ $(document).ready(function() {
         	porcPrimaVacacional: "required",
         	registroPatronal: "required",
         	fechaContrato: "required",   
-        	selectMult:{
-
-                    required: function () {
-                        if ($("#selectMult").val()=="") {
-                            return false;
-                        } else {
-                            return true;
-                        }
-                    }
-                
-            }
+        	selectMult: "required",
         	//selectMult: "required"
             /*email: {
                 required: true,
@@ -35,7 +26,7 @@ $(document).ready(function() {
         	porcPrimaVacacional:"Ingrese un porcentaje Vacacional",
         	registroPatronal:"Ingrese un registro Patronal",
         	fechaContrato:"Ingrese una Fecha",
-        	
+        	selectMult:"Ingrese una Raz&oacute;n Social",
         },
         
         submitHandler: function(form) {
@@ -291,44 +282,47 @@ function guardarNomina() {
 	
 	if ($("#agregarNominaForm").valid()){		
 		$
-			.ajax({
-				data : {
-					"nombreCorto" : $("#nombreNomina").val(),
-					"razonSocial" : $("#razonSocial").val(),
-					"patrona.idPatrona" : $("#idPatrona").val(),
-					"intermediaria.idPatrona" : $("#idIntermediaria").val(),
-					"ejecutivo.idEjecutivo" : $("#ejecutivo").val(),
-					"esquema.idEsquema" : $("#esquema").val(),
-					"provisionAguinaldo" : aguinald,
-					"provisionVacaciones" : provisionVacacionesTmp,
-					"provisionPrimaVacacional" : provisionPrimaVacTmp,
-					"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
-					"fondoAhorro" : fondoDeAhorro,					
-					"comisionCostSocial" : comisionCostoSocialTmp,
-					"facturaSubsidio" : facturaSubsidioTmp,
-					"ivaExento" : ivaExento,
-					"tipoPago" : $("#tipoPago").val(),
-					"claseRiesgo" : $("#claseRiesgo").val(),
-					"registroPatronal" : $("#registroPatronal").val(),
-					"periodicidad" : $("#periodicidad").val(),
-					"tipoCalendario.idCalendario" : $("#tipoCalendario").val(),					
-					"reconoceAntiguedad" : $("#reconoceAntihuedad").val(),
-					"fechaContrato" : $("#fechaContrato").val(),
-					"jsonValue" : ids[0]
-					},
-				
-				dataType : 'json',
-				url : '../../mvc/nomina/guardarnomina',
-				type : 'post',
-				beforeSend : function() {
+		.ajax({
+			data : {
+				"nombreCorto" : $("#nombreNomina").val(),
+				"razonSocial" : $("#razonSocial").val(),
+				"patrona.idPatrona" : $("#idPatrona").val(),
+				"intermediaria.idPatrona" : $("#idIntermediaria").val(),
+				"ejecutivo.idEjecutivo" : $("#ejecutivo").val(),
+				"esquema.idEsquema" : $("#esquema").val(),
+				"provisionAguinaldo" : aguinald,
+				"provisionVacaciones" : provisionVacacionesTmp,
+				"provisionPrimaVacacional" : provisionPrimaVacTmp,
+				"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
+				"fondoAhorro" : fondoDeAhorro,					
+				"comisionCostSocial" : comisionCostoSocialTmp,
+				"facturaSubsidio" : facturaSubsidioTmp,
+				"ivaExento" : ivaExento,
+				"tipoPago" : $("#tipoPago").val(),
+				"claseRiesgo" : $("#claseRiesgo").val(),
+				"registroPatronal" : $("#registroPatronal").val(),
+				"periodicidad" : $("#periodicidad").val(),
+				"tipoCalendario.idCalendario" : $("#tipoCalendario").val(),					
+				"reconoceAntiguedad" : $("#reconoceAntihuedad").val(),
+				"fechaContrato" : $("#fechaContrato").val(),
+				"jsonValue" : ids[0]
 				},
-				success : function(response) {
-					mensajeRedireccion("Nomina agregada correctamente.","../nominas/nominas.jsp");
-				},
-				error : function(response) {
-					$("#resultadoGuardar").html();
-				}
-			});
+			
+			dataType : 'json',
+			url : '../../mvc/nomina/guardarnomina',
+			type : 'post',
+			beforeSend : function() {
+			},
+			success : function(response) {
+				mensajeRedireccion("Nomina agregada correctamente.","../nominas/nominas.jsp");
+			},
+			error : function(response) {
+				$("#resultadoGuardar").html();
+			}
+		});
+	}
+	else{
+		valForm.focusInvalid();
 	}
 }
 

@@ -187,7 +187,7 @@ function muestraDatosNomina(datos){
 	//alert(data.razonesSociales.length)
 	var valorT=0;
 	for (i=0;i<data.razonesSociales.length;i++){
-		console.log(data.razonesSociales[i].nombreRazonSocial);
+		//console.log(data.razonesSociales[i].nombreRazonSocial);
 		var formTmp = document.getElementById("actualizarNominaForm");
 		var x = document.getElementById("selectMult");
 		var option = document.createElement("option");
@@ -199,7 +199,8 @@ function muestraDatosNomina(datos){
 		valorT=valorT+parseInt(data.razonesSociales[i].comision);
 	}
 	sumaPorcentaje=valorT;
-
+	console.log($( "#selectMult option:first").val())
+	$( "#selectMult option:first").focus();	
 }
 
 
