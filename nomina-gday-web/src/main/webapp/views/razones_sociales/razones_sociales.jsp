@@ -27,11 +27,11 @@
 							<th>COMISION</th>
 							<th>RAZON SOCIAL</th>
 							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>							 			
-							<th class='btn btn-success'></th>
+							<th ></th>
 							<th></th>
 							<%} %>							
 							<%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>							 			
-							<th class='btn btn-success'></th>
+							<th ></th>
 							<th></th>
 							<%} %>							
 						</tr>

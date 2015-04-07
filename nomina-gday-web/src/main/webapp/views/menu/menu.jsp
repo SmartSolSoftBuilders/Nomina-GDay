@@ -47,8 +47,8 @@
 						<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DE DATOS <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >CONSULTAR RAZONES SOCIALES</a></li>
-                <li><a href="../grupos/grupos.jsp" target="main" >CONSULTAR GRUPOS</a></li>                
+              	<li><a href="../grupos/grupos.jsp" target="main" >CONSULTAR GRUPOS</a></li>
+                <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >CONSULTAR RAZONES SOCIALES</a></li>                               
                 <li><a href="../patronas/patronas.jsp" target="main" >CONSULTAR PATRONAS</a></li>                
               </ul>
             </li>

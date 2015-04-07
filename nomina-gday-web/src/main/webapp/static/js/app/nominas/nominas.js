@@ -115,3 +115,6 @@ function showAgregarNomina(){
 	top.frames['main'].location="../nominas/agregar_nomina.jsp"; 	
 }
 
+function showEditarEmpleado(id){
+	top.frames['main'].location="../empleados/actualizar_empleado.jsp?id="+id; 	
+}

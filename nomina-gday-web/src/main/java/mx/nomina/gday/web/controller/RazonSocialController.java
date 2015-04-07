@@ -55,7 +55,7 @@ public class RazonSocialController {
 				razonesSocialesTmp2.add(tmp.get(i).getComision());
 				razonesSocialesTmp2.add(tmp.get(i).getNombreRazonSocial());
 //				razonesSocialesTmp2.add("<a href='#' onclick='obtenerRazonSocial("+tmp.get(i).getIdRazonSocial()+")'>Editar</a>");				
-				razonesSocialesTmp2.add("<a href='#' onclick='showEditarRazonSocial("+tmp.get(i).getIdRazonSocial()+")'>Editar</a>");
+				razonesSocialesTmp2.add("<a href='#' onclick='showEditarRazonSocial("+tmp.get(i).getIdRazonSocial()+")'><img src='../../static/img/editar.png' width='27' height='27'></img></a>");
 				razonesSocialesTmp2.add("<a href='#' onclick='showNominasPorRazonSocial("+tmp.get(i).getIdRazonSocial()+")'>Nominas</a>");
 				razonesSocialesTmp.add(razonesSocialesTmp2);
 			}

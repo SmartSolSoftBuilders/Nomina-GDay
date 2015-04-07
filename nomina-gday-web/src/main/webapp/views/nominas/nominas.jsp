@@ -76,6 +76,7 @@
 							<th>MATERNO</th>
 							<th>NOMBRE</th>
 							<th>NSS</th>
+							<th></th>
 						</tr>
 					<tbody>
 					</tbody>

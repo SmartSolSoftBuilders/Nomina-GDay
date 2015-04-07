@@ -7,7 +7,7 @@
 		<jsp:include page="../common/librerias.jsp"/>
 				
 		<script type="text/javascript" language="javascript" src="../../static/js/app/grupos/grupos.js"></script>
-		<script type="text/javascript" language="javascript" src="../../static/js/app/grupos/actualizar_grupo.js"></script>
+		
 	</head>
 	<body id="dt_example">
 		<div id="progressbar">Cargando (75%)...</div>	

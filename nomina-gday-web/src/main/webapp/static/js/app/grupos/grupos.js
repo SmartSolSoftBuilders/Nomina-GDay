@@ -31,3 +31,7 @@ function showAgregarGrupo(){
 	top.frames['main'].location="../grupos/agregar_grupo.jsp"; 	
 }
 
+
+function obtenerGrupo(id){	
+	top.frames['main'].location="../grupos/actualizar_grupo.jsp?id="+id;
+}

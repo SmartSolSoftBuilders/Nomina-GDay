@@ -91,6 +91,6 @@ function showNominasPorRazonSocial(id){
 			alert(response);
 		}
 	});			
-	$("#divNominas").dialog(({show: "slide", modal: true, width:700, height:600,
+	$("#divNominas").dialog(({show: "slide", modal: true, width:900, height:600,
 		autoOpen: true}));
 	}

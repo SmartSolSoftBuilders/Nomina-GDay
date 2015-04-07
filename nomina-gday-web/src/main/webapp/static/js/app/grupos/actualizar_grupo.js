@@ -1,3 +1,25 @@
+function getParameter(parameter){
+	// Obtiene la cadena completa de URL
+	var url = location.href;
+	/* Obtiene la posicion donde se encuentra el signo ?, 
+	ahi es donde empiezan los parametros */
+	var index = url.indexOf("?");
+	/* Obtiene la posicion donde termina el nombre del parametro
+	e inicia el signo = */
+	index = url.indexOf(parameter,index) + parameter.length;
+	/* Verifica que efectivamente el valor en la posicion actual 
+	es el signo = */ 
+	if (url.charAt(index) == "="){
+	// Obtiene el valor del parametro
+	var result = url.indexOf("&",index);
+	if (result == -1){result=url.length;};
+	// Despliega el valor del parametro
+	return url.substring(index + 1,result);
+	}
+}
+
+var idGpo=getParameter("id");
+
 //Valida los elementos del Formulario
 $(document).ready(function() {
 	$("#actualizarGrupoForm").validate({
@@ -14,6 +36,7 @@ $(document).ready(function() {
 			form.submit();
 		}
 	});
+	obtenerGrupo(idGpo);
 });//Cierra la validacion del formulario	
 
 //***********************************************************
@@ -60,7 +83,7 @@ function actualizarGrupo() {
 		$
 			.ajax({
 				data : {
-					"idGrupo" : $("#grupoIdSel").val(),
+					"idGrupo" : idGpo,
 					"nombre" : $("#nombre").val(),
 					"nombreCorto" : $("#nombreCorto").val(),
 				},
@@ -72,8 +95,6 @@ function actualizarGrupo() {
 				},
 				success : function(response) {
 					mensajeRedireccion("GRUPO ACTUALIZADO CORRECTAMENTE","../grupos/grupos.jsp");
-
-
 				},
 				error : function(response) {
 					mensaje("IMPOSIBLE ACTUALIZAR EL GRUPO. CONTACTE CON EL ADMINISTRADOR.");

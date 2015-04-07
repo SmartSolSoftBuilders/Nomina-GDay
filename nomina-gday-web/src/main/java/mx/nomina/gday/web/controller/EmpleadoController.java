@@ -136,6 +136,7 @@ public class EmpleadoController {
 				empleadosTmp2.add(tmp.get(i).getApellidoMaterno());
 				empleadosTmp2.add(tmp.get(i).getNombre());
 				empleadosTmp2.add(tmp.get(i).getNss());
+				empleadosTmp2.add("<a href='#' onclick='showEditarEmpleado("+tmp.get(i).getIdEmpleado()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
 				empleadosTmp.add(empleadosTmp2);
 			}
 			return empleadosTmp;

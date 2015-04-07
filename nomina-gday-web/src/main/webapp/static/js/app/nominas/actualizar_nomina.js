@@ -203,10 +203,10 @@ function muestraDatosNomina(datos){
 	$( "#selectMult option:first").focus();	
 }
 
-
 function obtenerPMaximo(){
 	return 100-sumaPorcentaje;
 }
+
 function obtenerIdsAgregadosRZ(){
 	var retArr=new Array(2);
 	var ids="";
@@ -227,6 +227,7 @@ function obtenerIdsAgregadosRZ(){
 	retArr[1]=ids2;
 	return retArr;
 }
+
 function obtenerIdsAgregadosRZ2(){
 	var retArr=new Array(2);
 	var ids="";
@@ -253,11 +254,13 @@ function seleccionarPatrona(id,nombre){
 	$("#idPatrona").val(id);
 	$("#divSeleccionPatrona").dialog("close");
 }
+
 function seleccionarPatronaIntermediaria(id,nombre){
 	$("#intermediaria").val(nombre);
 	$("#idIntermediaria").val(id);
 	$("#divSeleccionPatronaIntermediaria").dialog("close");
 }
+
 function showPatronasIntermediarias(){
 	oTablePatronasIntermediarias=$('#tablaPatronasIntermediarias').dataTable();
 	$.ajax({
@@ -282,6 +285,7 @@ function showPatronasIntermediarias(){
 	$("#divSeleccionPatronaIntermediaria").dialog(({show: "slide", modal: true, width:900, height:600,
 		autoOpen: true}));
 }
+
 function showPatronas(){
 	oTablePatronas=$('#tablaPatronas').dataTable();
 	$.ajax({
@@ -306,6 +310,7 @@ function showPatronas(){
 	$("#divSeleccionPatrona").dialog(({show: "slide", modal: true, width:900, height:600,
 		autoOpen: true}));
 }
+
 function showRazonesSociales(){
 	if (sumaPorcentaje<100){
 	oTableRZ=$('#tablaRazonesSociales').dataTable();

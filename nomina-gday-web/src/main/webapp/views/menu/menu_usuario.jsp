@@ -44,11 +44,11 @@
 	<img src="../../static/img/2.jpg" width="109" height="53" alt=""/>	</div>
  <div class="collapse navbar-collapse">		
 		<ul class="nav navbar-nav" >
-						<li class="dropdown">
+			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN 123c DE DATOS <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >CONSULTAR RAZONES SOCIALES</a></li>
-                <li><a href="../grupos/grupos.jsp" target="main" >CONSULTAR GRUPOS</a></li>                
+              <ul class="dropdown-menu">                
+                <li><a href="../grupos/grupos.jsp" target="main" >CONSULTAR GRUPOS</a></li>
+                <li><a href="../razones_sociales/razones_sociales.jsp" target="main" >CONSULTAR RAZONES SOCIALES</a></li>                
                 <li><a href="../patronas/patronas.jsp" target="main" >CONSULTAR PATRONAS</a></li>                
               </ul>
             </li>
@@ -60,11 +60,10 @@
               </ul>
              </li>
 			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DE FORMATOS <b class="caret"></b></a>
-			              <ul class="dropdown-menu">
-                <li><a href="../hojas_trabajo/nominas.jsp" target="main" >CONSULTAR HOJAS DE TRABAJO</a></li>                
-              <li><a href="../hojas_trabajo/generar_hoja.jsp" target="main" >GENERAR HOJAS DE TRABAJO</a></li>     
-              </ul>
-			
+			    <ul class="dropdown-menu">
+                	<li><a href="../hojas_trabajo/nominas.jsp" target="main" >CONSULTAR HOJAS DE TRABAJO</a></li>                
+              		<li><a href="../hojas_trabajo/generar_hoja.jsp" target="main" >GENERAR HOJAS DE TRABAJO</a></li>     
+              	</ul>			
 			</li>
 			<li><a href="#" style="color:#FFFFFF">CARGA DE ACUMULADOS</a></li>
 			<li class="dropdown">

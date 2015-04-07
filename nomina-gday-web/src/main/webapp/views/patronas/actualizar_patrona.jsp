@@ -190,7 +190,7 @@
 											<td>-</td>
 										</tr>
 									 </table>
-									 <input type="text" id="podNotNum" value="0"/>
+									 <input type="hidden" id="podNotNum" value="0"/>
 					 		</tr>
 					 </table>
 	 				<table border=2>
@@ -235,13 +235,13 @@
 											<td>-</td>
 										</tr>
 									 </table>
-									 <input type="text" id="podNotLabNum" value="0"/>
+									 <input type="hidden" id="podNotLabNum" value="0"/>
 	
 					 		</tr>
 					 </table>
-					 					<table border=2>
-				  		<tr>
-						  	<td>
+					 	<table border=2>
+				  			<tr>
+						  		<td>
 						  		<table>
 						 			<tr><td>REPRESENTANTES LEGALES LABORALES</td></tr>
 						  		</table>

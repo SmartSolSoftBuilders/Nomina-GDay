@@ -38,7 +38,7 @@
 						<div class="input-group">
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-success"
-									onclick="actualizarGrupo()">AGREGAR</button>
+									onclick="actualizarGrupo()">ACTUALIZAR</button>
 							</span>
 						</div>
 						<!-- /input-group -->

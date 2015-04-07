@@ -68,8 +68,7 @@
 					</tbody>
 					</thead>
 				</table>
-				<input type="button" class="btn btn-success"
-					value="DESCARGAR NOMINA" onclick="ajax_download();" /> 
+				<input type="button" class="btn btn-success" value="DESCARGAR NOMINA (archivo excel)" onclick="ajax_download();" /> 
 					<br>
 					<br>
 			</div>
