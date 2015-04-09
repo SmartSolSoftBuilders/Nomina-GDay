@@ -165,27 +165,36 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(1).setCellValue(nomina.getRazonesSociales().get(j).getNombreCortoRazonS());
            		fila.createCell(2).setCellValue(nomina.getRazonesSociales().get(j).getRfc());
            		fila.createCell(3).setCellValue(nomina.getRazonesSociales().get(j).getCodCliente());
-           		fila.createCell(4).setCellValue("23%");
+           		fila.createCell(4).setCellValue("100%");
            		fila.createCell(5).setCellValue(nomina.getRazonesSociales().get(j).getComision()+"%");
            		numRz++;
            		System.out.println(nomina.getRazonesSociales().get(j));
            	}
            	System.out.println("Número de Empleados:"+empleados.size());
-           	/****Se llena 3ra hoja****/
+           	/****Se llena 3ra hoja****/           	
         	hoja = wb.getSheetAt(2);
+        	numRz=1;
+        	int j=0;
+        	for (j=0; j<nomina.getRazonesSociales().size();j++){
+        		fila = hoja.createRow(numRz);
+        		fila.createCell(j+4).setCellValue(nomina.getRazonesSociales().get(j).getNombreCortoRazonS());
+        	}
+        	fila.createCell(j+4).setCellValue("Total");
            	numRz=2;
-           	for (int j=0; j<empleados.size();j++){
+           	for (j=0; j<empleados.size();j++){
            		fila = hoja.createRow(numRz);
            		fila.createCell(0).setCellValue(""+(j+1));	
            		fila.createCell(1).setCellValue(empleados.get(j).getNoControl());
            		fila.createCell(2).setCellValue(empleados.get(j).getNss());	
            		fila.createCell(3).setCellValue(empleados.get(j).getNombre()+" "+empleados.get(j).getApellidoPaterno()+ " " +empleados.get(j).getApellidoMaterno());
+           		fila.createCell(4).setCellValue("100%");
+           		fila.createCell(5).setCellValue("100%");
               	numRz++;
            	}
            	/****Se llena 4ta hoja****/
            	hoja = wb.getSheetAt(3);
            	numRz=2;
-           	for (int j=0; j<empleados.size();j++){
+           	for (j=0; j<empleados.size();j++){
            		fila = hoja.createRow(numRz);
            		fila.createCell(0).setCellValue(""+(j+1));	
            		fila.createCell(1).setCellValue(empleados.get(j).getNoControl());
@@ -214,13 +223,13 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(23).setCellValue(empleados.get(j).getTipoPago());
            		fila.createCell(24).setCellValue(empleados.get(j).getFechaIngresoReal());
            		fila.createCell(25).setCellValue(empleados.get(j).getNoCredInfonavit());
-           		fila.createCell(26).setCellValue("");
-           		fila.createCell(27).setCellValue("");
+           		fila.createCell(26).setCellValue(empleados.get(j).getDesInfonavitPorc());
+           		fila.createCell(27).setCellValue(empleados.get(j).getDescInfonavitVsmg());
            		fila.createCell(28).setCellValue("");
-           		fila.createCell(29).setCellValue("");
-           		fila.createCell(30).setCellValue("");
-           		fila.createCell(31).setCellValue("");
-           		fila.createCell(32).setCellValue("");
+           		fila.createCell(29).setCellValue(empleados.get(j).getDescInfonavitImp());
+           		fila.createCell(30).setCellValue(empleados.get(j).getNoCredInfonavit());
+           		fila.createCell(31).setCellValue(empleados.get(j).getPensionAlimAcred());
+           		fila.createCell(32).setCellValue(empleados.get(j).getPensionAlimImp());
            		//Nómina Empleado	
            		EmpleadoNomina emp1= new EmpleadoNomina();
            		emp1.setNomina(nomina);
@@ -234,8 +243,9 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(39).setCellValue(emp1.getFechaVencimiento());
            		fila.createCell(40).setCellValue(emp1.getFechaBaja());
            		fila.createCell(41).setCellValue(emp1.getSalarioDiarioInt()*26);
-           		fila.createCell(42).setCellValue(emp1.getSalarioDiarioInt());
-           		
+           		fila.createCell(42).setCellValue(emp1.getSalarioDiarioInt());   
+           		fila.createCell(44).setCellValue(emp1.getSalarioDiarioInt());
+           		fila.createCell(45).setCellValue(emp1.getSalarioDiarioInt());
               	numRz++;
            	}
             file.close();
