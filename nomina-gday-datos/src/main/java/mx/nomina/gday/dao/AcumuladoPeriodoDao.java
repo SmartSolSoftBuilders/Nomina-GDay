@@ -8,11 +8,9 @@ import mx.nomina.gday.modelo.AcumuladoPeriodo;
 
 public interface AcumuladoPeriodoDao {
 
-	public void agregarArchivo(AcumuladoPeriodo acumuladoPeriodo);
+	public void eliminarAcumulado(AcumuladoPeriodo acumuladoPeriodo);
+	public int agregarArchivo(AcumuladoPeriodo acumuladoPeriodo);
 	List<AcumuladoPeriodo> obtenerAcumuladosByIdNominaAndIdPeriodo(AcumuladoPeriodo acumuladoPeriodo);
 	public AcumuladoPeriodo obtenerAcumuladosById(Integer idAcumuladoPeriodo);
-
 	
-
-
 }

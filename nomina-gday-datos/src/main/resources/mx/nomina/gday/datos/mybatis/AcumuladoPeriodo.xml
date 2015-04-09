@@ -8,19 +8,12 @@
 		<result property="archivoAcumulado" column="ARCHIVO_ACUMULADO" javaType = "byte[]" jdbcType = "BINARY" typeHandler = "org.apache.ibatis.type.ByteArrayTypeHandler" />
 		<result property="estatus" column="ESTATUS"></result>	
 		<result property="nombreArchivo" column="NOMBRE_ARCHIVO"></result>	
-		<association property="periodo" column="ID_PERIODO" javaType="Periodo" select="selectPeriodo"/>
-		<association property="nomina" column="ID_NOMINA" javaType="Nomina" select="selectNomina"/>
-		
+		<result property="numeroPeriodo" column="NUMERO_PERIODO"></result>
+		<result property="mesPago" column="MES_PAGO"></result>
+		<result property="anioPago" column="ANIO_PAGO"></result>
+		<association property="nomina" column="ID_NOMINA" javaType="Nomina" select="selectNomina"/>		
 	</resultMap>
-	
-	<resultMap type="Periodo" id="periodoResult">
-		<result property="idPeriodo" column="ID_PERIODO"/>
-		<result property="noPago" column="NO_PAGO"/>
-		<result property="fechaInicialPago" column="FECHA_INICIAL_PAGO"/>
-		<result property="fechaFinalPago" column="FECHA_FINAL_PAGO"/>
-		<association property="tipoCalendario" column="ID_CALENDARIO" javaType="TipoCalendario" select="selectTipoCalendario"/>		
-	</resultMap>
-	
+			
 	<resultMap id="nominaResult" type="Nomina">
 		<result property="idNomina" column="ID_NOMINA"/>
 		<result property="nombreCorto" column="NOMBRE_CORTO"/>
@@ -85,23 +78,17 @@
 	
 	<resultMap id="esquemaResult" type="Esquema">
     	<id property="idEsquema" column="ID_ESQUEMA"/>
-		<result property="nombreEsquema" column="NOMBRE_ESQUEMA"/>
-					  		
+		<result property="nombreEsquema" column="NOMBRE_ESQUEMA"/>					  		
 	</resultMap>
 	
 	<resultMap id="tipoCalendarioResult" type="TipoCalendario">
     	<id property="idCalendario" column="ID_CALENDARIO"/>
 		<result property="tipoCalendario" column="TIPO_CALENDARIO"/>
 		<result property="siglas" column="SIGLAS"/>
-		<result property="pr" column="PR"/>
-			
+		<result property="pr" column="PR"/>			
 	</resultMap>
 	
-		
-	<select id="selectPeriodo" parameterType="int" resultMap="periodoResult" resultType="Periodo">
-		select * from "PERIODO" where "ID_PERIODO"=#{idPeriodo}
-	</select>
-	
+			
 	<select id="selectNomina" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
 		select * from "NOMINA" where "ID_NOMINA"=#{idNomina} 	
 	</select> 
@@ -132,20 +119,31 @@
 	</select>
 	
 	<select id="obtenerAcumuladosByIdNominaAndIdPeriodo" parameterType="int" resultMap="acumuladoPeriodoResult" resultType="AcumuladoPeriodo">		 
-		select * from "ACUMULADO_POR_PERIODO" where "ID_NOMINA"=#{nomina.idNomina} and "ID_PERIODO"=#{periodo.idPeriodo}
+		select * from "ACUMULADO_POR_PERIODO" where "ID_NOMINA"=#{nomina.idNomina}
+			<if test="numeroPeriodo!=null and numeroPeriodo!=0">	
+				and "NUMERO_PERIODO"=#{numeroPeriodo} 
+			</if>  
+			<if test="mesPago!=null and mesPago!=''">				
+				and "MES_PAGO" = #{mesPago}
+			</if>
+			<if test="anioPago!=null and anioPago!=''">				 
+				and "ANIO_PAGO" = #{anioPago}
+			</if>
 	</select>
-	
-	
-		
-	 <insert id="agregarArchivo" parameterType="Archivo" keyProperty="id">
+		 	
+	 <insert id="agregarArchivo" parameterType="AcumuladoPeriodo" keyProperty="id">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
   		   	SELECT nextVal('sec_acumulado')
   	</selectKey>
 		INSERT INTO "ACUMULADO_POR_PERIODO"(
-			    	"ID_ACUMULADO_PERIODO", "ID_PERIODO", "ID_NOMINA", "ARCHIVO_ACUMULADO", "ESTATUS","NOMBRE_ARCHIVO")	
-           		 	VALUES (#{id}, #{periodo.idPeriodo}, #{nomina.idNomina},#{archivoAcumulado,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler}, #{estatus},#{nombreArchivo});            	   
+		"ID_ACUMULADO_PERIODO", "NUMERO_PERIODO", "ID_NOMINA", "ARCHIVO_ACUMULADO", "ESTATUS","NOMBRE_ARCHIVO","MES_PAGO","ANIO_PAGO")	
+        VALUES (#{id}, #{numeroPeriodo}, #{nomina.idNomina},#{archivoAcumulado,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler}, #{estatus},#{nombreArchivo},
+        #{mesPago},#{anioPago});            	   
     </insert>
     
+    <delete id="eliminarAcumulado" parameterType="AcumuladoPeriodo">
+    	DELETE FROM "ACUMULADO_POR_PERIODO" WHERE "ID_ACUMULADO_PERIODO" =#{idAcumuladoPeriodo} 
+    </delete>
     
 </mapper>
 

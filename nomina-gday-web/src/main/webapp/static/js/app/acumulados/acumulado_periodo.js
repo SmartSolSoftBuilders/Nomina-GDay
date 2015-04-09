@@ -1,6 +1,4 @@
-$(document).ready(function() {
-	$("#imgLoading").hide();
-	$("#imgLoading2").hide();
+$(document).ready(function() {	
 	$("#ficheroDiv").hide();
 	$("#botonSubmit").hide();
 	
@@ -17,18 +15,9 @@ $(document).ready(function() {
 			var options = '<option value="0">Seleccione...</option>';
 			var result=response[0];
 			 for (var i = 0; i < result.length; i++) {
-			    	options += '<option value="' + result[i].idNomina + '">' + result[i].nombreCorto +'</option>';
+			    	options += '<option value="' + result[i].idNomina + '">' + result[i].nombreCorto + '   ('+result[i].tipoCalendario.tipoCalendario+')'+ '</option>';
 			    }
-		$("#nomina").append(options)
-		
-		console.log ("PERIODO");
-		console.log (response[1]);
-			var options = '<option value="0">Seleccione...</option>';
-			var result=response[1];
-			 for (var i = 0; i < result.length; i++) {
-			    	options += '<option value="' + result[i].idPeriodo + '">' + result[i].fechaInicialPago +'</option>';
-			    }
-		$("#periodo").append(options)
+		$("#nomina").append(options);			
 		},	
 	error: function (response) {																	
 		$("#resultadoGuardar").html("Error");
@@ -36,17 +25,28 @@ $(document).ready(function() {
 });		
 });
 
+function loading2(){
+	$("#divLoading2").dialog(({show: "slide", dialogClass: 'noTitleStuff' , modal: true, width:700, height:200,
+		autoOpen: true}));
+}
 //*******************************************************************************
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
 function obtenerAcumulados(){
-	$("#imgLoading").hide();
+	/*$("#imgLoading").hide();
 	$("#imgLoading2").hide();
 	$("#ficheroDiv").hide();
 	$("#botonSubmit").hide();
-	$("#imgLoading2").show();
-	var idNomina=($('#nomina').find(":selected").val())
-	var idPeriodo=($('#periodo').find(":selected").val())
+	$("#imgLoading2").show();*/
+	$("#divLoading").dialog(({show: "slide", dialogClass: 'noTitleStuff' , modal: true, width:700, height:200,
+		autoOpen: true}));
+	$(".ui-dialog-titlebar").hide();
+
+	var idNomina=($('#nomina').find(":selected").val());
+	var idPeriodo=($('#periodo').find(":selected").val());
+	var mesPag=($('#mesPago').find(":selected").val());
+	var anioPag=($('#anioPago').find(":selected").val());
+	
 	console.log(idNomina)
 	console.log(idPeriodo)
 	//Sección validaciones
@@ -54,8 +54,9 @@ function obtenerAcumulados(){
 	$.ajax({
 		data:{
 			"nomina.idNomina": idNomina,
-			"periodo.idPeriodo": idPeriodo
-			
+			"numeroPeriodo": idPeriodo,
+			"mesPago":mesPag,
+			"anioPago":anioPag			
 		},
 		sync: true,
 		type:  'post',
@@ -63,21 +64,23 @@ function obtenerAcumulados(){
 		dataType:  'json',
 		beforeSend: function () {
 			$("#resultado").html("Procesando, espere por favor...");
+			
       	$( "#progressbar" ).progressbar({
 		      value: 75
 		    });	
         $( "#demo" ).hide();
 		}, 
 		success:  function (response) {
+			$("#divLoading").dialog("close");
 			$("#demo").show();
-			$("#progressbar").hide();
+			//$("#progressbar").hide();			
 			oTablaPlantillas.fnClearTable();
 			oTablaPlantillas.fnAddData(response);
 			$('#idNomina').val(idNomina);
 			$('#idPeriodo').val(idPeriodo);
-			$("#imgLoading2").hide();
-			$("#ficheroDiv").show();
-			$("#botonSubmit").show();			
+			$('#mesPagoHid').val(mesPag);
+			$('#anioPagoHid').val(anioPag);			
+			$("#ficheroDiv").show();					
 		}
 	});	
 	
@@ -115,4 +118,65 @@ function ajax_download(id) {
 
 function showVerDatos(idNomina){
 	top.frames['main'].location="../acumulados/ver_acumulados.jsp?id="+idNomina;
+}
+
+
+function obtenerPeriodos(){	
+	var idNomina=$("#nomina").val();
+	console.log(idNomina);
+	$.ajax({
+		sync:true,
+		data:{"idNomina":idNomina},
+		dataType:'json',
+		url:   '../../mvc/nomina/obtenernominabyid',
+		type:  'post',		
+		beforeSend: function () {	
+		},
+		success:  function (response) {
+			console.log ("NOMINA");
+			console.log (response);
+			//$("#tipoCalendarioDiv").html(response.tipoCalendario.tipoCalendario);		
+			var limite=0;
+			if (response.tipoCalendario.siglas=='D')
+				limite=1;
+			if (response.tipoCalendario.siglas=='S')
+				limite=53;
+			if (response.tipoCalendario.siglas=='C')
+				limite=27;
+			if (response.tipoCalendario.siglas=='Q')
+				limite=25;
+			if (response.tipoCalendario.siglas=='M')
+				limite=12;
+			$("#periodo").empty();
+			var options = '<option value="0">Seleccione...</option>';				
+				 for (var i = 1; i <= limite; i++) {
+				    	options += '<option value="'+ i + '">' + i +'</option>';
+				    }
+				 options += '<option value="13">AGUINALDO</option>';
+			$("#periodo").append(options);			
+			},	
+		error: function (response) {																	
+			$("#resultadoGuardar").html("Error");
+			}		
+	});
+}
+
+function eliminarAcumulado(idAcumulado){	
+	if (confirm("Seguro que desea eliminar el acumulado? Se eliminarán los datos acumulados!")){
+	$.ajax({
+		sync:true,
+		data:{"idAcumuladoPeriodo":idAcumulado},
+		dataType:'json',
+		url:   '../../mvc/acumulado/eliminaracumuladoPeriodo',
+		type:  'post',		
+		beforeSend: function () {	
+		},
+		success:  function (response) {
+			mensaje("Se eliminó correctamente el acumulado!");			
+		},	
+		error: function (response) {																	
+			$("#resultadoGuardar").html("Error");
+			}		
+	});	
+	}	
 }

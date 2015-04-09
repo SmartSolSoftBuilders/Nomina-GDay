@@ -58,7 +58,7 @@
 			<br>
 			<br>
 			<br>
-					<jsp:include page="../common/footer.jsp"/>	
+				<jsp:include page="../common/footer.jsp"/>	
 			</div>
 	</body>
 </html>

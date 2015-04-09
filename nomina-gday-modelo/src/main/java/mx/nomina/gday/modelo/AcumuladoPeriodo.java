@@ -4,125 +4,92 @@ public class AcumuladoPeriodo extends BaseModelo{
 	
 	private Integer idAcumuladoPeriodo;
 	private Nomina nomina;
-	private Periodo periodo;
+	private String numeroPeriodo;
 	private byte[] archivoAcumulado;
 	private String estatus;
 	private String nombreArchivo;
-
-	
-	
-	
+	private String mesPago;
+	private String anioPago;
 	
 	public AcumuladoPeriodo(){
 	}
-
-
-	public AcumuladoPeriodo(Integer idAcumuladoPeriodo, Nomina nomina,
-			Periodo periodo, byte[] archivoAcumulado, String estatus,
-			String nombreArchivo) {
-		super();
-		this.idAcumuladoPeriodo = idAcumuladoPeriodo;
-		this.nomina = nomina;
-		this.periodo = periodo;
-		this.archivoAcumulado = archivoAcumulado;
-		this.estatus = estatus;
-		this.nombreArchivo = nombreArchivo;
-	}
-
-
-
-
 
 	public Integer getIdAcumuladoPeriodo() {
 		return idAcumuladoPeriodo;
 	}
 
-
-
-
-
 	public void setIdAcumuladoPeriodo(Integer idAcumuladoPeriodo) {
 		this.idAcumuladoPeriodo = idAcumuladoPeriodo;
 	}
-
-
-
-
 
 	public Nomina getNomina() {
 		return nomina;
 	}
 
-
-
-
-
 	public void setNomina(Nomina nomina) {
 		this.nomina = nomina;
 	}
 
-
-
-
-
-	public Periodo getPeriodo() {
-		return periodo;
+	public String getNumeroPeriodo() {
+		return numeroPeriodo;
 	}
 
-
-
-
-
-	public void setPeriodo(Periodo periodo) {
-		this.periodo = periodo;
+	public void setNumeroPeriodo(String numeroPeriodo) {
+		this.numeroPeriodo = numeroPeriodo;
 	}
-
-
-
-
 
 	public byte[] getArchivoAcumulado() {
 		return archivoAcumulado;
 	}
 
-
-
-
-
 	public void setArchivoAcumulado(byte[] archivoAcumulado) {
 		this.archivoAcumulado = archivoAcumulado;
 	}
-
-
-
-
 
 	public String getEstatus() {
 		return estatus;
 	}
 
-
-
-
-
 	public void setEstatus(String estatus) {
 		this.estatus = estatus;
 	}
-
-
-
-
 
 	public String getNombreArchivo() {
 		return nombreArchivo;
 	}
 
-
-
-
-
 	public void setNombreArchivo(String nombreArchivo) {
 		this.nombreArchivo = nombreArchivo;
+	}
+
+	public String getMesPago() {
+		return mesPago;
+	}
+
+	public void setMesPago(String mesPago) {
+		this.mesPago = mesPago;
+	}
+
+	public String getAnioPago() {
+		return anioPago;
+	}
+
+	public void setAnioPago(String anioPago) {
+		this.anioPago = anioPago;
+	}
+
+	public AcumuladoPeriodo(Integer idAcumuladoPeriodo, Nomina nomina,
+			String numeroPeriodo, byte[] archivoAcumulado, String estatus,
+			String nombreArchivo, String mesPago, String anioPago) {
+		super();
+		this.idAcumuladoPeriodo = idAcumuladoPeriodo;
+		this.nomina = nomina;
+		this.numeroPeriodo = numeroPeriodo;
+		this.archivoAcumulado = archivoAcumulado;
+		this.estatus = estatus;
+		this.nombreArchivo = nombreArchivo;
+		this.mesPago = mesPago;
+		this.anioPago = anioPago;
 	}
 
 

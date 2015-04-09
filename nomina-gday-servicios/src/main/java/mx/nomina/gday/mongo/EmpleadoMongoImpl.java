@@ -30,10 +30,10 @@ public class EmpleadoMongoImpl implements EmpleadoMongo {
 	    while(iterator.hasNext()) {
 	        Map.Entry mentry = (Map.Entry)iterator.next();
 	    	//System.out.print("key: "+ mentry.getKey() + " & Value: ");
-	        System.out.println(mentry.getValue());	        
+	        //System.out.println(mentry.getValue());	        
 	        document.put(""+mentry.getKey(), mentry.getValue());
-	        System.out.println("num Registros:"+registros++);
-	        System.out.println(document.size());
+	        //System.out.println("num Registros:"+registros++);
+	        //System.out.println(document.size());
 	    }
 	    collection.insert(document);
 	    System.out.println("Inserción realizada");

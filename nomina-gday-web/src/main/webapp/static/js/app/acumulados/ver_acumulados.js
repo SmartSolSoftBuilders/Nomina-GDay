@@ -8,22 +8,13 @@ $(document).ready(function() {
 	},
 	success:  function (response) {
 		console.log ("NOMINA");
-		console.log (response[0]);
-			var options = "";
-			var result=response[0];
-			 for (var i = 0; i < result.length; i++) {
-			    	options += '<option value="' + result[i].idNomina + '">' + result[i].nombreCorto +'</option>';
-			    }
-		$("#nomina").append(options)
-		
-		console.log ("PERIODO");
-		console.log (response[1]);
-			var options = "";
-			var result=response[1];
-			 for (var i = 0; i < result.length; i++) {
-			    	options += '<option value="' + result[i].idPeriodo + '">' + result[i].fechaInicialPago +'</option>';
-			    }
-		$("#periodo").append(options)
+		console.log (response[0]);		
+		var result=response[0];
+		var options = '<option value="">Seleccione...</option>';
+		for (var i = 0; i < result.length; i++) {
+			options += '<option value="' + result[i].idNomina + '">' + result[i].nombreCorto +'</option>';
+		}
+		$("#nomina").append(options);		
 		},	
 	error: function (response) {																	
 		$("#resultadoGuardar").html("Error");
@@ -35,12 +26,62 @@ $(document).ready(function() {
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT
 //*******************************************************************************
 
-function ajax_download2(id1,id2,id3) {	
+
+function obtenerAcumuladosVal(){
+	var id1=$("#nomina").val();
+	var id2=$("#mesPago").val();
+	var id3=$("#anioPago").val();	
+	var id4=$("#periodo").val();
+	console.log(id1+id2+id3+id4);
+	ajax_download2(id1,id2,id3,id4);
+} 
+
+function obtenerPeriodos(){	
+	var idNomina=$("#nomina").val();
+	console.log(idNomina);
+	$.ajax({
+		sync:true,
+		data:{"idNomina":idNomina},
+		dataType:'json',
+		url:   '../../mvc/nomina/obtenernominabyid',
+		type:  'post',		
+		beforeSend: function () {	
+		},
+		success:  function (response) {
+			console.log ("NOMINA");
+			console.log (response);
+			//$("#tipoCalendarioDiv").html(response.tipoCalendario.tipoCalendario);		
+			var limite=0;
+			if (response.tipoCalendario.siglas=='D')
+				limite=1;
+			if (response.tipoCalendario.siglas=='S')
+				limite=53;
+			if (response.tipoCalendario.siglas=='C')
+				limite=27;
+			if (response.tipoCalendario.siglas=='Q')
+				limite=25;
+			if (response.tipoCalendario.siglas=='M')
+				limite=12;
+			$("#periodo").empty();
+			var options = '<option value="">Seleccione...</option>';				
+				 for (var i = 1; i <= limite; i++) {
+				    	options += '<option value="'+ i + '">' + i +'</option>';
+				    }
+				 options += '<option value="13">AGUINALDO</option>';
+			$("#periodo").append(options);			
+			},	
+		error: function (response) {																	
+			$("#resultadoGuardar").html("Error");
+			}		
+	});
+}
+
+function ajax_download2(id1,id2,id3,id4) {	
 	var input_name="id1";		
 	var input_name2="id2";		
 	var input_name3="id3";	
-	var url="../../mvc/acumulado/obteneracumuladoval";
-	console.log(id1+id2+id3);
+	var input_name4="id4";
+	var url="../../mvc/acumulado/obteneracumuladoval";	
     var $iframe,
         iframe_doc,
         iframe_html;
@@ -63,17 +104,11 @@ function ajax_download2(id1,id2,id3) {
                   "<input type=hidden name='" + input_name2 + "' value='" +
                   id2 +"'/>" +
                   "<input type=hidden name='" + input_name3 + "' value='" +
-                  id3 +"'/></form>" +
+                  id3 +"'/>" +
+                  "<input type=hidden name='" + input_name4 + "' value='" +
+                  id4 +"'/></form>" +
                   "</body></html>";
     iframe_doc.open();
     iframe_doc.write(iframe_html);
     $(iframe_doc).find('form').submit();
 }
-
-function obtenerAcumuladosVal(){
-	var id1=$("#nomina").val();
-	var id2=$("#anio").val();
-	var id3=$("#periodo").val();	
-	console.log(id1+id2+id3);
-	ajax_download2(id1,id2,id3);
-} 

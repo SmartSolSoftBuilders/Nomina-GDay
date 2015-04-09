@@ -71,12 +71,16 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     		int colNum=1;
     		Row filaTitulo = hoja.getRow(1);
     		Row fila = hoja.getRow(colNum);
-    		System.out.println("LINEAS:"+hoja.getLastRowNum());
+    		//System.out.println("LINEAS:"+hoja.getLastRowNum());
     		for (; filaNum < hoja.getLastRowNum()-1; filaNum++) { // Recorre cada fila de la hoja     			
     			fila = hoja.getRow(filaNum);
     			map = new HashMap();
     			map.put("id_nomina",acumuladoPeriodo.getNomina().getIdNomina());
-    			map.put("id_periodo",acumuladoPeriodo.getPeriodo().getIdPeriodo());
+    			map.put("id_acumulado",acumuladoPeriodo.getIdAcumuladoPeriodo());	
+    			map.put("numero_periodo",acumuladoPeriodo.getNumeroPeriodo());    			
+    			map.put("mes_pago",acumuladoPeriodo.getMesPago());
+    			map.put("anio_pago",acumuladoPeriodo.getAnioPago());
+    			
         		System.out.println("columnas:"+fila.getLastCellNum());
     			for (int columna = 1; columna < (fila.getLastCellNum()-1); columna++) { // Recorre					
     				// cada columna de la fila
@@ -85,7 +89,7 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     					titulo = filaTitulo.getCell(columna).getStringCellValue();
     					fila.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
     					data = fila.getCell(columna).getStringCellValue();    					
-    					System.out.print(" Columna->"+titulo+"Valor_"+data);	
+    			//		System.out.print(" Columna->"+titulo+"Valor_"+data);	
         				if (titulo.length()>1)
         					map.put(titulo.replace(".","_"),data);
 
@@ -101,7 +105,7 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
 	}
 	
 	@Override 
-	public List obtenerDocumentos(Integer id1, String id2, Integer id3){
+	public List obtenerDocumentos(Integer id1, String id2, String id3, String id4){
 		List listaPrincipal  = new ArrayList();		
 		MongoClient mongo = new MongoClient("localhost", 27017);
 		DB db = mongo.getDB("testDB");
@@ -109,6 +113,13 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
 	    System.out.println("Collection mycol selected successfully");
 		BasicDBObject whereQuery = new BasicDBObject();
 		whereQuery.put("id_nomina", id1);
+		if (id2!=null && id2!="")
+			whereQuery.put("mes_pago", id2);
+		if (id3!=null && id3!="")
+			whereQuery.put("anio_pago", id3);
+		if (id4!=null && id4!="")
+			whereQuery.put("numero_periodo", id4);
+			
         DBCursor cursor = collection.find(whereQuery);
         int i=1;
         System.out.println("Se buscarán los registros de la nómina:"+id1);
@@ -172,6 +183,17 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
 	        	System.out.println("Error:"+e.getMessage());
 	        }
 		
+	}
+
+	@Override
+	public void eliminarDocumento(AcumuladoPeriodo acumuladoPeriodo) {
+		// TODO Auto-generated method stub
+		MongoClient mongo = new MongoClient("localhost", 27017);
+		DB db = mongo.getDB("testDB");
+	    DBCollection collection = db.getCollection("empleados");
+	    BasicDBObject query = new BasicDBObject();
+	    query.append("id_acumulado", acumuladoPeriodo.getIdAcumuladoPeriodo());
+	    collection.remove(query);
 	}
 
 	

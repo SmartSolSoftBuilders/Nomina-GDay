@@ -43,18 +43,29 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 	@Autowired
 	private PeriodoDao periodoDao;
 	
-		
 	@Override
-	public void agregarArchivo(AcumuladoPeriodo acumuladoPeriodo) {
-
-		System.out.println("Acumulado"+acumuladoPeriodo.getNomina().getIdNomina());
-		System.out.println("Acumulado"+acumuladoPeriodo.getPeriodo().getIdPeriodo());
+	public void eliminarAcumulado(AcumuladoPeriodo acumuladoPeriodo){
+		System.out.println("Eliminando Acumulado"+acumuladoPeriodo.getIdAcumuladoPeriodo());		
 		try{
-			this.acumuladoPeriodoDao.agregarArchivo(acumuladoPeriodo);
+			this.acumuladoPeriodoDao.eliminarAcumulado(acumuladoPeriodo);
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+
+		 
+	@Override
+	public int agregarArchivo(AcumuladoPeriodo acumuladoPeriodo) {
+		System.out.println("Acumulado"+acumuladoPeriodo.getNomina().getIdNomina());
+		System.out.println("Acumulado"+acumuladoPeriodo.getNumeroPeriodo());
+		try{
+			return this.acumuladoPeriodoDao.agregarArchivo(acumuladoPeriodo);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	@Override
@@ -75,9 +86,8 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 	public List<AcumuladoPeriodo> obtenerAcumuladosByIdNominaAndIdPeriodo(AcumuladoPeriodo acumuladoPeriodo) {
 		System.out.println("Acumulado Service");
 		System.out.println("idNomina"+acumuladoPeriodo.getNomina().getIdNomina());
-		System.out.println("idNomina"+acumuladoPeriodo.getPeriodo().getIdPeriodo());
-		try {
-			 
+		System.out.println("idNomina"+acumuladoPeriodo.getNumeroPeriodo());
+		try {			 
 				List<AcumuladoPeriodo> tmp=this.acumuladoPeriodoDao.obtenerAcumuladosByIdNominaAndIdPeriodo(acumuladoPeriodo);
 				System.out.println("Lista de Acumulados"+tmp.size());
 					return tmp;

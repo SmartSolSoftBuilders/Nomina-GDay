@@ -31,25 +31,24 @@ public class NominaController {
 	//Controller Guardar Nomina
 		 @RequestMapping(value="/guardarnomina",method = RequestMethod.POST)
 		 @ResponseBody
-		    public boolean guardarNomina(@ModelAttribute(value="nomina") Nomina nomina, BindingResult result){
-			 	System.out.println("Guardando Nomina"+ nomina);
-			 	System.out.println("nomina"+nomina.getJsonValue());
-				StringTokenizer tokens=new StringTokenizer(nomina.getJsonValue(), ",");				
-				List<RazonSocial> razonesSociales = new ArrayList<RazonSocial>();
-				while(tokens.hasMoreTokens()) {
-					StringTokenizer tokens2=new StringTokenizer(tokens.nextToken(), ":");
-					RazonSocial razonSocial = new RazonSocial();
-					razonSocial.setIdRazonSocial(Integer.parseInt(tokens2.nextToken()));
-					razonSocial.setJsonString(tokens2.nextToken());
-					System.out.println(razonSocial.getIdRazonSocial());
-					System.out.println(razonSocial.getJsonString());
-					razonesSociales.add(razonSocial);
-				 }
-				nomina.setRazonesSociales(razonesSociales);
-			 	nominaServicio.agregarNomina(nomina);			 	
-			return true;
-			 
-		 }
+		 public boolean guardarNomina(@ModelAttribute(value="nomina") Nomina nomina, BindingResult result){
+			 System.out.println("Guardando Nomina"+ nomina);
+			 System.out.println("nomina"+nomina.getJsonValue());
+			StringTokenizer tokens=new StringTokenizer(nomina.getJsonValue(), ",");				
+			List<RazonSocial> razonesSociales = new ArrayList<RazonSocial>();
+			while(tokens.hasMoreTokens()) {
+				StringTokenizer tokens2=new StringTokenizer(tokens.nextToken(), ":");
+				RazonSocial razonSocial = new RazonSocial();
+				razonSocial.setIdRazonSocial(Integer.parseInt(tokens2.nextToken()));
+				razonSocial.setJsonString(tokens2.nextToken());
+				System.out.println(razonSocial.getIdRazonSocial());
+				System.out.println(razonSocial.getJsonString());
+				razonesSociales.add(razonSocial);
+			}
+			nomina.setRazonesSociales(razonesSociales);
+			nominaServicio.agregarNomina(nomina);			 	
+		return true;			
+		}
 		 
 		//MODIFICAR
 		//Controller que muestra la lista de Nomina y permite la Edicion del mismo
@@ -159,7 +158,7 @@ public class NominaController {
 					nominasTmp2.add(tmp.get(i).getPeriodicidad());
 					nominasTmp2.add(tmp.get(i).getTipoPago());
 					nominasTmp2.add(tmp.get(i).getClaseRiesgo());
-					nominasTmp2.add("<a href='#' onclick='showNominaForm("+tmp.get(i).getIdNomina()+",\""+tmp.get(i).getNombreCorto()+"\")'><img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
+					nominasTmp2.add("<a href='#' onclick='showNominaForm("+tmp.get(i).getIdNomina()+",\""+tmp.get(i).getNombreCorto()+"\")'><img src='../../static/img/editar.png' width='27' height='27'></img></a>");
 					nominasTmp.add(nominasTmp2);
 				}
 				return nominasTmp;
