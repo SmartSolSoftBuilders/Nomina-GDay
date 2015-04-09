@@ -95,14 +95,14 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
 	    HojaTrabajo hojaTrabajo = this.hojaTrabajoDao.obtenerHojaById(idHojaTrabajo);	    
 		String rutaArchivo = "c://archivosNGDAY//layoutHojaTrabajo.xls";
         /*Se crea el objeto de tipo File con la ruta del archivo*/ 	    
-		File archivoXLS = new File("C://archivosNGDAY//tmpHojaTrabajo"+idHojaTrabajo+".xlsm"); 
+		File archivoXLS = new File("C://archivosNGDAY//tmpHojaTrabajo"+idHojaTrabajo+".xls"); 
 		//Evento eventoTmp=new Evento();
 		/*Se crea el archivo*/
         int filaInicial=8;
         int columnaInicial=1;
         int totalDatos=67;
         try{
-     		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpHojaTrabajo"+idHojaTrabajo+".xlsm");
+     		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpHojaTrabajo"+idHojaTrabajo+".xls");
      	    fos.write(hojaTrabajo.getArchivoAcumulado());
      	    fos.close(); 
         	FileInputStream file = new FileInputStream(archivoXLS);
@@ -110,8 +110,8 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	 //Sheet mySheet = wb.getSheetAt(0);
         	   // Iterator<Row> rowIter = mySheet.rowIterator();
         	    //System.out.println(mySheet.getRow(1).getCell(0));
-//        	HSSFWorkbook workbook = new HSSFWorkbook(file);
-        	Workbook wb = new XSSFWorkbook(file); //or new HSSFWorkbook();
+        	HSSFWorkbook wb = new HSSFWorkbook(file);
+        	//Workbook wb = new XSSFWorkbook(file); //or new HSSFWorkbook();
             CreationHelper creationHelper = wb.getCreationHelper();
             //Test
         	//Se trabaja la primer HOJA GENERALES EMPRESA
@@ -239,10 +239,10 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
               	numRz++;
            	}
             file.close();
-            FileOutputStream outFile =new FileOutputStream(new File("C:\\archivosNGDAY\\tmp12.xlsm"));
+            FileOutputStream outFile =new FileOutputStream(new File("C:\\archivosNGDAY\\tmp12.xls"));
             wb.write(outFile);
             outFile.close();
-            archivoXLS = new File("C:\\archivosNGDAY\\tmp12.xlsm"); 	
+            archivoXLS = new File("C:\\archivosNGDAY\\tmp12.xls"); 	
          	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

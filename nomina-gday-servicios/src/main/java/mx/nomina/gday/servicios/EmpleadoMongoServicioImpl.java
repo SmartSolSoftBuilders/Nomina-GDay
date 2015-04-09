@@ -112,7 +112,8 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
 	    DBCollection collection = db.getCollection("empleados");
 	    System.out.println("Collection mycol selected successfully");
 		BasicDBObject whereQuery = new BasicDBObject();
-		whereQuery.put("id_nomina", id1);
+		if (id1>0)
+			whereQuery.put("id_nomina", id1);
 		if (id2!=null && id2!="")
 			whereQuery.put("mes_pago", id2);
 		if (id3!=null && id3!="")

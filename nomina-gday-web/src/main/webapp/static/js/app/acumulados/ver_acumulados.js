@@ -10,7 +10,8 @@ $(document).ready(function() {
 		console.log ("NOMINA");
 		console.log (response[0]);		
 		var result=response[0];
-		var options = '<option value="">Seleccione...</option>';
+		var options = '<option value="0">Seleccione...</option>';
+		$("#periodo").append(options);
 		for (var i = 0; i < result.length; i++) {
 			options += '<option value="' + result[i].idNomina + '">' + result[i].nombreCorto +'</option>';
 		}

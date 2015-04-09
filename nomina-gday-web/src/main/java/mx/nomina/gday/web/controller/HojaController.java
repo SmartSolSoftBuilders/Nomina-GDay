@@ -185,7 +185,7 @@ public class HojaController {
 		 		fileToDownload = this.hojaTrabajoServicio.generarHojaTrabajo(idHojaTrabajo);
 		        inputStream = new FileInputStream(fileToDownload);
 		        response.setContentType("application/force-download");
-		        response.setHeader("Content-Disposition", "attachment; filename="+"hoja-1.xlsm"); 
+		        response.setHeader("Content-Disposition", "attachment; filename="+"hoja-1.xls"); 
 		        IOUtils.copy(inputStream, response.getOutputStream());
 		        response.flushBuffer();
 		    }
