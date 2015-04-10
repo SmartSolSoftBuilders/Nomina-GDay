@@ -191,7 +191,7 @@ function validarFormSub(){
 		return false;
 	}
 	else{		
-		$('#formSub').hide();
+		$('#formSub').submit();
 		$('#botonSubmit').hide();
 		loading2();
 		return true;
