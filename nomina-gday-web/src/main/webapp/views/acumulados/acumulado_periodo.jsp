@@ -13,7 +13,7 @@
 	<%=session.getAttribute("notification")%>
 	<%session.setAttribute("notification","");%>
 <%}%>
-<form:form method="post" action="../../mvc/acumulado/subiracumuladoPeriodo" enctype="multipart/form-data" commandName="fileFormBean">
+<form:form id="formSub" name="formSub" method="post" action="../../mvc/acumulado/subiracumuladoPeriodo" enctype="multipart/form-data" commandName="fileFormBean">
 	<table>
 		<tr>
 			<td>NÓMINA
@@ -102,7 +102,7 @@
         </tr>
         <tr>
         <td colspan="2" align="center">        
-        <input name="botonSubmit" id="botonSubmit" type="submit"  value="Subir Acumulado" onclick="$('#botonSubmit').hide();loading2();">               
+        <input name="botonSubmit" id="botonSubmit" type="button"  value="Subir Acumulado" onclick="validarFormSub();">               
         </tr>
      </table>          
 </form:form>
