@@ -239,8 +239,8 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(35).setCellValue(emp1.getNombreOtroPatron());
            		fila.createCell(36).setCellValue(emp1.getRfcOtroPatron());
            		fila.createCell(37).setCellValue(emp1.getFechaIngreso());
-           		fila.createCell(38).setCellValue(emp1.getTipoContrato());
-           		fila.createCell(39).setCellValue(emp1.getFechaVencimiento());
+           		fila.createCell(38).setCellValue("Régimen de Contratación");
+           		fila.createCell(39).setCellValue("2016/03/03");
            		fila.createCell(40).setCellValue(emp1.getFechaBaja());
            		fila.createCell(41).setCellValue(emp1.getSalarioDiarioInt()*26);
            		fila.createCell(42).setCellValue(emp1.getSalarioDiarioInt());   
