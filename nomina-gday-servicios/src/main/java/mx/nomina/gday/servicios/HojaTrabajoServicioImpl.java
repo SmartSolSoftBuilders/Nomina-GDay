@@ -234,8 +234,8 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		EmpleadoNomina emp1= new EmpleadoNomina();
            		emp1.setNomina(nomina);
            		emp1.setEmpleado(empleados.get(j));
-           		emp1= this.empleadoNominaDao.obtenerEmpleadoNominaByIdNominaEmpleado(emp1);
-           		fila.createCell(34).setCellValue("SI");
+           		emp1= this.empleadoNominaDao.obtenerEmpleadoNominaByIdNominaEmpleado(emp1);           		
+           		fila.createCell(34).setCellValue("NO");
            		fila.createCell(35).setCellValue(emp1.getNombreOtroPatron());
            		fila.createCell(36).setCellValue(emp1.getRfcOtroPatron());
            		fila.createCell(37).setCellValue(emp1.getFechaIngreso());
