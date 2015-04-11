@@ -7,6 +7,7 @@
 		<result property="fechaIngreso" column="FECHA_INGRESO"/>
 		<result property="estatus" column="ESTATUS"/>
 		<result property="tipoSalario" column="TIPO_SALARIO"/>
+		<result property="tipoContrato" column="TIPO_CONTRATO"/>
 		<result property="fechaBaja" column="FECHA_BAJA"/>
 		<result property="loteMovImssAlta" column="LOTE_MOV_IMSS_ALTA"/>
 		<result property="fechaVencimiento" column="FECHA_VENCIMIENTO"/>
@@ -199,7 +200,7 @@
 	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
 	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
 	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
-	            "ID_PROCESO","FECHA_BAJA","FECHA_VENCIMIENTO")
+	            "ID_PROCESO","FECHA_BAJA","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
 	            1234, #{sueldoMensual}, 
 	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
@@ -207,7 +208,7 @@
 	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
 	            #{municipioDel}, #{entFederativa}, 1234,
 	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso},
-	            date(#{fechaBaja}),date(#{fechaVencimiento}));
+	            date(#{fechaBaja}),date(#{fechaVencimiento}),#{tipoContrato} );
 	       </if>
 			<if test="fechaBaja == '' and fechaVencimiento!=''">	
 			INSERT INTO "EMPLEADO_NOMINA"(
@@ -218,7 +219,7 @@
 	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
 	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
 	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
-	            "ID_PROCESO","FECHA_VENCIMIENTO")
+	            "ID_PROCESO","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
 	            1234, #{sueldoMensual}, 
 	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
@@ -226,7 +227,7 @@
 	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
 	            #{municipioDel}, #{entFederativa}, 1234,
 	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso},
-	            date(#{fechaVencimiento}));
+	            date(#{fechaVencimiento}),#{tipoContrato});
 
 	       </if>
 	       	<if test="fechaBaja != '' and fechaVencimiento==''">	
@@ -238,7 +239,7 @@
 	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
 	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
 	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
-	            "ID_PROCESO","FECHA_BAJA")
+	            "ID_PROCESO","FECHA_BAJA","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
 	            1234, #{sueldoMensual}, 
 	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
@@ -246,7 +247,7 @@
 	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
 	            #{municipioDel}, #{entFederativa}, 1234,
 	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso},
-	            date(#{fechaBaja}) );
+	            date(#{fechaBaja}),date(#{fechaVencimiento}),#{tipoContrato});
 	            
 	       </if>
 	       <if test="fechaBaja == '' and fechaVencimiento==''">	
@@ -258,22 +259,22 @@
 	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
 	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
 	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
-	            "ID_PROCESO")
+	            "ID_PROCESO","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
 	            1234, #{sueldoMensual}, 
 	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
 	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
 	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
 	            #{municipioDel}, #{entFederativa}, 1234,
-	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso}
-	            );
+	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso},
+	            date(#{fechaVencimiento}),#{tipoContrato});	            
 	       </if>
 	</insert>
 
 	<update id="actualizarEmpleadoNomina" parameterType="EmpleadoNomina">
 			UPDATE "EMPLEADO_NOMINA"
 		   SET "FECHA_INGRESO"=date(#{fechaIngreso}), "ESTATUS"=#{estatus}, 
-		       "TIPO_SALARIO"= #{tipoSalario}, "FECHA_BAJA"=date(#{fechaBaja}),
+		       "TIPO_SALARIO"= #{tipoSalario},"TIPO_CONTRATO"= #{tipoContrato}, "FECHA_BAJA"=date(#{fechaBaja}),
 		       "FECHA_VENCIMIENTO"=date(#{fechaVencimiento}), 
 		       "SUELDO_MENSUAL"= #{sueldoMensual}, "SALARIO_DIARIO_INT"=#{salarioDiarioInt}, 
 		       "PLAZA_TRABAJO"=#{plazaTrabajo}, 

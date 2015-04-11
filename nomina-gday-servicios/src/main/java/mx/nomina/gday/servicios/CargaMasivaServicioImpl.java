@@ -225,7 +225,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 									validarFormatoFechas=false;
 								}								
 								empleadoNomina.setEstatus(datos.get(46));
-								empleadoNomina.setTipoSalario(datos.get(47));
+								empleadoNomina.setTipoContrato(datos.get(47));
 								System.out.println("FechaBaja"+datos.get(48));
 								empleadoNomina.setFechaBaja(datos.get(48));
 								if (datos.get(48)!=""){								

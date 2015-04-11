@@ -128,10 +128,11 @@
 							<td>REGISTRO PATRONAL<input id='registroPatronal' name='registroPatronal' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td>PERIODICIDAD
 					 			<select id='periodicidad' name='periodicidad' type="text" class="form-control">
-		  							<option>Q</option>
-		  							<option>S</option>
-		  							<option>M</option>
-		  							<option>C</option>
+		  							<option>SEMANAL</option>
+		  							<option>CATORCENAL</option>
+		  							<option>QUINCENAL</option>
+		  							<option>28 DÍAS</option>
+		  							<option>MENSUAL</option>
 							</select></td>					 	
 					 		<td>TIPO CALENDARIO
 					 		<select id='tipoCalendario' name='tipoCalendario' class="form-control"></select>

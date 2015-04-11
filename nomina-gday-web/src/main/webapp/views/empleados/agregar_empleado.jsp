@@ -259,7 +259,10 @@
 					<tr>
 				 		<td>FECHA DE BAJA<input id='fechabajaformnomina' name='fechabajaformnomina'  class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 				 		<td>TIPO CONTRATO<select id='tipocontratoformnomina' name='tipocontratoformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-				 				<option value="1">TIPO 1</option>
+				 				<option value="ASIMILADO A SALARIOS">ASIMILADO A SALARIOS</option>
+				 				<option value="JUBILADOS">JUBILADOS</option>
+				 				<option value="PENSIONADOS">PENSIONADOS</option>
+				 				<option value="SUELDOS Y SALARIOS">SUELDOS Y SALARIOS</option>
 				 			</select>
 				 		</td>
 				 		<td>FECHA DE VENCIMIENTO<input id='fechavencimientoformnomina' name='fechavencimientoformnomina' class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
@@ -280,7 +283,7 @@
 					<tr>
 				 		<td>¿TIENE OTRO PATRÓN?<select id=otropatronformnomina name='otropatronformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 				<option value="SI">SI</option>
-				 				<option value="SI">NO</option>
+				 				<option value="NO">NO</option>
 				 			</select>
 				 		</td>
 				 		<td>NOMBRE OTRO PATRÓN<input id='nombreotropatronformnomina' name='nombreotropatronformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
@@ -298,8 +301,8 @@
 					</tr>
 					<tr>
 				 		<td>CODIGO POSTAL<input id='cpformnomina' name='cpformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td>nomasignadavolverhidden:<input id='idnominaformnomina' name='idnominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td>nomasignadavolverhidden:<input id='nombrenominaformnomina' name='nombrenominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
+				 		<td>nomasignadavolverhidden:<input id='idnominaformnomina' name='idnominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>nomasignadavolverhidden:<input id='nombrenominaformnomina' name='nombrenominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
 					</tr>
 					<tr>
 				 		<td>COLONIA<input id='coloniaformnomina' name='coloniaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>

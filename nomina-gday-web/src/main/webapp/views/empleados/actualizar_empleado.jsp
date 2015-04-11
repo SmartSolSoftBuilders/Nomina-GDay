@@ -300,8 +300,8 @@
 					</tr>
 					<tr>
 				 		<td>CODIGO POSTAL<input id='cpformnomina' name='cpformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td>nomasignadavolverhidden:<input id='idnominaformnomina' name='idnominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td>nomasignadavolverhidden:<input id='nombrenominaformnomina' name='nombrenominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 		<td>nomasignadavolverhidden:<input id='idnominaformnomina' name='idnominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td>nomasignadavolverhidden:<input id='nombrenominaformnomina' name='nombrenominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 		<input id='statnominaformnomina' name='statnominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 		</td>					 		
 					</tr>

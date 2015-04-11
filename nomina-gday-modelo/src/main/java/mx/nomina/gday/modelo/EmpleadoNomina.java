@@ -186,6 +186,10 @@ public class EmpleadoNomina extends BaseModelo{
 			public void setOtroPatron(boolean otroPatron) {
 				this.otroPatron = otroPatron;
 			}
+			
+			public boolean getOtroPatron() {
+				return this.otroPatron;
+			}
 
 			public String getRfcOtroPatron() {
 				return rfcOtroPatron;
