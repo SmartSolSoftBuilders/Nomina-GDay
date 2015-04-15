@@ -84,22 +84,23 @@ public @ResponseBody void guardaFichero(MultipartHttpServletRequest request, Htt
 		
 		//Saving file
 		System.out.println("TIPO DE ARCHIVO:"+ufile.type);
-		archivo.setArchivo(mpf.getBytes());
-		
-	   if (ufile.type.equals("application/vnd.ms-excel"))
-		   archivo.setTipoArchivo("xls");
-	   if (ufile.type.equals("application/excel"))
-		   archivo.setTipoArchivo("xlsx");				
+		archivo.setArchivo(mpf.getBytes());		
+		String tipoArchivo="";
+		if (ufile.type.equals("application/excel") || ufile.type.equals("application/vnd.ms-excel"))				
+			tipoArchivo="xls";			
+		else
+			tipoArchivo="xlsx";
+		   archivo.setTipoArchivo(tipoArchivo);				
 		System.out.println("Done"+ufile.length+archivo.getArchivo().length);
 		System.out.println("FECHA DE CARGA:"+dateFormat.format(date));
         archivo.setFechaCarga(dateFormat.format(date));
     	this.archivoServicio.agregarArchivo(archivo);		
 		//archivoServicio.agregarArchivo(archivo);
 		System.out.println("LOS VALORES DEL ARCHIVO:"+archivo.getArchivo().length);		
-		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmp.xls");
+		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmp."+tipoArchivo);
 	    fos.write(archivo.getArchivo());
 	    fos.close();		
-        logContent=this.cargaMasivaServicio.cargarExcel("C://archivosNGDAY//tmp.xls");
+        logContent=this.cargaMasivaServicio.cargarExcel("C://archivosNGDAY//tmp."+tipoArchivo,tipoArchivo);
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileToDownload));
         writer.write(logContent);
         writer.close();

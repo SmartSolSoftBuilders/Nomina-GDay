@@ -97,15 +97,24 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 		}
 		return null;
 	}
-
+	@Override
+	public String obtenerArchivoAcumuladoExt(Integer idAcumulado) {
+		AcumuladoPeriodo acumuladoPeriodo = this.acumuladoPeriodoDao.obtenerAcumuladosById(idAcumulado);	    
+	    if (acumuladoPeriodo.getTipoArchivo()=="xls")
+	    	return "xls";
+	    else
+	    	return "xlsx";
+	}
+	
 	@Override
 	public File obtenerArchivoAcumulado(Integer idAcumulado) {
 		// TODO Auto-generated method stub
 		   //String rutaArchivo = System.getProperty("user.home")+"/ejemploExcelJava.xls";
 	    AcumuladoPeriodo acumuladoPeriodo = this.acumuladoPeriodoDao.obtenerAcumuladosById(idAcumulado);
-		String rutaArchivo = "c://archivosNGDAY//acumuladoTmp.xls";        
-	    File archivoXLS = new File(rutaArchivo);
-        
+	    String rutaArchivo = "c://archivosNGDAY//acumuladoTmp.xlsx";
+	    if (acumuladoPeriodo.getTipoArchivo()=="xls")
+	    	rutaArchivo = "c://archivosNGDAY//acumuladoTmp.xls";        
+	    File archivoXLS = new File(rutaArchivo);        
         try{
      		FileOutputStream fos = new FileOutputStream(rutaArchivo);
      	    fos.write(acumuladoPeriodo.getArchivoAcumulado());
@@ -149,14 +158,24 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 	     	fos.write(acumuladoPeriodo.getArchivoAcumulado());
 	     	fos.close();
 	    	FileInputStream file = new FileInputStream(rutaArchivo);
-	    	HSSFWorkbook workbook = new HSSFWorkbook(file);    		
-	        HSSFSheet hoja = workbook.getSheetAt(0);
+	    	HSSFWorkbook workbook = null;
+	    	Workbook workbookxlsx = null;
+	    	Sheet hoja= null;
+	    	if (acumuladoPeriodo.getTipoArchivo().equals("xls")){
+	    		workbook = new HSSFWorkbook(file);
+	    		hoja = workbook.getSheetAt(0);
+	    	}
+	    	else{
+	    		workbookxlsx = new XSSFWorkbook(file); //or new HSSFWorkbook();
+	    		hoja = workbookxlsx.getSheetAt(0);
+	    	}
+	    		        
 	      	String data; 
 	    	//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
 	    	int filaNum=1;	    		
 	    	Row fila = hoja.getRow(1);	    		
-	    	System.out.println("datos:"+titulosArchivo.size());
-	    	System.out.println("Columnas:"+fila.getLastCellNum());
+	    	//System.out.println("datos:"+titulosArchivo.size());
+	    	//System.out.println("Columnas:"+fila.getLastCellNum());
 	    	int numErrores=0;
 	    	String cadenaErrores="No se encontraron las columnas:";
 	    	for (int columna = 1; columna < fila.getLastCellNum()-1; columna++) { // Recorre					

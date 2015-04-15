@@ -155,12 +155,18 @@ public class HojaController {
 		 		nomina.setIdNomina(idNomina);
 		 		hojaTrabajo.setNomina(nomina);
 		 		System.out.println("TIPO DE ARCHIVO:"+ufile.type);
+		 		String tipoArchivo="";
+				if (ufile.type.equals("application/excel") || ufile.type.equals("application/vnd.ms-excel"))				
+					tipoArchivo="xls";			
+				else
+					tipoArchivo="xlsx";
 		 		hojaTrabajo.setArchivoAcumulado(mpf.getBytes());
-		 		hojaTrabajo.setNombreArchivo(ufile.name);			
+		 		hojaTrabajo.setNombreArchivo(ufile.name);
+		 		hojaTrabajo.setTipoArchivo(tipoArchivo);
 		 		System.out.println("Done"+ufile.length+hojaTrabajo.getArchivoAcumulado().length);
 		     	this.hojaTrabajoServicio.agregarArchivo(hojaTrabajo);		
 		 		System.out.println("LOS VALORES DEL ARCHIVO:"+hojaTrabajo.getArchivoAcumulado().length);		
-		 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpHojaTrabajo.xls");
+		 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpHojaTrabajo."+ tipoArchivo);
 		 	    fos.write(hojaTrabajo.getArchivoAcumulado());
 		 	    fos.close(); 
 		    }
@@ -183,9 +189,10 @@ public class HojaController {
 		    System.out.println("buscando el registro de nómina:"+idHojaTrabajo);
 		 	try{            
 		 		fileToDownload = this.hojaTrabajoServicio.generarHojaTrabajo(idHojaTrabajo);
+		 		String ext= this.hojaTrabajoServicio.generarHojaTrabajoExt(idHojaTrabajo);
 		        inputStream = new FileInputStream(fileToDownload);
 		        response.setContentType("application/force-download");
-		        response.setHeader("Content-Disposition", "attachment; filename="+"hoja-1.xls"); 
+		        response.setHeader("Content-Disposition", "attachment; filename="+"hojaTrabajo.xlsx"); 
 		        IOUtils.copy(inputStream, response.getOutputStream());
 		        response.flushBuffer();
 		    }

@@ -14,6 +14,7 @@ public interface AcumuladoPeriodoServicio {
 	public File obtenerArchivoAcumulado(Integer idAcumulado);
 	public boolean validarArchivo(AcumuladoPeriodo acumuladoPeriodo);
 	public File obtenerArchivoAcumuladoByData(List tmp2);
+	public String obtenerArchivoAcumuladoExt(Integer idAcumulado);
 
  
 }

@@ -31,6 +31,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,14 +45,23 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 	private EmpleadoNominaDao empleadoNominaDao;
 	
 	@Override
-	public String cargarExcel(String nombreArchivo) {
+	public String cargarExcel(String nombreArchivo,String tipoArchivo) {
 		StringBuffer strBMain= new StringBuffer();
     	try {
     		//System.out.println("se carga el archivo:"+nombreArchivo);    		
     		FileInputStream file = new FileInputStream(nombreArchivo);
-    		HSSFWorkbook workbook = new HSSFWorkbook(file);    		
-        	HSSFSheet hoja = workbook.getSheetAt(0);
     		
+    		HSSFWorkbook workbook = null;
+	    	Workbook workbookxlsx = null;
+	    	Sheet hoja= null;
+	    	if (tipoArchivo.equals("xls")){
+	    		workbook = new HSSFWorkbook(file);
+	    		hoja = workbook.getSheetAt(0);
+	    	}
+	    	else{
+	    		workbookxlsx = new XSSFWorkbook(file); //or new HSSFWorkbook();
+	    		hoja = workbookxlsx.getSheetAt(0);
+	    	}    		
         	System.out.println("nombre de archivo"+nombreArchivo);
         	//Se llena el encabezado        			        	
     			int numColumnas = 97; 

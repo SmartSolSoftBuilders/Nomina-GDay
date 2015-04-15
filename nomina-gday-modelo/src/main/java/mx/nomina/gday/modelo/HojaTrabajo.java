@@ -7,9 +7,19 @@ public class HojaTrabajo extends BaseModelo{
 	private String nombreArchivo;
 	private String archivoPlantilla;
 	private byte[] archivoAcumulado;
+	private String tipoArchivo;
 
 	
 	public HojaTrabajo(){
+	}
+
+	public String getTipoArchivo() {
+		return tipoArchivo;
+	}
+
+
+	public void setTipoArchivo(String tipoArchivo) {
+		this.tipoArchivo = tipoArchivo;
 	}
 
 
@@ -64,13 +74,14 @@ public class HojaTrabajo extends BaseModelo{
 
 
 	public HojaTrabajo(int idHojaTrabajo, Nomina nomina, String nombreArchivo,
-			String archivoPlantilla, byte[] archivoAcumulado) {
+			String archivoPlantilla, byte[] archivoAcumulado,String tipoArchivo) {
 		super();
 		this.idHojaTrabajo = idHojaTrabajo;
 		this.nomina = nomina;
 		this.nombreArchivo = nombreArchivo;
 		this.archivoPlantilla = archivoPlantilla;
 		this.archivoAcumulado = archivoAcumulado;
+		this.tipoArchivo = tipoArchivo;
 	}
 
 

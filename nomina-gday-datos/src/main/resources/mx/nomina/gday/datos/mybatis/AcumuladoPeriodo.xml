@@ -11,6 +11,7 @@
 		<result property="numeroPeriodo" column="NUMERO_PERIODO"></result>
 		<result property="mesPago" column="MES_PAGO"></result>
 		<result property="anioPago" column="ANIO_PAGO"></result>
+		<result property="tipoArchivo" column="TIPO_ARCHIVO"></result>
 		<association property="nomina" column="ID_NOMINA" javaType="Nomina" select="selectNomina"/>		
 	</resultMap>
 			
@@ -136,9 +137,9 @@
   		   	SELECT nextVal('sec_acumulado')
   	</selectKey>
 		INSERT INTO "ACUMULADO_POR_PERIODO"(
-		"ID_ACUMULADO_PERIODO", "NUMERO_PERIODO", "ID_NOMINA", "ARCHIVO_ACUMULADO", "ESTATUS","NOMBRE_ARCHIVO","MES_PAGO","ANIO_PAGO")	
+		"ID_ACUMULADO_PERIODO", "NUMERO_PERIODO", "ID_NOMINA", "ARCHIVO_ACUMULADO", "ESTATUS","NOMBRE_ARCHIVO","MES_PAGO","ANIO_PAGO","TIPO_ARCHIVO")	
         VALUES (#{id}, #{numeroPeriodo}, #{nomina.idNomina},#{archivoAcumulado,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler}, #{estatus},#{nombreArchivo},
-        #{mesPago},#{anioPago});            	   
+        #{mesPago},#{anioPago},#{tipoArchivo});            	   
     </insert>
     
     <delete id="eliminarAcumulado" parameterType="AcumuladoPeriodo">

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -79,6 +80,13 @@ public class AcumuladoPeriodoController {
 	 		acumuladoPeriodo.setAnioPago(anioPago);
 	 		acumuladoPeriodo.setMesPago(mesPago);
 	 		System.out.println("TIPO DE ARCHIVO:"+ufile.type);
+	 		String tipoArchivo="";
+			if (ufile.type.equals("application/excel") || ufile.type.equals("application/vnd.ms-excel"))				
+				tipoArchivo="xls";			
+			else
+				tipoArchivo="xlsx";			
+			System.out.println();
+			acumuladoPeriodo.setTipoArchivo(tipoArchivo);
 	 		acumuladoPeriodo.setNombreArchivo(ufile.name);
 	 		acumuladoPeriodo.setArchivoAcumulado(mpf.getBytes());
 	 		System.out.println("Done"+ufile.length+acumuladoPeriodo.getArchivoAcumulado().length);
@@ -89,7 +97,7 @@ public class AcumuladoPeriodoController {
 	     		this.empleadoMongoServicio.guardarDocumento(acumuladoPeriodo);
 	 		}
 	 		System.out.println("LOS VALORES DEL ARCHIVO:"+acumuladoPeriodo.getArchivoAcumulado().length);		
-	 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpAcumulado.xls");
+	 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpAcumulado."+tipoArchivo);
 	 	    fos.write(acumuladoPeriodo.getArchivoAcumulado());
 	 	    fos.close(); 
 	     }
@@ -150,6 +158,7 @@ public class AcumuladoPeriodoController {
 		@RequestMapping(value="/obteneracumulado",method = RequestMethod.POST)
 	    @ResponseBody
 	    public void getFile(HttpServletRequest request,HttpServletResponse response) {
+			java.util.Date fecha = new Date();
 			File fileToDownload = null;
 	        InputStream inputStream = null;
 	        Integer idAcumulado=Integer.parseInt(request.getParameter("id1"));
@@ -157,9 +166,10 @@ public class AcumuladoPeriodoController {
 	 		try{            
 				//fileToDownload = this.hojaTrabajoServicio.generarHojaTrabajo(idHojaTrabajo);
 				fileToDownload=acumuladoPeriodoServicio.obtenerArchivoAcumulado(idAcumulado);
+				String ext= acumuladoPeriodoServicio.obtenerArchivoAcumuladoExt(idAcumulado);
 	            inputStream = new FileInputStream(fileToDownload);
 	            response.setContentType("application/force-download");
-	            response.setHeader("Content-Disposition", "attachment; filename="+"acumulado.xls"); 
+	            response.setHeader("Content-Disposition", "attachment; filename="+"acumulado-"+fecha+"."+ext); 
 	            IOUtils.copy(inputStream, response.getOutputStream());
 	            response.flushBuffer();
 	        }catch(Exception e){            

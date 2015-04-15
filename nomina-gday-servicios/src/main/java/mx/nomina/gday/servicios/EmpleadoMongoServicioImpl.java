@@ -11,6 +11,9 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +47,7 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
 		DB db = mongo.getDB("testDB");
 	    DBCollection collection = db.getCollection("empleados");
 	    HashMap map = new HashMap();
-	    String nombreArchivo = "C:\\archivosNGDAY\\cargaMongo.xls";
+	    String nombreArchivo = "C:\\archivosNGDAY\\cargaMongo."+acumuladoPeriodo.getTipoArchivo();
 	    File archivoXLS = new File(nombreArchivo);
 	    //Se crea el acumuladoTemporal
         try{
@@ -59,8 +62,18 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
         try {
     		System.out.println("se carga el archivo:"+nombreArchivo);    		    		
     		FileInputStream file = new FileInputStream(nombreArchivo);
-    		HSSFWorkbook workbook = new HSSFWorkbook(file);    		
-        	HSSFSheet hoja = workbook.getSheetAt(0);
+    		HSSFWorkbook workbook = null;
+    		Workbook workbookxlsx = null; 
+    		Sheet hoja = null;
+    		if (acumuladoPeriodo.getTipoArchivo().equals("xls")){
+    			workbook = new HSSFWorkbook(file);
+    			hoja = workbook.getSheetAt(0);
+    		}    			
+    		else {
+    			workbookxlsx = new XSSFWorkbook(file); //or new HSSFWorkbook();
+    			hoja = workbookxlsx.getSheetAt(0);
+    		}
+
         	//Se llena el encabezado        			        	
     		int numColumnas = 22; 
     		int numFilas = 10; 

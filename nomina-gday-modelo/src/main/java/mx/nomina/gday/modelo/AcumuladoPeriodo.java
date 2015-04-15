@@ -10,9 +10,20 @@ public class AcumuladoPeriodo extends BaseModelo{
 	private String nombreArchivo;
 	private String mesPago;
 	private String anioPago;
+	private String tipoArchivo;
 	
 	public AcumuladoPeriodo(){
+	}		
+
+	public String getTipoArchivo() {
+		return tipoArchivo;
 	}
+
+	public void setTipoArchivo(String tipoArchivo) {
+		this.tipoArchivo = tipoArchivo;
+	}
+
+
 
 	public Integer getIdAcumuladoPeriodo() {
 		return idAcumuladoPeriodo;
@@ -80,7 +91,7 @@ public class AcumuladoPeriodo extends BaseModelo{
 
 	public AcumuladoPeriodo(Integer idAcumuladoPeriodo, Nomina nomina,
 			String numeroPeriodo, byte[] archivoAcumulado, String estatus,
-			String nombreArchivo, String mesPago, String anioPago) {
+			String nombreArchivo, String mesPago, String anioPago, String tipoArchivo) {
 		super();
 		this.idAcumuladoPeriodo = idAcumuladoPeriodo;
 		this.nomina = nomina;
@@ -90,6 +101,7 @@ public class AcumuladoPeriodo extends BaseModelo{
 		this.nombreArchivo = nombreArchivo;
 		this.mesPago = mesPago;
 		this.anioPago = anioPago;
+		this.tipoArchivo = tipoArchivo;
 	}
 
 

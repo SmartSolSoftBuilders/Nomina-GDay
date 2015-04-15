@@ -36,7 +36,7 @@ public class EmpleadoMongoImpl implements EmpleadoMongo {
 	        //System.out.println(document.size());
 	    }
 	    collection.insert(document);
-	    System.out.println("Inserción realizada");
+	    //System.out.println("Inserción realizada");
 	    /*DBCursor cursor = collection.find();
         while(cursor.hasNext()) {
             System.out.println(cursor.next());

@@ -8,6 +8,7 @@
 		<result property="nombreArchivo" column="NOMBRE_ARCHIVO"/>
 		<result property="archivoPlantilla" column="ESTATUS"/>
 		<result property="archivoAcumulado" column="ARCHIVO_ACUMULADO" javaType = "byte[]" jdbcType = "BINARY" typeHandler = "org.apache.ibatis.type.ByteArrayTypeHandler" />
+		<result property="tipoArchivo" column="TIPO_ARCHIVO"/>
 		<association property="nomina" column="ID_NOMINA" javaType="Nomina" select="selectNomina"/>
 	</resultMap>
 	
@@ -60,9 +61,9 @@
   		</selectKey>
 			INSERT INTO "HOJA_DE_TRABAJO"(
             "ID_HOJA_DE_TRABAJO", "ID_NOMINA", "ARCHIVO_ACUMULADO", "ESTATUS", 
-            "PERIODO", "NOMBRE_ARCHIVO")
+            "PERIODO", "NOMBRE_ARCHIVO","TIPO_ARCHIVO")
            	VALUES (#{id},#{nomina.idNomina},#{archivoAcumulado,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler},	
-           	'0','1',#{nombreArchivo});            	   
+           	'0','1',#{nombreArchivo},#{tipoArchivo});            	   
     </insert>
 			
 </mapper>

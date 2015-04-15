@@ -9,6 +9,9 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,24 +59,34 @@ public class ArchivoServicioImpl implements ArchivoServicio{
 		Archivo archivo = new Archivo();
 		archivo = this.obtenerUltimaCargaArchivo();
 		try{
-			System.out.println("ARCHIVO OBTENIDO:"+archivo.getArchivo().length);
-			FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmp2.xls");
+			System.out.println("ARCHIVO OBTENIDO:"+archivo.getArchivo().length);			
+			FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmp2."+archivo.getTipoArchivo());
 		    fos.write(archivo.getArchivo());	    
 		    fos.close();
-		    this.revertirXLS("C://archivosNGDAY//tmp2.xls");
+		    this.revertirXLS("C://archivosNGDAY//tmp2."+archivo.getTipoArchivo(),archivo.getTipoArchivo());
 	    }catch(Exception e){
 	    	e.printStackTrace();
 	    }
 		return 0;
 	}
 	
-	public boolean revertirXLS(String nombreArchivo) {
+	public boolean revertirXLS(String nombreArchivo,String tipoArchivo) {
 	    
     	try {
     		System.out.println("se carga el archivo:"+nombreArchivo);    		
     		FileInputStream file = new FileInputStream(nombreArchivo);
-    		HSSFWorkbook workbook = new HSSFWorkbook(file);    		
-        	HSSFSheet hoja = workbook.getSheetAt(0);
+    		HSSFWorkbook workbook = null;
+	    	Workbook workbookxlsx = null;
+	    	Sheet hoja= null;
+	    	if (tipoArchivo.equals("xls")){
+	    		workbook = new HSSFWorkbook(file);
+	    		hoja = workbook.getSheetAt(0);
+	    	}
+	    	else{
+	    		workbookxlsx = new XSSFWorkbook(file); //or new HSSFWorkbook();
+	    		hoja = workbookxlsx.getSheetAt(0);
+	    	}    		
+        	System.out.println("nombre de archivo"+nombreArchivo);
 
         	//Se llena el encabezado        			        	
     			int numColumnas = 89; 
