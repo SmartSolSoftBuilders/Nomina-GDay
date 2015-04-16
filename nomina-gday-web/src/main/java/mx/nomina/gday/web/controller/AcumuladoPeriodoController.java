@@ -200,7 +200,7 @@ public class AcumuladoPeriodoController {
 				fileToDownload=acumuladoPeriodoServicio.obtenerArchivoAcumuladoByData(tmp2);
 	            inputStream = new FileInputStream(fileToDownload);
 	            response.setContentType("application/force-download");
-	            response.setHeader("Content-Disposition", "attachment; filename="+"acumulado.xls"); 
+	            response.setHeader("Content-Disposition", "attachment; filename="+"acumulado.xlsx"); 
 	            IOUtils.copy(inputStream, response.getOutputStream());
 	            response.flushBuffer();
 	        }catch(Exception e){            

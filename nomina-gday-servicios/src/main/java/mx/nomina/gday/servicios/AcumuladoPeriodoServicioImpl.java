@@ -209,7 +209,7 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 	public File obtenerArchivoAcumuladoByData(List datos) {
 		// TODO Auto-generated method stub
 		   //String rutaArchivo = System.getProperty("user.home")+"/ejemploExcelJava.xls";	    
-		String rutaArchivo = "c://archivosNGDAY//acumuladoMongo.xls";        
+		String rutaArchivo = "c://archivosNGDAY//acumuladoMongo.xlsx";        
         /*Se crea el objeto de tipo File con la ruta del archivo*/
 		File archivoXLS = new File(rutaArchivo); 
 		//Evento eventoTmp=new Evento();
@@ -219,9 +219,11 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
         int columnaInicial=0;        
         int totalDatos=20;
         try{
+	    	Workbook workbookxlsx = null;
+	    	Sheet hoja= null;	    	
         	FileInputStream file = new FileInputStream(archivoXLS);
-        	HSSFWorkbook workbook = new HSSFWorkbook(file);
-        	HSSFSheet hoja = workbook.getSheetAt(0);
+        	workbookxlsx = new XSSFWorkbook(file); //or new HSSFWorkbook();
+	    	hoja = workbookxlsx.getSheetAt(0);        	
         	//Se llena el encabezado        	
         	//Se guardarán todos los empleados
         	Row fila = hoja.getRow(1);
@@ -254,10 +256,10 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
         		}
         	}  	 	
             file.close();
-            FileOutputStream outFile = new FileOutputStream(new File("C:\\archivosNGDAY\\tmpMongoGen.xls"));
-            workbook.write(outFile);
+            FileOutputStream outFile = new FileOutputStream(new File("C:\\archivosNGDAY\\tmpMongoGen.xlsx"));
+            workbookxlsx.write(outFile);
             outFile.close();
-            archivoXLS = new File("C:\\archivosNGDAY\\tmpMongoGen.xls"); 	
+            archivoXLS = new File("C:\\archivosNGDAY\\tmpMongoGen.xlsx"); 	
          	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

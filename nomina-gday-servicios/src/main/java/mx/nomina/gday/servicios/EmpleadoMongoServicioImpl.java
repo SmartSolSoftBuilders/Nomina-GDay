@@ -127,19 +127,25 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
 		BasicDBObject whereQuery = new BasicDBObject();
 		if (id1>0)
 			whereQuery.put("id_nomina", id1);
-		if (id2!=null && id2!="")
-			whereQuery.put("mes_pago", id2);
-		if (id3!=null && id3!="")
-			whereQuery.put("anio_pago", id3);
-		if (id4!=null && id4!="")
-			whereQuery.put("numero_periodo", id4);
+		if (id2!=null && id2!="" ){
+			if  (!id2.equals("0"))
+				whereQuery.put("mes_pago", id2);
+		}
+		if (id3!=null && id3!="" ){
+			if  (!id3.equals("0"))
+				whereQuery.put("anio_pago", id3);
+		}
+		if (id4!=null && id4!="" ){
+			if  (!id4.equals("0"))
+				whereQuery.put("numero_periodo", id4);
+		}
 			
         DBCursor cursor = collection.find(whereQuery);
         int i=1;
         System.out.println("Se buscarán los registros de la nómina:"+id1);
         while (cursor.hasNext()) {        	
            List<String> listaMongo  = new ArrayList<String>();
-           System.out.println("Document: "+i); 
+           //System.out.println("Document: "+i); 
            DBObject obj=cursor.next();
            listaMongo.add(""+obj.get("# Control"));
            listaMongo.add(""+obj.get("Nombre"));
