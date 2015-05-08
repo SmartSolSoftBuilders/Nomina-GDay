@@ -141,10 +141,97 @@
 					  	<tr>				 		
 					 		<td>NUMERO DE CUENTA<input id='numCuenta' name='numCuenta' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>BANCO<select id='banco' name='banco' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-					 			     <option>BANCOMER VBBA</option>
-					 			     <option>BANAMEX</option>
-					 			     <option>SCOTIANK BANK INVERLAT</option>
-					 			
+								<option>BANCOMEXT</option>
+								<option>BANOBRAS</option>
+								<option>BBVA BANCOMER</option>
+								<option>SANTANDER</option>
+								<option>BANJERCITO</option>
+								<option>HSBC</option>
+								<option>BAJIO</option>
+								<option>IXE</option>
+								<option>INBURSA</option>
+								<option>INTERACCIONES</option>
+								<option>MIFEL</option>
+								<option>SCOTIABANK</option>
+								<option>BANREGIO</option>
+								<option>INVEX</option>
+								<option>BANSI</option>
+								<option>AFIRME</option>
+								<option>BANORTE</option>
+								<option>THE ROYAL BANK</option>
+								<option>AMERICAN EXPRESS</option>
+								<option>BAMSA</option>
+								<option>TOKYO</option>
+								<option>JP MORGAN</option>
+								<option>BMONEX</option>
+								<option>VE POR MAS Banco</option>
+								<option>ING</option>
+								<option>DEUTSCHE</option>
+								<option>CREDIT SUISSE</option>
+								<option>AZTECA</option>
+								<option>AUTOFIN</option>
+								<option>BARCLAYS</option>
+								<option>COMPARTAMOS</option>
+								<option>BANCO FAMSA</option>
+								<option>BMULTIVA</option>
+								<option>ACTINVER</option>
+								<option>WAL-MART</option>
+								<option>NAFIN</option>
+								<option>INTERBANCO</option>
+								<option>BANCOPPEL</option>
+								<option>ABC CAPITAL</option>
+								<option>UBS BANK UBS</option>
+								<option>CONSUBANCO</option>
+								<option>VOLKSWAGEN</option>
+								<option>CIBANCO</option>
+								<option>BBASE</option>
+								<option>BANSEFI</option>
+								<option>HIPOTECARIA FEDERAL</option>
+								<option>MONEXCB</option>
+								<option>GBM GBM</option>
+								<option>MASARI</option>
+								<option>VALUE</option>
+								<option>ESTRUCTURADORES</option>
+								<option>TIBER</option>
+								<option>VECTOR</option>
+								<option>B&B</option>
+								<option>ACCIVAL</option>
+								<option>MERRILL LYNCH</option>
+								<option>FINAMEX</option>
+								<option>VALMEX</option>
+								<option>UNICA</option>
+								<option>MAPFRE</option>
+								<option>PROFUTURO</option>
+								<option>CB ACTINVER</option>
+								<option>OACTIN</option>
+								<option>SKANDIA</option>
+								<option>CBDEUTSCHE</option>
+								<option>ZURICH</option>
+								<option>ZURICHVI</option>
+								<option>SU CASITA</option>
+								<option>CB INTERCAM</option>
+								<option>CI BOLSA</option>
+								<option>BULLTICK</option>
+								<option>STERLING</option>
+								<option>FINCOMUN</option>
+								<option>HDI SEGUROS</option>
+								<option>ORDER</option>
+								<option>AKALA</option>
+								<option>CB JPMORGAN</option>
+								<option>REFORMA</option>
+								<option>STP</option>
+								<option>TELECOMM</option>
+								<option>EVERCORE</option>
+								<option>SKANDIA</option>
+								<option>SEGMTY</option>
+								<option>ASEA</option>
+								<option>KUSPIT</option>
+								<option>SOFIEXPRESS</option>
+								<option>UNAGRA</option>
+								<option>OPCIONES EMPRESARIALES DEL NOROESTE</option>
+								<option>LIBERTAD</option>
+								<option>CLS</option>
+								<option>INDEVAL</option>					 		
 					 		</select></td>
 					 		<td>TIPO DE PAGO<select id='tipoPago' name='tipoPago' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 					 				<option>EFECTIVO</option>

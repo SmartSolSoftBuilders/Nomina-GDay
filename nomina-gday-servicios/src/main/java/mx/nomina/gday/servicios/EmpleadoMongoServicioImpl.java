@@ -1,12 +1,10 @@
 package mx.nomina.gday.servicios;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -73,7 +71,6 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     			workbookxlsx = new XSSFWorkbook(file); //or new HSSFWorkbook();
     			hoja = workbookxlsx.getSheetAt(0);
     		}
-
         	//Se llena el encabezado        			        	
     		int numColumnas = 22; 
     		int numFilas = 10; 
@@ -105,7 +102,6 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     			//		System.out.print(" Columna->"+titulo+"Valor_"+data);	
         				if (titulo.length()>1)
         					map.put(titulo.replace(".","_"),data);
-
     				}
     			}
     			this.empleadoMongo.saveDocument(collection, map);
@@ -215,6 +211,5 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
 	    query.append("id_acumulado", acumuladoPeriodo.getIdAcumuladoPeriodo());
 	    collection.remove(query);
 	}
-
 	
 }

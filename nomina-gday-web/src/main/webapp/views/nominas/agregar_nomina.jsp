@@ -109,9 +109,27 @@
 					 	<tr>		 		
 					 		<td>TIPO PAGO
 					 		<select id='tipoPago' name='tipoPago' type="text" class="form-control">
-		  							<option>Neto</option>
-		  							<option>Bruto</option>
-		  							<option>Sindicato Tres</option>
+		  						<OPTION>NORMAL</OPTION>
+		  						<OPTION>COMPLEMENTO 01</OPTION>
+								<OPTION>COMPLEMENTO 02</OPTION>
+								<OPTION>COMPLEMENTO 03</OPTION>
+								<OPTION>COMPLEMENTO 04</OPTION>
+								<OPTION>COMPLEMENTO 05</OPTION>
+								<OPTION>COMPLEMENTO 06</OPTION>
+								<OPTION>COMPLEMENTO 07</OPTION>
+								<OPTION>COMPLEMENTO 08</OPTION>
+								<OPTION>COMPLEMENTO 09</OPTION>
+								<OPTION>COMPLEMENTO 10</OPTION>
+								<OPTION>VIATICOS 01</OPTION>
+								<OPTION>VIATICOS 02</OPTION>
+								<OPTION>VIATICOS 03</OPTION>
+								<OPTION>VIATICOS 04</OPTION>
+								<OPTION>VIATICOS 05</OPTION>
+								<OPTION>VIATICOS 06</OPTION>
+								<OPTION>VIATICOS 07</OPTION>
+								<OPTION>VIATICOS 08</OPTION>
+								<OPTION>VIATICOS 09</OPTION>
+								<OPTION>VIATICOS 10</OPTION>						
 							</select></td>					 	
 						 	<td></td>
 					 		<td>CLASE DE RIESGO
@@ -128,10 +146,11 @@
 							<td>REGISTRO PATRONAL<input id='registroPatronal' name='registroPatronal' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td>PERIODICIDAD
 					 			<select id='periodicidad' name='periodicidad' type="text" class="form-control">
-		  							<option>Q</option>
-		  							<option>S</option>
-		  							<option>M</option>
+					 				<option>S</option>		  							
 		  							<option>C</option>
+		  							<option>Q</option>
+		  							<option>28</option>
+		  							<option>M</option>
 							</select></td>					 	
 					 		<td>TIPO CALENDARIO
 					 		<select id='tipoCalendario' name='tipoCalendario' class="form-control"></select>

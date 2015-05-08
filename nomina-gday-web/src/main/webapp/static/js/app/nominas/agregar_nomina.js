@@ -63,7 +63,7 @@ $(document).ready(function() {
 				var options = "";
 				var result=response[2];
 				 for (var i = 0; i < result.length; i++) {
-				    	options += '<option value="' + result[i].idCalendario + '">' + result[i].siglas +'</option>';
+				    	options += '<option value="' + result[i].idCalendario + '">' + result[i].tipoCalendario +'</option>';
 				    }
 		    $("#tipoCalendario").append(options)
 		    
