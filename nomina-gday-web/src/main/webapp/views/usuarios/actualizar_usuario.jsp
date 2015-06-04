@@ -52,7 +52,7 @@
 							</tr>
 							<tr>
 								<td>ROLES
-									<select id='rol' name='rol' class="form-control" disabled></select>
+									<select id='rol' name='rol' class="form-control"></select>
 								</td>
 							</tr>
 						</table>

@@ -134,6 +134,7 @@
 						 	<td></td>
 					 		<td>CLASE DE RIESGO
 					 		<select id='claseRiesgo' name='claseRiesgo' type="text" class="form-control">
+		  							<option>C0</option>
 		  							<option>CI</option>
 		  							<option>CII</option>
 		  							<option>CIII</option>
