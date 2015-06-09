@@ -25,11 +25,17 @@ $(document).ready(function() {
 	$("#actualizarGrupoForm").validate({
 		rules: {
 			nombre: "required",
-			nombreCorto: "required",
+			nombreCorto: {
+				required:true,
+				maxlength: 14
+				}
 		},        
 		messages: {
 			nombre: "Ingrese el nombre del Grupo",
-			nombreCorto:"Ingrese el nombre corto del Grupo",
+			nombreCorto:{
+				required:"Ingrese el nombre corto del Grupo",
+				maxlength: "El m\u00e1ximo de caracteres es 15"
+				}
 		},
 		
 		submitHandler: function(form) {
