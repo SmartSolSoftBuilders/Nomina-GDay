@@ -50,4 +50,23 @@ public class ReportesController {
         }
  
     }
+	@RequestMapping(value="/obtenerempleados",method = RequestMethod.POST)
+    @ResponseBody
+    public void getFileEmp(HttpServletRequest request,HttpServletResponse response) {
+		File fileToDownload = null;
+        InputStream inputStream = null;
+        //Integer idNomina=Integer.parseInt(request.getParameter("id1"));
+        //System.out.println("buscando el registro de nómina:"+idNomina);
+ 		try{            
+			fileToDownload = this.reportesServicio.generarLayoutEmpleados(1,"","");
+            inputStream = new FileInputStream(fileToDownload);
+            response.setContentType("application/force-download");
+            response.setHeader("Content-Disposition", "attachment; filename="+"layout-empleados.xls"); 
+            IOUtils.copy(inputStream, response.getOutputStream());
+            response.flushBuffer();
+        }catch(Exception e){            
+            e.printStackTrace();
+        }
+ 
+    }
 }

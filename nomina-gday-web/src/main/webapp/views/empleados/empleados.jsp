@@ -14,10 +14,10 @@
 		<%session.setAttribute("notification","");%>				
 			<h1><font color=#0051a4 class="mayuscula">Empleados</font></h1>		
 			<div id="demo">
-				<form id="formSeleccionarEmpleados">
+				<form id="formSeleccionarEmpleados">					
 					<div style="text-align:right; padding-bottom:1em;">
 						<!--button type="submit">Submit form</button-->
-					</div>
+					</div>					
 					<table  cellpadding="0" cellspacing="0" border="0" class="display" id="tablaEmpleado">
 					<thead>			
 						<tr class="odd gradeA">
@@ -53,7 +53,7 @@
 				<input type="button" class="btn btn-success" value="CREAR EMPLEADO" onclick="showAgregarEmpleado();"/>
 				<input type="button" class="btn btn-success" value="ALTA MASIVA" onclick="altaMasivaDeEmpleado();"/>
 	            <%} %>    
-								
+				<input type="button" class="btn btn-success" value="OBTENER EMPLEADOS" onclick="ajax_downloadEmp(1);"/>
 			</div>
 			<br>
 			<br>

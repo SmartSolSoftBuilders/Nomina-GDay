@@ -164,4 +164,94 @@ public class ReportesServicioImpl implements ReportesServicio {
         return archivoXLS;
 	}
 	
+	
+	@Override
+	public File generarLayoutEmpleados(Integer idNomina, String fechaInicio, String fechaFin) {
+		/*La ruta donde se creará el archivo*/
+        //String rutaArchivo = System.getProperty("user.home")+"/ejemploExcelJava.xls";
+	    Nomina nomina = this.nominaDao.obtenerNominaById(idNomina);
+
+		String rutaArchivo = "c://archivosNGDAY//layoutEmpleado.xls";
+        /*Se crea el objeto de tipo File con la ruta del archivo*/
+		File archivoXLS = new File(rutaArchivo); 
+		//Evento eventoTmp=new Evento();		
+		/*Se crea el archivo*/
+        int filaInicial=8;
+        int columnaInicial=1;
+        int totalDatos=67;
+        try{
+        	FileInputStream file = new FileInputStream(archivoXLS);
+        	HSSFWorkbook workbook = new HSSFWorkbook(file);
+        	HSSFSheet hoja = workbook.getSheetAt(0);
+        	List <Empleado> empleados = this.empleadoDao.obtenerEmpleados();
+        	//Se llena el encabezado
+        	Row fila = hoja.getRow(1);	        	
+        	//Nombre esquema
+        	//fila.createCell(5).setCellValue(nomina.getPatrona().getNombreCortoPatrona());        	
+        	//Se guardarán todos los empleados
+        	for (int j=filaInicial,indexEmpleados=0; j<(empleados.size()+filaInicial); j++,indexEmpleados++){
+        		fila=hoja.getRow(j);
+        		for (int k=columnaInicial,recorrerCeldas=0;k<totalDatos; k++){
+        			recorrerCeldas=0;
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getIdEmpleado());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getNoControl());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getNss());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getCurp());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getApellidoPaterno());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getApellidoMaterno());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getNombre());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getRfc());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getFechaNacimiento());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getEdad());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getSexo());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getPaisOrigen());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getNacionalidad());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getEstadoCivil());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getCorreoElectronico());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getFechaIngresoReal());
+        			fila.createCell(recorrerCeldas++).setCellValue("NO");
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getCalle());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getNumExterior());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getNumInterior());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getColonia());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getCodigoPostal());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getMunicipioDel());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getEntFederativa());
+        			fila.createCell(recorrerCeldas++).setCellValue("SI");//IFE
+        			fila.createCell(recorrerCeldas++).setCellValue("SI");//ACTA
+        			fila.createCell(recorrerCeldas++).setCellValue("SI");//CURP
+        			fila.createCell(recorrerCeldas++).setCellValue("SI");//RFC
+        			fila.createCell(recorrerCeldas++).setCellValue("SI");//COMPROBANTE        	
+        			fila.createCell(recorrerCeldas++).setCellValue("SI");//COMP EST
+        			fila.createCell(recorrerCeldas++).setCellValue("SI");//CORREO
+        			fila.createCell(recorrerCeldas++).setCellValue("SI");//PREAFIL
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getCuenta());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getBanco());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getTipoPago());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getNoCredInfonavit());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getDescInfonavitVsmg());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getDesInfonavitPorc());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getDescInfonavitImp());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getDescFonacotPago());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getDescFonacotNum());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getPensionAlimImp());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getPensionAlimPorc());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getPensionAlimAcred());
+        			fila.createCell(recorrerCeldas++).setCellValue(empleados.get(indexEmpleados).getPensionAlimObs()); 
+        		}	
+        	}  	 	
+            file.close();
+            FileOutputStream outFile =new FileOutputStream(new File("C:\\archivosNGDAY\\tmpEmp.xls"));
+            workbook.write(outFile);
+            outFile.close();
+            archivoXLS = new File("C:\\archivosNGDAY\\tmpEmp.xls"); 	
+         	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("<OTIKA>ERROR!"+e.getMessage());
+			e.printStackTrace();
+		}
+        /*Cerramos el flujo de datos*/        
+        return archivoXLS;
+	}
 }
