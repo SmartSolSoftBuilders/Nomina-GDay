@@ -29,9 +29,9 @@
 		<result property="loteMovImssBaja" column="LOTE_MOV_IMSS_BAJA"/>
 		<result property="aplicaFiniquito" column="APLICA_FINIQUITO"/>
 		<result property="montoFiniquito" column="MONTO_FINIQUITO"/>	
-		<!-- collection property="nomina" column="ID_NOMINA" javaType="List" select="selectNomina"/>
-		<collection property="empleado" column="ID_EMPLEADO" javaType="List" select="selectEmpleado"/>
-		 -->
+		<association property="nomina" column="ID_NOMINA" javaType="Nomina" select="selectNomina"/>
+		<association property="empleado" column="ID_EMPLEADO" javaType="Empleado" select="selectEmpleado"/>
+		 
 		<association property="puesto" column="ID_PUESTO" javaType="Puesto" select="selectPuesto"/>
 		<association property="departamento" column="ID_DEPARTAMENTO" javaType="Departamento" select="selectDepartamento"/>
 		<association property="area" column="ID_AREA" javaType="Area" select="selectArea"/>

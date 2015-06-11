@@ -93,8 +93,7 @@ $(document).ready(function() {
 			cpformnomina : "required",
 			coloniaformnomina : "required",
 			mundelformnomina : "required",
-			suministrosformnomina : "required",
-			actividadesformnomina : "required",
+			suministrosformnomina : "required",			
 			puestosformnomina : "required",
 			serviciosformnomina : "required",
 			tiposalarioformnomina : "required",
@@ -160,10 +159,10 @@ $(document).ready(function() {
 			var options = "";
 			var result=response[3];
 			for (var i = 0; i < result.length; i++) {
-				options += '<option value="' + result[i].idPrceso + '">' + result[i].descripcion +'</option>';
+				options += '<option value="' + result[i].idPuesto + '">' + result[i].descripcion +'</option>';
 			}
-			$("#proceso").append(options)
-			console.log ("proceso");				
+			$("#puestos").append(options)
+			console.log ("puestos");				
 
 		}	
 	
@@ -280,9 +279,9 @@ function guardarNominasEmpleado(idEmpleado){
 				"suministros":nominasAsignadas[i][23],
 				"actividades":nominasAsignadas[i][24],
 				"area.idArea":1,
-				"proceso.idArea":1,
-				"departamento.idArea":1,
-				"puesto.idPuesto":1
+				"proceso.idProceso":1,
+				"departamento.idDepartamento":1,
+				"puesto.idPuesto":1							
 				},
 			sync: true,
 			dataType : 'json',
@@ -336,9 +335,55 @@ function showNominaForm(idNomina,nombre){
 	document.getElementById("idnominaformnomina").value=idNomina;
 	document.getElementById("nombrenominaformnomina").value=nombre;
 	$("#divSeleccionNominaParaEmpleado").dialog("close");
-	$("#tablaFormNominas").dialog(({show: "slide",  					stack: false,
-draggable: false,resizable: false,modal: true, width:960, height:900,
-		autoOpen: true}));	
+	$.ajax({
+		sync:true,
+		dataType:'json',
+		url:   '../../mvc/empleado/getdatoscombo',
+		type:  'post',		
+		beforeSend: function () {	
+		},
+		success:  function (response) {
+			console.log (response[0]);
+			var options = "";
+			var result=response[0];
+			 for (var i = 0; i < result.length; i++) {
+			    	options += '<option value="' + result[i].idArea + '">' + result[i].descripcion +'</option>';
+			    }
+			$("#area").append(options)
+			console.log ("area");
+			
+			console.log (response[1]);	
+			var options = "";
+			var result=response[1];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idProceso + '">' + result[i].descripcion +'</option>';
+			}
+			$("#proceso").append(options)
+			console.log ("proceso");
+
+			console.log (response[2]);	
+			var options = "";
+			var result=response[2];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idDepartamento + '">' + result[i].descripcion +'</option>';
+			}
+			$("#departamento").append(options)
+			console.log ("departamento");
+
+			console.log (response[3]);	
+			var options = "";
+			var result=response[3];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idPuesto + '">' + result[i].descripcion +'</option>';
+			}
+			$("#puestos").append(options)
+			console.log ("puestos");		
+		$("#tablaFormNominas").dialog(({show: "slide",  					stack: false,
+			draggable: false,resizable: false,modal: true, width:960, height:900,
+					autoOpen: true}));	
+		}
+	});
+		
 }
 
 function hideNominaForm(){

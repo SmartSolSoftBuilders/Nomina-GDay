@@ -299,26 +299,26 @@
 				</table>
 				<table border=2>
 					   	<tr>
-						  		<td>
-							 		<button type="button" class="btn btn-success" onclick="agregarNominaAEmpleado();">AÑADIR</button>
-						 		  <%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>
-										<button type="button" class="btn btn-success" onclick="shoBajaNominaForm();">ELIMINAR</button>
-						            <%} %>  
-									<button type="button" class="btn btn-success" onclick="editarObjetoJS();">EDITAR</button>					 			
+						  	<td>
+							 	<button type="button" class="btn btn-success" onclick="agregarNominaAEmpleado();">AÑADIR</button>
+						 		<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>
+								<button type="button" class="btn btn-success" onclick="shoBajaNominaForm();">ELIMINAR</button>
+						        <%} %>  
+								<button type="button" class="btn btn-success" onclick="editarObjetoJS();">EDITAR</button>					 			
 					 			<br>
-									<table name="tablanominasasignadas" id="tablanominasasignadas">
-										<tr>
-											<td>NÓMINA</td>
-											<td>ESTATUS</td>
-											<td>Seleccionar</td>
-										</tr>
-									 </table>
-									 <input type="hidden" id="nominasNum" value="0"/>
-							 	</td>
-					 		</tr>
-					 </table>
+								<table name="tablanominasasignadas" id="tablanominasasignadas">
+									<tr>
+										<td>NÓMINA</td>
+										<td>ESTATUS</td>
+										<td>Seleccionar</td>
+									</tr>
+								</table>
+								<input type="hidden" id="nominasNum" value="0"/>
+							 </td>
+					 	</tr>
+					</table>
 						<!-- /.col-lg-6 -->
-								 <div class="input-group">      
+					<div class="input-group">      
 			     	 <span>
 			        	<button type="button" class="btn btn-success" onclick="actualizarEmpleado();">ACTUALIZAR</button>
 			        	<button type="button" class="btn btn-success" onclick="cancelar();">CANCELAR</button>
@@ -409,8 +409,8 @@
 					</tr>
 					<tr>
 				 		<td>CODIGO POSTAL<input id='cpformnomina' name='cpformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td>nomasignadavolverhidden:<input id='idnominaformnomina' name='idnominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td>nomasignadavolverhidden:<input id='nombrenominaformnomina' name='nombrenominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+				 		<td><!--  nomasignadavolverhidden:--><input id='idnominaformnomina' name='idnominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td><!-- nomasignadavolverhidden:--><input id='nombrenominaformnomina' name='nombrenominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 		<input id='statnominaformnomina' name='statnominaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 		</td>					 		
 					</tr>
@@ -453,35 +453,32 @@
 							</select>					 		
 				 		</td>				 							 		
 					</tr>
+					
 					<tr>
 				 		<td>SUMINISTROS<select id='suministrosformnomina' name='suministrosformnomina'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 				<option value="SUM1">SUM1</option>
 				 			</select>
 				 		</td>
-						<td>ACTIVIDADES<select id='actividadesformnomina' name='actividadesformnomina'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-								<option value="ACTIV1">ACTIV1</option>
-							</select>
-						</td>
-				 		<td>PUESTOS<select id='puestosformnomina' name='puestosformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-				 				<option value="PUESTO1">PUESTO1</option>
+						<td><input type="hidden" id='actividadesformnomina' name='actividadesformnomina'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+							PUESTO<select id='puestosformnomina' name='puestosformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 			</select>
+						</td>
+				 		<td>ÁREA
+				 		<select id='areaformnomina' name='areaformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
+							</select>
 				 		</td>					 		
 					</tr>							
 					<tr>
 						 <td></td>
-						 <td>SERVICIOS<select id='serviciosformnomina' name='serviciosformnomina'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-								<option value="SERV1">SERV1</option>
-								<option value="SERV2">SERV2</option>
+						 <td>DEPARTAMENTO<select id='departamento' name='departamento'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">								
 						 	</select>
-						 </td>
-						 <td>ÁREA<select id='areaformnomina' name='areaformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-								<option value="AREA1">AREA1</option>	
-							</select>						 
-						 </td>					 		
+						 </td>	
+						  <td>PROCESO<select id='proceso' name='proceso'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">								
+						 	</select>
+						 </td>			
 					</tr>
 						
-					<tr>
-						<td></td>
+					<tr>						
 						<!-- button id="buttonAgregar" type="button" class="btn btn-success" onclick="agregarObjetoJS();">AGREGAR</button></td-->
 						<td><button id="buttonAgregar" type="button" class="btn btn-success" onclick="guardarCambiosNominaEmpleado('../../mvc/empleado/guardarempleadonomina');">AGREGAR</button></td> 
 						<td><button id="buttonGuardar" type="button" class="btn btn-success" onclick="guardarCambiosNominaEmpleado('../../mvc/empleado/guardareditarempleadonomina');">ACTUALIZAR</button></td>

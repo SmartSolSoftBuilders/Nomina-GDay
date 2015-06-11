@@ -132,7 +132,14 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 	public EmpleadoNomina obtenerEmpleadoNominaByIds(
 			EmpleadoNomina empleadoNomina) {
 		// TODO Auto-generated method stub
-		return this.empleadoNominaDao.obtenerEmpleadoNominaByIdNominaEmpleado(empleadoNomina);
+		try{
+			System.out.println("SERVICIO!");
+			return this.empleadoNominaDao.obtenerEmpleadoNominaByIdNominaEmpleado(empleadoNomina);
+		}
+		catch (Exception e){
+			System.out.println("ERROR"+e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
@@ -144,7 +151,7 @@ public class EmpleadoServicioImpl implements EmpleadoServicio{
 			datosCombo.add(this.areaDao.obtenerAreas());
 			datosCombo.add(this.procesoDao.obtenerProcesos());
 			datosCombo.add(this.departamentoDao.obtenerDepartamentos());
-			datosCombo.add(this.procesoDao.obtenerProcesos());
+			datosCombo.add(this.puestoDao.obtenerPuestos());
 		}
 		catch(Exception e){
 			e.printStackTrace();

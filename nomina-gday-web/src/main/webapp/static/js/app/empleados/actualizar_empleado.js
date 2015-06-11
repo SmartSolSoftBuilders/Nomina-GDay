@@ -184,7 +184,8 @@ function obtenerEmpleado(idEmpleado){
 		console.log(response)
 		muestraDatosEmpleado(response);	
 		},	
-	error: function (response) {																	
+	error: function (response) {					
+		console.log(respone)
 		$("#resultadoGuardar").html("Error");
 		}		
 	});		
@@ -396,69 +397,114 @@ function showNominaForm(idNomina,nombre){
 	document.getElementById("idnominaformnomina").value=idNomina;
 	document.getElementById("nombrenominaformnomina").value=nombre;
 	$("#divSeleccionNominaParaEmpleado").dialog("close");
-	$("#tablaFormNominas").dialog(({show: "slide",  					stack: false,
+	$("#tablaFormNominas").dialog(({show: "slide",stack: false,
 		draggable: false,resizable: false,modal: true, width:960, height:900,
 		autoOpen: true}));
 	$("#buttonAgregar").show();
 	$("#buttonGuardar").hide();
 }
-
+ 
 function showEditarNominaForm(idNomina,nombre){
 	document.getElementById("idnominaformnomina").value=idNomina;
 	document.getElementById("nombrenominaformnomina").value=nombre;
-	$("#tablaFormNominas").dialog(({show: "slide",  					stack: false,
-		draggable: false,resizable: false,modal: true, width:960, height:900,
-		autoOpen: true}));
+	//alert(idNomina+"---->"+$("#idEmpleado").val())
 	$.ajax({
-		sync: true,
+		sync:true,
+		dataType:'json',
+		url:   '../../mvc/empleado/getdatoscombo',
+		type:  'post',		
+		beforeSend: function () {	
+		},
+		success:  function (response) {
+			console.log (response[0]);
+			var options = "";
+			var result=response[0];
+			 for (var i = 0; i < result.length; i++) {
+			    	options += '<option value="' + result[i].idArea + '">' + result[i].descripcion +'</option>';
+			    }
+			$("#areaformnomina").append(options)
+			console.log ("area");
+			
+			console.log (response[1]);	
+			var options = "";
+			var result=response[1];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idProceso + '">' + result[i].descripcion +'</option>';
+			}
+			$("#proceso").append(options)
+			console.log ("proceso");
+
+			console.log (response[2]);	
+			var options = "";
+			var result=response[2];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idDepartamento + '">' + result[i].descripcion +'</option>';
+			}
+			$("#departamento").append(options)
+			console.log ("departamento");
+
+			console.log (response[3]);	
+			var options = "";
+			var result=response[3];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idPuesto + '">' + result[i].descripcion +'</option>';
+			}
+			$("#puestosformnomina").append(options)
+			console.log ("puestos");				
+
+		}	
+	
+	});
+	$.ajax({		
 		data:{
 			"nomina.idNomina":idNomina,
 			"empleado.idEmpleado":$("#idEmpleado").val()
 		},
-		type:  'post',
-		url:   '../../mvc/empleado/getnominasempbyid',
+		sync: true,
 		dataType:  'json',
-		beforeSend: function () {
-			$("#resultado").html("Procesando, espere por favor...");
-	  	$( "#progressbar" ).progressbar({
-		      value: 75
-		    });	
-	    $( "#demo" ).hide();
+		url: '../../mvc/empleado/getnominasempbyid2',
+		type: 'post',		
+		beforeSend: function () {			
 		},
 		success:  function (data) {
 			console.log(data);
-			$("#fechaingresoformnomina").val(data.fechaIngreso);
-			$("#estatusformnomina").val(data.estatus);
-			$("#tiposalarioformnomina").val(data.tipoSalario);
-			$("#fechabajaformnomina").val(data.fechaBaja);
-			$("#tipocontratoformnomina").val(data.loteMovImssAlta);
-			$("#fechavencimientoformnomina").val(data.fechaVencimiento);
-			$("#sueldomensualformnomina").val(data.sueldoMensual);
-			$("#sueldodiarioformnomina").val(data.sueldoDiario);
-			$("#sueldodiariointformnomina").val(data.sueldoDiarioInt);
-			$("#loteimssformnomina").val(data.loteMovImssAlta);
-			$("#plazatrabajoformnomina").val(data.plazaTrabajo);
-			$("#numtrabajadorclienteoformnomina").val(data.numeroTrabajadorCliente);
-			$("#otropatronformnomina").val(data.otroPatron);
-			$("#nombreotropatronformnomina").val(data.nombreOtroPatron);
-			$("#rfcnformnomina").val(data.rfcOtroPatron);
-			$("#calleformnomina").val(data.calle);
-			$("#numextformnomina").val(data.numExterior);
-			$("#numintformnomina").val(data.numInterior);
-			$("#cpformnomina").val(data.codigoPostal);
-			$("#coloniaformnomina").val(data.colonia);
-			$("#mundelformnomina").val(data.municipioDel);
-			$("#estadoformnomina").val(data.entFederativa);
-			$("#suministrosformnomina").val(data.suministros);
-			$("#actividadesformnomina").val(data.actividades);
-			$("#puestosformnomina").val(data.puestos);
-			$("#serviciosformnomina").val(data.servicios);
-			//$("#areaformnomina").val(data.area.idArea);
+			$("#tablaFormNominas").dialog(({show: "slide", stack: false,
+				draggable: false,resizable: false,modal: true, width:960, height:900,
+				autoOpen: true}));
+			$("#fechaingresoformnomina").val(data[0]);
+			$("#estatusformnomina").val(data[1]);
+			$("#tiposalarioformnomina").val(data[2]);
+			$("#fechabajaformnomina").val(data[3]);
+			$("#tipocontratoformnomina").val(data[4]);
+			$("#fechavencimientoformnomina").val(data[5]);
+			$("#sueldomensualformnomina").val(data[6]);
+			$("#sueldodiarioformnomina").val(data[7]);
+			$("#sueldodiariointformnomina").val(data[8]);
+			$("#loteimssformnomina").val(data[9]);
+			$("#plazatrabajoformnomina").val(data[10]);
+			$("#numtrabajadorclienteoformnomina").val(data[11]);
+			$("#otropatronformnomina").val(data[12]);
+			$("#nombreotropatronformnomina").val(data[13]);
+			$("#rfcnformnomina").val(data[14]);
+			$("#calleformnomina").val(data[15]);
+			$("#numextformnomina").val(data[16]);
+			$("#numintformnomina").val(data[17]);
+			$("#cpformnomina").val(data[18]);
+			$("#coloniaformnomina").val(data[19]);
+			$("#mundelformnomina").val(data[20]);
+			$("#estadoformnomina").val(data[21]);
+			$("#suministrosformnomina").val(data[22]);
+			//$("#actividadesformnomina").val(data.actividades);
+			$("#puestosformnomina").val(data[23]);
+			$("#serviciosformnomina").val(data[24]);
+			$("#areaformnomina").val(data[25]);
+			$("#departamento").val(data[26]);
+			$("#proceso").val(data[27]);					
 			$("#buttonAgregar").hide();
 			$("#buttonGuardar").show();
 		},
 		error:  function (response) {
-			console.log(response);
+			console.log("ERROR gETT"+response);
 			alert(response);
 		}
 	});			

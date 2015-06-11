@@ -411,9 +411,9 @@
 					</tr>
 					<tr>
 				 		<td>CODIGO POSTAL<input id='cpformnomina' name='cpformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td>nomasignadavolverhidden:<input id='idnominaformnomina' name='idnominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
-				 		<td>nomasignadavolverhidden:<input id='nombrenominaformnomina' name='nombrenominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
-					</tr>
+				 		<td><input id='idnominaformnomina' name='idnominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+				 		<td><input id='nombrenominaformnomina' name='nombrenominaformnomina' type="hidden" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
+					</tr> 
 					<tr>
 				 		<td>COLONIA<input id='coloniaformnomina' name='coloniaformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 				 		<td>MUNICIPIO O DELEGACIÓN<input id='mundelformnomina' name='mundelformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
@@ -458,28 +458,23 @@
 				 				<option value="SUM1">SUM1</option>
 				 			</select>
 				 		</td>
-						<td>ACTIVIDADES<select id='actividadesformnomina' name='actividadesformnomina'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-								<option value="ACTIV1">ACTIV1</option>
-							</select>
-						</td>
-				 		<td>PUESTOS<select id='puestosformnomina' name='puestosformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-				 				<option value="PUESTO1">PUESTO1</option>
+				 		<td><input type="hidden" value="1" id="actividadesformnomina" name="actividadesformnomina"/>
+				 		PUESTO<select id='puestos' name='puestos' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 			</select>
-				 		</td>					 		
-					</tr>							
-					<tr>
-						 <td></td>
-						 <td>SERVICIOS<select id='serviciosformnomina' name='serviciosformnomina'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-								<option value="SERV1">SERV1</option>
-								<option value="SERV2">SERV2</option>
-						 	</select>
-						 </td>
-						 <td>ÁREA<select id='areaformnomina' name='areaformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-								<option value="AREA1">AREA1</option>	
+				 		</td>
+				 		<td>ÁREA<select id='area' name='area' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 							</select>						 
 						 </td>					 		
+					</tr>							
+					<tr>
+						 <td>DEPARTAMENTO<select id='departamento' name='departamento'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">								
+						 	</select>
+						 </td>	
+						  <td>PROCESO<select id='proceso' name='proceso'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">								
+						 	</select>
+						 </td>			 							 			 	
 					</tr>
-						
+											
 					<tr>
 						<td></td>
 						<td><button type="button" class="btn btn-success" onclick="agregarObjetoJS();">ACEPTAR</button></td>

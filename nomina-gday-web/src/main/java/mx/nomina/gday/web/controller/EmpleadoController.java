@@ -161,8 +161,48 @@ public class EmpleadoController {
 	    public EmpleadoNomina obtenerNominaEmpleadoById(@ModelAttribute(value="Empleado") EmpleadoNomina empleadoNomina, BindingResult result){   
 		 	System.out.println("Empleado por id"+ empleadoNomina.getEmpleado().getIdEmpleado());
 		 	System.out.println("Empleado por id"+ empleadoNomina.getNomina().getIdNomina());
-		 	return this.empleadoServicio.obtenerEmpleadoNominaByIds(empleadoNomina);
-		 	
+		 	return this.empleadoServicio.obtenerEmpleadoNominaByIds(empleadoNomina);		 	
+		}	
+	 
+	 @RequestMapping(value="/getnominasempbyid2", method = RequestMethod.POST)
+	 @ResponseBody
+	    public List obtenerNominaEmpleadoById2(@ModelAttribute(value="EmpleadoNomina") EmpleadoNomina empleadoNomina, BindingResult result){
+		 	List tmp1=new ArrayList();
+		 	System.out.println("Empleado por id"+ empleadoNomina.getEmpleado().getIdEmpleado());
+		 	System.out.println("Empleado por id"+ empleadoNomina.getNomina().getIdNomina());
+		 	try{
+		 		System.out.println("back from cont");
+		 		EmpleadoNomina emp1=this.empleadoServicio.obtenerEmpleadoNominaByIds(empleadoNomina);
+		 		System.out.println(emp1.getNomina());
+		 		System.out.println(emp1.getEmpleado());		 	
+		 		tmp1.add(emp1.getFechaIngreso());
+		 		tmp1.add(emp1.getEstatus());
+		 		tmp1.add(emp1.getTipoSalario());
+		 		tmp1.add(emp1.getFechaBaja());		 
+		 		tmp1.add(emp1.getTipoContrato());
+				tmp1.add(emp1.getFechaVencimiento());
+				tmp1.add(emp1.getSueldoMensual());
+				tmp1.add(emp1.getSueldoDiario());
+				tmp1.add(emp1.getSalarioDiarioInt());
+				tmp1.add(emp1.getLoteMovImssAlta());
+				tmp1.add(emp1.getPlazaTrabajo());
+				tmp1.add(emp1.getNumeroTrabajadorCliente());				
+				tmp1.add(emp1.getOtroPatron());
+				tmp1.add(emp1.getNombreOtroPatron());
+				tmp1.add(emp1.getRfcOtroPatron());
+				tmp1.add(emp1.getCalle());
+				tmp1.add(emp1.getNumExterior());
+				tmp1.add(emp1.getNumInterior());
+				tmp1.add(emp1.getCodigoPostal());
+				tmp1.add(emp1.getColonia());
+				tmp1.add(emp1.getMunicipioDel());
+				tmp1.add(emp1.getEntFederativa());				
+		 		return tmp1;		 	
+		 	}
+		 	catch (Exception e){
+		 		System.out.println("ERROR"+e.getMessage());
+		 		return null;
+		 	}
 		}	
 	 
 	//LLENADO DEL SELECT COMBO, TIPO_REGIMEN
