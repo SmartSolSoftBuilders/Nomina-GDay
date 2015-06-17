@@ -305,14 +305,20 @@ function getDomVirtuales(){
 		return jsonString;
 	}
 	function quitarDomVirtual(){
-		var id=$("#selectMult").find('option:selected').attr("id");
+		var id=$("#selectMult").find('option:selected').attr("id");		
 		$("#selectMult").find("option[id='"+id+"']").remove();  
 }
 	
 function agregarDomVirtual(){
+		var theSelect = document.getElementById('selectMult');
+		if (theSelect.options.length>0)
+			var lastValue = theSelect.options[theSelect.options.length - 1].value;
+		else
+			lastValue=0;
 		var x = document.getElementById("selectMult");
 		var option = document.createElement("option");
-		option.text = $("#domicilio").val();
+		option.id = lastValue+1;
+		option.text = $("#domicilio").val();		
 		x.add(option);
 }
 
