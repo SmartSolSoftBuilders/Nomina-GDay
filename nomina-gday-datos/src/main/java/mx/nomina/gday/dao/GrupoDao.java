@@ -10,5 +10,5 @@ public interface GrupoDao {
 	public List<Grupo> obtenerGrupos();
 	void actualizarGrupo(Grupo grupo);
 	public Grupo obtenerGrupoById(int id);
-
+	public Integer checkGrupoByRS(Grupo grupo);
 }

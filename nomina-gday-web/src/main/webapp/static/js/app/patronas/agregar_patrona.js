@@ -90,6 +90,15 @@ $(document).ready(function() {
 //*****************************************************************
 //Function que Agrega y Quita Domicilios Virtuales, del SelectMult*
 //*****************************************************************
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+
 function agregarDomVirtual(){
 	var x = document.getElementById("selectMult");
 	var option = document.createElement("option");
@@ -363,6 +372,9 @@ function guardarPatrona() {
 function addRow(tableID,tabla) {
 	if (tabla==1){
 		var num=document.getElementById("numeroPoderesNot").value;
+		var isnum = /^\d+$/.test(num);
+		if (!isnum)
+			return;
 		var not=document.getElementById("notariaPoderesNot").value;
 		var notario=document.getElementById("notarioPoderesNot").value;
 	    var table = document.getElementById(tableID);
@@ -402,6 +414,9 @@ function addRow(tableID,tabla) {
 	}
 	if (tabla==2){
 		var num=document.getElementById("numeroPoderesNotLab").value;
+		var isnum = /^\d+$/.test(num);
+		if (!isnum)
+			return;
 		var not=document.getElementById("notariaPoderesNotLab").value;
 		var notario=document.getElementById("notarioPoderesNotLab").value;
 	    var table = document.getElementById(tableID);

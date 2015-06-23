@@ -547,19 +547,15 @@ function obtenerEdad(fechaNac){
         
         // realizamos el calculo
         var edad = (ahora_ano + 1900) - ano;
-        if ( ahora_mes < mes )
-        {
+        if ( ahora_mes < mes ){
             edad--;
         }
-        if ((mes == ahora_mes) && (ahora_dia < dia))
-        {
+        if ((mes == ahora_mes) && (ahora_dia < dia)){
             edad--;
         }
-        if (edad > 1900)
-        {
+        if (edad > 1900){
             edad -= 1900;
         }
-
         // calculamos los meses
         var meses=0;
         if(ahora_mes>mes)

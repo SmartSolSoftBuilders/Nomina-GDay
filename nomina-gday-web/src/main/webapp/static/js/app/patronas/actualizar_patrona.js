@@ -126,6 +126,16 @@ $(document).ready(function() {
 //Function que obtiene la nomina por idNomina y llama a la function 
 //muestraDatos()
 //*******************************************************************************
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+
+
 function obtenerPatrona(idPatrona){
 	$.ajax({
 		data: {
@@ -489,6 +499,9 @@ function actualizarPatrona() {
 function addRow(tableID,tabla) {
 	if (tabla==1){
 		var num=document.getElementById("numeroPoderesNot").value;
+		var isnum = /^\d+$/.test(num);
+		if (!isnum)
+			return;
 		var not=document.getElementById("notariaPoderesNot").value;
 		var notario=document.getElementById("notarioPoderesNot").value;
 	    var table = document.getElementById(tableID);
@@ -528,6 +541,9 @@ function addRow(tableID,tabla) {
 	}
 	if (tabla==2){
 		var num=document.getElementById("numeroPoderesNotLab").value;
+		var isnum = /^\d+$/.test(num);
+		if (!isnum)
+			return;
 		var not=document.getElementById("notariaPoderesNotLab").value;
 		var notario=document.getElementById("notarioPoderesNotLab").value;
 	    var table = document.getElementById(tableID);

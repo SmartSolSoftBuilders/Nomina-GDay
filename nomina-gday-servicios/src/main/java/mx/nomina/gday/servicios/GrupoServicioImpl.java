@@ -58,4 +58,10 @@ public class GrupoServicioImpl implements GrupoServicio {
 		return this.grupoDao.obtenerGrupoById(idGrupo);
 	}
 
+	@Override
+	public Integer checkGrupoByRS(Grupo grupo) {
+		// TODO Auto-generated method stub
+		return this.grupoDao.checkGrupoByRS(grupo);
+	}
+
 }

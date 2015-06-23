@@ -28,6 +28,10 @@
 <select id="obtenerGrupoById" parameterType="int" resultMap="grupoResult">
 		select * from "GRUPO" WHERE "ID_GRUPO"=#{id};
 </select>
+<!-- Select para obtener los Grupos registrados por id-->
+<select id="checkGrupoByRS" parameterType="Grupo" resultType="int">
+		select count(*) from "GRUPO" WHERE "NOMBRE_CORTO_GRUPO"=#{nombreCorto};
+</select>
 
 <!-- Update para actualizar el Grupo seleccionado --> 
 <update id="actualizarGrupo" parameterType="Grupo">

@@ -179,7 +179,7 @@
 					  	</tr>						  		
 					   	<tr>
 						  		<td>
-									<span style="float:left;">NUMERO</span><input id='numeroPoderesNot' name='numeroPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
+									<span style="float:left;">NUMERO</span><input id='numeroPoderesNot' name='numeroPoderesNot' type="text" class="form-control" style="width:150px;float:left;" onkeypress="return isNumber(event)"/>
 									<span style="float:left;">NOTARIA</span><input id='notariaPoderesNot' name='notariaPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
 									<span style="float:left;">NOTARIO</span><input id='notarioPoderesNot' name='notarioPoderesNot' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="width:150px;float:left;"/>
 					 			<button type="button" class="btn btn-default" onclick="addRow('tablaPodNotPleitos',1);">AÑADIR</button>
@@ -224,7 +224,7 @@
 					  	</tr>						  		
 					   	<tr>
 						  		<td>
-						  		<span style="float:left;">NUMERO</span><input id='numeroPoderesNotLab' name='numeroPoderesNotLab' type="text" class="form-control" style="width:150px;float:left;"/>
+						  		<span style="float:left;">NUMERO</span><input id='numeroPoderesNotLab' name='numeroPoderesNotLab' type="text" class="form-control" style="width:150px;float:left;" onkeypress="return isNumber(event)"/>
 								<span style="float:left;">NOTARIA</span><input id='notariaPoderesNotLab' name='notariaPoderesNotLab' type="text" class="form-control" style="width:150px;float:left;"/>
 								<span style="float:left;">NOTARIO</span><input id='notarioPoderesNotLab' name='notarioPoderesNotLab' type="text" class="form-control" style="width:150px;float:left;"/>
 					 			<button type="button" class="btn btn-default" onclick="addRow('tablaPodNotLab',2);">AÑADIR</button>

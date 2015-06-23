@@ -27,9 +27,12 @@ public class GrupoController {
 	 @RequestMapping(value="/guardargrupo",method = RequestMethod.POST)
 	 @ResponseBody
 	    public boolean guardarGrupo(@ModelAttribute(value="grupo") Grupo grupo, BindingResult result){
-		 	System.out.println("Guardando el grupo"+ grupo);
-		 	grupoServicio.agregarGrupo(grupo);
-		 	
+		 	System.out.println("Guardando el grupo"+ grupo.getNombreCorto());
+		 	Integer check=this.grupoServicio.checkGrupoByRS(grupo);		 	
+		 	if (check>0)
+		 		return false;
+		 	System.out.println("Existe?"+ grupo);
+		 	grupoServicio.agregarGrupo(grupo);		 	
 			return true;
 		 
 	 }
@@ -99,8 +102,11 @@ public class GrupoController {
 	    
 		 try {
 			 System.out.println("Controller Actualizar Grupo"+ grupo.getIdGrupo());
-				 grupoServicio.actualizarGrupo(grupo);			 
-			 return true;
+			 Integer check=this.grupoServicio.checkGrupoByRS(grupo);		 	
+			 if (check>0)
+			 	return false;
+			grupoServicio.actualizarGrupo(grupo);			 
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -171,7 +171,7 @@
 				  			</td>
 					  	</tr>						  		
 					   	<tr>
-						  		<td><span style="float:left;">NUMERO</span><input id='numeroPoderesNot' name='numeroPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
+						  		<td><span style="float:left;">NUMERO</span><input id='numeroPoderesNot' name='numeroPoderesNot' type="text" class="form-control" style="width:150px;float:left;" onkeypress="return isNumber(event)"/>
 									<span style="float:left;">NOTARIA</span><input id='notariaPoderesNot' name='notariaPoderesNot' type="text" class="form-control" style="width:150px;float:left;"/>
 									<span style="float:left;">NOTARIO</span><input id='notarioPoderesNot' name='notarioPoderesNot' onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" style="width:150px;float:left;" />
 					 			<button type="button" class="btn btn-default" onclick="addRow('tablaPodNotPleitos',1);">AÑADIR</button>
@@ -217,19 +217,19 @@
 					  	</tr>						  		
 					   	<tr>
 						  		<td>
-						  		<span style="float:left;">NUMERO</span><input id='numeroPoderesNotLab' name='numeroPoderesNotLab' type="text" class="form-control" style="width:150px;float:left;"/>
+						  		<span style="float:left;">NUMERO</span><input id='numeroPoderesNotLab' name='numeroPoderesNotLab' type="text" class="form-control" style="width:150px;float:left;" onkeypress="return isNumber(event)"/>
 								<span style="float:left;">NOTARIA</span><input id='notariaPoderesNotLab' name='notariaPoderesNotLab' type="text" class="form-control" style="width:150px;float:left;"/>
 								<span style="float:left;">NOTARIO</span><input id='notarioPoderesNotLab' name='notarioPoderesNotLab' type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" style="width:150px;float:left;" />
 					 			<button type="button" class="btn btn-default" onclick="addRow('tablaPodNotLab',2);">AÑADIR</button>
 					 			<button type="button" class="btn btn-default" onclick="deleteRow('tablaPodNotLab',2);">QUITAR</button>					 			
 					 			<br>
 									<table name="tablaPodNotLab" id="tablaPodNotLab">
-									<tr>
+										<tr>
 											<td>NUMERO</td>
 											<td>NOTARIA</td>
 											<td>NOTARIO</td>
 											<td>-</td>
-									</tr>
+										</tr>
 									 </table>
 									 <input type="hidden" id="podNotLabNum" value="0"/>
 								</td>

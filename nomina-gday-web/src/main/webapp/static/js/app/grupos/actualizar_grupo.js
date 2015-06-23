@@ -100,7 +100,10 @@ function actualizarGrupo() {
 				beforeSend : function() {
 				},
 				success : function(response) {
-					mensajeRedireccion("GRUPO ACTUALIZADO CORRECTAMENTE","../grupos/grupos.jsp");
+					if (response==false)
+						mensaje("IMPOSIBLE ACTUALIZAR EL GRUPO. EL NOMBRE CORTO YA EXISTE!.");
+					else
+						mensajeRedireccion("GRUPO ACTUALIZADO CORRECTAMENTE","../grupos/grupos.jsp");
 				},
 				error : function(response) {
 					mensaje("IMPOSIBLE ACTUALIZAR EL GRUPO. CONTACTE CON EL ADMINISTRADOR.");

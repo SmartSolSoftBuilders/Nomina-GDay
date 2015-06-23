@@ -10,7 +10,6 @@ public interface GrupoServicio {
 	public List<Grupo> obtenerGrupos(); 
 	void actualizarGrupo(Grupo grupo);
 	public Grupo obtenerGrupoById(int idGrupo);
-
-
+	public Integer checkGrupoByRS(Grupo grupo);
 
 }

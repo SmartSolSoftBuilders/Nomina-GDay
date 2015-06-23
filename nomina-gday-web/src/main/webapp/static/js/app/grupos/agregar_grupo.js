@@ -40,8 +40,11 @@ function guardarGrupo() {
 				type : 'post',
 				beforeSend : function() {
 				},
-				success : function(response) {
-					mensajeRedireccion("GRUPO CREADO CORRECTAMENTE","../grupos/grupos.jsp");
+				success : function(response) {					
+					if (response==false)
+						mensaje("IMPOSIBLE GUARDAR EL GRUPO. EL NOMBRE CORTO YA EXISTE!.");
+					else
+						mensajeRedireccion("GRUPO CREADO CORRECTAMENTE","../grupos/grupos.jsp");
 				},
 				error : function(response) {
 					mensaje("IMPOSIBLE GUARDAR EL GRUPO. CONTACTE CON EL ADMINISTRADOR.");
