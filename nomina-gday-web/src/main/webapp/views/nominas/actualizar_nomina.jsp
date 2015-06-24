@@ -112,27 +112,8 @@
 					 	<tr>		 		
 					 		<td>TIPO PAGO
 					 		<select id='tipoPago' name='tipoPago' type="text" class="form-control">
-								<OPTION>NORMAL</OPTION>
-		  						<OPTION>COMPLEMENTO 01</OPTION>
-								<OPTION>COMPLEMENTO 02</OPTION>
-								<OPTION>COMPLEMENTO 03</OPTION>
-								<OPTION>COMPLEMENTO 04</OPTION>
-								<OPTION>COMPLEMENTO 05</OPTION>
-								<OPTION>COMPLEMENTO 06</OPTION>
-								<OPTION>COMPLEMENTO 07</OPTION>
-								<OPTION>COMPLEMENTO 08</OPTION>
-								<OPTION>COMPLEMENTO 09</OPTION>
-								<OPTION>COMPLEMENTO 10</OPTION>
-								<OPTION>VIATICOS 01</OPTION>
-								<OPTION>VIATICOS 02</OPTION>
-								<OPTION>VIATICOS 03</OPTION>
-								<OPTION>VIATICOS 04</OPTION>
-								<OPTION>VIATICOS 05</OPTION>
-								<OPTION>VIATICOS 06</OPTION>
-								<OPTION>VIATICOS 07</OPTION>
-								<OPTION>VIATICOS 08</OPTION>
-								<OPTION>VIATICOS 09</OPTION>
-								<OPTION>VIATICOS 10</OPTION>
+								<OPTION>NETO</OPTION>
+		  						<OPTION>BRUTO</OPTION>	
 							</select></td>					 	
 						 	<td></td>
 					 		<td>CLASE DE RIESGO
