@@ -103,8 +103,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     				empleado.setApellidoPaterno(datos.get(3));
     				empleado.setApellidoMaterno(datos.get(4));
     				empleado.setNombre(datos.get(5));
-    				empleado.setRfc(datos.get(6));
-    				System.out.println("Fecha Nac:"+datos.get(7)+datos.get(7).length());
+    				empleado.setRfc(datos.get(6));    				
     				if (validarFormatoFecha(datos.get(7))){
     					empleado.setFechaNacimiento(datos.get(7));
     				}
@@ -153,8 +152,11 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     				if (datos.get(25)!="")
     					empleado.setDocCurp(Boolean.parseBoolean(datos.get(25)));
     				else
-    					empleado.setDocCurp(false);    				
-    				empleado.setRfc(datos.get(26));
+    					empleado.setDocCurp(false);
+    				if (datos.get(26)!="")
+    					empleado.setDocRfc(Boolean.parseBoolean(datos.get(26)));
+    				else
+    					empleado.setDocRfc(false);    			
     				if (datos.get(27)!="")
     					empleado.setDocComprobante(Boolean.parseBoolean(datos.get(27)));
     				else
@@ -217,9 +219,9 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 						Long idEmpleado = empleado.getId();
 						if (idEmpleado!= 0){
 							strBMain.append("Se guarda al Empleado!\n");
-							System.out.println("Guardé al Empleado:"+idEmpleado+":"+empleado.getNombre());
+							//System.out.println("Guardé al Empleado:"+idEmpleado+":"+empleado.getNombre());
 							empleado.setIdEmpleado(Integer.parseInt(""+idEmpleado));
-							System.out.println("Supuesto empleado:"+datos.get(44));
+							//System.out.println("Supuesto empleado:"+datos.get(44));
 							if (datos.get(43)!="" && datos.get(43)!=null){								
 								EmpleadoNomina empleadoNomina = new EmpleadoNomina();
 								Nomina nomina=new Nomina();
@@ -227,7 +229,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 								nomina.setIdNomina(Integer.parseInt(datos.get(44)));
 								empleadoNomina.setNomina(nomina);
 								empleadoNomina.setEmpleado(empleado);
-								System.out.println("Fecha de Ingreso Nomina:"+datos.get(45));
+								//System.out.println("Fecha de Ingreso Nomina:"+datos.get(45));
 								if  (validarFormatoFecha(datos.get(45))){
 									empleadoNomina.setFechaIngreso(datos.get(45));
 								}
@@ -237,7 +239,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 								}								
 								empleadoNomina.setEstatus(datos.get(46));
 								empleadoNomina.setTipoContrato(datos.get(47));
-								System.out.println("FechaBaja"+datos.get(48));
+								//System.out.println("FechaBaja"+datos.get(48));
 								empleadoNomina.setFechaBaja(datos.get(48));
 								if (datos.get(48)!=""){								
 									if  (!validarFormatoFecha(datos.get(48))){									
