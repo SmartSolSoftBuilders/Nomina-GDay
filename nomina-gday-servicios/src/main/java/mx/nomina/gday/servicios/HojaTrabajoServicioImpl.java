@@ -204,7 +204,7 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            	hoja = wb.getSheetAt(3);
            	numRz=2;
            	for (j=0; j<empleados.size();j++){
-           		fila = hoja.createRow(numRz);
+           		fila = hoja.getRow(numRz);
            		fila.createCell(0).setCellValue(""+(j+1));	
            		fila.createCell(1).setCellValue(empleados.get(j).getNoControl());
            		fila.createCell(2).setCellValue(empleados.get(j).getNss());	
@@ -237,7 +237,7 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(28).setCellValue("");
            		fila.createCell(29).setCellValue(empleados.get(j).getDescInfonavitImp());
            		fila.createCell(30).setCellValue(empleados.get(j).getNoCredInfonavit());
-           		fila.createCell(31).setCellValue(empleados.get(j).getPensionAlimAcred());
+           		//fila.createCell(31).setCellValue(empleados.get(j).getPensionAlimAcred());
            		fila.createCell(32).setCellValue(empleados.get(j).getPensionAlimImp());
            		//Nómina Empleado	
            		EmpleadoNomina emp1= new EmpleadoNomina();
