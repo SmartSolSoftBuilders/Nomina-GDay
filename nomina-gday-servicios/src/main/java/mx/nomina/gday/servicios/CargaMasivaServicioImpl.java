@@ -71,7 +71,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     			int filaNum=3;
     			Row fila = hoja.getRow(filaNum);
     			System.out.println("Num filas:"+hoja.getLastRowNum());
-    			for (; filaNum < hoja.getLastRowNum(); filaNum++) { // Recorre cada 
+    			for (; filaNum < hoja.getLastRowNum()-1; filaNum++) { // Recorre cada 
     				//fila de la hoja
     				fila = hoja.getRow(filaNum);
     				Empleado empleado = new Empleado();
@@ -89,7 +89,8 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     					//System.out.print(data + " ->"+columna+"\n");	
     					datos.add(data);
     				}
-    				if (datos.get(0)==""){
+    				
+    				if (datos.get(0)=="" || datos.get(0).length()==0){
     					strBMain.append("Se encontró registro vacío, se interrumpe la carga\n");
     					System.out.println("Se encontró registro vacío, se interrumpe la carga");
     					break;
@@ -110,7 +111,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
     				else{
     					strBMain.append("Para El Empleado:"+empleado.getNss()+"La fecha de Nacimiento: "+ datos.get(7)+ " No cumple el formato deseado yyyy-mm-dd.Se interrumpe la carga.\n");
     					validarFormatoFechas=false;
-    				}
+    				}    			
     				if (datos.get(8)!="")
     					empleado.setEdad(Integer.parseInt(datos.get(8)));
     				else
