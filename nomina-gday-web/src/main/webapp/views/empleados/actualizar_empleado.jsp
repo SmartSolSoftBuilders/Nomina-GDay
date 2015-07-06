@@ -44,7 +44,7 @@
 					 						<option>MEXICO</option>
 					 						<option>E.U.A</option>
 					 						<option>CANADA</option>
-					 						
+					 						<option>OTRO</option>		
 					 		</select></td>
 					 	</tr>					  						
 					</table>
@@ -237,28 +237,10 @@
 								<option>INDEVAL</option>					 		
 					 		</select></td>
 					 		<td>TIPO DE PAGO<select id='tipoPago' name='tipoPago' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-					 				<option>NORMAL</option>
-											<option>COMPLEMENTO 01</option>
-											<option>COMPLEMENTO 02</option>
-											<option>COMPLEMENTO 03</option>
-											<option>COMPLEMENTO 04</option>
-											<option>COMPLEMENTO 05</option>
-											<option>COMPLEMENTO 06</option>
-											<option>COMPLEMENTO 07</option>
-											<option>COMPLEMENTO 08</option>
-											<option>COMPLEMENTO 09</option>
-											<option>COMPLEMENTO 10</option>
-											<option>VIATICOS 01</option>
-											<option>VIATICOS 02</option>
-											<option>VIATICOS 03</option>
-											<option>VIATICOS 04</option>
-											<option>VIATICOS 05</option>
-											<option>VIATICOS 06</option>
-											<option>VIATICOS 07</option>
-											<option>VIATICOS 08</option>
-											<option>VIATICOS 09</option>
-											<option>VIATICOS 10</option>
-											<option>EXTRAORDINARIO PTU</option>					 				
+					 				<option>CHEQUE</option>
+					 				<option>CLABE</option>
+					 				<option>NOMINA BANCOMER</option>
+					 				<option>NOMINA SANTANDER</option>																 				
 					 		</select></td>
 					 		
 					 	</tr>					  						
@@ -363,7 +345,8 @@
 				 			</select>
 				 		</td>
 				 		<td>TIPO SALARIO<select id='tiposalarioformnomina' name='tiposalarioformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-				 				<option value="1">SALARIO 1</option>
+				 				<option>NETO</option>
+				 				<option>BRUTO</option>
 				 			</select>
 				 		</td>					 			
 					</tr>
@@ -383,7 +366,41 @@
 					<tr>
 				 		<td>LOTE MOVIMIENTO ALTA IMSS<input id='loteimssformnomina' name='loteimssformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 				 		<td>PLAZA DE TRABAJO<select id='plazatrabajoformnomina' name='plazatrabajoformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-				 				<option value="PLAZA 1">PLAZA 1</option>
+				 				<option>AGUASCALIENTES</option>
+		  							<option>BAJA CALIFORNIA SUR</option>
+		  							<option>BAJA CALIFORNIA MEXICALI</option>
+		  							<option>BAJA CALIFORNIA TIJUANA</option>		  							
+		  							<option>CAMPECHE</option>
+		  							<option>CHIAPAS</option>
+		  							<option>CHIHUAHUA</option>
+		  							<option>COAHUILA</option>
+		  							<option>COLIMA</option>
+		  							<option>DISTRITO FEDERAL</option>
+		  							<option>DURANGO</option>
+		  							<option>ESTADO DE MÉXICO</option>
+		  							<option>GUANAJUATO</option>
+		  							<option>GUERRERO</option>
+		  							<option>HIDALGO</option>
+		  							<option>JALISCO</option>
+		  							<option>MEXICO</option>
+		  							<option>MICHOACAN</option>
+		  							<option>MORELOS</option>
+		  							<option>NAYARIT</option>
+		  							<option>NUEVO LEON</option>
+		  							<option>OAXACA</option>
+		  							<option>PUEBLA</option>
+		  							<option>QUERETARO</option>
+		  							<option>QUINTANA ROO CANCUN</option>
+		  							<option>QUINTANA ROO PLAYA DEL CARMEN</option>
+		  							<option>SAN LUIS POTOSI</option>
+		  							<option>SINALOA</option>
+		  							<option>SONORA</option>
+		  							<option>TABASCO</option>
+		  							<option>TAMAULIPAS</option>
+		  							<option>TLAXCALA</option>
+		  							<option>VERACRUZ</option>
+		  							<option>YUCATAN</option>
+		  							<option>ZACATECAS</option>
 				 			</select>
 				 		</td>
 				 		<td>NÚMERO TRABAJADOR CLIENTE<input id='numtrabajadorclienteoformnomina' name='numtrabajadorclienteoformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
