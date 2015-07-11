@@ -10,8 +10,7 @@
 	<body id="dt_example">
 		<div id="progressbar">Cargando (75%)...</div>	
 		<div id="container" class="mayuscula">
-		<%=session.getAttribute("notification")%>
-		<%session.setAttribute("notification","");%>				
+					
 			<h1><font color=#0051a4 class="mayuscula">Empleados</font></h1>		
 			<div id="demo">
 				<form id="formSeleccionarEmpleados">					
@@ -52,7 +51,7 @@
 			    <%if (session.getAttribute("rolUser").equals("ROL_CALIDAD_INFORMACION")){%>
 				<input type="button" class="btn btn-success" value="CREAR EMPLEADO" onclick="showAgregarEmpleado();"/>
 				<input type="button" class="btn btn-success" value="ALTA MASIVA" onclick="altaMasivaDeEmpleado();"/>
-	            <%} %>    
+	            <%}%>
 				<input type="button" class="btn btn-success" value="OBTENER EMPLEADOS" onclick="ajax_downloadEmp(1);"/>
 			</div>
 			<br>

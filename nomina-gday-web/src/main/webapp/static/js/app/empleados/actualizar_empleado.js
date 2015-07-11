@@ -397,11 +397,56 @@ function showNominaForm(idNomina,nombre){
 	document.getElementById("idnominaformnomina").value=idNomina;
 	document.getElementById("nombrenominaformnomina").value=nombre;
 	$("#divSeleccionNominaParaEmpleado").dialog("close");
-	$("#tablaFormNominas").dialog(({show: "slide",stack: false,
-		draggable: false,resizable: false,modal: true, width:960, height:900,
-		autoOpen: true}));
-	$("#buttonAgregar").show();
-	$("#buttonGuardar").hide();
+	$.ajax({
+		sync:true,
+		dataType:'json',
+		url:   '../../mvc/empleado/getdatoscombo',
+		type:  'post',		
+		beforeSend: function () {	
+		},
+		success:  function (response) {
+			console.log (response[0]);
+			var options = "";
+			var result=response[0];
+			 for (var i = 0; i < result.length; i++) {
+			    	options += '<option value="' + result[i].idArea + '">' + result[i].descripcion +'</option>';
+			    }
+			$("#areaformnomina").append(options)
+			console.log ("area");
+			
+			console.log (response[1]);	
+			var options = "";
+			var result=response[1];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idProceso + '">' + result[i].descripcion +'</option>';
+			}
+			$("#proceso").append(options)
+			console.log ("proceso");
+
+			console.log (response[2]);	
+			var options = "";
+			var result=response[2];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idDepartamento + '">' + result[i].descripcion +'</option>';
+			}
+			$("#departamento").append(options)
+			console.log ("departamento");
+
+			console.log (response[3]);	
+			var options = "";
+			var result=response[3];
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i].idPuesto + '">' + result[i].descripcion +'</option>';
+			}
+			$("#puestosformnomina").append(options)
+			console.log ("puestos");		
+			$("#tablaFormNominas").dialog(({show: "slide",  					stack: false,
+				draggable: false,resizable: false,modal: true, width:960, height:900,
+				autoOpen: true}));			
+			$("#buttonAgregar").show();
+			$("#buttonGuardar").hide();
+	}
+	});	
 }
  
 function showEditarNominaForm(idNomina,nombre){
