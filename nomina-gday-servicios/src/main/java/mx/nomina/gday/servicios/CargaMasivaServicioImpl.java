@@ -295,6 +295,83 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 								if (validarFormatoFechas)
 									this.empleadoNominaDao.agregarEmpleadoNomina(empleadoNomina);								
 								System.out.println("Guardé un nuevo empleado nomina!");
+							}
+							System.out.println("Empleado nomina:"+datos.get(70));
+							if (datos.get(70)!="" && datos.get(70)!=null){								
+								EmpleadoNomina empleadoNomina = new EmpleadoNomina();
+								Nomina nomina=new Nomina();
+								empleado.setIdEmpleado(Integer.parseInt(""+empleado.getId()));
+								nomina.setIdNomina(Integer.parseInt(datos.get(70)));
+								empleadoNomina.setNomina(nomina);
+								empleadoNomina.setEmpleado(empleado);
+								//System.out.println("Fecha de Ingreso Nomina:"+datos.get(45));
+								if  (validarFormatoFecha(datos.get(71))){
+									empleadoNomina.setFechaIngreso(datos.get(71));
+								}
+								else{
+									strBMain.append("Para El Empleado:"+empleado.getNss()+"La fecha de Ingreso: "+ datos.get(71)+ " No cumple el formato deseado yyyy-mm-dd. Se creó el empleado, pero no se registró en la nómina.\n");
+									validarFormatoFechas=false;
+								}								
+								empleadoNomina.setEstatus(datos.get(72));
+								empleadoNomina.setTipoContrato(datos.get(73));
+								//System.out.println("FechaBaja"+datos.get(48));
+								empleadoNomina.setFechaBaja(datos.get(74));
+								if (datos.get(74)!=""){								
+									if  (!validarFormatoFecha(datos.get(74))){									
+										strBMain.append("Para El Empleado:"+empleado.getNss()+"La fecha de Baja: "+ datos.get(74)+ " No cumple el formato deseado yyyy-mm-dd. Se creó el empleado, pero no se registró en la nómina.\n");
+										validarFormatoFechas=false;
+									}
+								}								
+								empleadoNomina.setLoteMovImssAlta(datos.get(75));
+								empleadoNomina.setFechaVencimiento(datos.get(76));
+								if (datos.get(76)!=""){								
+									if  (!validarFormatoFecha(datos.get(76))){									
+										strBMain.append("Para El Empleado:"+empleado.getNss()+"La fecha de Vencimiento: "+ datos.get(76)+ " No cumple el formato deseado yyyy-mm-dd. Se creó el empleado, pero no se registró en la nómina.\n");
+										validarFormatoFechas=false;
+									}
+								}
+								System.out.println("FechaVenc"+datos.get(76));
+								if (datos.get(77)!="")
+									empleadoNomina.setSueldoMensual(Double.parseDouble(datos.get(77)));
+								else
+									empleadoNomina.setSueldoMensual(0);
+								if (datos.get(78)!="")
+									empleadoNomina.setSalarioDiarioInt(Double.parseDouble(datos.get(78)));
+								else
+									empleadoNomina.setSalarioDiarioInt(0);
+								empleadoNomina.setPlazaTrabajo(datos.get(79));
+								empleadoNomina.setNumeroTrabajadorCliente(datos.get(80));
+								if (datos.get(81)!="")
+									empleadoNomina.setOtroPatron(Boolean.parseBoolean(datos.get(81)));
+								else
+									empleadoNomina.setOtroPatron(false);
+								empleadoNomina.setRfcOtroPatron(datos.get(82));
+								empleadoNomina.setNombreOtroPatron(datos.get(83));
+								if (datos.get(84)!="")
+									empleadoNomina.setPermanencia(Boolean.parseBoolean(datos.get(84)));
+								else
+									empleadoNomina.setPermanencia(false);
+								empleadoNomina.setCalle(datos.get(85));
+								empleadoNomina.setCodigoPostal(datos.get(86));
+								empleadoNomina.setMunicipioDel(datos.get(87));
+								empleadoNomina.setEntFederativa(datos.get(88));
+								if (datos.get(89)!="")
+									empleadoNomina.setLoteMovImssBaja(Integer.parseInt(datos.get(89)));
+								else
+									empleadoNomina.setLoteMovImssBaja(0);
+								empleadoNomina.setAplicaFiniquito(Boolean.parseBoolean(datos.get(90)));
+								if (datos.get(65)!="")
+									empleadoNomina.setMontoFiniquito(Double.parseDouble(datos.get(91)));
+								else
+									empleadoNomina.setMontoFiniquito(0);
+								empleadoNomina.setArea(obtenerArea(datos.get(92)));
+								empleadoNomina.setDepartamento(obtenerDepartamento(datos.get(93)));
+								empleadoNomina.setProceso(obtenerProceso(datos.get(94)));
+								empleadoNomina.setPuesto(obtenerPuesto(datos.get(95)));
+								System.out.println("GUARDANDO!");
+								if (validarFormatoFechas)
+									this.empleadoNominaDao.agregarEmpleadoNomina(empleadoNomina);								
+								System.out.println("Guardé un nuevo empleado nomina!");
 							}							
 							if (datos.get(66)!="" && datos.get(66)!=null){								
 								/*EmpleadoNomina empleadoNomina = new EmpleadoNomina();
