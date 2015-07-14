@@ -297,7 +297,9 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 								System.out.println("Guardé un nuevo empleado nomina!");
 							}
 							System.out.println("Empleado nomina:"+datos.get(70));
-							if (datos.get(70)!="" && datos.get(70)!=null){								
+							if (datos.get(70)!="" && datos.get(70)!=null && datos.get(70).length()>0){			
+								System.out.println("Empleado nomina:"+datos.get(70).length());
+
 								EmpleadoNomina empleadoNomina = new EmpleadoNomina();
 								Nomina nomina=new Nomina();
 								empleado.setIdEmpleado(Integer.parseInt(""+empleado.getId()));
