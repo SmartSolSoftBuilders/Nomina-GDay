@@ -408,7 +408,7 @@
 					<tr>
 				 		<td>¿TIENE OTRO PATRÓN?<select id=otropatronformnomina name='otropatronformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				 				<option value="SI">SI</option>
-				 				<option value="SI">NO</option>
+				 				<option value="NO">NO</option>
 				 			</select>
 				 		</td>
 				 		<td>NOMBRE OTRO PATRÓN<input id='nombreotropatronformnomina' name='nombreotropatronformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>

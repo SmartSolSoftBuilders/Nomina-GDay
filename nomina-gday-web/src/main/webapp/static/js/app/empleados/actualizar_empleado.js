@@ -285,9 +285,36 @@ function muestraDatosEmpleado(datos){
 //Function que actualiza todos los datos del Empleado*
 //****************************************************
 function actualizarEmpleado() {
-	console.log($("#idEmpleado").val());
+	var tmp1=false;
+	var tmp2=false;
+	var tmp3=false;
+	var tmp4=false;
+	var tmp5=false;
+	var tmp6=false;
+	var tmp7=false;
+	var tmp8=false;
+	var tmp9=false;
+	
+	if ($("#indentificacionOficial").prop('checked'))
+		tmp1=true;
+	if ($("#actaNacimiento").prop('checked'))
+		tmp2=true;
+	if ($("#curpDoc").prop('checked'))
+		tmp3=true;
+	if ($("#rfcDoc").prop('checked'))
+		tmp4=true;
+	if ($("#comprobanteDom").prop('checked'))
+		tmp5=true;
+	if ($("#comprobanteEst").prop('checked'))
+		tmp6=true;
+	if ($("#correoElec").prop('checked'))
+		tmp7=true;
+	if ($("#cuentaClave").prop('checked'))
+		tmp8=true;
+	if ($("#preafiliacionImss").prop('checked'))
+		tmp9=true;
+				
 	if ($("#actualizarEmpleadoForm").valid()){	
-
 		$
 			.ajax({
 				data : {
@@ -315,15 +342,15 @@ function actualizarEmpleado() {
 					"codigoPostal":$("#codPostal").val(),
 					"municipioDel":$("#municipioDel").val(),
 					"entFederativa":$("#estado").val(),
-					"docIfe":$("#indentificacionOficial").val(),
-					"docActNan":$("#actaNacimiento").val(),
-					"docCurp":$("#curpDoc").val(),
-					"docRfc":$("#rfcDoc").val(),
-					"docComprobante":$("#comprobanteDom").val(),
-					"docCompEst":$("#comprobanteEst").val(),
-					"docCorreo":$("#correoElec").val(),
-					"docClabe":$("#cuentaClave").val(),
-					"docPreafiliacion":$("#preafiliacionImss").val(),
+					"docIfe":tmp1,
+					"docActNan":tmp2,
+					"docCurp":tmp3,
+					"docRfc":tmp4,
+					"docComprobante":tmp5,
+					"docCompEst":tmp6,
+					"docCorreo":tmp7,
+					"docClabe":tmp8,
+					"docPreafiliacion":tmp9,
 					"cuenta":$("#numCuenta").val(),
 					"banco":$("#banco").val(),
 					"tipoPago":$("#tipoPago").val(),
@@ -527,8 +554,13 @@ function showEditarNominaForm(idNomina,nombre){
 			$("#sueldodiariointformnomina").val(data[8]);
 			$("#loteimssformnomina").val(data[9]);
 			$("#plazatrabajoformnomina").val(data[10]);
-			$("#numtrabajadorclienteoformnomina").val(data[11]);
-			$("#otropatronformnomina").val(data[12]);
+			$("#numtrabajadorclienteoformnomina").val(data[11]);			
+			console.log("OTRO PATR")
+			console.log(data[12])
+			if (data[12]==true)
+				$("#otropatronformnomina").val("SI");
+			else
+				$("#otropatronformnomina").val("NO");
 			$("#nombreotropatronformnomina").val(data[13]);
 			$("#rfcnformnomina").val(data[14]);
 			$("#calleformnomina").val(data[15]);
