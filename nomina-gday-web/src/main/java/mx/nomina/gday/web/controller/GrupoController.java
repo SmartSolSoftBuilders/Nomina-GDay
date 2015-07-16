@@ -50,7 +50,7 @@ public class GrupoController {
 
 			for (int i = 0; i < tmp.size(); i++) {
 				gruposTmp2 = new ArrayList<String>();
-				System.out.println("tmp"+tmp.get(i));
+				//System.out.println("tmp"+tmp.get(i));
 				gruposTmp2.add(tmp.get(i).getIdGrupo());
 				gruposTmp2.add(tmp.get(i).getNombre());
 				gruposTmp2.add(tmp.get(i).getNombreCorto());
@@ -80,7 +80,7 @@ public class GrupoController {
 
 				for (int i = 0; i < tmp.size(); i++) {
 					gruposTmp2 = new ArrayList<String>();
-					System.out.println("tmp"+tmp.get(i));
+					//System.out.println("tmp"+tmp.get(i));
 					gruposTmp2.add(tmp.get(i).getIdGrupo());
 					gruposTmp2.add(tmp.get(i).getNombre());
 					gruposTmp2.add(tmp.get(i).getNombreCorto());

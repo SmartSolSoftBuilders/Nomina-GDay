@@ -211,7 +211,7 @@
 			</div>
 		</div>
 	</div>	
-	<div id="tmpTxtBox">ok</div>
+	<div id="tmpTxtBox"></div>
 			<div id="divSeleccionPatronaIntermediaria" title="Selecci&oacute;n de Empresa Intermediaria" style="display:none">
 		<div id="container2" class="mayuscula">
 			<h1>Empresas Intermediarias</h1>		

@@ -97,7 +97,7 @@ public class EmpleadoController {
 
 			for (int i = 0; i < tmp.size(); i++) {
 				empleadosTmp2 = new ArrayList<String>();
-				System.out.println("tmp"+tmp.get(i));
+				//System.out.println("tmp"+tmp.get(i));
 				empleadosTmp2.add(tmp.get(i).getIdEmpleado());
 				empleadosTmp2.add(tmp.get(i).getRfc());
 				empleadosTmp2.add(tmp.get(i).getApellidoPaterno());
@@ -129,7 +129,7 @@ public class EmpleadoController {
 
 			for (int i = 0; i < tmp.size(); i++) {
 				empleadosTmp2 = new ArrayList<String>();
-				System.out.println("tmp"+tmp.get(i));
+				//System.out.println("tmp"+tmp.get(i));
 				empleadosTmp2.add(tmp.get(i).getIdEmpleado());
 				empleadosTmp2.add(tmp.get(i).getCurp());
 				empleadosTmp2.add(tmp.get(i).getApellidoPaterno());
@@ -173,8 +173,8 @@ public class EmpleadoController {
 		 	try{
 		 		System.out.println("back from cont");
 		 		EmpleadoNomina emp1=this.empleadoServicio.obtenerEmpleadoNominaByIds(empleadoNomina);
-		 		System.out.println(emp1.getNomina());
-		 		System.out.println(emp1.getEmpleado());		 	
+		 		//System.out.println(emp1.getNomina());
+		 		//System.out.println(emp1.getEmpleado());		 	
 		 		tmp1.add(emp1.getFechaIngreso());
 		 		tmp1.add(emp1.getEstatus());
 		 		tmp1.add(emp1.getTipoSalario());

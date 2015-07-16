@@ -8,7 +8,7 @@ $(document).ready(function() {
         	nombreNomina: "required",
         	patrona: "required",
         	intermediaria: "required",
-        	porcPrimaVacacional: "required",
+        	porcPrimaVacacional: {"required":true,"number": true},
         	registroPatronal: "required",
         	fechaContrato: "required",   
         	selectMult:{
@@ -32,7 +32,7 @@ $(document).ready(function() {
         	nombreNomina: "Ingrese el nombre de la N&oacute;mina",
         	patrona:"Ingrese el nombre de la Patrona",
         	intermediaria:"Ingrese el nombre de la Intermediaria",
-        	porcPrimaVacacional:"Ingrese un porcentaje Vacacional",
+        	porcPrimaVacacional:"Ingrese un porcentaje Vacacional (solo numeros)",
         	registroPatronal:"Ingrese un registro Patronal",
         	fechaContrato:"Ingrese una Fecha",
         	
@@ -67,8 +67,7 @@ $(document).ready(function() {
 				    	options += '<option value="' + result[i].idEsquema + '">' + result[i].nombreEsquema +'</option>';
 				    }
 			$("#esquema").append(options)
-			console.log ("Tipo Calendario");
-			console.log (response[2]);
+			
 				var options = "";
 				var result=response[2];
 				 for (var i = 0; i < result.length; i++) {

@@ -34,7 +34,7 @@ $(document).ready(function() {
     		nombreNomina: "required",
         	patrona: "required",
         	intermediaria: "required",
-        	porcPrimaVacacional: "required",
+        	porcPrimaVacacional: {"required":true,"number": true},
         	registroPatronal: "required",
         	fechaContrato: "required",
         	selectMult: "required",
@@ -43,7 +43,7 @@ $(document).ready(function() {
         	nombreNomina: "Ingrese el nombre de la N&oacute;mina",
         	patrona:"Ingrese el nombre de la Patrona",
         	intermediaria:"Ingrese el nombre de la Intermediaria",
-        	porcPrimaVacacional:"Ingrese un porcentaje Vacacional",
+        	porcPrimaVacacional:"Ingrese un porcentaje Vacacional (solo numeros)",
         	registroPatronal:"Ingrese un registro Patronal",
         	fechaContrato:"Ingrese una Fecha",
         	selectMult:"Ingrese una Raz&oacute;n Social",
@@ -80,7 +80,7 @@ $(document).ready(function() {
 						var options = "";
 						var result=response[2];
 						 for (var i = 0; i < result.length; i++) {
-						    	options += '<option value="' + result[i].idTipoCalendario + '">' + result[i].tipoCalendario +'</option>';
+						    	options += '<option value="' + result[i].idCalendario + '">' + result[i].tipoCalendario +'</option>';
 						    }
 				    $("#tipoCalendario").append(options)	 
 				    console.log ("Tipo Calendario");
@@ -90,7 +90,7 @@ $(document).ready(function() {
 				    for (var i = 0; i < result.length; i++) {
 				    	options += '<option value="' + result[i].idCalendario + '">' + result[i].siglas +'</option>';
 				    }
-				    $("#tipoCalendario").append(options)
+				    //$("#tipoCalendario").append(options)
 					
 			},	
 		error: function (response) {																	
@@ -186,6 +186,7 @@ function muestraDatosNomina(datos){
 	$("#tipoCalendario").val(data.tipoCalendario.idCalendario);
 	//alert(data.razonesSociales.length)
 	var valorT=0;
+	console.log("Razones sociales totales:"+data.razonesSociales.length)
 	for (i=0;i<data.razonesSociales.length;i++){
 		//console.log(data.razonesSociales[i].nombreRazonSocial);
 		var formTmp = document.getElementById("actualizarNominaForm");
@@ -195,7 +196,7 @@ function muestraDatosNomina(datos){
 		option.text = data.razonesSociales[i].nombreRazonSocial + "----" + data.razonesSociales[i].comision+"%";
 		x.add(option);  
 		var name="porcentaje"+option.id;
-		document.getElementById("tmpTxtBox").innerHTML="<input type='hidden' id='"+name+"' value='"+data.razonesSociales[i].comision+"'/>";		
+		document.getElementById("tmpTxtBox").innerHTML=document.getElementById("tmpTxtBox").innerHTML+"<input type='hidden' id='"+name+"' value='"+data.razonesSociales[i].comision+"'/>";		
 		valorT=valorT+parseInt(data.razonesSociales[i].comision);
 	}
 	sumaPorcentaje=valorT;
@@ -344,6 +345,9 @@ function showRazonesSociales(){
 }
 function agregarRZ(id,nombre){
 	var porcentaje=document.getElementById("porcentaje"+id).value;
+	console.log(""+porcentaje)
+	var porcentaje=$("#porcentaje"+id).val();
+	console.log(""+porcentaje)
 	if ((parseInt(sumaPorcentaje)+parseInt(porcentaje))>100){
 		alert("La suma de porcentajes de Razones Sociales es mayor que 100");
 	}
@@ -365,6 +369,7 @@ function agregarRZ(id,nombre){
 
 function quitarRazonSocial(){	
 	var id=$("#selectMult").find('option:selected').attr("id");
+	console.log("porcentaje a borrar:"+id);
 	var porcentaje=document.getElementById("porcentaje"+id).value;
 	console.log(sumaPorcentaje);
 	console.log(porcentaje);
@@ -398,8 +403,7 @@ function actualizarNomina() {
 	var ivaExento=false;
 	if($("#ivaExcento").is(':checked')) {  
 		ivaExento=true;  
-    }	
-	
+    }			
 	var comisionCostoSocialTmp=false;
 	if($("#comisionCostoSocial").is(':checked')) {  
 		comisionCostoSocialTmp=true;  
@@ -409,6 +413,16 @@ function actualizarNomina() {
 		facturaSubsidioTmp=true;  
     }	
 
+	var reconoceAntiguedadTmp = false;
+	if($("#reconoceAntihuedad").is(':checked')) {  
+		reconoceAntiguedadTmp=true;  
+    }
+	
+	var comisionCostSocialTmp = false;
+	if($("#comisionCostSocial").is(':checked')) {  
+		comisionCostSocialTmp=true;  
+    }
+	
 	if ($("#actualizarNominaForm").valid()){
 			$.ajax({
 				data : {
@@ -426,8 +440,8 @@ function actualizarNomina() {
 					"comisionCostSocial" : comisionCostoSocialTmp,
 					"facturaSubsidio" : facturaSubsidioTmp,
 					"ivaExento" : ivaExento,
-					"reconoceAntiguedad" : $("#reconoceAntihuedad").val(),
-					"comisionCostSocial" : $("#comisionCostoSocial").val(),
+					"reconoceAntiguedad" : reconoceAntiguedadTmp,
+					"comisionCostSocial" : comisionCostSocialTmp,
 					"tipoPago" : $("#tipoPago").val(),
 					"claseRiesgo" : $("#claseRiesgo").val(),
 					"registroPatronal" : $("#registroPatronal").val(),
