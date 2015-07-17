@@ -2,16 +2,16 @@
 $(document).ready(function() {
 	$("#agregarGrupoForm").validate({
 		rules: {
-			nombre: "required",
+			nombre: {"required":true,"maxlength":25},
 			nombreCorto: {
 				required:true,
-				maxlength: 14
+				maxlength: 15
 				}
 		},        
 		messages: {
-			nombre: "Ingrese el nombre del Grupo",
+			nombre: "Campo requerido. M\u00e1ximo 25",
 			nombreCorto:{
-				required:"Ingrese el nombre corto del Grupo",
+				required:"Campo requerido",
 				maxlength: "El m\u00e1ximo de caracteres es 15"
 				}
 		},

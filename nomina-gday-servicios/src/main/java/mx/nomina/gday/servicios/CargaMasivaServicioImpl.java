@@ -313,7 +313,7 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 								else{
 									strBMain.append("Para El Empleado:"+empleado.getNss()+"La fecha de Ingreso: "+ datos.get(71)+ " No cumple el formato deseado yyyy-mm-dd. Se creó el empleado, pero no se registró en la nómina.\n");
 									validarFormatoFechas=false;
-								}								
+								}
 								empleadoNomina.setEstatus(datos.get(72));
 								empleadoNomina.setTipoContrato(datos.get(73));
 								//System.out.println("FechaBaja"+datos.get(48));

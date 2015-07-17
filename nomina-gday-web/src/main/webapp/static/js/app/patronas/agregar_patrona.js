@@ -6,24 +6,72 @@ var indexOpt=1;
 $(document).ready(function() {
 	$("#agregarPatronaForm").validate({
 	rules: {
-		nombrePatrona: "required",
-		razonSocial: "required",
-		rfc: "required",
-		folioMerc: "required",
-		calle: "required",
-		colonia: "required",
-		numExt: "required",
-		numInt: "required",
-		cp: "required",
-		municipio: "required",
-		telContacto: "required",
+		nombrePatrona: {
+			required:true,
+			maxlength: 15
+			},
+		razonSocial: {
+			required:true,
+			maxlength: 50
+			},
+		rfc: {
+			required:true,
+			maxlength: 13
+			},
+		folioMerc: {
+			required:true,
+			maxlength: 45
+			},
+		calle: {
+			required:true,
+			maxlength: 40
+			},
+		colonia: {
+			required:true,
+			maxlength: 45
+			},
+		numExt: {
+			required:true,
+			number:true		
+			},
+		numInt: {
+			required:true,
+			number:true			
+			},
+		cp: {
+			required:true,
+			number:true			
+			},
+		municipio: {
+			required:true,
+			maxlength: 40
+			},
+		telContacto: {
+			required:true,
+			number:true
+			},
 		selectMult: "required",
-		numActaConst: "required",
-		numNotaria: "required",
+		numActaConst: {
+			required:true,
+			number:true
+			},
+		numNotaria: {
+			required:true,
+			number:true
+			},
 		fecha: "required",
-		notario: "required",
-		ciudad: "required",
-		estado: "required",
+		notario: {
+			required:true,
+			maxlength: 80
+			},
+		ciudad: {
+			required:true,
+			maxlength: 25
+			},
+		estado: {
+			required:true,
+			maxlength: 25
+			},
 		numeroPoderesNot: "required",
 		notariaPoderesNot: "required",
 		notarioPoderesNot: "required",
@@ -33,24 +81,24 @@ $(document).ready(function() {
 		
     },        
     messages: {
-    	nombrePatrona: "Ingrese el nombre de la Patrona",
-    	razonSocial: "Ingrese el nombre de la Raz&oacute;n Social",
-    	rfc:"Ingrese un rfc",
-    	folioMerc:"Ingrese el Folio Mercantil",
+    	nombrePatrona: "Campo requerido. M&aacute;ximo 15",
+    	razonSocial: "Campo requerido. M&aacute;ximo 50",
+    	rfc: "Campo requerido. M&aacute;ximo 13",
+    	folioMerc:"Campo requerido. M&aacute;ximo 45",
     	selectMult:"Seleccione por lo menos un Domicilio Virtual",
-    	calle:"Ingrese una Calle",
-    	colonia:"Ingrese una Colonia",
-    	numExt:"Ingrese un N&uacute;mero Exterior",
-    	numInt:"Ingrese una N&uacute;mero Interior",
-    	cp: "Ingrese un CP",
-		municipio: "Ingrese un Municipio",
-		telContacto: "Ingrese un Tel&egrave;fono de Contacto",
-		numActaConst: "Ingrese un N&uacute;mero de Acta Constitutiva",
-		numNotaria: "Ingrese un N&uacute;mero de Notaria",
+    	calle:"Campo requerido. M&aacute;ximo 40",
+    	colonia:"Campo requerido.",
+    	numExt:"Ingrese un N&uacute;mero Exterior, solo n&uacute;meros",
+    	numInt:"Ingrese una N&uacute;mero Interior, solo n&uacute;meros",
+    	cp: "Ingrese un CP, solo n&uacute;meros",
+		municipio: "Campo requerido. M&aacute;ximo 40",
+		telContacto: "Ingrese un Tel&egrave;fono de Contacto, solo n&uacute;meros",
+		numActaConst: "Ingrese un N&uacute;mero de Acta Constitutiva, solo n&uacute;meros",
+		numNotaria: "Ingrese un N&uacute;mero de Notaria, solo n&uacute;meros",
 		fecha: "Ingrese una Fecha",
-		notario: "Ingrese un N&uacute;mero de Notario",
-		ciudad: "Ingrese una Ciudad",
-		estado: "Ingrese un Estado",
+		notario: "Ingrese un N&uacute;mero de Notario. M&aacute;ximo 80",
+		ciudad: "Ingrese una Ciudad,M&aacute;ximo 25",
+		estado: "Ingrese un Estado, M&aacute;ximo 25",
 		numeroPoderesNot: "Ingrese un N&uacute;mero Notarial",
 		notariaPoderesNot: "Ingrese una Notaria",
 		notarioPoderesNot: "Ingrese un Notario",

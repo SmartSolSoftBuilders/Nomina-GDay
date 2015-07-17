@@ -31,25 +31,44 @@ $(document).ready(function() {
 	//Sección validaciones
     valForm=$("#actualizarNominaForm").validate({
     	rules: {
-    		nombreNomina: "required",
-        	patrona: "required",
-        	intermediaria: "required",
-        	porcPrimaVacacional: {"required":true,"number": true},
-        	registroPatronal: "required",
-        	fechaContrato: "required",
+        	nombreNomina: {
+    				required:true,
+    				maxlength: 100
+    				},
+        	patrona: {    			
+    				required:true
+    				},
+        	intermediaria: {    			
+    				required:true    				
+    				},
+        	porcPrimaVacacional: {    			
+    				required:true,
+    				number: true
+    				},
+        	registroPatronal: {    			
+    				required:true,
+    				maxlength: 15
+    				},
+        	fechaContrato: {    			
+    				required:true    				
+    				},   
         	selectMult: "required",
-        },         
+        	//selectMult: "required"
+            /*email: {
+                required: true,
+                email: true
+            },*/
+        },        
         messages: {
-        	nombreNomina: "Ingrese el nombre de la N&oacute;mina",
-        	patrona:"Ingrese el nombre de la Patrona",
+        	nombreNomina: "Ingrese el nombre de la N&oacute;mina. M&aacute;ximo 100",
+        	patrona:"Ingrese la empresa Patrona",
         	intermediaria:"Ingrese el nombre de la Intermediaria",
-        	porcPrimaVacacional:"Ingrese un porcentaje Vacacional (solo numeros)",
-        	registroPatronal:"Ingrese un registro Patronal",
+        	porcPrimaVacacional:"Ingrese un porcentaje Vacacional. Solo n&uacute;meros",
+        	registroPatronal:"Ingrese un registro Patronal. M&aacute;ximo 15",
         	fechaContrato:"Ingrese una Fecha",
-        	selectMult:"Ingrese una Raz&oacute;n Social",
-        	
+        	selectMult:"Ingrese una Raz&oacute;n Social"
         },
-        
+       
         submitHandler: function(form) {
             form.submit();
         }
