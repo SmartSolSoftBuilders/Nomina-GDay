@@ -451,6 +451,7 @@ function actualizarNomina() {
 					"intermediaria.idPatrona" : $("#idIntermediaria").val(),
 					"ejecutivo.idEjecutivo" : $("#ejecutivo").val(),
 					"esquema.nombreEsquema" : $("#esquema").val(),
+					"esquema.idEsquema" : $("#esquema").val(),
 					"provisionAguinaldo" : aguinald,
 					"provisionVacaciones" : provisionVacacionesTmp,
 					"provisionPrimaVacacional" : provisionPrimaVacTmp,

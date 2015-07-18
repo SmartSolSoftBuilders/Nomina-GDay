@@ -230,6 +230,8 @@ function muestraDatosPatrona(datos){
 	$("#notario").val(data.actaNotarioPatrona);
 	$("#ciudad").val(data.actaCiudadPatrona);
 	$("#estado").val(data.actaEstadoPatrona);
+	$("#tipoReg").val(data.tipoRegimen.idTipoRegimen);
+	console.log(data.tipoRegimen.idTipoRegimen);
 	
 	for (i=0;i<data.domVirtuales.length;i++){
 		console.log(data.domVirtuales[i].domVirtual);
