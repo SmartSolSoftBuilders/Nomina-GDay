@@ -49,7 +49,7 @@ public class EmpleadoController {
 	@RequestMapping(value="/guardareditarempleadonomina",method = RequestMethod.POST)
 	@ResponseBody
     public boolean guardarEditarEmpleadoNomina(@ModelAttribute(value="empleadoNomina") EmpleadoNomina empleadoNomina, BindingResult result){
-		 	System.out.println("Guardando empleado nomina"+ empleadoNomina.getNomina().getIdNomina());
+		 	System.out.println("actualizando empleado nomina"+ empleadoNomina.getNomina().getIdNomina());
 		 	empleadoServicio.actualizarEmpleadoNomina(empleadoNomina);
 		return true;	 
 	}

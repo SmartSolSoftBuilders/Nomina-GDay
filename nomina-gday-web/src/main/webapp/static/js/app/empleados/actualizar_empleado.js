@@ -178,20 +178,19 @@ $(document).ready(function() {
 		rules: {
 			fechaingresoformnomina: "required",
 			fechaNacimiento : "required",
-			sueldomensualformnomina : "required",
-			sueldodiarioformnomina : "required",
-			sueldodiariointformnomina : "required",
-			numtrabajadorclienteoformnomina : "required",
-			nombreotropatronformnomina : "required",
-			rfcnformnomina : "required",
-			calleformnomina:"required",
-			numextformnomina : "required",
-			numintformnomina : "required",
-			cpformnomina : "required",
-			coloniaformnomina : "required",
-			mundelformnomina : "required",
-			suministrosformnomina : "required",
-			actividadesformnomina : "required",
+			sueldomensualformnomina : {"required":true,"number": true},
+			sueldodiarioformnomina : {"required":true,"number": true},
+			sueldodiariointformnomina : {"required":true,"number": true},
+			numtrabajadorclienteoformnomina : {"required":true,"maxlength": 30},
+			nombreotropatronformnomina : {"required":true,"maxlength": 80},
+			rfcnformnomina : {"required":true,"maxlength": 13},
+			calleformnomina:{"required":true,"maxlength": 30},
+			numextformnomina : {"required":true,"maxlength": 20},
+			numintformnomina : {"required":true,"maxlength": 20},
+			cpformnomina : {"required":true,"maxlength": 10},
+			coloniaformnomina : {"required":true,"maxlength": 25},
+			mundelformnomina : {"required":true,"maxlength": 25},
+			suministrosformnomina : "required",			
 			puestosformnomina : "required",
 			serviciosformnomina : "required",
 			tiposalarioformnomina : "required",
@@ -199,19 +198,20 @@ $(document).ready(function() {
 		},        
 		messages: {
 			fechaingresoformnomina: "Ingrese una fecha de Ingreso",
-			sueldomensualformnomina : "Ingrese el sueldo Mensual",
-			sueldodiarioformnomina : "Ingrese el sueldo Diario",
-			sueldodiariointformnomina : "Ingrese el Sueldo Diario Integrado",
-			numtrabajadorclienteoformnomina : "Ingrese un Numero de Trabajador Cliente",
-			nombreotropatronformnomina : "Ingrese el nombre de otro patron",
-			rfcnformnomina : "Ingrese el RFC",
-			calleformnomina : "Ingrese el nombre de la Calle",
-			numextformnomina : "Ingrese el numero Exterior",
-			numintformnomina : "Ingrese el numero Interior",
-			cpformnomina : "Ingrese el Codigo Postel",
-			coloniaformnomina : "Ingrese la Colonia",
-			mundelformnomina : "Ingrese el Municipio",
+			sueldomensualformnomina : "Ingrese el sueldo Mensual, solo n&uacute;meros",
+			sueldodiarioformnomina : "Ingrese el sueldo Diario, solo n&uacute;meros ",
+			sueldodiariointformnomina : "Ingrese el Sueldo Diario Integrado, solo n&uacute;meros",
+			numtrabajadorclienteoformnomina : "Ingrese un Numero de Trabajador Cliente. M&aacute;ximo 30",
+			nombreotropatronformnomina : "Ingrese el nombre de otro patron. M&aacute;ximo 80",
+			rfcnformnomina : "Ingrese el RFC. M&aacute;ximo 13",
+			calleformnomina : "Ingrese el nombre de la Calle. M&aacute;ximo 13",
+			numextformnomina : "Ingrese el numero Exterior. M&aacute;ximo 20",
+			numintformnomina : "Ingrese el numero Interior. M&aacute;ximo 20",
+			cpformnomina : "Ingrese el CP. M&aacute;ximo 10",
+			coloniaformnomina : "Ingrese la Colonia.M&aacute;ximo 25",
+			mundelformnomina : "Ingrese el Municipio.M&aacute;ximo 25",
 		},
+		
 		
 		submitHandler: function(form) {
 			form.submit();
@@ -657,7 +657,7 @@ function showEditarNominaForm(idNomina,nombre){
 			$("#departamento").val(data[26]);
 			$("#proceso").val(data[27]);					
 			$("#buttonAgregar").hide();
-			$("#buttonGuardar").show();
+			$("#buttonGuardar").show();			
 		},
 		error:  function (response) {
 			console.log("ERROR gETT"+response);
@@ -811,8 +811,8 @@ if ($("#actualizarNominaEmpleadoForm").valid()){
 				"tipoContrato":$("#tipocontratoformnomina").val(),
 				"fechaVencimiento":$("#fechavencimientoformnomina").val(),
 				"sueldoMensual":$("#sueldomensualformnomina").val(),
-				"sueldoDiario":$("#sueldodiarioformnomina").val(),
-				"sueldoDiarioInt":$("#sueldodiariointformnomina").val(),
+				"sueldoDiario":$("#sueldodiariointformnomina").val(),
+				"salarioDiarioInt":$("#sueldodiariointformnomina").val(),
 				"loteMovImssAlta":$("#loteimssformnomina").val(),
 				"plazaTrabajo":$("#plazatrabajoformnomina").val(),
 				"numeroTrabajadorCliente":$("#numtrabajadorclienteoformnomina").val(),
@@ -842,7 +842,7 @@ if ($("#actualizarNominaEmpleadoForm").valid()){
 	    $( "#demo" ).hide();
 		},
 		success:  function (data) {
-			mensajeRedireccion("EMPLEADO CREADO CORRECTAMENTE.","../empleados/actualizar_empleado.jsp?id="+$("#idEmpleado").val());
+			mensajeRedireccion("EMPLEADO ACTUALIZADO CORRECTAMENTE.","../empleados/actualizar_empleado.jsp?id="+$("#idEmpleado").val());
 		//	mensajeRedireccion("CAMBIOS REALIZADOS CON EXITO");
 			console.log(data);
 		},

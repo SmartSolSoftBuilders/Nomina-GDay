@@ -274,9 +274,10 @@
 	<update id="actualizarEmpleadoNomina" parameterType="EmpleadoNomina">
 			UPDATE "EMPLEADO_NOMINA"
 		   SET "FECHA_INGRESO"=date(#{fechaIngreso}), "ESTATUS"=#{estatus}, 
-		       "TIPO_SALARIO"= #{tipoSalario},"TIPO_CONTRATO"= #{tipoContrato}, "FECHA_BAJA"=date(#{fechaBaja}),
+		       "TIPO_SALARIO"= #{tipoSalario},"TIPO_CONTRATO"= #{tipoContrato},
 		       "FECHA_VENCIMIENTO"=date(#{fechaVencimiento}), 
-		       "SUELDO_MENSUAL"= #{sueldoMensual}, "SALARIO_DIARIO_INT"=#{salarioDiarioInt}, 
+		       "SUELDO_MENSUAL"= #{sueldoMensual},		       
+		       "SALARIO_DIARIO_INT"=#{salarioDiarioInt}, 
 		       "PLAZA_TRABAJO"=#{plazaTrabajo}, 
 		       "OTRO_PATRON"= #{otroPatron}, "RFC_OTRO_PATRON"=#{rfcOtroPatron}, "NOMBRE_OTRO_PATRON"=#{nombreOtroPatron}, 
 		       "PERMANENCIA"=#{permanencia}, "CALLE"=#{calle}, "NUM_EXTERIOR"=#{numExterior},

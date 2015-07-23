@@ -521,7 +521,7 @@
 				 		<td>MONTO<input id='montofiniquitoformnomina' name='montofiniquitoformnomina' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					</tr>
 				</table>
-			 		<button id="buttonAgregar" type="button" class="btn btn-success" onclick="darBajaNominaEmpleado();" >ACEPTAR</button>
+			 		<button id="buttonBajaNom" type="button" class="btn btn-success" onclick="darBajaNominaEmpleado();" >ACEPTAR</button>
 			</form>
 			</div>
 	  	
