@@ -52,14 +52,89 @@ $(document).ready(function() {
 			codPostal : {"required":true,"number":true},
 			municipioDel : {"required":true,"maxlength": 50},
 			entFederativa : {"required":true,"maxlength": 80},
-			numCuenta : {"required":true,"maxlength": 40},			
-			descuentoVsmg : {"number":true},
-			descuento : {"number":true},
-			importe : {"number":true},
-			numPagos : {"number":true},
-			importeFonacot : {"number":true},
-			importeAlimenticio : {"number":true},
-			porcentajeAlimenticio : {"number":true}				
+			numCuenta : {"required":true,"maxlength": 40},									
+			numCredito:{			
+				required: function (element) {							
+					if($("#datosInfonavit").is(':checked')){ if ($("#numCredito").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				number: true
+			},
+			descuentoVsmg:{
+				required: function (element) {							
+					if($("#datosInfonavit").is(':checked')){ if ($("#descuentoVsmg").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				number: true
+			},
+			descuento:{
+				required: function (element) {							
+					if($("#datosInfonavit").is(':checked')){ if ($("#descuento").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				number: true
+			},
+			importe:{
+				required: function (element) {							
+					if($("#datosInfonavit").is(':checked')){ if ($("#importe").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				number: true
+			},
+			numPagos:{			
+				required: function (element) {							
+					if($("#fonacot").is(':checked')){ if ($("#numPagos").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				number: true
+			},
+			importeFonacot:{			
+				required: function (element) {							
+					if($("#fonacot").is(':checked')){ if ($("#importeFonacot").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				number: true
+			},
+			importeAlimenticio:{			
+				required: function (element) {							
+					if($("#pensionAlimenticia").is(':checked')){ if ($("#importeAlimenticio").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				number: true
+			},
+			porcentajeAlimenticio:{			
+				required: function (element) {							
+					if($("#pensionAlimenticia").is(':checked')){ if ($("#porcentajeAlimenticio").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				number: true				
+			},
+			nombreAcreedor:{			
+				required: function (element) {							
+					if($("#pensionAlimenticia").is(':checked')){ if ($("#nombreAcreedor").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				maxlength: 100
+			},
+			//pensionAlimenticia: importeAlimenticio,	porcentajeAlimenticio,nombreAcreedor,observaciones
+			observaciones:{			
+				required: function (element) {							
+					if($("#pensionAlimenticia").is(':checked')){ if ($("#observaciones").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				maxlength: 100
+			}						
+			
 		},        
 		messages: {
 			numeroControl: "Campo Requerido. M&aacute;ximo 8",
@@ -87,11 +162,13 @@ $(document).ready(function() {
 			descuento : "Ingrese un porcentaje, solo n&uacute;meros ",
 			importe : "Ingrese un Importe, solo n&uacute;meros",
 			numPagos : "Ingrese el No.Pagos, solo n&uacute;meros",
+			numCredito: "Requerido, solo n&uacute;meros",
 			importeFonacot : "Ingrese el Importe de Fonacot, solo n&uacute;meros",
 			importeAlimenticio : "Ingrese el Importe Alimenticio, solo n&uacute;meros",
 			porcentajeAlimenticio : "Ingrese el porcentaje Alimenticio, solo n&uacute;meros",					
+			nombreAcreedor:"Campo requerido, m&aacute;ximo 100",
+			observaciones:"Campo requerido,m&aacute;ximo 100"					
 		},
-		
 		submitHandler: function(form) {
 			form.submit();
 		}
@@ -258,6 +335,14 @@ function muestraDatosEmpleado(datos){
 		$("#cuentaClave").prop('checked', true);
 	if (data.docPreafiliacion==true)
 		$("#preafiliacionImss").prop('checked', true);	
+	
+	if (data.cuenta!="")
+		$('#datosInfonavit').prop('checked',true);
+	if (data.descFonacotNum!="")
+		$('#pensionAlimenticia').prop('checked',true);
+	if (data.pensionAlimImp!="")
+		$('#fonacot').prop('checked',true);			
+
 	$("#numCuenta").val(data.cuenta);
 	$("#banco").val(data.banco);
 	$("#tipoPago").val(data.tipoPago);
@@ -939,4 +1024,61 @@ function habilitaMontoFiniquito(){
     if(opcion == 'NO') 
     	$('#montofiniquitoformnomina').attr("disabled", true);    
     else  $("#montofiniquitoformnomina").attr("disabled",false);
+}
+
+function habilitarInfonavit()
+{
+	if($('#datosInfonavit').prop('checked'))
+	{
+		// habilitamos
+		console.log("ON")
+		$("#numCredito").prop("disabled",false);
+		$("#descuentoVsmg").prop("disabled",false);
+		$("#descuento").prop("disabled",false);
+		$("#importe").prop("disabled",false);
+	}else {
+		// deshabilitamos
+		console.log("Off")
+		$("#numCredito").prop("disabled",true);
+		$("#descuentoVsmg").prop("disabled",true);
+		$("#descuento").prop("disabled",true);
+		$("#importe").prop("disabled",true);
+	}
+}
+function habilitarFonacot()
+{	
+	if($('#fonacot').prop('checked'))
+	{
+		// habilitamos
+		console.log("ON")
+		$("#numPagos").prop("disabled",false);
+		$("#importeFonacot").prop("disabled",false);
+	}else {
+		// deshabilitamos
+		console.log("Off")
+		$("#numPagos").prop("disabled",true);
+		$("#importeFonacot").prop("disabled",true);
+	
+	}
+}
+function habilitarPensionAlim()
+{	
+	if($('#pensionAlimenticia').prop('checked'))
+	{
+		// habilitamos
+		console.log("ON")	
+		$("#importeAlimenticio").prop("disabled",false);
+		$("#porcentajeAlimenticio").prop("disabled",false);
+		$("#nombreAcreedor").prop("disabled",false);
+		$("#observaciones").prop("disabled",false);
+		
+	}else {
+		// deshabilitamos
+		console.log("Off")
+		$("#importeAlimenticio").prop("disabled",true);
+		$("#porcentajeAlimenticio").prop("disabled",true);
+		$("#nombreAcreedor").prop("disabled",true);
+		$("#observaciones").prop("disabled",true);
+		
+	}
 }

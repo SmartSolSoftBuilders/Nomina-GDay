@@ -255,14 +255,14 @@
 					 		<td>DESCUENTO %<input id='descuento' name='descuento' type="text" class="form-control" disabled="disabled" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>IMPORTE<input id='importe' name='importe' type="text" class="form-control" disabled="disabled" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
 					 	</tr>					  						
-					</table>				  						
+					</table>				  		
 					<table>
 						<tr>
 							<td>FONACOT<input id='fonacot' name='fonacot' type="checkbox" class="form-control" onclick="habilitarFonacot();" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							<td></td>
 							<td>NUMERO DE PAGOS<input id='numPagos' name='numPagos' type="text" disabled="disabled" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>IMPORTE<input id='importeFonacot' name='importeFonacot' type="text" disabled="disabled" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
-					 	</tr>					  						
+					 	</tr>
 					</table>				  						
 					<table>
 						<tr>

@@ -247,9 +247,9 @@
 					</table>				  						
 					<table>
 						<tr>
-							<td>DATOS INFONAVIT<input id='numCuenta' name='numCuenta' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+							<td>DATOS INFONAVIT<input id='datosInfonavit' name='datosInfonavit' type="checkbox" class="form-control" onclick="habilitarInfonavit();" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							<td></td>
-							<td>NUMERO DE CREDITO<input id='numCredito' name='numCredito' type="text" class="form-control" onclick="habilitar();"></td>
+							<td>NUMERO DE CREDITO<input id='numCredito' name='numCredito' type="text" class="form-control"></td>
 					 		<td>DESCUENTO VSMG<input id='descuentoVsmg' name='descuentoVsmg' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>DESCUENTO %<input id='descuento' name='descuento' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>IMPORTE<input id='importe' name='importe' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
@@ -257,7 +257,7 @@
 					</table>				  						
 					<table>
 						<tr>
-							<td>FONACOT<input id='fonacot' name='fonacot' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+							<td>FONACOT<input id='fonacot' name='fonacot' type="checkbox" class="form-control" onclick="habilitarFonacot();" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							<td></td>
 							<td>NUMERO DE PAGOS<input id='numPagos' name='numPagos' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>IMPORTE<input id='importeFonacot' name='importeFonacot' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
@@ -265,7 +265,7 @@
 					</table>				  						
 					<table>
 						<tr>
-							<td>PENSION ALIMENTICIA<input id='pensionAlimenticia' name='pensionAlimenticia' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+							<td>PENSION ALIMENTICIA<input id='pensionAlimenticia' name='pensionAlimenticia' type="checkbox"  onclick="habilitarPensionAlim();" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							<td></td>
 					 		<td>IMPORTE<input id='importeAlimenticio' name='importeAlimenticio' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
 							<td>%<input id='porcentajeAlimenticio' name='porcentajeAlimenticio' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
