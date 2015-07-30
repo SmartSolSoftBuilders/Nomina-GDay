@@ -28,34 +28,152 @@ public class Nomina extends BaseModelo{
 	private String fechaContrato;
 	private String jsonValue;
 	private List<RazonSocial> razonesSociales;
-	
-	
-	public List<RazonSocial> getRazonesSociales() {
-		return razonesSociales;
+	public Integer getIdNomina() {
+		return idNomina;
 	}
-
-
-	public void setRazonesSociales(List<RazonSocial> razonesSociales) {
-		this.razonesSociales = razonesSociales;
+	public void setIdNomina(Integer idNomina) {
+		this.idNomina = idNomina;
 	}
-
-
+	public Patrona getPatrona() {
+		return patrona;
+	}
+	public void setPatrona(Patrona patrona) {
+		this.patrona = patrona;
+	}
+	public Patrona getIntermediaria() {
+		return intermediaria;
+	}
+	public void setIntermediaria(Patrona intermediaria) {
+		this.intermediaria = intermediaria;
+	}
+	public Esquema getEsquema() {
+		return esquema;
+	}
+	public void setEsquema(Esquema esquema) {
+		this.esquema = esquema;
+	}
+	public Ejecutivo getEjecutivo() {
+		return ejecutivo;
+	}
+	public void setEjecutivo(Ejecutivo ejecutivo) {
+		this.ejecutivo = ejecutivo;
+	}
+	public TipoCalendario getTipoCalendario() {
+		return tipoCalendario;
+	}
+	public void setTipoCalendario(TipoCalendario tipoCalendario) {
+		this.tipoCalendario = tipoCalendario;
+	}
+	public String getNombreCorto() {
+		return nombreCorto;
+	}
+	public void setNombreCorto(String nombreCorto) {
+		this.nombreCorto = nombreCorto;
+	}
+	public boolean isProvisionAguinaldo() {
+		return provisionAguinaldo;
+	}
+	public void setProvisionAguinaldo(boolean provisionAguinaldo) {
+		this.provisionAguinaldo = provisionAguinaldo;
+	}
+	public boolean isProvisionVacaciones() {
+		return provisionVacaciones;
+	}
+	public void setProvisionVacaciones(boolean provisionVacaciones) {
+		this.provisionVacaciones = provisionVacaciones;
+	}
+	public boolean isProvisionPrimaVacacional() {
+		return provisionPrimaVacacional;
+	}
+	public void setProvisionPrimaVacacional(boolean provisionPrimaVacacional) {
+		this.provisionPrimaVacacional = provisionPrimaVacacional;
+	}
+	public int getDiasAguinaldo() {
+		return diasAguinaldo;
+	}
+	public void setDiasAguinaldo(int diasAguinaldo) {
+		this.diasAguinaldo = diasAguinaldo;
+	}
+	public float getPorcPrimaVacacional() {
+		return porcPrimaVacacional;
+	}
+	public void setPorcPrimaVacacional(float porcPrimaVacacional) {
+		this.porcPrimaVacacional = porcPrimaVacacional;
+	}
+	public boolean isFondoAhorro() {
+		return fondoAhorro;
+	}
+	public void setFondoAhorro(boolean fondoAhorro) {
+		this.fondoAhorro = fondoAhorro;
+	}
+	public boolean isFacturaSubsidio() {
+		return facturaSubsidio;
+	}
+	public void setFacturaSubsidio(boolean facturaSubsidio) {
+		this.facturaSubsidio = facturaSubsidio;
+	}
+	public boolean isIvaExento() {
+		return ivaExento;
+	}
+	public void setIvaExento(boolean ivaExento) {
+		this.ivaExento = ivaExento;
+	}
+	public boolean isReconoceAntiguedad() {
+		return reconoceAntiguedad;
+	}
+	public void setReconoceAntiguedad(boolean reconoceAntiguedad) {
+		this.reconoceAntiguedad = reconoceAntiguedad;
+	}
+	public boolean isComisionCostSocial() {
+		return comisionCostSocial;
+	}
+	public void setComisionCostSocial(boolean comisionCostSocial) {
+		this.comisionCostSocial = comisionCostSocial;
+	}
+	public String getTipoPago() {
+		return tipoPago;
+	}
+	public void setTipoPago(String tipoPago) {
+		this.tipoPago = tipoPago;
+	}
+	public String getClaseRiesgo() {
+		return claseRiesgo;
+	}
+	public void setClaseRiesgo(String claseRiesgo) {
+		this.claseRiesgo = claseRiesgo;
+	}
+	public String getRegistroPatronal() {
+		return registroPatronal;
+	}
+	public void setRegistroPatronal(String registroPatronal) {
+		this.registroPatronal = registroPatronal;
+	}
+	public String getPeriodicidad() {
+		return periodicidad;
+	}
+	public void setPeriodicidad(String periodicidad) {
+		this.periodicidad = periodicidad;
+	}
+	public String getFechaContrato() {
+		return fechaContrato;
+	}
+	public void setFechaContrato(String fechaContrato) {
+		this.fechaContrato = fechaContrato;
+	}
 	public String getJsonValue() {
 		return jsonValue;
 	}
-
-
 	public void setJsonValue(String jsonValue) {
 		this.jsonValue = jsonValue;
 	}
-
-
-	public Nomina(){
+	public List<RazonSocial> getRazonesSociales() {
+		return razonesSociales;
 	}
-
-
-	public Nomina(Integer idNomina, Patrona patrona,
-			Patrona intermediaria, Esquema esquema, Ejecutivo ejecutivo,
+	public void setRazonesSociales(List<RazonSocial> razonesSociales) {
+		this.razonesSociales = razonesSociales;
+	}
+	public Nomina(Integer idNomina, Patrona patrona, Patrona intermediaria,
+			Esquema esquema, Ejecutivo ejecutivo,
 			TipoCalendario tipoCalendario, String nombreCorto,
 			boolean provisionAguinaldo, boolean provisionVacaciones,
 			boolean provisionPrimaVacacional, int diasAguinaldo,
@@ -63,7 +181,8 @@ public class Nomina extends BaseModelo{
 			boolean facturaSubsidio, boolean ivaExento,
 			boolean reconoceAntiguedad, boolean comisionCostSocial,
 			String tipoPago, String claseRiesgo, String registroPatronal,
-			String periodicidad, String fechaContrato,String jsonValue,List <RazonSocial> razonesSociales) {
+			String periodicidad, String fechaContrato, String jsonValue,
+			List<RazonSocial> razonesSociales) {
 		super();
 		this.idNomina = idNomina;
 		this.patrona = patrona;
@@ -87,229 +206,13 @@ public class Nomina extends BaseModelo{
 		this.registroPatronal = registroPatronal;
 		this.periodicidad = periodicidad;
 		this.fechaContrato = fechaContrato;
-		this.jsonValue=jsonValue;
-		this.razonesSociales=razonesSociales;
+		this.jsonValue = jsonValue;
+		this.razonesSociales = razonesSociales;
 	}
-
-
-	public Integer getIdNomina() {
-		return idNomina;
+	
+	public Nomina (){
+		
 	}
-
-
-	public void setIdNomina(Integer idNomina) {
-		this.idNomina = idNomina;
-	}
-
-
-	public Patrona getPatrona() {
-		return patrona;
-	}
-
-
-	public void setPatrona(Patrona patrona) {
-		this.patrona = patrona;
-	}
-
-
-	public Patrona getIntermediaria() {
-		return intermediaria;
-	}
-
-
-	public void setIntermediaria(Patrona intermediaria) {
-		this.intermediaria = intermediaria;
-	}
-
-
-	public Esquema getEsquema() {
-		return esquema;
-	}
-
-
-	public void setEsquema(Esquema esquema) {
-		this.esquema = esquema;
-	}
-
-
-	public Ejecutivo getEjecutivo() {
-		return ejecutivo;
-	}
-
-
-	public void setEjecutivo(Ejecutivo ejecutivo) {
-		this.ejecutivo = ejecutivo;
-	}
-
-
-	public TipoCalendario getTipoCalendario() {
-		return tipoCalendario;
-	}
-
-
-	public void setTipoCalendario(TipoCalendario tipoCalendario) {
-		this.tipoCalendario = tipoCalendario;
-	}
-
-
-	public String getNombreCorto() {
-		return nombreCorto;
-	}
-
-
-	public void setNombreCorto(String nombreCorto) {
-		this.nombreCorto = nombreCorto;
-	}
-
-
-	public boolean isProvisionAguinaldo() {
-		return provisionAguinaldo;
-	}
-
-
-	public void setProvisionAguinaldo(boolean provisionAguinaldo) {
-		this.provisionAguinaldo = provisionAguinaldo;
-	}
-
-
-	public boolean isProvisionVacaciones() {
-		return provisionVacaciones;
-	}
-
-
-	public void setProvisionVacaciones(boolean provisionVacaciones) {
-		this.provisionVacaciones = provisionVacaciones;
-	}
-
-
-	public boolean isProvisionPrimaVacacional() {
-		return provisionPrimaVacacional;
-	}
-
-
-	public void setProvisionPrimaVacacional(boolean provisionPrimaVacacional) {
-		this.provisionPrimaVacacional = provisionPrimaVacacional;
-	}
-
-
-	public int getDiasAguinaldo() {
-		return diasAguinaldo;
-	}
-
-
-	public void setDiasAguinaldo(int diasAguinaldo) {
-		this.diasAguinaldo = diasAguinaldo;
-	}
-
-
-	public float getPorcPrimaVacacional() {
-		return porcPrimaVacacional;
-	}
-
-
-	public void setPorcPrimaVacacional(float porcPrimaVacacional) {
-		this.porcPrimaVacacional = porcPrimaVacacional;
-	}
-
-
-	public boolean isFondoAhorro() {
-		return fondoAhorro;
-	}
-
-
-	public void setFondoAhorro(boolean fondoAhorro) {
-		this.fondoAhorro = fondoAhorro;
-	}
-
-
-	public boolean isFacturaSubsidio() {
-		return facturaSubsidio;
-	}
-
-
-	public void setFacturaSubsidio(boolean facturaSubsidio) {
-		this.facturaSubsidio = facturaSubsidio;
-	}
-
-
-	public boolean isIvaExento() {
-		return ivaExento;
-	}
-
-
-	public void setIvaExento(boolean ivaExento) {
-		this.ivaExento = ivaExento;
-	}
-
-
-	public boolean isReconoceAntiguedad() {
-		return reconoceAntiguedad;
-	}
-
-
-	public void setReconoceAntiguedad(boolean reconoceAntiguedad) {
-		this.reconoceAntiguedad = reconoceAntiguedad;
-	}
-
-
-	public boolean isComisionCostSocial() {
-		return comisionCostSocial;
-	}
-
-
-	public void setComisionCostSocial(boolean comisionCostSocial) {
-		this.comisionCostSocial = comisionCostSocial;
-	}
-
-
-	public String getTipoPago() {
-		return tipoPago;
-	}
-
-
-	public void setTipoPago(String tipoPago) {
-		this.tipoPago = tipoPago;
-	}
-
-
-	public String getClaseRiesgo() {
-		return claseRiesgo;
-	}
-
-
-	public void setClaseRiesgo(String claseRiesgo) {
-		this.claseRiesgo = claseRiesgo;
-	}
-
-
-	public String getRegistroPatronal() {
-		return registroPatronal;
-	}
-
-
-	public void setRegistroPatronal(String registroPatronal) {
-		this.registroPatronal = registroPatronal;
-	}
-
-
-	public String getPeriodicidad() {
-		return periodicidad;
-	}
-
-
-	public void setPeriodicidad(String periodicidad) {
-		this.periodicidad = periodicidad;
-	}
-
-
-	public String getFechaContrato() {
-		return fechaContrato;
-	}
-
-
-	public void setFechaContrato(String fechaContrato) {
-		this.fechaContrato = fechaContrato;
-	}
-
+	
 
 }
