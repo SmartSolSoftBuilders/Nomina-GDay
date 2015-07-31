@@ -210,9 +210,11 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	hoja = wb.getSheetAt(1);
            	int numRz=3;
         	int j=0;
+        	List comisiones = new ArrayList(); 
         	for (j=0; j<nomina.getRazonesSociales().size();j++){
         		fila = hoja.getRow(numRz);
         		fila.createCell(j+4).setCellValue(nomina.getRazonesSociales().get(j).getNombreCortoRazonS());
+        		comisiones.add(nomina.getRazonesSociales().get(j).getComision());
         	}
         	fila.createCell(j+4).setCellValue("Total");
            	numRz=4;
@@ -222,8 +224,10 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(1).setCellValue(empleados.get(j).getNoControl());
            		fila.createCell(2).setCellValue(empleados.get(j).getNss());	
            		fila.createCell(3).setCellValue(empleados.get(j).getNombre()+" "+empleados.get(j).getApellidoPaterno()+ " " +empleados.get(j).getApellidoMaterno());
-           		fila.createCell(4).setCellValue("100%");
-           		fila.createCell(5).setCellValue("100%");
+           		int indiceComisiones=4;
+           		for (int k =0; k<comisiones.size();k++){
+           			fila.createCell(indiceComisiones++).setCellValue(""+comisiones.get(k));           			
+           		}
               	numRz++;
            	}
            	/****Se llena 3ta hoja****/
