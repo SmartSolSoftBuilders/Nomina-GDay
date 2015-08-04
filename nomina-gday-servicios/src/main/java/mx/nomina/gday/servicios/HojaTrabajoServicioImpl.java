@@ -119,16 +119,9 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         int columnaInicial=1;
         int totalDatos=67;
         try{
-     		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpHojaTrabajo"+idHojaTrabajo+".xlsx");
-     		File inFile = new File(rutaArchivo);
-     		FileInputStream in = new FileInputStream(inFile);
-     		int c;
-			while( (c = in.read() ) != -1)
-				fos.write(c);
-			in.close();
-			fos.close();			
-     	    //fos.write(hojaTrabajo.getArchivoAcumulado());
-     	    //fos.close(); 
+     		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpHojaTrabajo"+idHojaTrabajo+".xlsx");     		     			
+     	    fos.write(hojaTrabajo.getArchivoAcumulado());
+     	    fos.close(); 
         	FileInputStream file = new FileInputStream(archivoXLS);
         	// Workbook wb = WorkbookFactory.create(new File("/path/to/your/excel/file"));
         	 //Sheet mySheet = wb.getSheetAt(0);
