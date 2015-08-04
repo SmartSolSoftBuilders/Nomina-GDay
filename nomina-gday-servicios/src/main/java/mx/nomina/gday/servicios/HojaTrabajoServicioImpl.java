@@ -80,14 +80,14 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
 	public void agregarArchivo(HojaTrabajo hojaTrabajo){
 		// TODO Auto-generated method stub
 		try{
-			List<Nomina> nominas = nominaDao.obtenerNominas();
+			/*List<Nomina> nominas = nominaDao.obtenerNominas();
 			for (int i=0;i<nominas.size();i++){
 				Nomina nomina1=new Nomina();
 				nomina1.setIdNomina(nominas.get(i).getIdNomina());
 				hojaTrabajo.setNomina(nomina1);
 				this.hojaTrabajoDao.agregarArchivo(hojaTrabajo);
-			}
-			//this.hojaTrabajoDao.agregarArchivoAll(hojaTrabajo);
+			}*/
+			this.hojaTrabajoDao.agregarArchivoAll(hojaTrabajo);
 		}
 		catch(Exception e){
 			e.printStackTrace();
