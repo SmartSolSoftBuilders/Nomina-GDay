@@ -32,8 +32,7 @@ $(document).ready(function() {
 					if($("#extranjero").is(':checked')){ if ($("#documentoMigratorio").val()=="")	return true;}	                
 	                else	                
 	                    return false;	                
-				},
-				number: true
+				}				
 			},
 			fechaVigenciaDocMig:{			
 				required: function (element) {							

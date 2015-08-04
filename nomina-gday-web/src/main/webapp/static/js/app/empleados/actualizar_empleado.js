@@ -52,7 +52,21 @@ $(document).ready(function() {
 			codPostal : {"required":true,"number":true},
 			municipioDel : {"required":true,"maxlength": 50},
 			entFederativa : {"required":true,"maxlength": 80},
-			numCuenta : {"required":true,"maxlength": 40},									
+			numCuenta : {"required":true,"maxlength": 40},
+			documentoMigratorio:{			
+				required: function (element) {							
+					if($("#extranjero").is(':checked')){ if ($("#documentoMigratorio").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				}				
+			},
+			fechaVigenciaDocMig:{			
+				required: function (element) {							
+					if($("#extranjero").is(':checked')){ if ($("#fechaVigenciaDocMig").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				}
+			},
 			numCredito:{			
 				required: function (element) {							
 					if($("#datosInfonavit").is(':checked')){ if ($("#numCredito").val()=="")	return true;}	                
