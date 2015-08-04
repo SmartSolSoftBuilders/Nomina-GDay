@@ -282,7 +282,7 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(42).setCellValue(empleados.get(j).getPensionAlimPorc());
            		fila.createCell(43).setCellValue(empleados.get(j).getPensionAlimAcred());
            		fila.createCell(44).setCellValue(empleados.get(j).getPensionAlimObs());
-           		fila.createCell(45).setCellValue("N/A");
+           		fila.createCell(45).setCellValue(empleados.get(j).isReconoceAntiguedad());
            		//Nómina Empleado	
            		EmpleadoNomina emp1= new EmpleadoNomina();
            		emp1.setNomina(nomina);
@@ -319,8 +319,8 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(71).setCellValue("N/A");
            		fila.createCell(72).setCellValue(emp1.getTipoContrato());
            		fila.createCell(73).setCellValue(emp1.getSueldoDiario());
-           		fila.createCell(74).setCellValue("N/A");
-           		fila.createCell(75).setCellValue("N/A");
+           		fila.createCell(74).setCellValue(empleados.get(j).getDocumentoMigratorio());
+           		fila.createCell(75).setCellValue(empleados.get(j).getFechaVigenciaDocumentoMigratorio());
               	numRz++;
            	}
             file.close();
