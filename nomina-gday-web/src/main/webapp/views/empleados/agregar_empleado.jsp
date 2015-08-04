@@ -64,17 +64,22 @@
 					  	<tr>					 	
 					 		<td>FECHA INGRESO<input id='fechaIngreso' name='fechaIngreso' type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>LISTA NEGRA POR DEMANDA<input id='listaNegra' name='listaNegra' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 		<td>RECONOCE ANTIGUEDAD<input id='reconoceAntiguedad' name='reconoceAntiguedad' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>					  						
 					</table>
 					<table>
 						<tr>
-							<td>DOMICILIO</td>
+							<td align="center">DOMICILIO</td>
 						</tr>
+					</table>
+					<table>												
 					  	<tr>				 		
 					 		<td>CALLE<input id='calle' name='calle' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>NUMERO EXTERIOR<input id='numExt' name='numExt' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>NUMERO INTERIOR<input id='numInt' name='numInt' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>COLONIA<input id='colonia' name='colonia' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 	</tr>
+					 	<tr>
 					 		<td>CODIGO POSTAL<input id='codPostal' name='codPostal' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>MUNICIPIO O DELEGACION<input id='municipioDel' name='municipioDel' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							<td>ESTADO<select id='estado' name='estado' type="text" class="form-control">
@@ -118,8 +123,10 @@
 					</table>
 					<table>
 						<tr>
-							<td>DOCUMENTOS</td>
+							<td align="center">DOCUMENTOS</td>
 						</tr>
+					</table>
+					<table>												
 					  	<tr>				 		
 					 		<td>IDENTIFICACION OFICIAL<input id='indentificacionOficial' name='indentificacionOficial' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>ACTA DE NACIMIENTO<input id='actaNacimiento' name='actaNacimiento' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
@@ -138,8 +145,10 @@
 					</table>	
 					<table>
 						<tr>
-							<td>DATOS BANCARIOS</td>
+							<td align="center">DATOS BANCARIOS</td>
 						</tr>
+					</table>
+					<table>												
 					  	<tr>				 		
 					 		<td>NUMERO DE CUENTA<input id='numCuenta' name='numCuenta' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>BANCO<select id='banco' name='banco' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
@@ -245,7 +254,14 @@
 					 			</select>
 					 		</td>
 					 	</tr>					  						
-					</table>				  						
+					</table>						
+					<table>				
+					  	<tr>
+						  	<td>EXTRANJERO<input id='extranjero' name='extranjero' type="checkbox" class="form-control" onclick="habilitarExtranjero();" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>				 		
+					 		<td>DOCUMENTO MIGRATORIO<input id='documentoMigratorio' name='documentoMigratorio' disabled="disabled" type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 		<td>FECHA VIGENCIA<input id='fechaVigenciaDocMig' name='fechaVigenciaDocMig' type="date" disabled="disabled" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 	</tr>
+					 </table>			  						
 					<table>
 						<tr>
 							<td>DATOS INFONAVIT<input id='datosInfonavit' name='datosInfonavit' type="checkbox" class="form-control" onclick="habilitarInfonavit();" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>

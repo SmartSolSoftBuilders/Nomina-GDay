@@ -16,5 +16,6 @@ public interface HojaTrabajoDao {
 	int eliminarHojaTrabajo(HojaTrabajo hojaTrabajo);
 	public void agregarArchivo(HojaTrabajo hojaTrabajo);
 	HojaTrabajo obtenerHojaById(Integer idHojaTrabajo);
+	void agregarArchivoAll(HojaTrabajo hojaTrabajo);
 
 }

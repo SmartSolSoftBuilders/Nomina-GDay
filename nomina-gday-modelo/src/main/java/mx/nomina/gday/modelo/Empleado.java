@@ -48,11 +48,41 @@ public class Empleado extends BaseModelo{
 	private double pensionAlimPorc;
 	private String pensionAlimAcred;
 	private String pensionAlimObs;
+	private String documentoMigratorio;
+	private boolean reconoceAntiguedad;
+	private String fechaVigenciaDocumentoMigratorio;
 	
+	
+	public String getDocumentoMigratorio() {
+		return documentoMigratorio;
+	}
+
+	public void setDocumentoMigratorio(String documentoMigratorio) {
+		this.documentoMigratorio = documentoMigratorio;
+	}
+
+	public boolean isReconoceAntiguedad() {
+		return reconoceAntiguedad;
+	}
+
+	public void setReconoceAntiguedad(boolean reconoceAntiguedad) {
+		this.reconoceAntiguedad = reconoceAntiguedad;
+	}
+
+	public String getFechaVigenciaDocumentoMigratorio() {
+		return fechaVigenciaDocumentoMigratorio;
+	}
+
+	public void setFechaVigenciaDocumentoMigratorio(
+			String fechaVigenciaDocumentoMigratorio) {
+		this.fechaVigenciaDocumentoMigratorio = fechaVigenciaDocumentoMigratorio;
+	}
+
 	public Empleado(){
 		
 	}
 
+	
 	public Empleado(Integer idEmpleado, String noControl, String nss,
 			String curp, String apellidoPaterno, String apellidoMaterno,
 			String nombre, String rfc, String fechaNacimiento, Integer edad,
@@ -69,7 +99,8 @@ public class Empleado extends BaseModelo{
 			double descInfonavitImp, double descFonacotNum,
 			double descFonacotPago, double pensionAlimImp,
 			double pensionAlimPorc, String pensionAlimAcred,
-			String pensionAlimObs) {
+			String pensionAlimObs, String documentoMigratorio,
+			boolean reconoceAntiguedad, String fechaVigenciaDocumentoMigratorio) {
 		super();
 		this.idEmpleado = idEmpleado;
 		this.noControl = noControl;
@@ -117,6 +148,9 @@ public class Empleado extends BaseModelo{
 		this.pensionAlimPorc = pensionAlimPorc;
 		this.pensionAlimAcred = pensionAlimAcred;
 		this.pensionAlimObs = pensionAlimObs;
+		this.documentoMigratorio = documentoMigratorio;
+		this.reconoceAntiguedad = reconoceAntiguedad;
+		this.fechaVigenciaDocumentoMigratorio = fechaVigenciaDocumentoMigratorio;
 	}
 
 	public Integer getIdEmpleado() {

@@ -26,7 +26,22 @@ $(document).ready(function() {
 			codPostal : {"required":true,"number":true},
 			municipioDel : {"required":true,"maxlength": 50},
 			entFederativa : {"required":true,"maxlength": 80},
-			numCuenta : {"required":true,"maxlength": 40},									
+			numCuenta : {"required":true,"maxlength": 40},
+			documentoMigratorio:{			
+				required: function (element) {							
+					if($("#extranjero").is(':checked')){ if ($("#documentoMigratorio").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				},
+				number: true
+			},
+			fechaVigenciaDocMig:{			
+				required: function (element) {							
+					if($("#extranjero").is(':checked')){ if ($("#fechaVigenciaDocMig").val()=="")	return true;}	                
+	                else	                
+	                    return false;	                
+				}
+			},
 			numCredito:{			
 				required: function (element) {							
 					if($("#datosInfonavit").is(':checked')){ if ($("#numCredito").val()=="")	return true;}	                
@@ -246,10 +261,9 @@ $(document).ready(function() {
 
 
 function guardarEmpleado() {	
+	console.log("Reconoce"+$("#reconoceAntiguedad").prop('checked'))
 	if ($("#agregarEmpleadoForm").valid()){	
-
-		$
-			.ajax({
+		$.ajax({
 				data : {
 					"noControl" : $("#numeroControl").val(),
 					"nss" : $("#nss").val(),
@@ -265,8 +279,11 @@ function guardarEmpleado() {
 					"nacionalidad" : $("#nacionalidad").val(),
 					"estadoCivil" : $("#estadoCivil").val(),
 					"correoElectronico" : $("#correoElectronico").val(),
-					"fechaIngresoReal" : $("#fechaIngreso").val(),
-					"listaNegra" : $("#listaNegra").val(),
+					"fechaIngresoReal" : $("#fechaIngreso").val(), 
+					"listaNegra" : $("#listaNegra").prop('checked'),					
+					"documentoMigratorio":$("#documentoMigratorio").val(),
+					"fechaVigenciaDocumentoMigratorio":$("#fechaVigenciaDocMig").val(),
+					"reconoceAntiguedad":$("#reconoceAntiguedad").prop('checked'),
 					"calle" : $("#calle").val(),
 					"numExterior" : $("#numExt").val(),
 					"numInterior" : $("#numInt").val(),
@@ -695,6 +712,20 @@ function validate_fecha(fecha)
 }
 
 //Habilitar elementos por checkbox
+function habilitarExtranjero(){
+	if($('#extranjero').prop('checked'))
+	{
+		// habilitamos
+		console.log("ON")
+		$("#documentoMigratorio").prop("disabled",false);
+		$("#fechaVigenciaDocMig").prop("disabled",false);		
+	}else {
+		// deshabilitamos
+		console.log("Off")
+		$("#documentoMigratorio").prop("disabled",true);
+		$("#fechaVigenciaDocMig").prop("disabled",true);		
+	}
+}
 
 function habilitarInfonavit()
 {

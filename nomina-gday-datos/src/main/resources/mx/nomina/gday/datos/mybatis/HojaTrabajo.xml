@@ -66,4 +66,14 @@
            	'0','1',#{nombreArchivo},#{tipoArchivo});            	   
     </insert>
 			
+	<insert id="agregarArchivoAll" parameterType="Archivo" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+  		   	SELECT nextVal('sec_hoja')
+  		</selectKey>
+			INSERT INTO "HOJA_DE_TRABAJO"(
+            "ID_HOJA_DE_TRABAJO", "ID_NOMINA", "ARCHIVO_ACUMULADO", "ESTATUS", 
+            "PERIODO", "NOMBRE_ARCHIVO","TIPO_ARCHIVO")
+           	VALUES (#{id},#{nomina.idNomina},#{archivoAcumulado,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler},	
+           	'0','1',#{nombreArchivo},#{tipoArchivo});            	   
+    </insert>			
 </mapper>

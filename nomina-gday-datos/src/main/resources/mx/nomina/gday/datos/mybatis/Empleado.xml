@@ -50,9 +50,11 @@
 		<result property="pensionAlimPorc" column="PENSION_ALIM_PORC"></result>
 		<result property="pensionAlimAcred" column="PENSION_ALIM_ACRED"></result>
 		<result property="pensionAlimObs" column="PENSION_ALIM_OBS"></result>
+		<result property="documentoMigratorio" column="DOCUMENTO_MIGRATORIO"></result>
+		<result property="reconoceAntiguedad" column="RECONOCE_ANTIGUEDAD"></result>
+		<result property="fechaVigenciaDocumentoMigratorio" column="FECHA_VIGENCIA_DOC_MIG"></result>
 	</resultMap>
-	
-	
+		
 	<!-- Select para obtener la lista de todos los Grupos registrados -->
 	<select id="obtenerEmpleados" resultMap="empleadoResult" resultType="Empleado">
 		select * from "EMPLEADO"
@@ -78,10 +80,10 @@
        "CUENTA", "BANCO", "TIPO_PAGO", "NO_CRED_INFONAVIT", "DESC_INFONAVIT_VSMG", 
        "DESC_INFONAVIT_PORC", "DESC_INFONAVIT_IMP", "DESC_FONACOT_PAGO", 
        "DESC_FONACOT_NUM", "PENSION_ALIM_IMP", "PENSION_ALIM_PORC", 
-       "PENSION_ALIM_ACRED", "PENSION_ALIM_OBS"
+       "PENSION_ALIM_ACRED", "PENSION_ALIM_OBS","DOCUMENTO_MIGRATORIO","RECONOCE_ANTIGUEDAD","FECHA_VIGENCIA_DOC_MIG"  		
 		  FROM "EMPLEADO" INNER JOIN "EMPLEADO_NOMINA" ON "EMPLEADO"."ID_EMPLEADO" = "EMPLEADO_NOMINA"."ID_EMPLEADO" AND "EMPLEADO_NOMINA"."ID_NOMINA"=#{id}; 	
 	</select>
-	
+		
 	<select id="selectEmpleado" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 
 		select * from "EMPLEADO" where "ID_EMPLEADO"=#{idEmpleado} 	
 	</select> 
@@ -107,7 +109,13 @@
             "ENT_FEDERATIVA", "DOC_IFE", "DOC_ACT_NAN", "DOC_CURP", "DOC_RFC", "DOC_COMPROBANTE",
             "DOC_COMP_EST", "DOC_CORREO", "DOC_CLABE", "DOC_PREAFILIACION", "CUENTA", "BANCO",
             "TIPO_PAGO", "DESC_INFONAVIT_VSMG", "DESC_INFONAVIT_PORC", "DESC_INFONAVIT_IMP", "DESC_FONACOT_PAGO", "DESC_FONACOT_NUM",
-            "PENSION_ALIM_IMP", "PENSION_ALIM_PORC", "PENSION_ALIM_ACRED", "PENSION_ALIM_OBS", "NO_CRED_INFONAVIT")
+            "PENSION_ALIM_IMP", "PENSION_ALIM_PORC", "PENSION_ALIM_ACRED", "PENSION_ALIM_OBS", "NO_CRED_INFONAVIT",            
+			"DOCUMENTO_MIGRATORIO","RECONOCE_ANTIGUEDAD"
+			<if test="fechaVigenciaDocumentoMigratorio!=''">
+				,"FECHA_VIGENCIA_DOC_MIG"
+			</if>
+			)
+			
    	 	VALUES (#{id}, #{noControl}, #{nss}, #{curp},  #{apellidoPaterno},  
    	 		#{apellidoMaterno}, #{nombre}, #{rfc}, 
    	 		date(#{fechaNacimiento}), #{edad}, #{sexo}, 
@@ -117,7 +125,12 @@
    	 		#{entFederativa}, #{docIfe}, #{docActNan}, #{docCurp}, #{docRfc}, #{docComprobante}, 
    	 		#{docCompEst}, #{docCorreo}, #{docClabe}, #{docPreafiliacion}, #{cuenta}, #{banco}, 
    	 		#{tipoPago}, #{descInfonavitVsmg}, #{desInfonavitPorc}, #{descInfonavitImp}, #{descFonacotPago}, #{descFonacotNum}, 
-   	 		#{pensionAlimImp}, #{pensionAlimPorc}, #{pensionAlimAcred}, #{pensionAlimObs}, #{noCredInfonavit});
+   	 		#{pensionAlimImp}, #{pensionAlimPorc}, #{pensionAlimAcred}, #{pensionAlimObs}, #{noCredInfonavit},
+   	 		#{documentoMigratorio},#{reconoceAntiguedad}
+   	 		<if test="fechaVigenciaDocumentoMigratorio!=''">
+   	 			,date(#{fechaVigenciaDocumentoMigratorio})
+   	 		</if>
+   	 		);   	 		
    	 	
 	</insert> 
 	
@@ -134,7 +147,11 @@
             "ENT_FEDERATIVA"=#{entFederativa}, "DOC_IFE"=#{docIfe}, "DOC_ACT_NAN"=#{docActNan}, "DOC_CURP"=#{docCurp}, "DOC_RFC"=#{docRfc}, "DOC_COMPROBANTE"=#{docComprobante},
             "DOC_COMP_EST"=#{docCompEst}, "DOC_CORREO"=#{docCorreo}, "DOC_CLABE"=#{docClabe}, "DOC_PREAFILIACION"=#{docPreafiliacion}, "CUENTA"=#{cuenta}, "BANCO"=#{banco},
             "TIPO_PAGO"=#{tipoPago}, "DESC_INFONAVIT_VSMG"=#{descInfonavitVsmg}, "DESC_INFONAVIT_PORC"=#{desInfonavitPorc}, "DESC_INFONAVIT_IMP"=#{descInfonavitImp}, "DESC_FONACOT_PAGO"=#{descFonacotPago}, "DESC_FONACOT_NUM"=#{descFonacotNum},
-            "PENSION_ALIM_IMP"=#{pensionAlimImp}, "PENSION_ALIM_PORC"=#{pensionAlimPorc}, "PENSION_ALIM_ACRED"=#{pensionAlimAcred}, "PENSION_ALIM_OBS"=#{pensionAlimObs}, "NO_CRED_INFONAVIT"=#{noCredInfonavit}
-         WHERE "ID_EMPLEADO"=#{idEmpleado} 	 
+            "PENSION_ALIM_IMP"=#{pensionAlimImp}, "PENSION_ALIM_PORC"=#{pensionAlimPorc}, "PENSION_ALIM_ACRED"=#{pensionAlimAcred}, "PENSION_ALIM_OBS"=#{pensionAlimObs}, "NO_CRED_INFONAVIT"=#{noCredInfonavit},            
+   	 		"DOCUMENTO_MIGRATORIO"=#{documentoMigratorio},"RECONOCE_ANTIGUEDAD"=#{reconoceAntiguedad}
+   	 		<if test="fechaVigenciaDocumentoMigratorio!=''">
+   	 			,"FECHA_VIGENCIA_DOC_MIG"=date(#{fechaVigenciaDocumentoMigratorio})
+   	 		</if>
+		         WHERE "ID_EMPLEADO"=#{idEmpleado} 	 
 	</update>
 </mapper>

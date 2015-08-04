@@ -167,7 +167,8 @@ $(document).ready(function() {
 			importeAlimenticio : "Ingrese el Importe Alimenticio, solo n&uacute;meros",
 			porcentajeAlimenticio : "Ingrese el porcentaje Alimenticio, solo n&uacute;meros",					
 			nombreAcreedor:"Campo requerido, m&aacute;ximo 100",
-			observaciones:"Campo requerido,m&aacute;ximo 100"					
+			observaciones:"Campo requerido,m&aacute;ximo 100"			
+				
 		},
 		submitHandler: function(form) {
 			form.submit();
@@ -341,8 +342,17 @@ function muestraDatosEmpleado(datos){
 	if (data.descFonacotNum!="")
 		$('#pensionAlimenticia').prop('checked',true);
 	if (data.pensionAlimImp!="")
-		$('#fonacot').prop('checked',true);			
-
+		$('#fonacot').prop('checked',true);
+	
+	if (data.documentoMigratorio!=null && data.documentoMigratorio!='')
+		$('#extranjero').prop('checked',true);
+	if (data.reconoceAntiguedad==true)
+		$('#reconoceAntiguedad').prop('checked',true);
+	
+	$("#documentoMigratorio").val(data.documentoMigratorio);
+	$("#fechaVigenciaDocMig").val(data.fechaVigenciaDocumentoMigratorio);
+	$("#reconoceAntiguedad").val(data.reconoceAntiguedad);
+	
 	$("#numCuenta").val(data.cuenta);
 	$("#banco").val(data.banco);
 	$("#tipoPago").val(data.tipoPago);
@@ -405,6 +415,9 @@ function actualizarEmpleado() {
 					"apellidoMaterno":$("#materno").val(),
 					"nombre":$("#nombre").val(),
 					"rfc":$("#rfc").val(),
+					"documentoMigratorio":$("#documentoMigratorio").val(),
+					"fechaVigenciaDocumentoMigratorio":$("#fechaVigenciaDocMig").val(),
+					"reconoceAntiguedad":$("#reconoceAntiguedad").prop('checked'),
 					"fechaNacimiento":$("#fechaNacimiento").val(),
 					"edad":$("#edad").val(),
 					"sexo":$("#sexo").val(),
@@ -1018,6 +1031,21 @@ function validate_fecha(fecha)
 
 
 //Habilitar finiquito segun ¿APLICA FINIQUITO?
+function habilitarExtranjero(){
+	if($('#extranjero').prop('checked'))
+	{
+		// habilitamos
+		console.log("ON")
+		$("#documentoMigratorio").prop("disabled",false);
+		$("#fechaVigenciaDocMig").prop("disabled",false);		
+	}else {
+		// deshabilitamos
+		console.log("Off")
+		$("#documentoMigratorio").prop("disabled",true);
+		$("#fechaVigenciaDocMig").prop("disabled",true);
+	}
+}
+
 
 function habilitaMontoFiniquito(){
     var opcion = $("#aplicafiniquitoformnomina").val();
