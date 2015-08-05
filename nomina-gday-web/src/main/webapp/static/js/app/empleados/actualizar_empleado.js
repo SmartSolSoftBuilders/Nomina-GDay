@@ -838,7 +838,7 @@ if ($("#actualizarNominaEmpleadoForm").valid()){
 				"tipoContrato":$("#tipocontratoformnomina").val(),
 				"fechaVencimiento":$("#fechavencimientoformnomina").val(),
 				"sueldoMensual":$("#sueldomensualformnomina").val(),
-				"sueldoDiario":$("#sueldodiariointformnomina").val(),
+				"sueldoDiario":$("#sueldodiarioformnomina").val(),
 				"salarioDiarioInt":$("#sueldodiariointformnomina").val(),
 				"loteMovImssAlta":$("#loteimssformnomina").val(),
 				"plazaTrabajo":$("#plazatrabajoformnomina").val(),

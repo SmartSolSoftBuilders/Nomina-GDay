@@ -13,6 +13,7 @@
 		<result property="fechaVencimiento" column="FECHA_VENCIMIENTO"/>
 		<result property="sueldoMensual" column="SUELDO_MENSUAL"/>
 		<result property="salarioDiarioInt" column="SALARIO_DIARIO_INT"/>
+		<result property="sueldoDiario" column="SUELDO_DIARIO"/>
 		<result property="plazaTrabajo" column="PLAZA_TRABAJO"/>
 		<result property="numeroTrabajadorCliente" column="NUMERO_TRABAJADOR_CLIENTE"/>
 		<result property="otroPatron" column="OTRO_PATRON"/>
@@ -195,7 +196,7 @@
 			INSERT INTO "EMPLEADO_NOMINA"(
 	            "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 
 	            "LOTE_MOV_IMSS_ALTA", "SUELDO_MENSUAL", 
-	            "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
+	            "SALARIO_DIARIO_INT","SUELDO_DIARIO","PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
 	            "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
 	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
 	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
@@ -203,7 +204,7 @@
 	            "ID_PROCESO","FECHA_BAJA","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
 	            1234, #{sueldoMensual}, 
-	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
+	            #{salarioDiarioInt}, #{sueldoDiario},#{plazaTrabajo}, 123, 
 	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
 	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
 	            #{municipioDel}, #{entFederativa}, 1234,
@@ -214,7 +215,7 @@
 			INSERT INTO "EMPLEADO_NOMINA"(
 	            "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 
 	            "LOTE_MOV_IMSS_ALTA", "SUELDO_MENSUAL", 
-	            "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
+	            "SALARIO_DIARIO_INT","SUELDO_DIARIO","PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
 	            "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
 	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
 	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
@@ -222,7 +223,7 @@
 	            "ID_PROCESO","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
 	            1234, #{sueldoMensual}, 
-	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
+	            #{salarioDiarioInt},#{sueldoDiario}, #{plazaTrabajo}, 123, 
 	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
 	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
 	            #{municipioDel}, #{entFederativa}, 1234,
@@ -234,7 +235,7 @@
 			INSERT INTO "EMPLEADO_NOMINA"(
 	            "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 
 	            "LOTE_MOV_IMSS_ALTA", "SUELDO_MENSUAL", 
-	            "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
+	            "SALARIO_DIARIO_INT","SUELDO_DIARIO","PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
 	            "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
 	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
 	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
@@ -242,7 +243,7 @@
 	            "ID_PROCESO","FECHA_BAJA","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
 	            1234, #{sueldoMensual}, 
-	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
+	            #{salarioDiarioInt},#{sueldoDiario},#{plazaTrabajo}, 123, 
 	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
 	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
 	            #{municipioDel}, #{entFederativa}, 1234,
@@ -254,7 +255,7 @@
 			INSERT INTO "EMPLEADO_NOMINA"(
 	            "ID_NOMINA", "ID_EMPLEADO", "FECHA_INGRESO", "ESTATUS", "TIPO_SALARIO", 
 	            "LOTE_MOV_IMSS_ALTA", "SUELDO_MENSUAL", 
-	            "SALARIO_DIARIO_INT", "PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
+	            "SALARIO_DIARIO_INT", "SUELDO_DIARIO","PLAZA_TRABAJO", "NUMERO_TRABAJADOR_CLIENTE", 
 	            "OTRO_PATRON", "RFC_OTRO_PATRON", "NOMBRE_OTRO_PATRON", "PERMANENCIA", 
 	            "CALLE", "NUM_EXTERIOR", "NUM_INTERIOR", "COLONIA", "CODIGO_POSTAL", 
 	            "MUNICIPIO_DEL", "ENT_FEDERATIVA", "LOTE_MOV_IMSS_BAJA",
@@ -262,7 +263,7 @@
 	            "ID_PROCESO","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
 	            1234, #{sueldoMensual}, 
-	            #{salarioDiarioInt}, #{plazaTrabajo}, 123, 
+	            #{salarioDiarioInt},#{sueldoDiario} #{plazaTrabajo}, 123, 
 	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
 	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
 	            #{municipioDel}, #{entFederativa}, 1234,
@@ -278,6 +279,7 @@
 		       "FECHA_VENCIMIENTO"=date(#{fechaVencimiento}), 
 		       "SUELDO_MENSUAL"= #{sueldoMensual},		       
 		       "SALARIO_DIARIO_INT"=#{salarioDiarioInt}, 
+		       "SUELDO_DIARIO"=#{sueldoDiario},
 		       "PLAZA_TRABAJO"=#{plazaTrabajo}, 
 		       "OTRO_PATRON"= #{otroPatron}, "RFC_OTRO_PATRON"=#{rfcOtroPatron}, "NOMBRE_OTRO_PATRON"=#{nombreOtroPatron}, 
 		       "PERMANENCIA"=#{permanencia}, "CALLE"=#{calle}, "NUM_EXTERIOR"=#{numExterior},
