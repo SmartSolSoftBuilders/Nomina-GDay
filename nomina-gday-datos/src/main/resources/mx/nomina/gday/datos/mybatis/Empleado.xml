@@ -64,6 +64,10 @@
 	<select id="obtenerIdEmpleadoByCurp" parameterType="Empleado" resultMap="empleadoResult" resultType="int">		 
 		select "ID_EMPLEADO" from "EMPLEADO" where "CURP"=#{curp} 	
 	</select>
+	
+	<select id="obtenerIdEmpleadoByNss" parameterType="Empleado" resultMap="empleadoResult" resultType="int">		 
+		select "ID_EMPLEADO" from "EMPLEADO" where "NSS"=#{nss} 	
+	</select>
 
 	<select id="obtenerEmpleadoById" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 
 		select * from "EMPLEADO" where "ID_EMPLEADO"=#{idEmpleado} 	

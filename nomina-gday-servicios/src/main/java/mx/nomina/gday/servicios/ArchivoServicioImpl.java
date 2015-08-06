@@ -100,13 +100,16 @@ public class ArchivoServicioImpl implements ArchivoServicio{
     				//fila de la hoja
     				fila = hoja.getRow(filaNum);    				    				
     				List <String> datos = new ArrayList<String>();    				
-    					if (fila.getCell(2)!=null){
-    						fila.getCell(2).setCellType(Cell.CELL_TYPE_STRING);
-    						String curp = fila.getCell(2).getStringCellValue();
+    					if (fila.getCell(1)!=null){
+    						fila.getCell(1).setCellType(Cell.CELL_TYPE_STRING);
+    						//String curp = fila.getCell(2).getStringCellValue();
+    						//Empleado empleado = new Empleado();
+    						String nss = fila.getCell(1).getStringCellValue();
     						Empleado empleado = new Empleado();
-    						empleado.setCurp(curp);
-    						empleado=empleadoDao.obtenerIdEmpleadoByCurp(empleado);
-    						System.out.println("Curp"+curp);
+    						empleado.setNss(nss);
+    						//empleado=empleadoDao.obtenerIdEmpleadoByCurp(empleado);
+    						empleado=empleadoDao.obtenerIdEmpleadoByNss(empleado);
+    						System.out.println("NSS"+nss);
     						if (empleado!=null){
         						int idEmpleado=empleado.getIdEmpleado();
            						System.out.println("ID OBTENIDO:"+idEmpleado);           					

@@ -14,4 +14,5 @@ public interface EmpleadoDao {
 	public List<Empleado> obtenerEmpleadosByIdNomina(Integer idNomina);
 	int obtenerCountIdEmpleadoByNss(String nssEmpleado);
 	public Empleado obtenerIdEmpleadoByCurp(Empleado empleado);
+	public Empleado obtenerIdEmpleadoByNss(Empleado empleado);
 }
