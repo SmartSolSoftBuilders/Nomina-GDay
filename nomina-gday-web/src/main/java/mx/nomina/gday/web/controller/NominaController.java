@@ -73,12 +73,15 @@ public class NominaController {
 
 				for (int i = 0; i < tmp.size(); i++) {
 					nominasTmp2 = new ArrayList<String>();
-					System.out.println("tmp"+tmp.get(i));
+					//System.out.println("tmp"+tmp.get(i));
 					nominasTmp2.add(tmp.get(i).getIdNomina());
 					nominasTmp2.add(tmp.get(i).getNombreCorto());
 					nominasTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
 					nominasTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
-					nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreCortoPatrona());					
+					if (tmp.get(i).getIntermediaria()!=null)
+						nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreCortoPatrona());
+					else
+						nominasTmp2.add("N/A");
 					nominasTmp2.add(tmp.get(i).getPeriodicidad());
 					nominasTmp2.add(tmp.get(i).getTipoPago());
 					nominasTmp2.add(""+tmp.get(i).getClaseRiesgo());

@@ -178,8 +178,8 @@
 							<th width="200px">NOMBRE</th>
 							<th width="200px">NOMBRE CORTO</th>
 							<th width="200px">RFC</th>
-							<th width="200px"></th>
-							<th width="200px"></th>
+							<th width="100px"></th>
+							<th width="100px"></th>
 						</tr>
 						<tbody>			
 						</tbody>

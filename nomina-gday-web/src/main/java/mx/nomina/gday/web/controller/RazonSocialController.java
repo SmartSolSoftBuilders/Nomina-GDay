@@ -97,9 +97,9 @@ public class RazonSocialController {
 				razonesSocialesTmp2.add(tmp.get(i).getNombreRazonSocial());
 				razonesSocialesTmp2.add(tmp.get(i).getNombreCortoRazonS());
 				razonesSocialesTmp2.add(tmp.get(i).getRfc());
-				System.out.println("CONTIENE"+tmp.get(i).getIdRazonSocial()+"?"+ids.contains(""+tmp.get(i).getIdRazonSocial()));
+				//System.out.println("CONTIENE"+tmp.get(i).getIdRazonSocial()+"?"+ids.contains(""+tmp.get(i).getIdRazonSocial()));
 				if (!ids.contains(""+tmp.get(i).getIdRazonSocial())){
-					razonesSocialesTmp2.add("(%):"+"<input type='text' size=5 id='porcentaje"+tmp.get(i).getIdRazonSocial()+"' value='"+porcentaje+"'/>");
+					razonesSocialesTmp2.add("(%):"+"<input type='text' style='width:30px' size=5 id='porcentaje"+tmp.get(i).getIdRazonSocial()+"' value='"+porcentaje+"'/>");
 					razonesSocialesTmp2.add("<a href='#' onclick='agregarRZ("+tmp.get(i).getIdRazonSocial()+",\""+tmp.get(i).getNombreCortoRazonS()+"\")'>Agregar</a>");
 				}
 				else{
@@ -109,7 +109,7 @@ public class RazonSocialController {
 							pos=k;
 						}
 					}
-					razonesSocialesTmp2.add("(%):"+"<input type='text' size=5 id='porcentaje"+tmp.get(i).getIdRazonSocial()+"' value='"+ids2.get(pos)+"' readonly/>");
+					razonesSocialesTmp2.add("(%):"+"<input type='text' style='width:30px' size=5 id='porcentaje"+tmp.get(i).getIdRazonSocial()+"' value='"+ids2.get(pos)+"' readonly/>");
 					razonesSocialesTmp2.add("YA ESTÁ AGREGADA");
 				} 
 				razonesSocialesTmp.add(razonesSocialesTmp2);

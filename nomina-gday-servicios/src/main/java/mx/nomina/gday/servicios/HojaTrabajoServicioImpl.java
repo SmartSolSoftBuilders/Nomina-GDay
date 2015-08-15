@@ -80,14 +80,14 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
 	public void agregarArchivo(HojaTrabajo hojaTrabajo){
 		// TODO Auto-generated method stub
 		try{
-			/*List<Nomina> nominas = nominaDao.obtenerNominas();
+			List<Nomina> nominas = nominaDao.obtenerNominas();
 			for (int i=0;i<nominas.size();i++){
 				Nomina nomina1=new Nomina();
 				nomina1.setIdNomina(nominas.get(i).getIdNomina());
 				hojaTrabajo.setNomina(nomina1);
 				this.hojaTrabajoDao.agregarArchivo(hojaTrabajo);
-			}*/
-			this.hojaTrabajoDao.agregarArchivoAll(hojaTrabajo);
+			}
+			//this.hojaTrabajoDao.agregarArchivoAll(hojaTrabajo);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -144,8 +144,10 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	//empleado  = this.empleadoNominaDao.obtenerEmpleadoNominaByIdNomina(nomina.)
         	List<Empleado> empleados = this.empleadoDao.obtenerEmpleadosByIdNomina(nomina.getIdNomina());
         	/****Se llena 1era hoja****/
-        	Row fila = hoja.getRow(2);	
+        	Row fila = hoja.getRow(1);	
         	fila.createCell(1).setCellValue(nomina.getNombreCorto());
+        	fila = hoja.getRow(2);	
+        	fila.createCell(1).setCellValue(nomina.getIdNomina());
         	fila = hoja.getRow(3);	
         	fila.createCell(1).setCellValue(nomina.getEsquema().getNombreEsquema());
         	fila = hoja.getRow(4);	
@@ -161,7 +163,7 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	fila = hoja.getRow(9);	
         	fila.createCell(1).setCellValue(nomina.getTipoPago());
         	fila = hoja.getRow(10);	
-        	fila.createCell(1).setCellValue("");
+        	fila.createCell(1).setCellValue(nomina.getPatrona().getTipoRegimen().getTipoRegimen());
         	fila = hoja.getRow(11);	
         	fila.createCell(1).setCellValue(nomina.getPeriodicidad());
         	fila = hoja.getRow(12);	
@@ -193,8 +195,11 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	fila.createCell(1).setCellValue(nomina.isComisionCostSocial());
         	//27,28
         	int indiceFilasRZTmp=29;
+    		System.out.println(nomina.getRazonesSociales().size());
+
         	for (int j=0; j<nomina.getRazonesSociales().size();j++){
-        		fila = hoja.getRow(indiceFilasRZTmp);	
+        		fila = hoja.createRow(indiceFilasRZTmp);
+        		System.out.println(nomina.getRazonesSociales().get(j));
             	fila.createCell(0).setCellValue(nomina.getRazonesSociales().get(j).getNombreRazonSocial());
             	fila = hoja.getRow(indiceFilasRZTmp);	
             	fila.createCell(1).setCellValue(nomina.getRazonesSociales().get(j).getNombreCortoRazonS());
@@ -228,6 +233,7 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		for (int k =0; k<comisiones.size();k++){
            			fila.createCell(indiceComisiones++).setCellValue(""+comisiones.get(k));           			
            		}
+           		fila.createCell(indiceComisiones++).setCellValue("100");
               	numRz++;
            	}
            	/****Se llena 3ta hoja****/

@@ -56,7 +56,9 @@
 		<result property="actaNotarioPatrona" column="ACTA_NOTARIO"/>
 		<result property="actaCiudadPatrona" column="ACTA_CIUDAD"/>
 		<result property="actaEstadoPatrona" column="ACTA_ESTADO"/>	
+		<association property="tipoRegimen" column="ID_TIPO_REGIMEN" javaType="TipoRegimen" select="selectTipoRegimen"/>				
 	</resultMap>
+
 	
 	<resultMap id="ejecutivoResult" type="Ejecutivo">
     	<id property="idEjecutivo" column="ID_EJECUTIVO"/>
@@ -78,6 +80,15 @@
 		<result property="pr" column="PR"/>
 			
 	</resultMap>
+
+	<resultMap id="tipoRegimenResult" type="TipoRegimen">
+    	<id property="idTipoRegimen" column="ID_TIPO_REGIMEN"/>
+		<result property="tipoRegimen" column="TIPO_REGIMEN"/>
+	</resultMap>
+	
+	<select id="selectTipoRegimen" parameterType="int" resultMap="tipoRegimenResult" resultType="TipoRegimen">		 
+		select * from "TIPO_REGIMEN" where "ID_TIPO_REGIMEN"=#{idTipoRegimen} 	
+	</select>	
 	
 	<select id="selectIntermediaria" parameterType="int" resultMap="intermediariaResult" resultType="Intermediaria">		 
 		select * from "INTERMEDIARIA" where "ID_INTERMEDIARIA"=#{idIntermediaria} 	

@@ -26,6 +26,7 @@
 					<thead>			
 						<tr class="odd gradeA">
 							<th width="40px">ID</th>
+							<th width="40px">ID NOMINA</th>
 							<th width="200px">NÓMINA</th>
 							<th width="200px">PATRONA</th>																													
 							<th width="200px"></th>

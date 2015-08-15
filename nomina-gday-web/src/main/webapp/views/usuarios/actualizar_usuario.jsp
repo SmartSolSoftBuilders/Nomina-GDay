@@ -37,7 +37,7 @@
 							
 							<tr>
 								<td>USUARIO<input id='nick' name='nick'
-									type="text" class="form-control"
+									type="text" class="form-control" readonly
 									onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 							</tr>
 							<tr>
@@ -52,7 +52,8 @@
 							</tr>
 							<tr>
 								<td>ROLES
-									<select id='rol' name='rol' class="form-control"></select>
+									<select id='rol' disabled
+									 name='rol' class="form-control"></select>
 								</td>
 							</tr>
 						</table>

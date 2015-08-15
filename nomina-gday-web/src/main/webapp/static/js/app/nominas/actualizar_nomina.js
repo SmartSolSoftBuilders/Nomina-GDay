@@ -364,9 +364,9 @@ function showRazonesSociales(){
 }
 function agregarRZ(id,nombre){
 	var porcentaje=document.getElementById("porcentaje"+id).value;
-	console.log(""+porcentaje)
+	console.log("Porcentaje Seleccionado"+porcentaje)
 	var porcentaje=$("#porcentaje"+id).val();
-	console.log(""+porcentaje)
+	console.log("Porcentaje Seleccionado"+porcentaje)
 	if ((parseInt(sumaPorcentaje)+parseInt(porcentaje))>100){
 		alert("La suma de porcentajes de Razones Sociales es mayor que 100");
 	}
@@ -392,8 +392,10 @@ function quitarRazonSocial(){
 	var porcentaje=document.getElementById("porcentaje"+id).value;
 	console.log(sumaPorcentaje);
 	console.log(porcentaje);
-	$("#selectMult").find("option[id='"+id+"']").remove();	
+	$("#selectMult").find("option[id='"+id+"']").remove();
+	$("#porcentaje"+id).remove();
 	sumaPorcentaje=parseInt(sumaPorcentaje)-parseInt(porcentaje);
+	console.log(sumaPorcentaje)
 }
 
 

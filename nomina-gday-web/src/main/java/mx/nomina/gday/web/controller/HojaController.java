@@ -101,7 +101,8 @@ public class HojaController {
 				for (int i = 0; i < tmp.size(); i++) {
 					nominasTmp2 = new ArrayList<String>();
 					System.out.println("tmp"+tmp.get(i));
-					nominasTmp2.add(tmp.get(i).getIdHojaTrabajo());					
+					nominasTmp2.add(tmp.get(i).getIdHojaTrabajo());			
+					nominasTmp2.add(tmp.get(i).getNomina().getIdNomina());
 					nominasTmp2.add(tmp.get(i).getNomina().getNombreCorto());	
 					nominasTmp2.add(tmp.get(i).getNomina().getPatrona().getNombreCortoPatrona());
 					nominasTmp2.add("<a href='#' onclick='generarHojaTrabajo("+tmp.get(i).getIdHojaTrabajo()+")'>Generar Hoja</a>");					
