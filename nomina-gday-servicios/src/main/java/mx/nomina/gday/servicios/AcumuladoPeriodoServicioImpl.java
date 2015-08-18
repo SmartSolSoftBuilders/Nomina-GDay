@@ -215,9 +215,9 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 		//Evento eventoTmp=new Evento();
 		System.out.println("Los datos que se buscan:"+datos.size());
 		/*Se crea el archivo*/
-        int filaInicial=1;
+        int filaInicial=2;
         int columnaInicial=0;        
-        int totalDatos=20;
+        int totalDatos=412;
         int limitePorHoja=100; 
         try{
 	    	Workbook workbookxlsx = null;
@@ -242,27 +242,10 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
         			int recorrerCeldas=0;        
         			System.out.println("num Control:+"+tmp.get(0));
         			System.out.println("Registro:+"+indexEmpleados);
+        			fila.createCell(recorrerCeldas++).setCellValue((indexEmpleados+1));
         			if (!tmp.get(0).equals("null") && tmp.get(0)!=""){
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(0));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(1));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(2));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(3));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(4));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(5));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(6));	
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(7)); 
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(8));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(9));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(10));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(11));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(12));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(13));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(14));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(15));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(16));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(17));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(18));
-	        			fila.createCell(recorrerCeldas++).setCellValue(tmp.get(19));
+        				for (int l=0;l<412;l++)
+        					fila.createCell(recorrerCeldas++).setCellValue(tmp.get(l));	        			
         			}
         		}
         		else{
