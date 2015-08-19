@@ -261,8 +261,7 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
             FileOutputStream outFile = new FileOutputStream(new File("C:\\archivosNGDAY\\tmpMongoGen.xlsx"));
             workbookxlsx.write(outFile);
             outFile.close();
-            archivoXLS = new File("C:\\archivosNGDAY\\tmpMongoGen.xlsx"); 	
-         	
+            archivoXLS = new File("C:\\archivosNGDAY\\tmpMongoGen.xlsx"); 	         	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("<OTIKA>ERROR!"+e.getMessage());

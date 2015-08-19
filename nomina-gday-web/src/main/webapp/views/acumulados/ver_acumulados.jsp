@@ -4,7 +4,7 @@
 <style>
 .ui-dialog-titlebar { display:none; }
 </style>
-<div id="container" >
+<div id="container" >	
 	<h3 color=#0051a4 class="mayuscula">Seleccione los datos para mostrar los acumulados:</h3>
 </div>
 <div align="center">
@@ -62,6 +62,8 @@
 					<option value="2022">2022</option>
 					<option value="2023">2023</option>
 					<option value="2024">2024</option>
+					<option value="2025">2025</option>
+					<option value="2026">2026</option>
 				</select>				
 				</td>
 				<td>NÚMERO DE PERIODO
@@ -73,7 +75,7 @@
 			<table>
 				<tr>	
 					<td align="center">
-						<input style="width:300px;" type="button" onclick="obtenerAcumuladosVal();" class="form-control" value="Obtener Acumulado (Archivo Excel)">
+						<input style="width:300px;" id="obtenerAcumBtn" name="obtenerAcumBtn" type="button" onclick="obtenerAcumuladosVal();" class="form-control" value="Obtener Acumulado (Archivo Excel)">
 					</td>
 					<td>
 					</td>

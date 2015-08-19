@@ -1,10 +1,11 @@
-$(document).ready(function() {
+$(document).ready(function() {	
 	$.ajax({
 	sync:true,
 	dataType:'json',
 	url:   '../../mvc/acumulado/getdatoscombo',
 	type:  'post',		
 	beforeSend: function () {	
+		$("#obtenerAcumBtn").hide();
 	},
 	success:  function (response) {
 		console.log ("NOMINA");
@@ -15,9 +16,11 @@ $(document).ready(function() {
 		for (var i = 0; i < result.length; i++) {
 			options += '<option value="' + result[i].idNomina + '">' + result[i].nombreCorto +'</option>';
 		}
-		$("#nomina").append(options);		
+		$("#nomina").append(options);
+		$("#obtenerAcumBtn").show();
 		},	
-	error: function (response) {																	
+	error: function (response) {
+		$("#obtenerAcumBtn").hide();
 		$("#resultadoGuardar").html("Error");
 		}		
 });		
