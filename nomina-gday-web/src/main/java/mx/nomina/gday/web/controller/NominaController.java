@@ -119,7 +119,7 @@ public class NominaController {
 
 				for (int i = 0; i < tmp.size(); i++) {
 					nominasTmp2 = new ArrayList<String>();
-					System.out.println("tmp"+tmp.get(i));
+					//System.out.println("tmp"+tmp.get(i));
 					nominasTmp2.add(tmp.get(i).getIdNomina());
 					nominasTmp2.add(tmp.get(i).getNombreCorto());
 					nominasTmp2.add(tmp.get(i).getEsquema().getNombreEsquema());
