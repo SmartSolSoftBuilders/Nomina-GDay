@@ -126,7 +126,7 @@ public class NominaController {
 					if (tmp.get(i).getIntermediaria()!=null)
 						nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreCortoPatrona());
 					else
-						nominasTmp2.add(tmp.get(i).getIntermediaria().getNombreCortoPatrona());
+						nominasTmp2.add("N/A");
 					nominasTmp2.add(tmp.get(i).getPatrona().getNombreCortoPatrona());
 					nominasTmp2.add(tmp.get(i).getPeriodicidad());
 					nominasTmp2.add(tmp.get(i).getTipoPago());
