@@ -215,7 +215,7 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 		//Evento eventoTmp=new Evento();
 		System.out.println("Los datos que se buscan:"+datos.size());
 		/*Se crea el archivo*/
-        int filaInicial=2;
+        int filaInicial=1;
         int columnaInicial=0;        
         int totalDatos=412;
         int limitePorHoja=100; 
