@@ -228,7 +228,7 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 	    	hoja = workbookxlsx.getSheetAt(contadorHojas);        	
         	//Se llena el encabezado        	
         	Row fila = hoja.getRow(1);
-        	for (int j=filaInicial,indexEmpleados=0; j<(datos.size()+filaInicial); j++,indexEmpleados++){
+        	for (int j=filaInicial,indexEmpleados=0; j<(datos.size()); j++,indexEmpleados++){
         		if(indexEmpleados<limitePorHoja){
         			List <String> tmp=(List<String>) datos.get(indexEmpleados);
         			//System.out.println("VALOR:"+tmp.get(0));
