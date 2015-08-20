@@ -18,12 +18,12 @@ $(document).ready(function() {
 		}
 		$("#nomina").append(options);
 		$("#obtenerAcumBtn").show();
-		},	
+	},	
 	error: function (response) {
 		$("#obtenerAcumBtn").hide();
 		$("#resultadoGuardar").html("Error");
-		}		
-});		
+	}		
+	});		
 });
 
 //*******************************************************************************

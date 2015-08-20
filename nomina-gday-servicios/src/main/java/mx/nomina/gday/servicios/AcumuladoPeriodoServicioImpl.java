@@ -231,19 +231,20 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
         	for (int j=filaInicial,indexEmpleados=0; j<(datos.size()+filaInicial); j++,indexEmpleados++){
         		if(indexEmpleados<limitePorHoja){
         			List <String> tmp=(List<String>) datos.get(indexEmpleados);
-        			System.out.println("ContdHojas:"+contadorHojas);
+        			//System.out.println("VALOR:"+tmp.get(0));
         			if (contadorHojas==0){
         				fila=hoja.createRow(j);
         			}
         			else{
-        				System.out.println("J;"+j);
+        				//System.out.println("J;"+j);
         				fila=hoja.createRow(j-(limitePorHoja/2));        			
         			}
         			int recorrerCeldas=0;        
-        			System.out.println("num Control:+"+tmp.get(0));
-        			System.out.println("Registro:+"+indexEmpleados);
-        			fila.createCell(recorrerCeldas++).setCellValue((indexEmpleados+1));
-        			if (!tmp.get(0).equals("null") && tmp.get(0)!=""){
+        			//System.out.println("num Control:+"+tmp.get(0));
+        			//System.out.println("Registro:+"+indexEmpleados);
+        			//fila.createCell(recorrerCeldas++).setCellValue((indexEmpleados+1));
+        			//System.out.println("TOTAL RG:"+tmp.size());
+        			if (!tmp.get(0).equals("null") && tmp.get(0)!=""){        				
         				for (int l=0;l<412;l++)
         					fila.createCell(recorrerCeldas++).setCellValue(tmp.get(l));	        			
         			}
@@ -253,7 +254,7 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
         			contadorHojas++;
         			workbookxlsx.createSheet(""+contadorHojas);
         			hoja = workbookxlsx.getSheet(""+contadorHojas);
-        			filaInicial=1;
+        			filaInicial=2;
         		}
         		
         	}  	 	

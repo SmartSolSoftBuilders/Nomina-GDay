@@ -196,7 +196,7 @@ public class AcumuladoPeriodoController {
 	 		try{            
 				//fileToDownload = this.hojaTrabajoServicio.generarHojaTrabajo(idHojaTrabajo);
 	 			List tmp2=this.empleadoMongoServicio.obtenerDocumentos(id1, id2, id3,id4);
-	 			System.out.println("Num archivos:"+tmp2.size());
+	 			System.out.println("Num Registros:"+tmp2.size());
 				fileToDownload=acumuladoPeriodoServicio.obtenerArchivoAcumuladoByData(tmp2);
 	            inputStream = new FileInputStream(fileToDownload);
 	            response.setContentType("application/force-download");

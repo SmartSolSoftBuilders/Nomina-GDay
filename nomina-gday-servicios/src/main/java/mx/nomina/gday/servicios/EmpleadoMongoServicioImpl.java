@@ -71,15 +71,13 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     			workbookxlsx = new XSSFWorkbook(file); //or new HSSFWorkbook();
     			hoja = workbookxlsx.getSheetAt(0);
     		}
-        	//Se llena el encabezado        			        	
-    		int numColumnas = 22; 
-    		int numFilas = 10; 
+        	//Se llena el encabezado        			        	    		
     		String data; 
     		String titulo;
     		//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
     		int filaNum=2;
     		int colNum=1;
-    		Row filaTitulo = hoja.getRow(1);
+    		Row filaTitulo = hoja.getRow(0);
     		Row fila = hoja.getRow(colNum);
     		//System.out.println("LINEAS:"+hoja.getLastRowNum());
     		for (; filaNum < hoja.getLastRowNum()-1; filaNum++) { // Recorre cada fila de la hoja     			
@@ -90,16 +88,17 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     			map.put("numero_periodo",acumuladoPeriodo.getNumeroPeriodo());    			
     			map.put("mes_pago",acumuladoPeriodo.getMesPago());
     			map.put("anio_pago",acumuladoPeriodo.getAnioPago());
-    			
+    			if (fila==null)
+    				break;
         		System.out.println("columnas:"+fila.getLastCellNum());
-    			for (int columna = 1; columna < (fila.getLastCellNum()-1); columna++) { // Recorre					
-    				// cada columna de la fila
+    			for (int columna = 0; columna < (fila.getLastCellNum()-1); columna++) { 
+    				// Recorre cada columna de la fila
     				if (fila.getCell(columna)!=null){
     					filaTitulo.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
     					titulo = filaTitulo.getCell(columna).getStringCellValue();
     					fila.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
     					data = fila.getCell(columna).getStringCellValue();    					
-    			//		System.out.print(" Columna->"+titulo+"Valor_"+data);	
+    					System.out.print("Columna->"+titulo+"Valor_"+data);	
         				if (titulo.length()>1)
         					map.put(titulo.replace(".","_"),data);
     				}
@@ -143,6 +142,7 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
            List<String> listaMongo  = new ArrayList<String>();
            //System.out.println("Document: "+i); 
            DBObject obj=cursor.next();
+           listaMongo.add(""+obj.get("NUM_CONTROL"));
            listaMongo.add(""+obj.get("ESQUEMA"));
            listaMongo.add(""+obj.get("PATRONA"));
            listaMongo.add(""+obj.get("RAZON_SOCIAL"));
