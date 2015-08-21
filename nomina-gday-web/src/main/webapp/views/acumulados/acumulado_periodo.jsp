@@ -14,9 +14,9 @@
 	<%session.setAttribute("notification","");%>
 <%}%>
 <form:form id="formSub" name="formSub" method="post" action="../../mvc/acumulado/subiracumuladoPeriodo" enctype="multipart/form-data" commandName="fileFormBean">
-	<div id="divLoadingNoms" title="Por favor espere"  class="col-lg-6">
-		Por favor espere, se están obteniendo las nóminas..........................<br>
-		<center><img name="imgLoading2" id="imgLoading2" src="../../static/img/loading_bar2.gif"></img></center>
+	<div align="center" id="divLoadingNoms" title="Por favor espere"  class="col-lg-6">
+		Por favor espere, se están obteniendo las nóminas..........................
+		<center><img name="imgLoading2" id="imgLoading2" height="15" src="../../static/img/loading_bar2.gif"></img></center>
 	</div>
 	<table>
 		<tr>
