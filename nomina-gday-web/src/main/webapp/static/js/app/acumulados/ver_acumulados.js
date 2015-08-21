@@ -6,6 +6,7 @@ $(document).ready(function() {
 	type:  'post',		
 	beforeSend: function () {	
 		$("#obtenerAcumBtn").hide();
+		$("#divLoadingNoms").show();
 	},
 	success:  function (response) {
 		console.log ("NOMINA");
@@ -18,9 +19,11 @@ $(document).ready(function() {
 		}
 		$("#nomina").append(options);
 		$("#obtenerAcumBtn").show();
+		$("#divLoadingNoms").hide();
 	},	
 	error: function (response) {
 		$("#obtenerAcumBtn").hide();
+		$("#divLoadingNoms").show();
 		$("#resultadoGuardar").html("Error");
 	}		
 	});		

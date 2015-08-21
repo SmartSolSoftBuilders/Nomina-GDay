@@ -1,6 +1,7 @@
 $(document).ready(function() {	
 	$("#ficheroDiv").hide();
 	$("#botonSubmit").hide();
+	$("#divLoadingNoms").show();
 	$("#obtenerAcumBtn").hide();
 	$.ajax({
 	sync:true,
@@ -9,6 +10,7 @@ $(document).ready(function() {
 	type:  'post',		
 	beforeSend: function () {
 		$("#obtenerAcumBtn").hide();
+		$("#divLoadingNoms").show();
 	},
 	success:  function (response) {
 		console.log ("NOMINA");
@@ -20,9 +22,11 @@ $(document).ready(function() {
 			    }
 		$("#nomina").append(options);
 		$("#obtenerAcumBtn").show();
+		$("#divLoadingNoms").hide();
 		},	
 	error: function (response) {																	
 		$("#resultadoGuardar").html("Error");
+		$("#divLoadingNoms").show();
 		$("#obtenerAcumBtn").hide();
 		}		
 });		

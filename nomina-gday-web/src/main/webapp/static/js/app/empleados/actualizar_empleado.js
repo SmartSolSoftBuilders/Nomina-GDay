@@ -825,7 +825,6 @@ function editarObjetoJS () {
 
 function guardarCambiosNominaEmpleado(url){
 if ($("#actualizarNominaEmpleadoForm").valid()){	
-
 	$.ajax({
 		sync: true,
 		data:{
