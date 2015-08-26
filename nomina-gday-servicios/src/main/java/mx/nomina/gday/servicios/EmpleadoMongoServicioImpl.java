@@ -75,12 +75,12 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     		String data; 
     		String titulo;
     		//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
-    		int filaNum=2;
+    		int filaNum=1;
     		int colNum=1;
     		Row filaTitulo = hoja.getRow(0);
     		Row fila = hoja.getRow(colNum);
     		//System.out.println("LINEAS:"+hoja.getLastRowNum());
-    		for (; filaNum < hoja.getLastRowNum()-1; filaNum++) { // Recorre cada fila de la hoja     			
+    		for (; filaNum <= hoja.getLastRowNum()-1; filaNum++) { // Recorre cada fila de la hoja     			
     			fila = hoja.getRow(filaNum);
     			map = new HashMap();
     			map.put("id_nomina",acumuladoPeriodo.getNomina().getIdNomina());
