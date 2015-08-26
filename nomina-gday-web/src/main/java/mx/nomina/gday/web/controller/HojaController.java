@@ -60,12 +60,12 @@ public class HojaController {
 					tmp=this.hojaTrabajoServicio.obtenerHojas();
 				else
 					tmp=this.hojaTrabajoServicio.obtenerHojasByIdNomina(nomina.getIdNomina());
-				System.out.println("tmp"+tmp.size());
+				//System.out.println("tmp"+tmp.size());
 				List nominasTmp = new ArrayList();
 				List nominasTmp2 = new ArrayList<String>();
 				for (int i = 0; i < tmp.size(); i++) {
 					nominasTmp2 = new ArrayList<String>();
-					System.out.println("tmp"+tmp.get(i));
+					//System.out.println("tmp"+tmp.get(i));
 					nominasTmp2.add(tmp.get(i).getIdHojaTrabajo());
 					nominasTmp2.add(tmp.get(i).getNombreArchivo());
 					if (tmp.get(i).getArchivoPlantilla().equals("1"))
