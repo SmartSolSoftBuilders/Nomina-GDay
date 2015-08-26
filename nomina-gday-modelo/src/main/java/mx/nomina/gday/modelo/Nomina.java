@@ -15,6 +15,7 @@ public class Nomina extends BaseModelo{
 	private boolean provisionVacaciones;
 	private boolean provisionPrimaVacacional;
 	private int diasAguinaldo;
+	private Integer comision;
 	private float porcPrimaVacacional;
 	private boolean fondoAhorro;
 	private boolean facturaSubsidio;
@@ -28,6 +29,14 @@ public class Nomina extends BaseModelo{
 	private String fechaContrato;
 	private String jsonValue;
 	private List<RazonSocial> razonesSociales;
+	
+	
+	public Integer getComision() {
+		return comision;
+	}
+	public void setComision(Integer comision) {
+		this.comision = comision;
+	}
 	public Integer getIdNomina() {
 		return idNomina;
 	}
@@ -182,7 +191,7 @@ public class Nomina extends BaseModelo{
 			boolean reconoceAntiguedad, boolean comisionCostSocial,
 			String tipoPago, String claseRiesgo, String registroPatronal,
 			String periodicidad, String fechaContrato, String jsonValue,
-			List<RazonSocial> razonesSociales) {
+			List<RazonSocial> razonesSociales,Integer comision) {
 		super();
 		this.idNomina = idNomina;
 		this.patrona = patrona;
@@ -208,6 +217,7 @@ public class Nomina extends BaseModelo{
 		this.fechaContrato = fechaContrato;
 		this.jsonValue = jsonValue;
 		this.razonesSociales = razonesSociales;
+		this.comision=comision;
 	}
 	
 	public Nomina (){

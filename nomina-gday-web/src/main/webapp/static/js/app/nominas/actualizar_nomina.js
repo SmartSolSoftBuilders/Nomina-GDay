@@ -45,6 +45,10 @@ $(document).ready(function() {
     				required:true,
     				number: true
     				},
+    		comision: {    			
+        				required:true,
+        				number: true
+        			},
         	registroPatronal: {    			
     				required:true,
     				maxlength: 15
@@ -64,6 +68,7 @@ $(document).ready(function() {
         	patrona:"Ingrese la empresa Patrona",
         	intermediaria:"Ingrese el nombre de la Intermediaria",
         	porcPrimaVacacional:"Ingrese un porcentaje Vacacional. Solo n&uacute;meros",
+        	comision:"Ingrese una comisión. Solo n&uacute;meros",
         	registroPatronal:"Ingrese un registro Patronal. M&aacute;ximo 15",
         	fechaContrato:"Ingrese una Fecha",
         	selectMult:"Ingrese una Raz&oacute;n Social"
@@ -162,6 +167,7 @@ function muestraDatosNomina(datos){
 	$("#idIntermediaria").val(data.intermediaria.idPatrona);
 	$("#fechaContrato").val(data.fechaContrato);
 	$("#patronaIdSel").val(data.patrona.idPatrona);
+	$("#comision").val(data.comision);	
 	$("#ejecutivo").val(data.ejecutivo.idEjecutivo);
 	$("#esquema").val(data.esquema.idEsquema);
 	$("#porcPrimaVacacional").val(data.porcPrimaVacacional);
@@ -457,6 +463,7 @@ function actualizarNomina() {
 					"provisionAguinaldo" : aguinald,
 					"provisionVacaciones" : provisionVacacionesTmp,
 					"provisionPrimaVacacional" : provisionPrimaVacTmp,
+					"comision" : $("#comision").val(),
 					"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
 					"fondoAhorro" : fondoDeAhorro,					
 					"comisionCostSocial" : comisionCostoSocialTmp,

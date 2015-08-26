@@ -90,9 +90,8 @@
 					 <table>
 					 	<tr>
 					 		<td>PROVISION PRIMA VACACIONAL<input id='provisionPrimaVac' name='provisionPrimaVac' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
-							<td></td>
-					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
-					 		<td></td>
+							<td>COMISIÓN<input id='comision' name='comision' type="text" class="form-control"></td>
+					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 						 		
 					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 	</tr>
 					 </table>
