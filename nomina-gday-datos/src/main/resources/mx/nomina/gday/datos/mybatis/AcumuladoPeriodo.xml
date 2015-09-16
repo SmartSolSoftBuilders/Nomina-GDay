@@ -119,6 +119,10 @@
 		select * from "ACUMULADO_POR_PERIODO" where "ID_ACUMULADO_PERIODO"=#{idAcumuladoPeriodo}
 	</select>
 	
+	<select id="obtenerAcumuladosByName" parameterType="String" resultType="Integer">		 
+		select count(*) from "ACUMULADO_POR_PERIODO" where "NOMBRE_ARCHIVO"=#{nombreArchivo}
+	</select>
+	
 	<select id="obtenerAcumuladosByIdNominaAndIdPeriodo" parameterType="int" resultMap="acumuladoPeriodoResult" resultType="AcumuladoPeriodo">		 
 		select * from "ACUMULADO_POR_PERIODO" where "ID_NOMINA"=#{nomina.idNomina}
 			<if test="numeroPeriodo!=null and numeroPeriodo!=0">	

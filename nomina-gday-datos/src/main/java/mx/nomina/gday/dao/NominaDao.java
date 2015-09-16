@@ -15,4 +15,6 @@ public interface NominaDao {
 	public List<Nomina> obtenerNominasByIdEmpleado(Integer idEmpleado);
 	public Nomina obtenerNominaByIdHojaTrabajo(Integer idHojaTrabajo);
 	public List<Nomina> obtenerNominasByIdEjecutivo(Integer idEjecutivo);
+	public List<String> obtenerNssByIdNomina(int idNomina);
+	public List<String> obtenerCurpByIdNomina(int idNomina);
 }

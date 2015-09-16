@@ -18,6 +18,31 @@ $(document).ready(function() {
 			options += '<option value="' + result[i].idNomina + '">' + result[i].nombreCorto +'</option>';
 		}
 		$("#nomina").append(options);
+		
+		var result=response[2];
+		var options = '<option value="0">Seleccione...</option>';
+		//$("#grupo").append(options);
+		for (var i = 0; i < result.length; i++) {
+			options += '<option value="' + result[i].idGrupo + '">' + result[i].nombre +'</option>';
+		}
+		$("#grupo").append(options);
+		
+		var result=response[3];
+		var options = '<option value="0">Seleccione...</option>';
+		//$("#patrona").append(options);
+		for (var i = 0; i < result.length; i++) {
+			options += '<option value="' + result[i].idPatrona + '">' + result[i].nombreCortoPatrona +'</option>';
+		}
+		$("#patrona").append(options);
+		
+		var result=response[4];
+		var options = '<option value="0">Seleccione...</option>';		
+		//$("#tipoCalendario").append(options);
+		for (var i = 0; i < result.length; i++) {
+			options += '<option value="' + result[i].idCalendario + '">' + result[i].tipoCalendario +'</option>';
+		}
+		$("#tipoCalendario").append(options);
+		
 		$("#obtenerAcumBtn").show();
 		$("#divLoadingNoms").hide();
 	},	
@@ -28,6 +53,48 @@ $(document).ready(function() {
 	}		
 	});		
 });
+function obtenerNssCurp(){
+	$.ajax({
+		sync:true,
+		data:{idNomina:$("#nomina").val()},
+		dataType:'json',
+		url:   '../../mvc/acumulado/getdatoscombonsscurp',
+		type:  'post',		
+		beforeSend: function () {	
+			$("#obtenerAcumBtn").hide();
+			$("#divLoadingNoms").show();
+		},
+		success:  function (response) {
+			console.log ("NOMINA");
+			console.log (response[0]);					
+			var result=response[0];
+			var options = '<option value="">Seleccione...</option>';
+			//$("#nss").append(options);
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i]+ '">' + result[i]+'</option>';
+			}
+			$("#nss").empty();
+			$("#nss").append(options);
+			
+			var result=response[1];
+			var options = '<option value="">Seleccione...</option>';		
+			//$("#curp").append(options);
+			for (var i = 0; i < result.length; i++) {
+				options += '<option value="' + result[i] + '">' + result[i] +'</option>';
+			}
+			$("#curp").empty();
+			$("#curp").append(options);
+			
+			$("#obtenerAcumBtn").show();
+			$("#divLoadingNoms").hide();
+		},	
+		error: function (response) {
+			$("#obtenerAcumBtn").hide();
+			$("#divLoadingNoms").show();
+			$("#resultadoGuardar").html("Error");
+		}		
+		});
+}
 
 //*******************************************************************************
 //Function que obtiene los datos de la BD que se agregan a los combos del SELECT

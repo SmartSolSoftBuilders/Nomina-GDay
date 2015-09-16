@@ -113,6 +113,13 @@
 	</select> 
 
 	<!-- Select para obtener la Nomina por idNomina -->
+	<select id="obtenerNssByIdNomina" parameterType="int" resultType="string">		 
+		SELECT "EMPLEADO"."NSS" FROM "EMPLEADO" INNER JOIN "EMPLEADO_NOMINA" ON "EMPLEADO"."ID_EMPLEADO"="EMPLEADO_NOMINA"."ID_EMPLEADO" WHERE "ID_NOMINA"=#{idNomina} 	
+	</select>
+	<select id="obtenerCurpByIdNomina" parameterType="int" resultType="string">		 
+		SELECT "EMPLEADO"."CURP" FROM "EMPLEADO" INNER JOIN "EMPLEADO_NOMINA" ON "EMPLEADO"."ID_EMPLEADO"="EMPLEADO_NOMINA"."ID_EMPLEADO" WHERE "ID_NOMINA"=#{idNomina} 	
+	</select>
+	
 	<select id="obtenerNominaById" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
 		select * from "NOMINA" where "ID_NOMINA"=#{idNomina} 	
 	</select>

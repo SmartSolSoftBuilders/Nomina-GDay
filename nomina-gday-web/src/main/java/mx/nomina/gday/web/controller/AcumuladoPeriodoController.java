@@ -60,46 +60,54 @@ public class AcumuladoPeriodoController {
 	 	Iterator<String> itr =request.getFileNames();
 	 	MultipartFile mpf = request.getFile(itr.next());
 	 	AcumuladoPeriodo acumuladoPeriodo=new AcumuladoPeriodo();
+	 	Integer existeArchivo=0;
 	     try {
 	     	ufile.idEvento = mpf.getBytes().length;
 	 		ufile.length = mpf.getBytes().length;
 	 		ufile.bytes= mpf.getBytes();
 	 		ufile.type = mpf.getContentType();
 	 		ufile.name = mpf.getOriginalFilename();		
-	 		
+	 		//Check file name
+	 		existeArchivo=this.acumuladoPeriodoServicio.obtenerAcumuladosByName( mpf.getOriginalFilename());
+	 		System.out.println( mpf.getOriginalFilename());
+	 		System.out.println(this.acumuladoPeriodoServicio.obtenerAcumuladosByName( mpf.getOriginalFilename()));
+	 		System.out.println("EXISTE EL ARChivO?"+existeArchivo);
+	 		if (existeArchivo==0){
 	 		//Saving file
-	 		Nomina nomina= new Nomina();
-	 		String periodo = request.getParameter("idPeriodo");
-	 		String anioPago = request.getParameter("anioPagoHid");
-	 		String mesPago = request.getParameter("mesPagoHid");
-	 		
-	 		Integer idNomina = Integer.parseInt(request.getParameter("idNomina"));	 		
-	 		nomina.setIdNomina(idNomina);
-	 		acumuladoPeriodo.setNumeroPeriodo(periodo);
-	 		acumuladoPeriodo.setNomina(nomina);
-	 		acumuladoPeriodo.setAnioPago(anioPago);
-	 		acumuladoPeriodo.setMesPago(mesPago);
-	 		System.out.println("TIPO DE ARCHIVO:"+ufile.type);
-	 		String tipoArchivo="";
-			if (ufile.type.equals("application/excel") || ufile.type.equals("application/vnd.ms-excel"))				
-				tipoArchivo="xls";			
-			else
-				tipoArchivo="xlsx";			
-			System.out.println();
-			acumuladoPeriodo.setTipoArchivo(tipoArchivo);
-	 		acumuladoPeriodo.setNombreArchivo(ufile.name);
-	 		acumuladoPeriodo.setArchivoAcumulado(mpf.getBytes());
-	 		System.out.println("Done"+ufile.length+acumuladoPeriodo.getArchivoAcumulado().length);
-	 		if (this.acumuladoPeriodoServicio.validarArchivo(acumuladoPeriodo)){
-	 			int idAcumulado=this.acumuladoPeriodoServicio.agregarArchivo(acumuladoPeriodo);
-	 			System.out.println("ID Acumulado obtenido:"+idAcumulado);	 			
-	 			acumuladoPeriodo.setIdAcumuladoPeriodo(acumuladoPeriodo.getId().intValue());
-	     		this.empleadoMongoServicio.guardarDocumento(acumuladoPeriodo);
-	 		}
-	 		System.out.println("LOS VALORES DEL ARCHIVO:"+acumuladoPeriodo.getArchivoAcumulado().length);		
-	 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpAcumulado."+tipoArchivo);
-	 	    fos.write(acumuladoPeriodo.getArchivoAcumulado());
-	 	    fos.close(); 
+		 		Nomina nomina= new Nomina();
+		 		String periodo = request.getParameter("idPeriodo");
+		 		String anioPago = request.getParameter("anioPagoHid");
+		 		String mesPago = request.getParameter("mesPagoHid");
+		 		
+		 		Integer idNomina = Integer.parseInt(request.getParameter("idNomina"));	 		
+		 		nomina.setIdNomina(idNomina);
+		 		acumuladoPeriodo.setNumeroPeriodo(periodo);
+		 		acumuladoPeriodo.setNomina(nomina);
+		 		acumuladoPeriodo.setAnioPago(anioPago);
+		 		acumuladoPeriodo.setMesPago(mesPago);
+		 		System.out.println("TIPO DE ARCHIVO:"+ufile.type);
+		 		String tipoArchivo="";
+				if (ufile.type.equals("application/excel") || ufile.type.equals("application/vnd.ms-excel"))				
+					tipoArchivo="xls";			
+				else
+					tipoArchivo="xlsx";			
+				System.out.println();
+				acumuladoPeriodo.setTipoArchivo(tipoArchivo);
+		 		acumuladoPeriodo.setNombreArchivo(ufile.name);
+		 		acumuladoPeriodo.setArchivoAcumulado(mpf.getBytes());
+		 		System.out.println("Done"+ufile.length+acumuladoPeriodo.getArchivoAcumulado().length);
+		 		if (this.acumuladoPeriodoServicio.validarArchivo(acumuladoPeriodo)){
+		 			int idAcumulado=this.acumuladoPeriodoServicio.agregarArchivo(acumuladoPeriodo);
+		 			System.out.println("ID Acumulado obtenido:"+idAcumulado);	 			
+		 			acumuladoPeriodo.setIdAcumuladoPeriodo(acumuladoPeriodo.getId().intValue());
+		     		this.empleadoMongoServicio.guardarDocumento(acumuladoPeriodo);
+		 		}
+		 		System.out.println("LOS VALORES DEL ARCHIVO:"+acumuladoPeriodo.getArchivoAcumulado().length);		
+		 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpAcumulado."+tipoArchivo);
+		 	    fos.write(acumuladoPeriodo.getArchivoAcumulado());
+		 	    fos.close();
+		 	   request.getSession().setAttribute("notification", "Archivo de Acumulado Guardado satifactoriamente!");
+	 		}	 		
 	     }
 	     catch (Exception e) {
 	     	System.out.println("Error creando el archivo - Carga"+e.getMessage());
@@ -107,8 +115,14 @@ public class AcumuladoPeriodoController {
 	         return null;
 	     }
 	     String mensaje="Archivo grabado correctamente";
-	     request.getSession().setAttribute("notification", "Archivo de Acumulado Guardado satifactoriamente!");
-	     mav.addObject("notification", "Guardado satifactoriamente!");
+	     
+	     if (existeArchivo==0){
+	    	 mav.addObject("notification", "Guardado satifactoriamente!");
+	     }
+	     else{
+	    	 mav.addObject("notification", "El archivo ya existe!");
+	    	 request.getSession().setAttribute("notification", "El Archivo de Acumulado ya existe!");
+	     }
 	     mav.setViewName("acumulados/acumulado_periodo");
 	     return mav;
 	 }   
@@ -120,6 +134,14 @@ public class AcumuladoPeriodoController {
 	    public List obtenerDatosCombo(){
 		 	System.out.println("Controller Datos del combo");
 			return this.acumuladoPeriodoServicio.obtenerDatosCombo();
+		}
+	
+	 //Obteber los datos de Ejecutivo y Esquema para el llenado de sus respectivos Combos
+	 @RequestMapping(value="/getdatoscombonsscurp",method = RequestMethod.POST)
+	    @ResponseBody
+	    public List obtenerDatosComboNssCurp(int idNomina){
+		 	System.out.println("Buscando Datos de:"+idNomina);		 	
+			return this.acumuladoPeriodoServicio.obtenerDatosComboNssCurp(idNomina);
 		}
 	
 	 

@@ -10,15 +10,21 @@
 <div align="center">
 	<table>
 		<tr>
+			<td>GRUPO
+				<select id='grupo' style="width:150px;" name='grupo'  class="form-control"></select>
+			</td>
+			<td>PATRONA
+				<select id='patrona' style="width:150px;" name='patrona'  class="form-control"></select>
+			</td>			
 			<td>NÓMINA
-				<select id='nomina' name='nomina' class="form-control" onchange="obtenerPeriodos();"></select>
+				<select id='nomina' style="width:150px;" name='nomina' class="form-control" onchange="obtenerPeriodos();obtenerNssCurp();"></select>
 			</td>
 		</tr>
 	</table>
 	<table>
 		<tr>			
 			<td>MES DE PAGO
-				<select style="width:35%;" id='mesPago' name='mesPago'  class="form-control">
+				<select style="width:150px;" id='mesPago' name='mesPago'  class="form-control">
 					<option value="">seleccione...</option>
 					<option value="1">ENE</option>
 					<option value="2">FEB</option>
@@ -35,7 +41,7 @@
 				</select>				
 			</td>					
 			<td>AÑO DE PAGO
-				<select id='anioPago' style="width:35%;" name='anioPago' class="form-control">
+				<select id='anioPago' style="width:150px;" name='anioPago' class="form-control">
 					<option value="">seleccione...</option>
 					<option value="2000">2000</option>
 					<option value="2001">2001</option>
@@ -67,8 +73,18 @@
 				</select>				
 				</td>
 				<td>NÚMERO DE PERIODO
-					<select id='periodo' style="width:35%;" name='periodo'  class="form-control"></select>
+					<select id='periodo' style="width:150px;" name='periodo'  class="form-control"></select>
 				</td>
+			</tr>
+			<tr>				
+				<td>TIPO CALENDARIO
+					<select id='tipoCalendario' style="width:150px;" name='tipoCalendario'  class="form-control"></select>			
+				<td>CURP
+					<select id='curp' style="width:150px;" name='curp'  class="form-control"></select>
+				</td>
+				<td>NSS
+					<select id='nss' style="width:150px;" name='nss'  class="form-control"></select>
+				</td>				
 			</tr>
 			</table>
 			<br>	

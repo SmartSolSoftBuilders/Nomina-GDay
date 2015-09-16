@@ -23,8 +23,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mx.nomina.gday.dao.AcumuladoPeriodoDao;
+import mx.nomina.gday.dao.GrupoDao;
 import mx.nomina.gday.dao.NominaDao;
+import mx.nomina.gday.dao.PatronaDao;
 import mx.nomina.gday.dao.PeriodoDao;
+import mx.nomina.gday.dao.TipoCalendarioDao;
 import mx.nomina.gday.modelo.AcumuladoPeriodo;
 import mx.nomina.gday.modelo.Empleado;
 import mx.nomina.gday.modelo.EmpleadoNomina;
@@ -42,6 +45,15 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 	
 	@Autowired
 	private PeriodoDao periodoDao;
+	
+	@Autowired
+	private PatronaDao patronaDao;
+	
+	@Autowired
+	private GrupoDao grupoDao;
+	
+	@Autowired
+	private TipoCalendarioDao tipoCalendarioDao;
 	
 	@Override
 	public void eliminarAcumulado(AcumuladoPeriodo acumuladoPeriodo){
@@ -67,7 +79,25 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 		}
 		return 0;
 	}
-
+	
+	@Override
+	public List obtenerDatosComboNssCurp(int idNomina) {
+		System.out.println("Datos del Combo Servicio");
+		List datosCombo = new ArrayList();
+		List<String> nsss=this.nominaDao.obtenerNssByIdNomina(idNomina);
+		List<String> curps=this.nominaDao.obtenerCurpByIdNomina(idNomina);
+		System.out.println(nsss.size());
+		System.out.println(curps.size());
+		try{			
+			datosCombo.add(nsss);			
+			datosCombo.add(curps);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return datosCombo;
+	}
+	
 	@Override
 	public List obtenerDatosCombo() {
 		System.out.println("Datos del Combo Servicio");
@@ -75,6 +105,9 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 		try{
 			datosCombo.add(this.nominaDao.obtenerNominas());
 			datosCombo.add(this.periodoDao.obtenerPeriodos());
+			datosCombo.add(this.grupoDao.obtenerGrupos());
+			datosCombo.add(this.patronaDao.obtenerPatronas());			
+			datosCombo.add(this.tipoCalendarioDao.obtenerTiposCalendario());
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -106,6 +139,10 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 	    	return "xlsx";
 	}
 	
+	@Override
+	public Integer obtenerAcumuladosByName(String nombreArchivo){
+		return this.acumuladoPeriodoDao.obtenerAcumuladosByName(nombreArchivo);
+	}
 	@Override
 	public File obtenerArchivoAcumulado(Integer idAcumulado) {
 		// TODO Auto-generated method stub
