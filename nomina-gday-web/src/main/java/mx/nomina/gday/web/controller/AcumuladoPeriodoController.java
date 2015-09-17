@@ -210,14 +210,24 @@ public class AcumuladoPeriodoController {
 	        String id2=request.getParameter("id2").toString();
 	        String id3=request.getParameter("id3").toString();
 	        String id4=request.getParameter("id4").toString();
+	        String id5=request.getParameter("id5").toString();
+	        String id6=request.getParameter("id6").toString();
+	        String id7=request.getParameter("id7").toString();
+	        String id8=request.getParameter("id8").toString();
+	        String id9=request.getParameter("id9").toString();
 	       
 	        System.out.println("buscando el registro de nómina:"+id1);
 	        System.out.println("buscando el registro de nómina:"+id2);
 	        System.out.println("buscando el registro de nómina:"+id3);
 	        System.out.println("buscando el registro de nómina:"+id4);
+	        System.out.println("buscando el registro de nómina:"+id5);
+	        System.out.println("buscando el registro de nómina:"+id6);
+	        System.out.println("buscando el registro de nómina:"+id7);
+	        System.out.println("buscando el registro de nómina:"+id8);
+	        System.out.println("buscando el registro de nómina:"+id9);
 	 		try{            
 				//fileToDownload = this.hojaTrabajoServicio.generarHojaTrabajo(idHojaTrabajo);
-	 			List tmp2=this.empleadoMongoServicio.obtenerDocumentos(id1, id2, id3,id4);
+	 			List tmp2=this.empleadoMongoServicio.obtenerDocumentos(id1, id2, id3,id4,id5,id6,id7,id8,id9);
 	 			System.out.println("Num Registros:"+tmp2.size());
 				fileToDownload=acumuladoPeriodoServicio.obtenerArchivoAcumuladoByData(tmp2);
 	            inputStream = new FileInputStream(fileToDownload);

@@ -25,24 +25,24 @@
 		<tr>			
 			<td>MES DE PAGO
 				<select style="width:150px;" id='mesPago' name='mesPago'  class="form-control">
-					<option value="">seleccione...</option>
-					<option value="1">ENE</option>
-					<option value="2">FEB</option>
-					<option value="3">MAR</option>
-					<option value="4">ABR</option>
-					<option value="5">MAY</option>
-					<option value="6">JUN</option>
-					<option value="7">JUL</option>
-					<option value="8">AGO</option>
-					<option value="9">SEP</option>
-					<option value="10">OCT</option>
-					<option value="11">NOV</option>
-					<option value="12">DIC</option>										
+					<option value="0">seleccione...</option>
+					<option value="ENE">ENE</option>
+					<option value="FEB">FEB</option>
+					<option value="MAR">MAR</option>
+					<option value="ABR">ABR</option>
+					<option value="MAY">MAY</option>
+					<option value="JUN">JUN</option>
+					<option value="JUL">JUL</option>
+					<option value="AGO">AGO</option>
+					<option value="SEP">SEP</option>
+					<option value="OCT">OCT</option>
+					<option value="NOV">NOV</option>
+					<option value="DIC">DIC</option>										
 				</select>				
 			</td>					
 			<td>AÑO DE PAGO
 				<select id='anioPago' style="width:150px;" name='anioPago' class="form-control">
-					<option value="">seleccione...</option>
+					<option value="0">seleccione...</option>
 					<option value="2000">2000</option>
 					<option value="2001">2001</option>
 					<option value="2002">2002</option>

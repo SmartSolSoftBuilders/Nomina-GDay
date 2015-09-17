@@ -85,20 +85,51 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     			map = new HashMap();
     			map.put("id_nomina",acumuladoPeriodo.getNomina().getIdNomina());
     			map.put("id_acumulado",acumuladoPeriodo.getIdAcumuladoPeriodo());	
-    			map.put("numero_periodo",acumuladoPeriodo.getNumeroPeriodo());    			
-    			map.put("mes_pago",acumuladoPeriodo.getMesPago());
-    			map.put("anio_pago",acumuladoPeriodo.getAnioPago());
+    			map.put("numero_periodo",acumuladoPeriodo.getNumeroPeriodo());    			    			
     			if (fila==null)
     				break;
         		System.out.println("columnas:"+fila.getLastCellNum());
     			for (int columna = 0; columna < (fila.getLastCellNum()-1); columna++) { 
     				// Recorre cada columna de la fila
     				if (fila.getCell(columna)!=null){
+    					
     					filaTitulo.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
-    					titulo = filaTitulo.getCell(columna).getStringCellValue();
+    					titulo = filaTitulo.getCell(columna).getStringCellValue();    					
     					fila.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
     					data = fila.getCell(columna).getStringCellValue();    					
-    					System.out.print("Columna->"+titulo+"Valor_"+data);	
+    					//System.out.print("Columna->"+titulo+"Valor_"+data);
+    					if (titulo.equals("AGRUP_NOMINA_TABLERO_CONTROL")){
+    						System.out.println("Por Obtener el num de control!"+titulo+"->"+data);
+    						int anio=2000;
+    						String cadena=data;
+    						int numEspacios=0;
+    						int contador=0;
+    						int i=0;
+    						for (i=0; i<cadena.length();i++){
+    							if (cadena.charAt(i)==' '){
+    								contador++;
+    							}
+    							if (contador==3)
+    								break;    							     						   
+    						}
+    						System.out.println("En el caracter: Contador:"+i);
+    						int indice=i+1;
+    						if (data.length()>1){
+    							System.out.println("-"+data.substring(indice,indice+3)+"-");
+    							System.out.println(data.substring(indice,indice+3));
+    							map.put("mes_pago",data.substring(indice,indice+3).toUpperCase());
+    							if (isNumber( (data.substring(indice+4,indice+6))+anio)){
+    								System.out.println("-"+(Integer.parseInt(data.substring(indice+4,indice+6))+anio)+"-");
+    								map.put("anio_pago",""+(Integer.parseInt(data.substring(indice+4,indice+6))+anio));
+    							}
+    							else
+    								map.put("anio_pago","");
+    						}
+    						else{
+    							map.put("mes_pago","");
+    							map.put("anio_pago","");
+    						}
+    					}
         				if (titulo.length()>1)
         					map.put(titulo.replace(".","_"),data);
     				}
@@ -112,8 +143,18 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     	}  
 	}
 	
+	
+	public static boolean isNumber(String string){
+		try{
+			Integer.parseInt(string);
+			return true;
+		}
+		catch(Exception e){
+			return false;
+		}
+	}
 	@Override 
-	public List obtenerDocumentos(Integer id1, String id2, String id3, String id4){
+	public List obtenerDocumentos(Integer id1, String id2, String id3, String id4, String id5, String id6, String id7, String id8, String id9){
 		List listaPrincipal  = new ArrayList();		
 		MongoClient mongo = new MongoClient("localhost", 27017);
 		DB db = mongo.getDB("testDB");
@@ -134,7 +175,28 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
 			if  (!id4.equals("0"))
 				whereQuery.put("numero_periodo", id4);
 		}
-			
+		if (id5!=null && id5!="" ){
+			if  (!id5.equals("0"))
+				whereQuery.put("GRUPO", id5);
+		}
+		if (id6!=null && id6!="" ){
+			if  (!id6.equals("0"))
+				whereQuery.put("PATRONA", id6);
+		}
+		/*if (id7!=null && id7!="" ){
+			if  (!id7.equals("0"))
+				whereQuery.put("numero_periodo", id7);
+		}*/
+		if (id8!=null && id8!="" ){
+			if  (!id8.equals("0"))
+				whereQuery.put("CURP", id8);
+		}
+		System.out.println(id9);
+		if (id9!=null && id9!="" ){
+			if  (!id9.equals("0"))
+				whereQuery.put("NSS", id9);
+		}
+	
         DBCursor cursor = collection.find(whereQuery);
         int i=1;
         System.out.println("Se buscarán los registros de la nómina:"+id1);

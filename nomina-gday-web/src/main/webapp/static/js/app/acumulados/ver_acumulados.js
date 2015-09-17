@@ -43,6 +43,11 @@ $(document).ready(function() {
 		}
 		$("#tipoCalendario").append(options);
 		
+		var options = '<option value="0">Seleccione...</option>';	
+		$("#nss").append(options);
+		var options = '<option value="0">Seleccione...</option>';			
+		$("#curp").append(options);
+		
 		$("#obtenerAcumBtn").show();
 		$("#divLoadingNoms").hide();
 	},	
@@ -68,7 +73,7 @@ function obtenerNssCurp(){
 			console.log ("NOMINA");
 			console.log (response[0]);					
 			var result=response[0];
-			var options = '<option value="">Seleccione...</option>';
+			var options = '<option value="0">Seleccione...</option>';
 			//$("#nss").append(options);
 			for (var i = 0; i < result.length; i++) {
 				options += '<option value="' + result[i]+ '">' + result[i]+'</option>';
@@ -77,7 +82,7 @@ function obtenerNssCurp(){
 			$("#nss").append(options);
 			
 			var result=response[1];
-			var options = '<option value="">Seleccione...</option>';		
+			var options = '<option value="0">Seleccione...</option>';		
 			//$("#curp").append(options);
 			for (var i = 0; i < result.length; i++) {
 				options += '<option value="' + result[i] + '">' + result[i] +'</option>';
@@ -106,8 +111,13 @@ function obtenerAcumuladosVal(){
 	var id2=$("#mesPago").val();
 	var id3=$("#anioPago").val();	
 	var id4=$("#periodo").val();
-	console.log(id1+id2+id3+id4);
-	ajax_download2(id1,id2,id3,id4);
+	var id5=$("#grupo").val();
+	var id6=$("#patrona").val();
+	var id7=$("#tipoCalendario").val();
+	var id8=$("#curp").val();
+	var id9=$("#nss").val();				
+	//console.log(id1+id2+id3+id4);
+	ajax_download2(id1,id2,id3,id4,id5,id6,id7,id8,id9);
 } 
 
 function obtenerPeriodos(){	
@@ -137,7 +147,7 @@ function obtenerPeriodos(){
 			if (response.tipoCalendario.siglas=='M')
 				limite=12;
 			$("#periodo").empty();
-			var options = '<option value="">Seleccione...</option>';				
+			var options = '<option value="0">Seleccione...</option>';				
 				 for (var i = 1; i <= limite; i++) {
 				    	options += '<option value="'+ i + '">' + i +'</option>';
 				    }
@@ -150,11 +160,16 @@ function obtenerPeriodos(){
 	});
 }
 
-function ajax_download2(id1,id2,id3,id4) {	
+function ajax_download2(id1,id2,id3,id4,id5,id6,id7,id8,id9) {	
 	var input_name="id1";		
 	var input_name2="id2";		
 	var input_name3="id3";	
 	var input_name4="id4";
+	var input_name5="id5";
+	var input_name6="id6";
+	var input_name7="id7";
+	var input_name8="id8";
+	var input_name9="id9";
 	var url="../../mvc/acumulado/obteneracumuladoval";	
     var $iframe,
         iframe_doc,
@@ -180,7 +195,17 @@ function ajax_download2(id1,id2,id3,id4) {
                   "<input type=hidden name='" + input_name3 + "' value='" +
                   id3 +"'/>" +
                   "<input type=hidden name='" + input_name4 + "' value='" +
-                  id4 +"'/></form>" +
+                  id4 +"'/>" +
+                  "<input type=hidden name='" + input_name5 + "' value='" +
+                  id5 +"'/>" +
+                  "<input type=hidden name='" + input_name6 + "' value='" +
+                  id6 +"'/>" +
+                  "<input type=hidden name='" + input_name7 + "' value='" +
+                  id7 +"'/>" +
+                  "<input type=hidden name='" + input_name8 + "' value='" +
+                  id8 +"'/>" +
+                  "<input type=hidden name='" + input_name9 + "' value='" +
+                  id9 +"'/></form>" +
                   "</body></html>";
     iframe_doc.open();
     iframe_doc.write(iframe_html);

@@ -21,11 +21,11 @@
 	<table>
 		<tr>
 			<td>NÓMINA
-				<select id='nomina' name='nomina' class="form-control" onchange="obtenerPeriodos();"></select>
+				<select id='nomina' name='nomina' class="form-control" ></select>
 			</td>
 		</tr>
 	</table>	
-	<table>
+	<!-- table>
 		<tr>			
 			<td>MES DE PAGO
 				<select style="width:35%;" id='mesPago' name='nomina'  class="form-control">
@@ -79,6 +79,7 @@
 				</td>
 			</tr>
 			</table>
+			 -->
 			<br>
 			<table>
 				<tr>	
@@ -97,9 +98,9 @@
           	</div>
           </td>
           <input id="idNomina" name="idNomina" type="hidden"/>
-          <input id="idPeriodo" name="idPeriodo" type="hidden"/>
-		  <input id="anioPagoHid" name="anioPagoHid" type="hidden"/>
-		  <input id="mesPagoHid" name="mesPagoHid" type="hidden"/>                             
+          <input id="idPeriodo" name="idPeriodo" type="hidden" value="0"/>
+		  <input id="anioPagoHid" name="anioPagoHid" type="hidden" value="0"/>
+		  <input id="mesPagoHid" name="mesPagoHid" type="hidden" value="0"/>                             
           <td></td>
         </tr>
         <tr>     
