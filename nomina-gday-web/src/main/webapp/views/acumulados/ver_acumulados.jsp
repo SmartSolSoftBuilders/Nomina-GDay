@@ -4,8 +4,8 @@
 <style>
 .ui-dialog-titlebar { display:none; }
 </style>
-<div id="container" >	
-	<h3 color=#0051a4 class="mayuscula">Seleccione los datos para mostrar los acumulados:</h3>
+<div id="container">	
+	<center><h4 color=#0051a4 class="mayuscula">Seleccione los datos para mostrar los acumulados:</h4></center>
 </div>
 <div align="center">
 	<table>
@@ -19,9 +19,7 @@
 			<td>NÓMINA
 				<select id='nomina' style="width:150px;" name='nomina' class="form-control" onchange="obtenerPeriodos();obtenerNssCurp();"></select>
 			</td>
-		</tr>
-	</table>
-	<table>
+		</tr>	
 		<tr>			
 			<td>MES DE PAGO
 				<select style="width:150px;" id='mesPago' name='mesPago'  class="form-control">

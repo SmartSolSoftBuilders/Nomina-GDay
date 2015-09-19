@@ -45,51 +45,57 @@ function obtenerAcumulados(){
 	$("#ficheroDiv").hide();
 	$("#botonSubmit").hide();
 	$("#imgLoading2").show();*/
-	$("#divLoading").dialog(({show: "slide", dialogClass: 'noTitleStuff' , modal: true, width:700, height:200,
-		autoOpen: true}));
-	$(".ui-dialog-titlebar").hide();
+	
 
 	var idNomina=($('#nomina').find(":selected").val());
-	var idPeriodo=($('#periodo').find(":selected").val());
-	var mesPag=($('#mesPago').find(":selected").val());
-	var anioPag=($('#anioPago').find(":selected").val());
-	
-	console.log(idNomina)
-	console.log(idPeriodo)
-	//Sección validaciones
-	oTablaPlantillas=$('#tablaPlantillas').dataTable();
-	$.ajax({
-		data:{
-			"nomina.idNomina": idNomina,
-			"numeroPeriodo": idPeriodo,
-			"mesPago":mesPag,
-			"anioPago":anioPag			
-		},
-		sync: true,
-		type:  'post',
-		url:   '../../mvc/acumulado/getacumulados',
-		dataType:  'json',
-		beforeSend: function () {
-			$("#resultado").html("Procesando, espere por favor...");
-			
-      	$( "#progressbar" ).progressbar({
-		      value: 75
-		    });	
-        $( "#demo" ).hide();
-		}, 
-		success:  function (response) {
-			$("#divLoading").dialog("close");
-			$("#demo").show();
-			//$("#progressbar").hide();			
-			oTablaPlantillas.fnClearTable();
-			oTablaPlantillas.fnAddData(response);
-			$('#idNomina').val(idNomina);
-			$('#idPeriodo').val(idPeriodo);
-			$('#mesPagoHid').val(mesPag);
-			$('#anioPagoHid').val(anioPag);			
-			$("#ficheroDiv").show();					
-		}
-	});	
+	if (idNomina!="0"){
+		$("#divLoading").dialog(({show: "slide", dialogClass: 'noTitleStuff' , modal: true, width:700, height:200,
+			autoOpen: true}));
+		$(".ui-dialog-titlebar").hide();
+		var idPeriodo=($('#periodo').find(":selected").val());
+		var mesPag=($('#mesPago').find(":selected").val());
+		var anioPag=($('#anioPago').find(":selected").val());
+		
+		console.log(idNomina)
+		console.log(idPeriodo)
+		//Sección validaciones
+		oTablaPlantillas=$('#tablaPlantillas').dataTable();
+		$.ajax({
+			data:{
+				"nomina.idNomina": idNomina,
+				"numeroPeriodo": idPeriodo,
+				"mesPago":mesPag,
+				"anioPago":anioPag			
+			},
+			sync: true,
+			type:  'post',
+			url:   '../../mvc/acumulado/getacumulados',
+			dataType:  'json',
+			beforeSend: function () {
+				$("#resultado").html("Procesando, espere por favor...");
+				
+	      	$( "#progressbar" ).progressbar({
+			      value: 75
+			    });	
+	        $( "#demo" ).hide();
+			}, 
+			success:  function (response) {
+				$("#divLoading").dialog("close");
+				$("#demo").show();
+				//$("#progressbar").hide();			
+				oTablaPlantillas.fnClearTable();
+				oTablaPlantillas.fnAddData(response);
+				$('#idNomina').val(idNomina);
+				$('#idPeriodo').val(idPeriodo);
+				$('#mesPagoHid').val(mesPag);
+				$('#anioPagoHid').val(anioPag);			
+				$("#ficheroDiv").show();				
+				$('#botonSubmit').show();
+			}
+		});
+	}
+	else
+		alert("Debe seleccionar una nomina.");
 	
 }
 
@@ -193,10 +199,14 @@ function validarFormSub(){
 	/*var idPeriodo=($('#periodo').find(":selected").val());
 	var mesPag=($('#mesPago').find(":selected").val());
 	var anioPag=($('#anioPago').find(":selected").val());*/
-	if (idNomina==""){
+	if (idNomina=="0"){
 		alert("Para subir un archivo de Acumulado, debe seleccionar la nomina.");
 		return false;
 	}
+	if ($("#fichero").val()==""){
+		alert("Debe seleccionar un archivo.");
+		return false;
+	}		
 	else{		
 		$('#formSub').submit();
 		$('#botonSubmit').hide();

@@ -617,6 +617,8 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
            listaMongo.add(""+obj.get("AGRUP_NOMINA_TABLERO_CONTROL"));
            listaMongo.add(""+obj.get("AGRUP_NOMINA_CORTO_REPATR"));
            listaMongo.add(""+obj.get("AGRUP_NOMINA_CORTO_RESIND"));
+           listaMongo.add(""+obj.get("GRUPO"));
+           listaMongo.add(""+obj.get("TIPO_CALENDARIO"));
            /*listaMongo.add(""+obj.get("# Control"));
            listaMongo.add(""+obj.get("Nombre"));
            listaMongo.add(""+obj.get("Paterno"));

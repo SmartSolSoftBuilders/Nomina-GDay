@@ -84,7 +84,7 @@
 			<table>
 				<tr>	
 					<td align="center">
-						<input style="width:300px;" id="obtenerAcumBtn" id="obtenerAcumBtn" type="button" onclick="obtenerAcumulados();$('#botonSubmit').show();" class="form-control" value="Consultar Acumulados">
+						<input style="width:300px;" id="obtenerAcumBtn" id="obtenerAcumBtn" type="button" onclick="obtenerAcumulados();" class="form-control" value="Consultar Acumulados">
 					</td>
 					<td>
 					</td>
