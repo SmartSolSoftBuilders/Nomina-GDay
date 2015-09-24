@@ -307,6 +307,20 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
         /*Cerramos el flujo de datos*/        
         return archivoXLS;
 	}
+
+
+	@Override
+	public void actualizarArchivo(AcumuladoPeriodo acumuladoPeriodo) {
+		// TODO Auto-generated method stub
+		System.out.println("Acumulado"+acumuladoPeriodo.getNomina().getIdNomina());
+		System.out.println("Acumulado"+acumuladoPeriodo.getNumeroPeriodo());
+		try{
+			this.acumuladoPeriodoDao.actualizarArchivo(acumuladoPeriodo);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}		
+	}
 }
 
 

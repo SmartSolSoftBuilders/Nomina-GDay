@@ -100,7 +100,14 @@ public class AcumuladoPeriodoController {
 		 			int idAcumulado=this.acumuladoPeriodoServicio.agregarArchivo(acumuladoPeriodo);
 		 			System.out.println("ID Acumulado obtenido:"+idAcumulado);	 			
 		 			acumuladoPeriodo.setIdAcumuladoPeriodo(acumuladoPeriodo.getId().intValue());
-		     		this.empleadoMongoServicio.guardarDocumento(acumuladoPeriodo);
+		     		List<String> datos=this.empleadoMongoServicio.guardarDocumento(acumuladoPeriodo);
+		     		if (datos.size()>0){
+		     			System.out.println("por actualizar el acumulado periodo:"+acumuladoPeriodo.getId());
+		     			acumuladoPeriodo.setIdAcumuladoPeriodo(acumuladoPeriodo.getId().intValue());
+		     			acumuladoPeriodo.setMesPago(datos.get(0));
+		     			acumuladoPeriodo.setAnioPago(datos.get(1));
+		     			acumuladoPeriodoServicio.actualizarArchivo(acumuladoPeriodo);
+		     		}
 		 		}
 		 		System.out.println("LOS VALORES DEL ARCHIVO:"+acumuladoPeriodo.getArchivoAcumulado().length);		
 		 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpAcumulado."+tipoArchivo);

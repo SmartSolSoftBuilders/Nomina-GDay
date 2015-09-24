@@ -13,5 +13,6 @@ public interface AcumuladoPeriodoDao {
 	List<AcumuladoPeriodo> obtenerAcumuladosByIdNominaAndIdPeriodo(AcumuladoPeriodo acumuladoPeriodo);
 	public AcumuladoPeriodo obtenerAcumuladosById(Integer idAcumuladoPeriodo);
 	public Integer obtenerAcumuladosByName(String nombreArchivo);
+	public Object actualizarArchivo(AcumuladoPeriodo acumuladoPeriodo);
 	
 }

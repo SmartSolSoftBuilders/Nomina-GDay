@@ -146,6 +146,10 @@
         #{mesPago},#{anioPago},#{tipoArchivo});            	   
     </insert>
     
+    <update id="actualizarArchivo" parameterType="AcumuladoPeriodo">		
+		UPDATE "ACUMULADO_POR_PERIODO" SET "MES_PAGO"=#{mesPago} , "ANIO_PAGO"=#{anioPago} WHERE "ID_ACUMULADO_PERIODO"=#{idAcumuladoPeriodo}
+    </update>
+    
     <delete id="eliminarAcumulado" parameterType="AcumuladoPeriodo">
     	DELETE FROM "ACUMULADO_POR_PERIODO" WHERE "ID_ACUMULADO_PERIODO" =#{idAcumuladoPeriodo} 
     </delete>

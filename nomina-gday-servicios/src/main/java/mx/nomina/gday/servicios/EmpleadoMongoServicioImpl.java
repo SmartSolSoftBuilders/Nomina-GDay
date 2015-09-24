@@ -40,8 +40,9 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
 	private EmpleadoMongo empleadoMongo = new EmpleadoMongoImpl();
 	
 	@Override 
-	public void guardarDocumento(AcumuladoPeriodo acumuladoPeriodo){
+	public List <String> guardarDocumento(AcumuladoPeriodo acumuladoPeriodo){
 		MongoClient mongo = new MongoClient("localhost", 27017);
+		List <String> datos=new ArrayList<String>();
 		DB db = mongo.getDB("testDB");
 	    DBCollection collection = db.getCollection("empleados");
 	    HashMap map = new HashMap();
@@ -77,6 +78,8 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     		//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
     		int filaNum=1;
     		int colNum=1;
+    		String mesArchivo="";
+    		String anioArchivo="";    		
     		Row filaTitulo = hoja.getRow(0);
     		Row fila = hoja.getRow(colNum);
     		System.out.println("LINEAS:"+hoja.getLastRowNum());
@@ -119,9 +122,11 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     							System.out.println("-"+data.substring(indice,indice+3)+"-");
     							System.out.println(data.substring(indice,indice+3));
     							map.put("mes_pago",data.substring(indice,indice+3).toUpperCase());
+    							mesArchivo=data.substring(indice,indice+3).toUpperCase();
     							if (isNumber( (data.substring(indice+4,indice+6))+anio)){
     								System.out.println("-"+(Integer.parseInt(data.substring(indice+4,indice+6))+anio)+"-");
     								map.put("anio_pago",""+(Integer.parseInt(data.substring(indice+4,indice+6))+anio));
+    								anioArchivo=""+(Integer.parseInt(data.substring(indice+4,indice+6))+anio);
     							}
     							else
     								map.put("anio_pago","");
@@ -138,12 +143,16 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
         		System.out.println("columnas:"+fila.getLastCellNum());
     			this.empleadoMongo.saveDocument(collection, map);
     		}			        			
-    		file.close();
+    		file.close();    		
+    		datos.add(mesArchivo);
+    		datos.add(anioArchivo);
+    		return datos;
         }
     	catch (Exception ioe) { 
     		System.out.println("Error:"+ioe.getMessage());
-    		ioe.printStackTrace(); 
+    		ioe.printStackTrace();    		
     	}  
+        return datos;
 	}
 	
 	

@@ -81,18 +81,19 @@
 							</td>				 						 	
 					 	</tr>
 					 	<tr>
-					 		<td>PROVISION AGINALDO<input id='provisionAguinaldo' name='provisionAguinaldo' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>PROVISION AGINALDO<input id='provisionAguinaldo' name='provisionAguinaldo' type="checkbox" class="form-control"></td>					 	
 					 		<td></td>
-					 		<td>PROVISION VACACIONES<input id='provisionVacaciones' name='provisionVacaciones' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
-					 		<td></td>
+					 		<td>PROVISION VACACIONES<input id='provisionVacaciones' name='provisionVacaciones' type="checkbox" class="form-control"></td>					 	
+					 		<td>PROVISION PRIMA VACACIONAL<input id='provisionPrimaVac' name='provisionPrimaVac' type="checkbox" class="form-control"></td>
 					 	</tr>
 					 </table>
 					 <table>
 					 	<tr>
-					 		<td>PROVISION PRIMA VACACIONAL<input id='provisionPrimaVac' name='provisionPrimaVac' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 							 	
 							<td>COMISIÓN<input id='comision' name='comision' type="text" class="form-control"></td>
-					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 						 		
-					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
+					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control"></td>
+					 		<td>DIAS AGUINALDO<input id='diasAguinaldo' name='diasAguinaldo' type="text" class="form-control"></td>					 						 		
+					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
 					 </table>
 					 <table>
