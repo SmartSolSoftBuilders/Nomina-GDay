@@ -196,9 +196,9 @@ function eliminarAcumulado(idAcumulado){
 
 function validarFormSub(){
 	var idNomina=($('#nomina').find(":selected").val());
-	/*var idPeriodo=($('#periodo').find(":selected").val());
+	/*var idPeriodo=($('#periodo').find(":selected").val());*/
 	var mesPag=($('#mesPago').find(":selected").val());
-	var anioPag=($('#anioPago').find(":selected").val());*/
+	var anioPag=($('#anioPago').find(":selected").val());
 	if (idNomina=="0"){
 		alert("Para subir un archivo de Acumulado, debe seleccionar la nomina.");
 		return false;

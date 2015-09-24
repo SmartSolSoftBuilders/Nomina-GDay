@@ -598,7 +598,8 @@ function setFieldsCurp(){
 	var fechaNac= "19"+curp.charAt(4)+curp.charAt(5)+"-"+curp.charAt(6)+curp.charAt(7)+"-"+curp.charAt(8)+curp.charAt(9); 	
 	var fechaNacValidate = "19"+curp.charAt(4)+curp.charAt(5)+"/"+curp.charAt(6)+curp.charAt(7)+"/"+curp.charAt(8)+curp.charAt(9); 	
 	var lugarNac = obtenerLugarNacimiento(curp.charAt(11)+curp.charAt(12));
-	var edad = obtenerEdad(fechaNacValidate);  
+	var edad = obtenerEdad(fechaNacValidate);
+	var rfcTmp=curp.substr(0,10);
 	var sexo = "";
 	console.log(fechaNac);
 	if (curp.charAt(10)=="H")
@@ -609,6 +610,7 @@ function setFieldsCurp(){
 	$("#fechaNacimiento").val(fechaNac);
 	$("#edad").val(edad);
 	$("#sexo").val(sexo);
+	$("#rfc").val(rfcTmp);
 }
 
 function obtenerLugarNacimiento(vals){

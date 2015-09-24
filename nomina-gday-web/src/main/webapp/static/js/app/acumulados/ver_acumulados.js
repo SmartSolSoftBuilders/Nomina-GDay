@@ -23,7 +23,7 @@ $(document).ready(function() {
 		var options = '<option value="0">Seleccione...</option>';
 		//$("#grupo").append(options);
 		for (var i = 0; i < result.length; i++) {
-			options += '<option value="' + result[i].idGrupo + '">' + result[i].nombre +'</option>';
+			options += '<option value="' + result[i].nombre + '">' + result[i].nombre +'</option>';
 		}
 		$("#grupo").append(options);
 		
@@ -31,7 +31,7 @@ $(document).ready(function() {
 		var options = '<option value="0">Seleccione...</option>';
 		//$("#patrona").append(options);
 		for (var i = 0; i < result.length; i++) {
-			options += '<option value="' + result[i].idPatrona + '">' + result[i].nombreCortoPatrona +'</option>';
+			options += '<option value="' + result[i].nombreCortoPatrona + '">' + result[i].nombreCortoPatrona +'</option>';
 		}
 		$("#patrona").append(options);
 		
@@ -39,14 +39,14 @@ $(document).ready(function() {
 		var options = '<option value="0">Seleccione...</option>';		
 		//$("#tipoCalendario").append(options);
 		for (var i = 0; i < result.length; i++) {
-			options += '<option value="' + result[i].idCalendario + '">' + result[i].tipoCalendario +'</option>';
+			options += '<option value="' + result[i].tipoCalendario + '">' + result[i].tipoCalendario +'</option>';
 		}
 		$("#tipoCalendario").append(options);
 		
-		var options = '<option value="0">Seleccione...</option>';	
+		/*var options = '<option value="0">Seleccione...</option>';	
 		$("#nss").append(options);
 		var options = '<option value="0">Seleccione...</option>';			
-		$("#curp").append(options);
+		$("#curp").append(options);*/
 		
 		$("#obtenerAcumBtn").show();
 		$("#divLoadingNoms").hide();

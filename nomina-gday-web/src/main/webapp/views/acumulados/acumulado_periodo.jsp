@@ -25,23 +25,23 @@
 			</td>
 		</tr>
 	</table>	
-	<!-- table>
+	<table>
 		<tr>			
 			<td>MES DE PAGO
 				<select style="width:35%;" id='mesPago' name='nomina'  class="form-control">
 					<option value="">seleccione...</option>
-					<option value="1">ENE</option>
-					<option value="2">FEB</option>
-					<option value="3">MAR</option>
-					<option value="4">ABR</option>
-					<option value="5">MAY</option>
-					<option value="6">JUN</option>
-					<option value="7">JUL</option>
-					<option value="8">AGO</option>
-					<option value="9">SEP</option>
-					<option value="10">OCT</option>
-					<option value="11">NOV</option>
-					<option value="12">DIC</option>										
+					<option value="ENE">ENE</option>
+					<option value="FEB">FEB</option>
+					<option value="MAR">MAR</option>
+					<option value="ABR">ABR</option>
+					<option value="MAY">MAY</option>
+					<option value="JUN">JUN</option>
+					<option value="JUL">JUL</option>
+					<option value="AGO">AGO</option>
+					<option value="SEP">SEP</option>
+					<option value="OCT">OCT</option>
+					<option value="NOV">NOV</option>
+					<option value="DIC">DIC</option>										
 				</select>				
 			</td>					
 			<td>AÑO DE PAGO
@@ -72,14 +72,16 @@
 					<option value="2022">2022</option>
 					<option value="2023">2023</option>
 					<option value="2024">2024</option>
-				</select>				
+				</select>
+		<!-- 						
 				</td>
 				<td>NÚMERO DE PERIODO
 					<select id='periodo' style="width:35%;" name='periodo'  class="form-control"></select>
 				</td>
+		 -->
 			</tr>
 			</table>
-			 -->
+			 
 			<br>
 			<table>
 				<tr>	

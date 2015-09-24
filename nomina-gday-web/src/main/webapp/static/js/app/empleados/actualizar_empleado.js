@@ -928,6 +928,8 @@ function setFieldsCurp(){
 	var lugarNac = obtenerLugarNacimiento(curp.charAt(11)+curp.charAt(12));
 	var edad = obtenerEdad(fechaNacValidate);  
 	var sexo = "";
+	var rfcTmp=curp.substr(0,10);
+
 	console.log(fechaNac);
 	if (curp.charAt(10)=="H")
 		sexo="MASCULINO";
@@ -937,6 +939,8 @@ function setFieldsCurp(){
 	$("#fechaNacimiento").val(fechaNac);
 	$("#edad").val(edad);
 	$("#sexo").val(sexo);
+	$("#rfc").val(rfcTmp);
+
 }
 
 function obtenerLugarNacimiento(vals){

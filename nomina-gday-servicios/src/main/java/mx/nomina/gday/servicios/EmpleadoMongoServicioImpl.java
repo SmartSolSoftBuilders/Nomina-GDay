@@ -79,7 +79,7 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     		int colNum=1;
     		Row filaTitulo = hoja.getRow(0);
     		Row fila = hoja.getRow(colNum);
-    		//System.out.println("LINEAS:"+hoja.getLastRowNum());
+    		System.out.println("LINEAS:"+hoja.getLastRowNum());
     		for (; filaNum <= hoja.getLastRowNum()-1; filaNum++) { // Recorre cada fila de la hoja     			
     			fila = hoja.getRow(filaNum);
     			map = new HashMap();
@@ -89,17 +89,18 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
     			if (fila==null)
     				break;
         		System.out.println("columnas:"+fila.getLastCellNum());
-    			for (int columna = 0; columna < (fila.getLastCellNum()-1); columna++) { 
+    			for (int columna = 0; columna < (fila.getLastCellNum()); columna++) {
+    				System.out.println("columna:"+columna+fila.getCell(columna));
     				// Recorre cada columna de la fila
-    				if (fila.getCell(columna)!=null){
-    					
+    				if (fila.getCell(columna)!=null){    					
     					filaTitulo.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
     					titulo = filaTitulo.getCell(columna).getStringCellValue();    					
     					fila.getCell(columna).setCellType(Cell.CELL_TYPE_STRING);
     					data = fila.getCell(columna).getStringCellValue();    					
-    					//System.out.print("Columna->"+titulo+"Valor_"+data);
+    					if (columna>fila.getLastCellNum()-4)
+    						System.out.print("Columna->"+titulo+"Valor_"+data+columna);
     					if (titulo.equals("AGRUP_NOMINA_TABLERO_CONTROL")){
-    						System.out.println("Por Obtener el num de control!"+titulo+"->"+data);
+    						//System.out.println("Por Obtener el num de control!"+titulo+"->"+data);
     						int anio=2000;
     						String cadena=data;
     						int numEspacios=0;
@@ -134,9 +135,11 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
         					map.put(titulo.replace(".","_"),data);
     				}
     			}
+        		System.out.println("columnas:"+fila.getLastCellNum());
     			this.empleadoMongo.saveDocument(collection, map);
     		}			        			
-    	}
+    		file.close();
+        }
     	catch (Exception ioe) { 
     		System.out.println("Error:"+ioe.getMessage());
     		ioe.printStackTrace(); 
@@ -486,7 +489,8 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
            listaMongo.add(""+obj.get("RIBO_IMP_GRAVADO"));
            listaMongo.add(""+obj.get("RIBO_IMP_EXENTO"));
            listaMongo.add(""+obj.get("RET_IMSS_BIM_PATR"));
-           listaMongo.add(""+obj.get("RI_TIPO	RI_CLAVE"));
+           listaMongo.add(""+obj.get("RI_TIPO"));
+           listaMongo.add(""+obj.get("RI_CLAVE"));
            listaMongo.add(""+obj.get("RI_CONCEPTO"));
            listaMongo.add(""+obj.get("RI_IMP_GRAVADO"));
            listaMongo.add(""+obj.get("RI_IMP_EXENTO"));
@@ -619,6 +623,10 @@ public class EmpleadoMongoServicioImpl implements EmpleadoMongoServicio{
            listaMongo.add(""+obj.get("AGRUP_NOMINA_CORTO_RESIND"));
            listaMongo.add(""+obj.get("GRUPO"));
            listaMongo.add(""+obj.get("TIPO_CALENDARIO"));
+
+           System.out.println(""+obj.get("AGRUP_NOMINA_CORTO_RESIND"));
+           System.out.println(""+obj.get("GRUPO"));
+           System.out.println(""+obj.get("TIPO_CALENDARIO"));
            /*listaMongo.add(""+obj.get("# Control"));
            listaMongo.add(""+obj.get("Nombre"));
            listaMongo.add(""+obj.get("Paterno"));

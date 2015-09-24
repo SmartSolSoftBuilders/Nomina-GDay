@@ -250,7 +250,7 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
         /*Se crea el objeto de tipo File con la ruta del archivo*/
 		File archivoXLS = new File(rutaArchivo); 
 		//Evento eventoTmp=new Evento();
-		System.out.println("Los datos que se buscan:"+datos.size());
+		//System.out.println("Los datos que se buscan:"+datos.size());
 		/*Se crea el archivo*/
         int filaInicial=1;
         int columnaInicial=0;        
@@ -279,9 +279,9 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
         			//System.out.println("num Control:+"+tmp.get(0));
         			//System.out.println("Registro:+"+indexEmpleados);
         			//fila.createCell(recorrerCeldas++).setCellValue((indexEmpleados+1));
-        			//System.out.println("TOTAL RG:"+tmp.size());
+        			//System.out.println("TOTAL RG:"+tmp.size());        			
         			if (!tmp.get(0).equals("null") && tmp.get(0)!=""){        				
-        				for (int l=0;l<412;l++)
+        				for (int l=0;l<416;l++)
         					fila.createCell(recorrerCeldas++).setCellValue(tmp.get(l));	        			
         			}
         		}

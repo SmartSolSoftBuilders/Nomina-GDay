@@ -17,7 +17,7 @@
 				<select id='patrona' style="width:150px;" name='patrona'  class="form-control"></select>
 			</td>			
 			<td>NÓMINA
-				<select id='nomina' style="width:150px;" name='nomina' class="form-control" onchange="obtenerPeriodos();obtenerNssCurp();"></select>
+				<select id='nomina' style="width:150px;" name='nomina' class="form-control" onchange="obtenerPeriodos();"></select>
 			</td>
 		</tr>	
 		<tr>			
@@ -78,10 +78,10 @@
 				<td>TIPO CALENDARIO
 					<select id='tipoCalendario' style="width:150px;" name='tipoCalendario'  class="form-control"></select>			
 				<td>CURP
-					<select id='curp' style="width:150px;" name='curp'  class="form-control"></select>
+					<input type="text" id='curp' style="width:150px;" name='curp'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				</td>
 				<td>NSS
-					<select id='nss' style="width:150px;" name='nss'  class="form-control"></select>
+					<input type="text" id='nss' style="width:150px;" name='nss'  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
 				</td>				
 			</tr>
 			</table>
