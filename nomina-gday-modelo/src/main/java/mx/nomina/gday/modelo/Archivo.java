@@ -6,18 +6,48 @@ public class Archivo extends BaseModelo{
 	private String fechaCarga;
 	private String tipoArchivo;
 	private byte[] archivo;
+	private int cargados;
+	private int rechazados;
+	private String nombre;
 	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getCargados() {
+		return cargados;
+	}
+
+	public void setCargados(int cargados) {
+		this.cargados = cargados;
+	}
+
+	public int getRechazados() {
+		return rechazados;
+	}
+
+	public void setRechazados(int rechazados) {
+		this.rechazados = rechazados;
+	}
+
 	public Archivo(){
 		
 	}
 	
 	public Archivo(Integer idArchivo, String fechaCarga, String tipoArchivo,
-			byte[] archivo) {
+			byte[] archivo, int cargados, int rechazados, String nombre) {
 		super();
 		this.idArchivo = idArchivo;
 		this.fechaCarga = fechaCarga;
 		this.tipoArchivo = tipoArchivo;
 		this.archivo = archivo;
+		this.cargados=cargados;
+		this.rechazados=rechazados;
+		this.nombre=nombre;
 	}
 
 	public Integer getIdArchivo() {

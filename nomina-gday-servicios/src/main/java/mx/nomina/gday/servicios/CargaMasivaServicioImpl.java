@@ -1,15 +1,17 @@
 package mx.nomina.gday.servicios;
 
 import java.io.File;
-
 import java.io.FileInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import mx.nomina.gday.dao.ArchivoDao;
 import mx.nomina.gday.dao.EmpleadoDao;
 import mx.nomina.gday.dao.EmpleadoNominaDao;
+import mx.nomina.gday.modelo.Archivo;
 import mx.nomina.gday.modelo.Area;
 import mx.nomina.gday.modelo.Departamento;
 import mx.nomina.gday.modelo.Empleado;
@@ -17,6 +19,8 @@ import mx.nomina.gday.modelo.EmpleadoNomina;
 import mx.nomina.gday.modelo.Nomina;
 import mx.nomina.gday.modelo.Proceso;
 import mx.nomina.gday.modelo.Puesto;
+
+
 //Save commit
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -35,10 +39,13 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 	private EmpleadoDao empleadoDao;
 	
 	@Autowired
+	private ArchivoDao archivoDao;
+	
+	@Autowired
 	private EmpleadoNominaDao empleadoNominaDao;
 	
 	@Override
-	public String cargarExcel(String nombreArchivo,String tipoArchivo) {
+	public String cargarExcel(String nombreArchivo,String tipoArchivo, Long long1) {
 		StringBuffer strBMain= new StringBuffer();
     	try {
     		//System.out.println("se carga el archivo:"+nombreArchivo);    		
@@ -59,6 +66,8 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
         	//Se llena el encabezado        			        	
     			int numColumnas = 97; 
     			int numFilas = 2000; 
+    			int cargados=0;
+    			int rechazados=0;
     			String data; 
     			//System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
     			int filaNum=3;
@@ -390,16 +399,24 @@ public class CargaMasivaServicioImpl implements CargaMasivaServicio {
 								empleadoNomina.setProceso(obtenerProceso(datos.get(99)));
 								empleadoNomina.setPuesto(obtenerPuesto(datos.get(100)));
 								System.out.println("GUARDANDO!");
-								if (validarFormatoFechas)
-									this.empleadoNominaDao.agregarEmpleadoNomina(empleadoNomina);								
+								if (validarFormatoFechas){
+									this.empleadoNominaDao.agregarEmpleadoNomina(empleadoNomina);
+									cargados++;
+								}
 								System.out.println("Guardé un nuevo empleado nomina!");
 							}																											
 						}
 					}
 					else{
-						strBMain.append("Se interrumpió el insert de Empleados porque el empleado ya existe o la información no es válida!\n");						
+						strBMain.append("Se interrumpió el insert de Empleados porque el empleado ya existe o la información no es válida!\n");
+						rechazados++;
 					}
-    			}     	
+    			}
+    			Archivo archivo = new Archivo();
+    			archivo.setIdArchivo(long1.intValue());
+    			archivo.setCargados(cargados);
+    			archivo.setRechazados(rechazados);
+    			this.archivoDao.updateArchivo(archivo);
     	}
     	catch (Exception ioe) { 
     		System.out.println("ERROR EN LA CARGA MASIVA DE EMPLEADOS!!!");

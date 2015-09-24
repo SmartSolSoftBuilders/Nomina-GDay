@@ -7,6 +7,9 @@
 		<result property="fechaCarga" column="FECHA_CARGA"/>
 		<result property="archivo" column="ARCHIVO" javaType = "byte[]" jdbcType = "BINARY" typeHandler = "org.apache.ibatis.type.ByteArrayTypeHandler" />
 		<result property="tipoArchivo" column="TIPO_ARCHIVO"/>
+		<result property="nombre" column="NOMBRE"/>
+		<result property="cargados" column="CARGADOS"/>
+		<result property="rechazados" column="RECHAZADOS"/>
 	</resultMap>
 	
 	 <insert id="agregarArchivo" parameterType="Archivo" keyProperty="id">
@@ -14,11 +17,19 @@
   		   	SELECT nextVal('sec_archivo')
   		</selectKey>
 		INSERT INTO "ARCHIVO"(
-			    	"ID_ARCHIVO", "FECHA_CARGA", "ARCHIVO", "TIPO_ARCHIVO")	
-           		 	VALUES (#{id}, date(#{fechaCarga}),#{archivo,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler},#{tipoArchivo});
+			    	"ID_ARCHIVO", "FECHA_CARGA", "ARCHIVO", "TIPO_ARCHIVO","NOMBRE")	
+           		 	VALUES (#{id}, date(#{fechaCarga}),#{archivo,javaType=byte[],jdbcType=BINARY,typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler},#{tipoArchivo},#{nombre});
             	   
     </insert>
-<!-- Select para obtener la ultima Carga de archivo -->
+     <update id="updateArchivo" parameterType="Archivo">		
+		UPDATE "ARCHIVO" SET "CARGADOS"=#{cargados}, "RECHAZADOS"=#{rechazados}
+			    	where "ID_ARCHIVO"=#{idArchivo};            	  
+    </update>
+    
+<!-- Select para obtener la ultima Carga de archivo -->	
+	<select id="obtenerCargaArchivos"  resultMap="archivoResult" resultType="Archivo">		 
+		SELECT * FROM "ARCHIVO"
+	</select>
 	<select id="obtenerUltimaCargaArchivo"  resultMap="archivoResult" resultType="Archivo">		 
 		SELECT * FROM "ARCHIVO" WHERE "ID_ARCHIVO"=(SELECT MAX("ID_ARCHIVO") FROM "ARCHIVO")
 	</select>

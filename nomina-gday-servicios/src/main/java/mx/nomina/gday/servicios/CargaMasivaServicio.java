@@ -4,6 +4,6 @@ public interface CargaMasivaServicio {
 	
 	 //public String cargarExcel(String nombreArchivo);
 	 int getCountIdEmpleadoByNss(String nssEmpleado);
-	 public String cargarExcel(String nombreArchivo, String tipoArchivo);
+	 public String cargarExcel(String nombreArchivo, String tipoArchivo, Long long1);
 
 }

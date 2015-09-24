@@ -133,4 +133,10 @@ public class ArchivoServicioImpl implements ArchivoServicio{
     	return true;		
 	}
 
+	@Override
+	public List<Archivo> obtenerCargaArchivos() {
+		// TODO Auto-generated method stub
+		return this.archivoDao.obtenerCargaArchivos();
+	}
+
 }

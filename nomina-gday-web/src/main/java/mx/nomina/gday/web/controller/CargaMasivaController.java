@@ -11,10 +11,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mx.nomina.gday.modelo.Archivo;
@@ -90,17 +93,19 @@ public @ResponseBody void guardaFichero(MultipartHttpServletRequest request, Htt
 			tipoArchivo="xls";			
 		else
 			tipoArchivo="xlsx";
-		   archivo.setTipoArchivo(tipoArchivo);				
+		   archivo.setTipoArchivo(tipoArchivo);
+		archivo.setNombre(ufile.name);
 		System.out.println("Done"+ufile.length+archivo.getArchivo().length);
 		System.out.println("FECHA DE CARGA:"+dateFormat.format(date));
         archivo.setFechaCarga(dateFormat.format(date));
     	this.archivoServicio.agregarArchivo(archivo);		
+    	System.out.println("id arCHIVO GUARDADO"+archivo.getId());
 		//archivoServicio.agregarArchivo(archivo);
 		System.out.println("LOS VALORES DEL ARCHIVO:"+archivo.getArchivo().length);		
 		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmp."+tipoArchivo);
 	    fos.write(archivo.getArchivo());
 	    fos.close();		
-        logContent=this.cargaMasivaServicio.cargarExcel("C://archivosNGDAY//tmp."+tipoArchivo,tipoArchivo);
+        logContent=this.cargaMasivaServicio.cargarExcel("C://archivosNGDAY//tmp."+tipoArchivo,tipoArchivo,archivo.getId());
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileToDownload));
         writer.write(logContent);
         writer.close();
@@ -124,7 +129,24 @@ public @ResponseBody String revertir(){
 	int valor = this.archivoServicio.revertirCarga();
 	System.out.println("Terminando CARGA REVERTIDA");
     return "Fichero grabado correctamente";
-}        
+}
+
+@RequestMapping(value="/getfiles", method = RequestMethod.POST)
+@ResponseBody
+public List obtenerArchivosCargados(HttpServletRequest request){
+	List<Archivo> archivos = archivoServicio.obtenerCargaArchivos();
+	List datos = new ArrayList();
+	for (int i=0; i<archivos.size();i++){
+		List<String> datos2 = new ArrayList<String>();
+		datos2.add(""+archivos.get(i).getIdArchivo());
+		datos2.add(""+archivos.get(i).getFechaCarga());
+		datos2.add(""+archivos.get(i).getNombre());
+		datos2.add(""+archivos.get(i).getCargados());
+		datos2.add(""+archivos.get(i).getRechazados());
+		datos.add(datos2);
+	}
+	return  datos;
+}
 
 /*private void grabarFicheroALocal(UploadFile ufile) throws Exception {
 	UploadFile uploaded = ufile;
