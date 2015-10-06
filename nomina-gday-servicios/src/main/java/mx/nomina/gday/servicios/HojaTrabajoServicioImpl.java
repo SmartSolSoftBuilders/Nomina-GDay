@@ -186,6 +186,9 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	fila.createCell(1).setCellValue(nomina.getPorcPrimaVacacional());
         	fila = hoja.getRow(20);	
         	fila.createCell(1).setCellValue(nomina.getFondoAhorro());
+        	fila = hoja.getRow(22);
+        	if (nomina.getTipoTabulador()!=null)
+        		fila.createCell(1).setCellValue(nomina.getTipoTabulador());
         	//21,22,23
         	fila = hoja.getRow(24);
         	fila.createCell(1).setCellValue(nomina.isFacturaSubsidio());
