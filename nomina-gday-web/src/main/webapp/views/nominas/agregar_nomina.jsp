@@ -75,6 +75,13 @@
 					 		<td width="10%"></td>
 					 		<td>EJECUTIVO
 								<select id='ejecutivo' name='ejecutivo' class="form-control"></select>
+							</td>		
+							<td>TIPO TABULADOR
+								<select id='tipoTabulador' name='tipoTabulador' class="form-control">
+									<option>NORMAL</option>
+		  							<option>ESPECIAL</option>
+		  							<option>GRUPO DAY</option>
+								</select>
 							</td>				 						 	
 					 	</tr>
 					 	<tr>
@@ -90,7 +97,7 @@
 							<td>COMISIÓN<input id='comision' name='comision' type="text" class="form-control"></td>
 					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control"></td>
 					 		<td>DIAS AGUINALDO<input id='diasAguinaldo' name='diasAguinaldo' type="text" class="form-control"></td>					 						 		
-					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
+					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="text" class="form-control"></td>					 	
 					 	</tr>
 					 </table>
 					 <table>
@@ -127,13 +134,14 @@
 						<tr>
 							<td>REGISTRO PATRONAL<input id='registroPatronal' name='registroPatronal' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 	
 					 		<td>PERIODICIDAD
-					 			<select id='periodicidad' name='periodicidad' type="text" class="form-control">
-					 				<option>S</option>		  							
-		  							<option>C</option>
-		  							<option>Q</option>
-		  							<option>28</option>
-		  							<option>M</option>
-							</select></td>					 	
+					 			<select id='periodicidad' name='periodicidad' class="form-control">
+					 				<option>SEMANAL</option>		  							
+		  							<option>CATORCENAL</option>
+		  							<option>QUINCENAL</option>
+		  							<option>28 DÍAS</option>
+		  							<option>MENSUAL</option>
+								</select>
+							</td>					 	
 					 		<td>TIPO CALENDARIO
 					 		<select id='tipoCalendario' name='tipoCalendario' class="form-control"></select>
 							</td>					 	
