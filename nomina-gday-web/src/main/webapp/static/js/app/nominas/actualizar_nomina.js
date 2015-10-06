@@ -45,6 +45,10 @@ $(document).ready(function() {
     				required:true,
     				number: true
     				},
+    		fondoAhorro: {    			
+        				required:true,
+        				number: true
+        			},
     		diasAguinaldo: {    			
         				required:true,
         				number: true
@@ -72,6 +76,7 @@ $(document).ready(function() {
         	patrona:"Ingrese la empresa Patrona",
         	intermediaria:"Ingrese el nombre de la Intermediaria",
         	porcPrimaVacacional:"Ingrese un porcentaje Vacacional. Solo n&uacute;meros",
+        	fondoAhorro:"Ingrese el fondo de Ahorro. Solo n&uacute;meros",
         	comision:"Ingrese una comisión. Solo n&uacute;meros",
         	diasAguinaldo: "Ingrese los d&iacute;as de Aguinaldo. Solo n&uacute;meros",
         	registroPatronal:"Ingrese un registro Patronal. M&aacute;ximo 15",
@@ -174,6 +179,8 @@ function muestraDatosNomina(datos){
 	$("#fechaContrato").val(data.fechaContrato);
 	$("#patronaIdSel").val(data.patrona.idPatrona);
 	$("#comision").val(data.comision);	
+	$("#fondoAhorro").val(data.fondoAhorro);
+	$("#tipoTabulador").val(data.tipoTabulador);	
 	$("#ejecutivo").val(data.ejecutivo.idEjecutivo);
 	$("#esquema").val(data.esquema.idEsquema);
 	$("#porcPrimaVacacional").val(data.porcPrimaVacacional);
@@ -189,11 +196,7 @@ function muestraDatosNomina(datos){
 	if (data.provisionPrimaVacacional){
 		
 		$("#provisionPrimaVac").attr("checked",true);
-	}	
-	if (data.fondoAhorro){
-		
-		$("#fondoDeAhorro").attr("checked",true);
-	}
+	}		
 	if (data.ivaExento){
 		
 		$("#ivaExcento").attr("checked",true);
@@ -429,10 +432,7 @@ function actualizarNomina() {
 	if($("#provisionPrimaVac").is(':checked')) {  
 		provisionPrimaVacTmp=true;  
     }	
-	var fondoDeAhorro=false;
-	if($("#fondoDeAhorro").is(':checked')) {  
-		fondoDeAhorro=true;  
-    }	
+	
 	var ivaExento=false;
 	if($("#ivaExcento").is(':checked')) {  
 		ivaExento=true;  
@@ -472,7 +472,7 @@ function actualizarNomina() {
 					"comision" : $("#comision").val(),
 					"diasAguinaldo" : $("#diasAguinaldo").val(),					
 					"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
-					"fondoAhorro" : fondoDeAhorro,					
+					"fondoAhorro" : $("#fondoAhorro").val(),					
 					"comisionCostSocial" : comisionCostoSocialTmp,
 					"facturaSubsidio" : facturaSubsidioTmp,
 					"ivaExento" : ivaExento,
@@ -482,6 +482,7 @@ function actualizarNomina() {
 					"claseRiesgo" : $("#claseRiesgo").val(),
 					"registroPatronal" : $("#registroPatronal").val(),
 					"periodicidad" : $("#periodicidad").val(),
+					"tipoTabulador" : $("#tipoTabulador").val(),
 					"tipoCalendario.idCalendario" : $("#tipoCalendario").val(),
 					"fechaContrato" : $("#fechaContrato").val(),
 					"jsonValue" : ids[0]

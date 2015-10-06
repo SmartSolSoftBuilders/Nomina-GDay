@@ -90,7 +90,7 @@
 							<td></td>
 					 		<td>% PRIMA VACIONAL<input id='porcPrimaVacacional' name='porcPrimaVacacional' type="text" class="form-control"></td>					 	
 					 		<td></td>
-					 		<td>FONDO DE AHORRO<input id='fondoDeAhorro' name='fondoDeAhorro' type="checkbox" class="form-control"></td>					 	
+					 		<td>FONDO DE AHORRO<input id='fondoAhorro' name='fondoAhorro' type="checkbox" class="form-control"></td>					 	
 					 	</tr>
 					 </table>
 					 <table>  

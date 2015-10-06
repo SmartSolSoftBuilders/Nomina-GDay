@@ -146,7 +146,7 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	/****Se llena 1era hoja****/
         	Row fila = hoja.getRow(1);	
         	fila.createCell(1).setCellValue(nomina.getNombreCorto());
-        	fila = hoja.getRow(2);	
+        	fila = hoja.getRow(2);		
         	fila.createCell(1).setCellValue(nomina.getIdNomina());
         	fila = hoja.getRow(3);	
         	fila.createCell(1).setCellValue(nomina.getEsquema().getNombreEsquema());
@@ -185,7 +185,7 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	fila = hoja.getRow(19);	
         	fila.createCell(1).setCellValue(nomina.getPorcPrimaVacacional());
         	fila = hoja.getRow(20);	
-        	fila.createCell(1).setCellValue(nomina.isFondoAhorro());
+        	fila.createCell(1).setCellValue(nomina.getFondoAhorro());
         	//21,22,23
         	fila = hoja.getRow(24);
         	fila.createCell(1).setCellValue(nomina.isFacturaSubsidio());

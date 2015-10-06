@@ -21,6 +21,7 @@
 		<result property="registroPatronal" column="REGISTRO_PATRONAL"/>
 		<result property="periodicidad" column="PERIODICIDAD"/>
 		<result property="fechaContrato" column="FECHA_CONTRATO"/>
+		<result property="tipoTabulador" column="TIPO_TABULADOR"/>
 		<association property="intermediaria" column="ID_INTERMEDIARIA" javaType="Patrona" select="selectPatrona"/>
 		<association property="patrona" column="ID_PATRONA" javaType="Patrona" select="selectPatrona"/>				
 		<association property="esquema" column="ID_ESQUEMA" javaType="Esquema" select="selectEsquema"/>
@@ -149,13 +150,13 @@
             "PROVISION_VACACIONES", "PROVISION_PRIMA_VACACIONAL", "DIAS_AGUINALDO", 
             "PORC_PRIMA_VACACIONAL", "FONDO_AHORRO", "FACTURA_SUBSIDIO", 
             "IVA_EXENTO", "RECONOCE_ANTIGUEDAD", "COMISION_COST_SOCIAL", 
-            "TIPO_PAGO", "CLASE_RIESGO", "REGISTRO_PATRONAL", "PERIODICIDAD", "FECHA_CONTRATO","COMISION")
+            "TIPO_PAGO", "CLASE_RIESGO", "REGISTRO_PATRONAL", "PERIODICIDAD", "FECHA_CONTRATO","COMISION","TIPO_TABULADOR")
    	 	VALUES (#{id}, #{patrona.idPatrona}, #{intermediaria.idPatrona}, #{esquema.idEsquema}, #{ejecutivo.idEjecutivo}, 
    	 			#{tipoCalendario.idCalendario}, #{nombreCorto},  #{provisionAguinaldo},  
    	 			#{provisionVacaciones}, #{provisionPrimaVacacional}, #{diasAguinaldo}, 
    	 			#{porcPrimaVacacional}, #{fondoAhorro}, #{facturaSubsidio}, 
    	 				#{ivaExento}, #{reconoceAntiguedad}, #{comisionCostSocial}, 
-   	 			#{tipoPago}, #{claseRiesgo}, #{registroPatronal}, #{periodicidad}, date(#{fechaContrato}),#{comision});
+   	 			#{tipoPago}, #{claseRiesgo}, #{registroPatronal}, #{periodicidad}, date(#{fechaContrato}),#{comision},#{tipoTabulador});
             <if test="razonesSociales != null">
             	<foreach  collection="razonesSociales" item="grsp">
             	INSERT INTO "NOMINA_RAZON"(
@@ -175,7 +176,7 @@
             "IVA_EXENTO"=#{ivaExento}, "RECONOCE_ANTIGUEDAD"=#{reconoceAntiguedad}, "COMISION_COST_SOCIAL"=#{comisionCostSocial}, 
             "TIPO_PAGO"=#{tipoPago}, "CLASE_RIESGO"=#{claseRiesgo}, "REGISTRO_PATRONAL"=#{registroPatronal}, "PERIODICIDAD"=#{periodicidad}, 
             "FECHA_CONTRATO"= date(#{fechaContrato}),"ID_EJECUTIVO"=#{ejecutivo.idEjecutivo},"ID_ESQUEMA"=#{esquema.idEsquema},
-            "COMISION"=#{comision} 
+            "COMISION"=#{comision},"TIPO_TABULADOR"=#{tipoTabulador} 
 				WHERE "ID_NOMINA"=#{idNomina};
  	        <if test="razonesSociales != null">
  	        	DELETE FROM "NOMINA_RAZON" WHERE "ID_NOMINA"=#{idNomina};
@@ -189,7 +190,7 @@
 </update>
 
 <select id="obtenerNominasByIdRazonSocial" parameterType="int" resultMap="nominaResult" resultType="Nomina">
-	SELECT "NOMINA"."ID_NOMINA","NOMINA"."NOMBRE_CORTO", "NOMINA"."ID_ESQUEMA", "NOMINA"."ID_PATRONA", "NOMINA"."ID_INTERMEDIARIA", "NOMINA"."PERIODICIDAD", "NOMINA"."TIPO_PAGO", "NOMINA"."CLASE_RIESGO","NOMINA"."PORC_PRIMA_VACACIONAL","NOMINA"."FECHA_CONTRATO","NOMINA"."COMISION"
+	SELECT "NOMINA"."ID_NOMINA","NOMINA"."NOMBRE_CORTO", "NOMINA"."ID_ESQUEMA", "NOMINA"."ID_PATRONA", "NOMINA"."ID_INTERMEDIARIA", "NOMINA"."PERIODICIDAD", "NOMINA"."TIPO_PAGO", "NOMINA"."CLASE_RIESGO","NOMINA"."PORC_PRIMA_VACACIONAL","NOMINA"."FECHA_CONTRATO","NOMINA"."COMISION","NOMINA"."TIPO_TABULADOR"
 	FROM "NOMINA" INNER JOIN "NOMINA_RAZON" ON  "NOMINA"."ID_NOMINA" = "NOMINA_RAZON"."ID_NOMINA" WHERE "NOMINA_RAZON"."ID_RAZON_SOCIAL" = #{id}
 </select>
 

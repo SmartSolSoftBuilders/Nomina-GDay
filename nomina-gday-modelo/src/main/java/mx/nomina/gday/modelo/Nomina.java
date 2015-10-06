@@ -17,7 +17,7 @@ public class Nomina extends BaseModelo{
 	private int diasAguinaldo;
 	private Integer comision;
 	private float porcPrimaVacacional;
-	private boolean fondoAhorro;
+	private Integer fondoAhorro;
 	private boolean facturaSubsidio;
 	private boolean ivaExento;
 	private boolean reconoceAntiguedad;
@@ -29,8 +29,15 @@ public class Nomina extends BaseModelo{
 	private String fechaContrato;
 	private String jsonValue;
 	private List<RazonSocial> razonesSociales;
+	private String tipoTabulador;
 	
 	
+	public String getTipoTabulador() {
+		return tipoTabulador;
+	}
+	public void setTipoTabulador(String tipoTabulador) {
+		this.tipoTabulador = tipoTabulador;
+	}
 	public Integer getComision() {
 		return comision;
 	}
@@ -109,10 +116,10 @@ public class Nomina extends BaseModelo{
 	public void setPorcPrimaVacacional(float porcPrimaVacacional) {
 		this.porcPrimaVacacional = porcPrimaVacacional;
 	}
-	public boolean isFondoAhorro() {
+	public Integer getFondoAhorro() {
 		return fondoAhorro;
 	}
-	public void setFondoAhorro(boolean fondoAhorro) {
+	public void setFondoAhorro(Integer fondoAhorro) {
 		this.fondoAhorro = fondoAhorro;
 	}
 	public boolean isFacturaSubsidio() {
@@ -186,12 +193,12 @@ public class Nomina extends BaseModelo{
 			TipoCalendario tipoCalendario, String nombreCorto,
 			boolean provisionAguinaldo, boolean provisionVacaciones,
 			boolean provisionPrimaVacacional, int diasAguinaldo,
-			float porcPrimaVacacional, boolean fondoAhorro,
+			float porcPrimaVacacional, Integer fondoAhorro,
 			boolean facturaSubsidio, boolean ivaExento,
 			boolean reconoceAntiguedad, boolean comisionCostSocial,
 			String tipoPago, String claseRiesgo, String registroPatronal,
 			String periodicidad, String fechaContrato, String jsonValue,
-			List<RazonSocial> razonesSociales,Integer comision) {
+			List<RazonSocial> razonesSociales,Integer comision, String tipoTabulador) {
 		super();
 		this.idNomina = idNomina;
 		this.patrona = patrona;
@@ -218,6 +225,7 @@ public class Nomina extends BaseModelo{
 		this.jsonValue = jsonValue;
 		this.razonesSociales = razonesSociales;
 		this.comision=comision;
+		this.tipoTabulador=tipoTabulador;
 	}
 	
 	public Nomina (){

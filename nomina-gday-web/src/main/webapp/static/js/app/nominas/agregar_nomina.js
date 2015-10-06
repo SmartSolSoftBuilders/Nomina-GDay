@@ -19,7 +19,11 @@ $(document).ready(function() {
         	porcPrimaVacacional: {    			
     				required:true,
     				number: true
-    				},    				
+    				},
+    	    fondoAhorro: {    			
+        				required:true,
+        				number: true
+        				},
     		diasAguinaldo: {    			
         				required:true,
         				number: true
@@ -45,10 +49,12 @@ $(document).ready(function() {
         messages: {
         	nombreNomina: "Ingrese el nombre de la N&oacute;mina. M&aacute;ximo 100",
         	patrona:"Ingrese la empresa Patrona",
+        	fondoAhorro:"Ingrese el Fondo de Ahorro. Solo n&uacute;meros",
         	intermediaria:"Ingrese el nombre de la Intermediaria",
         	porcPrimaVacacional:"Ingrese un porcentaje Vacacional. Solo n&uacute;meros",
         	comision:"Ingrese una comisión. Solo n&uacute;meros",
         	diasAguinaldo: "Ingrese los d&iacute;as de Aguinaldo. Solo n&uacute;meros",
+        	tipoTabulador: "Ingrese el tipo de tabulador.",
         	registroPatronal:"Ingrese un registro Patronal. M&aacute;ximo 15",
         	fechaContrato:"Ingrese una Fecha",
         	selectMult:"Ingrese una Raz&oacute;n Social",
@@ -287,10 +293,7 @@ function guardarNomina() {
 	if($("#provisionPrimaVac").is(':checked')) {  
 		provisionPrimaVacTmp=true;  
     }	
-	var fondoDeAhorro=false;
-	if($("#fondoDeAhorro").is(':checked')) {  
-		fondoDeAhorro=true;  
-    }	
+		
 	var ivaExento=false;
 	if($("#ivaExcento").is(':checked')) {  
 		ivaExento=true;  
@@ -320,7 +323,8 @@ function guardarNomina() {
 				"comision" : $("#comision").val(),
 				"provisionPrimaVacacional" : provisionPrimaVacTmp,
 				"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
-				"fondoAhorro" : fondoDeAhorro,					
+				"fondoAhorro" : $("#fondoAhorro").val(),
+				"tipoTabulador" : $("#tipoTabulador").val(),
 				"diasAguinaldo" : diasAguinaldo,
 				"comisionCostSocial" : comisionCostoSocialTmp,
 				"facturaSubsidio" : facturaSubsidioTmp,
