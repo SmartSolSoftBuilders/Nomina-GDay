@@ -141,6 +141,7 @@
 		  							<option>28 DÍAS</option>
 		  							<option>MENSUAL</option>
 								</select>
+								
 							</td>					 	
 					 		<td>TIPO CALENDARIO
 					 		<select id='tipoCalendario' name='tipoCalendario' class="form-control"></select>

@@ -142,7 +142,8 @@
 		  							<option>QUINCENAL</option>
 		  							<option>28 DÍAS</option>
 		  							<option>MENSUAL</option>
-							</select></td>					 	
+							</select>
+							</td>					 	
 					 		<td>TIPO CALENDARIO
 					 		<select id='tipoCalendario' name='tipoCalendario' type="text" class="form-control">
 								</select>
