@@ -32,6 +32,7 @@
 		<result property="claseRiesgo" column="CLASE_RIESGO"/>
 		<result property="registroPatronal" column="REGISTRO_PATRONAL"/>
 		<result property="periodicidad" column="PERIODICIDAD"/>
+		<result property="tipoTabulador" column="TIPO_TABULADOR"/>		
 		<result property="fechaContrato" column="FECHA_CONTRATO"/>
 		<association property="intermediaria" column="ID_INTERMEDIARIA" javaType="Patrona" select="selectPatrona"/>
 		<association property="patrona" column="ID_PATRONA" javaType="Patrona" select="selectPatrona"/>				
