@@ -279,8 +279,8 @@ function quitarRazonSocial(){
 
 function guardarNomina() {
 	var ids=obtenerIdsAgregadosRZ2();
-	console.log("tipoCalendario");
-	console.log($("#tipoCalendario").val());
+//	var ids=obtenerIdsAgregadosRZ2();
+	console.log("EJECUTIVO"+$("#ejecutivo").val())
 	var aguinald=false;
 	if($("#provisionAguinaldo").is(':checked')) {  
         aguinald=true;  
@@ -293,12 +293,11 @@ function guardarNomina() {
 	if($("#provisionPrimaVac").is(':checked')) {  
 		provisionPrimaVacTmp=true;  
     }	
-		
+	
 	var ivaExento=false;
 	if($("#ivaExcento").is(':checked')) {  
 		ivaExento=true;  
-    }	
-	
+    }			
 	var comisionCostoSocialTmp=false;
 	if($("#comisionCostoSocial").is(':checked')) {  
 		comisionCostoSocialTmp=true;  
@@ -306,43 +305,55 @@ function guardarNomina() {
 	var facturaSubsidioTmp = false;
 	if($("#factSub").is(':checked')) {  
 		facturaSubsidioTmp=true;  
+    }	
+
+	var reconoceAntiguedadTmp = false;
+	if($("#reconoceAntihuedad").is(':checked')) {  
+		reconoceAntiguedadTmp=true;  
     }
 	
-	if ($("#agregarNominaForm").valid()){		
-		$
-		.ajax({
-			data : {
-				"nombreCorto" : $("#nombreNomina").val(),
-				"razonSocial" : $("#razonSocial").val(),
-				"patrona.idPatrona" : $("#idPatrona").val(),
-				"intermediaria.idPatrona" : $("#idIntermediaria").val(),
-				"ejecutivo.idEjecutivo" : $("#ejecutivo").val(),
-				"esquema.idEsquema" : $("#esquema").val(),
-				"provisionAguinaldo" : aguinald,
-				"provisionVacaciones" : provisionVacacionesTmp,
-				"comision" : $("#comision").val(),
-				"provisionPrimaVacacional" : provisionPrimaVacTmp,
-				"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
-				"fondoAhorro" : $("#fondoAhorro").val(),
-				"tipoTabulador" : $("#tipoTabulador").val(),
-				"diasAguinaldo" : diasAguinaldo,
-				"comisionCostSocial" : comisionCostoSocialTmp,
-				"facturaSubsidio" : facturaSubsidioTmp,
-				"ivaExento" : ivaExento,
-				"tipoPago" : $("#tipoPago").val(),
-				"claseRiesgo" : $("#claseRiesgo").val(),
-				"registroPatronal" : $("#registroPatronal").val(),
-				"periodicidad" : $("#periodicidad").val(),
-				"tipoCalendario.idCalendario" : $("#tipoCalendario").val(),					
-				"reconoceAntiguedad" : $("#reconoceAntihuedad").val(),
-				"fechaContrato" : $("#fechaContrato").val(),
-				"jsonValue" : ids[0]
+	var comisionCostSocialTmp = false;
+	if($("#comisionCostSocial").is(':checked')) {  
+		comisionCostSocialTmp=true;  
+    }
+	
+	if ($("#agregarNominaForm").valid()){
+			$.ajax({
+				data : {
+					"nombreCorto" : $("#nombreNomina").val(),
+					"idNomina" : $("#nominaIdSel").val(),
+					"patrona.idPatrona" : $("#idPatrona").val(),
+					"intermediaria.idPatrona" : $("#idIntermediaria").val(),
+					"ejecutivo.idEjecutivo" : $("#ejecutivo").val(),
+					"esquema.nombreEsquema" : $("#esquema").val(),
+					"esquema.idEsquema" : $("#esquema").val(),
+					"provisionAguinaldo" : aguinald,
+					"provisionVacaciones" : provisionVacacionesTmp,
+					"provisionPrimaVacacional" : provisionPrimaVacTmp,
+					"comision" : $("#comision").val(),
+					"diasAguinaldo" : $("#diasAguinaldo").val(),					
+					"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
+					"fondoAhorro" : $("#fondoAhorro").val(),					
+					"comisionCostSocial" : comisionCostoSocialTmp,
+					"facturaSubsidio" : facturaSubsidioTmp,
+					"ivaExento" : ivaExento,
+					"reconoceAntiguedad" : reconoceAntiguedadTmp,
+					"comisionCostSocial" : comisionCostSocialTmp,
+					"tipoPago" : $("#tipoPago").val(),
+					"claseRiesgo" : $("#claseRiesgo").val(),
+					"registroPatronal" : $("#registroPatronal").val(),
+					"periodicidad" : $("#periodicidad").val(),
+					"tipoTabulador" : $("#tipoTabulador").val(),
+					"tipoCalendario.idCalendario" : $("#tipoCalendario").val(),
+					"fechaContrato" : $("#fechaContrato").val(),
+					"jsonValue" : ids[0]
 				},
-			
+						
 			dataType : 'json',
 			url : '../../mvc/nomina/guardarnomina',
 			type : 'post',
 			beforeSend : function() {
+				console.log("enviando")
 			},
 			success : function(response) {
 				mensajeRedireccion("Nomina agregada correctamente.","../nominas/nominas.jsp");

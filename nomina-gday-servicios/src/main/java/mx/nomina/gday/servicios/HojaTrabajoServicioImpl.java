@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import mx.nomina.gday.dao.ArchivoDao;
 import mx.nomina.gday.dao.EmpleadoDao;
 import mx.nomina.gday.dao.EmpleadoNominaDao;
@@ -118,17 +120,22 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         int filaInicial=8;
         int columnaInicial=1;
         int totalDatos=67;
+        File myFile = new File(rutaArchivo);
+        
+
         try{
-     		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpHojaTrabajo"+idHojaTrabajo+".xlsx");     		     			
+     		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpHojaTrabajo"+idHojaTrabajo+".xlsx");
+     		FileInputStream fis = new FileInputStream(myFile);
      	    fos.write(hojaTrabajo.getArchivoAcumulado());
      	    fos.close(); 
-        	FileInputStream file = new FileInputStream(archivoXLS);
+        	FileInputStream file = new FileInputStream(rutaArchivo);
+        	InputStream ExcelFileToRead = new FileInputStream(rutaArchivo);
         	// Workbook wb = WorkbookFactory.create(new File("/path/to/your/excel/file"));
         	 //Sheet mySheet = wb.getSheetAt(0);
         	   // Iterator<Row> rowIter = mySheet.rowIterator();
         	    //System.out.println(mySheet.getRow(1).getCell(0));
         	//HSSFWorkbook wb = new HSSFWorkbook(file);
-        	Workbook wb = new XSSFWorkbook(file); //or new HSSFWorkbook();
+        	Workbook wb = new XSSFWorkbook(fis); //or new HSSFWorkbook();
             CreationHelper creationHelper = wb.getCreationHelper();
             //Test
         	//Se trabaja la primer HOJA GENERALES EMPRESA
@@ -136,6 +143,7 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	Nomina nomina = this.nominaDao.obtenerNominaByIdHojaTrabajo(idHojaTrabajo);
         	//nomina=this.nominaDao.obtenerNominaById(37);
         	System.out.println("GENERANDO LAYOUT"+nomina.getIdNomina());
+        	//System.out.println();
         	System.out.println(nomina.getEsquema());
         	System.out.println(nomina.getEjecutivo().getNombreEjecutivo());
         	nomina.setRazonesSociales(this.razonSocialDao.obtenerRazonesSocialesByIdNomina(nomina.getIdNomina()));
@@ -144,60 +152,65 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         	//empleado  = this.empleadoNominaDao.obtenerEmpleadoNominaByIdNomina(nomina.)
         	List<Empleado> empleados = this.empleadoDao.obtenerEmpleadosByIdNomina(nomina.getIdNomina());
         	/****Se llena 1era hoja****/
-        	Row fila = hoja.getRow(1);	
+        	Row fila = hoja.getRow(2);	
         	fila.createCell(1).setCellValue(nomina.getNombreCorto());
-        	fila = hoja.getRow(2);		
+        	fila = hoja.getRow(3);		
         	fila.createCell(1).setCellValue(nomina.getIdNomina());
-        	fila = hoja.getRow(3);	
-        	fila.createCell(1).setCellValue(nomina.getEsquema().getNombreEsquema());
         	fila = hoja.getRow(4);	
+        	fila.createCell(1).setCellValue(nomina.getEsquema().getNombreEsquema());
+        	fila = hoja.getRow(5);	
         	fila.createCell(1).setCellValue(nomina.getPatrona().getNombreCortoPatrona());
-        	fila = hoja.getRow(5);
+        	fila = hoja.getRow(6);
         	fila.createCell(1).setCellValue(nomina.getClaseRiesgo());        	
-        	fila = hoja.getRow(6);	
-        	//fila.createCell(1).setCellValue(nomina.getEjecutivo().getNombreEjecutivo());
         	fila = hoja.getRow(7);	
-        	//fila.createCell(1).setCellValue(nomina.getTipoPago());
+        	//fila.createCell(1).setCellValue(nomina.getEjecutivo().getNombreEjecutivo());
         	fila = hoja.getRow(8);	
-        	fila.createCell(1).setCellValue(nomina.getEjecutivo().getNombreEjecutivo()+ " "+ nomina.getEjecutivo().getPaternoEjecutivo() + " " +nomina.getEjecutivo().getMaternoEjecutivo());
+        	//fila.createCell(1).setCellValue(nomina.getTipoPago());
         	fila = hoja.getRow(9);	
-        	fila.createCell(1).setCellValue(nomina.getTipoPago());
+        	fila.createCell(1).setCellValue(nomina.getEjecutivo().getNombreEjecutivo()+ " "+ nomina.getEjecutivo().getPaternoEjecutivo() + " " +nomina.getEjecutivo().getMaternoEjecutivo());
         	fila = hoja.getRow(10);	
-        	fila.createCell(1).setCellValue(nomina.getPatrona().getTipoRegimen().getTipoRegimen());
+        	fila.createCell(1).setCellValue(nomina.getTipoPago());
         	fila = hoja.getRow(11);	
-        	fila.createCell(1).setCellValue(nomina.getPeriodicidad());
+        	fila.createCell(1).setCellValue(nomina.getPatrona().getTipoRegimen().getTipoRegimen());
         	fila = hoja.getRow(12);	
+        	fila.createCell(1).setCellValue(nomina.getPeriodicidad());
+        	fila = hoja.getRow(13);	
         	fila.createCell(1).setCellValue(14);
         	//fila = hoja.getRow(13);	 
         	//fila.createCell(1).setCellValue(nomina.getTipoCalendario().getSiglas());
-        	fila = hoja.getRow(14);	
-        	fila.createCell(1).setCellValue(nomina.getTipoCalendario().getTipoCalendario());
         	fila = hoja.getRow(15);	
-        	fila.createCell(1).setCellValue(nomina.isProvisionAguinaldo());
+        	fila.createCell(1).setCellValue(nomina.getTipoCalendario().getTipoCalendario());
         	fila = hoja.getRow(16);	
-        	fila.createCell(1).setCellValue(nomina.isProvisionPrimaVacacional());
+        	fila.createCell(1).setCellValue(nomina.isProvisionAguinaldo());
         	fila = hoja.getRow(17);	
+        	fila.createCell(1).setCellValue(nomina.isProvisionPrimaVacacional());
+        	fila = hoja.getRow(18);	
         	fila.createCell(1).setCellValue(nomina.isProvisionVacaciones());
-        	fila = hoja.getRow(18);	
-        	fila.createCell(1).setCellValue(nomina.getDiasAguinaldo());
-        	fila = hoja.getRow(18);	
-        	fila.createCell(1).setCellValue(nomina.getDiasAguinaldo());
         	fila = hoja.getRow(19);	
-        	fila.createCell(1).setCellValue(nomina.getPorcPrimaVacacional());
+        	fila.createCell(1).setCellValue(nomina.getDiasAguinaldo());        	
         	fila = hoja.getRow(20);	
-        	fila.createCell(1).setCellValue(nomina.getFondoAhorro());
-        	fila = hoja.getRow(22);
+        	fila.createCell(1).setCellValue(nomina.getPorcPrimaVacacional());
+        	fila = hoja.getRow(21);	
+        	fila.createCell(1).setCellValue(""+nomina.getFondoAhorro());
+        	fila = hoja.getRow(22);	
+        	fila.createCell(1).setCellValue(nomina.getComision());
+        	fila = hoja.getRow(24);
         	if (nomina.getTipoTabulador()!=null)
         		fila.createCell(1).setCellValue(nomina.getTipoTabulador());
-        	//21,22,23
-        	fila = hoja.getRow(24);
-        	fila.createCell(1).setCellValue(nomina.isFacturaSubsidio());
         	fila = hoja.getRow(25);	
-        	fila.createCell(1).setCellValue(nomina.isIvaExento());
+        	if (nomina.getIntermediaria()!=null)
+        		fila.createCell(1).setCellValue(nomina.getIntermediaria().getNombreCortoPatrona());
         	fila = hoja.getRow(26);	
+        	fila.createCell(1).setCellValue(nomina.getRegistroPatronal());
+        	//21,22,23
+        	fila = hoja.getRow(28);
+        	fila.createCell(1).setCellValue(nomina.isFacturaSubsidio());
+        	fila = hoja.getRow(29);	
+        	fila.createCell(1).setCellValue(nomina.isIvaExento());
+        	fila = hoja.getRow(30);	
         	fila.createCell(1).setCellValue(nomina.isComisionCostSocial());
         	//27,28
-        	int indiceFilasRZTmp=29;
+        	int indiceFilasRZTmp=33;
     		System.out.println(nomina.getRazonesSociales().size());
 
         	for (int j=0; j<nomina.getRazonesSociales().size();j++){

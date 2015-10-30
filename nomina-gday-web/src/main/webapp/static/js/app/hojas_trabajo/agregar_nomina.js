@@ -256,8 +256,10 @@ function quitarRazonSocial(){
 
 function guardarNomina() {
 	var ids=obtenerIdsAgregadosRZ2();
-	console.log("tipoCalendario");
+	console.log("tipoCalendario2");
 	console.log($("#tipoCalendario").val());
+	console.log("ids");
+	console.log(ids);
 	if ($("#agregarNominaForm").valid()){		
 		$
 			.ajax({
@@ -290,6 +292,7 @@ function guardarNomina() {
 				url : '../../mvc/nomina/guardarnomina',
 				type : 'post',
 				beforeSend : function() {
+					console.log("test");
 				},
 				success : function(response) {
 					mensajeRedireccion("Nomina agregada correctamente.","../nominas/nominas.jsp");
