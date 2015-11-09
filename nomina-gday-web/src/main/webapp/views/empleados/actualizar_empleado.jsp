@@ -247,7 +247,8 @@
 					 				<option>CHEQUE</option>
 					 				<option>CLABE</option>
 					 				<option>NOMINA BANCOMER</option>
-					 				<option>NOMINA SANTANDER</option>																 				
+					 				<option>NOMINA SANTANDER</option>
+					 				<option>NOMINA BANAMEX</option>																 				
 					 		</select></td>					 		
 					 	</tr>					  						
 					</table>				
@@ -366,7 +367,10 @@
 					<tr>
 				 		<td>FECHA DE BAJA<input id='fechabajaformnomina' name='fechabajaformnomina'  class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 				 		<td>TIPO CONTRATO<select id='tipocontratoformnomina' name='tipocontratoformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-				 				<option value="1">TIPO 1</option>
+				 				<option value="ASIMILADO A SALARIOS">ASIMILADO A SALARIOS</option>
+				 				<option value="JUBILADOS">JUBILADOS</option>
+				 				<option value="PENSIONADOS">PENSIONADOS</option>
+				 				<option value="INDETERMINADO">INDETERMINADO</option>
 				 			</select>
 				 		</td>
 				 		<td>FECHA DE VENCIMIENTO<input id='fechavencimientoformnomina' name='fechavencimientoformnomina' class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		

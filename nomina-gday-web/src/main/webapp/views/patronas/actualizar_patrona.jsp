@@ -73,10 +73,9 @@
 					 	<tr>
 					 		<td>ENTIDAD FEDERATIVA
 					 		<select id='entidadFed' name='entidadFed' type="text" class="form-control">
-									<option>AGUASCALIENTES</option>
-		  							<option>BAJA CALIFORNIA SUR</option>
-		  							<option>BAJA CALIFORNIA MEXICALI</option>
-		  							<option>BAJA CALIFORNIA TIJUANA</option>		  							
+											<option>AGUASCALIENTES</option>
+		  							<option>BAJA CALIFORNIA SUR</option>		  							
+		  							<option>BAJA CALIFORNIA NORTE</option>		  							
 		  							<option>CAMPECHE</option>
 		  							<option>CHIAPAS</option>
 		  							<option>CHIHUAHUA</option>
@@ -97,8 +96,7 @@
 		  							<option>OAXACA</option>
 		  							<option>PUEBLA</option>
 		  							<option>QUERETARO</option>
-		  							<option>QUINTANA ROO CANCUN</option>
-		  							<option>QUINTANA ROO PLAYA DEL CARMEN</option>
+		  							<option>QUINTANA ROO</option>		  							
 		  							<option>SAN LUIS POTOSI</option>
 		  							<option>SINALOA</option>
 		  							<option>SONORA</option>

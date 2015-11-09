@@ -15,9 +15,9 @@ public class Nomina extends BaseModelo{
 	private boolean provisionVacaciones;
 	private boolean provisionPrimaVacacional;
 	private int diasAguinaldo;
-	private Integer comision;
+	private double comision;
 	private float porcPrimaVacacional;
-	private Integer fondoAhorro;
+	private double fondoAhorro;
 	private boolean facturaSubsidio;
 	private boolean ivaExento;
 	private boolean reconoceAntiguedad;
@@ -38,10 +38,10 @@ public class Nomina extends BaseModelo{
 	public void setTipoTabulador(String tipoTabulador) {
 		this.tipoTabulador = tipoTabulador;
 	}
-	public Integer getComision() {
+	public double getComision() {
 		return comision;
 	}
-	public void setComision(Integer comision) {
+	public void setComision(double comision) {
 		this.comision = comision;
 	}
 	public Integer getIdNomina() {
@@ -116,10 +116,10 @@ public class Nomina extends BaseModelo{
 	public void setPorcPrimaVacacional(float porcPrimaVacacional) {
 		this.porcPrimaVacacional = porcPrimaVacacional;
 	}
-	public Integer getFondoAhorro() {
+	public double getFondoAhorro() {
 		return fondoAhorro;
 	}
-	public void setFondoAhorro(Integer fondoAhorro) {
+	public void setFondoAhorro(double fondoAhorro) {
 		this.fondoAhorro = fondoAhorro;
 	}
 	public boolean isFacturaSubsidio() {
@@ -193,12 +193,12 @@ public class Nomina extends BaseModelo{
 			TipoCalendario tipoCalendario, String nombreCorto,
 			boolean provisionAguinaldo, boolean provisionVacaciones,
 			boolean provisionPrimaVacacional, int diasAguinaldo,
-			float porcPrimaVacacional, Integer fondoAhorro,
+			float porcPrimaVacacional, double fondoAhorro,
 			boolean facturaSubsidio, boolean ivaExento,
 			boolean reconoceAntiguedad, boolean comisionCostSocial,
 			String tipoPago, String claseRiesgo, String registroPatronal,
 			String periodicidad, String fechaContrato, String jsonValue,
-			List<RazonSocial> razonesSociales,Integer comision, String tipoTabulador) {
+			List<RazonSocial> razonesSociales,double comision, String tipoTabulador) {
 		super();
 		this.idNomina = idNomina;
 		this.patrona = patrona;

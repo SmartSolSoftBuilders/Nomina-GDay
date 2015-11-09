@@ -152,7 +152,7 @@
 					  	<tr>				 		
 					 		<td>NUMERO DE CUENTA<input id='numCuenta' name='numCuenta' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 		<td>BANCO<select id='banco' name='banco' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-					 			     <option>BANAMEX</option>
+					 		    <option>BANAMEX</option>
 								<option>BANCOMEXT</option>
 								<option>BANOBRAS</option>
 								<option>BBVA BANCOMER</option>
@@ -251,6 +251,7 @@
 					 				<option>CLABE</option>
 					 				<option>NOMINA BANCOMER</option>
 					 				<option>NOMINA SANTANDER</option>
+					 				<option>NOMINA BANAMEX</option>
 					 			</select>
 					 		</td>
 					 	</tr>					  						
@@ -373,7 +374,7 @@
 				 				<option value="ASIMILADO A SALARIOS">ASIMILADO A SALARIOS</option>
 				 				<option value="JUBILADOS">JUBILADOS</option>
 				 				<option value="PENSIONADOS">PENSIONADOS</option>
-				 				<option value="SUELDOS Y SALARIOS">SUELDOS Y SALARIOS</option>
+				 				<option value="INDETERMINADO">INDETERMINADO</option>
 				 			</select>
 				 		</td>
 				 		<td>FECHA DE VENCIMIENTO<input id='fechavencimientoformnomina' name='fechavencimientoformnomina' class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
