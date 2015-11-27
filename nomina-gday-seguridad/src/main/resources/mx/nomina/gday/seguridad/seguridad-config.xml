@@ -124,7 +124,7 @@
 			<!-- property name="url" value="jdbc:postgresql://localhost:5532/seguridad" / -->
 			<property name="url" value="jdbc:postgresql://localhost:5432/seguridad_gday" />
 			<property name="username" value="postgres" />
-			<property name="password" value="root" />
+			<property name="password" value="SmartGday2015#" />
 			<property name="initialSize" value="2" />
 			<property name="maxActive" value="5" />
 		</bean>		 

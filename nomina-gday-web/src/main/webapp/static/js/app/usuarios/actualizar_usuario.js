@@ -144,6 +144,7 @@ function muestraDatosUsuario(datos){
 	$("#nick").val(data.username);
 	$("#estatus").val(data.activo);
 	$("#password").val(data.password);
+	console.log(data)
 	$("#rol").val(data.rol);
 	$("#idUsuario").val(data.id);
 	$("#idEjecutivo").val(data.idEjecutivo);
