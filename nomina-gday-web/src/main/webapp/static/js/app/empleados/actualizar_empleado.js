@@ -685,10 +685,11 @@ function showEditarNominaForm(idNomina,nombre){
 			$("#suministrosformnomina").val(data[22]);
 			//$("#actividadesformnomina").val(data.actividades);
 			$("#puestosformnomina").val(data[23]);
-			$("#serviciosformnomina").val(data[24]);
-			$("#areaformnomina").val(data[25]);
-			$("#departamento").val(data[26]);
-			$("#proceso").val(data[27]);					
+			$("#areaformnomina").val(data[24]);
+			$("#departamento").val(data[25]);
+			$("#proceso").val(data[26]);
+			$("#serviciosformnomina").val(data[27]);
+								
 			$("#buttonAgregar").hide();
 			$("#buttonGuardar").show();			
 		},

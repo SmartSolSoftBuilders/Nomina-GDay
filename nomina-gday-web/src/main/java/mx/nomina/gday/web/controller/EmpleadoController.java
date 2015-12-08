@@ -199,10 +199,10 @@ public class EmpleadoController {
 				tmp1.add(emp1.getEntFederativa());
 				tmp1.add(emp1.getSuministros());
 				
-				tmp1.add(emp1.getPuestos());
-				tmp1.add(emp1.getServicios());
+				tmp1.add(emp1.getPuesto().getIdPuesto());
 				tmp1.add(emp1.getArea().getIdArea());
 				tmp1.add(emp1.getDepartamento().getIdDepartamento());
+				tmp1.add(emp1.getServicios());								
 				//tmp1.add(emp1.getProceso().getIdProceso());
 				
 		 		return tmp1;		 	
