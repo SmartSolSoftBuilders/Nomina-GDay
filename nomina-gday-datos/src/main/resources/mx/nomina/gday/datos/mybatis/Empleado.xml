@@ -44,8 +44,8 @@
 		<result property="descInfonavitVsmg" column="DESC_INFONAVIT_VSMG"></result>
 		<result property="desInfonavitPorc" column="DESC_INFONAVIT_PORC"></result>
 		<result property="descInfonavitImp" column="DESC_INFONAVIT_IMP"></result>
-		<result property="descFonacotNum" column="DESC_FONACOT_PAGO"></result>
-		<result property="descFonacotPago" column="DESC_FONACOT_NUM"></result>
+		<result property="descFonacotNum" column="DESC_FONACOT_NUM"></result>
+		<result property="descFonacotPago" column="DESC_FONACOT_PAGO"></result>		
 		<result property="pensionAlimImp" column="PENSION_ALIM_IMP"></result>
 		<result property="pensionAlimPorc" column="PENSION_ALIM_PORC"></result>
 		<result property="pensionAlimAcred" column="PENSION_ALIM_ACRED"></result>

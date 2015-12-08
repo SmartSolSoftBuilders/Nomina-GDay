@@ -357,6 +357,8 @@ function muestraDatosEmpleado(datos){
 		$('#pensionAlimenticia').prop('checked',true);
 	if (data.pensionAlimImp!="")
 		$('#fonacot').prop('checked',true);
+	if (data.listaNegra==true)
+		$('#listaNegra').prop('checked',true);
 	
 	if (data.documentoMigratorio!=null && data.documentoMigratorio!='')
 		$('#extranjero').prop('checked',true);
@@ -380,6 +382,7 @@ function muestraDatosEmpleado(datos){
 	$("#porcentajeAlimenticio").val(data.pensionAlimPorc);
 	$("#nombreAcreedor").val(data.pensionAlimAcred);
 	$("#observaciones").val(data.pensionAlimObs);
+	habilitarExtranjero();
 	obtenerNominasAsignadasAEmpleado(data.idEmpleado);
 }
 
@@ -397,6 +400,7 @@ function actualizarEmpleado() {
 	var tmp7=false;
 	var tmp8=false;
 	var tmp9=false;
+	var tmp10=false;
 	
 	if ($("#indentificacionOficial").prop('checked'))
 		tmp1=true;
@@ -416,6 +420,8 @@ function actualizarEmpleado() {
 		tmp8=true;
 	if ($("#preafiliacionImss").prop('checked'))
 		tmp9=true;
+	if ($("#listaNegra").prop('checked'))
+		tmp10=true;
 				
 	if ($("#actualizarEmpleadoForm").valid()){	
 		$
@@ -440,7 +446,7 @@ function actualizarEmpleado() {
 					"estadoCivil":$("#estadoCivil").val(),
 					"correoElectronico":$("#correoElectronico").val(),
 					"fechaIngresoReal":$("#fechaIngreso").val(),
-					"listaNegra":$("#listaNegra").val(),
+					"listaNegra":tmp10,
 					"calle":$("#calle").val(),
 					"numExterior":$("#numExt").val(),
 					"numInterior":$("#numInt").val(),
@@ -824,6 +830,7 @@ function editarObjetoJS () {
 }
 
 function guardarCambiosNominaEmpleado(url){
+console.log(url);
 if ($("#actualizarNominaEmpleadoForm").valid()){	
 	$.ajax({
 		sync: true,
@@ -853,9 +860,12 @@ if ($("#actualizarNominaEmpleadoForm").valid()){
 				"municipioDel":$("#mundelformnomina").val(),
 				"entFederativa":$("#estadoformnomina").val(),
 				"suministros":$("#suministrosformnomina").val(),
-				"actividades":$("#actividadesformnomina").val(),
-				"puestos":$("#puestosformnomina").val(),
-				"servicios":$("#serviciosformnomina").val()
+				
+				//"servicios":$("#serviciosformnomina").val()
+				"area.idArea":$("#areaformnomina").val(),
+				"proceso.idProceso":$("#proceso").val(),
+				"departamento.idDepartamento":$("#departamento").val(),
+				"puesto.idPuesto":$("#puestosformnomina").val()
 		},
 		type:  'post',
 		url:   url,

@@ -452,7 +452,7 @@ function actualizarNomina() {
     }
 	
 	var comisionCostSocialTmp = false;
-	if($("#comisionCostSocial").is(':checked')) {  
+	if($("#comisionCostoSocial").is(':checked')) {  
 		comisionCostSocialTmp=true;  
     }
 	
