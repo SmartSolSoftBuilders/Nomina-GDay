@@ -38,11 +38,10 @@
 		<result property="rol" column="v_rolt"/>
 	</resultMap>
 	
-	<select id="consultarUsuariosSeguridadConRol" parameterType="UsuarioSeguridad" resultMap="resultUsuarioConRol">
+	<select id="consultarUsuariosSeguridadConRol" parameterType="UsuarioSeguridad" resultMap="resultUsuarioConRol">	
 	select id_t_usuario, v_username, v_apellido_p, v_apellido_m, v_password, v_nombre_usuario, l_usuario_activo,
 	(select "v_rol" from "seguridad"."t_rol_seguridad" as "rs", 
-	"seguridad"."t_r_usuario_rol" as "rt" where "rt"."id_tr_rol" = "rs"."id_t_rol" and "rt"."id_tr_usuario"=
-	3) v_rolt
+	"seguridad"."t_r_usuario_rol" as "rt" where "rt"."id_tr_rol" = "rs"."id_t_rol" and "rt"."id_tr_usuario"=#{id}) v_rolt
 	from "seguridad"."t_usuario_seguridad"
 	where id_t_usuario=#{id};
 	</select>
