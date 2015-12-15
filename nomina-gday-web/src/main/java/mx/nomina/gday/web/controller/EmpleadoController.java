@@ -202,8 +202,9 @@ public class EmpleadoController {
 				tmp1.add(emp1.getPuesto().getIdPuesto());
 				tmp1.add(emp1.getArea().getIdArea());
 				tmp1.add(emp1.getDepartamento().getIdDepartamento());
-				tmp1.add(emp1.getServicios());								
-				//tmp1.add(emp1.getProceso().getIdProceso());
+				tmp1.add(emp1.getServicios());
+				System.out.println(emp1.getProceso().getIdProceso());
+				tmp1.add(emp1.getProceso().getIdProceso());
 				
 		 		return tmp1;		 	
 		 	}

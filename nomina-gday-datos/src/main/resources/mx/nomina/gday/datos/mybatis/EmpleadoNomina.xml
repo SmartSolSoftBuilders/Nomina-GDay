@@ -32,7 +32,7 @@
 		<result property="montoFiniquito" column="MONTO_FINIQUITO"/>	
 		<association property="nomina" column="ID_NOMINA" javaType="Nomina" select="selectNomina"/>
 		<association property="empleado" column="ID_EMPLEADO" javaType="Empleado" select="selectEmpleado"/>
-		 
+		<association property="proceso" column="ID_PROCESO" javaType="Proceso" select="selectProceso"/>
 		<association property="puesto" column="ID_PUESTO" javaType="Puesto" select="selectPuesto"/>
 		<association property="departamento" column="ID_DEPARTAMENTO" javaType="Departamento" select="selectDepartamento"/>
 		<association property="area" column="ID_AREA" javaType="Area" select="selectArea"/>
@@ -74,6 +74,11 @@
     	<id property="idEsquema" column="ID_ESQUEMA"/>
 		<result property="nombreEsquema" column="NOMBRE_ESQUEMA"/>
 					  		
+	</resultMap>
+	
+	<resultMap type="Proceso" id="procesoResult">
+		<id property="idProceso" column="ID_PROCESO"/>
+		<result property="descripcion" column="DESCRIPCION"/>
 	</resultMap>
 	
 	<resultMap id="tipoCalendarioResult" type="TipoCalendario">
@@ -166,6 +171,10 @@
 	
 	<select id="selectArea" parameterType="int" resultMap="areaResult" resultType="Area">		 
 		select * from "AREA" where "ID_AREA"=#{idArea} 	
+	</select>
+	
+	<select id="selectProceso" parameterType="int" resultMap="procesoResult" resultType="Proceso">		 
+		select * from "PROCESO" where "ID_PROCESO"=#{idProceso}
 	</select> 
 	
 	<select id="selectEjecutivo" parameterType="int" resultMap="ejecutivoResult" resultType="Ejecutivo">		 

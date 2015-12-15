@@ -729,7 +729,8 @@ function showEditarNominaForm(idNomina,nombre){
 			$("#puestosformnomina").val(data[23]);
 			$("#areaformnomina").val(data[24]);
 			$("#departamento").val(data[25]);
-			$("#proceso").val(data[26]);
+			console.log("proc"+data[27])
+			$("#proceso").val(data[27]);
 			$("#serviciosformnomina").val(data[27]);
 								
 			$("#buttonAgregar").hide();
@@ -874,6 +875,9 @@ function editarObjetoJS () {
 
 function guardarCambiosNominaEmpleado(url){
 console.log(url);
+var otroPatronTmp=false;
+if ($("#otropatronformnomina").val()=="SI")
+	otroPatronTmp=true;
 if ($("#actualizarNominaEmpleadoForm").valid()){	
 	$.ajax({
 		sync: true,
@@ -892,7 +896,7 @@ if ($("#actualizarNominaEmpleadoForm").valid()){
 				"loteMovImssAlta":$("#loteimssformnomina").val(),
 				"plazaTrabajo":$("#plazatrabajoformnomina").val(),
 				"numeroTrabajadorCliente":$("#numtrabajadorclienteoformnomina").val(),
-				"otroPatron":$("#otropatronformnomina").val(),
+				"otroPatron":otroPatronTmp,
 				"nombreOtroPatron":$("#nombreotropatronformnomina").val(),
 				"rfcOtroPatron":$("#rfcnformnomina").val(),
 				"calle":$("#calleformnomina").val(),
