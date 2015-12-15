@@ -197,14 +197,56 @@ $(document).ready(function() {
 			sueldodiarioformnomina : {"required":true,"number": true},
 			sueldodiariointformnomina : {"required":true,"number": true},
 			numtrabajadorclienteoformnomina : {"required":true,"maxlength": 30},
-			nombreotropatronformnomina : {"required":true,"maxlength": 80},
-			rfcnformnomina : {"required":true,"maxlength": 13},
+			nombreotropatronformnomina : {			
+				required: function (element) {							
+					if($("#otropatronformnomina").val()=="SI"){ 
+						if ($("#nombreotropatronformnomina").val()=="")	
+							return true;
+						}	                
+		               else	                
+		                   return false;	                
+					},
+				maxlength: 100
+			},
+			rfcnformnomina : {
+				required: function (element) {							
+				if($("#otropatronformnomina").val()=="SI"){ 
+					if ($("#rfcnformnomina").val()=="")	
+						return true;
+					}	                
+	               else	                
+	                   return false;	                
+				},
+			maxlength: 100
+			},			
 			calleformnomina:{"required":true,"maxlength": 30},
 			numextformnomina : {"required":true,"maxlength": 20},
 			numintformnomina : {"required":true,"maxlength": 20},
 			cpformnomina : {"required":true,"maxlength": 10},
 			coloniaformnomina : {"required":true,"maxlength": 25},
 			mundelformnomina : {"required":true,"maxlength": 25},
+			nombreotropatronformnomina : {			
+				required: function (element) {							
+					if($("#otropatronformnomina").val()=="SI"){ 
+						if ($("#nombreotropatronformnomina").val()=="")	
+							return true;
+						}	                
+		               else	                
+		                   return false;	                
+					},
+				maxlength: 100
+			},
+			rfcnformnomina : {
+				required: function (element) {							
+				if($("#otropatronformnomina").val()=="SI"){ 
+					if ($("#rfcnformnomina").val()=="")	
+						return true;
+					}	                
+	               else	                
+	                   return false;	                
+				},
+			maxlength: 100
+			},			
 			suministrosformnomina : "required",			
 			puestosformnomina : "required",
 			serviciosformnomina : "required",

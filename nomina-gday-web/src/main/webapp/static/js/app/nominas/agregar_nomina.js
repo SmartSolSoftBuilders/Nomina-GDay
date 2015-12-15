@@ -313,9 +313,9 @@ function guardarNomina() {
     }
 	
 	var comisionCostSocialTmp = false;
-	if($("#comisionCostSocial").is(':checked')) {  
+	if($("#comisionCostoSocial").is(':checked')) {  
 		comisionCostSocialTmp=true;  
-    }
+    }	
 	
 	if ($("#agregarNominaForm").valid()){
 			$.ajax({
@@ -333,7 +333,7 @@ function guardarNomina() {
 					"comision" : $("#comision").val(),
 					"diasAguinaldo" : $("#diasAguinaldo").val(),					
 					"porcPrimaVacacional" : $("#porcPrimaVacacional").val(),
-					"fondoAhorro" : $("#fondoAhorro").val(),					
+					"fondoAhorro" : $("#fondoDeAhorro").val(),					
 					"comisionCostSocial" : comisionCostoSocialTmp,
 					"facturaSubsidio" : facturaSubsidioTmp,
 					"ivaExento" : ivaExento,
