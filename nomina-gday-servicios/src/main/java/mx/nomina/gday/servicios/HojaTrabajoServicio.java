@@ -15,4 +15,5 @@ public interface HojaTrabajoServicio {
 	public void agregarArchivo(HojaTrabajo hojaTrabajo);
 	public File generarHojaTrabajo(Integer idHojaTrabajo);
 	public String generarHojaTrabajoExt(Integer idHojaTrabajo);
+	public List<HojaTrabajo> obtenerHojasByIdUser(Integer idUsr);
 }

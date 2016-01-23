@@ -314,9 +314,23 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
            		fila.createCell(47).setCellValue(emp1.getFechaIngreso());
            		fila.createCell(48).setCellValue(emp1.getEstatus());
            		fila.createCell(49).setCellValue(emp1.getTipoSalario());
-           		fila.createCell(50).setCellValue(emp1.getFechaBaja());
+           		if (emp1.getFechaBaja()!=null){
+           			if (emp1.getFechaBaja()=="" || emp1.getFechaBaja().equals("1900-01-01"))
+           				fila.createCell(50).setCellValue("");
+           			else
+           				fila.createCell(50).setCellValue(emp1.getFechaBaja());
+           		}
+           		else
+           			fila.createCell(50).setCellValue("");
            		fila.createCell(51).setCellValue(emp1.getLoteMovImssAlta());
-           		fila.createCell(52).setCellValue(emp1.getFechaVencimiento());
+           		if (emp1.getFechaVencimiento()!=null){
+           			if (emp1.getFechaVencimiento()=="" || emp1.getFechaVencimiento().equals("1900-01-01"))
+           				fila.createCell(52).setCellValue("");
+           			else
+           				fila.createCell(52).setCellValue(emp1.getFechaVencimiento());
+           		}
+           		else
+           			fila.createCell(52).setCellValue("");
            		fila.createCell(53).setCellValue(emp1.getSueldoMensual());
            		fila.createCell(54).setCellValue(emp1.getSalarioDiarioInt());
            		fila.createCell(55).setCellValue(emp1.getPlazaTrabajo());
@@ -358,6 +372,12 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
 		}
         /*Cerramos el flujo de datos*/        
         return archivoXLS;
+	}
+
+	@Override
+	public List<HojaTrabajo> obtenerHojasByIdUser(Integer idUsr) {
+		// TODO Auto-generated method stub
+		return this.hojaTrabajoDao.obtenerHojasByIdUser(idUsr);
 	}
 
 }

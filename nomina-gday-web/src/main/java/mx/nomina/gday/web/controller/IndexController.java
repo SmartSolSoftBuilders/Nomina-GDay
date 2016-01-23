@@ -39,7 +39,7 @@ public class IndexController {
     			usuario=this.mttoSeguridadServicio.consultarUsuariosByUser(usuario).get(0);
     			System.out.println(usuario.getId());
     			request.getSession().setAttribute("idUserSeg",usuario.getId());
-    			
+    			System.out.println(rol);
     			request.getSession().setAttribute("rolUser",rol);
     			break;
     		}    		

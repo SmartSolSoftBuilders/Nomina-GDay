@@ -43,6 +43,9 @@
 	<select id="obtenerHojas" resultMap="hojaTrabajoResult" resultType="HojaTrabajo">		 
 		select * from "HOJA_DE_TRABAJO" where "ESTATUS"='1'
 	</select>
+	<select id="obtenerHojasByIdUser"  parameterType="map" resultMap="hojaTrabajoResult" resultType="HojaTrabajo">		 		
+		select * from "HOJA_DE_TRABAJO" where "ESTATUS"='1' and "ID_NOMINA" IN (SELECT "ID_NOMINA" FROM "NOMINA" WHERE "ID_EJECUTIVO"=(SELECT "ID_EJECUTIVO" FROM "EJECUTIVO" WHERE id_t_usuario=#{id}))
+	</select>
 	<update id="activarHojaTrabajo" parameterType="HojaTrabajo">
 		UPDATE "HOJA_DE_TRABAJO"
    		SET "ESTATUS"='0'

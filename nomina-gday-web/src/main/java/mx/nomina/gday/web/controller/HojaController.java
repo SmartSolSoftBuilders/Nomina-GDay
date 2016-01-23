@@ -91,10 +91,17 @@ public class HojaController {
 		 
 		@RequestMapping("/gethojastogen_nomina")
 		@ResponseBody
-		    public List obtenerHojastoGenNomina(@ModelAttribute(value="nomina") Nomina nomina, BindingResult result){    				  
+		    public List obtenerHojastoGenNomina(@ModelAttribute(value="nomina") Nomina nomina, BindingResult result,HttpServletRequest request){    				  
 			  try {
-				List<HojaTrabajo> tmp = new ArrayList<HojaTrabajo>();				
-				tmp=this.hojaTrabajoServicio.obtenerHojas();				
+				List<HojaTrabajo> tmp = new ArrayList<HojaTrabajo>();
+				String rol=request.getSession().getAttribute("rolUser").toString();
+				Integer idUsr=Integer.parseInt(request.getSession().getAttribute("idUserSeg").toString());
+				System.out.println("ID USER:"+idUsr);
+				if (rol.equals("ROL_EJECUTIVO_NOMINA")){
+					tmp=this.hojaTrabajoServicio.obtenerHojasByIdUser(idUsr);
+				}
+				else
+					tmp=this.hojaTrabajoServicio.obtenerHojas();
 				//System.out.println("tmp"+tmp.size());
 				List nominasTmp = new ArrayList();
 				List nominasTmp2 = new ArrayList<String>();
