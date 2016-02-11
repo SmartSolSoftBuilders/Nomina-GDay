@@ -21,7 +21,7 @@
 
 <!-- Select para obtener la lista de todos los Grupos registrados -->
 <select id="obtenerGrupos" resultMap="grupoResult" resultType="Grupo">
-		select * from "GRUPO"
+		select * from "GRUPO" ORDER BY "NOMBRE_GRUPO"
 </select>
 
 <!-- Select para obtener los Grupos registrados por id-->

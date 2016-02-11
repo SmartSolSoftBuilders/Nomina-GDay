@@ -127,7 +127,7 @@
 	
 	<!-- Select para obtener la lista de todos las Nominas registradas -->
 	<select id="obtenerNominas" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
-		select * from "NOMINA" 	 	
+		select * from "NOMINA" ORDER BY "NOMBRE_CORTO" 	 	
 	</select>
 
 	
