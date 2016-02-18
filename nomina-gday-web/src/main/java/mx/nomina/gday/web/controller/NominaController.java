@@ -151,10 +151,19 @@ public class NominaController {
 		//Controller que muestra la lista de nóminas para seleccionarla a un empleado
 		@RequestMapping(value="/getnominasemp",method = RequestMethod.POST)
 		    @ResponseBody
-		    public List obtenerNominasEmpleado(){    	
+		    public List obtenerNominasEmpleado(HttpServletRequest request){    	
 			  System.out.println("Controller Nomina");
 			  try {
-				List<Nomina> tmp =  this.nominaServicio.obtenerNominas();
+				String rol=request.getSession().getAttribute("rolUser").toString();
+				Integer idUsr=Integer.parseInt(request.getSession().getAttribute("idUserSeg").toString());
+				List<Nomina> tmp =  new ArrayList<Nomina>();
+				if (rol.equals("ROL_EJECUTIVO_NOMINA")){
+					System.out.println("EJECUTIVO!!!");
+					tmp =  this.nominaServicio.obtenerNominasByIdEjecutivo(idUsr);
+				}
+				else{
+					tmp =  this.nominaServicio.obtenerNominas();
+				}
 				System.out.println("tmp"+tmp.size());
 				List nominasTmp = new ArrayList();
 				List nominasTmp2 = new ArrayList<String>();
@@ -244,7 +253,14 @@ public class NominaController {
 		 @RequestMapping(value="/obtenernominasbyempleado",method = RequestMethod.POST)
 		    @ResponseBody
 		    public List<Nomina> obtenerNominasByEmpleadoById(@ModelAttribute(value="Empleado") Empleado empleado, BindingResult result){   
+			 //public List<Nomina> obtenerNominasByEmpleadoById(@ModelAttribute(value="Empleado") Empleado empleado, HttpServletRequest request, BindingResult result){
 			 	System.out.println("Empleado por id"+ empleado.getIdEmpleado());
+			 	//	AGREGAR FUNCIONALIDAD PARA EJECUTIVO
+			 	System.out.println("Controller Nomina");
+
+			 	//String rol=request.getSession().getAttribute("rolUser").toString();
+				//Integer idUsr=Integer.parseInt(request.getSession().getAttribute("idUserSeg").toString());
+			 	//return this.nominaServicio.obtenerNominasByIdEmpleadoEjecutivo(empleado.getIdEmpleado(),idUsr);
 			 	return this.nominaServicio.obtenerNominasByIdEmpleado(empleado.getIdEmpleado());
 			 	
 			}

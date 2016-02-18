@@ -56,7 +56,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DE NOMINAS <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="../nominas/nominas.jsp" target="main" >CONSULTAR NOMINAS</a></li>                
-              <li><a href="../empleados/empleados.jsp" target="main" >CONSULTAR EMPLEADOS</a></li>     
+              	<!-- li><a href="../empleados/empleados.jsp" target="main" >CONSULTAR EMPLEADOS</a></li -->     
               </ul>
              </li>
 			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">GESTIÓN DE FORMATOS <b class="caret"></b></a>
@@ -69,7 +69,8 @@
 			<li class="dropdown">
 			 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFFFFF">CARGA DE ACUMULADOS<b class="caret"></b></a>
 			  <ul class="dropdown-menu">
-				<li><a href="../acumulados/acumulado_periodo.jsp" target="main">ACUMULADOS</a></li>
+			  	<li><a href="../acumulados/acumulado_periodo.jsp" target="main">CARGA DE ACUMULADOS</a></li>
+				<li><a href="../acumulados/ver_acumulados.jsp" target="main">VER ACUMULADOS</a></li>
             </ul>
 			</li>
 			<!--  li class="dropdown">

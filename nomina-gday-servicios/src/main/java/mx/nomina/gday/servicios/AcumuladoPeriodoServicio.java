@@ -18,5 +18,7 @@ public interface AcumuladoPeriodoServicio {
 	public Integer obtenerAcumuladosByName(String nombreArchivo);
 	public List obtenerDatosComboNssCurp(int idNomina);
 	public void actualizarArchivo(AcumuladoPeriodo acumuladoPeriodo);
+	public List obtenerDatosCombo(Integer idUsr);
+	public File obtenerArchivoAcumuladoByData(List tmp2, Integer idUsr);
  
 }

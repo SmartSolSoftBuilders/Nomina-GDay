@@ -88,6 +88,11 @@
 	<select id="obtenerPatronas"  resultMap="patronaResult" resultType="Patrona">		 
 		select * from "PATRONA"  	
 	</select> 
+	
+	<select id="obtenerPatronasByIdEjecutivo" parameterType="map" resultMap="patronaResult" resultType="Patrona">		 
+	SELECT * FROM "PATRONA"	where "ID_PATRONA" IN (select "ID_PATRONA" from "NOMINA" where "ID_EJECUTIVO"=(SELECT "ID_EJECUTIVO" FROM "EJECUTIVO" WHERE id_t_usuario=#{idUsr}))		
+	</select>
+	
 	<select id="obtenerPatronasIntermediarias"  resultMap="patronaResult" resultType="Patrona">		 
 		select * from "PATRONA" where "ES_INTERMEDIARIA" = true  	
 	</select> 

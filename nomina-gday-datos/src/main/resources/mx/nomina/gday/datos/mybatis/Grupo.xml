@@ -23,6 +23,9 @@
 <select id="obtenerGrupos" resultMap="grupoResult" resultType="Grupo">
 		select * from "GRUPO" ORDER BY "NOMBRE_GRUPO"
 </select>
+<select id="obtenerGruposByIdEjecutivo" parameterType="map" resultMap="grupoResult" resultType="Grupo">		 
+	SELECT * FROM "GRUPO" WHERE "ID_GRUPO" IN (SELECT "ID_GRUPO" FROM "RAZON_SOCIAL" WHERE "ID_RAZON_SOCIAL" IN (SELECT "ID_RAZON_SOCIAL" FROM "NOMINA_RAZON" WHERE "ID_NOMINA" IN (select "ID_NOMINA" from "NOMINA" where "ID_EJECUTIVO"=(SELECT "ID_EJECUTIVO" FROM "EJECUTIVO" WHERE id_t_usuario=#{idUsr}))))		
+</select>
 
 <!-- Select para obtener los Grupos registrados por id-->
 <select id="obtenerGrupoById" parameterType="int" resultMap="grupoResult">

@@ -138,9 +138,18 @@ public class AcumuladoPeriodoController {
 	 //Obteber los datos de Ejecutivo y Esquema para el llenado de sus respectivos Combos
 	 @RequestMapping(value="/getdatoscombo",method = RequestMethod.POST)
 	    @ResponseBody
-	    public List obtenerDatosCombo(){
+	    public List obtenerDatosCombo(HttpServletRequest request){
 		 	System.out.println("Controller Datos del combo");
-			return this.acumuladoPeriodoServicio.obtenerDatosCombo();
+		 	String rol=request.getSession().getAttribute("rolUser").toString();
+			Integer idUsr=Integer.parseInt(request.getSession().getAttribute("idUserSeg").toString());
+			List<Nomina> tmp =  new ArrayList<Nomina>();
+			if (rol.equals("ROL_EJECUTIVO_NOMINA")){
+				System.out.println("EJECUTIVO!!!");
+				return this.acumuladoPeriodoServicio.obtenerDatosCombo(idUsr);
+			}
+			else{
+				return this.acumuladoPeriodoServicio.obtenerDatosCombo();
+			}
 		}
 	
 	 //Obteber los datos de Ejecutivo y Esquema para el llenado de sus respectivos Combos
@@ -232,11 +241,25 @@ public class AcumuladoPeriodoController {
 	        System.out.println("buscando el registro de nómina:"+id7);
 	        System.out.println("buscando el registro de nómina:"+id8);
 	        System.out.println("buscando el registro de nómina:"+id9);
+	        String rol=request.getSession().getAttribute("rolUser").toString();
+			Integer idUsr=Integer.parseInt(request.getSession().getAttribute("idUserSeg").toString());
+			List<Nomina> tmp =  new ArrayList<Nomina>();
+			List tmp2;
 	 		try{            
-				//fileToDownload = this.hojaTrabajoServicio.generarHojaTrabajo(idHojaTrabajo);
-	 			List tmp2=this.empleadoMongoServicio.obtenerDocumentos(id1, id2, id3,id4,id5,id6,id7,id8,id9);
-	 			System.out.println("Num Registros:"+tmp2.size());
-				fileToDownload=acumuladoPeriodoServicio.obtenerArchivoAcumuladoByData(tmp2);
+				//fileToDownload = this.hojaTrabajoServicio.generarHojaTrabajo(idHojaTrabajo);	 				 			
+	 			if (rol.equals("ROL_EJECUTIVO_NOMINA")){
+					System.out.println("EJECUTIVO!!!");
+					List<Nomina> nominas = this.nominaServicio.obtenerNominasByIdEjecutivo(idUsr);
+					tmp2=this.empleadoMongoServicio.obtenerDocumentos(id1, id2, id3,id4,id5,id6,id7,id8,id9,nominas);
+					System.out.println("Num Registros:"+tmp2.size());					
+				}		 							
+	 			else{	 				
+	 				
+	 				
+	 				tmp2=this.empleadoMongoServicio.obtenerDocumentos(id1, id2, id3,id4,id5,id6,id7,id8,id9);
+	 				System.out.println("Num Registros:"+tmp2.size());
+	 			}
+	 			fileToDownload=acumuladoPeriodoServicio.obtenerArchivoAcumuladoByData(tmp2);
 	            inputStream = new FileInputStream(fileToDownload);
 	            response.setContentType("application/force-download");
 	            response.setHeader("Content-Disposition", "attachment; filename="+"acumulado.xlsx"); 

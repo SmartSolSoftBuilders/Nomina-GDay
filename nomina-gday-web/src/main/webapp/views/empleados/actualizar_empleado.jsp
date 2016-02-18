@@ -296,7 +296,10 @@
 				<table border=2>
 					   	<tr>
 						  	<td>
-							 	<button type="button" class="btn btn-success" onclick="agregarNominaAEmpleado();">AÑADIR</button>
+						  		
+							 	<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>
+								<button type="button" class="btn btn-success" onclick="agregarNominaAEmpleado();">AÑADIR</button>
+						        <%} %>	
 						 		<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>
 								<button type="button" class="btn btn-success" onclick="shoBajaNominaForm();">ELIMINAR</button>
 						        <%} %>  

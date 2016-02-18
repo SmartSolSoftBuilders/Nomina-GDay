@@ -114,6 +114,23 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 		}
 		return datosCombo;
 	}
+	
+	@Override
+	public List obtenerDatosCombo(Integer idUsr) {
+		System.out.println("Datos del Combo Servicio");
+		List datosCombo = new ArrayList();
+		try{
+			datosCombo.add(this.nominaDao.obtenerNominasByIdEjecutivo(idUsr));
+			datosCombo.add(this.periodoDao.obtenerPeriodos());
+			datosCombo.add(this.grupoDao.obtenerGruposByIdEjecutivo(idUsr));
+			datosCombo.add(this.patronaDao.obtenerPatronasByIdEjecutivo(idUsr));			
+			datosCombo.add(this.tipoCalendarioDao.obtenerTiposCalendario());
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return datosCombo;
+	}
 
 	@Override
 	public List<AcumuladoPeriodo> obtenerAcumuladosByIdNominaAndIdPeriodo(AcumuladoPeriodo acumuladoPeriodo) {
@@ -244,6 +261,72 @@ public class AcumuladoPeriodoServicioImpl implements AcumuladoPeriodoServicio {
 
 	@Override
 	public File obtenerArchivoAcumuladoByData(List datos) {
+		// TODO Auto-generated method stub
+		   //String rutaArchivo = System.getProperty("user.home")+"/ejemploExcelJava.xls";	    
+		String rutaArchivo = "c://archivosNGDAY//acumuladoMongo.xlsx";        
+        /*Se crea el objeto de tipo File con la ruta del archivo*/
+		File archivoXLS = new File(rutaArchivo); 
+		//Evento eventoTmp=new Evento();
+		//System.out.println("Los datos que se buscan:"+datos.size());
+		/*Se crea el archivo*/
+        int filaInicial=1;
+        int columnaInicial=0;        
+        int limitePorHoja=1000; 
+        try{
+	    	Workbook workbookxlsx = null;
+	    	Sheet hoja= null;	    	
+        	FileInputStream file = new FileInputStream(archivoXLS);
+        	workbookxlsx = new XSSFWorkbook(file); //or new HSSFWorkbook();
+        	int contadorHojas=0;        	
+	    	hoja = workbookxlsx.getSheetAt(contadorHojas);        	
+        	//Se llena el encabezado        	
+        	Row fila = hoja.getRow(1);
+        	for (int j=filaInicial,indexEmpleados=0; j<=(datos.size()); j++,indexEmpleados++){
+        		if(indexEmpleados<limitePorHoja){
+        			List <String> tmp=(List<String>) datos.get(indexEmpleados);
+        			//System.out.println("VALOR:"+tmp.get(0));
+        			if (contadorHojas==0){
+        				fila=hoja.createRow(j);
+        			}
+        			else{
+        				//System.out.println("J;"+j);
+        				fila=hoja.createRow(j-(limitePorHoja/2));        			
+        			}
+        			int recorrerCeldas=0;        
+        			//System.out.println("num Control:+"+tmp.get(0));
+        			//System.out.println("Registro:+"+indexEmpleados);
+        			//fila.createCell(recorrerCeldas++).setCellValue((indexEmpleados+1));
+        			//System.out.println("TOTAL RG:"+tmp.size());        			
+        			if (!tmp.get(0).equals("null") && tmp.get(0)!=""){        				
+        				for (int l=0;l<416;l++)
+        					fila.createCell(recorrerCeldas++).setCellValue(tmp.get(l));	        			
+        			}
+        		}
+        		else{
+        			limitePorHoja=limitePorHoja+limitePorHoja;        					
+        			contadorHojas++;
+        			workbookxlsx.createSheet(""+contadorHojas);
+        			hoja = workbookxlsx.getSheet(""+contadorHojas);
+        			filaInicial=2;
+        		}
+        		
+        	}  	 	
+            file.close();
+            FileOutputStream outFile = new FileOutputStream(new File("C:\\archivosNGDAY\\tmpMongoGen.xlsx"));
+            workbookxlsx.write(outFile);
+            outFile.close();
+            archivoXLS = new File("C:\\archivosNGDAY\\tmpMongoGen.xlsx"); 	         	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("<OTIKA>ERROR!"+e.getMessage());
+			e.printStackTrace();
+		}
+        /*Cerramos el flujo de datos*/        
+        return archivoXLS;
+	}
+
+	@Override
+	public File obtenerArchivoAcumuladoByData(List datos, Integer idUsr) {
 		// TODO Auto-generated method stub
 		   //String rutaArchivo = System.getProperty("user.home")+"/ejemploExcelJava.xls";	    
 		String rutaArchivo = "c://archivosNGDAY//acumuladoMongo.xlsx";        

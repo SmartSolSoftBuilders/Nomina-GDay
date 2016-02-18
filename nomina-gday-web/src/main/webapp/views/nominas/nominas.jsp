@@ -32,7 +32,7 @@
 							<th>PERIODICIDAD</th>
 							<th>TIPO PAGO</th>
 							<th>CLASE</th>
-							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>	
+							<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR") ||session.getAttribute("rolUser").equals("ROL_EJECUTIVO_NOMINA")){%>	
 							<th></th>
 							<th></th>
 							<%} %>
