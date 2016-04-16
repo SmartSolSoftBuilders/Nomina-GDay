@@ -371,10 +371,12 @@
 					<tr>
 				 		<td>FECHA DE BAJA<input id='fechabajaformnomina' name='fechabajaformnomina'  class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 				 		<td>TIPO CONTRATO<select id='tipocontratoformnomina' name='tipocontratoformnomina' class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();">
-				 				<option value="ASIMILADO A SALARIOS">ASIMILADO A SALARIOS</option>
-				 				<option value="JUBILADOS">JUBILADOS</option>
-				 				<option value="PENSIONADOS">PENSIONADOS</option>
-				 				<option value="INDETERMINADO">INDETERMINADO</option>
+				 				<option>BASE</option>
+				 				<OPTION>EVENTUAL</OPTION>
+				 				<OPTION>CONFIANZA</OPTION>
+				 				<OPTION>SINDICALIZADO</OPTION>
+				 				<OPTION>A PRUEBA</OPTION>
+				 				<OPTION>TEMPORADA</OPTION>
 				 			</select>
 				 		</td>
 				 		<td>FECHA DE VENCIMIENTO<input id='fechavencimientoformnomina' name='fechavencimientoformnomina' class="form-control" type="date" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
