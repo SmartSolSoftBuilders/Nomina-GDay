@@ -212,11 +212,11 @@
 	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
 	            "ID_PROCESO","FECHA_BAJA","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
-	            1234, #{sueldoMensual}, 
-	            #{salarioDiarioInt}, #{sueldoDiario},#{plazaTrabajo}, 2222, 
+	            #{loteMovImssAlta}, #{sueldoMensual}, 
+	            #{salarioDiarioInt}, #{sueldoDiario},#{plazaTrabajo}, #{numeroTrabajadorCliente}, 
 	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
-	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
-	            #{municipioDel}, #{entFederativa}, 1234,
+	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, #{codigoPostal}, 
+	            #{municipioDel}, #{entFederativa}, #{loteMovImssBaja},
 	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso},
 	            date(#{fechaBaja}),date(#{fechaVencimiento}),#{tipoContrato} );
 	       </if>
@@ -231,11 +231,11 @@
 	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
 	            "ID_PROCESO","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
-	            1234, #{sueldoMensual}, 
-	            #{salarioDiarioInt},#{sueldoDiario}, #{plazaTrabajo}, 3333, 
+	            #{loteMovImssAlta}, #{sueldoMensual}, 
+	            #{salarioDiarioInt},#{sueldoDiario}, #{plazaTrabajo}, #{numeroTrabajadorCliente}, 
 	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
-	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
-	            #{municipioDel}, #{entFederativa}, 1234,
+	            #{calle}, #{numExterior}, #{numInterior}, #{colonia},#{codigoPostal}, 
+	            #{municipioDel}, #{entFederativa}, #{loteMovImssBaja},
 	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso},
 	            date(#{fechaVencimiento}),#{tipoContrato});
 
@@ -251,11 +251,11 @@
 	            "ID_PUESTO", "ID_DEPARTAMENTO", "ID_AREA", 
 	            "ID_PROCESO","FECHA_BAJA","FECHA_VENCIMIENTO","TIPO_CONTRATO")
 	 	   VALUES (#{nomina.idNomina}, #{empleado.idEmpleado}, date(#{fechaIngreso}),#{estatus}, #{tipoSalario}, 
-	            1234, #{sueldoMensual}, 
-	            #{salarioDiarioInt},#{sueldoDiario},#{plazaTrabajo}, 4444, 
+	            #{loteMovImssAlta}, #{sueldoMensual}, 
+	            #{salarioDiarioInt},#{sueldoDiario},#{plazaTrabajo}, #{numeroTrabajadorCliente}, 
 	            #{otroPatron}, #{rfcOtroPatron}, #{nombreOtroPatron}, #{permanencia}, 
-	            #{calle}, #{numExterior}, #{numInterior}, #{colonia}, 12345, 
-	            #{municipioDel}, #{entFederativa}, 1234,
+	            #{calle}, #{numExterior}, #{numInterior}, #{colonia},  #{codigoPostal}, 
+	            #{municipioDel}, #{entFederativa}, #{loteMovImssBaja},
 	            #{puesto.idPuesto},#{departamento.idDepartamento},#{area.idArea},#{proceso.idProceso},
 	            date(#{fechaBaja}),date(#{fechaVencimiento}),#{tipoContrato});
 	            
