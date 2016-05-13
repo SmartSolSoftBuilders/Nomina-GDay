@@ -9,6 +9,6 @@
 	
 <!-- Select para obtener la lista de todos los Tipo de Regimen registrados-->
 	<select id="obtenerAreas" parameterType="int" resultMap="areaResult" resultType="Area">		 
-		select * from "AREA" 
+		select * from "AREA"  order by "DESCRIPCION"
 	</select>
 </mapper>

@@ -9,6 +9,6 @@
 	
 <!-- Select para obtener la lista de todos los Tipo de Regimen registrados-->
 	<select id="obtenerDepartamentos" parameterType="int" resultMap="departamentoResult" resultType="Departamento">		 
-		select * from "DEPARTAMENTO" 
+		select * from "DEPARTAMENTO" order by "DESCRIPCION" 
 	</select>
 </mapper>

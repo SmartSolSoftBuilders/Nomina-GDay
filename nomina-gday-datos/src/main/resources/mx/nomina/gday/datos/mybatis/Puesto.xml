@@ -9,6 +9,6 @@
 	
 <!-- Select para obtener la lista de todos los Tipo de Regimen registrados-->
 	<select id="obtenerPuestos" parameterType="int" resultMap="puestoResult" resultType="Puesto">		 
-		select * from "PUESTO" 
+		select * from "PUESTO" order by "DESCRIPCION" 
 	</select>
 </mapper>

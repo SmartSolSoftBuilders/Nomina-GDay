@@ -158,7 +158,7 @@
 	</select> 
 
 	<select id="selectPuesto" parameterType="int" resultMap="puestoResult" resultType="Puesto">		 
-		select * from "PUESTO" where "ID_PUESTO"=#{idPuesto} 	
+		select * from "PUESTO" where "ID_PUESTO"=#{idPuesto} order by "DESCRIPCION" 	
 	</select> 
 	
 	<select id="selectEmpleado" parameterType="int" resultMap="empleadoResult" resultType="Empleado">		 
@@ -166,11 +166,11 @@
 	</select> 
 	
 	<select id="selectDepartamento" parameterType="int" resultMap="departamentoResult" resultType="Departamento">		 
-		select * from "DEPARTAMENTO" where "ID_DEPARTAMENTO"=#{idDepartamento} 	
+		select * from "DEPARTAMENTO" where "ID_DEPARTAMENTO"=#{idDepartamento} 	order by "DESCRIPCION"
 	</select> 
 	
 	<select id="selectArea" parameterType="int" resultMap="areaResult" resultType="Area">		 
-		select * from "AREA" where "ID_AREA"=#{idArea} 	
+		select * from "AREA" where "ID_AREA"=#{idArea} 	order by "DESCRIPCION"
 	</select>
 	
 	<select id="selectProceso" parameterType="int" resultMap="procesoResult" resultType="Proceso">		 
