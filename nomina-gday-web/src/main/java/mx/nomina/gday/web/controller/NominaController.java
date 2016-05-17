@@ -91,7 +91,13 @@ public class NominaController {
 					nominasTmp2.add(tmp.get(i).getPeriodicidad());
 					nominasTmp2.add(tmp.get(i).getTipoPago());
 					nominasTmp2.add(""+tmp.get(i).getClaseRiesgo());
-					nominasTmp2.add("<a href='#' onclick='showEditarNomina("+tmp.get(i).getIdNomina()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
+					if (rol.equals("ROL_ADMINISTRADOR")){
+						System.out.println("ROLE_ADMINISTRADOR!!!");
+						nominasTmp2.add("<a href='#' onclick='showEditarNomina("+tmp.get(i).getIdNomina()+")'>'<img src='../../static/img/editar.png' width='27' height='27'></img>'</a>");
+					}
+					else
+						nominasTmp2.add("Solo Administrador");	
+					
 					nominasTmp2.add("<a href='#' onclick='obtenerEmpleadoByIdNomina("+tmp.get(i).getIdNomina()+")'>Empleados</a>");
 					nominasTmp.add(nominasTmp2);
 				}
