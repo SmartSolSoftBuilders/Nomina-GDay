@@ -63,14 +63,21 @@ public class ReportesServicioImpl implements ReportesServicio {
         	fila = hoja.getRow(3);	
         	fila.createCell(3).setCellValue(nomina.getNombreCorto());
         	fila = hoja.getRow(4);	
+        	if (nomina.getEsquema()!=null){
+        		fila.createCell(3).setCellValue(nomina.getEsquema().getNombreEsquema());	
+        	}
         	//Nombre esquema
-        	//fila.createCell(5).setCellValue(nomina.getPatrona().getNombreCortoPatrona());
+        	fila = hoja.getRow(1);
+        	if (nomina.getPatrona()!=null){
+        		fila.createCell(5).setCellValue(nomina.getPatrona().getNombreCortoPatrona());
+        	}
         	fila = hoja.getRow(2);	
         	fila.createCell(5).setCellValue(nomina.getIntermediaria().getNombreCortoPatrona());
         	fila = hoja.getRow(3);	
         	fila.createCell(5).setCellValue(nomina.getPeriodicidad());
         	fila = hoja.getRow(4);	
         	fila.createCell(5).setCellValue(nomina.getTipoPago());
+        	System.out.println(nomina.getPatrona());
         	//Se guardarán todos los empleados
         	for (int j=filaInicial,indexEmpleados=0; j<(empleados.size()+filaInicial); j++,indexEmpleados++){
         		fila=hoja.getRow(j);
