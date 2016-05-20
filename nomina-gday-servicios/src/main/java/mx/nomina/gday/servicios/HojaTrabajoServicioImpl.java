@@ -126,7 +126,8 @@ public class HojaTrabajoServicioImpl implements HojaTrabajoServicio{
         try{
      		FileOutputStream fos = new FileOutputStream("C://archivosNGDAY//tmpHojaTrabajo"+idHojaTrabajo+".xlsx");
      		FileInputStream fis = new FileInputStream(myFile);
-     	    fos.write(hojaTrabajo.getArchivoAcumulado());
+     		if (hojaTrabajo.getArchivoAcumulado()!=null)
+     			fos.write(hojaTrabajo.getArchivoAcumulado());
      	    fos.close(); 
         	FileInputStream file = new FileInputStream(rutaArchivo);
         	InputStream ExcelFileToRead = new FileInputStream(rutaArchivo);

@@ -702,7 +702,12 @@ function showEditarNominaForm(idNomina,nombre){
 			$("#tiposalarioformnomina").val(data[2]);
 			$("#fechabajaformnomina").val(data[3]);
 			$("#tipocontratoformnomina").val(data[4]);
+			console.log($("#fechavencimientoformnomina").val())
+			console.log($("#fechaingresoformnomina").val())
+			
 			$("#fechavencimientoformnomina").val(data[5]);
+			colocarAvisoFechaVencimiento($("#fechaingresoformnomina").val(),$("#fechavencimientoformnomina").val())
+			
 			$("#sueldomensualformnomina").val(data[6]);
 			$("#sueldodiarioformnomina").val(data[7]);
 			$("#sueldodiariointformnomina").val(data[8]);
@@ -1182,5 +1187,25 @@ function habilitarPensionAlim()
 		$("#nombreAcreedor").prop("disabled",true);
 		$("#observaciones").prop("disabled",true);
 		
+	}
+}
+
+function colocarAvisoFechaVencimiento(fechaInicio, fechaVencimiento){
+	console.log(fechaInicio.substring(0,4)+"/"+fechaInicio.substring(5,7)+"/"+fechaInicio.substring(8,10))
+	console.log(fechaVencimiento.substring(0,4)+"/"+fechaVencimiento.substring(5,7)+"/"+fechaVencimiento.substring(8,10))
+	//        0123-56-78
+	//formato 2016-02-01	
+	if (fechaInicio=="")
+		return false;
+	if (fechaVencimiento==""){
+		return false;
+	}	
+	var f1 = new Date(fechaInicio.substring(0,4), fechaInicio.substring(5,7), fechaInicio.substring(8,10));
+	var f2 = new Date(fechaVencimiento.substring(0,4), fechaVencimiento.substring(5,7), fechaVencimiento.substring(8,10));
+	f1.setHours(0,0,0,0);
+	f2.setHours(0,0,0,0);
+	if (f1.getTime() == f2.getTime()){
+		$("#fechavencimientoformnomina").attr('title','CONTRATO INDEFINIDO');
+	    //alert("Son la misma fecha");
 	}
 }
