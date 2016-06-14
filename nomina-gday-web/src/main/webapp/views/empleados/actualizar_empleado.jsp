@@ -17,8 +17,12 @@
 				<div class="col-lg-6">
 					<table>					
 					 	<tr>
-					 		<input id='idEmpleado' name='idEmpleado' type="hidden" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();">					 		
-					 		<td>NUMERO DE CONTROL<input id='numeroControl' name='numeroControl' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 		<input id='idEmpleado' name='idEmpleado' type="hidden" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();">
+					 		<%if (session.getAttribute("rolUser").equals("ROL_ADMINISTRADOR")){%>					 		
+					 			<td>NUMERO DE CONTROL<input id='numeroControl' name='numeroControl' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 		<%}else{%>					 	
+						 		<td>NUMERO DE CONTROL<input id='numeroControl' name='numeroControl' type="text" class="form-control" readonly onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+					 		<%}%>
 					 		<td>NSS<input id='nss' name='nss' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>					 		
 					 		<td>CURP<input onchange="setFieldsCurp();" id='curp' name='curp' type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					 	</tr>
