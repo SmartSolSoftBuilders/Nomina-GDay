@@ -132,7 +132,7 @@
 
 	
 	<select id="obtenerNominasByIdEjecutivo" parameterType="Integer" resultMap="nominaResult" resultType="Nomina">		 
-		select * from "NOMINA" where "ID_EJECUTIVO"=(SELECT "ID_EJECUTIVO" FROM "EJECUTIVO" WHERE id_t_usuario=#{idEjecutivo})
+		select * from "NOMINA" where "ID_EJECUTIVO"=(SELECT "ID_EJECUTIVO" FROM "EJECUTIVO" WHERE id_t_usuario=#{idEjecutivo}) ORDER BY "NOMBRE_CORTO" 
 	</select>		
 	<select id="obtenerNominasByIdEmpleado" parameterType="int" resultMap="nominaResult" resultType="Nomina">		 
 		SELECT "NOMINA"."ID_NOMINA", "NOMINA"."NOMBRE_CORTO", "EMPLEADO_NOMINA"."ESTATUS" AS "TIPO_PAGO" FROM "NOMINA" INNER JOIN "EMPLEADO_NOMINA" ON "NOMINA"."ID_NOMINA"= "EMPLEADO_NOMINA"."ID_NOMINA"  AND "ID_EMPLEADO"=#{id} 	 	
